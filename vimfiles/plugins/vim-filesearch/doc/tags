@@ -1,0 +1,11 @@
+:Fsfind	filesearch.txt	/*:Fsfind*
+:Fsglob	filesearch.txt	/*:Fsglob*
+:Fsgrep	filesearch.txt	/*:Fsgrep*
+filesearch	filesearch.txt	/*filesearch*
+filesearch-commands	filesearch.txt	/*filesearch-commands*
+filesearch-contents	filesearch.txt	/*filesearch-contents*
+filesearch-filetype-options	filesearch.txt	/*filesearch-filetype-options*
+filesearch-introduction	filesearch.txt	/*filesearch-introduction*
+filesearch-keys	filesearch.txt	/*filesearch-keys*
+filesearch-options	filesearch.txt	/*filesearch-options*
+filesearch.txt	filesearch.txt	/*filesearch.txt*

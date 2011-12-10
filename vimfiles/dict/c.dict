@@ -1,0 +1,342 @@
+__cdecl
+__stdcall
+__fastcall
+
+include
+define
+
+auto
+break
+case
+char
+const
+continue
+default
+do
+double
+else
+enum
+extern
+float
+for
+goto
+if
+int
+long
+register
+return
+short
+signed
+sizeof
+static
+struct
+switch
+typedef
+union
+unsigned
+void
+volatile
+while
+
+<stdio.h>
+_IOFBF
+_IOLBF
+_IONBF
+BUFSIZ
+EOF
+FILE
+FILENAME_MAX
+FOPEN_MAX
+fpos_t
+L_tmpnam
+NULL
+SEEK_CUR
+SEEK_END
+SEEK_SET
+size_t
+stderr
+stdin
+stdout
+TMP_MAX
+void clearerr(FILE *stream)
+int fclose(FILE *stream)
+int feof(FILE *stream)
+int ferror(FILE *stream)
+int fflush(FILE *stream)
+int fgetc(FILE *stream)
+int fgetpos(FILE *stream, fpos_t *pos)
+char *fgets(char *s, int n, FILE *stream)
+FILE *fopen(const char *filename, const char *mode)
+int fprintf(FILE *stream, const char *format, ...)
+int fputc(int c, FILE *stream)
+int fputs(const char *s, FILE *stream)
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
+FILE *freopen(const char *filename, const char *mode, FILE *stream)
+int fscanf(FILE *stream, const char *format, ...)
+int fseek(FILE *stream, long int offset, int whence)
+int fsetpos(FILE *stream, const fpos_t *pos)
+long int ftell(FILE *stream)
+size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)
+int getc(FILE *stream)
+int getchar(void)
+char *gets(char *s)
+int perror(const char *s)
+int printf(const char *format, ...)
+int putc(int c, FILE *stream)
+int putchar(int c)
+int puts(const char *s)
+int remove(const char *filename)
+int rename(const char *old, const char *new)
+void rewind(FILE *stream)
+int scanf(const char *format, ...)
+void setbuf(FILE *stream, char *buf)
+int setvbuf(FILE *stream, char *buf, int mode, size_t size)
+int sprintf(char *s, const char *format, ...)
+int sscanf(const char *s, const char *format, ...)
+FILE *tmpfile(void)
+char *tmpnam(char *s)
+int ungetc(int c, FILE *stream)
+int vfprintf(FILE *stream, const char *format, va_list arg)
+int vprintf(const char *format, va_list arg)
+int vsprintf(char *s, const char *format, va_list arg)
+
+<ctype.h>
+int isalnum(int c)
+int isalpha(int c)
+int iscntrl(int c)
+int isdigit(int c)
+int isgraph(int c)
+int islower(int c)
+int isprint(int c)
+int ispunct(int c)
+int isspace(int c)
+int isupper(int c)
+int isxdigit(int c)
+int tolower(int c)
+int toupper(int c)
+
+<string.h>
+NULL
+size_t
+void *memcpy(void *s1, const void *s2, size_t n)
+void *memmove(void *s1, const void *s2, size_t n)
+void *strcpy(char *s1, const char *s2)
+void *strncpy(char *s1, const char *s2, size_t n)
+void *strcat(char *s1, const char *s2)
+void *strncat(char *s1, const char *s2, size_t n)
+int memcmp(const void *s1, const void *s2, size_t n)
+int strcmp(const char *s1, const char *s2)
+int strcoll(const char *s1, const char *s2)
+int strncmp(const char *s1, const char *s2, size_t n)
+size_t strxfrm(char *s1, const char *s2, size_t n)
+void *memchr(const void *s, int c, size_t n)
+char *strchr(const char *s, int c)
+size_t strcspn(const char *s1, const char *s2)
+char *strpbrk(const char *s1, const char *s2)
+char *strrchr(const char *s, int c)
+size_t strspn(const char *s1, const char *s2)
+char *strstr(const char *s1, const char *s2)
+char *strtok(char *s1, const char *s2)
+char *memset(void *s, int c, size_t n)
+char *strerror(int errnum)
+size_t strlen(const char *s)
+
+<math.h>
+HUGE_VAL
+double acos(double x)
+double asin(double x)
+double atan(double x)
+double atan2(double y, double x)
+double cos(double x)
+double sin(double x)
+double tan(double x)
+double cosh(double x)
+double sinh(double x)
+double tanh(double x)
+double exp(double x)
+double frexp(double value, int *exp)
+double ldexp(double x, int exp)
+double log(double x)
+double log10(double x)
+double modf(double value, double *iptr)
+double pow(double x, double y)
+double sqrt(double x)
+double ceil(double x)
+double fabs(double x)
+double floor(double x)
+double fmod(double x, double y)
+
+<stdlib.h>
+EXIT_FAILURE
+EXIT_SUCCESS
+MB_CUR_MAX
+NULL
+RAND_MAX
+div_t
+ldiv_t
+size_t
+wchar_t
+double atof(const char *nptr)
+int atoi(const char *nptr)
+long atol(const char *nptr)
+double strtod(const char *nptr, char **endptr)
+long int strtol(const char *nptr, char **endptr, int base)
+unsigned long int strtoul(const char *nptr, char **endptr, int base)
+int rand(void)
+void srand(unsigned int seed)
+void *calloc(size_t nmemb, size_t size)
+void free(void *ptr)
+void *malloc(size_t size)
+void *realloc(void *ptr, size_t size)
+void abort(void)
+int atexit(void (*func)(void))
+void exit(int status)
+char *getenv(const char *name)
+int system(const char *string)
+char *bsearch(const void *key, const void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *))
+char *qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *))
+int abs(int j)
+div_t div(int numer, int denom)
+long int labs(long int j)
+ldiv_t ldiv(long int numer, long int denom)
+int mblen(const char *s, size_t n)
+int mbtowc(wchar_t *pwc, const char *s, size_t n)
+int wctomb(char *s, wchar_t wchar)
+size_t mbstowcs(wchar_t *pwcs, const char *s, size_t n)
+size_t wcstombs(char *s, const wchar_t *pwcs, size_t n)
+
+<time.h>
+CLOCKS_PER_SEC
+NULL
+clock_t
+size_t
+struct tm
+clock_t clock(void)
+double difftime(time_t time1, time_t time0)
+time_t mktime(struct tm *timeptr)
+time_t time(time_t *timer)
+char *asctime(const struct tm *timeptr)
+char *ctime(const time_t *timer)
+struct tm *gmtime(const time_t *timer)
+struct tm *localtime(const time_t *timer)
+size_t strftime(char *s, size_t maxsize, const char *format, const struct tm *timeptr)
+
+<locale.h>
+LC_ALL
+LC_COLLATE
+LC_CTYPE
+LC_MONETARY
+LC_NUMERIC
+LC_TIME
+NULL
+struct lconv
+char *setlocale(int category, const char *locale)
+struct lconv *localeconv(void)
+
+<setjmp.h>
+jmp_buf
+int setjmp(jmp_buf env)
+void longjmp(jmp_buf env, int val)
+
+<signal.h>
+sig_atomic_t
+SIG_DFL
+SIG_ERR
+SIG_IGN
+SIGABRT
+SIGFPE
+SIGILL
+SIGINT
+SIGSEGV
+SIGTERM
+void (*signal(int sig, void (*func)(int)))(int)
+int raise(int sig)
+
+<stdarg.h>
+va_list
+void va_start(va_list ap, parmN)
+type va_arg(va_list ap, type)
+void va_end(va_list ap)
+
+<errno.h>
+EDOM
+ERANGE
+errno
+
+<float.h>
+FLT_ROUNDS
+DBL_DIG
+DBL_MANT_DIG
+DBL_MAX_10_EXP
+DBL_MAX_EXP
+DBL_MIN_10_EXP
+DBL_MIN_EXP
+FLT_DIG
+FLT_MANT_DIG
+FLT_MAX_10_EXP
+FLT_MAX_EXP
+FLT_MIN_10_EXP
+FLT_MIN_EXP
+FLT_RADIX
+LDBL_DIG
+LDBL_MANT_DIG
+LDBL_MAX_10_EXP
+LDBL_MAX_EXP
+LDBL_MIN_10_EXP
+LDBL_MIN_EXP
+DBL_MAX
+FLT_MAX
+LDBL_MAX
+DBL_EPSILON
+DBL_MIN
+FLT_EPSILON
+FLT_MIN
+LDBL_EPSILON
+LDBL_MIN
+
+<limits.h>
+CHAR_BIT
+CHAR_MAX
+CHAR_MIN
+INT_MAX
+INT_MIN
+LONG_MAX
+LONG_MIN
+MB_LEN_MAX
+SCHAR_MAX
+SCHAR_MIN
+SHRT_MAX
+SHRT_MIN
+UCHAR_MAX
+UINT_MAX
+ULONG_MAX
+USHRT_MAX
+
+<stddef.h>
+NULL
+offsetof
+ptrdiff_t
+size_t
+wchar_t
+
+<assert.h>
+NDEBUG
+void assert(int expression)
+
+__LINE__
+__FILE__
+__DATE__
+__TIME__
+__STDC__
+
+@file
+@date
+@brief
+@author
+$Revision:$
+$LastChangedBy:$
+$LastChangedDate:$
+@param
+@retval
+@attention
+
