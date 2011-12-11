@@ -67,16 +67,16 @@ set cpo&vim
 
 " GLOBAL VARIABLES {{{1
 if ! exists('g:wm_move_up')
-    let g:wm_move_up = '<M-Up>'
+    let g:wm_move_up = '<Up>'
 endif
 if ! exists('g:wm_move_right')
-    let g:wm_move_right = '<M-Right>'
+    let g:wm_move_right = '<Right>'
 endif
 if ! exists('g:wm_move_down')
-    let g:wm_move_down = '<M-Down>'
+    let g:wm_move_down = '<Down>'
 endif
 if ! exists('g:wm_move_left')
-    let g:wm_move_left = '<M-Left>'
+    let g:wm_move_left = '<Left>'
 endif
 if ! exists('g:wm_move_x')
     let g:wm_move_x = 20
