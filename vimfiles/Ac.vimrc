@@ -407,7 +407,7 @@ autocmd BufWrite *.txt :call DeleteTrailingWS()
 "nmap ;et :tabnew $TEMP/scratch.txt<cr>
 "endif
 
-set viminfo='10,\"30,!,:10,%10,n~/.viminfo
+set viminfo='10,\"30,!,:10,%10,n~/.data/_viminfo
 "set viminfo='10,\"30,:10,%,nTemp/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
@@ -612,7 +612,7 @@ nmap <silent> ;wm :WMToggle<cr>
 " netrw
 """"""""""""""""""""""""""""""
 let g:netrw_winsize = 30
-let	g:netrw_home	=	$HOME.'/'
+let	g:netrw_home	=	$HOME.'/.data'
 "nmap <silent> ;fe :Sexplore!<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -741,6 +741,7 @@ let g:DoxygenToolkit_authorName="Angluca"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Yankring
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:yankring_history_dir = '$HOME/.data/'
 let g:yankring_max_history = 20
 let g:yankring_max_element_length = 1048576 " 1M
 let g:yankring_max_display = 20
@@ -752,6 +753,7 @@ nmap ;yc :YRClear<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let	MRU_Max_Entries	=	20
 let	MRU_Auto_Close	=	1
+let MRU_File = $HOME.'/.data/_vim_mru_files'
 nmap ;fm :Mru<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "EchoFunc
@@ -769,10 +771,10 @@ let	g:vimwiki_menu	=	''
 let	g:vimwiki_CJK_length	=	1
 let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
 
-let	g:vimwiki_list	=	[{'path':$HOME.'/vimwiki/',
-			\	'path_html':$HOME.'/vimwiki/html/',
-			\	'html_header':$HOME.'/vimwiki/header.tpl',
-			\	'html_footer':$HOME.'/vimwiki/footer.tpl',
+let	g:vimwiki_list	=	[{'path':$HOME.'/.data/vimwiki/',
+			\	'path_html':$HOME.'/.data/vimwiki/html/',
+			\	'html_header':$HOME.'/.data/vimwiki/header.tpl',
+			\	'html_footer':$HOME.'/.data/vimwiki/footer.tpl',
 			\	'diary_link_count':5}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -784,6 +786,8 @@ nmap	;lr	:LinediffReset <cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ColorV
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let	g:ColorV_cache_File	=	$HOME.'/.data/_vim_ColorV_cache'
+
 let	g:ColorV_global_leader	=	';h'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "easymotion
@@ -821,6 +825,7 @@ endif
 au BufRead,BufNewFile README*,COPYING setlocal ft=txt
 au BufRead,BufNewFile *.txt setlocal ft=txt
 au BufRead,BufNewFile *.log setlocal ft=txt
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "C++  My'setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
