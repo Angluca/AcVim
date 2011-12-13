@@ -771,10 +771,10 @@ let	g:vimwiki_menu	=	''
 let	g:vimwiki_CJK_length	=	1
 let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
 
-let	g:vimwiki_list	=	[{'path':$HOME.'/.data/vimwiki/',
-			\	'path_html':$HOME.'/.data/vimwiki/html/',
-			\	'html_header':$HOME.'/.data/vimwiki/header.tpl',
-			\	'html_footer':$HOME.'/.data/vimwiki/footer.tpl',
+let	g:vimwiki_list	=	[{'path':$HOME.'/vimwiki/',
+			\	'path_html':$HOME.'/vimwiki/html/',
+			\	'html_header':$HOME.'/vimwiki/template/header.tpl',
+			\	'html_footer':$HOME.'/vimwiki/template/footer.tpl',
 			\	'diary_link_count':5}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -850,4 +850,4 @@ au BufNewFile,BufRead *.as set filetype=actionscript
 "endif
 "nmap <F11> :!start cscope -Rbk <CR>
 "nmap <F12> :!start ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
-"
+
