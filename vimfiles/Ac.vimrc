@@ -407,7 +407,7 @@ autocmd BufWrite *.txt :call DeleteTrailingWS()
 "nmap ;et :tabnew $TEMP/scratch.txt<cr>
 "endif
 
-set viminfo='10,\"30,!,:10,%10,n~/.data/_viminfo
+set viminfo='10,\"30,!,:10,n~/.data/_viminfo
 "set viminfo='10,\"30,:10,%,nTemp/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
