@@ -95,6 +95,21 @@ nmap ;co :cold <CR>
 nmap ;ci :cnew <CR>
 "nmap <F3> :call ToggleQuickfix() <CR>
 
+nmap ;ve :call	ToggleVisualEditMode() <CR>
+vmap ;ve :call	ToggleVisualEditMode() <CR>
+
+function! ToggleVisualEditMode()
+	if !exists('s:visualEditMode')
+		let		s:visualEditMode = 1
+		set		ve=all
+		echo	'visual edit on'
+	else
+		unlet	s:visualEditMode
+		set		ve=
+		echo	'visual edit off'
+	endif
+endfunction
+
 function! ToggleQuickfix()
 redir => ls_output
 execute ':silent! ls'
@@ -619,6 +634,7 @@ let	g:netrw_home	=	$HOME.'/.data'
 "Omnicppcompl setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win32")
+autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/winxtags
 autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/cpptags
 else
 autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/.vim/dict/cpptags
