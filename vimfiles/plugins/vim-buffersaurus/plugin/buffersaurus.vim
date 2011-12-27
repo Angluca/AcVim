@@ -50,6 +50,9 @@ endif
 if !exists("g:buffersaurus_move_wrap")
     let g:buffersaurus_move_wrap  = 1
 endif
+if !exists("g:buffersaurus_flash_jumped_line")
+    let g:buffersaurus_flash_jumped_line  = 1
+endif
 " 1}}}
 
 " Script Data and Variables {{{1
@@ -62,7 +65,7 @@ let s:buffersaurus_lnum_field_width = 6
 let s:buffersaurus_entry_label_field_width = 4
 " TODO: populate the following based on user setting, as well as allow
 " abstraction from the actual Vim command (e.g., option "top" => "zt")
-let s:buffersaurus_post_move_cmd = "normal! zt"
+let s:buffersaurus_post_move_cmd = "normal! zz"
 
 " 2}}}
 
@@ -422,33 +425,44 @@ function! s:NewIndexer()
 
     " set up filetype vocabulary
     let l:indexer["filetype_term_map"] = {
-        \ "bib"         : '^@\w\+\s*{\s*\zs\S\{-}\ze\s*,',
-        \ "c"           : '^[[:alnum:]#].*',
-        \ "cpp"         : '^[[:alnum:]#].*',
-        \ "html"        : '\(<h\d.\{-}</h\d>\|<\(html\|head\|body\|div\|script\|a\s\+name=\).\{-}>\|<.\{-}\<id=.\{-}>\)',
-        \ "java"        : '^\s*\(\(package\|import\|private\|public\|protected\|void\|int\|boolean\)\s\+\|\u\).*',
-        \ "javascript"  : '^\(var\s\+.\{-}\|\s*\w\+\s*:\s*\S.\{-}[,{]\)\s*$',
-        \ "perl"        : '^\([$%@]\|\s*\(use\|sub\)\>\).*',
-        \ "php"         : '^\(\w\|\s*\(class\|function\|var\|require\w*\|include\w*\)\>\).*',
-        \ "python"      : '^\s*\(import\|class\|def\)\s\+[A-Za-z_]\i\+(.*',
-        \ "ruby"        : '\C^\(if\>\|\s*\(class\|module\|def\|require\|private\|public\|protected\|module_functon\|alias\|attr\(_reader\|_writer\|_accessor\)\?\)\>\|\s*[[:upper:]_]\+\s*=\).*',
-        \ "scheme"      : '^\s*(define.*',
-        \ "sh"          : '^\s*\(\(export\|function\|while\|case\|if\)\>\|\w\+\s*()\s*{\).*',
-        \ "tcl"         : '^\s*\(source\|proc\)\>.*',
-        \ "tex"         : '\C\\\(label\|\(sub\)*\(section\|paragraph\|part\)\)\>.*',
-        \ "vim"         : '\C^\(fu\%[nction]\|com\%[mand]\|if\|wh\%[ile]\)\>.*',
+        \   'bib'         : '^@\w\+\s*{\s*\zs\S\{-}\ze\s*,'
+        \ , 'c'           : '^[[:alnum:]#].*'
+        \ , 'cpp'         : '^[[:alnum:]#].*'
+        \ , 'html'        : '\(<h\d.\{-}</h\d>\|<\(html\|head\|body\|div\|script\|a\s\+name=\).\{-}>\|<.\{-}\<id=.\{-}>\)'
+        \ , 'java'        : '^\s*\(\(package\|import\|private\|public\|protected\|void\|int\|boolean\)\s\+\|\u\).*'
+        \ , 'javascript'  : '^\(var\s\+.\{-}\|\s*\w\+\s*:\s*\S.\{-}[,{]\)\s*$'
+        \ , 'perl'        : '^\([$%@]\|\s*\(use\|sub\)\>\).*'
+        \ , 'php'         : '^\(\w\|\s*\(class\|function\|var\|require\w*\|include\w*\)\>\).*'
+        \ , 'python'      : '^\s*\(import\|class\|def\)\s\+[A-Za-z_]\i\+(.*'
+        \ , 'ruby'        : '\C^\(if\>\|\s*\(class\|module\|def\|require\|private\|public\|protected\|module_functon\|alias\|attr\(_reader\|_writer\|_accessor\)\?\)\>\|\s*[[:upper:]_]\+\s*=\).*'
+        \ , 'scheme'      : '^\s*(define.*'
+        \ , 'sh'          : '^\s*\(\(export\|function\|while\|case\|if\)\>\|\w\+\s*()\s*{\).*'
+        \ , 'tcl'         : '^\s*\(source\|proc\)\>.*'
+        \ , 'tex'         : '\C\\\(label\|\(sub\)*\(section\|paragraph\|part\)\)\>.*'
+        \ , 'vim'         : '\C^\(fu\%[nction]\|com\%[mand]\|if\|wh\%[ile]\)\>.*'
         \ }
     if exists("g:buffersaurus_filetype_term_map")
-        call extend(l:indexer["filetype_term_map"], g:buffersaurus_filetype_term_map)
+        " User-defined patterns have higher priority
+        call extend(l:indexer["filetype_term_map"], g:buffersaurus_filetype_term_map, 'force')
     endif
 
     " set up element vocabulary
     let l:indexer["element_term_map"] = {
-        \ "PyClass"     : '^\s*class\s\+[A-Za-z_]\i\+(.*',
-        \ "PyDef"       : '^\s*def\s\+[A-Za-z_]\i\+(.*',
+        \   'PyClass'     : '^\s*class\s\+[A-Za-z_]\i\+(.*'
+        \ , 'PyDef'       : '^\s*def\s\+[A-Za-z_]\i\+(.*'
+        \ , 'VimFunction' : '^\C[:[:space:]]*fu\%[nction]\>!\=\s*\S\+('
+        \ , 'VimMapping'  : '^\C[:[:space:]]*[nvxsoilc]\=\(\%(nore\|un\)\=map\>\|mapclear\)\>'
+        \ , 'VimCommand'  : '^\C[:[:space:]]*com\%[mand]\>'
+        \ , 'CppClass'    : '^\s*\(\(public\|private\|protected\)\s*:\)\=\s*\(class\|struct\)\s\+\w\+\>\(\s*;\)\@!'
+        \ , 'CppTypedef'  : '^\s*\(\(public\|private\|protected\)\s*:\)\=\s*typedef\>'
+        \ , 'CppEnum'     : '^\s*\(\(public\|private\|protected\)\s*:\)\=\s*enum\>'
+        \ , 'CppTemplate' : '^\s*template\($\|<\)'
+        \ , 'CppPreproc'  : '^#'
         \ }
+
     if exists("g:buffersaurus_element_term_map")
-        call extend(buffersaurus_element_term_map, g:buffersaurus_element_term_map)
+        " User-defined patterns have higher priority
+        call extend(l:indexer["element_term_map"], g:buffersaurus_element_term_map, 'force')
     endif
 
     " Indexes all files given by the list `filepaths` for the regular
@@ -457,8 +471,9 @@ function! s:NewIndexer()
     " `filepaths` is empty, then all
     " listed buffers are indexed.
     function! l:indexer.index_terms(filepaths, term_id, sort_regime) dict
+        let l:old_hidden = &hidden
+        set hidden
         let l:worklist = self.ensure_buffers(a:filepaths)
-
         let l:desc = "Catalog of"
         if !empty(a:term_id)
             let l:desc .= "'" . a:term_id . "'"
@@ -476,11 +491,14 @@ function! s:NewIndexer()
             let l:pattern = self.get_buffer_term_pattern(buf_ref, a:term_id)
             call l:catalog.map_buffer(buf_ref, l:pattern)
         endfor
+        let &hidden=l:old_hidden
         return l:catalog
     endfunction
 
     " Indexes all files given by the list `filepaths` for tags.
     function! l:indexer.index_tags(filepaths) dict
+        let l:old_hidden = &hidden
+        set hidden
         let l:worklist = self.ensure_buffers(a:filepaths)
         let l:desc = "Catalog of tags"
         if empty(a:filepaths)
@@ -494,6 +512,7 @@ function! s:NewIndexer()
         for buf_ref in l:worklist
             call l:catalog.map_buffer(buf_ref)
         endfor
+        let &hidden=l:old_hidden
         return l:catalog
     endfunction
 
@@ -501,6 +520,8 @@ function! s:NewIndexer()
     " expression given by `pattern`. If `filepaths` is empty, then all
     " listed buffers are indexed.
     function! l:indexer.index_pattern(filepaths, pattern, sort_regime) dict
+        let l:old_hidden = &hidden
+        set hidden
         let l:worklist = self.ensure_buffers(a:filepaths)
 
         let l:desc = "Catalog of pattern '" . a:pattern . "'"
@@ -515,6 +536,7 @@ function! s:NewIndexer()
         for buf_ref in l:worklist
             call l:catalog.map_buffer(buf_ref, a:pattern)
         endfor
+        let &hidden=l:old_hidden
         return l:catalog
     endfunction
 
@@ -1170,7 +1192,8 @@ function! s:NewCatalogViewer(catalog, desc, ...)
 
     " Sets buffer commands.
     function! l:catalog_viewer.setup_buffer_commands() dict
-        command! -bang -nargs=* Bsfilter :call b:buffersaurus_catalog_viewer.set_filter('<bang>', <q-args>)
+        command! -bang -nargs=* Bsfilter  :call b:buffersaurus_catalog_viewer.set_filter('<bang>', <q-args>)
+        command! -bang -nargs=* Bsreplace :call b:buffersaurus_catalog_viewer.search_and_replace('<bang>', <q-args>)
         augroup BuffersaurusCatalogViewer
             au!
             autocmd CursorHold,CursorHoldI,CursorMoved,CursorMovedI,BufEnter,BufLeave <buffer> call b:buffersaurus_catalog_viewer.highlight_current_line()
@@ -1200,9 +1223,12 @@ function! s:NewCatalogViewer(catalog, desc, ...)
             noremap <buffer> <silent> r       :call b:buffersaurus_catalog_viewer.rebuild_catalog()<CR>
             noremap <buffer> <silent> <C-G>   :call b:buffersaurus_catalog_viewer.catalog.describe()<CR>
             noremap <buffer> <silent> g<C-G>  :call b:buffersaurus_catalog_viewer.catalog.describe_detail()<CR>
-            noremap <buffer> <silent> q       :call b:buffersaurus_catalog_viewer.close()<CR>
+            noremap <buffer> <silent> q       :call b:buffersaurus_catalog_viewer.close(1)<CR>
 
             """" Movement within buffer
+
+            " flash matched line
+            noremap <buffer> <silent> P      :let g:buffersaurus_flash_jumped_line = !g:buffersaurus_flash_jumped_line<CR>
 
             " jump to next/prev key entry
             noremap <buffer> <silent> <C-N>  :<C-U>call b:buffersaurus_catalog_viewer.goto_index_entry("n", 0, 1)<CR>
@@ -1219,6 +1245,12 @@ function! s:NewCatalogViewer(catalog, desc, ...)
             noremap <buffer> <silent> i     :call b:buffersaurus_catalog_viewer.visit_target(!g:buffersaurus_autodismiss_on_select, 0, "sb")<CR>
             noremap <buffer> <silent> t     :call b:buffersaurus_catalog_viewer.visit_target(!g:buffersaurus_autodismiss_on_select, 0, "tab sb")<CR>
 
+            """"" Selection: show target and switch focus, preserving the catalog regardless of the autodismiss setting
+            noremap <buffer> <silent> po          :<C-U>call b:buffersaurus_catalog_viewer.visit_target(1, 0, "")<CR>
+            noremap <buffer> <silent> ps          :<C-U>call b:buffersaurus_catalog_viewer.visit_target(1, 0, "vert sb")<CR>
+            noremap <buffer> <silent> pi          :<C-U>call b:buffersaurus_catalog_viewer.visit_target(1, 0, "sb")<CR>
+            noremap <buffer> <silent> pt          :<C-U>call b:buffersaurus_catalog_viewer.visit_target(1, 0, "tab sb")<CR>
+
             """"" Preview: show target , keeping focus on catalog
             noremap <buffer> <silent> O          :call b:buffersaurus_catalog_viewer.visit_target(1, 1, "")<CR>
             noremap <buffer> <silent> go         :call b:buffersaurus_catalog_viewer.visit_target(1, 1, "")<CR>
@@ -1233,6 +1265,13 @@ function! s:NewCatalogViewer(catalog, desc, ...)
             noremap <buffer> <silent> <C-N>       :<C-U>call b:buffersaurus_catalog_viewer.goto_index_entry("n", 1, 1)<CR>
             noremap <buffer> <silent> <C-P>       :<C-U>call b:buffersaurus_catalog_viewer.goto_index_entry("p", 1, 1)<CR>
 
+            """"" Special operations
+            nnoremap <buffer> <silent> x        :call b:buffersaurus_catalog_viewer.execute_command("", 0, 1)<CR>
+            nnoremap <buffer> <silent> X        :call b:buffersaurus_catalog_viewer.execute_command("", 1, 1)<CR>
+            nnoremap <buffer> <silent> R        :call b:buffersaurus_catalog_viewer.search_and_replace("", 0)<CR>
+            nnoremap <buffer> <silent> <C-R>    :call b:buffersaurus_catalog_viewer.search_and_replace("", 0)<CR>
+            nnoremap <buffer> <silent> &        :call b:buffersaurus_catalog_viewer.search_and_replace("", 1)<CR>
+
         else
 
             """" Index buffer management
@@ -1243,7 +1282,7 @@ function! s:NewCatalogViewer(catalog, desc, ...)
             noremap <buffer> <silent> u       :call b:buffersaurus_catalog_viewer.rebuild_catalog()<CR>
             noremap <buffer> <silent> <C-G>   :call b:buffersaurus_catalog_viewer.catalog.describe()<CR>
             noremap <buffer> <silent> g<C-G>  :call b:buffersaurus_catalog_viewer.catalog.describe_detail()<CR>
-            noremap <buffer> <silent> q       :call b:buffersaurus_catalog_viewer.close()<CR>
+            noremap <buffer> <silent> q       :call b:buffersaurus_catalog_viewer.close(1)<CR>
 
             """" Selection
             noremap <buffer> <silent> <CR>  :call b:buffersaurus_catalog_viewer.visit_target(!g:buffersaurus_autodismiss_on_select, 0, "")<CR>
@@ -1301,6 +1340,34 @@ function! s:NewCatalogViewer(catalog, desc, ...)
             " setlocal fillchars=fold:\ "
             setlocal fillchars=fold:.
         endif
+    endfunction
+
+    " Search and replace
+    function! l:catalog_viewer.search_and_replace(bang, pattern) dict
+        if a:bang
+            let l:include_context_lines = 1
+        else
+            let l:include_context_lines = 0
+        endif
+        if empty(a:pattern)
+            let l:pattern = input("Search for: ", s:last_searched_pattern)
+            if empty(l:pattern)
+                return
+            endif
+            let l:replace = input("Replace with: ", l:pattern)
+            if empty(l:replace)
+                return
+            endif
+            for separator in ["/", "@", "'", "|", "!", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", ":"]
+                if !(l:pattern =~ '\'.separator || l:replace =~ '\'.separator)
+                    break
+                endif
+            endfor
+            let l:command = "s" . l:separator . l:pattern . l:separator . l:replace . l:separator . "ge"
+        else
+            let l:command = "s" . a:pattern
+        endif
+        call self.execute_command(l:command, l:include_context_lines, 1)
     endfunction
 
     " Applies filter.
@@ -1393,6 +1460,8 @@ function! s:NewCatalogViewer(catalog, desc, ...)
                             \ self.catalog.matched_lines[l:entry_indexes[0]].buf_num,
                             \ 1,
                             \ 1,
+                            \ 0,
+                            \ 0,
                             \ {"proxy_entry_index": l:entry_indexes[0]})
             endif
             for l:entry_index in l:entry_indexes
@@ -1427,7 +1496,7 @@ function! s:NewCatalogViewer(catalog, desc, ...)
             let l:src_lines = self.fetch_buf_lines(l:buf_num, l:ln1, l:ln2)
             let l:indexed_line_summary = substitute(l:matched_line, '^\s*', '', 'g')
             let l:index_row = self.render_entry_index(a:index) . ' "' . l:buf_name . '", L' . l:ln1 . '-' . l:ln2 . ": " . l:indexed_line_summary
-            call self.append_line(l:index_row, a:index, l:buf_num, l:lnum, l:col)
+            call self.append_line(l:index_row, a:index, l:buf_num, l:lnum, l:col, 0, 0)
             for l:lnx in range(0, len(l:src_lines)-1)
                 let l:src_lnum = l:lnx + l:ln1
                 let l:rendered = "  "
@@ -1435,13 +1504,15 @@ function! s:NewCatalogViewer(catalog, desc, ...)
                 if l:src_lnum == l:lnum
                     let l:lborder = ">"
                     let l:rborder = ">"
+                    let l:is_matched_line = 1
                 else
                     let l:lborder = ":"
                     let l:rborder = ":"
+                    let l:is_matched_line = 0
                 endif
                 let l:rendered .= s:Format_AlignRight(l:src_lnum, s:buffersaurus_lnum_field_width, " ") . " " . l:rborder
                 let l:rendered .= " ".l:src_lines[l:lnx]
-                call self.append_line(l:rendered, a:index, l:buf_num, l:src_lnum, l:col)
+                call self.append_line(l:rendered, a:index, l:buf_num, l:src_lnum, l:col, 1, l:is_matched_line)
             endfor
         endif
     endfunction
@@ -1453,7 +1524,7 @@ function! s:NewCatalogViewer(catalog, desc, ...)
         let l:src_line = self.fetch_buf_line(a:entry.buf_num, a:entry.lnum)
         if self.is_pass_filter(l:src_line)
             let l:rendered_line = "" . l:index_field . " ".l:lnum_field . ":   " . l:src_line
-            call self.append_line(l:rendered_line, a:index, a:entry.buf_num, a:entry.lnum, a:entry.col)
+            call self.append_line(l:rendered_line, a:index, a:entry.buf_num, a:entry.lnum, a:entry.col, 1, 1)
         endif
     endfunction
 
@@ -1463,11 +1534,13 @@ function! s:NewCatalogViewer(catalog, desc, ...)
     endfunction
 
     " Appends a line to the buffer and registers it in the line log.
-    function! l:catalog_viewer.append_line(text, entry_index, jump_to_buf_num, jump_to_lnum, jump_to_col, ...) dict
+    function! l:catalog_viewer.append_line(text, entry_index, jump_to_buf_num, jump_to_lnum, jump_to_col, is_matched_line, is_content_line, ...) dict
         let l:line_map = {
                     \ "entry_index" : a:entry_index,
                     \ "entry_label" : get(self.catalog.entry_labels, a:entry_index, string(a:entry_index)),
                     \ "target" : [a:jump_to_buf_num, a:jump_to_lnum, a:jump_to_col, 0],
+                    \ "is_matched_line" : a:is_matched_line,
+                    \ "is_content_line" : a:is_content_line,
                     \ }
         if a:0 > 0
             call extend(l:line_map, a:1)
@@ -1477,7 +1550,23 @@ function! s:NewCatalogViewer(catalog, desc, ...)
     endfunction
 
     " Close and quit the viewer.
-    function! l:catalog_viewer.close() dict
+    function! l:catalog_viewer.close(restore_prev_window) dict
+        if self.buf_num < 0 || !bufexists(self.buf_num)
+            return
+        endif
+        if a:restore_prev_window
+            if !self.is_usable_viewport(winnr("#")) && self.first_usable_viewport() ==# -1
+            else
+                try
+                    if !self.is_usable_viewport(winnr("#"))
+                        execute(self.first_usable_viewport() . "wincmd w")
+                    else
+                        execute('wincmd p')
+                    endif
+                catch //
+                endtry
+            endif
+        endif
         execute("bwipe " . self.buf_num)
     endfunction
 
@@ -1616,6 +1705,51 @@ function! s:NewCatalogViewer(catalog, desc, ...)
         endif
     endfunction
 
+    " Perform run command on all lines in the catalog
+    function! l:catalog_viewer.execute_command(command_text, include_context_lines, rebuild_catalog) dict
+        if a:command_text == ""
+            let l:command_text = input("Command: ")
+        else
+            let l:command_text = a:command_text
+        endif
+        let catalog_buf_num = bufnr("%")
+        let catalog_buf_pos = getpos(".")
+        let working_buf_num = catalog_buf_num
+        let start_pos = getpos(".")
+        for l:cur_line in range(1, line("$"))
+            if !has_key(l:self.jump_map, l:cur_line)
+                continue
+            endif
+            let l:jump_entry = self.jump_map[l:cur_line]
+            if (!l:jump_entry.is_matched_line) && !(a:include_context_lines && l:jump_entry.is_content_line)
+                continue
+            endif
+            let [l:jump_to_buf_num, l:jump_to_lnum, l:jump_to_col, l:dummy] = l:jump_entry.target
+            if l:jump_to_buf_num != working_buf_num
+                if working_buf_num != catalog_buf_num
+                    call setpos('.', start_pos)
+                endif
+            endif
+            try
+                execute("silent! keepalt keepjumps buffer " . l:jump_to_buf_num)
+            catch //
+                continue
+            endtry
+            let working_buf_num = l:jump_to_buf_num
+            let start_pos = getpos(".")
+            " execute "silent! " . l:jump_to_lnum . command_text
+            execute "" . l:jump_to_lnum . command_text
+        endfor
+        if working_buf_num != catalog_buf_num
+            call setpos('.', start_pos)
+        endif
+        execute("silent! keepalt keepjumps buffer " . l:catalog_buf_num)
+        if a:rebuild_catalog
+            call self.rebuild_catalog()
+        endif
+        call setpos('.', catalog_buf_pos)
+    endfunction
+
     " Visits the specified buffer in the previous window, if it is already
     " visible there. If not, then it looks for the first window with the
     " buffer showing and visits it there. If no windows are showing the
@@ -1636,7 +1770,7 @@ function! s:NewCatalogViewer(catalog, desc, ...)
             execute("silent keepalt keepjumps " . l:split_cmd . " " . a:buf_num)
         endif
         let &switchbuf=l:old_switch_buf
-        endfunction
+    endfunction
 
     " Go to the line mapped to by the current line/index of the catalog
     " viewer.
@@ -1649,11 +1783,26 @@ function! s:NewCatalogViewer(catalog, desc, ...)
         let [l:jump_to_buf_num, l:jump_to_lnum, l:jump_to_col, l:dummy] = self.jump_map[l:cur_line].target
         let l:cur_tab_num = tabpagenr()
         if !a:keep_catalog
-            call self.close()
+            call self.close(0)
         endif
         call self.visit_buffer(l:jump_to_buf_num, a:split_cmd)
         call setpos('.', [l:jump_to_buf_num, l:jump_to_lnum, l:jump_to_col, l:dummy])
         execute(s:buffersaurus_post_move_cmd)
+        if g:buffersaurus_flash_jumped_line
+            exec 'silent! match BuffersaurusFlashMatchedLineHighlight1 /\%'. line('.') .'l.*/'
+            redraw
+            sleep 75m
+            exec 'silent! match BuffersaurusFlashMatchedLineHighlight2 /\%'. line('.') .'l.*/'
+            redraw
+            sleep 75m
+            exec 'silent! match BuffersaurusFlashMatchedLineHighlight1 /\%'. line('.') .'l.*/'
+            redraw
+            sleep 75m
+            exec 'silent! match BuffersaurusFlashMatchedLineHighlight2 /\%'. line('.') .'l.*/'
+            redraw
+            sleep 75m
+            match none
+        endif
         if a:keep_catalog && a:refocus_catalog
             execute("tabnext " . l:cur_tab_num)
             execute(bufwinnr(self.buf_num) . "wincmd w")
@@ -1823,6 +1972,7 @@ function! <SID>IndexPatterns(pattern, bang, sort_regime)
     endif
     let l:worklist = s:ComposeBufferTargetList(a:bang)
     let l:catalog = s:_buffersaurus_indexer.index_pattern(l:worklist, a:pattern, a:sort_regime)
+    let s:last_searched_pattern = a:pattern
     call s:ActivateCatalog("pattern", l:catalog)
     if !exists("g:buffersaurus_set_search_register") || g:buffersaurus_set_search_register
         let @/=a:pattern
@@ -1923,6 +2073,7 @@ if exists("s:_buffersaurus_buffer_manager")
     unlet s:_buffersaurus_buffer_manager
 endif
 let s:_buffersaurus_buffer_manager = s:NewBufferManager()
+let s:last_searched_pattern = ""
 if exists("s:_buffersaurus_messenger")
     unlet s:_buffersaurus_messenger
 endif
@@ -1931,21 +2082,32 @@ if exists("s:_buffersaurus_indexer")
     unlet s:_buffersaurus_indexer
 endif
 let s:_buffersaurus_indexer = s:NewIndexer()
+hi! BuffersaurusFlashMatchedLineHighlight1 guifg=#000000 guibg=#ff00ff ctermfg=0 ctermbg=164 term=reverse
+hi! BuffersaurusFlashMatchedLineHighlight2 guifg=#ff00ff guibg=#000000 ctermfg=164 ctermbg=0 term=reverse
 " 1}}}
 
 " Public Command and Key Maps {{{1
 " ==============================================================================
-command! -bang -nargs=*         Bsgrep          :call <SID>IndexPatterns(<q-args>, '<bang>', '')
-command! -bang -nargs=0         Bstoc           :call <SID>IndexTerms('<args>', '<bang>', 'fl')
-command! -bang -nargs=1         Bsterm          :call <SID>IndexTerms('<args>', '<bang>', 'fl')
-command! -nargs=0               Bsopen          :call <SID>OpenLastActiveCatalog()
-command! -range -bang -nargs=0  Bsnext          :call <SID>GotoEntry("n")
-command! -range -bang -nargs=0  Bsprev          :call <SID>GotoEntry("p")
-command! -bang -nargs=0         Bsstatus        :call <SID>ShowCatalogStatus('<bang>')
+function! <SID>Complete_bsterm(A,L,P)
+    let l:possible_matchs = sort(keys(s:_buffersaurus_indexer["element_term_map"]))
+    if len(a:A) == 0
+        return l:possible_matchs
+    endif
+    call filter(l:possible_matchs, 'v:val[:' . (len(a:A)-1) . '] ==? ''' . substitute(a:A, "'", "''", 'g') . '''')
+    return possible_matchs
+endfunction
+
+command! -bang -nargs=*                                           Bsgrep          :call <SID>IndexPatterns(<q-args>, '<bang>', '')
+command! -bang -nargs=0                                           Bstoc           :call <SID>IndexTerms('<args>', '<bang>', 'fl')
+command! -bang -nargs=1 -complete=customlist,<SID>Complete_bsterm Bsterm          :call <SID>IndexTerms('<args>', '<bang>', 'fl')
+command! -nargs=0                                                 Bsopen          :call <SID>OpenLastActiveCatalog()
+command! -range -bang -nargs=0                                    Bsnext          :call <SID>GotoEntry("n")
+command! -range -bang -nargs=0                                    Bsprev          :call <SID>GotoEntry("p")
+command! -bang -nargs=0                                           Bsstatus        :call <SID>ShowCatalogStatus('<bang>')
 
 " (development/debugging) "
 let g:buffersaurus_plugin_path = expand('<sfile>:p')
-command! -nargs=0               Bsreboot        :let g:did_buffersaurus = 0  | :execute("so " . g:buffersaurus_plugin_path)
+" command! -nargs=0               Bsreboot        :let g:did_buffersaurus = 0  | :execute("so " . g:buffersaurus_plugin_path)
 
 nnoremap <silent><Leader>[ :<C-U>Bsprev<CR>
 nnoremap <silent><Leader>] :<C-U>Bsnext<CR>

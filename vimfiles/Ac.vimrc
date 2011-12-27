@@ -810,6 +810,15 @@ let	g:ColorV_global_leader	=	';h'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/;'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"syntasic
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap	;sc	:SyntasticCheck<CR>
+nmap	;se	:Errors<CR>
+nmap	;st	:SyntasticToggleMode<CR>
+let g:syntastic_mode_map = { 'mode': 'active',
+						   \ 'active_filetypes': [],
+						   \ 'passive_filetypes': ['c', 'cpp'] }
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vimim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :let g:vimim_cloud = 0

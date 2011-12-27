@@ -1,12 +1,13 @@
-*buffersaurus.txt*	Buffer indexing and navigation plugin.
+*buffersaurus.txt*	For Vim version 7.3	Last change: 2011 December 20
 
 ===============================================================================
-                                             *buffersaurus* *buffersaurus-contents*
+                                          *buffersaurus* *buffersaurus-contents*
 CONTENTS~
 
     1. Introduction ....................... |buffersaurus-introduction|
     2. Basic Usage ........................ |buffersaurus-basic-usage|
     3. Special Searches ................... |buffersaurus-special-searches|
+    3. Special Operations ................. |buffersaurus-special-operations|
     4. Commands ........................... |buffersaurus-commands|
     5. Key Mappings ....................... |buffersaurus-keys|
     6. Options and Settings ............... |buffersaurus-options|
@@ -25,7 +26,7 @@ the line matching the search pattern) or filtered for specific patterns.
                                                     *buffersaurus-basic-usage*
 BASIC USAGE~
 
-The command ":Bsgrep {pattern}" is the most general way of invoking
+The command "|:Bsgrep| {pattern}" is the most general way of invoking
 Buffersaurus. It will search all listed buffers for lines of text matching the
 given regular expression pattern. If you want Buffersaurus to search ONLY the
 current buffer, then follow the command with a bang operator to restrict the
@@ -71,16 +72,20 @@ indexed lines that do not match "{filter-pattern}". The filter can be switched
 off by ":Bsfilter!".
 
 You can close the catalog viewer by pressing "q". The last search results are
-retained in memory, and the command ":Bsopen" will open the viewer again to
+retained in memory, and the command "|:Bsopen|" will open the viewer again to
 re-display these; you may want to type "r" to re-run the search if any of your
 buffers have changed.
 
 Once you have carried out a search and jumped to a matched line, and/or closed
 the catalog viewer, you can jump to the next or previous matching line
 directly from a working listed buffer without going back to re-opening the
-catalog viewer. You can just use the commands ":Bsnext" or ":Bsprev".  For
+catalog viewer. You can just use the commands "|:Bsnext|" or "|:Bsprev|".  For
 convenience, you may want to map some keys to these commands if you find
 yourself using them a lot.
+
+In additon, Buffersaurus supports global replace operations ("|:Bsreplace|" or
+"R") or even the execution of arbitrary commands on the matched lines
+(|buffersaurus-special-operations|).
 
 ===============================================================================
                                                *buffersaurus-special-searches*
@@ -90,11 +95,11 @@ Buffersaurus provides two other approaches to search beyond the explicitly
 single regular expression pattern-based approach described above.
 
 -------------------------------------------------------------------------------
+                                              *buffersaurus-filetype-patterns*
 "Table-of-Contents" Search~
 
 For some types of files, a "table-of-contents" can be generated using the
-command ":Bstoc". This will search all buffers (or just the current buffer if
-the bang operator is used: ":Bstoc!") for a set of patterns that define
+command "|:Bstoc|". This will search for a set of patterns that define
 "important" terms given the file types. For example, if dealing with common
 programming language source code files, all class and method/function
 definition lines are targeted. The results can be browsed and navigated just
@@ -102,88 +107,96 @@ as above. Note that this only works if the filetype is known, and some clearly
 defined terms are available for that filetype: Python, C++, C, etc. With
 other filetypes, e.g. text, the pattern defaults to any lines with a
 non-whitepsace as the first character, which may or may not be useful. In
-these, as well as other cases, it makes sense to use the ":Bsterm" command.
+these, as well as other cases, it makes sense to use the "|:Bsterm|" command.
+
+You can add more definitions by providing a |Dictionary| in the variable
+|g:buffersaurus_filetype_term_map|. Keys should be the file types (as in the
+|'filetype'| setting), and value should be a pattern that globs any keywords.
 
 -------------------------------------------------------------------------------
+                                                  *buffersaurus-term-patterns*
 "Term" Search~
 
-The command ":Bsterm {term-name}" takes a single argument, which should be a
+The command "|:Bsterm| {term-name}" takes a single argument, which should be a
 key defined in a dictionary that maps term-names to regular expression
-patterns. Executing this command will search all buffers (or just the current
-buffer if ":Bsterm! {term-name}" is used) for the regular expression
+patterns. Executing this command will search for the regular expression
 referenced by the term. In essence, you can consider terms as "pre-defined" or
 "saved" search patterns, that can quickly and easily be run when needed .
 
-Buffersaurus comes with some example terms pre-defined, "PyClass"
-and "PyDef" (which match Python class and function definitions, respectively):
+Buffersaurus comes with some example terms pre-defined.
+
+ * PyClass and PyDef will match Python class definitions and function definitions
+ * CppClass, CppEnum, CppPreProc, CppTypedef, CppTemplate will match C++
+   classes and struct definitions, enums, preprocessor macros, typedefs and
+   templates
+ * VimCommand, VimFunction and VimMapping will match commands, functions and
+   mappings definitions inside vimscripts
 
         "PyClass"     : '^\s*class\s\+[A-Za-z_]\i\+(.*',
         "PyDef"       : '^\s*def\s\+[A-Za-z_]\i\+(.*',
 
 You can add more definitions by providing the dictionary definition in your
-$VIMRUNTIME using the variable "g:buffersaurus_element_term_map". These
+|$VIMRUNTIME| using the variable "|g:buffersaurus_element_term_map|". These
 definitions will extend Buffersaurus' built-in defintions.
+
+===============================================================================
+                                               *buffersaurus-special-operations*
+SPECIAL OPERATIONS~
+
+Buffersaurus lets you execute arbitrary commands on matched lines
+using the "x" and "X" key maps. A specialized global replace operation is
+available via the ":|Bsreplace|" command or "R" key map.
 
 ===============================================================================
                                                        *buffersaurus-commands*
 COMMANDS~
 
-:Bsg[rep][!] {search-pattern}
+-------------------------------------------------------------------------------
+Catalog generation commands~
+
+Those commands generate a catalog.
+If |g:buffersaurus_default_single_file| is not defined or false, then all
+buffers will be searched, otherwise only the current buffer will be searched.
+However the banged versions of the commands will invert this behaviour.
+
+:Bsg[rep][!] {search-pattern}                                        *:Bsgrep*
                     Search buffer(s) for the regular expression |pattern|
-                    given by {search-pattern}. If
-                    "g:buffersaurus_default_single_file" is not defined or
-                    true, then all buffers will be searched unless the "bang"
-                    operator is given, in which case the search will be limitd
-                    to the current buffer. Otherwise, if
-                    "g:buffersaurus_default_single_file" is defined and true,
-                    then only the current buffer will be searched unless the
-                    bang operator is given, in which the search will be across
-                    all buffers. If "g:buffersaurus_set_search_register" is
-                    not false (0), then the pattern will also be assigned to
-                    the search register.
+                    given by {search-pattern}.
+                    If "|g:buffersaurus_set_search_register|" is not false,
+                    then the pattern will also be assigned to the search
+                    register.
 
-:Bstoc[!]
+:Bstoc[!]                                                             *:Bstoc*
                     Generate a "table of contents" type catalog for buffers,
-                    based on the specific filetype of each buffer. If
-                    "g:buffersaurus_default_single_file" is not defined or
-                    true, then all buffers will be searched unless the "bang"
-                    operator is given, in which case the search will be limitd
-                    to the current buffer. Otherwise, if
-                    "g:buffersaurus_default_single_file" is defined and true,
-                    then only the current buffer will be searched unless the
-                    bang operator is given, in which the search will be across
-                    all buffers. See |buffersaurus-filetype-patterns| for more
-                    information on the patterns to be matched.
+                    based on the specific filetype of each buffer.
+                    See |buffersaurus-filetype-patterns| for more information
+                    on the patterns to be matched.
 
-:Bsterm[!] {term-name}
+:Bsterm[!] {term-name}                                               *:Bsterm*
                     Generate a catalog of occurrences of the term pattern
-                    named {term-name} in buffers. If
-                    "g:buffersaurus_default_single_file" is not defined or
-                    true, then all buffers will be searched unless the "bang"
-                    operator is given, in which case the search will be limitd
-                    to the current buffer. Otherwise, if
-                    "g:buffersaurus_default_single_file" is defined and true,
-                    then only the current buffer will be searched unless the
-                    bang operator is given, in which the search will be across
-                    all buffers. See |buffersaurus-term-patterns| for
-                    information on defining and using terms.
+                    named {term-name} in buffers.
+                    See |buffersaurus-term-patterns| for information on
+                    defining and using terms.
 
-:Bso[pen]
+-------------------------------------------------------------------------------
+Other commands~
+
+:Bso[pen]                                                            *:Bsopen*
                     (Re-)open the most recent catalog.
 
-:Bsn[ext]
+:Bsn[ext]                                                            *:Bsnext*
                     Go to the next matched line from the most recent catalog
                     (like |:cnext|).
 
-:Bsp[rev]
+:Bsp[rev]                                                            *:Bsprev*
                     Go to the previous matched line from the most recent
                     catalog (like |:cprev|).
 
-:Bss[tatus][!]
+:Bss[tatus][!]                                                     *:Bsstatus*
                     Show brief (without "!") or detailed (with "!")
                     description of the most recent catalog.
 
-:Bsf[ilter][!] [filter-pattern]
+:Bsf[ilter][!] [filter-pattern]                                    *:Bsfilter*
                     [Only available when inside a Buffergator catalog viewer
                     buffer] Without "!": filter results to only show lines
                     matching the regular expression |pattern|
@@ -194,8 +207,26 @@ COMMANDS~
                     if [filter-pattern] is "*" or ".*", then the saved pattern
                     will be cleared and the filter removed.
 
+:Bsre[eplace][!]    [substitute-pattern-string]                   *:Bsreplace*
+                    [Only available when inside a Buffergator catalog viewer
+                    buffer] Apply substitution command (|:substitute|) using
+                    [substitute-pattern-string] to all listed (unfilterd)
+                    matched lines. If "!" is specified, then substitution will
+                    be applied to all listed context lines, if any, as well.
+                    [substitute-pattern-string] is anything that follows
+                    the |:substitute| command, e.g.
+>
+                        :Bsreplace /foo/bar/gc
+                        :Bsreplace @field@plain@e
+                        :Bsreplace /def\s\+pr\(\w\+\)_out/def pr\1_err/g
+<
+                    If [substitution-pattern-string] is not given, then you
+                    will be prompted for a pattern to search for and a string
+                    with which to replace it. In this case, the flags "ge"
+                    will automatically be applied.
+
 ===============================================================================
-                                                             *buffersaurus-keys*
+                                                           *buffersaurus-keys*
 KEY MAPPINGS (CATALOG VIEWER)~
 
 Search results are stored a "catalog", and displayed in special buffer
@@ -206,12 +237,16 @@ in the catalog viewer.
 Catalog Management~
 
 cc, C               Toggle contexted view on/off.
+                    Also see |g:buffersaurus_show_context|
+P                   Toggle flashing of indexed line on/off
+                    Also see |g:buffersaurus_flash_jumped_line|
 cs                  Cycle through sort regimes.
+                    Also see |g:buffersaurus_sort_regime|
 f                   Filter results for lines matching pattern.
 F                   Enter and apply a new filter pattern
 r                   Rebuild/refresh the index.
-<C-G>               Brief status of index/catalog.
-g<C-G>              Detailed status of index/catalog.
+<C-G>               Show short status of index/catalog.
+g<C-G>              Show detailed status of index/catalog.
 q                   Quit the index/catalog window.
 
 -------------------------------------------------------------------------------
@@ -223,46 +258,52 @@ Movement Within the Catalog Viewer~
 [f                  Go the previous file entry.
 
 -------------------------------------------------------------------------------
-Jumping to the Matched Line~
+Mappings That Jump To Results~
 
-The following keys all open the target buffer and focus to it. The catalog
-buffer will be closed if 'g:buffersaurus_autodismiss_on_select' evaluates to
-true; otherwise it will be kept open.
+Several mappings are defined so that you can navigate quickly. A first series
+of mappings jumps to the target and hides the catalog viewer if the
+autodismiss settings is on (default). A second series will always leave the
+catalog viewer window visible (mappings begin with p) and a third series will
+keep the focus on it (mappings in capital letters).
+For each series there is a mapping that displays the target in the previous
+window (involving letter o), two mappings display it in a new split (s for a
+vertical split, i for an horizontal split), and a mapping displays the target
+in a new tab (t).
 
-
-o, <CR>             Switch focus to the previous window and go to the
-                    currently-selected entry.
-s                   Split the previous window vertically, switch focus, and
-                    go to the currently-selected entry.
-i                   Split the previous window horizotnally, switch focus, and
-                    go to the currently-selected entry.
-t                   Open the currently-selected entry in a new tab page.
++--------------------------------------+-----------+-------+-------+-----+
+|          Location of the target      | previous  | vert  | horiz | new |
+|                                      |  window   | split | split | tab |
++--------------------------------------+-----------+-------+-------+-----+
+| Jump to target and dismiss the       |           |       |       |     |
+| catalog viewer if                    |  <CR>, o  |   s   |   i   |  t  |
+| |g:buffersaurus_autodismiss_on_select| |           |       |       |     |
++--------------------------------------+-----------+-------+-------+-----+
+| Jump to target and leave the         |     po    |  ps   |  pi   | pt  |
+| catalog viewer visible               |           |       |       |     |
++--------------------------------------+-----------+-------+-------+-----+
+| Preview target, keep focus on the    |   O, go   | S, gs | I, gi |  T  |
+| catalog viewer                       |           |       |       |     |
+|    (next entry)                      |  <space>  |       |       |     |
+|    (prev entry)                      | <c-space> |       |       |     |
++--------------------------------------+-----------+-------+-------+-----+
 
 -------------------------------------------------------------------------------
-Previewing Results Without Leaving the Catalog Viewer~
+Mappings That Carry Out Special Operations~
 
-The following keys all open the target, but retain focus on the catalog
-viewer.
-
-O, go               Preview the currently-selected entry in the previous
-                    window.
-S, gs               Preview the currently-selected entry in a new vertical
-                    split.
-I, gi               Preview the currently-selected entry in a new horizontal
-                    split.
-T                   Preview the currently-selected entry in a new tab page.
-<SPACE>             Go to the next entry and show it in the previous window.
-<C-SPACE>           Go to the previous entry and show it in the previous
-                    window.
+x                 Execute command on all matched lines.
+X                 Execute command all all matched and all context lines.
+R                 Search and replace operation on all matched lines.
+<C-R>             Search and replace operation on all matched lines.
+&                 Search and replace operation on all context lines.
 
 ===============================================================================
-                                                          *buffersaurus-options*
+                                                        *buffersaurus-options*
 OPTIONS AND SETTINGS~
 
 The following options can be used to customize the behavior of this plugin.
 
 g:buffersaurus_viewport_split_policy~
-    Default: "B"
+    Default: "B"                        *g:buffersaurus_viewport_split_policy*
     Determines how a new Buffersaurus window will be opened. Can be one of the
     following values:
         "d"   : user-specified Vim default
@@ -275,39 +316,66 @@ g:buffersaurus_viewport_split_policy~
         "r"   : vertical right (within current window)
         "T"   : horizontal top (full screen width)
         "t"   : horizontal top (within current window)
-        "B"   : horizontal bottom (full screen width)
+        "B"   : horizontal bottom (full screen width) [default]
         "b"   : horizontal bottom (within current window)
 
 g:buffersaurus_sort_regime~
-    Default: "fl"
+    Default: "fl"                                 *g:buffersaurus_sort_regime*
     Sets the default sort regime for results:
         "fl"  : sort by filepath, then line number [default]
         "fa"  : sort by filepath, then alphabetically by line text
         "a"   : sort alphabetically by line text
 
 g:buffersaurus_move_wrap~
-    Default: 1
+    Default: 1                                      *g:buffersaurus_move_wrap*
     If true [default], then result navigation wraps (i.e., moving to a "next"
     result when already on the last result goes to the first result, while
     moving to a "previous" result when already on the first result goes to the
     last result). If false, then result navigation does not wrap.
 
 g:buffersaurus_set_search_register~
-    Default: 1
+    Default: 1                            *g:buffersaurus_set_search_register*
     If true [default], then ":Bsgrep {pattern}" assigns {pattern} to the
     search register.
 
 g:buffersaurus_show_context~
-    Default: 0
+    Default: 0                                   *g:buffersaurus_show_context*
     If false, then show uncontexted lines by default; otherwise, show
-    contexted lines.
+    contexted lines. Use C or cc in the catalog_viewer to toggle this setting.
 
 g:buffersaurus_context_size~
-    Default: [4, 4]
+    Default: [4, 4]                              *g:buffersaurus_context_size*
     Must be a two-element list value. Determines the number of lines to show
     before and after matching indexed lines in results. First element gives
     the number of lines of context to show before matching line, while second
     elements gives the number of lines of context to show after the matching
     line.
+
+g:buffersaurus_autodismiss_on_select~
+    Default: 1                          *g:buffersaurus_autodismiss_on_select*
+    Indicates whether the catalog viewer should disappear when using the
+    commands <CR>, o, s, i, t.
+
+g:buffersaurus_flash_jumped_line~
+    Default: 1                              *g:buffersaurus_flash_jumped_line*
+    If true [default], the indexed line will flash when jumping to it. Use
+    P in the catalog viewer to toggle this setting.
+
+g:buffersaurus_default_single_file~
+    Default: {undefined}                  *g:buffersaurus_default_single_file*
+    If false or undefined [default], the commands |:Bsgrep|, |:Bsterm| and |:Bstoc|
+    will perform a scan of all opened buffers.
+    If true only the current buffer will be considered.
+
+g:buffersaurus_element_term_map~
+    Default: {undefined}                     *g:buffersaurus_element_term_map*
+    Custom |Dictionary| that maps custom keywords to search patterns. Used by
+    the |:Bsterm| command. Those maps add up to the predefined PyClass and
+    PyDef.
+
+g:buffersaurus_filetype_term_map~
+    Default: {undefined}                    *g:buffersaurus_filetype_term_map*
+    Custom |Dictionary| that maps filetype values to search patterns. Used by
+    the |:Bstoc| command.
 
  vim:tw=78:ts=8:ft=help:norl:
