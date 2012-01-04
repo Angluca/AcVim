@@ -104,7 +104,7 @@ let s:platform_inde = {
                 \'slash':'/', 'HOME':$HOME . '/.symbs', 'list_f':$HOME . '/.symbs/.l', 'env_f':$HOME . '/.symbs/.evn'
                 \},
             \'setting':{
-                \'tags_l':['./tags']
+                \'tags_l':[tags]
                 \},
             \'tmp_variable':0
             \}
