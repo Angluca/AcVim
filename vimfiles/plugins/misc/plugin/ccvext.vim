@@ -182,7 +182,7 @@ function! AddSymbs (symbs)
             let $TAGS_PATH = $TAGS_PATH . l:idx . ','
         endfor
         echo ':set tags=' . $TAGS_PATH
-        :set tags=$TAGS_PATH
+        :set tags+=$TAGS_PATH
     endif
 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
