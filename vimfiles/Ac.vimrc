@@ -851,6 +851,9 @@ au BufRead,BufNewFile README*,COPYING setlocal ft=txt
 au BufRead,BufNewFile *.txt setlocal ft=txt
 au BufRead,BufNewFile *.log setlocal ft=txt
 
+au BufRead,BufNewFile *.asm setlocal ft=fasm
+au BufRead,BufNewFile *.asm :compiler fasm
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "C++  My'setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
