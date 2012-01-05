@@ -852,7 +852,8 @@ au BufRead,BufNewFile *.txt setlocal ft=txt
 au BufRead,BufNewFile *.log setlocal ft=txt
 
 au BufRead,BufNewFile *.asm setlocal ft=fasm
-au BufRead,BufNewFile *.asm :compiler fasm
+au BufNewFile,BufRead *.asm set makeprg=fasm\ %:p
+autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "C++  My'setting
@@ -867,9 +868,6 @@ au BufNewFile,BufRead *.as set filetype=actionscript
 "au BufNewFile,BufRead *.nut set errorformat=%f:%l:%m
 
 
-"au BufNewFile,BufRead *.asm set syntax=fasm
-"au BufNewFile,BufRead *.asm set makeprg=fasm\ %:p
-"autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
 
 "if has(win32")
 "nmap <F10> :!dir /s /b *.c *.h *cpp *.hpp  > cscope.files <CR>
