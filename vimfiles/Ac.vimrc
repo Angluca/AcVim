@@ -21,9 +21,10 @@ function! s:CreateMaps(target, combo)
 endfunction
 
 "setup swap file directory
-let data_dir = $HOME.'/.data/'
+let data_dir = $HOME.'/.vimdata/'
 let backup_dir = data_dir . 'backup'
 let swap_dir = data_dir . 'swap'
+let cache_dir = data_dir . 'cache'
 if finddir(data_dir) == ''
     silent call mkdir(data_dir)
 endif
@@ -33,8 +34,12 @@ endif
 if finddir(swap_dir) == ''
     silent call mkdir(swap_dir)
 endif
-set backupdir=$HOME/.data/backup " where to put backup file
-set directory=$HOME/.data/swap " where to put swap file
+if finddir(cache_dir) == ''
+    silent call mkdir(cache_dir)
+endif
+
+set backupdir=$HOME/.vimdata/backup " where to put backup file
+set directory=$HOME/.vimdata/swap " where to put swap file
 unlet data_dir
 unlet backup_dir
 unlet swap_dir
@@ -422,7 +427,7 @@ autocmd BufWrite *.txt :call DeleteTrailingWS()
 "nmap ;et :tabnew $TEMP/scratch.txt<cr>
 "endif
 
-set viminfo='10,\"30,!,:10,n~/.data/_viminfo
+set viminfo='10,\"30,!,:10,n~/.vimdata/cache/_viminfo
 "set viminfo='10,\"30,:10,%,nTemp/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
@@ -627,7 +632,7 @@ nmap <silent> ;wm :WMToggle<cr>
 " netrw
 """"""""""""""""""""""""""""""
 let g:netrw_winsize = 30
-let	g:netrw_home	=	$HOME.'/.data'
+let	g:netrw_home	=	$HOME.'/.vimdata/cache'
 "nmap <silent> ;fe :Sexplore!<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -757,7 +762,7 @@ let g:DoxygenToolkit_authorName="Angluca"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Yankring
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:yankring_history_dir = '$HOME/.data/'
+let g:yankring_history_dir = '$HOME/.vimdata/cache'
 let g:yankring_max_history = 20
 let g:yankring_max_element_length = 1048576 " 1M
 let g:yankring_max_display = 20
@@ -769,7 +774,7 @@ nmap ;yc :YRClear<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let	MRU_Max_Entries	=	20
 let	MRU_Auto_Close	=	1
-let MRU_File = $HOME.'/.data/_vim_mru_files'
+let MRU_File = $HOME.'/.vimdata/cache/_vim_mru_files'
 nmap ;fm :Mru<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "EchoFunc
@@ -787,11 +792,11 @@ let	g:vimwiki_menu	=	''
 let	g:vimwiki_CJK_length	=	1
 let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
 
-let	g:vimwiki_list	=	[{'path':$HOME.'/vimwiki/',
-			\	'path_html':$HOME.'/vimwiki/html/',
-			\	'html_header':$HOME.'/vimwiki/template/header.tpl',
-			\	'html_footer':$HOME.'/vimwiki/template/footer.tpl',
-			\	'diary_link_count':5}]
+let	g:vimwiki_list	=	[{'path':$HOME.'/.vimdata/vimwiki/',
+			\	'path_html':$HOME.'/.vimdata/vimwiki/html/',
+			\	'html_header':$HOME.'/.vimdata/vimwiki/template/header.tpl',
+			\	'html_footer':$HOME.'/.vimdata/vimwiki/template/footer.tpl',
+			\	'diary_link_count':8}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "linediff
@@ -802,7 +807,7 @@ nmap	;lr	:LinediffReset <cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ColorV
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let	g:ColorV_cache_File	=	$HOME.'/.data/_vim_ColorV_cache'
+let	g:ColorV_cache_File	=	$HOME.'/.vimdata/cache/_vim_ColorV_cache'
 
 let	g:ColorV_global_leader	=	';h'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -858,7 +863,7 @@ autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "C++  My'setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
+autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
 
 au BufNewFile,BufRead *.mxml set filetype=mxml
 au BufNewFile,BufRead *.as set filetype=actionscript
