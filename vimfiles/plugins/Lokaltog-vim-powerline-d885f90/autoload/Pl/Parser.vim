@@ -43,11 +43,12 @@ let s:SOFT_DIVIDER = 1
 
 function! Pl#Parser#GetStatusline(segments) " {{{
 	let statusline = {
-		\ 'n': '',
-		\ 'N': '',
-		\ 'v': '',
-		\ 'i': '',
-		\ 'r': ''
+		\   'n': ''
+		\ , 'N': ''
+		\ , 'v': ''
+		\ , 'i': ''
+		\ , 'r': ''
+		\ , 's': ''
 		\ }
 
 	" Run through the different modes and create the statuslines
@@ -170,7 +171,7 @@ function! s:ParseSegments(mode, side, segments, ...) " {{{
 				let mode_colors = get(colors, mode, get(colors, 'n', {}))
 
 				if empty(mode_colors)
-					echoe 'Segment doesn''t have any colors! NS: "'. seg_curr.ns .'" SEG: "'. seg_curr.name .'"'
+					echom 'Segment doesn''t have any colors! NS: "'. seg_curr.ns .'" SEG: "'. seg_curr.name .'"'
 
 					continue
 				endif
@@ -246,11 +247,14 @@ function! s:HlCreate(hl) " {{{
 		\ )
 
 	if ! s:HlExists(hi_group)
-		" Create the highlighting group
+		let ctermbg = a:hl['ctermbg'] == 'NONE' ? 'NONE' : printf('%d', a:hl['ctermbg'])
+		if (has('win32') || has('win64')) && !has('gui_running') && ctermbg != 'NONE' && ctermbg > 128
+			let ctermbg -= 128
+		endif
 		let hi_cmd = printf('hi %s ctermfg=%s ctermbg=%s cterm=%s guifg=%s guibg=%s gui=%s'
 			\ , hi_group
-			\ , (a:hl['ctermfg'] == 'NONE' ? 'NONE' : printf('%d', a:hl['ctermfg']))
-			\ , (a:hl['ctermbg'] == 'NONE' ? 'NONE' : printf('%d', a:hl['ctermbg']))
+			\ , a:hl['ctermfg'] == 'NONE' ? 'NONE' : printf('%d', a:hl['ctermfg'])
+			\ , ctermbg
 			\ , a:hl['attr']
 			\ , (a:hl['guifg'] == 'NONE' ? 'NONE' : printf('#%06x', a:hl['guifg']))
 			\ , (a:hl['guibg'] == 'NONE' ? 'NONE' : printf('#%06x', a:hl['guibg']))
@@ -309,6 +313,8 @@ function! s:AddDivider(text, side, mode, colors, prev, curr, next) " {{{
 
 			let div_colors['ctermbg'] = get(cmp_colors, 'ctermbg')
 			let div_colors['guibg']   = get(cmp_colors, 'guibg')
+
+			let div_colors['attr']    = 'NONE'
 		endif
 	endif
 
