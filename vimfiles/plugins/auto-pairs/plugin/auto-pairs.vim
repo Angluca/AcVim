@@ -1,7 +1,8 @@
 " Insert or delete brackets, parens, quotes in pairs.
 " Maintainer:	JiangMiao <jiangfriend@gmail.com>
-" Last Change:  2011-12-13
-" Version: 1.1.3
+" Contributor: camthompson
+" Last Change:  2012-01-24
+" Version: 1.1.5
 " Homepage: http://www.vim.org/scripts/script.php?script_id=3599
 " Repository: https://github.com/jiangmiao/auto-pairs
 
@@ -19,7 +20,7 @@ if !exists('g:AutoPairsShortcuts')
 end
 
 if !exists('g:AutoPairs')
-  let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
+  let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 end
 
 if !exists('g:AutoPairsParens')
@@ -77,14 +78,13 @@ function! AutoPairsInsert(key)
     return a:key
   end
 
-
   if !has_key(g:AutoPairs, a:key)
     " Skip the character if next character is space
     if current_char == ' ' && next_char == a:key
       return "\<Right>\<Right>"
     end
 
-    " Skip the character if next
+    " Skip the character if closed pair is next character
     if current_char == ''
       let next_lineno = line('.')+1
       let next_line = getline(nextnonblank(next_lineno))
@@ -110,6 +110,22 @@ function! AutoPairsInsert(key)
     return "\<Right>"
   end
 
+  " Ignore auto close ' if follows a word
+  " MUST after closed check. 'hello|'
+  if a:key == "'" && prev_char =~ '\v\w'
+    return a:key
+  end
+
+  " support for ''' ``` and """
+  if open == close
+    " The key must be ' " `
+    let pprev_char = line[col('.')-3]
+    if pprev_char == open && prev_char == open
+      " Double pair found
+      return a:key
+    end
+  end
+
   return open.close."\<Left>"
 endfunction
 
@@ -133,6 +149,12 @@ function! AutoPairsDelete()
     if match(line,'^\s*'.close, col('.')-1) != -1
       let space = matchstr(line, '^\s*', col('.')-1)
       return "\<BS>". repeat("\<DEL>", len(space)+1)
+    else
+      let nline = getline(line('.')+1)
+      if nline =~ '^\s*'.close
+        let space = matchstr(nline, '^\s*')
+        return "\<BS>\<DEL>". repeat("\<DEL>", len(space)+1)
+      end
     end
   end
 
@@ -190,7 +212,8 @@ endfunction
 
 function! AutoPairsReturn()
   let line = getline('.')
-  let prev_char = line[col('.')-2]
+  let pline = getline(line('.')-1)
+  let prev_char = pline[strlen(pline)-1]
   let cmd = ''
   let cur_char = line[col('.')-1]
   if has_key(g:AutoPairs, prev_char) && g:AutoPairs[prev_char] == cur_char
@@ -201,12 +224,12 @@ function! AutoPairsReturn()
     " javascript   need   indent new line
     " coffeescript forbid indent new line
     if &filetype == 'coffeescript'
-      return "\<DEL>\<CR>".cur_char."\<ESC>k==o".cmd
+      return "\<ESC>k==o".cmd
     else
-      return "\<DEL>\<CR>".cur_char."\<ESC>=ko".cmd
+      return "\<ESC>=ko".cmd
     endif
   end
-  return "\<CR>"
+  return ''
 endfunction
 
 function! AutoPairsSpace()
@@ -223,6 +246,8 @@ endfunction
 function! AutoPairsInit()
   let b:autopairs_loaded  = 1
   let b:autopairs_enabled = 1
+
+  " buffer level map pairs keys
   for [open, close] in items(g:AutoPairs)
     call AutoPairsMap(open)
     if open != close
@@ -231,19 +256,17 @@ function! AutoPairsInit()
     let g:AutoPairsClosedPairs[close] = 1
   endfor
 
+  " Still use <buffer> level mapping for <BS> <SPACE>
   if g:AutoPairsMapBS
     execute 'inoremap <buffer> <silent> <expr> <BS> AutoPairsDelete()'
   end
 
-  if g:AutoPairsMapCR
-    execute 'inoremap <buffer> <silent> <expr> <CR> AutoPairsReturn()'
-  end
-
   if g:AutoPairsMapSpace
-    execute 'inoremap <buffer> <silent> <expr> <space> AutoPairsSpace()'
+    execute 'inoremap <buffer> <silent> <expr> <SPACE> AutoPairsSpace()'
   end
 
   execute 'inoremap <buffer> <silent> '.g:AutoPairsShortcutFastWrap.' <C-R>=AutoPairsFastWrap()<CR>'
+  " use <expr> to ensure showing the status when toggle
   execute 'inoremap <buffer> <silent> <expr> '.g:AutoPairsShortcutToggle.' AutoPairsToggle()'
   execute 'noremap <buffer> <silent> '.g:AutoPairsShortcutToggle.' :call AutoPairsToggle()<CR>'
   " If the keys map conflict with your own settings, delete or change them
@@ -261,5 +284,19 @@ function! AutoPairsForceInit()
     call AutoPairsInit()
   endif
 endfunction
+
+
+" Global keys mapping
+" comptible with other plugin
+if g:AutoPairsMapCR
+  let old_cr = maparg('<CR>', 'i')
+  if old_cr == ''
+    let old_cr = '<CR>'
+  endif
+
+  if old_cr !~ 'AutoPairsReturn'
+    execute 'imap <silent> <CR> '.old_cr.'<C-R>=AutoPairsReturn()<CR>'
+  end
+endif
 
 au BufEnter * :call AutoPairsForceInit()
