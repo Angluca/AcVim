@@ -863,7 +863,7 @@ autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "C++  My'setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
+"autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
 
 au BufNewFile,BufRead *.mxml set filetype=mxml
 au BufNewFile,BufRead *.as set filetype=actionscript

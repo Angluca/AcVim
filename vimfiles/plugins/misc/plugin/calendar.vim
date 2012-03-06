@@ -797,6 +797,15 @@ function! Calendar(...)
         let vsign = ''
       endif
 
+
+      " add it by Jumping for holiday show
+      if exists("g:calendar_mysign")
+          exe "let mysign = " . g:calendar_mysign . "(vdaycur, vmnth, vyear)"
+          if vsign == "" && mysign != ""
+              let vsign = mysign
+          endif
+      endif
+
       " show mark
       if g:calendar_mark == 'right'
         if vdaycur < 10
@@ -1041,6 +1050,7 @@ function! Calendar(...)
     setlocal nolist
     let b:Calendar='Calendar'
     setlocal filetype=calendar
+    setlocal norelativenumber
     " is this a vertical (0) or a horizontal (1) split?
     exe vcolumn + nontext_columns . "wincmd |"
   endif
@@ -1280,6 +1290,8 @@ function! s:CalendarBuildKeymap(dir, vyear, vmnth)
   nmap <buffer> <Right> <Plug>CalendarGotoNextMonth
   nmap <buffer> <Up>    <Plug>CalendarGotoPrevYear
   nmap <buffer> <Down>  <Plug>CalendarGotoNextYear
+  " add it by Jumping for nongli
+  nmap <silent><buffer> m             :call <SID>GetCursorDayLunar()<cr>
 endfunction
 
 "*****************************************************************
@@ -1295,6 +1307,8 @@ function! s:CalendarHelp()
   echo '<Up>      : goto prev year'
   echo '<Down>    : goto next year'
   echo 't         : goto today'
+  " add it by Jumping
+  echo 'm         : show lunar day'
   echo 'q         : close window'
   echo 'r         : re-display window'
   echo '?         : show this help'
@@ -1303,10 +1317,20 @@ function! s:CalendarHelp()
   endif
   echo ''
   echohl Question
-  echo 'calendar_erafmt=' . s:CalendarVar('g:calendar_erafmt')
-  echo 'calendar_mruler=' . s:CalendarVar('g:calendar_mruler')
-  echo 'calendar_wruler=' . s:CalendarVar('g:calendar_wruler')
-  echo 'calendar_weeknm=' . s:CalendarVar('g:calendar_weeknm')
+  echo '!xx         : holiday'
+  echo '@xx         : workaday'
+  if exists("g:calendar_erafmt")
+      echo 'calendar_erafmt=' . s:CalendarVar('g:calendar_erafmt')
+  endif
+  if exists("g:calendar_mruler")
+      echo 'calendar_mruler=' . s:CalendarVar('g:calendar_mruler')
+  endif
+  if exists("g:calendar_wruler")
+      echo 'calendar_wruler=' . s:CalendarVar('g:calendar_wruler')
+  endif
+  if exists("g:calendar_weeknm")
+      echo 'calendar_weeknm=' . s:CalendarVar('g:calendar_weeknm')
+  endif
   echo 'calendar_navi_label=' . s:CalendarVar('g:calendar_navi_label')
   echo 'calendar_diary=' . s:CalendarVar('g:calendar_diary')
   echo 'calendar_mark=' . s:CalendarVar('g:calendar_mark')
@@ -1326,3 +1350,292 @@ hi def link CalWeeknm   Comment
 hi def link CalToday    Directory
 hi def link CalHeader   Special
 hi def link CalMemo     Identifier
+
+" append 农历  by Jumping
+let s:tInfo=[0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977, 0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970, 0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950, 0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557, 0x06ca0,0x0b550,0x15355,0x04da0,0x0a5b0,0x14573,0x052b0,0x0a9a8,0x0e950,0x06aa0, 0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0, 0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b6a0,0x195a6, 0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570, 0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x055c0,0x0ab60,0x096d5,0x092e0, 0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5, 0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930, 0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530, 0x05aa0,0x076a3,0x096d0,0x04bd7,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45, 0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0, 0x14b63] 
+let s:solarMonth=[31,28,31,30,31,30,31,31,30,31,30,31]
+let s:Gan=["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
+let s:Zhi=["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
+let s:Animals=["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"]
+let s:solarTerm = ["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
+" let sTermInfo =[0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758]
+let s:nStr1 = ['日','一','二','三','四','五','六','七','八','九','十']
+let s:nStr2 = ['初','十','廿','卅','□']
+let s:monthName = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"]
+
+" 农历节日 *表示放假日
+" let lFtv =[ "0101*春节", "0102*初二", "0115 元宵节", "0505*端午节", "0707 七夕情人节", "0715 中元节", "0815*中秋节", "0909 重阳节", "1208 腊八节", "1223 小年", "0100*除夕"] 
+
+" /*****************************************************************************
+" 日期计算
+" *****************************************************************************/
+function! s:Nr2Bin(nr)
+    let n = a:nr
+    let r = ""
+    let i = 0
+    while n
+        let r = '01'[n % 2] . r
+        let n = n / 2
+        let i += 1
+    endwhile
+    return r
+endfunction
+
+" //====================================== 返回农历 y年的总天数
+function! s:GetNongliDays(y) 
+    let sum = 348
+    let binaryNum = s:Nr2Bin(s:tInfo[a:y-1900])
+    let strLen = strlen(binaryNum) - 4
+    let i = 12
+    while i
+        let sum += strpart(binaryNum,strLen-i,1) ? 1 : 0
+        let i -= 1
+    endwhile
+    return sum+s:GetLeapDays(a:y)
+endfunction
+
+" //====================================== 返回农历 y年闰月的天数
+function! s:GetLeapDays(y) 
+    if s:GetLeapMonth(a:y)  
+        return (s:tInfo[a:y-1900] > 0x10000)? 30: 29
+    else 
+        return 0
+    endif
+endfunction
+
+" //====================================== 返回农历 y年闰哪个月 1-12 , 没闰返回 0
+function! s:GetLeapMonth(y) 
+    return s:tInfo[a:y-1900] % 16 
+endfunction
+
+" //====================================== 返回农历 y年m月的总天数
+function! s:GetMonthDays(y,m) 
+    let binaryNum = s:Nr2Bin(s:tInfo[a:y-1900])
+    return  strpart(binaryNum,strlen(binaryNum)+a:m - 17,1)? 30: 29
+endfunction
+
+" //====================================== 阳历y 年m 月d 日对应的农历
+function! s:Lunar(y,m,d) 
+    " 
+    let i=1900
+    let leap=0
+    let temp=0
+    let offset = 0
+    while i < a:y
+        let offset += s:GetYearDays(i)
+        let i += 1
+    endwhile
+
+    let i = 1
+    while i < a:m
+        let offset += s:GetSolarDays(a:y,i-1)
+        let i += 1
+    endwhile 
+
+    let offset += a:d
+    let offset -= 31
+
+    " let offset = tlib#date#DiffInDays(a:date,'1900-01-31')
+    let i = 1900
+    while i < 2050 && offset > 0
+        let temp = s:GetNongliDays(i)
+        let offset -= temp
+        let i += 1
+    endwhile
+
+    " for(i=1900; i<2050 && offset>0; i++) { temp=s:GetNongliDays(i); offset-=temp; }
+    " 
+    if offset<0
+        let offset += temp
+        let i -= 1
+    endif
+
+    let nongliYear = i                                 " 农历那一年
+
+    let leap = s:GetLeapMonth(i)  " //闰哪个月
+    let isLeap = 0
+    let i = 1
+    while  i < 13 && offset > 0
+        if (leap > 0 && i == leap + 1) && isLeap == 0
+            let i -= 1
+            let isLeap = 1
+            let temp = s:GetLeapDays(nongliYear)
+        else
+            let temp = s:GetMonthDays(nongliYear,i)
+        endif
+        if isLeap == 1 && i == leap +1
+            let isLeap = 0
+        endif
+        let offset -= temp
+        let i += 1
+    endwhile
+
+    if offset == 0 && leap > 0 && i == leap + 1
+        if isLeap == 1
+            let nongliLeap = 0
+        else
+            let nongliLeap = 1
+            let i -= 1
+        endif
+    endif
+
+    if offset < 0 
+        let offset  += temp
+        let i -= 1
+    endif
+    let nongliMonth = s:monthName[i-1]
+    let nongliDay = offset + 1
+    if nongliDay == 10
+        let nongliDay = s:nStr2[0].s:nStr2[1]
+    elseif nongliDay == 20
+        let nongliDay = s:nStr2[2].s:nStr2[1]
+    elseif nongliDay == 30
+        let nongliDay = s:nStr2[3].s:nStr2[1]
+    else
+        let nongliDay = s:nStr2[nongliDay/10].s:nStr1[nongliDay%10]
+    endif
+    let cY = '甲子年'
+    if a:m-1<2 
+        let cY=s:GetCyclical(a:y-1900+36-1)
+    else 
+        let cY=s:GetCyclical(a:y-1900+36)
+    endif
+
+    return cY.'年'.nongliMonth.nongliDay
+endfunction
+
+function! s:GetYearDays(y)
+    let i = 0
+    let days = 0
+    while i < 12
+        let days += s:GetSolarDays(a:y,i)
+        let i += 1
+    endwhile
+    return days
+endfunction
+" 
+" //==============================返回公历 y年某m+1月的天数
+function! s:GetSolarDays(y,m) 
+    if (a:m==1)
+        return ((a:y%4 == 0) && (a:y%100 != 0) || (a:y%400 == 0))? 29: 28
+    else
+        return s:solarMonth[a:m]
+    endif
+endfunction
+
+" ============================== 传入 offset 返回干支, 0=甲子
+function! s:GetCyclical(num) 
+    return s:Gan[a:num%10].s:Zhi[a:num%12]
+endfunction
+ 
+function! s:GetCursorDayLunar()
+     " for navi
+     if exists('g:calendar_navi')
+         let navi = (a:0 > 0)? a:1 : expand("<cWORD>")
+         let curl = line(".")
+         if navi == '<' . s:GetToken(g:calendar_navi_label, ',', 1)
+             if b:CalendarMonth > 1
+                 call Calendar(b:CalendarDir, b:CalendarYear, b:CalendarMonth-1)
+             else
+                 call Calendar(b:CalendarDir, b:CalendarYear-1, 12)
+             endif
+         elseif navi == s:GetToken(g:calendar_navi_label, ',', 3) . '>'
+             if b:CalendarMonth < 12
+                 call Calendar(b:CalendarDir, b:CalendarYear, b:CalendarMonth+1)
+             else
+                 call Calendar(b:CalendarDir, b:CalendarYear+1, 1)
+             endif
+         elseif navi == s:GetToken(g:calendar_navi_label, ',', 2)
+             call Calendar(b:CalendarDir)
+             if exists('g:calendar_today')
+                 exe "call " . g:calendar_today . "()"
+             endif
+         else
+             let navi = ''
+         endif
+         if navi != ''
+             if g:calendar_focus_today == 1 && search("\*","w") > 0
+                 silent execute "normal! gg/\*\<cr>"
+                 return
+             else
+                 if curl < line('$')/2
+                     silent execute "normal! gg0/".navi."\<cr>"
+                 else
+                     silent execute "normal! G$?".navi."\<cr>"
+                 endif
+                 return
+             endif
+         endif
+     endif
+
+     " if no action defined return
+     if !exists("g:calendar_action") || g:calendar_action == ""
+         return
+     endif
+
+     if b:CalendarDir
+         let dir = 'H'
+         if exists('g:calendar_weeknm')
+             let cnr = col('.') - (col('.')%(24+5)) + 1
+         else
+             let cnr = col('.') - (col('.')%(24)) + 1
+         endif
+         let week = ((col(".") - cnr - 1 + cnr/49) / 3)
+     else
+         let dir = 'V'
+         let cnr = 1
+         let week = ((col(".")+1) / 3) - 1
+     endif
+     let lnr = 1
+     let hdr = 1
+     while 1
+         if lnr > line('.')
+             break
+         endif
+         let sline = getline(lnr)
+         if sline =~ '^\s*$'
+             let hdr = lnr + 1
+         endif
+         let lnr = lnr + 1
+     endwhile
+     let lnr = line('.')
+     if(exists('g:calendar_monday'))
+         let week = week + 1
+     elseif(week == 0)
+         let week = 7
+     endif
+     if lnr-hdr < 2
+         return
+     endif
+     let sline = substitute(strpart(getline(hdr),cnr,21),'\s*\(.*\)\s*','\1','')
+     if (col(".")-cnr) > 21
+         return
+     endif
+     " extract day
+     if g:calendar_mark == 'right' && col('.') > 1
+         normal! h
+         let day = matchstr(expand("<cword>"), '[^0].*')
+         normal! l
+     else
+         let day = matchstr(expand("<cword>"), '[^0].*')
+     endif
+     if day == 0
+         return
+     endif
+     " extract year and month
+     if exists('g:calendar_erafmt') && g:calendar_erafmt !~ "^\s*$"
+         let year = matchstr(substitute(sline, '/.*', '', ''), '\d\+')
+         let month = matchstr(substitute(sline, '.*/\(\d\d\=\).*', '\1', ""), '[^0].*')
+         if g:calendar_erafmt =~ '.*,[+-]*\d\+'
+             let veranum=substitute(g:calendar_erafmt,'.*,\([+-]*\d\+\)','\1','')
+             if year-veranum > 0
+                 let year=year-veranum
+             endif
+         endif
+     else
+         let year  = matchstr(substitute(sline, '/.*', '', ''), '[^0].*')
+         let month = matchstr(substitute(sline, '\d*/\(\d\d\=\).*', '\1', ""), '[^0].*')
+     endif
+     echo s:Lunar(year,month,day)
+ endfunc
+
