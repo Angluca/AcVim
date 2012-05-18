@@ -716,7 +716,7 @@ nmap <F1> :call ToggleSketch()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ShowMarks seting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let showmarks_include = "abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let showmarks_include = "abefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_ignore_type="hmpq"    "help,non-modify,preview,quick-fix buffer do not display
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -848,7 +848,8 @@ let g:qb_hotkey = ";bb"
 
 if has("unix")
 	if has("gui_running")
-		au	BufEnter	*.*	cd	%:h
+		"au	BufEnter	*	cd	%:h
+		au	BufEnter	*	set	autochdir
 	endif
 endif
 
