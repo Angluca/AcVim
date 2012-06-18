@@ -412,9 +412,16 @@ autocmd BufWrite *.txt :call DeleteTrailingWS()
 " Command-line config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Bash like
-"cnoremap <C-A> <Home>
-"cnoremap <C-E> <End>
-"cnoremap <C-K> <C-U>
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-B> <Left>
+cnoremap <C-F> <Right>
+
+inoremap <C-A> <C-O>^
+inoremap <C-E> <End>
+inoremap <C-B> <Left>
+inoremap <C-F> <Right>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffer realted
