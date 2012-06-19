@@ -875,6 +875,7 @@ autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.
 
 au BufNewFile,BufRead *.mxml set filetype=mxml
 au BufNewFile,BufRead *.as set filetype=actionscript
+au BufNewFile,BufRead *.proto set filetype=proto
 
 "au BufNewFile,BufRead *.nut set syntax=squirrel
 "au BufNewFile,BufRead *.nut set makeprg=sq\ %:p
