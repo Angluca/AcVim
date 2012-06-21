@@ -252,10 +252,14 @@ let g:template['c']['if'] = "if( ".g:rs."...".g:re." )\<cr>{\<cr>".g:rs."...".g:
 let g:template['c']['while'] = "while( ".g:rs."...".g:re." )\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
 let g:template['c']['ife'] = "if( ".g:rs."...".g:re." )\<cr>{\<cr>".g:rs."...".g:re."\<cr>} else\<cr>{\<cr>".g:rs."...".
             \g:re."\<cr>}"
+let g:template['c']['dstruct'] = "typedef struct\<tab>".g:rs."...".g:re." \<cr>{\<cr>".g:rs."...".g:re."\<cr>}".g:rs."...".g:re.";"
+let g:template['c']['denum'] = "enum\<tab>".g:rs."...".g:re." \<cr>{\<cr>".g:rs."...".g:re."\<cr>};"
+let g:template['c']['dunion'] = "union\<tab>".g:rs."...".g:re." \<cr>{\<cr>".g:rs."...".g:re."\<cr>};"
 
 " ---------------------------------------------
 " C++ templates
 let g:template['cpp'] = g:template['c']
+let g:template['cpp']['dclass'] = "class\<tab>".g:rs."...".g:re." \<cr>{\<cr>\<BS>public:\<cr>".g:rs."...".g:re."\<cr>};"
 
 " ---------------------------------------------
 " common templates
