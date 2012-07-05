@@ -881,6 +881,9 @@ au BufNewFile,BufRead *.proto set filetype=proto
 "au BufNewFile,BufRead *.nut set makeprg=sq\ %:p
 "au BufNewFile,BufRead *.nut set errorformat=%f:%l:%m
 
+if has("unix")
+let g:clang_use_library=1
+endif
 
 
 "if has(win32")
