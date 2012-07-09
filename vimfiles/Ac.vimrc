@@ -489,10 +489,10 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set cindent shiftwidth=2 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
-set softtabstop=2
+set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
+"set softtabstop=2
 set tabstop=4 " Set tabstop to 4 characters
-set expandtab " Set expandtab on, the tab will be change to space automaticaly
+"set expandtab " Set expandtab on, the tab will be change to space automaticaly
 
 """"""""""""""""""""""""""""""
 " Indent
