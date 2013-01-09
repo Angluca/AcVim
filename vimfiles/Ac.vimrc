@@ -100,6 +100,11 @@ nmap ;co :cold <CR>
 nmap ;ci :cnew <CR>
 "nmap <F3> :call ToggleQuickfix() <CR>
 
+"system copy and paste
+vmap Y "+y<cr>
+nmap P "+p<cr>
+
+"visual edit mode
 nmap ;ve :call	ToggleVisualEditMode() <CR>
 vmap ;ve :call	ToggleVisualEditMode() <CR>
 
@@ -870,7 +875,7 @@ au BufNewFile,BufRead *.asm set makeprg=fasm\ %:p
 autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"C++  My'setting
+"C++  my setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
 
