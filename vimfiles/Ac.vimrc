@@ -101,8 +101,9 @@ nmap ;ci :cnew <CR>
 "nmap <F3> :call ToggleQuickfix() <CR>
 
 "system copy and paste
-vmap Y "+y<cr>
-nmap P "+p<cr>
+nmap Y V"+y<cr>k
+vmap Y "+y<cr>k
+nmap P "+p<cr>k
 
 "visual edit mode
 nmap ;ve :call	ToggleVisualEditMode() <CR>
