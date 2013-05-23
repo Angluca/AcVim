@@ -827,7 +827,7 @@ let	g:ColorV_global_leader	=	';h'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "easymotion
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/;'
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890[]/;'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "syntasic
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -850,7 +850,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Another plugin
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "left to right
 nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
@@ -875,15 +874,20 @@ au BufRead,BufNewFile *.asm setlocal ft=fasm
 au BufNewFile,BufRead *.asm set makeprg=fasm\ %:p
 autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
 
+"EasyAlign
+vnoremap <silent> <Enter> :EasyAlign<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "C++  my setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
 
-au BufNewFile,BufRead *.mxml set filetype=mxml
-au BufNewFile,BufRead *.as set filetype=actionscript
-au BufNewFile,BufRead *.proto set filetype=proto
+au BufNewFile,BufRead *.mxml set ft=mxml
+au BufNewFile,BufRead *.as set ft=actionscript
+au BufNewFile,BufRead CMakeLists.txt set ft=cmake
+au BufNewFile,BufRead *.p set ft=pawn
 
+
+"au BufNewFile,BufRead *.proto set ft=proto
 "au BufNewFile,BufRead *.nut set syntax=squirrel
 "au BufNewFile,BufRead *.nut set makeprg=sq\ %:p
 "au BufNewFile,BufRead *.nut set errorformat=%f:%l:%m
