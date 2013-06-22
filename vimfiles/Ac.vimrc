@@ -1,12 +1,11 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""
 " Make vimrc by Angluca
 "
-" Last Change: 10/10/11 10:45:12
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Last Change: 22/06/13 16:42:18
+""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+""""""""""""""""""""
 call pathogen#helptags()
 call pathogen#infect("plugins")
 "call pathogen#runtime_append_all_bundles()
@@ -91,7 +90,7 @@ set mouse=a
 "Set mapleader
 let g:mapleader = ","
 
-"""""""""""""""""""""
+""""""""""""""""""""
 "My QuickFix Switch
 nmap ;cl :call	ToggleQuickfix() <CR>
 nmap ;cn :cn <CR>
@@ -143,7 +142,7 @@ endfunction
 if	has("win32")
 	au QuickfixCmdPost make call QfMakeConv()
 endif
-"""""""""""""""""""""
+""""""""""""""""""""
 "Fast saving
 nmap <silent> ;ww :w<cr>
 nmap <silent> ;wf :w!<cr>
@@ -161,8 +160,9 @@ nmap <silent> ;tq :tabc<cr>
 "nmap <silent> ;rr :redraw!<cr>
 ""Fast rewind
 "nmap <silent> ;re :rewind<cr>
-"""""""""""""""""""""
+""""""""""""""""""""
 " Switch to buffer according to file name
+""""""""""""""""""""
 function! SwitchToBuf(filename)
 "let fullfn = substitute(a:filename, "^\\~/", $vim. "/", "")
 " find in current tab
@@ -189,10 +189,7 @@ exec "e " . a:filename
 endif
 endfunction
 
-
-
 "Fast edit vimrc
-
 if  has("win32")
 " Set helplang
 set helplang=cn
@@ -238,9 +235,9 @@ silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Set font
 "if has("unix")
 " set gfn=Monospace\ 11
@@ -273,9 +270,9 @@ endif " exists(...)
 "Some nice mapping to switch syntax (useful if one mixes different languages in one file)
 "nmap ;$ :syntax sync fromstart<cr>
 autocmd BufEnter * :syntax sync fromstart
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Fileformats
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Favorite filetypes
 set ffs=unix,dos
 "set ffs=unix
@@ -306,9 +303,9 @@ nmap ;ff :call <SID>FileFormat()<cr>
 nmap ;fu :se fenc=utf-8<cr>
 nmap ;fw :se fenc=GBK<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " VIM userinterface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Set 7 lines to the curors - when moving vertical..
 "set so=7
 set tags=./tags,./**/tags,./../tags
@@ -348,9 +345,9 @@ set showmatch
 "How many tenths of a second to blink
 "set mat=1
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Statusline
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Always hide the statusline
 set laststatus=2
 
@@ -362,9 +359,9 @@ set laststatus=2
 "Format the statusline
 "set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Moving around and tabs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Smart way to move btw. windows
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
@@ -382,24 +379,24 @@ set stal=1
 catch
 endtry
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Parenthesis/bracket expanding
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "au BufNewFile,BufRead *.\(vim\)\@! inoremap " ""<esc>:let leavechar='"'<cr>i
 "au BufNewFile,BufRead *.\(txt\)\@! inoremap ' ''<esc>:let leavechar="'"<cr>i
 "imap <m-l> <esc>:exec "normal f" . leavechar<cr>a
 "imap <d-l> <esc>:exec "normal f" . leavechar<cr>a
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " General Abbrevs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "My information
 iab actime <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 "iab xname Angluca
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Editing mappings etc.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 func! DeleteTrailingWS()
 exe "normal mz"
 %s/\s\+$//ge
@@ -414,9 +411,9 @@ autocmd BufWrite *.txt :call DeleteTrailingWS()
 "nmap <silent> ;ws :call DeleteTrailingWS()<cr>:w<cr>
 "nmap <silent> ;ws! :call DeleteTrailingWS()<cr>:w!<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Command-line config
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Bash like
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
@@ -429,9 +426,9 @@ inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Buffer realted
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Open a dummy buffer for paste
 "nmap ;en :tabnew<cr>:setl buftype=nofile<cr>
 "if has("unix")
@@ -464,25 +461,25 @@ endfunction
 "Bclose function can be found in "Buffer related" section
 nmap ;bd :Bclose<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Session options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 set sessionoptions-=curdir
 set sessionoptions+=sesdir
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 
 " Files and backups
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Turn backup off
 set nobackup
 set nowb
 "set noswapfile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Folding
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Enable folding, I find it very useful
 if exists("&foldenable")
 set fen
@@ -492,17 +489,17 @@ if exists("&foldlevel")
 set fdl=0
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Text options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
 "set softtabstop=2
 set tabstop=4 " Set tabstop to 4 characters
 "set expandtab " Set expandtab on, the tab will be change to space automaticaly
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Indent
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Auto indent
 set ai
 "Smart indet
@@ -512,9 +509,9 @@ set cindent
 "Wrap lines
 set wrap
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " cscope setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 if has("cscope")
 	if has("win32")
 	set csprg=$VIMRUNTIME/cscope.exe
@@ -525,12 +522,12 @@ set csto=1
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Filetype generic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
+""""""""""""""""""""
 " HTML related
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " HTML entities - used by xml edit plugin
 let xml_use_xhtml = 1
 "let xml_no_auto_nesting = 1
@@ -539,41 +536,36 @@ let html_use_css = 1
 let html_number_lines = 0
 let use_xhtml = 1
 
-"""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Vim section
-"""""""""""""""""""""""""""""""
+""""""""""""""""""""
 autocmd FileType vim set nofen
 "autocmd FileType vim map <buffer> ;<space> :w!<cr>:source %<cr>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " HTML
-"""""""""""""""""""""""""""""""
+""""""""""""""""""""
 au FileType html set ft=xml
 au FileType html set syntax=html
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " Plugin configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""
-" minibuffer setting
-""""""""""""""""""""""""""""""
-"let loaded_minibufexplorer = 1 " *** Disable minibuffer plugin
-let g:miniBufExplorerMoreThanOne = 2 " Display when more than 2 buffers
-let g:miniBufExplSplitToEdge = 1 " Always at top
-let g:miniBufExplMaxSize = 3 " The max height is 3 lines
-let g:miniBufExplMapWindowNavVim = 1 " map CTRL-[hjkl]
-let g:miniBufExplUseSingleClick = 1 " select by single click
-let g:miniBufExplModSelTarget = 1 " Dont change to unmodified buffer
-let g:miniBufExplMapCTabSwitchBufs = 1  "ctrl-tab change buffers
-"let g:miniBufExplTabWrap = 1
-"let g:miniBufExplForceSyntaxEnable = 1 " force syntax on
-"let g:miniBufExplVSplit = 25
-"let g:miniBufExplSplitBelow = 0
-autocmd BufRead,BufNew :call UMiniBufExplorer
-
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
+""""""""""""""""""""
+" ctrlp setting
+""""""""""""""""""""
+let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
+nmap <silent> ;cp :CtrlP<cr>
+nmap <silent> ;cb :CtrlPBuffer<cr>
+nmap <silent> ;cm :CtrlPMRUFiles<cr>
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'file': '\v\.(exe|so|dll|zip|rar|tags|tar)$',
+	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+	\ }
+""""""""""""""""""""
 " BufExplorer setting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0 " Do not show default help.
 let g:bufExplorerShowRelativePath=1 " Show relative paths.
 let g:bufExplorerSortBy='mru' " Sort by most recently used.
@@ -583,9 +575,9 @@ let g:bufExplorerSplitVertical=1 " Split vertically.
 let g:bufExplorerUseCurrentWindow=1 " Open in new window.
 "let g:bufExplorerMaxHeight=50 " Max height
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " taglist
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 if has("win32")
 let Tlist_Ctags_Cmd = 'ctags'
 elseif has("unix")
@@ -613,9 +605,9 @@ let Tlist_Compact_Format = 1 " do not show help
 
 nmap <silent> ;tL :Tlist<cr>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " tagbar (similar taglist)
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_autoclose = 1
 let g:tagbar_width = 28
@@ -629,9 +621,9 @@ let g:tagbar_compact = 1
 "let g:tagbar_updateonsave_maxlines = 10000
 nmap <silent> ;tl :TagbarToggle<cr>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " winmanager setting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "let g:winManagerWindowLayout = "FileExplorer|TagList"
 let g:winManagerWindowLayout = "TagList"
 let g:winManagerWidth =20
@@ -642,16 +634,16 @@ autocmd BufWinEnter \[List\] setl nonumber
 
 nmap <silent> ;wm :WMToggle<cr>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 " netrw
-""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let g:netrw_winsize = 30
 let	g:netrw_home	=	$HOME.'/vimdata/cache'
 "nmap <silent> ;fe :Sexplore!<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Omnicppcompl setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 if has("win32")
 autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/winxtags
 autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/cpptags
@@ -683,9 +675,9 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_ShowAccess = 1
 " This option can be use if you don't want to parse using namespace declarations in included files and want to add namespaces that are always used in your project.
 let OmniCpp_DefaultNamespaces = ["std","_GLIBCXX_STD"]
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "AutoComplpop seting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "autorun the script
 let g:acp_behaviorKeywordLength=3
 if has("win32")
@@ -708,9 +700,9 @@ autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/perl.dict
 autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/php.dict'
 autocmd FileType actionscript,as let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/as3.dict'
 endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "NERDTree seting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let NERDChristmasTree=0
 let NERDTreeAutoCenter=1
 let NERDTreeMouseMode=1
@@ -722,27 +714,27 @@ let NERDTreeWinSize=20
 let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.rar$','\.swp$','\.dll$','\.obj$']
 nmap <silent> ;nt :NERDTreeToggle <cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Sketch seting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 nmap <F1> :call ToggleSketch()<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "ShowMarks seting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let showmarks_include = "abefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_ignore_type="hmpq"    "help,non-modify,preview,quick-fix buffer do not display
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Project seting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 nmap <silent> ;P <Plug>ToggleProject
 let g:proj_window_width = 20
 let g:proj_window_increment = 50
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "NERD_commenter setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let g:NERDCreateDefaultMappings=0
 call s:CreateMaps('<plug>NERDCommenterComment',    ';xx')
 call s:CreateMaps('<plug>NERDCommenterToggle',     ';x<space>')
@@ -756,26 +748,26 @@ call s:CreateMaps('<plug>NERDCommenterNest',       ';xn')
 call s:CreateMaps('<plug>NERDCommenterUncomment',  ';xu')
 call s:CreateMaps('<plug>NERDCommenterToEOL',      ';x$')
 call s:CreateMaps('<plug>NERDCommenterAppend',     ';xA')
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "vcscommand setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let VCSCommandDeleteOnHide=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "errormarker
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let errormarker_disablemappings = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "errormarker
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let g:DoxygenToolkit_briefTag_pre="@Synopsis  "
 let g:DoxygenToolkit_paramTag_pre="@Param "
 let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_blockHeader="-------------------------------------------"
 let g:DoxygenToolkit_blockFooter="-------------------------------------------"
 let g:DoxygenToolkit_authorName="Angluca"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Yankring
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let g:yankring_history_dir = '$HOME/vimdata/cache'
 let g:yankring_max_history = 20
 let g:yankring_max_element_length = 1048576 " 1M
@@ -783,23 +775,23 @@ let g:yankring_max_display = 20
 
 nmap ;yy :YRShow<CR>
 nmap ;yc :YRClear<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "MRU
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let	MRU_Max_Entries	=	20
 let	MRU_Auto_Close	=	1
 let MRU_File = $HOME.'/vimdata/cache/_vim_mru_files'
 nmap ;fm :Mru<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "EchoFunc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "mouse cant show function
 let g:EchoFuncAutoStartBalloonDeclaration = 0
 let g:EchoFuncKeyNext=',ew'
 let g:EchoFuncKeyPrev=',er'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "vimwiki
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let	g:vimwiki_use_mouse	=	1
 let	g:vimwiki_hl_cb_checked	=	1
 let	g:vimwiki_menu	=	''
@@ -812,34 +804,34 @@ let	g:vimwiki_list	=	[{'path':$HOME.'/vimdata/vimwiki/',
 			\	'html_footer':$HOME.'/vimdata/vimwiki/template/footer.tpl',
 			\	'diary_link_count':8}]
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "linediff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 nmap	;ld	:Linediff <CR>
 vmap	;ld	:Linediff <CR>
 nmap	;lr	:LinediffReset <cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "ColorV
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let	g:ColorV_cache_File	=	$HOME.'/vimdata/cache/_vim_ColorV_cache'
 
 let	g:ColorV_global_leader	=	';h'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "easymotion
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890[]/;'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "syntasic
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 nmap	;sc	:SyntasticCheck<CR>
 nmap	;se	:Errors<CR>
 nmap	;st	:SyntasticToggleMode<CR>
 let g:syntastic_mode_map = { 'mode': 'active',
 						   \ 'active_filetypes': [],
 						   \ 'passive_filetypes': ['c', 'cpp'] }
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "vimim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 :let g:vimim_cloud = 0
 ":let g:vimim_map = ''  
 ":let g:vimim_mode = 'dynamic'  
@@ -847,25 +839,28 @@ let g:syntastic_mode_map = { 'mode': 'active',
 ":let g:vimim_punctuation = 2  
 :let g:vimim_shuangpin = 0  
 :let g:vimim_toggle = 'wubi' 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""
 "Another plugin
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"left to right
-nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
-vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
-"undo tree
-nmap ;ub :UB<CR>
-
-let g:qb_hotkey = ";bb"
-
-
+""""""""""""""""""""
 if has("unix")
 	if has("gui_running")
 		"au	BufEnter	*	cd	%:h
 		au	BufEnter	*	set	autochdir
 	endif
 endif
+"left to right
+nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
+vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
+"undo tree
+nmap ;ub :UB<CR>
+"qbuf
+let g:qb_hotkey = ";bb"
+"EasyAlign
+vnoremap <silent> <Enter> :EasyAlign<cr>
 
+""""""""""""""""""""
+"filetype operation
+""""""""""""""""""""
 au BufRead,BufNewFile README*,COPYING setlocal ft=txt
 au BufRead,BufNewFile *.txt setlocal ft=txt
 au BufRead,BufNewFile *.log setlocal ft=txt
@@ -874,28 +869,23 @@ au BufRead,BufNewFile *.asm setlocal ft=fasm
 au BufNewFile,BufRead *.asm set makeprg=fasm\ %:p
 autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
 
-"EasyAlign
-vnoremap <silent> <Enter> :EasyAlign<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"C++  my setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
-
 au BufNewFile,BufRead *.mxml set ft=mxml
 au BufNewFile,BufRead *.as set ft=actionscript
 au BufNewFile,BufRead CMakeLists.txt set ft=cmake
 au BufNewFile,BufRead *.p set ft=pawn
-
 
 "au BufNewFile,BufRead *.proto set ft=proto
 "au BufNewFile,BufRead *.nut set syntax=squirrel
 "au BufNewFile,BufRead *.nut set makeprg=sq\ %:p
 "au BufNewFile,BufRead *.nut set errorformat=%f:%l:%m
 
+""""""""""""""""""""
+"user opration
+""""""""""""""""""""
 if has("unix")
 let g:clang_use_library=1
 endif
-
+"autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
 
 "if has(win32")
 "nmap <F10> :!dir /s /b *.c *.h *cpp *.hpp  > cscope.files <CR>

@@ -1,0 +1,23 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3286
+
+Use the built-in Tab Pages of VIM 7.0 to replace "TabBar / BufferExplorer / MiniExplorer", no multi-window conflicts/issues any more!
+
+Screenshot: http://ayuanx.files.wordpress.com/2010/10/litetablabel.jpg
+
+ This is a simple plugin, which makes VIM Tab Page functions more user-friendly. 
+
+ <> Features:
+ 1. ":E filename"			        Open the file in a new tab page instead of in current window.
+
+ 2. "<Alt-1>, <Alt-2> to <Alt-0>"	Switch to tab page 1/2/3/4/5/6/7/8/9/10.
+
+ 3. "<Alt-h> / <Alt-l>"		        Switch to previous/next tab page.
+
+ 4. "<Alt-H> / <Alt-L>"		        Move current tab page left/right.
+
+ 5. Show GUI Tab Labels in format: "[Tab Number]:[+][Buffer Name]"
+ 	PS: [+] stands for one or more buffer in that tab page has been modified.
+
+ <> Feedback:
+    You are always encouraged to modify this plugin freely to suit your own needs!
+

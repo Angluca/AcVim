@@ -19,7 +19,8 @@ let s:action2cmd = {"z": 'call <SID>switchbuf(#,"")', "!z": 'call <SID>switchbuf
 			\"d": 'call <SID>qbufdcmd(#,"")', "!d": 'call <SID>qbufdcmd(#,"!")',
 			\"w": "bw #", "!w": "bw! #",
 			\"l": "let s:unlisted = 1 - s:unlisted",
-			\"c": 'call <SID>closewindow(#,"")'}
+			\"c": 'call <SID>closewindow(#,"")',
+			\"q": 'call <SID>Quit()'}
 
 function s:rebuild()
 	redir @y | silent ls! | redir END
@@ -107,9 +108,13 @@ function s:init(onStart)
 		let s:cmdh = &cmdheight
 		hi Cursor guibg=NONE guifg=NONE
 
-		let s:klist = ["j","J","k","K", "u", "d", "w", "l", "s", "c"]
+		let s:klist = ["j","J","k","K", "u", "d", "w", "l", "s", "c", "q"]
 		for l:key in s:klist
-			exe "cnoremap ".l:key." ".l:key."<cr>:cal SBRun()<cr>"
+			if l:key == "q"
+				exe "cnoremap ".l:key." <Esc>"
+			else 
+				exe "cnoremap ".l:key." ".l:key."<cr>:cal SBRun()<cr>"
+			endif
 		endfor
 		cmap <up> k
 		cmap <down> j
@@ -187,4 +192,8 @@ function s:closewindow(bno, mod)
 	if bufwinnr(a:bno) != -1
 		exe bufwinnr(a:bno) . "winc w|close" . a:mod
 	endif
+endfunc
+
+function s:Quit()
+	;bb
 endfunc
