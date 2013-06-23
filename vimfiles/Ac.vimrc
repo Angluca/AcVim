@@ -765,6 +765,7 @@ let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_blockHeader="-------------------------------------------"
 let g:DoxygenToolkit_blockFooter="-------------------------------------------"
 let g:DoxygenToolkit_authorName="Angluca"
+let g:DoxygenToolkit_authorEmail="angluca@qq.com"
 """"""""""""""""""""
 "Yankring
 """"""""""""""""""""

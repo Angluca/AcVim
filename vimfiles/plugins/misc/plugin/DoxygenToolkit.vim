@@ -321,6 +321,9 @@ endif
 if !exists("g:DoxygenToolkit_authorTag")
   let g:DoxygenToolkit_authorTag = "@author "
 endif
+if !exists("g:DoxygenToolkit_emailTag")
+  let g:DoxygenToolkit_emailTag = "@email "
+endif
 if !exists("g:DoxygenToolkit_dateTag")
   let g:DoxygenToolkit_dateTag = "@date "
 endif
@@ -486,6 +489,9 @@ function! <SID>DoxygenAuthorFunc()
   exec "normal o".s:interCommentTag.g:DoxygenToolkit_briefTag_pre
   mark d
   exec "normal o".s:interCommentTag.g:DoxygenToolkit_authorTag.g:DoxygenToolkit_authorName
+	if exists("g:DoxygenToolkit_authorEmail")
+		exec "normal o".s:interCommentTag.g:DoxygenToolkit_emailTag.g:DoxygenToolkit_authorEmail
+	endif
   exec "normal o".s:interCommentTag.g:DoxygenToolkit_versionTag.g:DoxygenToolkit_versionString
   let l:date = strftime("%Y-%m-%d")
   exec "normal o".s:interCommentTag.g:DoxygenToolkit_dateTag.l:date
