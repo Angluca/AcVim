@@ -19,8 +19,7 @@ let s:action2cmd = {"z": 'call <SID>switchbuf(#,"")', "!z": 'call <SID>switchbuf
 			\"d": 'call <SID>qbufdcmd(#,"")', "!d": 'call <SID>qbufdcmd(#,"!")',
 			\"w": "bw #", "!w": "bw! #",
 			\"l": "let s:unlisted = 1 - s:unlisted",
-			\"c": 'call <SID>closewindow(#,"")',
-			\"q": 'call <SID>Quit()'}
+			\"q": 'cal <SID>init(1)<cr>:cal SBRun()<cr>'}
 
 function s:rebuild()
 	redir @y | silent ls! | redir END
@@ -186,14 +185,4 @@ function s:qbufdcmd(bno, mod)
 	else
 		exe "bd" . a:mod a:bno
 	endif
-endfunc
-
-function s:closewindow(bno, mod)
-	if bufwinnr(a:bno) != -1
-		exe bufwinnr(a:bno) . "winc w|close" . a:mod
-	endif
-endfunc
-
-function s:Quit()
-	;bb
 endfunc
