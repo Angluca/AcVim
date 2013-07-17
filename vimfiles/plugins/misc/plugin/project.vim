@@ -21,7 +21,7 @@ function! s:Project(filename) " <<<
         let filename=bufname(g:proj_running)
     else
         if strlen(a:filename) == 0
-            let filename ='~/.vimprojects'      " Default project filename
+            let filename ='~/vimdata/.vimprojects'      " Default project filename
         else
             let filename = a:filename
         endif
