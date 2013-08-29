@@ -100,9 +100,9 @@ nmap ;ci :cnew <CR>
 "nmap <F3> :call ToggleQuickfix() <CR>
 
 "system copy and paste
-nmap Y V"+y<cr>k
-vmap Y "+y<cr>k
-nmap P "+p<cr>k
+"nmap Y V"+y<cr>k
+"vmap Y "+y<cr>k
+"nmap P "+gP<cr>k
 
 "visual edit mode
 nmap ;ve :call	ToggleVisualEditMode() <CR>
@@ -151,6 +151,7 @@ nmap <silent> ;qw :wq<cr>
 nmap <silent> ;qf :q!<cr>
 nmap <silent> ;qq :q<cr>
 nmap <silent> ;qa :qa<cr>
+nmap <silent> ;<esc> :<esc>
 "Fast remove highlight search
 nmap <silent> ;<cr> :noh<cr>
 
@@ -883,9 +884,11 @@ au BufNewFile,BufRead *.p set ft=pawn
 """"""""""""""""""""
 "user opration
 """"""""""""""""""""
-if has("unix")
+"clang operation
+"if has("unix")
 let g:clang_use_library=1
-endif
+"endif
+
 "autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
 
 "if has(win32")
