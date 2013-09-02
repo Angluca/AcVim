@@ -1,0 +1,118 @@
+*clever-f.txt*
+
+Author : rhysd <lin90162@yahoo.co.jp>
+
+CONTENTS          *clever-f.vim-contents*
+
+Introduction      |clever-f.vim-introduction|
+Usage             |clever-f.vim-usage|
+Mappings          |clever-f.vim-mappings|
+Variables         |clever-f.vim-variables|
+License           |clever-f.vim-license|
+Special Thanks    |clever-f.vim-special-thanks|
+
+
+==============================================================================
+INTRODUCTION                                       *clever-f.vim-introduction*
+
+*clever-f.vim* or *clever-f* extends |f| mapping for more convenience.
+You can forget the existence of |;|. Instead of |;|, f is available to repeat
+after you type f{char} or F{char}. So, you can use |;| for other key mappings.
+
+
+==============================================================================
+USAGE                                                     *clever-f.vim-usage*
+
+I'll show an example of usage. _ is the place of cursor, -> is a move of
+cursor, alphabets above -> is input by keyboard.
+
+
+input:       fh         f         f      e         fo         f
+move :  _---------->_------>_---------->_->_---------------->_->_
+input:                            F                            F
+move :                        _<-----------------------------_<-_
+text :  hoge        huga    hoo         hugu                ponyo
+
+
+
+input:        f        Fh       b     f                         Fo
+move :  _<----------_<------_<-_<----------------------------_<-_
+input:        F        F          F
+move :  _---------->_------>_----------->_
+text :  hoge        huga    huyo         hugu                ponyo
+
+
+
+input:       th         t         t      e         to         t
+move :  _--------->_------>_---------->_-->_--------------->_->_
+input:                            T                            T
+move :                         _<-----------------------------__
+text :  hoge        huga    hoo         hugu                ponyo
+
+
+==============================================================================
+MAPPINGS                                               *clever-f.vim-mappings*
+
+                                 *g:clever_f_not_overwrites_standard_mappings*
+If you don't set |g:clever_f_not_overwrites_standard_mappings|, |clever-f|
+replaces |f|, |F|, |t|, and |T| with |<Plug>(clever-f)|, |<Plug>(clever-F)|,
+|<Plug>(clever-t)| and |<Plug>(clever-T)| as default mappings.
+
+<Plug>(clever-f-f)                    *<Plug>(clever-f-f)*
+<Plug>(clever-f-F)                    *<Plug>(clever-f-F)*
+<Plug>(clever-f-t)                    *<Plug>(clever-f-t)*
+<Plug>(clever-f-T)                    *<Plug>(clever-f-T)*
+<Plug>(clever-f-reset)                *<Plug>(clever-f-reset)*
+<Plug>(clever-f-repeat-forward)       *<Plug>(clever-f-repeat-forward)*
+<Plug>(clever-f-repeat-back)          *<Plug>(clever-f-repeat-back)*
+
+
+==============================================================================
+VARIABLES                                             *clever-f.vim-variables*
+
+g:clever_f_across_no_line                          *g:clever_f_across_no_line*
+
+    If the value is equivalent to 1, |clever-f| mappings search target
+    character only in the cursor line.
+
+g:clever_f_ignore_case                                *g:clever_f_ignore_case*
+
+    If the value is equivalent to 1, it makes |clever-f| mappings' search case
+    insensitive. For example, if you input 'fa', it matches both 'a' and 'A'.
+
+
+==============================================================================
+SPECIAL THANKS                                   *clever-f.vim-special-thanks*
+
+|<Plug>(clever-f-t)|, |<Plug>(clever-f-T)|, repeatability with |.|,
+availability of |[count]| are the works by @thinca. Thanks!
+(http://d.hatena.ne.jp/thinca/20130227/1361891993)
+
+
+==============================================================================
+LICENSE                                                 *clever-f.vim-license*
+
+|clever-f.vim| is distributed under MIT license.
+
+  Copyright (c) 2013 rhysd
+
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+==============================================================================
+vim:tw=78:colorcolumn=78:ts=8:ft=help:norl:noet:fen:fdl=0:

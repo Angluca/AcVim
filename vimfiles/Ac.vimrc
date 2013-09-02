@@ -816,12 +816,12 @@ nmap	;lr	:LinediffReset <cr>
 "ColorV
 """"""""""""""""""""
 let	g:ColorV_cache_File	=	$HOME.'/vimdata/cache/_vim_ColorV_cache'
-
 let	g:ColorV_global_leader	=	';h'
 """"""""""""""""""""
 "easymotion
 """"""""""""""""""""
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890[]/;'
+let g:EasyMotion_keys = 'asdfghjkl;'
+let g:EasyMotion_leader_key = '<space>'
 """"""""""""""""""""
 "syntasic
 """"""""""""""""""""
@@ -859,17 +859,26 @@ nmap ;ub :UB<CR>
 let g:qb_hotkey = ";bb"
 "EasyAlign
 vnoremap <silent> <Enter> :EasyAlign<cr>
-
+"ParameterObject
+let g:no_parameter_object_maps = 1
+vmap <silent> ia <Plug>ParameterObjectI
+omap <silent> ia <Plug>ParameterObjectI
+vmap <silent> aa <Plug>ParameterObjectA
+omap <silent> aa <Plug>ParameterObjectA
+"clang complete
+let g:clang_use_library=1
 """"""""""""""""""""
 "filetype operation
 """"""""""""""""""""
+if has("win32")
+autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
+endif
 au BufRead,BufNewFile README*,COPYING setlocal ft=txt
 au BufRead,BufNewFile *.txt setlocal ft=txt
 au BufRead,BufNewFile *.log setlocal ft=txt
 
 au BufRead,BufNewFile *.asm setlocal ft=fasm
 au BufNewFile,BufRead *.asm set makeprg=fasm\ %:p
-autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
 
 au BufNewFile,BufRead *.mxml set ft=mxml
 au BufNewFile,BufRead *.as set ft=actionscript
@@ -884,11 +893,6 @@ au BufNewFile,BufRead *.p set ft=pawn
 """"""""""""""""""""
 "user opration
 """"""""""""""""""""
-"clang operation
-"if has("unix")
-let g:clang_use_library=1
-"endif
-
 "autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
 
 "if has(win32")
