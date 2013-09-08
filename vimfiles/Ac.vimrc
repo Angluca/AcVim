@@ -46,12 +46,13 @@ unlet swap_dir
 "Get out of VI's compatible mode..
 set nocompatible
 "Set shell to be bash
-if has("unix") || has("mac")
-set shell=bash
-else
-"I have to run win32 python without cygwin
-"set shell=E:/cygwin/bin
-endif
+"if has("unix") || has("mac")
+"set shell=bash
+"else
+""I have to run win32 python without cygwin
+""set shell=E:/cygwin/bin
+"endif
+
 "Sets how many lines of history VIM har to remember
 set history=50
 " Chinese
@@ -406,9 +407,8 @@ exe "normal `z"
 endfunc
 
 " do not automaticlly remove trailing whitespace
-autocmd BufWrite *.[ch] :call DeleteTrailingWS()
-autocmd BufWrite *.cc :call DeleteTrailingWS()
-autocmd BufWrite *.txt :call DeleteTrailingWS()
+autocmd BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
+"autocmd BufWrite *.txt :call DeleteTrailingWS()
 "nmap <silent> ;ws :call DeleteTrailingWS()<cr>:w<cr>
 "nmap <silent> ;ws! :call DeleteTrailingWS()<cr>:w!<cr>
 
@@ -496,6 +496,7 @@ endif
 set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
 "set softtabstop=2
 set tabstop=4 " Set tabstop to 4 characters
+"autocmd FileType c,cpp,h,hpp,cc,cxx set expandtab
 "set expandtab " Set expandtab on, the tab will be change to space automaticaly
 
 """"""""""""""""""""
@@ -556,7 +557,7 @@ au FileType html set syntax=html
 " ctrlp setting
 """"""""""""""""""""
 let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
-nmap <silent> ;cp :CtrlP<cr>
+nmap <silent> ;cf :CtrlP<cr>
 nmap <silent> ;cb :CtrlPBuffer<cr>
 nmap <silent> ;cm :CtrlPMRUFiles<cr>
 let g:ctrlp_custom_ignore = {
@@ -621,20 +622,6 @@ let g:tagbar_compact = 1
 "let g:tagbar_systemenc = 'cp936'
 "let g:tagbar_updateonsave_maxlines = 10000
 nmap <silent> ;tl :TagbarToggle<cr>
-
-""""""""""""""""""""
-" winmanager setting
-""""""""""""""""""""
-"let g:winManagerWindowLayout = "FileExplorer|TagList"
-let g:winManagerWindowLayout = "TagList"
-let g:winManagerWidth =20
-let g:defaultExplorer = 0
-"nmap <C-W><C-F> :FirstExplorerWindow<cr>
-"nmap <C-W><C-B> :BottomExplorerWindow<cr>
-autocmd BufWinEnter \[List\] setl nonumber
-
-nmap <silent> ;wm :WMToggle<cr>
-
 """"""""""""""""""""
 " netrw
 """"""""""""""""""""
@@ -713,7 +700,7 @@ let NERDTreeShowLineNumbers=0
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=20
 let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.rar$','\.swp$','\.dll$','\.obj$']
-nmap <silent> ;nt :NERDTreeToggle <cr>
+nmap <silent> ;tt :NERDTreeToggle <cr>
 
 """"""""""""""""""""
 "Sketch seting
@@ -723,9 +710,30 @@ nmap <F1> :call ToggleSketch()<CR>
 """"""""""""""""""""
 "ShowMarks seting
 """"""""""""""""""""
-let showmarks_include = "abefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let showmarks_include = "abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_ignore_type="hmpq"    "help,non-modify,preview,quick-fix buffer do not display
+"nmap <silent> <leader>mt <Plug>ShowMarksToggle
+""nmap <silent> <leader>mo <Plug>ShowmarksShowMarksOn
+"nmap <silent> <leader>mc <Plug>ShowmarksClearMark
+"nmap <silent> <leader>ma <Plug>ShowmarksClearAll
+"nmap <silent> <leader>mm <Plug>ShowmarksPlaceMark
+""""""""""""""""""""
+"Marks seting
+""""""""""""""""""""
+nmap <unique> <silent> ;mm <Plug>MarkSet
+vmap <unique> <silent> ;mm <Plug>MarkSet
+nmap <unique> <silent> ;/ <Plug>MarkRegex
+vmap <unique> <silent> ;/ <Plug>MarkRegex
+nmap <unique> <silent> ;mc <Plug>MarkClear
+nmap <unique> <silent> ;ma <Plug>MarkAllClear
+nmap <unique> <silent> ;mt <Plug>MarkToggle
 
+nmap <unique> <silent> ;n <Plug>MarkSearchCurrentNext
+nmap <unique> <silent> ;N <Plug>MarkSearchCurrentPrev
+nmap <unique> <silent> ;* <Plug>MarkSearchAnyNext
+nmap <unique> <silent> ;# <Plug>MarkSearchAnyPrev
+nmap <unique> <silent> * <Plug>MarkSearchNext
+nmap <unique> <silent> # <Plug>MarkSearchPrev
 """"""""""""""""""""
 "Project seting
 """"""""""""""""""""
@@ -841,6 +849,15 @@ let g:syntastic_mode_map = { 'mode': 'active',
 ":let g:vimim_punctuation = 2  
 :let g:vimim_shuangpin = 0  
 :let g:vimim_toggle = 'wubi' 
+""""""""""""""""""""
+"window move
+""""""""""""""""""""
+let g:wm_move_up = '<S-Up>'
+let g:wm_move_right = '<S-Right>'
+let g:wm_move_down = '<S-Down>'
+let g:wm_move_left = '<S-Left>'
+let g:wm_move_x = 20
+let g:wm_move_y = 15
 """"""""""""""""""""
 "Another plugin
 """"""""""""""""""""

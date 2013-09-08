@@ -122,11 +122,11 @@ com! -nargs=0 ShowMarksClearAll  :call <sid>ShowMarksClearAll()
 com! -nargs=0 ShowMarksPlaceMark :call <sid>ShowMarksPlaceMark()
 
 " Mappings (NOTE: Leave the '|'s immediately following the '<cr>' so the mapping does not contain any trailing spaces!)
-if !hasmapto( '<Plug>ShowmarksShowMarksToggle' ) | map <silent> <unique> <leader>mt :ShowMarksToggle<cr>|    endif
+if !hasmapto( '<Plug>ShowMarksToggle' ) | nmap <silent> <unique> <leader>mt :ShowMarksToggle<cr>|    endif
 "if !hasmapto( '<Plug>ShowmarksShowMarksOn'     ) | map <silent> <unique> <leader>mo :ShowMarksOn<cr>|        endif
-if !hasmapto( '<Plug>ShowmarksClearMark'       ) | map <silent> <unique> <leader>mq :ShowMarksClearMark<cr>| endif
-if !hasmapto( '<Plug>ShowmarksClearAll'        ) | map <silent> <unique> <leader>ma :ShowMarksClearAll<cr>|  endif
-if !hasmapto( '<Plug>ShowmarksPlaceMark'       ) | map <silent> <unique> <leader>mw :ShowMarksPlaceMark<cr>| endif
+if !hasmapto( '<Plug>ShowmarksClearMark'       ) | nmap <silent> <unique> <leader>mc :ShowMarksClearMark<cr>| endif
+if !hasmapto( '<Plug>ShowmarksClearAll'        ) | nmap <silent> <unique> <leader>ma :ShowMarksClearAll<cr>|  endif
+if !hasmapto( '<Plug>ShowmarksPlaceMark'       ) | nmap <silent> <unique> <leader>mm :ShowMarksPlaceMark<cr>| endif
 noremap <unique> <script> \_M m
 noremap <silent> m :exe 'norm \_M'.nr2char(getchar())<bar>call <sid>ShowMarks()<CR>
 

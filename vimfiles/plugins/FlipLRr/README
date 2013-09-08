@@ -1,0 +1,18 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2843
+
+This script flips left hand side and right hand side.
+'lhs {operator} rhs' => 'rhs {operator} lhs'
+
+Usage:
+  1. In visual mode, select left hand side, operator and right hand side.
+  2. execute ':FlipLR operator'
+  2'. execute ':FlipLR /operator/' to flip with regexp
+
+  This mapping may help you.
+      noremap \f :call g:FlipLR_startHighlightingPivot()<CR><ESC>:FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
+
+Screencast:
+  http://bitbucket.org/shu/fliplr/downloads/fliplr.htm
+
+Repository:
+  http://bitbucket.org/shu/fliplr/

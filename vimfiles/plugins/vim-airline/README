@@ -1,0 +1,5 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4661
+
+A fast and lightweight statusline for Vim that's easily configurable, extendable, and integrates with powerline font symbols.  It automatically integrates with a variety of 3rd party plugins and provides many themes out of the box.
+
+The latest version can be found at https://github.com/bling/vim-airline

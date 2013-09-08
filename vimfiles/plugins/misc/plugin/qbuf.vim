@@ -19,7 +19,7 @@ let s:action2cmd = {"z": 'call <SID>switchbuf(#,"")', "!z": 'call <SID>switchbuf
 			\"d": 'call <SID>qbufdcmd(#,"")', "!d": 'call <SID>qbufdcmd(#,"!")',
 			\"w": "bw #", "!w": "bw! #",
 			\"l": "let s:unlisted = 1 - s:unlisted",
-			\"q": 'cal <SID>init(1)<cr>:cal SBRun()<cr>'}
+			\"c": 'call <SID>closewindow(#,"")'}
 
 function s:rebuild()
 	redir @y | silent ls! | redir END
@@ -62,6 +62,9 @@ function SBRun()
 	if !exists("s:cursel") || (s:cursel >= s:blen) || (s:cursel < 0)
 		let s:cursel = s:blen-1
 	endif
+	if !exists("s:old_cursel")
+		let s:old_cursel = s:cursel
+	endif
 
 	if s:blen < 1
 		echoh WarningMsg | echo "No" s:unlisted ? "unlisted" : "listed" "buffer!" | echoh None
@@ -98,6 +101,7 @@ function SBRun()
 	call s:setcmdh(s:blen+1)
 endfunc
 
+let s:klist = ["j","J","k","K", "u", "d", "w", "l", "s", "c", "q", "t"]
 function s:init(onStart)
 	if a:onStart
 		set nolazyredraw
@@ -107,7 +111,6 @@ function s:init(onStart)
 		let s:cmdh = &cmdheight
 		hi Cursor guibg=NONE guifg=NONE
 
-		let s:klist = ["j","J","k","K", "u", "d", "w", "l", "s", "c", "q"]
 		for l:key in s:klist
 			if l:key == "q"
 				exe "cnoremap ".l:key." <Esc>"
@@ -184,5 +187,11 @@ function s:qbufdcmd(bno, mod)
 		call setbufvar(a:bno, "&buflisted", 1)
 	else
 		exe "bd" . a:mod a:bno
+	endif
+endfunc
+
+function s:closewindow(bno, mod)
+	if bufwinnr(a:bno) != -1
+		exe bufwinnr(a:bno) . "winc w|close" . a:mod
 	endif
 endfunc
