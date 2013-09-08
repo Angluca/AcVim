@@ -86,9 +86,28 @@ function s:Main()
     echo "\n"
 
     " ask for implementation file name
+	"let s:filelist = split(l:classname,'\u')
+	"let s:filename = join(s:filelist,'_')
+	let s:str = l:classname
+	let s:filename = ''
+    let out = ''
+    for ix in range(strlen(s:str))
+		if (char2nr(s:str[ix]) <= 96) && (char2nr(s:str[ix]) >= 57) && ix > 0
+			if !((char2nr(s:str[ix-1]) <= 96) && (char2nr(s:str[ix-1]) >= 57))
+				let out = out . '_'
+			endif
+		endif
+		if (char2nr(s:str[ix]) <= 122 && char2nr(s:str[ix]) >= 97) || (char2nr(s:str[ix]) <= 90 && char2nr(s:str[ix]) >= 48)
+			let out = out . tolower(s:str[ix])
+		endif
+    endfor
+	if !empty(out)
+		let s:filename = out
+	"tolower(s:filename)
+
     let l:implementfilename = ""
     while 1
-        let l:implementfilename = input("Please input the implementation file's name:","./".l:classname.".cpp")
+        let l:implementfilename = input("Please input the implementation file's name:","./".s:filename.".cpp")
         if getftype(l:implementfilename) == "file"
             if 1 == inputlist(["File \"".l:implementfilename."\" already exists. this action will clear the file. Do you still want to continue?",'1.yes','2.no'])
                 echo "\n"
@@ -112,10 +131,15 @@ function s:Main()
 
     echo "\n"
 
+	if empty(l:implementfilename)
+		echo "Failed, filename is empty.\n"
+		return
+	endif
+
     "ask for header file name
     let l:headerfilename = ""
     while 1
-        let l:headerfilename = input("Please input the header file's name:","./".l:classname.".h")
+        let l:headerfilename = input("Please input the header file's name:","./".s:filename.".h")
         if getftype(l:headerfilename) == "file"
             if 1 == inputlist(["File \"".l:headerfilename."\" already exists, this action will clear the file. Do you still want to continue?",'1.yes','2.no'])
                 echo "\n"
@@ -139,6 +163,11 @@ function s:Main()
 
     echo "\n"
 
+	if empty(l:implementfilename) || empty(l:headerfilename)
+		echo "Failed, filename is empty.\n"
+		return
+	endif
+
     echo "Generating code...\n"
 
     "write header file
@@ -149,11 +178,22 @@ function s:Main()
     if strpart(l:string,0,0) =~ "[0-9]"
         let l:string = "_".l:string
     endif
-    call add(l:headerfilecontent,"#ifndef ".l:string)
-    call add(l:headerfilecontent,"#define ".l:string)
-    call add(l:headerfilecontent,"")
-    call add(l:headerfilecontent,"")
-    call add(l:headerfilecontent,"")
+
+	let s:def_date = strftime("%y%m%d")
+	let s:make_name = "__".l:string."_".s:def_date."__"
+    call add(l:headerfilecontent,"#ifndef ".s:make_name)
+    call add(l:headerfilecontent,"#define ".s:make_name)
+	if exists("g:DoxygenToolkit_authorName")
+		call add(l:headerfilecontent,"/**")
+		call add(l:headerfilecontent," * author: ". g:DoxygenToolkit_authorName)
+		if exists("g:DoxygenToolkit_authorEmail")
+		call add(l:headerfilecontent," * email: ". g:DoxygenToolkit_authorEmail)
+		endif
+ 
+		let s:date = strftime("%Y/%m/%d")
+		call add(l:headerfilecontent," * date: ". s:date)
+		call add(l:headerfilecontent," */")
+	endif
     call add(l:headerfilecontent,"")
     let l:string = "class ".l:classname
     if len(l:fatherclasses)
@@ -174,29 +214,36 @@ function s:Main()
     call add(l:headerfilecontent,"\t~".l:classname."(void);")
     call add(l:headerfilecontent,"};")
     call add(l:headerfilecontent,"")
+    call add(l:headerfilecontent,"#endif /* ".s:make_name." */")
     call add(l:headerfilecontent,"")
-    call add(l:headerfilecontent,"")
-    call add(l:headerfilecontent,"#endif")
     call writefile(l:headerfilecontent,l:headerfilename)
 
     "write implementation file
     let l:implementfilecontent = []
     let l:string = s:GetFileNameFromPath(l:headerfilename)
+	if exists("g:DoxygenToolkit_authorName")
+		call add(l:implementfilecontent,"/**")
+		call add(l:implementfilecontent," * author: ". g:DoxygenToolkit_authorName)
+		if exists("g:DoxygenToolkit_authorEmail")
+		call add(l:implementfilecontent," * email: ". g:DoxygenToolkit_authorEmail)
+		endif
+ 
+		let s:date = strftime("%Y/%m/%d")
+		call add(l:implementfilecontent," * date: ". s:date)
+		call add(l:implementfilecontent," */")
+	endif
     call add(l:implementfilecontent,"#include \"".l:string."\"")
-    call add(l:implementfilecontent,"")
-    call add(l:implementfilecontent,"")
     call add(l:implementfilecontent,"")
     call add(l:implementfilecontent,"//constructor")
     call add(l:implementfilecontent,l:classname."::".l:classname."(void)")
     call add(l:implementfilecontent,"{")
-    call add(l:implementfilecontent,"\t//TODO:Add your code here")
     call add(l:implementfilecontent,"}")
     call add(l:implementfilecontent,"")
     call add(l:implementfilecontent,"//destructor")
     call add(l:implementfilecontent,l:classname."::~".l:classname."(void)")
     call add(l:implementfilecontent,"{")
-    call add(l:implementfilecontent,"\t//TODO:Add your code here")
     call add(l:implementfilecontent,"}")
+    call add(l:implementfilecontent,"")
     call writefile(l:implementfilecontent,l:implementfilename)
 
     echo "Your new class has been added now."

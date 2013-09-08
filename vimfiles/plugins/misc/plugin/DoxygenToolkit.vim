@@ -459,7 +459,6 @@ function! <SID>DoxygenLicenseFunc()
     exec "normal %jA".l:date." - ".g:DoxygenToolkit_authorName
   endif
   exec "normal `d"
-
   call s:RestoreParameters()
 endfunction
 
@@ -501,7 +500,6 @@ function! <SID>DoxygenAuthorFunc()
 
   " Move the cursor to the rigth position
   exec "normal `d"
-
   call s:RestoreParameters()
   startinsert!
 endfunction
@@ -607,6 +605,7 @@ function! <SID>DoxygenCommentFunc()
   if( match( l:lineBuffer, l:emptyLinePattern ) != -1 )
     call s:WarnMsg( "Nothing to document here!" )
     exec "normal `d" 
+	delm d
     return
   endif
 
@@ -655,6 +654,7 @@ function! <SID>DoxygenCommentFunc()
       call s:WarnMsg( l:readError )
     endif
     exec "normal `d" 
+	delm d
     return
   endif
 
@@ -844,7 +844,6 @@ function! <SID>DoxygenCommentFunc()
   "    call s:WarnMsg( "   - ".param )
   "  endfor
   "endif
-
 endfunction
 
 
@@ -1116,6 +1115,7 @@ function! s:RestoreParameters()
   let &cinoptions = s:cinoptionsBackup
   " Compatibility with c/c++ IDE plugin
   let &timeoutlen = s:timeoutlenBackup
+  delm d
 endfunction
 
 
