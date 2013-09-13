@@ -196,15 +196,15 @@ function s:Main()
 	endif
     call add(l:headerfilecontent,"")
     let l:string = "class ".l:classname
-    if len(l:fatherclasses)
+    if !empty(l:fatherclasses)
         let l:string = l:string." : "
     endif
     for n in l:fatherclasses
         let l:string = l:string.n
         let l:string = l:string.", "
     endfor
-    if len(l:fatherclasses)
-        let l:string = strpart(l:string,0,strlen(l:string)-3)
+    if !empty(l:fatherclasses)
+        let l:string = strpart(l:string,0,strlen(l:string)-2)
     endif
     call add(l:headerfilecontent,l:string)
     call add(l:headerfilecontent,"{")
