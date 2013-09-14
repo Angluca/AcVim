@@ -13,7 +13,7 @@ def snippetsInit():
 # more that the strict necessary.
 
 def snippetsFormatPlaceHolder(word):
-  return "$`%s`" % word
+  return "`<%s>`" % word
 
 def snippetsAddSnippet(fullname, word, abbr):
   return word

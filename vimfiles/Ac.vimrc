@@ -884,6 +884,8 @@ vmap <silent> aa <Plug>ParameterObjectA
 omap <silent> aa <Plug>ParameterObjectA
 "clang complete
 let g:clang_use_library=1
+let g:clang_complete_patterns = 1
+let g:clang_snippets = 1
 """"""""""""""""""""
 "filetype operation
 """"""""""""""""""""
