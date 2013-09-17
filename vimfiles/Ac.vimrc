@@ -797,8 +797,8 @@ nmap ;fm :Mru<CR>
 """"""""""""""""""""
 "mouse cant show function
 let g:EchoFuncAutoStartBalloonDeclaration = 0
-let g:EchoFuncKeyNext=',ew'
-let g:EchoFuncKeyPrev=',er'
+"let g:EchoFuncKeyNext=',ew'
+"let g:EchoFuncKeyPrev=',er'
 """"""""""""""""""""
 "vimwiki
 """"""""""""""""""""
@@ -842,13 +842,13 @@ let g:syntastic_mode_map = { 'mode': 'active',
 """"""""""""""""""""
 "vimim
 """"""""""""""""""""
-:let g:vimim_cloud = 0
-":let g:vimim_map = ''  
-":let g:vimim_mode = 'dynamic'  
-:let g:vimim_mycloud = 0  
-":let g:vimim_punctuation = 2  
-:let g:vimim_shuangpin = 0  
-:let g:vimim_toggle = 'wubi' 
+let g:vimim_cloud = -1
+"let g:vimim_map = ''  
+"let g:vimim_mode = 'dynamic'  
+let g:vimim_mycloud = 0  
+let g:vimim_punctuation = 0  
+let g:vimim_shuangpin = 0  
+let g:vimim_toggle = 'wubi' 
 """"""""""""""""""""
 "window move
 """"""""""""""""""""
