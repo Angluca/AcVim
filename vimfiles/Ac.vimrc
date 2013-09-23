@@ -859,6 +859,14 @@ let g:wm_move_left = '<S-Left>'
 let g:wm_move_x = 20
 let g:wm_move_y = 15
 """"""""""""""""""""
+"clever-f
+""""""""""""""""""""
+let g:clever_f_across_no_line = 1
+let g:clever_f_ignore_case = 0
+let g:clever_f_smart_case = 0
+let g:clever_f_fix_key_direction = 1
+let g:clever_f_show_prompt = 0
+""""""""""""""""""""
 "Another plugin
 """"""""""""""""""""
 if has("unix")
