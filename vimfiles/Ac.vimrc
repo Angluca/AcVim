@@ -894,6 +894,8 @@ omap <silent> aa <Plug>ParameterObjectA
 let g:clang_use_library=1
 let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
+"auto pair
+let g:AutoPairsShortcutToggle = '<M-a>'
 """"""""""""""""""""
 "filetype operation
 """"""""""""""""""""
