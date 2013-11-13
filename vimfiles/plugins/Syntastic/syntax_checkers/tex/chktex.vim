@@ -23,7 +23,7 @@
 " - g:syntastic_tex_chktex_args (string; default: empty)
 "   command line options to pass to chktex
 
-if exists("g:loaded_syntastic_tex_chktex_checker")
+if exists('g:loaded_syntastic_tex_chktex_checker')
     finish
 endif
 let g:loaded_syntastic_tex_chktex_checker = 1
@@ -32,23 +32,21 @@ if !exists('g:syntastic_tex_chktex_showmsgs')
     let g:syntastic_tex_chktex_showmsgs = 1
 endif
 
-function! SyntaxCheckers_tex_chktex_IsAvailable()
-    return executable("chktex")
-endfunction
+function! SyntaxCheckers_tex_chktex_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'post_args': '-q -v1' })
 
-function! SyntaxCheckers_tex_chktex_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'chktex',
-                \ 'post_args': '-q -v1',
-                \ 'subchecker': 'chktex' })
-    let errorformat = '%EError\ %\\d%\\+\ in\ %f\ line\ %l:\ %m,%WWarning\ %\\d%\\+\ in\ %f\ line\ %l:\ %m,' .
-                \ (g:syntastic_tex_chktex_showmsgs ? '%WMessage\ %\\d%\\+\ in\ %f\ line %l:\ %m,' : '') .
-                \ '%+Z%p^,%-G%.%#'
-    return sort(SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'subtype': 'Style' }), 's:CmpLoclist')
-endfunction
+    let errorformat =
+        \ '%EError %n in %f line %l: %m,' .
+        \ '%WWarning %n in %f line %l: %m,' .
+        \ (g:syntastic_tex_chktex_showmsgs ? '%WMessage %n in %f line %l: %m,' : '') .
+        \ '%Z%p^,' .
+        \ '%-G%.%#'
 
-function! s:CmpLoclist(a, b)
-    return a:a['lnum'] - a:b['lnum']
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'subtype': 'Style',
+        \ 'postprocess': ['sort'] })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

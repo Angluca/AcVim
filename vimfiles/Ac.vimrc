@@ -11,12 +11,12 @@ call pathogen#infect("plugins")
 "call pathogen#runtime_append_all_bundles()
 
 function! s:CreateMaps(target, combo)
-    if !hasmapto(a:target, 'n')
-        exec 'nmap ' . a:combo . ' ' . a:target
-    endif
-    if !hasmapto(a:target, 'v')
-        exec 'vmap ' . a:combo . ' ' . a:target
-    endif
+if !hasmapto(a:target, 'n')
+	exec 'nmap ' . a:combo . ' ' . a:target
+endif
+if !hasmapto(a:target, 'v')
+	exec 'vmap ' . a:combo . ' ' . a:target
+endif
 endfunction
 
 "setup swap file directory
@@ -25,16 +25,16 @@ let backup_dir = data_dir . 'backup'
 let swap_dir = data_dir . 'swap'
 let cache_dir = data_dir . 'cache'
 if finddir(data_dir) == ''
-    silent call mkdir(data_dir)
+silent call mkdir(data_dir)
 endif
 if finddir(backup_dir) == ''
-    silent call mkdir(backup_dir)
+silent call mkdir(backup_dir)
 endif
 if finddir(swap_dir) == ''
-    silent call mkdir(swap_dir)
+silent call mkdir(swap_dir)
 endif
 if finddir(cache_dir) == ''
-    silent call mkdir(cache_dir)
+silent call mkdir(cache_dir)
 endif
 
 set backupdir=$HOME/vimdata/backup " where to put backup file
@@ -63,19 +63,19 @@ set langmenu=zh_CN.UTF-8
 "chinese=zh_CN.UTF-8 english=en_US.UTF-8
 "language message en_US.UTF-8
 if has("win32")
-	if has("gui_running")
+if has("gui_running")
 	language message zh_CN.UTF-8
-	else
-	language message en_US.UTF-8
-	endif
-
-	"set termencoding=gb18030
-	"set fileencoding=gb18030
-	set termencoding=utf-8
-	set fileencoding=utf-8
 else
-	set termencoding=utf-8
-	set fileencoding=utf-8
+	language message en_US.UTF-8
+endif
+
+"set termencoding=gb18030
+"set fileencoding=gb18030
+set termencoding=utf-8
+set fileencoding=utf-8
+else
+set termencoding=utf-8
+set fileencoding=utf-8
 endif
 
 set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
@@ -110,15 +110,15 @@ nmap ;ve :call	ToggleVisualEditMode() <CR>
 vmap ;ve :call	ToggleVisualEditMode() <CR>
 
 function! ToggleVisualEditMode()
-	if !exists('s:visualEditMode')
-		let		s:visualEditMode = 1
-		set		ve=all
-		echo	'visual edit on'
-	else
-		unlet	s:visualEditMode
-		set		ve=
-		echo	'visual edit off'
-	endif
+if !exists('s:visualEditMode')
+	let		s:visualEditMode = 1
+	set		ve=all
+	echo	'visual edit on'
+else
+	unlet	s:visualEditMode
+	set		ve=
+	echo	'visual edit off'
+endif
 endfunction
 
 function! ToggleQuickfix()
@@ -127,21 +127,21 @@ execute ':silent! ls'
 redir END
 let exists = match(ls_output, "Quickfix")
 if exists == -1
-execute ':copen'
+	execute ':copen'
 else
-execute ':cclose'
+	execute ':cclose'
 endif
 endfunction
 
 function! QfMakeConv()
-   let qflist = getqflist()
-   for i in qflist
-	  let i.text = iconv(i.text, "cp936", "utf-8")
-   endfor
-   call setqflist(qflist)
+let qflist = getqflist()
+for i in qflist
+	let i.text = iconv(i.text, "cp936", "utf-8")
+endfor
+call setqflist(qflist)
 endfunction
 if	has("win32")
-	au QuickfixCmdPost make call QfMakeConv()
+au QuickfixCmdPost make call QfMakeConv()
 endif
 """"""""""""""""""""
 "Fast saving
@@ -170,24 +170,24 @@ function! SwitchToBuf(filename)
 " find in current tab
 let bufwinnr = bufwinnr(a:filename)
 if bufwinnr != -1
-exec bufwinnr . "wincmd w"
-return
+	exec bufwinnr . "wincmd w"
+	return
 else
-" find in each tab
-tabfirst
-let tab = 1
-while tab <= tabpagenr("$")
-let bufwinnr = bufwinnr(a:filename)
-if bufwinnr != -1
-exec "normal " . tab . "gt"
-exec bufwinnr . "wincmd w"
-return
-endif
-tabnext
-let tab = tab + 1
-endwhile
-" not exist, new tab
-exec "e " . a:filename
+	" find in each tab
+	tabfirst
+	let tab = 1
+	while tab <= tabpagenr("$")
+		let bufwinnr = bufwinnr(a:filename)
+		if bufwinnr != -1
+			exec "normal " . tab . "gt"
+			exec bufwinnr . "wincmd w"
+			return
+		endif
+		tabnext
+		let tab = tab + 1
+	endwhile
+	" not exist, new tab
+	exec "e " . a:filename
 endif
 endfunction
 
@@ -213,27 +213,27 @@ if has("win32")
 "behave mswin
 set diffexpr=MyDiff()
 function! MyDiff()
-let opt = '-a --binary '
-if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-let arg1 = v:fname_in
-if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-let arg2 = v:fname_new
-if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-let arg3 = v:fname_out
-if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-let eq = ''
-if $VIMRUNTIME =~ ' '
-if &sh =~ '\<cmd'
-let cmd = '""' . $VIMRUNTIME . '\diff"'
-let eq = '"'
-else
-let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-endif
-else
-let cmd = $VIMRUNTIME . '\diff'
-endif
-silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+	let opt = '-a --binary '
+	if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+	if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+	let arg1 = v:fname_in
+	if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+	let arg2 = v:fname_new
+	if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+	let arg3 = v:fname_out
+	if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+	let eq = ''
+	if $VIMRUNTIME =~ ' '
+		if &sh =~ '\<cmd'
+			let cmd = '""' . $VIMRUNTIME . '\diff"'
+			let eq = '"'
+		else
+			let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+		endif
+	else
+		let cmd = $VIMRUNTIME . '\diff'
+	endif
+	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 endif
 
@@ -252,20 +252,20 @@ syntax enable
 
 " color scheme
 if has("gui_running")
-"start gvim maximized
-"if has("autocmd")
-"au GUIEnter * simalt ~x
-"endif
-set guioptions-=T
-set guioptions-=m
-set guioptions-=L
-"set guioptions-=r
+	"start gvim maximized
+	"if has("autocmd")
+	"au GUIEnter * simalt ~x
+	"endif
+	set guioptions-=T
+	set guioptions-=m
+	set guioptions-=L
+	"set guioptions-=r
 
-colorscheme maroloccio
-"hi normal guibg=#294d4a
+	colorscheme maroloccio
+	"hi normal guibg=#294d4a
 else
-set t_Co=256
-colorscheme maroloccio
+	set t_Co=256
+	colorscheme maroloccio
 endif " has
 endif " exists(...)
 
@@ -279,27 +279,27 @@ autocmd BufEnter * :syntax sync fromstart
 set ffs=unix,dos
 "set ffs=unix
 fun! s:FileFormat()
-  if !exists("g:menutrans_fileformat_dialog")
+if !exists("g:menutrans_fileformat_dialog")
 	let g:menutrans_fileformat_dialog = "Select format for writing the file"
-  endif
-  if !exists("g:menutrans_fileformat_choices")
+endif
+if !exists("g:menutrans_fileformat_choices")
 	let g:menutrans_fileformat_choices = "&Unix\n&Dos\n&Mac\n&Cancel"
-  endif
-  if &ff == "dos"
+endif
+if &ff == "dos"
 	let def = 2
-  elseif &ff == "mac"
+elseif &ff == "mac"
 	let def = 3
-  else
+else
 	let def = 1
-  endif
-  let n = confirm(g:menutrans_fileformat_dialog, g:menutrans_fileformat_choices, def, "Question")
-  if n == 1
+endif
+let n = confirm(g:menutrans_fileformat_dialog, g:menutrans_fileformat_choices, def, "Question")
+if n == 1
 	set ff=unix
-  elseif n == 2
+elseif n == 2
 	set ff=dos
-  elseif n == 3
+elseif n == 3
 	set ff=mac
-  endif
+endif
 endfun
 nmap ;ff :call <SID>FileFormat()<cr>
 nmap ;fu :se fenc=utf-8<cr>
@@ -445,19 +445,19 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 "Don't close window, when deleting a buffer
 com! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-let l:currentBufNum = bufnr("%")
-let l:alternateBufNum = bufnr("#")
-if buflisted(l:alternateBufNum)
-buffer #
-else
-bnext
-endif
-if bufnr("%") == l:currentBufNum
-new
-endif
-if buflisted(l:currentBufNum)
-execute("bdelete! ".l:currentBufNum)
-endif
+	let l:currentBufNum = bufnr("%")
+	let l:alternateBufNum = bufnr("#")
+	if buflisted(l:alternateBufNum)
+		buffer #
+	else
+		bnext
+	endif
+	if bufnr("%") == l:currentBufNum
+		new
+	endif
+	if buflisted(l:currentBufNum)
+		execute("bdelete! ".l:currentBufNum)
+	endif
 endfunction
 "Bclose function can be found in "Buffer related" section
 nmap ;bd :Bclose<cr>
@@ -483,11 +483,11 @@ set nowb
 """"""""""""""""""""
 "Enable folding, I find it very useful
 if exists("&foldenable")
-set fen
+	set fen
 endif
 
 if exists("&foldlevel")
-set fdl=0
+	set fdl=0
 endif
 
 """"""""""""""""""""
@@ -516,12 +516,12 @@ set wrap
 """"""""""""""""""""
 if has("cscope")
 	if has("win32")
-	set csprg=$VIMRUNTIME/cscope.exe
+		set csprg=$VIMRUNTIME/cscope.exe
 	else
-	set csprg=/usr/bin/cscope
+		set csprg=/usr/bin/cscope
 	endif
-set csto=1
-set cscopequickfix=s-,c-,d-,i-,t-,e-
+	set csto=1
+	set cscopequickfix=s-,c-,d-,i-,t-,e-
 endif
 
 """"""""""""""""""""
@@ -561,10 +561,10 @@ nmap <silent> ;cf :CtrlP<cr>
 nmap <silent> ;cb :CtrlPBuffer<cr>
 nmap <silent> ;cm :CtrlPMRUFiles<cr>
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll|zip|rar|tags|tar)$',
-	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-	\ }
+			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+			\ 'file': '\v\.(exe|so|dll|zip|rar|tags|tar)$',
+			\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+			\ }
 """"""""""""""""""""
 " BufExplorer setting
 """"""""""""""""""""
@@ -581,9 +581,9 @@ let g:bufExplorerUseCurrentWindow=1 " Open in new window.
 " taglist
 """"""""""""""""""""
 if has("win32")
-let Tlist_Ctags_Cmd = 'ctags'
+	let Tlist_Ctags_Cmd = 'ctags'
 elseif has("unix")
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+	let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 endif
 let Tlist_Show_One_File = 0
 let Tlist_Exit_OnlyWindow = 1
@@ -633,10 +633,10 @@ let	g:netrw_home	=	$HOME.'/vimdata/cache'
 "Omnicppcompl setting
 """"""""""""""""""""
 if has("win32")
-autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/winxtags
-autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/cpptags
+	autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/winxtags
+	autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/cpptags
 else
-autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/.vim/dict/cpptags
+	autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/.vim/dict/cpptags
 endif
 
 " set completeopt as don't show menu and preview
@@ -669,24 +669,24 @@ let OmniCpp_DefaultNamespaces = ["std","_GLIBCXX_STD"]
 "autorun the script
 let g:acp_behaviorKeywordLength=3
 if has("win32")
-"autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict,k$HOME/vimfiles/dict/c.dict,k$HOME/vimfiles/dict/cpp.dict,k$HOME/vimfiles/dict/gl.dict'
-autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict,k$HOME/vimfiles/dict/c.dict,k$HOME/vimfiles/dict/cpp.dict'
-autocmd FileType lua let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/lua.dict'
-autocmd FileType java let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/java.dict'
-autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/js.dict'
-autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/vim.dict'
-autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/perl.dict'
-autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/php.dict'
-autocmd FileType actionscript let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/as3.dict'
+	"autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict,k$HOME/vimfiles/dict/c.dict,k$HOME/vimfiles/dict/cpp.dict,k$HOME/vimfiles/dict/gl.dict'
+	autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict,k$HOME/vimfiles/dict/c.dict,k$HOME/vimfiles/dict/cpp.dict'
+	autocmd FileType lua let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/lua.dict'
+	autocmd FileType java let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/java.dict'
+	autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/js.dict'
+	autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/vim.dict'
+	autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/perl.dict'
+	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/php.dict'
+	autocmd FileType actionscript let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/as3.dict'
 else
-autocmd FileType c,h,cpp,hpp,cxx let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/c.dict,k$HOME/.vim/dict/cpp.dict'
-autocmd FileType lua let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/lua.dict'
-autocmd FileType java let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/java.dict'
-autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/js.dict'
-autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/vim.dict'
-autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/perl.dict'
-autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/php.dict'
-autocmd FileType actionscript,as let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/as3.dict'
+	autocmd FileType c,h,cpp,hpp,cxx let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/c.dict,k$HOME/.vim/dict/cpp.dict'
+	autocmd FileType lua let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/lua.dict'
+	autocmd FileType java let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/java.dict'
+	autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/js.dict'
+	autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/vim.dict'
+	autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/perl.dict'
+	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/php.dict'
+	autocmd FileType actionscript,as let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/as3.dict'
 endif
 """"""""""""""""""""
 "NERDTree seting
@@ -837,18 +837,18 @@ nmap	;sc	:SyntasticCheck<CR>
 nmap	;se	:Errors<CR>
 nmap	;st	:SyntasticToggleMode<CR>
 let g:syntastic_mode_map = { 'mode': 'active',
-						   \ 'active_filetypes': [],
-						   \ 'passive_filetypes': ['c', 'cpp'] }
+			\ 'active_filetypes': [],
+			\ 'passive_filetypes': ['c', 'cpp'] }
 """"""""""""""""""""
 "vimim
 """"""""""""""""""""
 let g:vimim_cloud = -1
-"let g:vimim_map = ''  
-"let g:vimim_mode = 'dynamic'  
-let g:vimim_mycloud = 0  
-let g:vimim_punctuation = 0  
-let g:vimim_shuangpin = 0  
-let g:vimim_toggle = 'wubi' 
+"let g:vimim_map = ''
+"let g:vimim_mode = 'dynamic'
+let g:vimim_mycloud = 0
+let g:vimim_punctuation = 0
+let g:vimim_shuangpin = 0
+let g:vimim_toggle = 'wubi'
 """"""""""""""""""""
 "window move
 """"""""""""""""""""
@@ -866,6 +866,12 @@ let g:clever_f_ignore_case = 0
 let g:clever_f_smart_case = 0
 let g:clever_f_fix_key_direction = 1
 let g:clever_f_show_prompt = 0
+""""""""""""""""""""
+"airline
+""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#tab_min_count = 2
 """"""""""""""""""""
 "Another plugin
 """"""""""""""""""""
@@ -900,7 +906,7 @@ let g:AutoPairsShortcutToggle = '<M-a>'
 "filetype operation
 """"""""""""""""""""
 if has("win32")
-autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
+	autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
 endif
 au BufRead,BufNewFile README*,COPYING setlocal ft=txt
 au BufRead,BufNewFile *.txt setlocal ft=txt

@@ -33,24 +33,22 @@ if !exists('g:syntastic_perl_perlcritic_thres')
     let g:syntastic_perl_perlcritic_thres = 5
 endif
 
-function! SyntaxCheckers_perl_perlcritic_IsAvailable()
-    return executable('perlcritic')
-endfunction
+function! SyntaxCheckers_perl_perlcritic_GetLocList() dict
+    let makeprg = self.makeprgBuild({
+        \ 'post_args': '--quiet --nocolor --verbose "\%s:\%f:\%l:\%c:(\%s) \%m (\%e)\n"' })
 
-function! SyntaxCheckers_perl_perlcritic_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'perlcritic',
-                \ 'post_args': '--quiet --nocolor --verbose "\%s:\%f:\%l:\%c:(\%s) \%m (\%e)\n"',
-                \ 'subchecker': 'perlcritic' })
-    let errorformat='%t:%f:%l:%c:%m'
-    let loclist = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'subtype': 'Style' })
+    let errorformat = '%t:%f:%l:%c:%m'
+
+    let loclist = SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'returns': [0, 2],
+        \ 'subtype': 'Style' })
 
     " change error types according to the prescribed threshold
-    let n = len(loclist) - 1
-    while n >= 0
-        let loclist[n]['type'] = loclist[n]['type'] < g:syntastic_perl_perlcritic_thres ? 'W' : 'E'
-        let n -= 1
-    endwhile
+    for e in loclist
+        let e['type'] = e['type'] < g:syntastic_perl_perlcritic_thres ? 'W' : 'E'
+    endfor
 
     return loclist
 endfunction
