@@ -84,7 +84,7 @@ menu <silent>       &Tools.Code\ Complete\ Stop           :call CodeCompleteStop
 " Function Definitions: {{{1
 
 function! CodeCompleteStart()
-    exec "silent! iunmap  <buffer> ".g:completekey
+    "exec "silent! iunmap  <buffer> ".g:completekey
     exec "inoremap <buffer> ".g:completekey." <c-r>=CodeComplete()<cr><c-r>=SwitchRegion()<cr>"
 endfunction
 
