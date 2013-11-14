@@ -872,6 +872,7 @@ let g:clever_f_show_prompt = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#whitespace#enabled = 0
 """"""""""""""""""""
 "Another plugin
 """"""""""""""""""""
