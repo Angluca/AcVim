@@ -875,6 +875,15 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#whitespace#enabled = 0
 """"""""""""""""""""
+"YouCompleteMe
+""""""""""""""""""""
+let g:ycm_global_ycm_extra_conf = $HOME ."/ycm_extra_conf.py"
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_key_invoke_completion = ';<space>'
+let g:ycm_key_detailed_diagnostics = ''
+""""""""""""""""""""
 "Another plugin
 """"""""""""""""""""
 if has("unix")
