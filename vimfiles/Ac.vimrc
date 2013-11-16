@@ -557,7 +557,8 @@ au FileType html set syntax=html
 " ctrlp setting
 """"""""""""""""""""
 let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
-nmap <silent> ;cf :CtrlP<cr>
+let g:ctrlp_map = ';cf'
+"nmap <silent> ;cf :CtrlP<cr>
 nmap <silent> ;cb :CtrlPBuffer<cr>
 nmap <silent> ;cm :CtrlPMRUFiles<cr>
 let g:ctrlp_custom_ignore = {
