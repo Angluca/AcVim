@@ -100,11 +100,6 @@ nmap ;co :cold <CR>
 nmap ;ci :cnew <CR>
 "nmap <F3> :call ToggleQuickfix() <CR>
 
-"system copy and paste
-"nmap Y V"+y<cr>k
-"vmap Y "+y<cr>k
-"nmap P "+gP<cr>k
-
 "visual edit mode
 nmap ;ve :call	ToggleVisualEditMode() <CR>
 vmap ;ve :call	ToggleVisualEditMode() <CR>
@@ -426,6 +421,22 @@ inoremap <C-E> <End>
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 
+"cut, copy & paste
+if has("mac")
+	vmap "+y :w !pbcopy<CR><CR> 
+	nmap "+p :r !pbpaste<CR><CR>
+	nmap "+gP :r !pbpaste<CR><CR>
+	vmap "*y :w !pbcopy<CR><CR> 
+	nmap "*p :r !pbpaste<CR><CR>
+	nmap "*gP :r !pbpaste<CR><CR>
+endif
+
+vnoremap <C-S-X> "+x
+vnoremap <C-S-C> "+y
+map <C-S-V>	"+gP
+vnoremap <C-S-V> "+gP
+cmap <C-S-V> <C-R>+
+imap <C-S-V> <C-R>+
 
 """"""""""""""""""""
 " Buffer realted
@@ -887,13 +898,6 @@ let g:ycm_register_as_syntastic_checker = 1
 """"""""""""""""""""
 "Another plugin
 """"""""""""""""""""
-if has("mac")
-	vmap "+y :w !pbcopy<CR><CR> 
-	nmap "+p :r !pbpaste<CR><CR>
-	vmap "*y :w !pbcopy<CR><CR> 
-	nmap "*p :r !pbpaste<CR><CR>
-endif
-
 if has("unix")
 	if has("gui_running")
 		"au	BufEnter	*	cd	%:h
