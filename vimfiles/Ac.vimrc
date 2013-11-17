@@ -883,6 +883,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_key_invoke_completion = ';<space>'
 let g:ycm_key_detailed_diagnostics = ''
+let g:ycm_register_as_syntastic_checker = 1
 """"""""""""""""""""
 "Another plugin
 """"""""""""""""""""
