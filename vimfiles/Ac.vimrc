@@ -688,20 +688,24 @@ if has("win32")
 	autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict,k$HOME/vimfiles/dict/c.dict,k$HOME/vimfiles/dict/cpp.dict'
 	autocmd FileType lua let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/lua.dict'
 	autocmd FileType java let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/java.dict'
-	autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/js.dict'
+	autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/javascript.dict'
 	autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/vim.dict'
 	autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/perl.dict'
-	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/php.dict'
+	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/php.dict,k$HOME/vimfiles/dict/html.dict'
 	autocmd FileType actionscript let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/as3.dict'
+	autocmd FileType sh let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/bash.dict'
+	autocmd FileType nut let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/squirrel.dict'
 else
 	autocmd FileType c,h,cpp,hpp,cxx let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/c.dict,k$HOME/.vim/dict/cpp.dict'
 	autocmd FileType lua let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/lua.dict'
 	autocmd FileType java let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/java.dict'
-	autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/js.dict'
+	autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/javascript.dict'
 	autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/vim.dict'
 	autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/perl.dict'
-	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/php.dict'
+	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/php.dict,k$HOME/vimfiles/dict/html.dict'
 	autocmd FileType actionscript,as let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/as3.dict'
+	autocmd FileType sh let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/bash.dict'
+	autocmd FileType nut let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/squirrel.dict'
 endif
 """"""""""""""""""""
 "NERDTree seting
@@ -890,7 +894,7 @@ let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#whitespace#enabled = 0
 """"""""""""""""""""
 "clang_complete
-"""""""""""""""""""""
+""""""""""""""""""""
 let g:clang_use_library=1
 let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
@@ -904,6 +908,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_key_invoke_completion = '<s-space>'
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_register_as_syntastic_checker = 0
+
 if  has("win32")
 	let g:ycm_global_ycm_extra_conf = $HOME .'/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 	nmap <silent> \yy :call SwitchToBuf("$HOME/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
