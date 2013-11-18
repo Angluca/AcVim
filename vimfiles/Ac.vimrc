@@ -431,12 +431,12 @@ if has("mac")
 	nmap "*gP :r !pbpaste<CR><CR>
 endif
 
-vnoremap <C-S-X> "+x
-vnoremap <C-S-C> "+y
-map <C-S-V>	"+gP
-vnoremap <C-S-V> "+gP
-cmap <C-S-V> <C-R>+
-imap <C-S-V> <C-R>+
+"vnoremap <C-S-X> "+x
+"vnoremap <C-S-C> "+y
+"map <C-S-V>	"+gP
+"vnoremap <C-S-V> "+gP
+"cmap <C-S-V> <C-R>+
+"imap <C-S-V> <C-R>+
 
 """"""""""""""""""""
 " Buffer realted
@@ -888,13 +888,22 @@ let g:airline#extensions#whitespace#enabled = 0
 """"""""""""""""""""
 "YouCompleteMe
 """"""""""""""""""""
-let g:ycm_global_ycm_extra_conf = $HOME ."/ycm_extra_conf.py"
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_key_invoke_completion = '<s-space>'
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_register_as_syntastic_checker = 1
+if  has("win32")
+	let g:ycm_global_ycm_extra_conf = $HOME .'/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+	nmap <silent> \yy :call SwitchToBuf("$HOME/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
+	autocmd! bufwritepost _vimrc source $HOME/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py
+else
+	let g:ycm_global_ycm_extra_conf = $HOME .'/.vim/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+	nmap <silent> \yy :call SwitchToBuf("$HOME/.vim/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
+	autocmd! bufwritepost vimrc source $HOME/.vim/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py
+endif
+
 """"""""""""""""""""
 "Another plugin
 """"""""""""""""""""
