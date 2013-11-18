@@ -140,8 +140,8 @@ au QuickfixCmdPost make call QfMakeConv()
 endif
 """"""""""""""""""""
 "Fast saving
-nmap <silent> ;ww :w<cr>
-nmap <silent> ;wf :w!<cr>
+nmap <silent> ;ww :update<cr>
+nmap <silent> ;wf :update!<cr>
 "Fast quiting
 nmap <silent> ;qw :wq<cr>
 nmap <silent> ;qf :q!<cr>
@@ -675,6 +675,9 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_ShowAccess = 1
 " This option can be use if you don't want to parse using namespace declarations in included files and want to add namespaces that are always used in your project.
 let OmniCpp_DefaultNamespaces = ["std","_GLIBCXX_STD"]
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 """"""""""""""""""""
 "AutoComplpop seting
 """"""""""""""""""""
@@ -886,6 +889,13 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#whitespace#enabled = 0
 """"""""""""""""""""
+"clang_complete
+"""""""""""""""""""""
+let g:clang_use_library=1
+let g:clang_complete_patterns = 1
+let g:clang_snippets = 1
+let g:clang_complete_macros = 1
+""""""""""""""""""""
 "YouCompleteMe
 """"""""""""""""""""
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -893,7 +903,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_key_invoke_completion = '<s-space>'
 let g:ycm_key_detailed_diagnostics = ''
-let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_register_as_syntastic_checker = 0
 if  has("win32")
 	let g:ycm_global_ycm_extra_conf = $HOME .'/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 	nmap <silent> \yy :call SwitchToBuf("$HOME/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
@@ -928,10 +938,6 @@ vmap <silent> ia <Plug>ParameterObjectI
 omap <silent> ia <Plug>ParameterObjectI
 vmap <silent> aa <Plug>ParameterObjectA
 omap <silent> aa <Plug>ParameterObjectA
-"clang complete
-let g:clang_use_library=1
-let g:clang_complete_patterns = 1
-let g:clang_snippets = 1
 "auto pair
 let g:AutoPairsShortcutToggle = '<M-a>'
 """"""""""""""""""""
