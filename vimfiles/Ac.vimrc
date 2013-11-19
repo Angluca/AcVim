@@ -692,6 +692,7 @@ if has("win32")
 	autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/vim.dict'
 	autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/perl.dict'
 	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/php.dict,k$HOME/vimfiles/dict/html.dict'
+	autocmd FileType html,htm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/javascript.dict,k$HOME/vimfiles/dict/html.dict,k$HOME/vimfiles/dict/html5.dict'
 	autocmd FileType actionscript let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/as3.dict'
 	autocmd FileType sh let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/bash.dict'
 	autocmd FileType nut let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/squirrel.dict'
@@ -703,6 +704,7 @@ else
 	autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/vim.dict'
 	autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/perl.dict'
 	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/php.dict,k$HOME/vimfiles/dict/html.dict'
+	autocmd FileType html,htm let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/javascript.dict,k$HOME/.vim/dict/html.dict,k$HOME/.vim/dict/html5.dict'
 	autocmd FileType actionscript,as let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/as3.dict'
 	autocmd FileType sh let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/bash.dict'
 	autocmd FileType nut let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/squirrel.dict'
@@ -899,6 +901,7 @@ let g:clang_use_library=1
 let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
 let g:clang_complete_macros = 1
+imap <s-space> <c-x><c-o>
 """"""""""""""""""""
 "YouCompleteMe
 """"""""""""""""""""
