@@ -1,5 +1,2 @@
-if has("win32")
-	source	$HOME\vimfiles\Ac.vimrc
-else
-	source	$HOME/.vim/Ac.vimrc
-endif
+let $VIM="~/AcVim/vimfiles"
+source $VIM/Ac.vimrc

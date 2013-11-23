@@ -1,15 +1,16 @@
-""""""""""""""""""""""""""""""""
-" Make vimrc by Angluca
 "
-" Last Change: 22/06/13 16:42:18
-""""""""""""""""""""""""""""""""
-""""""""""""""""""""
-" General
-""""""""""""""""""""
-call pathogen#helptags()
-call pathogen#infect("plugins")
+" Last Change: 23/11/13 23:57:50
+"---------------------------------
+"=================================
+" General {{{1
+"=================================
+"call pathogen#helptags()
+call pathogen#infect()
+"call pathogen#infect("plugins")
 "call pathogen#runtime_append_all_bundles()
-
+""""""""""""""""""""
+"Functions
+""""""""""""""""""""
 function! s:CreateMaps(target, combo)
 if !hasmapto(a:target, 'n')
 	exec 'nmap ' . a:combo . ' ' . a:target
@@ -19,90 +20,11 @@ if !hasmapto(a:target, 'v')
 endif
 endfunction
 
-"setup swap file directory
-let data_dir = $HOME.'/vimdata/'
-let backup_dir = data_dir . 'backup'
-let swap_dir = data_dir . 'swap'
-let cache_dir = data_dir . 'cache'
-if finddir(data_dir) == ''
-silent call mkdir(data_dir)
-endif
-if finddir(backup_dir) == ''
-silent call mkdir(backup_dir)
-endif
-if finddir(swap_dir) == ''
-silent call mkdir(swap_dir)
-endif
-if finddir(cache_dir) == ''
-silent call mkdir(cache_dir)
-endif
-
-set backupdir=$HOME/vimdata/backup " where to put backup file
-set directory=$HOME/vimdata/swap " where to put swap file
-unlet data_dir
-unlet backup_dir
-unlet swap_dir
-
-"Get out of VI's compatible mode..
-set nocompatible
-"Set shell to be bash
-"if has("unix") || has("mac")
-"set shell=bash
-"else
-""I have to run win32 python without cygwin
-""set shell=E:/cygwin/bin
-"endif
-
-"Sets how many lines of history VIM har to remember
-set history=50
-" Chinese
-"utf-8 , ANSI, UNICODE
-set encoding=utf-8
-"set langmenu=zh_CN.UTF-8
-set langmenu=zh_CN.UTF-8
-"chinese=zh_CN.UTF-8 english=en_US.UTF-8
-"language message en_US.UTF-8
-if has("win32")
-if has("gui_running")
-	language message zh_CN.UTF-8
-else
-	language message en_US.UTF-8
-endif
-
-"set termencoding=gb18030
-"set fileencoding=gb18030
-set termencoding=utf-8
-set fileencoding=utf-8
-else
-set termencoding=utf-8
-set fileencoding=utf-8
-endif
-
-set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
-"endif
-
-
-"Enable filetype plugin
-filetype plugin indent on
-"Set to auto read when a file is changed from the outside
-set autoread
-"Have the mouse enabled all the time:
-set mouse=a
-"Set mapleader
-let g:mapleader = ","
-
-""""""""""""""""""""
-"My QuickFix Switch
-nmap ;cl :call	ToggleQuickfix() <CR>
-nmap ;cn :cn <CR>
-nmap ;cp :cp <CR>
-nmap ;co :cold <CR>
-nmap ;ci :cnew <CR>
-"nmap <F3> :call ToggleQuickfix() <CR>
-
-"visual edit mode
-nmap ;ve :call	ToggleVisualEditMode() <CR>
-vmap ;ve :call	ToggleVisualEditMode() <CR>
+function! s:CreateDir(dir_name)
+	if finddir(a:dir_name) == ''
+	silent call mkdir(a:dir_name)
+	endif
+endfunction
 
 function! ToggleVisualEditMode()
 if !exists('s:visualEditMode')
@@ -135,33 +57,8 @@ for i in qflist
 endfor
 call setqflist(qflist)
 endfunction
-if	has("win32")
-au QuickfixCmdPost make call QfMakeConv()
-endif
-""""""""""""""""""""
-"Fast saving
-nmap <silent> ;ww :update<cr>
-nmap <silent> ;wf :update!<cr>
-"Fast quiting
-nmap <silent> ;qw :wq<cr>
-nmap <silent> ;qf :q!<cr>
-nmap <silent> ;qq :q<cr>
-nmap <silent> ;qa :qa<cr>
-nmap <silent> ;<esc> :<esc>
-"Fast remove highlight search
-nmap <silent> ;<cr> :noh<cr>
 
-nmap <silent> ;to :tabo<cr>
-nmap <silent> ;tq :tabc<cr>
-""Fast redraw
-"nmap <silent> ;rr :redraw!<cr>
-""Fast rewind
-"nmap <silent> ;re :rewind<cr>
-""""""""""""""""""""
-" Switch to buffer according to file name
-""""""""""""""""""""
 function! SwitchToBuf(filename)
-"let fullfn = substitute(a:filename, "^\\~/", $vim. "/", "")
 " find in current tab
 let bufwinnr = bufwinnr(a:filename)
 if bufwinnr != -1
@@ -186,93 +83,6 @@ else
 endif
 endfunction
 
-"Fast edit vimrc
-if  has("win32")
-" Set helplang
-set helplang=cn
-"Fast reloading of the _vimrc
-"map <silent> ;ss :source $vim\_vimrc<cr>
-"Fast editing of _vimrc
-nmap <silent> \ee :call SwitchToBuf("$HOME/vimfiles/Ac.vimrc")<cr>
-"When _vimrc is edited, reload it
-autocmd! bufwritepost _vimrc source $HOME/vimfiles/Ac.vimrc
-else
-nmap <silent> \ee :call SwitchToBuf("$HOME/.vim/Ac.vimrc")<cr>
-"When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source $HOME/.vim/Ac.vimrc
-endif
-
-" For windows version
-if has("win32")
-"source $VIMRUNTIME/mswin.vim
-"behave mswin
-set diffexpr=MyDiff()
-function! MyDiff()
-	let opt = '-a --binary '
-	if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-	if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-	let arg1 = v:fname_in
-	if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-	let arg2 = v:fname_new
-	if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-	let arg3 = v:fname_out
-	if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-	let eq = ''
-	if $VIMRUNTIME =~ ' '
-		if &sh =~ '\<cmd'
-			let cmd = '""' . $VIMRUNTIME . '\diff"'
-			let eq = '"'
-		else
-			let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-		endif
-	else
-		let cmd = $VIMRUNTIME . '\diff'
-	endif
-	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-endif
-
-""""""""""""""""""""
-" Colors and Fonts
-""""""""""""""""""""
-"Set font
-"if has("unix")
-" set gfn=Monospace\ 11
-"endif
-
-" Avoid clearing hilight definition in plugins
-if !exists("g:vimrc_loaded")
-"Enable syntax hl
-syntax enable
-
-" color scheme
-if has("gui_running")
-	"start gvim maximized
-	"if has("autocmd")
-	"au GUIEnter * simalt ~x
-	"endif
-	set guioptions-=T
-	set guioptions-=m
-	set guioptions-=L
-	"set guioptions-=r
-
-	colorscheme maroloccio
-	"hi normal guibg=#294d4a
-else
-	set t_Co=256
-	colorscheme maroloccio
-endif " has
-endif " exists(...)
-
-"Some nice mapping to switch syntax (useful if one mixes different languages in one file)
-"nmap ;$ :syntax sync fromstart<cr>
-autocmd BufEnter * :syntax sync fromstart
-""""""""""""""""""""
-" Fileformats
-""""""""""""""""""""
-"Favorite filetypes
-set ffs=unix,dos
-"set ffs=unix
 fun! s:FileFormat()
 if !exists("g:menutrans_fileformat_dialog")
 	let g:menutrans_fileformat_dialog = "Select format for writing the file"
@@ -296,12 +106,145 @@ elseif n == 3
 	set ff=mac
 endif
 endfun
-nmap ;ff :call <SID>FileFormat()<cr>
-nmap ;fu :se fenc=utf-8<cr>
-nmap ;fw :se fenc=GBK<cr>
+
+function! <SID>BufcloseCloseIt()
+	let l:currentBufNum = bufnr("%")
+	let l:alternateBufNum = bufnr("#")
+	if buflisted(l:alternateBufNum)
+		buffer #
+	else
+		bnext
+	endif
+	if bufnr("%") == l:currentBufNum
+		new
+	endif
+	if buflisted(l:currentBufNum)
+		execute("bdelete! ".l:currentBufNum)
+	endif
+endfunction
+
+func! DeleteTrailingWS()
+exe "normal mz"
+%s/\s\+$//ge
+nohl
+exe "normal `z"
+endfunc
+""""""""""""""""""""
+"Create directory
+""""""""""""""""""""
+let data_dir = $HOME.'/vimdata/'
+call s:CreateDir(data_dir)
+call s:CreateDir(data_dir.'backup')
+call s:CreateDir(data_dir.'swap')
+call s:CreateDir(data_dir.'cache')
+unlet data_dir
+set backupdir=$HOME/vimdata/backup " where to put backup file
+set directory=$HOME/vimdata/swap " where to put swap file
 
 """"""""""""""""""""
-" VIM userinterface
+"Base settings
+""""""""""""""""""""
+"Get out of VI's compatible mode..
+set nocompatible
+"Sets how many lines of history VIM har to remember
+set history=20
+" Chinese
+"utf-8 , ANSI, UNICODE
+set encoding=utf-8
+"set langmenu=zh_CN.UTF-8
+set langmenu=zh_CN.UTF-8
+"chinese=zh_CN.UTF-8 english=en_US.UTF-8
+"language message en_US.UTF-8
+if has("gui_running")
+	language messages zh_CN.utf-8
+else
+	language messages en_US.UTF-8
+endif
+
+if has("win32")
+set termencoding=utf-8
+set fileencoding=utf-8
+else
+set termencoding=utf-8
+set fileencoding=utf-8
+endif
+
+set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
+
+"Enable filetype plugin
+"dont move it to top if you set unicode menu :)
+filetype plugin indent on
+"Set to auto read when a file is changed from the outside
+set autoread
+"Have the mouse enabled all the time:
+set mouse=a
+"Set mapleader
+let g:mapleader = ","
+
+if	has("win32")
+au QuickfixCmdPost make call QfMakeConv()
+endif
+
+"set path in current dir
+if has("unix")
+	if has("gui_running")
+		"au	BufEnter	*	cd	%:h
+		au	BufEnter	*	set	autochdir
+	endif
+endif
+
+"cut, copy & paste
+if has("mac")
+	vmap "+y :w !pbcopy<CR><CR>
+	nmap "+p :r !pbpaste<CR><CR>
+	nmap "+gP :r !pbpaste<CR><CR>
+	vmap "*y :w !pbcopy<CR><CR>
+	nmap "*p :r !pbpaste<CR><CR>
+	nmap "*gP :r !pbpaste<CR><CR>
+endif
+
+"Fast editing of _vimrc
+nmap <silent> \ee :call SwitchToBuf("$VIM/Ac.vimrc")<cr>
+"When _vimrc is edited, reload it
+"autocmd! bufwritepost Ac.vimrc source $VIM/Ac.vimrc
+""""""""""""""""""""
+"Colors and Fonts
+""""""""""""""""""""
+"Set font
+"if has("unix")
+"set gfn=Monospace\ 11
+"endif
+" Avoid clearing hilight definition in plugins
+if !exists("g:vimrc_loaded")
+"Enable syntax hl
+syntax enable
+" color scheme
+if has("gui_running")
+	"start gvim maximized
+	"if has("autocmd")
+	"au GUIEnter * simalt ~x
+	"endif
+	set guioptions-=T
+	set guioptions-=m
+	set guioptions-=L
+	"set guioptions-=r
+	"hi normal guibg=#294d4a
+else
+	set t_Co=256
+endif " has
+endif " exists(...)
+colorscheme maroloccio
+""""""""""""""""""""
+"Fileformats
+""""""""""""""""""""
+"Some nice mapping to switch syntax (useful if one mixes different languages in one file)
+"nmap ;$ :syntax sync fromstart<cr>
+autocmd BufEnter * :syntax sync fromstart
+"Favorite filetypes
+set ffs=unix,dos
+"set ffs=unix
+""""""""""""""""""""
+"VIM userinterface
 """"""""""""""""""""
 "Set 7 lines to the curors - when moving vertical..
 "set so=7
@@ -343,10 +286,10 @@ set showmatch
 "set mat=1
 
 """"""""""""""""""""
-" Statusline
+"Statusline
 """"""""""""""""""""
 "Always hide the statusline
-set laststatus=2
+"set laststatus=2
 
 "function! CurDir()
 "let curdir = buffer
@@ -355,20 +298,6 @@ set laststatus=2
 
 "Format the statusline
 "set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
-
-""""""""""""""""""""
-" Moving around and tabs
-""""""""""""""""""""
-"Smart way to move btw. windows
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
-nmap <C-l> <C-W>l
-
-nmap <C-UP> <C-W>+
-nmap <C-DOWN> <C-W>-
-nmap <C-LEFT> <C-W><
-nmap <C-RIGHT> <C-W>>
 "Actually, the tab does not switch buffers, but my arrows
 try
 set switchbuf=useopen
@@ -377,69 +306,7 @@ catch
 endtry
 
 """"""""""""""""""""
-" Parenthesis/bracket expanding
-""""""""""""""""""""
-"au BufNewFile,BufRead *.\(vim\)\@! inoremap " ""<esc>:let leavechar='"'<cr>i
-"au BufNewFile,BufRead *.\(txt\)\@! inoremap ' ''<esc>:let leavechar="'"<cr>i
-"imap <m-l> <esc>:exec "normal f" . leavechar<cr>a
-"imap <d-l> <esc>:exec "normal f" . leavechar<cr>a
-
-""""""""""""""""""""
-" General Abbrevs
-""""""""""""""""""""
-"My information
-iab actime <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-"iab xname Angluca
-
-""""""""""""""""""""
-" Editing mappings etc.
-""""""""""""""""""""
-func! DeleteTrailingWS()
-exe "normal mz"
-%s/\s\+$//ge
-nohl
-exe "normal `z"
-endfunc
-
-" do not automaticlly remove trailing whitespace
-autocmd BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
-"autocmd BufWrite *.txt :call DeleteTrailingWS()
-"nmap <silent> ;ws :call DeleteTrailingWS()<cr>:w<cr>
-"nmap <silent> ;ws! :call DeleteTrailingWS()<cr>:w!<cr>
-
-""""""""""""""""""""
-" Command-line config
-""""""""""""""""""""
-"Bash like
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-B> <Left>
-cnoremap <C-F> <Right>
-
-inoremap <C-A> <C-O>^
-inoremap <C-E> <End>
-inoremap <C-B> <Left>
-inoremap <C-F> <Right>
-
-"cut, copy & paste
-if has("mac")
-	vmap "+y :w !pbcopy<CR><CR> 
-	nmap "+p :r !pbpaste<CR><CR>
-	nmap "+gP :r !pbpaste<CR><CR>
-	vmap "*y :w !pbcopy<CR><CR> 
-	nmap "*p :r !pbpaste<CR><CR>
-	nmap "*gP :r !pbpaste<CR><CR>
-endif
-
-"vnoremap <C-S-X> "+x
-"vnoremap <C-S-C> "+y
-"map <C-S-V>	"+gP
-"vnoremap <C-S-V> "+gP
-"cmap <C-S-V> <C-R>+
-"imap <C-S-V> <C-R>+
-
-""""""""""""""""""""
-" Buffer realted
+"Buffer realted
 """"""""""""""""""""
 "Open a dummy buffer for paste
 "nmap ;en :tabnew<cr>:setl buftype=nofile<cr>
@@ -448,70 +315,46 @@ endif
 "else
 "nmap ;et :tabnew $TEMP/scratch.txt<cr>
 "endif
-
 set viminfo='10,\"30,!,:10,n~/vimdata/cache/_viminfo
 "set viminfo='10,\"30,:10,%,nTemp/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
 "Don't close window, when deleting a buffer
 com! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-	let l:currentBufNum = bufnr("%")
-	let l:alternateBufNum = bufnr("#")
-	if buflisted(l:alternateBufNum)
-		buffer #
-	else
-		bnext
-	endif
-	if bufnr("%") == l:currentBufNum
-		new
-	endif
-	if buflisted(l:currentBufNum)
-		execute("bdelete! ".l:currentBufNum)
-	endif
-endfunction
 "Bclose function can be found in "Buffer related" section
 nmap ;bd :Bclose<cr>
 
 """"""""""""""""""""
-" Session options
+"Session options
 """"""""""""""""""""
 set sessionoptions-=curdir
 set sessionoptions+=sesdir
-
 """"""""""""""""""""
-
-" Files and backups
-
+"Files and backups
 """"""""""""""""""""
 "Turn backup off
 set nobackup
 set nowb
 "set noswapfile
-
 """"""""""""""""""""
-" Folding
+"Folding
 """"""""""""""""""""
 "Enable folding, I find it very useful
 if exists("&foldenable")
 	set fen
 endif
-
 if exists("&foldlevel")
 	set fdl=0
 endif
-
 """"""""""""""""""""
-" Text options
+"Text options
 """"""""""""""""""""
 set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
 "set softtabstop=2
 set tabstop=4 " Set tabstop to 4 characters
 "autocmd FileType c,cpp,h,hpp,cc,cxx set expandtab
 "set expandtab " Set expandtab on, the tab will be change to space automaticaly
-
 """"""""""""""""""""
-" Indent
+"Indent
 """"""""""""""""""""
 "Auto indent
 set ai
@@ -521,25 +364,21 @@ set si
 set cindent
 "Wrap lines
 set wrap
-
 """"""""""""""""""""
-" cscope setting
+"cscope setting
 """"""""""""""""""""
 if has("cscope")
-	if has("win32")
-		set csprg=$VIMRUNTIME/cscope.exe
-	else
-		set csprg=/usr/bin/cscope
-	endif
+	"if has("win32")
+		"set csprg=$VIMRUNTIME/cscope.exe
+	"else
+		"set csprg=/usr/bin/cscope
+	"endif
 	set csto=1
 	set cscopequickfix=s-,c-,d-,i-,t-,e-
 endif
 
 """"""""""""""""""""
-" Filetype generic
-""""""""""""""""""""
-""""""""""""""""""""
-" HTML related
+"HTML related
 """"""""""""""""""""
 " HTML entities - used by xml edit plugin
 let xml_use_xhtml = 1
@@ -548,24 +387,17 @@ let xml_use_xhtml = 1
 let html_use_css = 1
 let html_number_lines = 0
 let use_xhtml = 1
-
-""""""""""""""""""""
-" Vim section
-""""""""""""""""""""
-autocmd FileType vim set nofen
-"autocmd FileType vim map <buffer> ;<space> :w!<cr>:source %<cr>
-
-""""""""""""""""""""
-" HTML
-""""""""""""""""""""
 au FileType html set ft=xml
 au FileType html set syntax=html
-
 """"""""""""""""""""
-" Plugin configuration
+"Vim section
 """"""""""""""""""""
+autocmd FileType vim set nofen
+"=================================
+" Plugin configuration {{{1
+"=================================
 """"""""""""""""""""
-" ctrlp setting
+"Ctrlp setting
 """"""""""""""""""""
 let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
 let g:ctrlp_map = ';cf'
@@ -578,7 +410,7 @@ let g:ctrlp_custom_ignore = {
 			\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 			\ }
 """"""""""""""""""""
-" BufExplorer setting
+"BufExplorer setting
 """"""""""""""""""""
 let g:bufExplorerDefaultHelp=0 " Do not show default help.
 let g:bufExplorerShowRelativePath=1 " Show relative paths.
@@ -590,7 +422,7 @@ let g:bufExplorerUseCurrentWindow=1 " Open in new window.
 "let g:bufExplorerMaxHeight=50 " Max height
 
 """"""""""""""""""""
-" taglist
+"Taglist
 """"""""""""""""""""
 if has("win32")
 	let Tlist_Ctags_Cmd = 'ctags'
@@ -620,7 +452,7 @@ let Tlist_Compact_Format = 1 " do not show help
 nmap <silent> ;tL :Tlist<cr>
 
 """"""""""""""""""""
-" tagbar (similar taglist)
+"Tagbar (similar taglist)
 """"""""""""""""""""
 "let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_autoclose = 1
@@ -635,7 +467,7 @@ let g:tagbar_compact = 1
 "let g:tagbar_updateonsave_maxlines = 10000
 nmap <silent> ;tl :TagbarToggle<cr>
 """"""""""""""""""""
-" netrw
+"Netrw
 """"""""""""""""""""
 let g:netrw_winsize = 30
 let	g:netrw_home	=	$HOME.'/vimdata/cache'
@@ -645,11 +477,9 @@ let	g:netrw_home	=	$HOME.'/vimdata/cache'
 "Omnicppcompl setting
 """"""""""""""""""""
 if has("win32")
-	autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/winxtags
-	autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/vimfiles/dict/cpptags
-else
-	autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=$HOME/.vim/dict/cpptags
+	autocmd FileType c,cpp set tags +=$VIM/vimfiles/dict/winxtags
 endif
+autocmd FileType c,cpp set tags +=$VIM/.vim/dict/cpptags
 
 " set completeopt as don't show menu and preview
 set completeopt=menuone
@@ -683,32 +513,24 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 """"""""""""""""""""
 "autorun the script
 let g:acp_behaviorKeywordLength=3
+"autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/win32.dict,k$VIM/vimfiles/dict/c.dict,k$VIM/vimfiles/dict/cpp.dict,k$VIM/vimfiles/dict/gl.dict'
 if has("win32")
-	"autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict,k$HOME/vimfiles/dict/c.dict,k$HOME/vimfiles/dict/cpp.dict,k$HOME/vimfiles/dict/gl.dict'
-	autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict,k$HOME/vimfiles/dict/c.dict,k$HOME/vimfiles/dict/cpp.dict'
-	autocmd FileType lua let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/lua.dict'
-	autocmd FileType java let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/java.dict'
-	autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/javascript.dict'
-	autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/vim.dict'
-	autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/perl.dict'
-	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/php.dict,k$HOME/vimfiles/dict/html.dict'
-	autocmd FileType html,htm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/javascript.dict,k$HOME/vimfiles/dict/html.dict,k$HOME/vimfiles/dict/html5.dict'
-	autocmd FileType actionscript let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/as3.dict'
-	autocmd FileType sh let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/bash.dict'
-	autocmd FileType nut let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/squirrel.dict'
+	autocmd FileType asm let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/win32.dict'
+	au FileType c,cpp let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/win32.dict,k$VIM/vimfiles/dict/c.dict,k$VIM/vimfiles/dict/cpp.dict'
 else
-	autocmd FileType c,h,cpp,hpp,cxx let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/c.dict,k$HOME/.vim/dict/cpp.dict'
-	autocmd FileType lua let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/lua.dict'
-	autocmd FileType java let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/java.dict'
-	autocmd FileType js let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/javascript.dict'
-	autocmd FileType vim let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/vim.dict'
-	autocmd FileType perl let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/perl.dict'
-	autocmd FileType php let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/php.dict,k$HOME/vimfiles/dict/html.dict'
-	autocmd FileType html,htm let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/javascript.dict,k$HOME/.vim/dict/html.dict,k$HOME/.vim/dict/html5.dict'
-	autocmd FileType actionscript,as let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/as3.dict'
-	autocmd FileType sh let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/bash.dict'
-	autocmd FileType nut let g:acp_completeOption='.,w,u,k$HOME/.vim/dict/squirrel.dict'
+	au FileType c,cpp let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/c.dict,k$VIM/vimfiles/dict/cpp.dict'
 endif
+au FileType lua let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/lua.dict'
+au FileType java let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/java.dict'
+au FileType js let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/javascript.dict'
+au FileType vim let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/vim.dict'
+au FileType perl let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/perl.dict'
+au FileType php let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/php.dict,k$VIM/vimfiles/dict/html.dict'
+au FileType html let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/javascript.dict,k$VIM/vimfiles/dict/html.dict,k$VIM/vimfiles/dict/html5.dict'
+au FileType actionscript let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/as3.dict'
+au FileType sh let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/bash.dict'
+
+au BufNewFile,BufRead *.nut let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/squirrel.dict'
 """"""""""""""""""""
 "NERDTree seting
 """"""""""""""""""""
@@ -720,7 +542,7 @@ let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=0
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=20
-let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.rar$','\.swp$','\.dll$','\.obj$']
+let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.tar\.gz$','\.7z$','\.zip$','\.rar$','\.swp$','\.dll$','\.obj$']
 nmap <silent> ;tt :NERDTreeToggle <cr>
 
 """"""""""""""""""""
@@ -761,7 +583,6 @@ nmap <unique> <silent> # <Plug>MarkSearchPrev
 nmap <silent> ;P <Plug>ToggleProject
 let g:proj_window_width = 20
 let g:proj_window_increment = 50
-
 """"""""""""""""""""
 "NERD_commenter setting
 """"""""""""""""""""
@@ -903,6 +724,13 @@ let g:clang_snippets = 1
 let g:clang_complete_macros = 1
 imap <s-space> <c-x><c-o>
 """"""""""""""""""""
+"python-mode
+""""""""""""""""""""
+let g:pymode_rope_autocomplete_map = '<s-space>'
+let g:pymode_run_key = ';pr'
+let g:pymode_breakpoint_key = ';pb'
+let g:pymode_lint_message = 0
+""""""""""""""""""""
 "YouCompleteMe
 """"""""""""""""""""
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -912,25 +740,11 @@ let g:ycm_key_invoke_completion = '<s-space>'
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_register_as_syntastic_checker = 0
 
-if  has("win32")
-	let g:ycm_global_ycm_extra_conf = $HOME .'/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-	nmap <silent> \yy :call SwitchToBuf("$HOME/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
-	autocmd! bufwritepost _vimrc source $HOME/vimfiles/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py
-else
-	let g:ycm_global_ycm_extra_conf = $HOME .'/.vim/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-	nmap <silent> \yy :call SwitchToBuf("$HOME/.vim/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
-	autocmd! bufwritepost vimrc source $HOME/.vim/plugins/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py
-endif
-
+let g:ycm_global_ycm_extra_conf = $VIM .'/vimfiles/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+"nmap <silent> \yy :call SwitchToBuf("$VIM/vimfiles/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
 """"""""""""""""""""
-"Another plugin
+"Another plugin mappings
 """"""""""""""""""""
-if has("unix")
-	if has("gui_running")
-		"au	BufEnter	*	cd	%:h
-		au	BufEnter	*	set	autochdir
-	endif
-endif
 "left to right
 nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
@@ -948,39 +762,119 @@ vmap <silent> aa <Plug>ParameterObjectA
 omap <silent> aa <Plug>ParameterObjectA
 "auto pair
 let g:AutoPairsShortcutToggle = '<M-a>'
+
+"--------------------------------------------}}}1
+"=================================
+"User generic {{{1
+"=================================
 """"""""""""""""""""
-"filetype operation
+"User base setting
 """"""""""""""""""""
-if has("win32")
-	autocmd FileType asm let g:acp_completeOption='.,w,u,k$HOME/vimfiles/dict/win32.dict'
-endif
+"My information
+iab actime <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+"edit vimrc enable fold
+au BufRead,BufNewFile Ac.vimrc setl fdm=marker fen
+""""""""""""""""""""
+"User mappings
+""""""""""""""""""""
+"Bash like
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-B> <Left>
+cnoremap <C-F> <Right>
+
+inoremap <C-A> <C-O>^
+inoremap <C-E> <End>
+inoremap <C-B> <Left>
+inoremap <C-F> <Right>
+
+"file type
+nmap ;ff :call <SID>FileFormat()<cr>
+nmap ;fu :se fenc=utf-8<cr>
+nmap ;fw :se fenc=GBK<cr>
+"quickfix
+nmap ;cl :call	ToggleQuickfix() <CR>
+nmap ;cn :cn <CR>
+nmap ;cp :cp <CR>
+nmap ;co :cold <CR>
+nmap ;ci :cnew <CR>
+"visual edit mode
+nmap ;ve :call	ToggleVisualEditMode() <CR>
+vmap ;ve :call	ToggleVisualEditMode() <CR>
+
+"Fast saving
+nmap <silent> ;ww :update<cr>
+nmap <silent> ;wf :update!<cr>
+"Fast quiting
+nmap <silent> ;qw :wq<cr>
+nmap <silent> ;qf :q!<cr>
+nmap <silent> ;qq :q<cr>
+nmap <silent> ;qa :qa<cr>
+nmap <silent> ;<esc> :<esc>
+"Fast remove highlight search
+nmap <silent> ;<cr> :noh<cr>
+
+nmap <silent> ;to :tabo<cr>
+nmap <silent> ;tq :tabc<cr>
+""Fast redraw
+"nmap <silent> ;rr :redraw!<cr>
+""Fast rewind
+"nmap <silent> ;re :rewind<cr>
+
+"Smart way to move btw. windows
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+
+nmap <C-UP> <C-W>+
+nmap <C-DOWN> <C-W>-
+nmap <C-LEFT> <C-W><
+nmap <C-RIGHT> <C-W>>
+
+"vnoremap <C-S-X> "+x
+"vnoremap <C-S-C> "+y
+"map <C-S-V>	"+gP
+"vnoremap <C-S-V> "+gP
+"cmap <C-S-V> <C-R>+
+"imap <C-S-V> <C-R>+
+
+autocmd FileType vim map <buffer> ;we :w!<cr>:source %<cr>
+
+nmap <silent> ;wss :call DeleteTrailingWS()<cr>:w<cr>
+nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
+
+"make cpp tags
+nmap \= :!start ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
+""""""""""""""""""""
+"User filetype
+""""""""""""""""""""
+" do not automaticlly remove trailing whitespace
+autocmd BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
+autocmd BufWrite *.txt :call DeleteTrailingWS()
+
 au BufRead,BufNewFile README*,COPYING setlocal ft=txt
-au BufRead,BufNewFile *.txt setlocal ft=txt
-au BufRead,BufNewFile *.log setlocal ft=txt
+au BufRead,BufNewFile *.txt setl ft=txt
+au BufRead,BufNewFile *.log setl ft=txt
 
-au BufRead,BufNewFile *.asm setlocal ft=fasm
-au BufNewFile,BufRead *.asm set makeprg=fasm\ %:p
+au BufRead,BufNewFile *.asm setl ft=fasm
+au BufNewFile,BufRead *.asm setl makeprg=fasm\ %:p
 
-au BufNewFile,BufRead *.mxml set ft=mxml
-au BufNewFile,BufRead *.as set ft=actionscript
-au BufNewFile,BufRead CMakeLists.txt set ft=cmake
-au BufNewFile,BufRead *.p set ft=pawn
+au BufNewFile,BufRead *.mxml setl ft=mxml
+au BufNewFile,BufRead *.as setl ft=actionscript
+au BufNewFile,BufRead CMakeLists.txt setl ft=cmake
+au BufNewFile,BufRead *.p setl ft=pawn
 
-"au BufNewFile,BufRead *.proto set ft=proto
-"au BufNewFile,BufRead *.nut set syntax=squirrel
-"au BufNewFile,BufRead *.nut set makeprg=sq\ %:p
-"au BufNewFile,BufRead *.nut set errorformat=%f:%l:%m
-
+"squirrel script
+au BufNewFile,BufRead *.nut setl syntax=squirrel
+au BufNewFile,BufRead *.nut setl makeprg=sq\ %:p
+au BufNewFile,BufRead *.nut setl errorformat=%f:%l:%m
 """"""""""""""""""""
-"user opration
+"temp settings }}}1
 """"""""""""""""""""
-"autocmd FileType c,h,cpp,hpp,cxx,hxx set tags +=d:/Angluca/SDK_TAGS/QTtags
-
 "if has(win32")
 "nmap <F10> :!dir /s /b *.c *.h *cpp *.hpp  > cscope.files <CR>
 "else
 "nmap <F10> :!find -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp" -o -name "*.hpp" > cscope.files <CR>
 "endif
 "nmap <F11> :!start cscope -Rbk <CR>
-"nmap <F12> :!start ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
-
