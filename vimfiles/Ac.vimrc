@@ -477,9 +477,9 @@ let	g:netrw_home	=	$HOME.'/vimdata/cache'
 "Omnicppcompl setting
 """"""""""""""""""""
 if has("win32")
-	autocmd FileType c,cpp set tags +=$VIM/vimfiles/dict/winxtags
+	autocmd FileType c,cpp set tags +=$VIM/dict/winxtags
 endif
-autocmd FileType c,cpp set tags +=$VIM/.vim/dict/cpptags
+autocmd FileType c,cpp set tags +=$VIM/dict/cpptags
 
 " set completeopt as don't show menu and preview
 set completeopt=menuone
@@ -513,24 +513,24 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 """"""""""""""""""""
 "autorun the script
 let g:acp_behaviorKeywordLength=3
-"autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/win32.dict,k$VIM/vimfiles/dict/c.dict,k$VIM/vimfiles/dict/cpp.dict,k$VIM/vimfiles/dict/gl.dict'
+"autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$VIM/dict/win32.dict,k$VIM/dict/c.dict,k$VIM/dict/cpp.dict,k$VIM/dict/gl.dict'
 if has("win32")
-	autocmd FileType asm let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/win32.dict'
-	au FileType c,cpp let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/win32.dict,k$VIM/vimfiles/dict/c.dict,k$VIM/vimfiles/dict/cpp.dict'
+	autocmd FileType asm let g:acp_completeOption='.,w,u,k$VIM/dict/win32.dict'
+	au FileType c,cpp let g:acp_completeOption='.,w,u,k$VIM/dict/win32.dict,k$VIM/dict/c.dict,k$VIM/dict/cpp.dict'
 else
-	au FileType c,cpp let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/c.dict,k$VIM/vimfiles/dict/cpp.dict'
+	au FileType c,cpp let g:acp_completeOption='.,w,u,k$VIM/dict/c.dict,k$VIM/dict/cpp.dict'
 endif
-au FileType lua let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/lua.dict'
-au FileType java let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/java.dict'
-au FileType js let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/javascript.dict'
-au FileType vim let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/vim.dict'
-au FileType perl let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/perl.dict'
-au FileType php let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/php.dict,k$VIM/vimfiles/dict/html.dict'
-au FileType html let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/javascript.dict,k$VIM/vimfiles/dict/html.dict,k$VIM/vimfiles/dict/html5.dict'
-au FileType actionscript let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/as3.dict'
-au FileType sh let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/bash.dict'
+au FileType lua let g:acp_completeOption='.,w,u,k$VIM/dict/lua.dict'
+au FileType java let g:acp_completeOption='.,w,u,k$VIM/dict/java.dict'
+au FileType js let g:acp_completeOption='.,w,u,k$VIM/dict/javascript.dict'
+au FileType vim let g:acp_completeOption='.,w,u,k$VIM/dict/vim.dict'
+au FileType perl let g:acp_completeOption='.,w,u,k$VIM/dict/perl.dict'
+au FileType php let g:acp_completeOption='.,w,u,k$VIM/dict/php.dict,k$VIM/dict/html.dict'
+au FileType html let g:acp_completeOption='.,w,u,k$VIM/dict/javascript.dict,k$VIM/dict/html.dict,k$VIM/dict/html5.dict'
+au FileType actionscript let g:acp_completeOption='.,w,u,k$VIM/dict/as3.dict'
+au FileType sh let g:acp_completeOption='.,w,u,k$VIM/dict/bash.dict'
 
-au BufNewFile,BufRead *.nut let g:acp_completeOption='.,w,u,k$VIM/vimfiles/dict/squirrel.dict'
+au BufNewFile,BufRead *.nut let g:acp_completeOption='.,w,u,k$VIM/dict/squirrel.dict'
 """"""""""""""""""""
 "NERDTree seting
 """"""""""""""""""""
@@ -740,8 +740,8 @@ let g:ycm_key_invoke_completion = '<s-space>'
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_register_as_syntastic_checker = 0
 
-let g:ycm_global_ycm_extra_conf = $VIM .'/vimfiles/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-"nmap <silent> \yy :call SwitchToBuf("$VIM/vimfiles/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
+let g:ycm_global_ycm_extra_conf = $VIM .'/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+"nmap <silent> \yy :call SwitchToBuf("$VIM/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
 """"""""""""""""""""
 "Another plugin mappings
 """"""""""""""""""""
