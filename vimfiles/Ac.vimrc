@@ -730,6 +730,7 @@ let g:pymode_rope_autocomplete_map = '<s-space>'
 let g:pymode_run_key = ';pr'
 let g:pymode_breakpoint_key = ';pb'
 let g:pymode_lint_message = 0
+let g:pymode_lint_write = 0
 """"""""""""""""""""
 "YouCompleteMe
 """"""""""""""""""""
