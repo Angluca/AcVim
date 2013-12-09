@@ -277,7 +277,7 @@ set hlsearch
 "Set magic on
 set magic
 "No sound on errors.
-au vimEnter * set t_vb=
+au vimEnter * set vb t_vb=
 set noerrorbells
 set novisualbell
 "show matching bracets
