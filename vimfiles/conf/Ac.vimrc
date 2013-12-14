@@ -1,6 +1,7 @@
 "
 " Last Change: 23/11/13 23:57:50
 "---------------------------------
+au BufRead,BufNewFile *.vconf set ft=vim
 "=================================
 " General {{{1
 "=================================
@@ -204,9 +205,9 @@ if has("mac")
 endif
 
 "Fast editing of _vimrc
-nmap <silent> \ee :call SwitchToBuf("$VIM/Ac.vimrc")<cr>
+nmap <silent> \ee :call SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
 "When _vimrc is edited, reload it
-"autocmd! bufwritepost Ac.vimrc source $VIM/Ac.vimrc
+"autocmd! bufwritepost Ac.vimrc source $VIMCONF/Ac.vimrc
 """"""""""""""""""""
 "Colors and Fonts
 """"""""""""""""""""
@@ -392,7 +393,7 @@ au FileType html set syntax=html
 """"""""""""""""""""
 "Vim section
 """"""""""""""""""""
-autocmd FileType vim set nofen
+"autocmd FileType vim set nofen
 "=================================
 " Plugin configuration {{{1
 "=================================
@@ -424,11 +425,11 @@ let g:bufExplorerUseCurrentWindow=1 " Open in new window.
 """"""""""""""""""""
 "Taglist
 """"""""""""""""""""
-if has("win32")
-	let Tlist_Ctags_Cmd = 'ctags'
-elseif has("unix")
-	let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-endif
+"if has("win32")
+	"let Tlist_Ctags_Cmd = 'ctags'
+"elseif has("unix")
+	"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+"endif
 let Tlist_Show_One_File = 0
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 0
@@ -477,9 +478,9 @@ let	g:netrw_home	=	$HOME.'/vimdata/cache'
 "Omnicppcompl setting
 """"""""""""""""""""
 if has("win32")
-	autocmd FileType c,cpp set tags +=$VIM/dict/winxtags
+	autocmd FileType c,cpp set tags +=$VIMDICT/winxtags
 endif
-autocmd FileType c,cpp set tags +=$VIM/dict/cpptags
+autocmd FileType c,cpp set tags +=$VIMDICT/cpptags
 
 " set completeopt as don't show menu and preview
 set completeopt=menuone
@@ -509,28 +510,15 @@ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 """"""""""""""""""""
+"Neocomplete
+""""""""""""""""""""
+"source $VIMCONF/vneocomplete.conf
+"nmap <silent> \ne :call SwitchToBuf("$VIMCONF/neocomplete.vconf")<cr>
+""""""""""""""""""""
 "AutoComplpop seting
 """"""""""""""""""""
-"autorun the script
-let g:acp_behaviorKeywordLength=3
-"autocmd FileType c,h,cpp,hpp let g:acp_completeOption='.,w,u,k$VIM/dict/win32.dict,k$VIM/dict/c.dict,k$VIM/dict/cpp.dict,k$VIM/dict/gl.dict'
-if has("win32")
-	autocmd FileType asm let g:acp_completeOption='.,w,u,k$VIM/dict/win32.dict'
-	au FileType c,cpp let g:acp_completeOption='.,w,u,k$VIM/dict/win32.dict,k$VIM/dict/c.dict,k$VIM/dict/cpp.dict'
-else
-	au FileType c,cpp let g:acp_completeOption='.,w,u,k$VIM/dict/c.dict,k$VIM/dict/cpp.dict'
-endif
-au FileType lua let g:acp_completeOption='.,w,u,k$VIM/dict/lua.dict'
-au FileType java let g:acp_completeOption='.,w,u,k$VIM/dict/java.dict'
-au FileType js let g:acp_completeOption='.,w,u,k$VIM/dict/javascript.dict'
-au FileType vim let g:acp_completeOption='.,w,u,k$VIM/dict/vim.dict'
-au FileType perl let g:acp_completeOption='.,w,u,k$VIM/dict/perl.dict'
-au FileType php let g:acp_completeOption='.,w,u,k$VIM/dict/php.dict,k$VIM/dict/html.dict'
-au FileType html let g:acp_completeOption='.,w,u,k$VIM/dict/javascript.dict,k$VIM/dict/html.dict,k$VIM/dict/html5.dict'
-au FileType actionscript let g:acp_completeOption='.,w,u,k$VIM/dict/as3.dict'
-au FileType sh let g:acp_completeOption='.,w,u,k$VIM/dict/bash.dict'
-
-au BufNewFile,BufRead *.nut let g:acp_completeOption='.,w,u,k$VIM/dict/squirrel.dict'
+source $VIMCONF/autocomplete.vconf
+nmap <silent> \ac :call SwitchToBuf("$VIMCONF/autocomplete.vconf")<cr>
 """"""""""""""""""""
 "NERDTree seting
 """"""""""""""""""""
@@ -722,7 +710,6 @@ let g:clang_use_library=1
 let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
 let g:clang_complete_macros = 1
-imap <s-space> <c-x><c-o>
 """"""""""""""""""""
 "python-mode
 """"""""""""""""""""
@@ -757,9 +744,9 @@ let g:qb_hotkey = ";bb"
 vnoremap <silent> <Enter> :EasyAlign<cr>
 "ParameterObject
 let g:no_parameter_object_maps = 1
-vmap <silent> ia <Plug>ParameterObjectI
+"vmap <silent> ia <Plug>ParameterObjectI
 omap <silent> ia <Plug>ParameterObjectI
-vmap <silent> aa <Plug>ParameterObjectA
+"vmap <silent> aa <Plug>ParameterObjectA
 omap <silent> aa <Plug>ParameterObjectA
 "auto pair
 let g:AutoPairsShortcutToggle = '<M-a>'
@@ -774,7 +761,8 @@ let g:AutoPairsShortcutToggle = '<M-a>'
 "My information
 iab actime <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 "edit vimrc enable fold
-au BufRead,BufNewFile Ac.vimrc setl fdm=marker fen
+set fdm=marker
+"au BufRead,BufNewFile Ac.vimrc setl fdm=marker fen
 """"""""""""""""""""
 "User mappings
 """"""""""""""""""""
@@ -845,6 +833,8 @@ autocmd FileType vim map <buffer> ;we :w!<cr>:source %<cr>
 nmap <silent> ;wss :call DeleteTrailingWS()<cr>:w<cr>
 nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
 
+"complete
+imap <s-space> <c-x><c-o>
 "make cpp tags
 nmap \= :!start ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
 """"""""""""""""""""
