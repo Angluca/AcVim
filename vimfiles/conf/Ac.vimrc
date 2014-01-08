@@ -202,6 +202,7 @@ if has("mac")
 	vmap "*y :w !pbcopy<CR><CR>
 	nmap "*p :r !pbpaste<CR><CR>
 	nmap "*gP :r !pbpaste<CR><CR>
+	set guifont=Menlo:h14
 endif
 
 "Fast editing of _vimrc
