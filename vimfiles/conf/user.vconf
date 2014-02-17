@@ -116,3 +116,10 @@ au BufNewFile,BufRead *.nut setl errorformat=%f:%l:%m
 "endif
 "nmap <F11> :!start cscope -Rbk <CR>
 
+"fk air esc
+"let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
+"imap ` <c-c>
+"nmap ` <c-c>
+"vmap ` <c-c>
+"imap <esc> <c-v>`
+
