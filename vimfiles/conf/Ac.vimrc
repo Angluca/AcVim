@@ -3,7 +3,7 @@
 "---------------------------------
 au BufRead,BufNewFile *.vconf set ft=vim
 "=================================
-" General {{{1
+" General 
 "=================================
 "call pathogen#helptags()
 call pathogen#infect()
@@ -396,7 +396,7 @@ au FileType html set syntax=html
 """"""""""""""""""""
 "autocmd FileType vim set nofen
 "=================================
-" Plugin configuration {{{1
+" Plugin configuration 
 "=================================
 """"""""""""""""""""
 "Ctrlp setting
@@ -605,7 +605,7 @@ let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_blockHeader="-------------------------------------------"
 let g:DoxygenToolkit_blockFooter="-------------------------------------------"
 let g:DoxygenToolkit_authorName="Angluca"
-let g:DoxygenToolkit_authorEmail="angluca@qq.com"
+let g:DoxygenToolkit_authorEmail="to@angluca.com"
 """"""""""""""""""""
 "Yankring
 """"""""""""""""""""
@@ -752,7 +752,7 @@ omap <silent> aa <Plug>ParameterObjectA
 "auto pair
 let g:AutoPairsShortcutToggle = '<M-a>'
 
-"--------------------------------------------}}}1
+"--------------------------------------------
 "load user conf
 source $VIMCONF/user.vconf
 nmap <silent> \uu :call SwitchToBuf("$VIMCONF/user.vconf")<cr>
