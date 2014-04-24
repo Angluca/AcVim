@@ -88,3 +88,6 @@
 [submodule "vimfiles/bundle/Buffersaurus"]
 	path = vimfiles/bundle/Buffersaurus
 	url = https://github.com/vim-scripts/Buffersaurus.git
+[submodule "vimfiles/bundle/vim-easy-align"]
+	path = vimfiles/bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
