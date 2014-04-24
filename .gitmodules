@@ -1,0 +1,90 @@
+[submodule "vimfiles/bundle/Align"]
+	path = vimfiles/bundle/Align
+	url = https://github.com/vim-scripts/Align.git
+[submodule "auto-pairs"]
+	path = auto-pairs
+	url = git://github.com/jiangmiao/auto-pairs.git
+[submodule "vimfiles/bundle/auto-pairs"]
+	path = vimfiles/bundle/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "vimfiles/bundle/bufexplorer"]
+	path = vimfiles/bundle/bufexplorer
+	url = https://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "vimfiles/bundle/AutoComplPop"]
+	path = vimfiles/bundle/AutoComplPop
+	url = https://github.com/vim-scripts/AutoComplPop.git
+[submodule "vimfiles/bundle/ctrlp"]
+	path = vimfiles/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vimfiles/bundle/colorv"]
+	path = vimfiles/bundle/colorv
+	url = https://github.com/Rykka/colorv.vim.git
+[submodule "vimfiles/bundle/vim-diffchanges"]
+	path = vimfiles/bundle/vim-diffchanges
+	url = https://github.com/jmcantrell/vim-diffchanges.git
+[submodule "vimfiles/bundle/DrawIt"]
+	path = vimfiles/bundle/DrawIt
+	url = https://github.com/vim-scripts/DrawIt.git
+[submodule "vimfiles/bundle/vim-easygrep"]
+	path = vimfiles/bundle/vim-easygrep
+	url = https://github.com/dkprice/vim-easygrep.git
+[submodule "vimfiles/bundle/vim-easymotion"]
+	path = vimfiles/bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "vimfiles/bundle/emmet-vim"]
+	path = vimfiles/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "vimfiles/bundle/git-vim"]
+	path = vimfiles/bundle/git-vim
+	url = https://github.com/motemen/git-vim.git
+[submodule "vimfiles/bundle/gundo.vim"]
+	path = vimfiles/bundle/gundo.vim
+	url = https://github.com/sjl/gundo.vim.git
+[submodule "vimfiles/bundle/linediff.vim"]
+	path = vimfiles/bundle/linediff.vim
+	url = https://github.com/AndrewRadev/linediff.vim.git
+[submodule "vimfiles/bundle/Mark--Karkat"]
+	path = vimfiles/bundle/Mark--Karkat
+	url = https://github.com/vim-scripts/Mark--Karkat.git
+[submodule "vimfiles/bundle/nerdtree"]
+	path = vimfiles/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vimfiles/bundle/nerdcommenter"]
+	path = vimfiles/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "vimfiles/bundle/Python-mode-klen"]
+	path = vimfiles/bundle/Python-mode-klen
+	url = https://github.com/vim-scripts/Python-mode-klen.git
+[submodule "vimfiles/bundle/vim-repeat"]
+	path = vimfiles/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vimfiles/bundle/vim-surround"]
+	path = vimfiles/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vimfiles/bundle/syntastic"]
+	path = vimfiles/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vimfiles/bundle/tagbar"]
+	path = vimfiles/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vimfiles/bundle/vcscommand.vim"]
+	path = vimfiles/bundle/vcscommand.vim
+	url = https://github.com/vim-scripts/vcscommand.vim.git
+[submodule "vimfiles/bundle/vim-airline"]
+	path = vimfiles/bundle/vim-airline
+	url = https://github.com/bling/vim-airline.git
+[submodule "vimfiles/bundle/vim-filesearch"]
+	path = vimfiles/bundle/vim-filesearch
+	url = https://github.com/jeetsukumaran/vim-filesearch.git
+[submodule "vimfiles/bundle/vim-fixkey"]
+	path = vimfiles/bundle/vim-fixkey
+	url = https://github.com/drmikehenry/vim-fixkey.git
+[submodule "vimfiles/bundle/vim-multiple-cursors"]
+	path = vimfiles/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "vimfiles/bundle/vimwiki"]
+	path = vimfiles/bundle/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+[submodule "vimfiles/bundle/Buffersaurus"]
+	path = vimfiles/bundle/Buffersaurus
+	url = https://github.com/vim-scripts/Buffersaurus.git
