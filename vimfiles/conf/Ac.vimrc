@@ -737,8 +737,8 @@ let g:ycm_global_ycm_extra_conf = $VIM .'/bundle/YouCompleteMe/cpp/ycm/.ycm_extr
 "left to right
 nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
-"undo tree
-nmap ;ub :UB<CR>
+"undo toggle
+nmap ;ut :GundoToggle<CR>
 "qbuf
 let g:qb_hotkey = ";bb"
 "EasyAlign
