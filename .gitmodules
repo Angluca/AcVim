@@ -1,9 +1,6 @@
 [submodule "vimfiles/bundle/Align"]
 	path = vimfiles/bundle/Align
 	url = https://github.com/vim-scripts/Align.git
-[submodule "auto-pairs"]
-	path = auto-pairs
-	url = git://github.com/jiangmiao/auto-pairs.git
 [submodule "vimfiles/bundle/auto-pairs"]
 	path = vimfiles/bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
