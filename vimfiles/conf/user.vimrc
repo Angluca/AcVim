@@ -67,6 +67,12 @@ nmap <C-DOWN> <C-W>-
 nmap <C-LEFT> <C-W><
 nmap <C-RIGHT> <C-W>>
 
+nmap j gj
+nmap k gk
+nmap ^ g^
+nmap $ g$
+nmap 0 g0
+
 "vnoremap <C-S-X> "+x
 "vnoremap <C-S-C> "+y
 "map <C-S-V>	"+gP
@@ -74,7 +80,7 @@ nmap <C-RIGHT> <C-W>>
 "cmap <C-S-V> <C-R>+
 "imap <C-S-V> <C-R>+
 
-autocmd FileType vim map <buffer> ;we :w!<cr>:source %<cr>
+autocmd FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
 
 nmap <silent> ;wss :call DeleteTrailingWS()<cr>:w<cr>
 nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>

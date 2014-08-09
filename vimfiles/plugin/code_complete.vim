@@ -57,11 +57,11 @@ if !exists("g:completekey")
 endif
 
 if !exists("g:rs")
-    let g:rs = '`<'    "region start
+    let g:rs = '$`'    "region start
 endif
 
 if !exists("g:re")
-    let g:re = '>`'    "region stop
+    let g:re = '`'    "region stop
 endif
 
 if !exists("g:user_defined_snippets")
@@ -75,17 +75,18 @@ let s:jumppos = -1
 let s:doappend = 1
 
 " Autocommands: {{{1
-autocmd BufReadPost,BufNewFile * call CodeCompleteStart()
+"autocmd BufReadPost,BufNewFile * call CodeCompleteStart()
+autocmd BufReadPost,BufNewFile *.cc,*.cpp,*.cxx,*.hpp,*.[ch] call CodeCompleteStart()
 
 " Menus:
-menu <silent>       &Tools.Code\ Complete\ Start          :call CodeCompleteStart()<CR>
-menu <silent>       &Tools.Code\ Complete\ Stop           :call CodeCompleteStop()<CR>
+"menu <silent>       &Tools.Code\ Complete\ Start          :call CodeCompleteStart()<CR>
+"menu <silent>       &Tools.Code\ Complete\ Stop           :call CodeCompleteStop()<CR>
 
 " Function Definitions: {{{1
 
 function! CodeCompleteStart()
     "exec "silent! iunmap  <buffer> ".g:completekey
-    exec "inoremap <buffer> ".g:completekey." <c-r>=CodeComplete()<cr><c-r>=SwitchRegion()<cr>"
+    exec "inoremap <buffer> ".g:completekey." <c-r>=SwitchRegion()<cr><c-r>=CodeComplete()<cr>"
 endfunction
 
 function! CodeCompleteStop()
@@ -179,11 +180,12 @@ function! SwitchRegion()
         normal 0
         call search(g:rs,'c',line('.'))
         normal v
+        exec  "normal ".strlen(g:rs)."l"
         call search(g:re,'e',line('.'))
         if &selection == "exclusive"
             exec "norm l"
         endif
-        return "\<c-\>\<c-n>gvo\<c-g>"
+        return "\<c-\>\<c-n>gv\<c-g>"
     else
         if s:doappend == 1
             if g:completekey == "<tab>"

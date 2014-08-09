@@ -49,9 +49,6 @@
 [submodule "vimfiles/bundle/nerdcommenter"]
 	path = vimfiles/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "vimfiles/bundle/Python-mode-klen"]
-	path = vimfiles/bundle/Python-mode-klen
-	url = https://github.com/vim-scripts/Python-mode-klen.git
 [submodule "vimfiles/bundle/vim-repeat"]
 	path = vimfiles/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -88,3 +85,12 @@
 [submodule "vimfiles/bundle/vim-easy-align"]
 	path = vimfiles/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "vimfiles/bundle/vimim"]
+	path = vimfiles/bundle/vimim
+	url = https://github.com/vim-scripts/VimIM.git
+[submodule "vimfiles/bundle/visincr"]
+	path = vimfiles/bundle/visincr
+	url = https://github.com/vim-scripts/VisIncr.git
+[submodule "vimfiles/bundle/clang_complete"]
+	path = vimfiles/bundle/clang_complete
+	url = https://github.com/Rip-Rip/clang_complete.git

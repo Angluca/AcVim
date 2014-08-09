@@ -1,13 +1,12 @@
 "
 " Last Change: 23/11/13 23:57:50
 "---------------------------------
-au BufRead,BufNewFile *.vconf set ft=vim
 "=================================
 " General 
 "=================================
 "call pathogen#helptags()
 call pathogen#infect()
-"call pathogen#infect("plugins")
+call pathogen#infect("bundle_custom")
 "call pathogen#runtime_append_all_bundles()
 """"""""""""""""""""
 "Functions
@@ -514,12 +513,12 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 "Neocomplete
 """"""""""""""""""""
 "source $VIMCONF/vneocomplete.conf
-"nmap <silent> \nn :call SwitchToBuf("$VIMCONF/neocomplete.vconf")<cr>
+"nmap <silent> \nn :call SwitchToBuf("$VIMCONF/neocomplete.vimrc")<cr>
 """"""""""""""""""""
 "AutoComplpop seting
 """"""""""""""""""""
-source $VIMCONF/autocomplete.vconf
-nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vconf")<cr>
+source $VIMCONF/autocomplete.vimrc
+nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 """"""""""""""""""""
 "NERDTree seting
 """"""""""""""""""""
@@ -616,13 +615,6 @@ let g:yankring_max_display = 20
 
 nmap ;yy :YRShow<CR>
 nmap ;yc :YRClear<CR>
-""""""""""""""""""""
-"MRU
-""""""""""""""""""""
-let	MRU_Max_Entries	=	20
-let	MRU_Auto_Close	=	1
-let MRU_File = $HOME.'/vimdata/cache/_vim_mru_files'
-nmap ;fm :Mru<CR>
 """"""""""""""""""""
 "EchoFunc
 """"""""""""""""""""
@@ -754,5 +746,5 @@ let g:AutoPairsShortcutToggle = '<M-a>'
 
 "--------------------------------------------
 "load user conf
-source $VIMCONF/user.vconf
-nmap <silent> \uu :call SwitchToBuf("$VIMCONF/user.vconf")<cr>
+source $VIMCONF/user.vimrc
+nmap <silent> \uu :call SwitchToBuf("$VIMCONF/user.vimrc")<cr>
