@@ -703,6 +703,7 @@ let g:clang_use_library=1
 let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
 let g:clang_complete_macros = 1
+let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
 """"""""""""""""""""
 "python-mode
 """"""""""""""""""""
