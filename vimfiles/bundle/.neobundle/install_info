@@ -1,0 +1,2 @@
+3.0
+{'neobundle.vim': {'checked_time': 1407684970, 'installed_uri': 'https://github.com/Shougo/neobundle.vim.git', 'installed_path': '/Users/Angluca/.vim/bundle/neobundle.vim', 'revisions': {}, 'updated_time': '1407357382'}, 'nerdcommenter': {'checked_time': 1407684512, 'installed_uri': 'https://github.com/scrooloose/nerdcommenter.git', 'installed_path': '/Users/Angluca/.vim/bundle/nerdcommenter', 'revisions': {}, 'updated_time': '1404807823'}}

@@ -4,10 +4,20 @@
 "=================================
 " General 
 "=================================
+"load plugins conf
+source $VIMCONF/plugins.vimrc
+nmap <silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 "call pathogen#helptags()
 call pathogen#infect()
 call pathogen#infect("bundle_custom")
 "call pathogen#runtime_append_all_bundles()
+
+" Ignore these filenames during enhanced command line completion.
+set wildignore+=*.luac " Lua byte code
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.a,*.dylib " compiled object files  
+set wildignore+=*.pyc " Python byte code  
+"set wildignore+=*.spl " compiled spelling word lists  
+"set wildignore+=*.sw? " Vim swap files  
 """"""""""""""""""""
 "Functions
 """"""""""""""""""""
@@ -478,7 +488,7 @@ let	g:netrw_home	=	$HOME.'/vimdata/cache'
 "Omnicppcompl setting
 """"""""""""""""""""
 if has("win32")
-	autocmd FileType c,cpp set tags +=$VIMDICT/winxtags
+	"autocmd FileType c,cpp set tags +=$VIMDICT/winxtags
 endif
 autocmd FileType c,cpp set tags +=$VIMDICT/cpptags
 
