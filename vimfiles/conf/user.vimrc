@@ -112,6 +112,8 @@ au BufNewFile,BufRead *.p setl ft=pawn
 au BufNewFile,BufRead *.nut setl syntax=squirrel
 au BufNewFile,BufRead *.nut setl makeprg=sq\ %:p
 au BufNewFile,BufRead *.nut setl errorformat=%f:%l:%m
+
+autocmd BufNewFile,BufRead *.md,*.markdown setl filetype=markdown
 """"""""""""""""""""
 "temp settings }}}1
 """"""""""""""""""""

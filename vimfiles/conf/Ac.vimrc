@@ -8,7 +8,7 @@
 source $VIMCONF/plugins.vimrc
 nma<silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 "call pathogen#helptags()
-"call pathogen#infect()
+call pathogen#infect()
 call pathogen#infect("bundle_custom")
 "call pathogen#runtime_append_all_bundles()
 
@@ -736,6 +736,12 @@ let g:ycm_register_as_syntastic_checker = 0
 
 let g:ycm_global_ycm_extra_conf = $VIM .'/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 "nmap <silent> \yy :call SwitchToBuf("$VIM/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py")<cr>
+""""""""""""""""""""
+"vim-markdown
+""""""""""""""""""""
+"let g:vim_markdown_folding_disabled=1
+"
+let g:vim_markdown_initial_foldlevel=1
 """"""""""""""""""""
 "Another plugin mappings
 """"""""""""""""""""

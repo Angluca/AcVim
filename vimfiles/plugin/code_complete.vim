@@ -86,7 +86,6 @@ autocmd BufReadPost,BufNewFile *.cc,*.cpp,*.cxx,*.hpp,*.[ch] call CodeCompleteSt
 
 function! CodeCompleteStart()
     "exec "silent! iunmap  <buffer> ".g:completekey
-    "exec "inoremap <buffer> ".g:completekey." <c-r>=SwitchRegion()<cr><c-r>=CodeComplete()<cr>"
     exec "inoremap <buffer> ".g:completekey." <c-r>=CodeComplete()<cr><c-r>=SwitchRegion()<cr>"
 endfunction
 
