@@ -6,9 +6,9 @@
 "=================================
 "load plugins conf
 source $VIMCONF/plugins.vimrc
-nmap <silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
+nma<silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 "call pathogen#helptags()
-call pathogen#infect()
+"call pathogen#infect()
 call pathogen#infect("bundle_custom")
 "call pathogen#runtime_append_all_bundles()
 
@@ -714,7 +714,9 @@ let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
 let g:clang_complete_macros = 1
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
-""""""""""""""""""""
+"let g:clang_user_options='-stdlib=libc++ -std=c++11'
+let g:clang_user_options='-std=c++11'
+""""""""""""""
 "python-mode
 """"""""""""""""""""
 let g:pymode_rope_autocomplete_map = '<s-space>'
