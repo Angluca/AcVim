@@ -45,9 +45,8 @@ if !filereadable(expand("$VIM/autoload/plug.vim"))
 	!curl -fLo $VIM/autoload/plug.vim  https://raw.github.com/junegunn/vim-plug/master/plug.vim
 endif
 
-set nocompatible
-filetype off
-call plug#begin("$VIM/bundle")
+let s:bundle_dir = expand("$VIM/bundle")
+call plug#begin(s:bundle_dir)
 
 Plug 'Align'
 Plug 'AutoComplPop'
@@ -86,6 +85,4 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
-
-filetype plugin indent on
 
