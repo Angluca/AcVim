@@ -59,6 +59,7 @@ Plug 'vcscommand.vim'
 Plug 'VimIM'
 Plug 'VisIncr'
 
+Plug 'tikhomirov/vim-glsl'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'jiangmiao/auto-pairs'

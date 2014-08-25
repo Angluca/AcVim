@@ -71,7 +71,7 @@ nmap j gj
 nmap k gk
 nmap ^ g^
 nmap $ g$
-nmap 0 g0
+"nmap 0 g0
 
 "vnoremap <C-S-X> "+x
 "vnoremap <C-S-C> "+y
@@ -96,24 +96,24 @@ nmap \= :!start ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
 autocmd BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
 autocmd BufWrite *.txt :call DeleteTrailingWS()
 
-au BufRead,BufNewFile README*,COPYING setlocal ft=txt
-au BufRead,BufNewFile *.txt setl ft=txt
-au BufRead,BufNewFile *.log setl ft=txt
-
-au BufRead,BufNewFile *.asm setl ft=fasm
+au BufNewFile,BufRead README*,COPYING setlocal ft=txt
+au BufNewFile,BufRead *.txt setl ft=txt
+au BufNewFile,BufRead *.log setl ft=txt
+au BufNewFile,BufRead *.asm setl ft=fasm
 au BufNewFile,BufRead *.asm setl makeprg=fasm\ %:p
 
 au BufNewFile,BufRead *.mxml setl ft=mxml
 au BufNewFile,BufRead *.as setl ft=actionscript
 au BufNewFile,BufRead CMakeLists.txt setl ft=cmake
 au BufNewFile,BufRead *.p setl ft=pawn
+au BufNewFile,BufRead *.md,*.markdown setl ft=markdown
+au BufNewFile,BufRead *.shd setl ft=glsl
 
 "squirrel script
 au BufNewFile,BufRead *.nut setl syntax=squirrel
 au BufNewFile,BufRead *.nut setl makeprg=sq\ %:p
 au BufNewFile,BufRead *.nut setl errorformat=%f:%l:%m
 
-autocmd BufNewFile,BufRead *.md,*.markdown setl filetype=markdown
 """"""""""""""""""""
 "temp settings }}}1
 """"""""""""""""""""
