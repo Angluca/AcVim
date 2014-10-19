@@ -713,7 +713,8 @@ let g:clang_use_library=1
 let g:clang_complete_patterns = 1
 let g:clang_snippets = 1
 let g:clang_complete_macros = 1
-let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
+"let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
+let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
 "let g:clang_user_options='-stdlib=libc++ -std=c++11'
 let g:clang_user_options='-std=c++11'
 """"""""""""""
