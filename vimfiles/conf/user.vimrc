@@ -24,7 +24,7 @@ inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 
 "file type
-nmap ;ff :call <SID>FileFormat()<cr>
+nmap ;ff :call FileFormatOption()<cr>
 nmap ;fu :se fenc=utf-8<cr>
 nmap ;fw :se fenc=GBK<cr>
 "quickfix
@@ -88,7 +88,7 @@ nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
 "complete
 imap <s-space> <c-x><c-o>
 "make cpp tags
-nmap \= :!start ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
+nmap \= :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
 """"""""""""""""""""
 "User filetype
 """"""""""""""""""""
@@ -107,12 +107,17 @@ au BufNewFile,BufRead *.as setl ft=actionscript
 au BufNewFile,BufRead CMakeLists.txt setl ft=cmake
 au BufNewFile,BufRead *.p setl ft=pawn
 au BufNewFile,BufRead *.md,*.markdown setl ft=markdown
-au BufNewFile,BufRead *.shd setl ft=glsl
+au BufNewFile,BufRead *.shd,*.sc setl ft=glsl
 
 "squirrel script
-au BufNewFile,BufRead *.nut setl syntax=squirrel
+au BufNewFile,BufRead *.nut setl ft=squirrel
 au BufNewFile,BufRead *.nut setl makeprg=sq\ %:p
 au BufNewFile,BufRead *.nut setl errorformat=%f:%l:%m
+
+"godot script
+au BufNewFile,BufRead *.gd setl ft=gdscript
+"objc
+au BufNewFile,BufRead *.mm setl ft=objc
 
 """"""""""""""""""""
 "temp settings }}}1

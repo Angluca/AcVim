@@ -11,7 +11,7 @@ if has("win32")
 	autocmd FileType asm let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/win32.dict'
 	au FileType c,cpp let g:acp_completeOption='.,w,b,u,i,k'.$VIMDICT.'/win32.dict,k'.$VIMDICT.'/c.dict,k'.$VIMDICT.'/cpp.dict'
 else
-	au FileType c,cpp let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/c.dict,k'.$VIMDICT.'/cpp.dict'
+	au FileType c,cpp let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/c.dict,k'.$VIMDICT.'/cpp.dict'.',k'.$VIMDICT.'/gl.dict'
 endif
 au FileType java let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/java.dict'
 au FileType js let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/javascript.dict'
