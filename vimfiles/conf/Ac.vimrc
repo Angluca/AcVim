@@ -360,7 +360,7 @@ endif
 "Text options
 """"""""""""""""""""
 set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
-"set softtabstop=2
+set softtabstop=4
 set tabstop=4 " Set tabstop to 4 characters
 "autocmd FileType c,cpp,h,hpp,cc,cxx set expandtab
 "set expandtab " Set expandtab on, the tab will be change to space automaticaly
@@ -663,6 +663,11 @@ let	g:ColorV_global_leader	=	';h'
 """"""""""""""""""""
 let g:EasyMotion_keys = 'asdfghjkl;'
 let g:EasyMotion_leader_key = '<space>'
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_do_shade = 0
+let g:EasyMotion_smartcase = 0
+let g:EasyMotion_enter_jump_first = 1
+
 """"""""""""""""""""
 "syntasic
 """"""""""""""""""""

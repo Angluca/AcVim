@@ -1,10 +1,13 @@
 Angluca's vimrc
-===============
-##Todo
-###unix
+
+---
+
+## Todo
+>
+### unix
 > ln -s \_vimrc ~/.vimrc && ln -s vimfiles ~/.vim
-###win
+### win
 > mklink /H \_vimrc ~/.vimrc
 > mklink /H vimfiles ~/.vim
-##Features
+## Features
 - Happy coding.

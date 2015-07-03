@@ -125,6 +125,8 @@ fun! Cursor(line,col)
    exe 'silent norm! ' . a:line . 'G' . a:col . '|'
 endfun
 
+com! -nargs=? ToggleSketch set lz|call ToggleSketch()
+
 fun! ToggleSketch()
    if !exists("b:Sketch_loaded")
       let b:Sketch_loaded = 1
