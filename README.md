@@ -9,5 +9,9 @@ Angluca's vimrc
 ### win
 > mklink /H \_vimrc ~/.vimrc
 > mklink /H vimfiles ~/.vim
+
+### How to use
+open vim and :PlugUpdate
+
 ## Features
 - Happy coding.
