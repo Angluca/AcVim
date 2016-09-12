@@ -92,6 +92,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'Rip-Rip/clang_complete'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
