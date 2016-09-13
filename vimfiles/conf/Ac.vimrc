@@ -181,6 +181,10 @@ endif
 
 set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
 
+“Remove menu garbled
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
 "Enable filetype plugin
 "dont move it to top if you set unicode menu :)
 filetype plugin indent on
