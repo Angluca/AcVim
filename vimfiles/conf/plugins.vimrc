@@ -42,23 +42,23 @@
 "==============
 "Plug
 if !filereadable(expand("$VIM/autoload/plug.vim"))
-	!curl -fLo $VIM/autoload/plug.vim  https://raw.github.com/junegunn/vim-plug/master/plug.vim
+	!curl -fLo $VIM/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 endif
 
-let s:bundle_dir = expand("$VIM/bundle")
+let s:bundle_dir = expand("$VIM/bundle/")
 call plug#begin(s:bundle_dir)
 
-Plug 'Align'
-Plug 'AutoComplPop'
-"Plug 'auto-pairs'
-Plug 'AutoClose--Alves'
-Plug 'DrawIt'
-Plug 'Mark--Karkat'
-"Plug 'bufexplorer.zip'
-"Plug 'colorv.vim'
-Plug 'vcscommand.vim'
-"Plug 'VimIM'
-Plug 'VisIncr'
+Plug 'vim-scripts/Align'
+Plug 'vim-scripts/AutoComplPop'
+"Plug 'vim-scripts/auto-pairs'
+Plug 'vim-scripts/AutoClose--Alves'
+Plug 'vim-scripts/DrawIt'
+Plug 'vim-scripts/Mark--Karkat'
+"Plug 'vim-scripts/bufexplorer.zip'
+"Plug 'vim-scripts/colorv.vim'
+Plug 'vim-scripts/vcscommand.vim'
+"Plug 'vim-scripts/VimIM'
+Plug 'vim-scripts/VisIncr'
 
 Plug 'angluca/nim.vim'
 Plug 'jlanzarotta/bufexplorer'
@@ -89,7 +89,7 @@ Plug 'sjl/gundo.vim'
 Plug 'motemen/git-vim'
 Plug 'mattn/emmet-vim'
 Plug 'kien/ctrlp.vim'
-Plug 'Rip-Rip/clang_complete'
+"Plug 'Rip-Rip/clang_complete'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'nathanaelkane/vim-indent-guides'
