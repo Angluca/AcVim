@@ -11,10 +11,10 @@ Angluca's vimrc
 
 > mklink /H vimfiles ~/.vim
 
-> del clang_complete plugin in WIN ( and AcVim\vimfiles\conf\plugins.vimrc -- 'clang_complete'
+> Open AcVim/vimfiles/conf/plugins.vimrc del 'clang_complete' row ( and del bundle/clang_complete if you install it.)
 )
 ### How to use
-open vim and :PlugUpdate
+open vim and :PlugInstall or :PlugUpdate
 
 \ee: edit vimrc
 
