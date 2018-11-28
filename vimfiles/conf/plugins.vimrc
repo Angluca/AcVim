@@ -97,3 +97,7 @@ Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
+if has("win32")
+	"Not use Clang_complete in WIN
+	let g:clang_complete_loaded = 1
+endi
