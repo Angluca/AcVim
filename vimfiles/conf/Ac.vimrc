@@ -610,7 +610,7 @@ let VCSCommandDeleteOnHide=1
 """"""""""""""""""""
 let errormarker_disablemappings = 1
 """"""""""""""""""""
-"errormarker
+"DoxygenToolkit
 """"""""""""""""""""
 let g:DoxygenToolkit_briefTag_pre="@Synopsis  "
 let g:DoxygenToolkit_paramTag_pre="@Param "
