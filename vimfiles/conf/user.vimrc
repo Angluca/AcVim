@@ -100,6 +100,7 @@ au BufNewFile,BufRead README*,COPYING setlocal ft=txt
 au BufNewFile,BufRead *.txt setl ft=txt
 au BufNewFile,BufRead *.log setl ft=txt
 au BufNewFile,BufRead *.asm setl ft=masm
+au BufNewFile,BufRead *.inc setl ft=masm
 au BufNewFile,BufRead *.asm setl makeprg=fasm\ %:p
 
 au BufNewFile,BufRead *.mxml setl ft=mxml
