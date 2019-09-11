@@ -18,7 +18,7 @@ or
 
 > mklink /H vimfiles ~/.vim
 ### How to use
-open vim and :PlugInstall or :PlugUpdate
+open vim and :PlugUpdate :PlugInstall :PlugUpgrade
 
 \ee: edit vimrc
 
