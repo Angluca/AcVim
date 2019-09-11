@@ -7,8 +7,11 @@ Angluca's vimrc
 ## cd AcVim
 ### unix
 > pwd |xargs -i ln -s {}/_vimrc $HOME/.vimrc
+
 > pwd |xargs -i ln -s {}/vimfiles $HOME/.vim
+
 or
+
 > sh setup.sh
 ### win
 > mklink /H \_vimrc ~/.vimrc
