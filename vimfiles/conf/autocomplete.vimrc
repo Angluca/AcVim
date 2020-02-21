@@ -23,6 +23,7 @@ au FileType actionscript let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/as3
 au FileType sh let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/bash.dict'
 au BufNewFile,BufRead *.nut let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/squirrel.dict'
 au FileType lua let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/lua.dict'
+au FileType nim let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/nim.dict'
 "au FileType lua setl tags+=$VIMDICT/quick2dx.tags
 "au FileType lua setl dict+=$VIMDICT/quick2dx.tags
 

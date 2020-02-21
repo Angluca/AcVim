@@ -1,6 +1,3 @@
-"
-" Last Change: 23/11/13 23:57:50
-"---------------------------------
 "=================================
 " General 
 "=================================
@@ -463,7 +460,6 @@ let Tlist_Enable_Fold_Column = 0 " Don't Show the fold indicator column in the t
 let Tlist_WinWidth = 20
 let Tlist_Compact_Format = 1 " do not show help
 "let tlist_hlsl_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
-
 nmap <silent> ;tL :Tlist<cr>
 
 """"""""""""""""""""
