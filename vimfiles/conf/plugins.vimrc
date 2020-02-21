@@ -55,6 +55,8 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Yggdroot/indentLine'
 
+"Plug 'ycm-core/YouCompleteMe'
+
 call plug#end()
 
 if has("win32")
