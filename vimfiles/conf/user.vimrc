@@ -94,6 +94,7 @@ nmap \= :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
 """"""""""""""""""""
 " do not automaticlly remove trailing whitespace
 autocmd BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
+autocmd BufWrite *.nim,*.nims :call DeleteTrailingWS()
 autocmd BufWrite *.txt :call DeleteTrailingWS()
 
 au BufNewFile,BufRead README*,COPYING setlocal ft=txt
