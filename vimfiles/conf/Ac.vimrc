@@ -5,8 +5,8 @@
 source $VIMCONF/plugins.vimrc
 nma<silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 "call pathogen#helptags()
-call pathogen#infect()
-call pathogen#infect("bundle_custom")
+execute pathogen#infect()
+execute pathogen#infect('bundle_custom/{}')
 "call pathogen#runtime_append_all_bundles()
 
 " Ignore these filenames during enhanced command line completion.
@@ -413,12 +413,11 @@ au FileType html set syntax=html
 """"""""""""""""""""
 let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
 let g:ctrlp_map = ';cf'
-"nmap <silent> ;cf :CtrlP<cr>
 nmap <silent> ;cb :CtrlPBuffer<cr>
 nmap <silent> ;cm :CtrlPMRUFiles<cr>
 let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(exe|so|dll|zip|rar|tags|tar)$',
+			\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar)$',
 			\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 			\ }
 """"""""""""""""""""
