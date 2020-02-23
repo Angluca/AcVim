@@ -36,6 +36,8 @@ nmap ;ci :cnew <CR>
 "visual edit mode
 nmap ;ve :call	ToggleVisualEditMode() <CR>
 vmap ;ve :call	ToggleVisualEditMode() <CR>
+"undo list
+nmap ;ul :undol
 
 "Fast saving
 nmap <silent> ;ww :update<cr>

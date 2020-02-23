@@ -412,7 +412,7 @@ au FileType html set syntax=html
 "Ctrlp setting
 """"""""""""""""""""
 let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
-let g:ctrlp_map = ';cf'
+let g:ctrlp_map = ';cc'
 nmap <silent> ;cb :CtrlPBuffer<cr>
 nmap <silent> ;cm :CtrlPMRUFiles<cr>
 let g:ctrlp_custom_ignore = {
@@ -541,12 +541,11 @@ let NERDTreeWinPos='left'
 let NERDTreeWinSize=20
 let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.tar\.gz$','\.7z$','\.zip$','\.rar$','\.swp$','\.dll$','\.obj$']
 nmap <silent> ;tt :NERDTreeToggle <cr>
-
 """"""""""""""""""""
 "Sketch seting
 """"""""""""""""""""
 nmap <F1> :call ToggleSketch()<CR>
-
+imap <F1> <esc>
 """"""""""""""""""""
 "ShowMarks seting
 """"""""""""""""""""

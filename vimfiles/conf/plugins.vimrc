@@ -9,7 +9,7 @@ call plug#begin(s:bundle_dir)
 
 "==============
 "AcVim
-Plug 'Angluca/AcVim_AutoCompPop'
+Plug 'Angluca/AutoCompPop'
 
 "==============
 "Vim
