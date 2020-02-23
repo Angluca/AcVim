@@ -28,16 +28,16 @@ nmap ;ff :call FileFormatOption()<cr>
 nmap ;fu :se fenc=utf-8<cr>
 nmap ;fw :se fenc=GBK<cr>
 "quickfix
-nmap ;cl :call	ToggleQuickfix() <CR>
-nmap ;cn :cn <CR>
-nmap ;cp :cp <CR>
-nmap ;co :cold <CR>
-nmap ;ci :cnew <CR>
+nmap ;cl :call	ToggleQuickfix() <cr>
+nmap ;cn :cn <cr>
+nmap ;cp :cp <cr>
+nmap ;co :cold <cr>
+nmap ;ci :cnew <cr>
 "visual edit mode
-nmap ;ve :call	ToggleVisualEditMode() <CR>
-vmap ;ve :call	ToggleVisualEditMode() <CR>
+nmap ;ve :call	ToggleVisualEditMode() <cr>
+vmap ;ve :call	ToggleVisualEditMode() <cr>
 "undo list
-nmap ;ul :undol
+nmap ;ul :undol<cr>
 
 "Fast saving
 nmap <silent> ;ww :update<cr>
@@ -90,7 +90,7 @@ nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
 "complete
 imap <s-space> <c-x><c-o>
 "make cpp tags
-nmap \= :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <CR>
+nmap \= :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
 """"""""""""""""""""
 "User filetype
 """"""""""""""""""""
@@ -127,11 +127,11 @@ au BufNewFile,BufRead *.mm setl ft=objc
 "temp settings }}}1
 """"""""""""""""""""
 "if has(win32")
-"nmap <F10> :!dir /s /b *.c *.h *cpp *.hpp  > cscope.files <CR>
+"nmap <F10> :!dir /s /b *.c *.h *cpp *.hpp  > cscope.files <cr>
 "else
-"nmap <F10> :!find -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp" -o -name "*.hpp" > cscope.files <CR>
+"nmap <F10> :!find -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp" -o -name "*.hpp" > cscope.files <cr>
 "endif
-"nmap <F11> :!start cscope -Rbk <CR>
+"nmap <F11> :!start cscope -Rbk <cr>
 
 "fk air esc
 "let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
