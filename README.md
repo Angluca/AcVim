@@ -16,9 +16,10 @@ setup.bat
 \uu: edit custom option
 
 **more shortcutkeys:**  
->\<f1\> ;tt,tl,tL,to,tq ;ff,fu,fw ;bb,bd ;cc,cb,cm,cl,cn,cp,co,ci
-;ve ;ww,wf,qf,qq,qw,qa ;wss,wsf ;mm,/,mc,ma,mt,n,N,*,\#  
-;P ;ld,lr ;sc,se,st ;fl ;ut,ul ;\<cr\>  \<space\>hjklweb... i:<shift+space>  
+;tt,tl,tL,to,tq ;ff,fu,fw ;bb,bd ;cc,cb,cm,cl,cn,cp,co,ci  
+;ve ;ww,wf,qf,qq,qw,qa ;mm,/,mc,ma,mt,n,N,*,\#  
+;P ;ld,lr ;sc,se,st ;fl ;ut,ul ;wss,wsf >\<f1\> ;\<cr\>  
+\<space\>hjklweb... i:<shift+space>  
 \<shift or ctrl\>left,right,up,down    
 ysiw",cs"'... and more plugs keys.  
 you can test them :)
