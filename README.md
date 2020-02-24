@@ -2,10 +2,10 @@ For programmers
 ---
 **Install Vim and AcVim**  
 >cd AcVim  
-**unix/linux/macos**  
+#**unix/linux/macos**  
 sh setup.sh  
 >  
->**windows**  
+>#**windows**  
 setup.bat
 
 **open vim**  
