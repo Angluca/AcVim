@@ -880,8 +880,6 @@ byteAddress
 ByteAddress
 byteArray
 ByteArray
-c1
-c2
 c_abort
 C_BinaryFile
 C_BinaryFileStar
@@ -3450,7 +3448,6 @@ FutureVar
 fuzz
 fvFinalizer
 fwrite
-g2
 gai_strerror
 gaiNim
 gamma
@@ -4056,12 +4053,6 @@ Guard
 guarded
 guess_handle
 GUID
-h1
-h2
-h3
-h4
-h5
-h6
 h_errno
 halfBase
 halfdelay
@@ -4982,8 +4973,6 @@ IUTF8
 IXANY
 IXOFF
 IXON
-j2
-j3
 JArray
 javaEnabled
 javaNextToken
@@ -5847,7 +5836,6 @@ lvlInfo
 lvlNone
 lvlNotice
 lvlWarn
-m1
 mach_absolute_time
 mach_timebase_info
 machTimebaseInfoData
@@ -7326,8 +7314,6 @@ ownArgv
 owned
 ownerDocument
 ownerElement
-p1
-p2
 P_ALL
 P_PGID
 P_PID
@@ -9057,8 +9043,6 @@ runningStat
 RunningStat
 runtime
 runtime_v2
-s2
-s3
 S_IFBLK
 S_IFCHR
 S_IFDIR
@@ -11139,16 +11123,12 @@ SystemError
 sysThread
 SysThread
 SYSVcurses
-t0
-t1
 t1l
 t1merging
 t1r
-t2
 t2l
 t2merging
 t2r
-t4
 t4L
 T_FMT
 T_FMT_AMPM
