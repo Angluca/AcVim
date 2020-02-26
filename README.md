@@ -1,6 +1,11 @@
 For programmers
 ---
-**Install Vim and AcVim**  
+**Install Vim** 
+> Windows : [Download gvim](http://www.vim.org/download "Vim")  
+> linux : apt-get install vim  
+> macos : brew install vim
+
+**Setup AcVim**  
 >cd AcVim  
 #**unix/linux/macos**  
 sh setup.sh  
