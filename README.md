@@ -2,7 +2,7 @@ For programmers
 ---
 **Install Vim** 
 > Windows : [Download gvim](http://www.vim.org/download "Vim")  
-> linux : apt-get install vim  
+> linux : sudo apt-get install vim  
 > macos : brew install vim
 
 **Setup AcVim**  
