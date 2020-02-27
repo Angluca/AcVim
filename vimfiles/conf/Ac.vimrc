@@ -260,7 +260,9 @@ set ffs=unix,dos
 """"""""""""""""""""
 "Set 7 lines to the curors - when moving vertical..
 "set so=7
-set tags=./tags,./../tags
+set autochdir "auto set dir
+set tags=tags; "set dir tags
+"set tags=./tags,./../tags
 "set guifont=Consolas:h11
 "Turn on WiLd menu
 set wildmenu
