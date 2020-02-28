@@ -2,7 +2,7 @@
 " General 
 "=================================
 "load plugins conf
-source $VIMCONF/plugins.vimrc
+so $VIMCONF/plugins.vimrc
 nma<silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 "call pathogen#helptags()
 execute pathogen#infect()
@@ -18,22 +18,22 @@ set wildignore+=*.pyc " Python byte code
 """"""""""""""""""""
 "Functions
 """"""""""""""""""""
-function! s:CreateMaps(target, combo)
+fu! s:CreateMaps(target, combo)
 if !hasmapto(a:target, 'n')
 	exec 'nmap ' . a:combo . ' ' . a:target
 endif
 if !hasmapto(a:target, 'v')
 	exec 'vmap ' . a:combo . ' ' . a:target
 endif
-endfunction
+endf
 
-function! s:CreateDir(dir_name)
+fu! s:CreateDir(dir_name)
 	if finddir(a:dir_name) == ''
 	silent call mkdir(a:dir_name)
 	endif
-endfunction
+endf
 
-function! ToggleVisualEditMode()
+fu! ToggleVisualEditMode()
 if !exists('s:visualEditMode')
 	let		s:visualEditMode = 1
 	set		ve=all
@@ -43,9 +43,9 @@ else
 	set		ve=
 	echo	'visual edit off'
 endif
-endfunction
+endf
 
-function! ToggleQuickfix()
+fu! ToggleQuickfix()
 redir => ls_output
 execute ':silent! ls'
 redir END
@@ -55,17 +55,17 @@ if exists == -1
 else
 	execute ':cclose'
 endif
-endfunction
+endf
 
-function! QfMakeConv()
+fu! QfMakeConv()
 let qflist = getqflist()
 for i in qflist
 	let i.text = iconv(i.text, "cp936", "utf-8")
 endfor
 call setqflist(qflist)
-endfunction
+endf
 
-function! SwitchToBuf(filename)
+fu! SwitchToBuf(filename)
 " find in current tab
 let bufwinnr = bufwinnr(a:filename)
 if bufwinnr != -1
@@ -88,7 +88,7 @@ else
 	" not exist, new tab
 	exec "e " . a:filename
 endif
-endfunction
+endf
 
 fun! FileFormatOption()
 if !exists("g:menutrans_fileformat_dialog")
@@ -114,7 +114,7 @@ elseif n == 3
 endif
 endfun
 
-function! <SID>BufcloseCloseIt()
+fu! <SID>BufcloseCloseIt()
 	let l:currentBufNum = bufnr("%")
 	let l:alternateBufNum = bufnr("#")
 	if buflisted(l:alternateBufNum)
@@ -128,7 +128,7 @@ function! <SID>BufcloseCloseIt()
 	if buflisted(l:currentBufNum)
 		execute("bdelete! ".l:currentBufNum)
 	endif
-endfunction
+endf
 
 func! DeleteTrailingWS()
 exe "normal mz"
@@ -179,8 +179,8 @@ endif
 set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
 
 "Remove menu garbled
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+so $VIMRUNTIME/delmenu.vim
+so $VIMRUNTIME/menu.vim
 
 "Enable filetype plugin
 "dont move it to top if you set unicode menu :)
@@ -218,7 +218,7 @@ endif
 "Fast editing of _vimrc
 nmap <silent> \ee :call SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
 "When _vimrc is edited, reload it
-"autocmd! bufwritepost Ac.vimrc source $VIMCONF/Ac.vimrc
+"au! bufwritepost Ac.vimrc so $VIMCONF/Ac.vimrc
 """"""""""""""""""""
 "Colors and Fonts
 """"""""""""""""""""
@@ -233,7 +233,7 @@ syntax enable
 " color scheme
 if has("gui_running")
 	"start gvim maximized
-	"if has("autocmd")
+	"if has("au")
 	"au GUIEnter * simalt ~x
 	"endif
 	set guioptions-=T
@@ -251,7 +251,7 @@ colorscheme maroloccio
 """"""""""""""""""""
 "Some nice mapping to switch syntax (useful if one mixes different languages in one file)
 "nmap ;$ :syntax sync fromstart<cr>
-autocmd BufEnter * :syntax sync fromstart
+au BufEnter * :syntax sync fromstart
 "Favorite filetypes
 set ffs=unix,dos
 "set ffs=unix
@@ -263,6 +263,7 @@ set ffs=unix,dos
 "set autochdir "auto set dir
 "set tags=tags; "set dir tags
 set tags=./tags,./../tags
+au BufNewFile,BufRead *tags setlocal ft=tags
 "set guifont=Consolas:h11
 "Turn on WiLd menu
 set wildmenu
@@ -305,10 +306,10 @@ set showmatch
 "Always hide the statusline
 "set laststatus=2
 
-"function! CurDir()
+"fu! CurDir()
 "let curdir = buffer
 "return curdir
-"endfunction
+"endf
 
 "Format the statusline
 "set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
@@ -365,7 +366,7 @@ endif
 set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
 set softtabstop=4
 set tabstop=4 " Set tabstop to 4 characters
-"autocmd FileType c,cpp,h,hpp,cc,cxx set expandtab
+"au FileType c,cpp,h,hpp,cc,cxx set expandtab
 "set expandtab " Set expandtab on, the tab will be change to space automaticaly
 """"""""""""""""""""
 "Indent
@@ -406,7 +407,7 @@ au FileType html set syntax=html
 """"""""""""""""""""
 "Vim section
 """"""""""""""""""""
-"autocmd FileType vim set nofen
+"au FileType vim set nofen
 "=================================
 " Plugin configuration 
 "=================================
@@ -491,9 +492,9 @@ let	g:netrw_home	=	$HOME.'/vimdata/cache'
 "Omnicppcompl setting
 """"""""""""""""""""
 if has("win32")
-	"autocmd FileType c,cpp set tags +=$VIMDICT/winxtags
+	"au FileType c,cpp set tags +=$VIMDICT/winxtags
 endif
-autocmd FileType c,cpp set tags +=$VIMDICT/cpptags
+au FileType c,cpp set tags +=$VIMDICT/cpptags
 
 " set completeopt as don't show menu and preview
 set completeopt=menuone
@@ -525,12 +526,12 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 """"""""""""""""""""
 "Neocomplete
 """"""""""""""""""""
-"source $VIMCONF/vneocomplete.conf
+"so $VIMCONF/vneocomplete.conf
 "nmap <silent> \nn :call SwitchToBuf("$VIMCONF/neocomplete.vimrc")<cr>
 """"""""""""""""""""
 "AutoComplpop seting
 """"""""""""""""""""
-source $VIMCONF/autocomplete.vimrc
+so $VIMCONF/autocomplete.vimrc
 nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 """"""""""""""""""""
 "NERDTree seting
@@ -625,8 +626,8 @@ let g:yankring_max_history = 20
 let g:yankring_max_element_length = 1048576 " 1M
 let g:yankring_max_display = 20
 
-nmap ;yy :YRShow<CR>
-nmap ;yc :YRClear<CR>
+"nmap ;yy :YRShow<CR>
+"nmap ;yc :YRClear<CR>
 """"""""""""""""""""
 "EchoFunc
 """"""""""""""""""""
@@ -787,5 +788,5 @@ let g:AutoPairsShortcutToggle = '<M-a>'
 
 "--------------------------------------------
 "load user conf
-source $VIMCONF/user.vimrc
+so $VIMCONF/user.vimrc
 nmap <silent> \uu :call SwitchToBuf("$VIMCONF/user.vimrc")<cr>

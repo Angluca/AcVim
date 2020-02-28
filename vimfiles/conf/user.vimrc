@@ -13,16 +13,22 @@ set fdm=marker
 "User mappings
 """"""""""""""""""""
 "Bash like
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-B> <Left>
-cnoremap <C-F> <Right>
+cmap <C-A> <Home>
+cmap <C-E> <End>
+cmap <C-B> <Left>
+cmap <C-F> <Right>
 
-inoremap <C-A> <C-O>^
-inoremap <C-E> <End>
-inoremap <C-B> <Left>
-inoremap <C-F> <Right>
+imap <C-A> <C-O>^
+imap <C-E> <End>
+imap <C-B> <Left>
+imap <C-F> <Right>
 
+"copy paste
+nmap <a-c> viw<c-insert>
+vmap <a-c> <c-insert>
+nmap <a-v> "+gp
+vmap <a-v> <s-insert>
+imap <a-v> <s-insert>
 "file type
 nmap ;ff :call FileFormatOption()<cr>
 nmap ;fu :se fenc=utf-8<cr>
@@ -75,37 +81,40 @@ nmap ^ g^
 nmap $ g$
 "nmap 0 g0
 
-"vnoremap <C-S-X> "+x
-"vnoremap <C-S-C> "+y
+"vn <C-S-X> "+x
+"vn <C-S-C> "+y
 "map <C-S-V>	"+gP
-"vnoremap <C-S-V> "+gP
+"vn <C-S-V> "+gP
 "cmap <C-S-V> <C-R>+
 "imap <C-S-V> <C-R>+
 
-autocmd FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
+au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
 
 nmap <silent> ;wss :call DeleteTrailingWS()<cr>:w<cr>
 nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
 
 "complete
 imap <s-space> <c-x><c-o>
-"make tags
-"nmap \= :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
-nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/(\w+)\*?\s*=\s*object/\1/c,Class/" --regex-nim="/proc\s+(\w+)/\1/m,Procedure/" <cr>
+"create tags
+nmap \= :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
+
+"for nim 
+au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/^[^\#]?\s+([A-Z]+\w+)\*?\s*=\s*/\1/c,type/" --regex-nim="/^[^\#]*proc\s+(\w+).*=/\1/f,proc/" --regex-nim="/^[^\#]*template\s+(\w+).*=/\1/t,template/" --regex-nim="/^[^\#]*macro\s+(\w+).*=/\1/m,macro/" --regex-nim="/^[^\#]*iterator\s+(\w+).*=/\1/i,iterator/" -f nim.tags <cr>
+au FileType nim set tags+=./nimtags,./../nimtags
 """"""""""""""""""""
 "User filetype
 """"""""""""""""""""
 " do not automaticlly remove trailing whitespace
-autocmd BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
-autocmd BufWrite *.nim,*.nims :call DeleteTrailingWS()
-autocmd BufWrite *.txt :call DeleteTrailingWS()
+"au BufWrite *.nim,*.nims :call DeleteTrailingWS()
+"au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
+au BufWrite *.* :call DeleteTrailingWS()
 
 au BufNewFile,BufRead README*,COPYING setlocal ft=txt
 au BufNewFile,BufRead *.txt setl ft=txt
 au BufNewFile,BufRead *.log setl ft=txt
 au BufNewFile,BufRead *.asm setl ft=masm
 au BufNewFile,BufRead *.inc setl ft=masm
-au BufNewFile,BufRead *.asm setl makeprg=fasm\ %:p
+au BufNewFile,BufRead *.asm setl mp=fasm\ %:p
 
 au BufNewFile,BufRead *.mxml setl ft=mxml
 au BufNewFile,BufRead *.as setl ft=actionscript
@@ -116,8 +125,8 @@ au BufNewFile,BufRead *.shd,*.sc setl ft=glsl
 
 "squirrel script
 au BufNewFile,BufRead *.nut setl ft=squirrel
-au BufNewFile,BufRead *.nut setl makeprg=sq\ %:p
-au BufNewFile,BufRead *.nut setl errorformat=%f:%l:%m
+au BufNewFile,BufRead *.nut setl mp=sq\ %:p
+au BufNewFile,BufRead *.nut setl efm=%f:%l:%m
 
 "godot script
 au BufNewFile,BufRead *.gd setl ft=gdscript

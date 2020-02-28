@@ -8,7 +8,7 @@ let g:acp_ignorecaseOption = 1
 let g:acp_completeOption='.,w,b,u,t,i,k'
 
 if has("win32")
-	autocmd FileType asm let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/win32.dict'
+	au FileType asm let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/win32.dict'
 	au FileType c,cpp let g:acp_completeOption='.,w,b,u,i,k'.$VIMDICT.'/win32.dict,k'.$VIMDICT.'/c.dict,k'.$VIMDICT.'/cpp.dict'
 else
 	au FileType c,cpp let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/c.dict,k'.$VIMDICT.'/cpp.dict'.',k'.$VIMDICT.'/gl.dict'
