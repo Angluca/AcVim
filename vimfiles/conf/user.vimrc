@@ -91,7 +91,7 @@ nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
 imap <s-space> <c-x><c-o>
 "make tags
 "nmap \= :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
-nmap \= :!ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/(\w+)\*?\s*=\s*object/\1/c,Class/" --regex-nim="/proc\s+(\w+)/\1/m,Procedure/" <cr>
+nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/(\w+)\*?\s*=\s*object/\1/c,Class/" --regex-nim="/proc\s+(\w+)/\1/m,Procedure/" <cr>
 """"""""""""""""""""
 "User filetype
 """"""""""""""""""""
