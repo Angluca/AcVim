@@ -417,6 +417,8 @@ let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
 let g:ctrlp_map = ';cc'
 nmap <silent> ;cb :CtrlPBuffer<cr>
 nmap <silent> ;cm :CtrlPMRUFiles<cr>
+nmap <silent> ;cg :CtrlPTag<cr>
+nmap <silent> ;cu :CtrlPUndo<cr>
 let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 			\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar)$',
