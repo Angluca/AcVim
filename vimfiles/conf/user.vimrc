@@ -24,15 +24,21 @@ imap <C-B> <Left>
 imap <C-F> <Right>
 
 "copy paste
-nmap <a-c> viw<c-insert>
-vmap <a-c> <c-insert>
+"vmap <a-c> <c-insert>
+"imap <a-v> <s-insert>
+nmap ;yy viw"+y
+vmap ;yy "+y
+nmap ;pp "+gp
+vmap ;pp "+gp
+nmap <a-c> viw"+y
+vmap <a-c> "+y
 nmap <a-v> "+gp
-vmap <a-v> <s-insert>
-imap <a-v> <s-insert>
+vmap <a-v> "+gp
+imap <a-v> <esc>"+gp
 "file type
 nmap ;ff :call FileFormatOption()<cr>
 nmap ;fu :se fenc=utf-8<cr>
-nmap ;fw :se fenc=GBK<cr>
+nmap ;fg :se fenc=GBK<cr>
 "quickfix
 nmap ;cl :call	ToggleQuickfix() <cr>
 nmap ;cn :cn <cr>
@@ -95,19 +101,20 @@ nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
 
 "complete
 imap <s-space> <c-x><c-o>
-"create tags
+"generate tags
 nmap \= :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
 
-"for nim 
-au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/^[^\#]?\s+([A-Z]+\w+)\*?\s*=\s*/\1/c,type/" --regex-nim="/^[^\#]*proc\s+(\w+).*=/\1/f,proc/" --regex-nim="/^[^\#]*template\s+(\w+).*=/\1/t,template/" --regex-nim="/^[^\#]*macro\s+(\w+).*=/\1/m,macro/" --regex-nim="/^[^\#]*iterator\s+(\w+).*=/\1/i,iterator/" -f nim.tags <cr>
-au FileType nim set tags+=./nimtags,./../nimtags
+"for nim language
+au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/^[^\#]*\s+(\w+)\*+\s*\{.*\}/\1/t,type/" --langmap=nim:.nim --regex-nim="/^[^\#]*\s+(\w+)\*+.*=/\1/t,type/" --regex-nim="/^[^\#]*proc\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*method\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*auto\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*template\s+(\w+)\*+.*=/\1/m,macro/" --regex-nim="/^[^\#]*macro\s+(\w+)\*+.*=/\1/m,macro/" --regex-nim="/^[^\#]*iterator\s+(\w+)\*+.*=/\1/i,iterator/" -f nimtags <cr>
+
+au FileType nim,nims set tags+=./nimtags,./../nimtags
 """"""""""""""""""""
 "User filetype
 """"""""""""""""""""
 " do not automaticlly remove trailing whitespace
-"au BufWrite *.nim,*.nims :call DeleteTrailingWS()
-"au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
-au BufWrite *.* :call DeleteTrailingWS()
+au BufWrite *.nim,*.nims :call DeleteTrailingWS()
+au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
+au BufWrite *.txt call DeleteTrailingWS()
 
 au BufNewFile,BufRead README*,COPYING setlocal ft=txt
 au BufNewFile,BufRead *.txt setl ft=txt

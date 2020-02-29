@@ -18,12 +18,16 @@ setup.bat
 \ee: edit vimrc  
 \pp: edit edit update plugs list  
 \aa: edit autocomplete option.  
-\uu: edit custom option
+\uu: edit custom option  
+  
+;yy ;pp or \<alt-c\> \<alt-v\>: copy paste  
+\\= : generate nim or another language tags  
+;cg: find words in tags and goto the file 
 
 **more shortcutkeys:**  
->;tt,tl,tL,to,tq ;ff,fu,fw ;bb,bd ;cc,cb,cm,cg,cu,cl,cn,cp,co,ci  
-;ve ;ww,wf,qf,qq,qw,qa ;mm,/,mc,ma,mt,n,N,*,\#  
-;P ;ld,lr ;sc,se,st ;fl ;ut,ul ;wss,wsf >\<f1\> ;\<cr\>  
+>;tt,tl,tL,to,tq ;ff,fu,fg ;bb,bd ;cc,cb,cm,cg,cu,cl,cn,cp,co,ci  
+;yy ;pp ;P ;ve ;ww,wf,qf,qq,qw,qa ;mm,/,mc,ma,mt,n,N,*,\#  
+;ld,lr ;sc,se,st ;fl ;ut,ul ;wss,wsf >\<f1\> ;\<cr\>  
 \<space\>hjklweb... i:<shift+space>  
 \<shift or ctrl\>left,right,up,down    
 ysiw",cs"'... and more plugs keys.  
