@@ -28,7 +28,7 @@ setup.bat
 >;tt,tl,tL,to,tq ;ff,fu,fg ;bb,bd ;cc,cb,cm,cg,cu,cl,cn,cp,co,ci  
 ;yy ;pp ;P ;ve ;ww,wf,qf,qq,qw,qa ;mm,/,mc,ma,mt,n,N,*,\#  
 ;ld,lr ;sc,se,st ;fl ;ut,ul ;wss,wsf \<f1\> ;\<cr\>  
-;xx,xm,xs,xi,xy,xl,xb,xn,xu,x$,x\<space\>,xA  
+;xx,xs,xi,xy,xl,xb,xn,xu,x$,x\<space\>,xa,xm,xA  
 \<space\>hjklweb... i:<shift+space>  
 \<shift or ctrl\>left,right,up,down    
 ysiw",cs"'... and more plugs keys.  

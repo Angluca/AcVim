@@ -601,6 +601,7 @@ call s:CreateMaps('<plug>NERDCommenterAlignBoth',  ';xb')
 call s:CreateMaps('<plug>NERDCommenterNest',       ';xn')
 call s:CreateMaps('<plug>NERDCommenterUncomment',  ';xu')
 call s:CreateMaps('<plug>NERDCommenterToEOL',      ';x$')
+call s:CreateMaps('<plug>NERDCommenterAltDelims',  ';xa')
 call s:CreateMaps('<plug>NERDCommenterAppend',     ';xA')
 """"""""""""""""""""
 "vcscommand setting
@@ -787,7 +788,6 @@ omap <silent> ia <Plug>ParameterObjectI
 omap <silent> aa <Plug>ParameterObjectA
 "auto pair
 let g:AutoPairsShortcutToggle = '<M-a>'
-
 "--------------------------------------------
 "load user conf
 so $VIMCONF/user.vimrc
