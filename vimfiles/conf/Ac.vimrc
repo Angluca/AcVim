@@ -155,19 +155,8 @@ set directory=$HOME/vimdata/swap " where to put swap file
 set nocompatible
 "Sets how many lines of history VIM har to remember
 set history=20
-" Chinese
 "utf-8 , ANSI, UNICODE
 set encoding=utf-8
-"set langmenu=zh_CN.UTF-8
-set langmenu=zh_CN.UTF-8
-"chinese=zh_CN.UTF-8 english=en_US.UTF-8
-"language message en_US.UTF-8
-if has("gui_running")
-	language messages zh_CN.utf-8
-else
-	language messages en_US.UTF-8
-endif
-
 if has("win32")
 set termencoding=utf-8
 set fileencoding=utf-8
@@ -177,6 +166,19 @@ set fileencoding=utf-8
 endif
 
 set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
+
+"chinese=zh_CN.UTF-8 english=en_US.UTF-8
+if v:lang == "zh_CN"
+	set langmenu=zh_CN.UTF-8
+	if has("gui_running")
+		language messages zh_CN.utf-8
+	else
+		language messages en_US.UTF-8
+	endif
+"else
+	"set langmenu=en_US.UTF-8
+	"language messages en_US.UTF-8
+endif
 
 "Remove menu garbled
 so $VIMRUNTIME/delmenu.vim
