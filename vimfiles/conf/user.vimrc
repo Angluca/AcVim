@@ -105,7 +105,8 @@ imap <s-space> <c-x><c-o>
 nmap \= :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
 
 "for nim language
-au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/^[^\#]*\s+(\w+)\*+\s*\{.*\}/\1/t,type/" --langmap=nim:.nim --regex-nim="/^[^\#]*\s+(\w+)\*+.*=/\1/t,type/" --regex-nim="/^[^\#]*proc\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*method\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*auto\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*template\s+(\w+)\*+.*=/\1/m,macro/" --regex-nim="/^[^\#]*macro\s+(\w+)\*+.*=/\1/m,macro/" --regex-nim="/^[^\#]*iterator\s+(\w+)\*+.*=/\1/i,iterator/" -f nimtags <cr>
+au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/^[^\#]*\s+(\w+)\*+\s*\{.*\}/\1/t,type/" --regex-nim="/^[^\#]*\s+(\w+)\*+.*=/\1/t,type/" --regex-nim="/^[^\#]*proc\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*method\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*auto\s+(\w+)\*+.*=/\1/f,func/" --regex-nim="/^[^\#]*template\s+(\w+)\*+.*=/\1/m,macro/" --regex-nim="/^[^\#]*macro\s+(\w+)\*+.*=/\1/m,macro/" --regex-nim="/^[^\#]*\s+`(\w+)[=]?`\*/\1/o,operator/" --regex-nim="/^[^\#]*iterator\s+(\w+)\*+.*=/\1/i,iterator/" -f nimtags <cr>
+"au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim  --regex-nim="/^[^\#]*proc\s+`\([^`]+)`\s*\*/\1/f,func/" -f nimtags <cr>
 
 au FileType nim,nims set tags+=./nimtags,./../nimtags
 """"""""""""""""""""

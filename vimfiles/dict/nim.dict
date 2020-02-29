@@ -84,6 +84,7 @@ addSep
 addSignal
 addTimer
 addWrite
+adjTime
 advice
 AF_INET
 AF_INET6
@@ -443,6 +444,7 @@ CacheCounter
 CacheSeq
 CacheTable
 Call
+callback
 Callback
 callconv
 calldepth
@@ -517,6 +519,7 @@ cint
 cite
 clamp
 CLANG_NO_SANITIZE_ADDRESS
+class
 classify
 ClassList
 clean
@@ -1151,6 +1154,7 @@ dirExists
 DirSep
 dirty
 disableCache
+disabled
 disableParamFiltering
 disableProfiling
 disableRawMode
@@ -1861,6 +1865,7 @@ FloatingPointError
 FloatInvalidOpError
 FloatOverflowError
 FloatUnderflowError
+floatVal
 floorDiv
 floorMod
 FlowVar
@@ -2390,6 +2395,7 @@ Icallback
 ICANON
 Iconv
 ICRNL
+id
 Id
 ident
 identChars
@@ -2573,6 +2579,7 @@ intersection
 Interval
 IntSet
 intToStr
+intVal
 inv
 INVALID_FILE_SIZE
 INVALID_HANDLE_VALUE
@@ -4915,6 +4922,7 @@ Proxy
 PRSA
 PRstNode
 PskClientCallback
+pskIdentityHint
 PskServerCallback
 Psockaddr
 PSQL_DATE_STRUCT
@@ -6651,6 +6659,7 @@ swapEndian64
 swapRefsInArray
 switch
 symBodyHash
+symbol
 Symbol
 SymbolLock
 symmetricDifference
@@ -7273,6 +7282,7 @@ UUUU
 validateData
 validateUtf8
 ValidityState
+value
 ValueError
 values
 var
