@@ -19,8 +19,8 @@ setup.bat
 \pp: edit edit update plugs list  
 \aa: edit autocomplete option.  
 \uu: edit custom option  
-  
-;yy ;pp or \<alt-c\> \<alt-v\>: copy paste  
+>
+>;yy ;pp or \<alt-c\> \<alt-v\>: copy paste  
 \\= : generate nim or another language tags  
 ;cg: find words in tags and goto the file 
 
