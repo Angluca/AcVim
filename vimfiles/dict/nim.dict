@@ -1,6 +1,7 @@
 /*INCLUDESECTION*/
 /*TYPESECTION*/
 /*VARSECTION*/
+
 __DECLSPEC_SUPPORTED
 __LINENOISE_H
 _arg
@@ -8629,6 +8630,7 @@ tkStringConstant
 tkStringLit
 tkSymbol
 tkTrue
+tkUnknown
 tkWhite
 tkWord
 TLS_client_method
