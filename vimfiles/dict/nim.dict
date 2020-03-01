@@ -164,6 +164,7 @@ akUInt64
 akUInt8
 alarm
 alert
+algorithm
 align
 alignLeft
 alignof
@@ -183,6 +184,7 @@ ALLOC_MAX_BLOCK_USAGE_BEFORE_DROP
 Allocator
 AllocatorFlag
 AllocatorObj
+allocators
 allocCounters
 allocCStringArray
 allocShared
@@ -206,6 +208,7 @@ AnchorElement
 and
 android
 Androidx86
+ansi_c
 ansiBackgroundColorCode
 ansiForegroundColorCode
 ansiResetCode
@@ -247,6 +250,7 @@ area
 argIsFile
 argIsWord
 ariaAttr
+arithm
 ArithmeticError
 arity
 arm
@@ -272,21 +276,31 @@ Asn1UtctimeFree
 Asn1UtctimeNew
 assert
 AssertionError
+assertions
 assign
 assign_jit_stack
 astGenRepr
 astToStr
 async
 asyncCheck
+asyncdispatch
 AsyncEvent
 AsyncFD
+asyncfile
 AsyncFile
+asyncftpclient
 AsyncFtpClient
+asyncfutures
 AsyncHttpClient
+asynchttpserver
 AsyncHttpServer
+asyncjs
+asyncmacro
+asyncnet
 AsyncResponse
 AsyncSmtp
 AsyncSocket
+asyncstreams
 atan
 atan2
 atanh
@@ -324,6 +338,7 @@ atomicLoadN
 atomicNandFetch
 AtomicNodes
 atomicOrFetch
+atomics
 atomicSignalFence
 atomicStore
 atomicStoreN
@@ -366,6 +381,7 @@ AUTO_INCREMENT_FLAG
 autocommit
 AuxilaryButton
 AVLinux
+avltree
 avr
 AVRInput
 AVRPower
@@ -415,6 +431,7 @@ Barrier
 barrierEnter
 barrierLeave
 base
+base64
 BaseLexer
 basename
 baseTypeKind
@@ -486,6 +503,7 @@ bioSMem
 bioWrite
 bitand
 bitnot
+bitops
 bitor
 bitsize
 BitsRange
@@ -529,6 +547,7 @@ BrowserFavorites
 BrowserForward
 BrowserHome
 BrowserRefresh
+browsers
 BrowserSearch
 BrowserStop
 BS0
@@ -628,6 +647,7 @@ cdouble
 cdup
 ceil
 cells
+cellsets
 center
 CentOS
 cfgEof
@@ -645,9 +665,12 @@ Cflag
 cfloat
 cfSetIspeed
 cfSetOspeed
+cgi
 cgiError
 CgiError
+cgprocs
 ch
+chains
 Chakra
 ChaletOS
 change_user
@@ -655,6 +678,7 @@ changeFileExt
 changes
 Channel
 ChannelDown
+channels
 ChannelUp
 char
 Character_set
@@ -664,6 +688,7 @@ charData
 charSet
 CHARSET_INFO
 Charset_info_st
+chcks
 chdir
 check
 check_scramble
@@ -865,6 +890,7 @@ Collation_needed_func
 colLavender
 colLavenderBlush
 colLawnGreen
+collections
 colLemonChiffon
 colLightBlue
 colLightCoral
@@ -915,6 +941,7 @@ ColorF2Yellow
 ColorF3Blue
 ColorF4Grey
 ColorF5Brown
+colors
 colPaleGoldenRod
 colPaleGreen
 colPaleTurquoise
@@ -1039,6 +1066,7 @@ CompositionUpdate
 computedGoto
 concat
 concept
+concurrency
 Cond
 config
 Config
@@ -1099,6 +1127,7 @@ ConvertThreadToFiberEx
 convertToConsoleLoggable
 convertXYToPos
 cookie
+cookies
 copy
 Copy
 copy_named_substring
@@ -1119,7 +1148,9 @@ copyNimNode
 copyNimTree
 copyShared
 copyTo
+core
 coreAttr
+coro
 coroExecWithStack
 CoroutineRef
 correlation
@@ -1147,6 +1178,8 @@ cpDir
 cpFile
 cppDefine
 cpuEndian
+cpuinfo
+cpuload
 CpuPlatform
 cpuRelax
 cpuTime
@@ -1205,6 +1238,7 @@ createTextNode
 createThread
 createU
 createv
+critbits
 CritBitTree
 CRNCYSTR
 CrSel
@@ -1242,6 +1276,7 @@ CSTOPB
 cstring
 cstringArray
 cstringArrayToSeq
+cstrutils
 CsvError
 CsvParser
 CsvRow
@@ -1313,6 +1348,11 @@ DAY_7
 daylight
 days
 Days
+db_common
+db_mysql
+db_odbc
+db_postgres
+db_sqlite
 dbArray
 dbBit
 dbBlob
@@ -1424,7 +1464,9 @@ deleteFileW
 delOutputFormatter
 delSection
 delSectionKey
+deprecated
 Deque
+deques
 DES_cblock
 des_key_schedule
 des_ks_struct
@@ -1448,6 +1490,7 @@ dfn
 dFri
 dial
 dialog
+diff
 difference
 diffInt
 diffText
@@ -1480,6 +1523,7 @@ distinct
 distinctBase
 distribute
 Distribution
+distros
 div
 DivByZeroError
 dkAuthor
@@ -1513,7 +1557,10 @@ Document
 DocumentFragmentNode
 DocumentNode
 DocumentTypeNode
+docutils
 DOLLAR_ENDONLY
+dollars
+dom
 Domain
 DomApiVersion
 DomEvent
@@ -1575,6 +1622,8 @@ DVR
 dWed
 DWORD
 DYNAMIC_ARRAY
+dyncalls
+dynlib
 DynlibFormat
 E2BIG
 EACCES
@@ -1610,6 +1659,7 @@ ECONNREFUSED
 ECONNRESET
 EDEADLK
 EDESTADDRREQ
+editdistance
 editDistance
 editDistanceAscii
 EDOM
@@ -1664,6 +1714,7 @@ encodeUrl
 encodeZigzag
 EncodingConverter
 EncodingError
+encodings
 encrypt
 end
 End
@@ -1672,6 +1723,7 @@ EndCall
 endgrent
 endhostent
 Endianness
+endians
 endnetent
 endOfFile
 EndOfFile
@@ -1721,6 +1773,7 @@ Enum_mysql_stmt_state
 Enum_server_command
 Enum_shutdown_level
 Enum_stmt_attr_type
+env
 envPairs
 ENXIO
 eof
@@ -1731,6 +1784,7 @@ EParseError
 EPERM
 EPIPE
 epochTime
+epoll
 epoll_create
 epoll_create1
 epoll_ctl
@@ -1908,6 +1962,7 @@ EventError
 EventHandler
 eventParser
 EventPhase
+events
 EventTarget
 EVFILT_AIO
 EVFILT_EXCEPT
@@ -1939,6 +1994,7 @@ Exception
 exchange
 excl
 exclFilePermissions
+excpt
 EXDEV
 exec
 execAffectedRows
@@ -1980,6 +2036,7 @@ expect
 expectKind
 expectLen
 expectMinLen
+experimental
 expm1
 export
 exportc
@@ -2112,6 +2169,7 @@ fegetexceptflag
 fegetround
 feholdexcept
 fence
+fenv
 feraiseexcept
 fesetenv
 fesetexceptflag
@@ -2332,6 +2390,7 @@ formatBiggestFloat
 formatEng
 formatErrorIndexBound
 FormatFlag
+formatfloat
 formatFloat
 formatMessageA
 formatMessageW
@@ -2409,6 +2468,7 @@ FTW_SL
 FTW_SLN
 fullinfo
 func
+future
 Future
 FutureBase
 FutureError
@@ -2418,6 +2478,9 @@ FutureVar
 gai_strerror
 gamma
 gauge
+gc
+gc2
+gc_common
 GC_disable
 GC_disableMarkAndSweep
 GC_dumpHeap
@@ -2426,8 +2489,11 @@ GC_enableMarkAndSweep
 GC_fullCollect
 GC_getStatistics
 GC_GUARD
+gc_hooks
 GC_logTrace
+gc_ms
 GC_ref
+gc_regions
 GC_setMaxPause
 GC_setStrategy
 GC_step
@@ -2448,6 +2514,7 @@ GENERIC_READ
 GENERIC_WRITE
 genericHead
 GenericSeqSize
+genode
 GenodeEnv
 genOid
 genSym
@@ -2891,7 +2958,9 @@ hasDataBuffered
 hash
 Hash
 hash_password
+hashcommon
 hashData
+hashes
 hashIgnoreCase
 hashIgnoreStyle
 HashSet
@@ -2929,6 +2998,7 @@ head
 header
 headerLimit
 HeadsetHook
+heapqueue
 HeapQueue
 help
 Help
@@ -2944,6 +3014,7 @@ hideCursor
 high
 HIGH_PRIORITY_CLASS
 HighClient
+highlite
 hint
 hintsCallback
 Hiragana
@@ -2967,13 +3038,17 @@ hostCPU
 Hostent
 HOSTNAME_LENGTH
 hostOS
+hotcodereloading
 HourRange
 hours
 Hours
 hr
 HSlice
 hstrerror
+hti
 html
+htmlgen
+htmlparser
 htmlTag
 HtmlTag
 htonl
@@ -3025,10 +3100,12 @@ Http502
 Http503
 Http504
 Http505
+httpclient
 HttpClient
 HttpClientBase
 HttpCode
 HttpConnect
+httpcore
 HttpDelete
 HttpGet
 HttpHead
@@ -3098,6 +3175,7 @@ importc
 importcpp
 importjs
 importobjc
+impure
 imul
 in
 In6_addr
@@ -3150,14 +3228,17 @@ InAddrScalar
 inc
 incl
 inclFilePermissions
+inclrtl
 inclSetElement
 include
+includes
 incompleteStruct
 inDays
 indent
 index
 indexBy
 IndexError
+indexerrors
 IndexExt
 INET6_ADDRSTRLEN
 inet_addr
@@ -3247,6 +3328,7 @@ inMinutes
 inNanoseconds
 innerText
 Ino
+inotify
 inotify_add_watch
 inotify_init
 inotify_init1
@@ -3291,6 +3373,7 @@ interrupt
 intersection
 Interval
 IntSet
+intsets
 intToStr
 intVal
 inv
@@ -3304,6 +3387,7 @@ invokeNew
 invokeNewSeq
 inWeeks
 inZone
+io
 IOC_IN
 IOC_INOUT
 IOC_OUT
@@ -3316,7 +3400,12 @@ IOEffect
 IOError
 IOFBF
 IONBF
+ioselectors_epoll
+ioselectors_kqueue
+ioselectors_poll
+ioselectors_select
 IOSelectorsException
+ioselects
 ioselSupportedPlatform
 IpAddress
 IpAddressFamily
@@ -3434,8 +3523,10 @@ items
 itemsWithPrefix
 iterAndMutate
 iterator
+iterators
 iterToProc
 IUCLC
+iup
 IUP_BOTTOM
 IUP_BUTTON1
 IUP_BUTTON2
@@ -3522,16 +3613,20 @@ JRetrText
 js
 jsArguments
 JsAssoc
+jsconsole
+jscore
 jsDelete
 jsDirname
 JsError
 JsEvalError
+jsffi
 jsFilename
 jsFromAst
 JsKey
 jsNew
 jsNull
 JsObject
+json
 JSON
 jsonArrayEnd
 jsonArrayStart
@@ -3558,6 +3653,7 @@ JsRangeError
 JsReferenceError
 JsRoot
 JsSyntaxError
+jssys
 JStore
 JString
 JsTypeError
@@ -4062,12 +4158,14 @@ lcm
 leaves
 legend
 len
+lenientops
 let
 Let
 letters
 Letters
 Level
 LevelNames
+lexbase
 lgamma
 li
 libCandidates
@@ -4144,6 +4242,7 @@ listDirs
 listen
 listFiles
 ListProgram
+lists
 Lit
 Lite
 littleEndian
@@ -4186,12 +4285,15 @@ Location
 LocationBar
 Lock
 lockf
+LockFreeHash
+locks
 log
 log10
 log1p
 log2
 LogEntry
 Logger
+logging
 LogOff
 LONG
 LONG_DATA_HEADER
@@ -4219,6 +4321,8 @@ macos
 macosx
 MacOSX
 macro
+macrocache
+macros
 Mageia
 magic
 MailForward
@@ -4266,6 +4370,7 @@ mApr
 mapViewOfFileEx
 mark
 marquee
+marshal
 mask
 master_query
 master_send_query
@@ -4275,6 +4380,7 @@ matchLen
 matGetAttribute
 matGetFloat
 matGetInt
+math
 Math
 MathLib
 matrix
@@ -4361,8 +4467,10 @@ memExec
 memExecRead
 memExecReadWrite
 MemFile
+memfiles
 MemMapFileStream
 MemMapFileStreamObj
+memory
 memoryLock
 memoryLockAll
 MemoryOrder
@@ -4374,6 +4482,7 @@ memReadWrite
 MemRegion
 MemSlice
 memSlices
+memtracker
 memTrackerDisable
 memTrackerEnable
 memTrackerOp
@@ -4383,6 +4492,7 @@ MenuBar
 menuv
 merge
 mergeIndexes
+mersenne
 MersenneTwister
 message
 Message
@@ -4416,6 +4526,7 @@ Milliseconds
 MimeDB
 mimes
 MimeType
+mimetypes
 min
 min10Exponent
 minExponent
@@ -4475,6 +4586,7 @@ MM_WARNING
 mmap
 mMar
 mMay
+mmdisp
 MMM
 MMMM
 mNov
@@ -4506,6 +4618,7 @@ MON_7
 MON_8
 MON_9
 MonoTime
+monotimes
 Month
 MonthdayRange
 months
@@ -4607,6 +4720,7 @@ my_thread_end
 my_thread_init
 my_ulonglong
 myodbc_remove_escape
+mysql
 MySQL
 N_CDECL
 N_CDECL_PTR
@@ -4648,6 +4762,7 @@ narch_coroExecWithStack
 narch_longjmp
 narch_longjmp_1
 narch_setjmp
+nativesockets
 nativeStackTraceSupported
 natural
 Natural
@@ -4662,6 +4777,7 @@ NCCS
 NCSTRING
 NegInf
 nestList
+net
 NET
 net_clear
 net_end
@@ -4846,6 +4962,7 @@ nimCoroutines
 nimCStrLen
 nimEnableCovariance
 nimGC_setStackBottom
+nimhcr
 NimIdent
 NimMajor
 NimMinor
@@ -4853,12 +4970,15 @@ NimNode
 NimNodeKind
 NimNodeKinds
 NimPatch
+nimprof
 nimrtl
+nimscript
 NimSeqV2
 nimSetMem
 NimSym
 NimSymKind
 NimThread
+nimtracker
 NimTypeKind
 NimVersion
 nimvm
@@ -5172,6 +5292,7 @@ notice
 Notification
 notin
 now
+nre
 nskConditional
 nskConst
 nskConverter
@@ -5305,6 +5426,7 @@ ODBC_CONFIG_DSN
 ODBC_CONFIG_SYS_DSN
 ODBC_REMOVE_DSN
 ODBC_REMOVE_SYS_DSN
+odbcsql
 of
 ofd
 OFDEL
@@ -5318,6 +5440,7 @@ offsetTop
 offsetWidth
 OFILL
 Oid
+oids
 oidToString
 OK
 ol
@@ -5350,6 +5473,7 @@ opendir
 openFileStream
 OpenMandriva
 openProcess
+openssl
 OpenSSL_add_all_algorithms
 OPENSSL_config
 OPENSSL_DES_DECRYPT
@@ -5396,14 +5520,24 @@ OrderedTable
 OrderedTableRef
 Ordinals
 orig_termios
+os
 os2
+osalloc
+osenv
+oserr
 OSError
 OSErrorCode
 osErrorMsg
+osinfo_posix
+osinfo_win
 osInvalidSocket
 osLastError
+ospaths
 OsPlatform
+osproc
+osseps
 OSVERSIONINFO
+oswalkdir
 out
 outHtml
 outLatex
@@ -5430,6 +5564,7 @@ P_ALL
 P_PGID
 P_PID
 packageName
+packages
 packed
 packet_error
 pad
@@ -5468,9 +5603,11 @@ parseBiggestUInt
 parseBin
 parseBinInt
 parseBool
+parsecfg
 parseCmdLine
 parseColor
 parseCookies
+parsecsv
 parseEnum
 parseEscapedUTF16
 parseExpr
@@ -5485,14 +5622,18 @@ parseIdent
 parseInt
 parseIpAddress
 parseIps
+parsejson
 parseJson
 parseJsonFragments
 parseOct
 parseOctInt
 parseOid
+parseopt
+parseopt2
 parsePeg
 parseSaturatedNatural
 parseSecureHash
+parsesql
 parseSQL
 parseStandardFormatSpecifier
 parseStmt
@@ -5500,7 +5641,9 @@ parseTime
 parseUInt
 parseUntil
 parseUri
+parseutils
 parseWhile
+parsexml
 parseXml
 PART_KEY_FLAG
 PARTIAL
@@ -5518,6 +5661,7 @@ patchFile
 PathComponent
 pathconf
 PathIter
+pathnorm
 PathSep
 pattern_to_host_byte_order
 patterns
@@ -5555,6 +5699,7 @@ PCLinuxOS
 pclose
 PConnStatusType
 Pcontext
+pcre
 Pcre
 Pcre16
 Pcre32
@@ -5591,6 +5736,7 @@ peekUint8
 peg
 Peg
 PegKind
+pegs
 pem_password_cb
 PEM_read_bio_RSA_PUBKEY
 Peppermint
@@ -5687,6 +5833,7 @@ pkTerminalIgnoreStyle
 pkTitle
 pkUpper
 pkWhitespace
+platforms
 play
 Play
 PlaySpeedDown
@@ -5736,6 +5883,7 @@ Port
 Porteus
 pos
 Positive
+posix
 Posix
 POSIX_ASYNC_IO
 POSIX_FADV_DONTNEED
@@ -5746,6 +5894,9 @@ POSIX_FADV_SEQUENTIAL
 POSIX_FADV_WILLNEED
 posix_fadvise
 posix_fallocate
+posix_linux_amd64
+posix_linux_amd64_consts
+posix_macos_amd64
 POSIX_MADV_DONTNEED
 POSIX_MADV_NORMAL
 POSIX_MADV_RANDOM
@@ -5753,6 +5904,10 @@ POSIX_MADV_SEQUENTIAL
 POSIX_MADV_WILLNEED
 posix_madvise
 posix_mem_offset
+posix_nintendoswitch
+posix_nintendoswitch_consts
+posix_other
+posix_other_consts
 POSIX_PRIO_IO
 posix_spawn
 posix_spawn_file_actions_addclose
@@ -5788,10 +5943,12 @@ POSIX_TYPED_MEM_ALLOCATE_CONTIG
 posix_typed_mem_get_info
 POSIX_TYPED_MEM_MAP_ALLOCATABLE
 posix_typed_mem_open
+posix_utils
 post
 postContent
 poStdErrToStdOut
 postfix
+postgres
 PostgresPollingStatusType
 postQueuedCompletionStatus
 poUsePath
@@ -5945,6 +6102,7 @@ pread
 pred
 preferSpawn
 prefix
+prelude
 prepare
 prepare16
 prepare_v2
@@ -5965,6 +6123,7 @@ PRINT_FAILURES
 PRINT_NONE
 printKeyCodes
 PrintScreen
+private
 proc
 procCall
 Process
@@ -5991,6 +6150,7 @@ procname
 procvar
 prod
 product
+profiler
 ProfilerHook
 programResult
 progress
@@ -6197,8 +6357,10 @@ PUDF_ARGS
 PUDF_INIT
 PULONG
 PULONG_PTR
+punycode
 PunyError
 Puppy
+pure
 PUSED_MEM
 push
 pushGcFrame
@@ -6252,6 +6414,7 @@ RandScreen
 rangeCheck
 RangeError
 Rational
+rationals
 rawData
 rawData2
 rawEnv
@@ -6265,6 +6428,7 @@ rb
 RcLowBattery
 rdFileSize
 rdFileTime
+rdstdin
 RDTSC
 re
 read
@@ -6381,6 +6545,7 @@ registerStackTraceOverride
 registerTimer
 registerVnode
 registerWaitForSingleObject
+registry
 reIgnoreCase
 relativePath
 release
@@ -6425,6 +6590,7 @@ reportComments
 reportValidity
 reportWhitespace
 repr
+reprjs
 request
 Request
 requestAnimationFrame
@@ -6434,6 +6600,7 @@ requires
 requiresData
 ReraiseError
 RES
+reservedmem
 ReservedMem
 ReservedMemSeq
 reset
@@ -6479,6 +6646,7 @@ rightSize
 riscv64
 RLIMIT_NOFILE
 RLock
+rlocks
 rmdir
 rmDir
 rmFile
@@ -6557,6 +6725,7 @@ RootObj
 RootRef
 rope
 Rope
+ropes
 ROSA
 roSkipPounds
 roSupportMarkdown
@@ -6590,6 +6759,9 @@ Rpl_type
 RSA_verify
 RsaGenerateKey
 rsplit
+rst
+rstast
+rstgen
 RstGenerator
 RstNode
 RstNodeKind
@@ -6601,6 +6773,7 @@ RstParseOptions
 rstToHtml
 rt
 RtArray
+rtarrays
 rtc
 rtl
 RTLD_GLOBAL
@@ -6626,6 +6799,7 @@ runnableExamples
 running
 RunningRegress
 RunningStat
+runtime_v2
 RUSAGE_CHILDREN
 RUSAGE_SELF
 RUSAGE_THREAD
@@ -6854,6 +7028,7 @@ seconds
 Seconds
 section
 SECURE_AUTH
+securehash
 secureHash
 SecureHash
 secureHashFile
@@ -6862,12 +7037,14 @@ SEEK_CUR
 SEEK_END
 SEEK_SET
 seekdir
+segfaults
 select
 Select
 select_db
 SelectEvent
 selectInto
 Selector
+selectors
 selectRead
 selectWrite
 selfExe
@@ -6895,8 +7072,10 @@ sendTo
 separator
 Separator
 SEQ_DECL_SIZE
+seqs
 Seqs
 sequence
+sequtils
 serve
 Servent
 server_end
@@ -6988,6 +7167,7 @@ setgrent
 setHandle
 setHandleInformation
 sethostent
+setimpl
 setIndexTerm
 setInterval
 setLanguage
@@ -7018,6 +7198,7 @@ setRangeText
 setregid
 setreuid
 setrlimit
+sets
 Sets
 setSamplingFrequency
 setSectionKey
@@ -7041,14 +7222,18 @@ setuid
 setUnicodeValue
 setupForeignThreadGc
 sgn
+sha1
 Sha1Digest
 Sha1State
 shallow
 shallowCopy
 SHARED_MEMORY_BASE_NAME
+sharedlist
 SharedList
 SharedString
+sharedstrings
 SharedTable
+sharedtables
 shellExecuteA
 shellExecuteW
 shift
@@ -7186,6 +7371,7 @@ slurp
 small
 smallest
 smartBinarySearch
+smtp
 Smtp
 snprintf
 SO_ACCEPTCONN
@@ -7834,6 +8020,7 @@ SqlHDesc
 SqlHEnv
 SqlHStmt
 SqlHWND
+sqlite3
 SQLITE_ABORT
 SQLITE_ALTER_TABLE
 SQLITE_ANY
@@ -8157,6 +8344,7 @@ StatHasNanoseconds
 static
 staticExec
 staticRead
+stats
 Status
 STATUS_GET_RESULT
 STATUS_PENDING
@@ -8173,6 +8361,7 @@ stderr
 STDERR_FILENO
 stdin
 STDIN_FILENO
+stdlib
 stdmsg
 stdout
 STDOUT_FILENO
@@ -8226,8 +8415,10 @@ str
 strdefine
 Stream
 StreamObj
+streams
 strerror
 strfmon
+strformat
 strftime
 string
 String
@@ -8243,9 +8434,15 @@ StringTableRef
 strip
 stripGenericParams
 stripLineEnd
+strmantle
+strmisc
 strong
 strptime
+strs
+strscans
+strtabs
 struct
+strutils
 strVal
 study
 STUDY_EXTRA_NEEDED
@@ -8275,6 +8472,7 @@ substr
 Subtitle
 succ
 success
+sugar
 suite
 suiteEnded
 suiteStarted
@@ -8282,6 +8480,7 @@ sum
 sumKbn
 summary
 sumPairs
+sums
 sup
 Super
 supportsCopyMem
@@ -8300,6 +8499,7 @@ swapEndian32
 swapEndian64
 swapRefsInArray
 switch
+switch_memory
 SwitchToFiber
 symAddr
 symBodyHash
@@ -8316,6 +8516,10 @@ SyntaxError
 SysCond
 sysconf
 SysLock
+syslocks
+sysspawn
+sysstr
+system
 SysThread
 T_FMT
 T_FMT_AMPM
@@ -8327,7 +8531,9 @@ TAB3
 TABDLY
 table
 Table
+tableimpl
 TableRef
+tables
 tabs
 tabsv
 tag
@@ -8496,6 +8702,7 @@ template
 term
 termIgnoreCase
 termIgnoreStyle
+terminal
 TerminalCmd
 terminalHeight
 terminalHeightIoctl
@@ -8505,6 +8712,7 @@ terminalWidth
 terminalWidthIoctl
 terminate
 terminateProcess
+termios
 Termios
 test
 testAndSet
@@ -8540,8 +8748,11 @@ thread_safe
 threadAnalysis
 ThreadId
 ThreadLocal
+threadlocalstorage
+threadpool
 ThreadPoolAdvice
 ThreadPoolState
+threads
 threadvar
 threadVarGetValue
 threadVarSetValue
@@ -8549,6 +8760,7 @@ ticks
 time
 Time
 TIME_MIN
+time_t
 TimeEffect
 TimeFormat
 TimeFormatParseError
@@ -8566,11 +8778,14 @@ timer_delete
 timer_getoverrun
 timer_gettime
 timer_settime
+timers
+times
 TIMESTAMP_FLAG
 TimeUnit
 Timeval
 timezone
 Timezone
+tinyc
 TinyCore
 TIOCGWINSZ
 title
@@ -8854,11 +9069,13 @@ TYPE_VARCHAR
 TYPE_YEAR
 typed
 typedesc
+typeinfo
 typeKind
 typeof
 typeOfIter
 TypeOfMode
 typeOfProc
+typetraits
 tyPointer
 tyProc
 tyProxyHidden
@@ -8912,6 +9129,8 @@ undefineSymbol
 Undo
 unescape
 UNGREEDY
+unicode
+unicode_ranges
 unicodeLetter
 unicodeLower
 unicodeTitle
@@ -8923,6 +9142,7 @@ Uninitialized
 union
 UNIQUE_FLAG
 UNIQUE_KEY_FLAG
+unittest
 unixTimeToWinTime
 unixToNativePath
 unlikely
@@ -8956,6 +9176,7 @@ update
 updateChildren
 updateHandle
 upperBound
+uri
 Uri
 Url
 USE_NIM_NAMESPACE
@@ -9012,6 +9233,7 @@ UTF8_ERR6
 UTF8_ERR7
 UTF8_ERR8
 UTF8_ERR9
+util
 utimes
 uuuu
 UUUU
@@ -9038,6 +9260,7 @@ valuesWithPrefix
 var
 variance
 varianceS
+varints
 vbox
 vboxv
 Vector
@@ -9128,6 +9351,7 @@ whitespace
 Whitespace
 WideCString
 WideCStringObj
+widestrs
 WIFCONTINUED
 WIFEXITED
 WIFISLAX
@@ -9141,6 +9365,7 @@ Window
 windows
 Windows
 Wink
+winlean
 WinSizeT
 winTimeToUnixTime
 withData
@@ -9157,6 +9382,7 @@ WNOWAIT
 WOHandleArray
 wordWrap
 wrapConnectedSocket
+wrappers
 wrapSocket
 wrapWords
 write
@@ -9304,9 +9530,11 @@ xmlHeader
 XmlNode
 XmlNodeKind
 XmlParseOption
+xmlparser
 XmlParser
 xmlPI
 xmlSpecial
+xmltree
 xmlWhitespace
 xnCData
 xnComment
