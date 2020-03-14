@@ -139,6 +139,9 @@ au BufNewFile,BufRead *.nut setl efm=%f:%l:%m
 au BufNewFile,BufRead *.gd setl ft=gdscript
 "objc
 au BufNewFile,BufRead *.mm setl ft=objc
+"weixin
+au BufNewFile,BufRead *.wxml setl ft=html
+au BufNewFile,BufRead *.wxss setl ft=css
 
 """"""""""""""""""""
 "temp settings }}}1
