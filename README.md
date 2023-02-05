@@ -25,7 +25,7 @@ setup.bat
 ;cg: find words in tags and goto the file 
 
 **more shortcutkeys:**  
->mapleader is ; or ,  
+>mapleader is ,  
 >;tt;tl;tL;to;tq ;ff;fu;fg ;bb;bd ;cc;cb;cm;cg;cu;cl;cn;cp;co;ci  
 ;yy ;pp ;P ;ve ;ww;wf;qf;qq;qw;qa ;mm;/;mc;ma;mt;n;N;*;\#  
 ;ld;lr ;sc;se;st ;fl ;ut;ul ;wss;wsf \<f1\> ;\<cr\>  
