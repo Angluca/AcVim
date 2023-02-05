@@ -445,7 +445,8 @@ function s:HEX_XxdConv()
   if getline(1) =~ "^0000000:"		" only if it worked
     set ft=xxd
   else
-    return				" can't start xxd
+	" can't start xxd
+    return
   endif
   "
   " Nice mapping for TAB/Shift-TAB
@@ -854,7 +855,7 @@ function s:HEX_MapChars()
   execute "inoremap \/ \/<ESC>:call <SID>HEX_Char()<CR>"
   execute "inoremap \" \"<ESC>:call <SID>HEX_Char()<CR>"
   execute "inoremap \! \!<ESC>:call <SID>HEX_Char()<CR>"
-  execute "inoremap \ง \ง<ESC>:call <SID>HEX_Char()<CR>"
+  execute "inoremap \ยง \ยง<ESC>:call <SID>HEX_Char()<CR>"
   execute "inoremap \~ \~<ESC>:call <SID>HEX_Char()<CR>"
   
   "
@@ -900,7 +901,7 @@ function s:HEX_UnMapChars()
   execute "iunmap \/"
   execute "iunmap \""
   execute "iunmap \!"
-  execute "iunmap \ง"
+  execute "iunmap \ยง"
   execute "iunmap \~"
 endfun
 " 
