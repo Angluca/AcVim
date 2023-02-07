@@ -354,8 +354,8 @@ function! EchoFuncStart()
     let b:EchoFuncStarted=1
     let s:ShowMode=&showmode
     let s:CmdHeight=&cmdheight
-    inoremap <silent> <buffer>  <leader>ee   <c-r>=EchoFunc()<cr>
-    inoremap <silent> <buffer>  <leader>eq   <c-r>=EchoFuncClear()<cr>
+    "inoremap <silent> <buffer>  <leader>ee   <c-r>=EchoFunc()<cr>
+    "inoremap <silent> <buffer>  <leader>eq   <c-r>=EchoFuncClear()<cr>
     exec 'inoremap <silent> <buffer> ' . g:EchoFuncKeyNext . ' <c-r>=EchoFuncN()<cr>'
     exec 'inoremap <silent> <buffer> ' . g:EchoFuncKeyPrev . ' <c-r>=EchoFuncP()<cr>'
 endfunction

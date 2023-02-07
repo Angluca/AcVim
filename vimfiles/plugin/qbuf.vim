@@ -6,7 +6,6 @@ if !exists("g:qb_hotkey") || g:qb_hotkey == ""
 	let g:qb_hotkey = "<F4>"
 endif
 exe "nnoremap <unique>" g:qb_hotkey " :cal <SID>init(1)<cr>:cal SBRun()<cr>"
-exe "cnoremap <unique>" g:qb_hotkey "<Esc>"
 
 if exists("g:qb_loaded") && g:qb_loaded
 	finish
@@ -109,7 +108,7 @@ function s:init(onStart)
 		let s:cursorbg = synIDattr(hlID("Cursor"),"bg")
 		let s:cursorfg = synIDattr(hlID("Cursor"),"fg")
 		let s:cmdh = &cmdheight
-		hi Cursor guibg=NONE guifg=NONE
+		"hi Cursor guibg=NONE guifg=NONE
 
 		for l:key in s:klist
 			if l:key == "q"
@@ -131,7 +130,8 @@ function s:init(onStart)
 		endfor
 		cunmap <up>
 		cunmap <down>
-		exe "hi Cursor guibg=" . s:cursorbg . " guifg=".((s:cursorfg == "") ? "NONE" : s:cursorfg)
+		"exe "hi Cursor guibg=" . s:cursorbg . " guifg=".((s:cursorfg == "") ? "NONE" : s:cursorfg)
+		"echo "bg:". s:cursorbg . " fg:". s:cursorfg
 	endif
 endfunc
 

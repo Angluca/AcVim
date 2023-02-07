@@ -117,7 +117,7 @@ else
 endif
 "}}}
 "support postfix list {{{
-let s:postfix = ['"*.java"', '"*.h"', '"*.c"', '"*.hpp"', '"*.cpp"', '"*.cc"', '*.cs', '*.js']
+let s:postfix = ['"*.java"', '"*.h"', '"*.c"', '"*.cc"', '"*.hpp"', '"*.cpp"', '"*.cxx"', '"*.cs"', '"*.js"', '"*.nim"', '"*.zig"']
 "}}}
 "Check software environment {{{
 if !executable ('ctags')
