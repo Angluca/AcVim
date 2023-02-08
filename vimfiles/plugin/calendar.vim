@@ -60,7 +60,7 @@
 " ChangeLog:
 "     2.5  : bug fix, 7.2 don't have relativenumber.
 "     2.4  : added g:calendar_options.
-"     2.3  : week number like ISO8601 
+"     2.3  : week number like ISO8601
 "            g:calendar_monday and g:calendar_weeknm work together
 "     2.2  : http://gist.github.com/355513#file_customizable_keymap.diff
 "            http://gist.github.com/355513#file_winfixwidth.diff
@@ -103,7 +103,7 @@
 "     1.3w : bug fix
 "            on leap year, week number decreases.
 "     1.3v : bug fix
-"            add nowrapscan 
+"            add nowrapscan
 "            use s:bufautocommandsset for making title
 "            don't focus to navi when doubleclick bottom next>.
 "     1.3u : bug fix
@@ -161,7 +161,7 @@
 "            bug fix for calculates date.
 "     1.3c : bug fix for MakeDir()
 "            if CalendarMakeDir(sfile) != 0
-"               v 
+"               v
 "            if s:CalendarMakeDir(sfile) != 0
 "     1.3b : bug fix for calendar_monday.
 "            it didn't work g:calendar_monday correctly.
@@ -351,7 +351,7 @@ if !exists("g:calendar_navi_label")
   let g:calendar_navi_label = "Prev,Today,Next"
 endif
 if !exists("g:calendar_diary")
-  let g:calendar_diary = "~/diary"
+  let g:calendar_diary = "~/vimdata/diary"
 endif
 if !exists("g:calendar_focus_today")
   let g:calendar_focus_today = 0
@@ -704,7 +704,7 @@ function! Calendar(...)
       " 0  1  2  3  4  5  6  vnweek
 
       let vfweek =((vparam % 7)  -vnweek+ 14-2) % 7
-      let viweek = (vparam - vfweek-2+7 ) / 7 +1 
+      let viweek = (vparam - vfweek-2+7 ) / 7 +1
 
       if vfweek < 3
          let viweek = viweek - 1
@@ -712,13 +712,13 @@ function! Calendar(...)
 
       "vfweekl  <=year length
       let vfweekl = 52
-      if (vfweek == 3)  
+      if (vfweek == 3)
         let vfweekl = 53
       endif
 
       if viweek == 0
         let viweek = 52
-        if ((vfweek == 2) && (((vyear-1) % 4) !=0)) 
+        if ((vfweek == 2) && (((vyear-1) % 4) !=0))
               \ || ((vfweek == 1) && (((vyear-1) % 4) ==0))
           let viweek = 53
         endif
@@ -735,7 +735,7 @@ function! Calendar(...)
       if g:calendar_erafmt =~ '.*,[+-]*\d\+'
         let veranum=substitute(g:calendar_erafmt,'.*,\([+-]*\d\+\)','\1','')
         if vyear+veranum > 0
-          let vdisplay2=substitute(g:calendar_erafmt,'\(.*\),.*','\1','') 
+          let vdisplay2=substitute(g:calendar_erafmt,'\(.*\),.*','\1','')
           let vdisplay2=vdisplay2.(vyear+veranum).'/'.vmnth.'('
         else
           let vdisplay2=vyear.'/'.vmnth.'('
@@ -879,7 +879,7 @@ function! Calendar(...)
     endwhile
 
     " if it is needed, fill with space
-    if vinpcur % 7 
+    if vinpcur % 7
       while (vinpcur % 7 != 0)
         let vdisplay2=vdisplay2.'   '
         let vinpcur = vinpcur + 1
@@ -1352,7 +1352,7 @@ hi def link CalHeader   Special
 hi def link CalMemo     Identifier
 
 " append 农历  by Jumping
-let s:tInfo=[0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977, 0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970, 0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950, 0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557, 0x06ca0,0x0b550,0x15355,0x04da0,0x0a5b0,0x14573,0x052b0,0x0a9a8,0x0e950,0x06aa0, 0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0, 0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b6a0,0x195a6, 0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570, 0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x055c0,0x0ab60,0x096d5,0x092e0, 0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5, 0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930, 0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530, 0x05aa0,0x076a3,0x096d0,0x04bd7,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45, 0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0, 0x14b63] 
+let s:tInfo=[0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977, 0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970, 0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950, 0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557, 0x06ca0,0x0b550,0x15355,0x04da0,0x0a5b0,0x14573,0x052b0,0x0a9a8,0x0e950,0x06aa0, 0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0, 0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b6a0,0x195a6, 0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570, 0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x055c0,0x0ab60,0x096d5,0x092e0, 0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5, 0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930, 0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530, 0x05aa0,0x076a3,0x096d0,0x04bd7,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45, 0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0, 0x14b63]
 let s:solarMonth=[31,28,31,30,31,30,31,31,30,31,30,31]
 let s:Gan=["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
 let s:Zhi=["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
@@ -1364,7 +1364,7 @@ let s:nStr2 = ['初','十','廿','卅','□']
 let s:monthName = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"]
 
 " 农历节日 *表示放假日
-" let lFtv =[ "0101*春节", "0102*初二", "0115 元宵节", "0505*端午节", "0707 七夕情人节", "0715 中元节", "0815*中秋节", "0909 重阳节", "1208 腊八节", "1223 小年", "0100*除夕"] 
+" let lFtv =[ "0101*春节", "0102*初二", "0115 元宵节", "0505*端午节", "0707 七夕情人节", "0715 中元节", "0815*中秋节", "0909 重阳节", "1208 腊八节", "1223 小年", "0100*除夕"]
 
 " /*****************************************************************************
 " 日期计算
@@ -1382,7 +1382,7 @@ function! s:Nr2Bin(nr)
 endfunction
 
 " //====================================== 返回农历 y年的总天数
-function! s:GetNongliDays(y) 
+function! s:GetNongliDays(y)
     let sum = 348
     let binaryNum = s:Nr2Bin(s:tInfo[a:y-1900])
     let strLen = strlen(binaryNum) - 4
@@ -1395,28 +1395,28 @@ function! s:GetNongliDays(y)
 endfunction
 
 " //====================================== 返回农历 y年闰月的天数
-function! s:GetLeapDays(y) 
-    if s:GetLeapMonth(a:y)  
+function! s:GetLeapDays(y)
+    if s:GetLeapMonth(a:y)
         return (s:tInfo[a:y-1900] > 0x10000)? 30: 29
-    else 
+    else
         return 0
     endif
 endfunction
 
 " //====================================== 返回农历 y年闰哪个月 1-12 , 没闰返回 0
-function! s:GetLeapMonth(y) 
-    return s:tInfo[a:y-1900] % 16 
+function! s:GetLeapMonth(y)
+    return s:tInfo[a:y-1900] % 16
 endfunction
 
 " //====================================== 返回农历 y年m月的总天数
-function! s:GetMonthDays(y,m) 
+function! s:GetMonthDays(y,m)
     let binaryNum = s:Nr2Bin(s:tInfo[a:y-1900])
     return  strpart(binaryNum,strlen(binaryNum)+a:m - 17,1)? 30: 29
 endfunction
 
 " //====================================== 阳历y 年m 月d 日对应的农历
-function! s:Lunar(y,m,d) 
-    " 
+function! s:Lunar(y,m,d)
+    "
     let i=1900
     let leap=0
     let temp=0
@@ -1430,7 +1430,7 @@ function! s:Lunar(y,m,d)
     while i < a:m
         let offset += s:GetSolarDays(a:y,i-1)
         let i += 1
-    endwhile 
+    endwhile
 
     let offset += a:d
     let offset -= 31
@@ -1444,7 +1444,7 @@ function! s:Lunar(y,m,d)
     endwhile
 
     " for(i=1900; i<2050 && offset>0; i++) { temp=s:GetNongliDays(i); offset-=temp; }
-    " 
+    "
     if offset<0
         let offset += temp
         let i -= 1
@@ -1479,7 +1479,7 @@ function! s:Lunar(y,m,d)
         endif
     endif
 
-    if offset < 0 
+    if offset < 0
         let offset  += temp
         let i -= 1
     endif
@@ -1495,9 +1495,9 @@ function! s:Lunar(y,m,d)
         let nongliDay = s:nStr2[nongliDay/10].s:nStr1[nongliDay%10]
     endif
     let cY = '甲子年'
-    if a:m-1<2 
+    if a:m-1<2
         let cY=s:GetCyclical(a:y-1900+36-1)
-    else 
+    else
         let cY=s:GetCyclical(a:y-1900+36)
     endif
 
@@ -1513,9 +1513,9 @@ function! s:GetYearDays(y)
     endwhile
     return days
 endfunction
-" 
+"
 " //==============================返回公历 y年某m+1月的天数
-function! s:GetSolarDays(y,m) 
+function! s:GetSolarDays(y,m)
     if (a:m==1)
         return ((a:y%4 == 0) && (a:y%100 != 0) || (a:y%400 == 0))? 29: 28
     else
@@ -1524,10 +1524,10 @@ function! s:GetSolarDays(y,m)
 endfunction
 
 " ============================== 传入 offset 返回干支, 0=甲子
-function! s:GetCyclical(num) 
+function! s:GetCyclical(num)
     return s:Gan[a:num%10].s:Zhi[a:num%12]
 endfunction
- 
+
 function! s:GetCursorDayLunar()
      " for navi
      if exists('g:calendar_navi')

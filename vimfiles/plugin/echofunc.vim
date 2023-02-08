@@ -467,7 +467,10 @@ if !exists('g:EchoFuncLangsDict')
                 \ 'vera':['Vera'],
                 \ 'verilog':['verilog'],
                 \ 'vim':['Vim'],
-                \ 'yacc':['YACC']}
+                \ 'nim':['nim'],
+                \ 'zig':['zig'],
+                \ 'yacc':['YACC']
+                \}
 endif
 
 if !exists("g:EchoFuncLangsUsed")

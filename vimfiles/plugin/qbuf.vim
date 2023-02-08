@@ -2,23 +2,28 @@ if v:version < 700
 	finish
 endif
 
-if !exists("g:qb_hotkey") || g:qb_hotkey == ""
-	let g:qb_hotkey = "<F4>"
-endif
-exe "nnoremap <unique>" g:qb_hotkey " :cal <SID>init(1)<cr>:cal SBRun()<cr>"
-
 if exists("g:qb_loaded") && g:qb_loaded
 	finish
 endif
 let g:qb_loaded = 1
 
-let s:action2cmd = {"z": 'call <SID>switchbuf(#,"")', "!z": 'call <SID>switchbuf(#,"!")',
-			\"u": "hid b #|let s:cursel = (s:cursel+1) % s:blen",
+if !exists("g:qb_hotkey") || g:qb_hotkey == ""
+	let g:qb_hotkey = "<F4>"
+endif
+exe "nnoremap <unique>" g:qb_hotkey " :cal <SID>init(1)<cr>:cal SBRun()<cr>"
+
+let s:action2cmd = {
+			\"z": 'call <SID>switchbuf(#,"")', "!z": 'call <SID>switchbuf(#,"!")',
+			\"f": "hid b #|let s:cursel = (s:cursel+1) % s:blen",
 			\"s": "sb #",
+			\"v": "vert sb #",
 			\"d": 'call <SID>qbufdcmd(#,"")', "!d": 'call <SID>qbufdcmd(#,"!")',
+			\"D": 'call <SID>qbufdcmd(#,"!")',
 			\"w": "bw #", "!w": "bw! #",
+			\"W": "bw! #",
 			\"l": "let s:unlisted = 1 - s:unlisted",
-			\"c": 'call <SID>closewindow(#,"")'}
+			\"c": 'call <SID>closewindow(#,"")'
+			\}
 
 function s:rebuild()
 	redir @y | silent ls! | redir END
@@ -100,7 +105,7 @@ function SBRun()
 	call s:setcmdh(s:blen+1)
 endfunc
 
-let s:klist = ["j","J","k","K", "u", "d", "w", "l", "s", "c", "q", "t"]
+let s:klist = ["j","J","k","K", "f", "d", "D", "w", "W", "l", "s", "v", "c", "q"]
 function s:init(onStart)
 	if a:onStart
 		set nolazyredraw
@@ -113,12 +118,14 @@ function s:init(onStart)
 		for l:key in s:klist
 			if l:key == "q"
 				exe "cnoremap ".l:key." <Esc>"
-			else 
+			else
 				exe "cnoremap ".l:key." ".l:key."<cr>:cal SBRun()<cr>"
 			endif
 		endfor
 		cmap <up> k
 		cmap <down> j
+		cnoremap <space> <cr>
+		cnoremap <c-c> <esc>
 
 		call s:rebuild()
 		let s:cursel = match(s:buflist, '^\d*\*')
@@ -130,8 +137,9 @@ function s:init(onStart)
 		endfor
 		cunmap <up>
 		cunmap <down>
+		cunmap <space>
+		cunmap <c-c>
 		"exe "hi Cursor guibg=" . s:cursorbg . " guifg=".((s:cursorfg == "") ? "NONE" : s:cursorfg)
-		"echo "bg:". s:cursorbg . " fg:". s:cursorfg
 	endif
 endfunc
 
