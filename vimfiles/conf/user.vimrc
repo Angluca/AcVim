@@ -198,20 +198,20 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 """"""""""""""""""""
 "Mark seting
 """"""""""""""""""""
-nmap <unique> <silent> ;mm <Plug>MarkSet
-vmap <unique> <silent> ;mm <Plug>MarkSet
-nmap <unique> <silent> ;/ <Plug>MarkRegex
-vmap <unique> <silent> ;/ <Plug>MarkRegex
-nmap <unique> <silent> ;mc <Plug>MarkClear
-nmap <unique> <silent> ;ma <Plug>MarkAllClear
-nmap <unique> <silent> ;mt <Plug>MarkToggle
+nmap <silent> ;mm <Plug>MarkSet
+vmap <silent> ;mm <Plug>MarkSet
+nmap <silent> ;/ <Plug>MarkRegex
+vmap <silent> ;/ <Plug>MarkRegex
+nmap <silent> ;mc <Plug>MarkClear
+nmap <silent> ;ma <Plug>MarkAllClear
+nmap <silent> ;mt <Plug>MarkToggle
 
-nmap <unique> <silent> ;n <Plug>MarkSearchCurrentNext
-nmap <unique> <silent> ;N <Plug>MarkSearchCurrentPrev
-nmap <unique> <silent> ;* <Plug>MarkSearchAnyNext
-nmap <unique> <silent> ;# <Plug>MarkSearchAnyPrev
-nmap <unique> <silent> * <Plug>MarkSearchNext
-nmap <unique> <silent> # <Plug>MarkSearchPrev
+nmap <silent> ;n <Plug>MarkSearchCurrentNext
+nmap <silent> ;N <Plug>MarkSearchCurrentPrev
+nmap <silent> ;* <Plug>MarkSearchAnyNext
+nmap <silent> ;# <Plug>MarkSearchAnyPrev
+nmap <silent> * <Plug>MarkSearchNext
+nmap <silent> # <Plug>MarkSearchPrev
 """"""""""""""""""""
 "NERD_commenter setting
 """"""""""""""""""""
@@ -352,6 +352,9 @@ nmap ;uu :UndotreeShow<cr>
 
 "-------------------------
 "Custom settings
+"You cann see AcVim maps
+":verbose nmap ;
+":verbose nmap ,
 "-------------------------
 "auto-pair
 "let g:AutoPairsShortcutToggle = '<M-a>'

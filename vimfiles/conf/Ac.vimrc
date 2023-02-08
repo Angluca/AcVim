@@ -555,12 +555,12 @@ au BufNewFile,BufRead *.wxml setl ft=html
 au BufNewFile,BufRead *.wxss setl ft=css
 
 "if all file save will del trailing whitespace!!! like it
-au BufWrite *.* call DeleteTrailingWS()
+"au BufWrite *.* call DeleteTrailingWS()
 " do not automaticlly remove trailing whitespace
-"au BufWrite *.nim,*.nims :call DeleteTrailingWS()
-"au BufWrite *.zig call DeleteTrailingWS()
-"au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
 "au BufWrite *.txt call DeleteTrailingWS()
+au BufWrite *.nim,*.nims :call DeleteTrailingWS()
+au BufWrite *.zig call DeleteTrailingWS()
+au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
 
 "--------------------------------------------
 """"""""""""""""""""

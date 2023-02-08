@@ -13,27 +13,46 @@ sh setup.sh
 >#**windows**  
 setup.bat
 
-**open vim**  
-> :PlugUpdate :PlugInstall :PlugUpgrade  
+**How to use it, 
+Let's open the vim!** 
+>:PlugUpdate :PlugInstall :PlugUpgrade  
 \ee: edit vimrc  
 \pp: edit edit update plugs list  
 \aa: edit autocomplete option.  
 \uu: edit custom option  
->
->;yy ;pp or \<alt-c\> \<alt-v\>: copy paste  
-\\= : generate nim or another language tags  
-;cg: find words in tags and goto the file 
 
-**more shortcutkeys:**  
+>;yy ;pp or \<alt-c\> \<alt-v\> are system copy paste  
+\\= : generate nim or another language tags  
+;bb : very easy to operate buffer  
+;tt : file finder  
+;uu ;ut : see all undo tree  
+;xx ...: code comment  
+;cc ...: manage buffer/file/mru  
+;hm ...: convert 0xff byte  
+;mm ;ma ;n ;* ;/: good marks  
+;cal : calendar in vim  
+<space>hjklweb : quickly move  
+<shift or ctrl> : can move or change window size  
+ysiwb ysawB ysib" : add symbol for words  
+csb" cs{[ : revise symbol  
+dsb dsB ds" : del symbol  
+
+**More shortcutkeys:**  
 >mapleader is ,  
->;tt;tl;tL;to;tq ;ff;fu;fg ;bb;bd ;cc;cb;cm;cg;cu;cl;cn;cp;co;ci  
-;yy ;pp ;P ;ve ;ww;wf;qf;qq;qw;qa ;mm;/;mc;ma;mt;n;N;*;\#  
-;ld;lr ;sc;se;st ;fl ;ut;ul ;wss;wsf \<f1\> ;\<cr\>  
-;xx;xs;xi;xy;xl;xb;xn;xu;x$;x\<space\>;xa;xm;xA  
-\<space\>hjklweb... i:<shift+space>  
-\<shift or ctrl\>left,right,up,down  
-ysiw" cs"'... and more plugs keys.  
-you can test them :)
+
+><f1> ;we ;bb ;bd ;uu ;ut ;lr ;ld  
+;xA ;xa ;x$ ;xu ;xn ;xb ;xl ;xy ;xi ;xs ;xm ;x<Space> ;xx  
+;# ;* ;N ;n ;mt ;ma ;mc ;/ ;mm  
+;tt ;tl ;tq ;to ;tL ;cc ;ca ;cu ;cg ;cm ;cb ;fl  
+;qa ;qq ;qf ;qw ;wf ;ww ;ul ;ve ;P  
+;ci ;co ;cp ;cn ;cl ;fg ;fu ;ff ;pp ;yx ;yy ;wsf ;wss  
+
+>,bv ,bs ,bt ,be ,mm ,ma ,mc ,mt  
+,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
+,dk ,dj ,dp ,dg ,sc ,sy ,caL ,cal  
+
+>... and more shortcutkeys.  
+hope you like them :)  
 
 ## Features
 - Happy coding.
