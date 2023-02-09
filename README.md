@@ -13,34 +13,43 @@ sh setup.sh
 >#**windows**  
 setup.bat
 
-**How to use it, 
-Let's open the vim!** 
+**How to use it,  
+Let's open the vim.** 
 >:PlugUpdate :PlugInstall :PlugUpgrade  
 \ee: edit vimrc  
 \pp: edit edit update plugs list  
 \aa: edit autocomplete option.  
 \uu: edit custom option  
 
->;yy ;pp or \<alt-c\> \<alt-v\> are system copy paste  
-\\= : generate nim or another language tags  
-;bb : very easy to operate buffer  
-;tt : file finder  
+>;yy ;pp or \<alt-c\> \<alt-v\> : system copy paste  
+:E \<a-1~9,0\> \<a-h,l,H,L\> gt gT tq: tabnew, switch tab page, H L move tab, tq close  
+
+>;bb : very easy and practice to operate buffer  
+ --> j/k/l/f/q: move, s/v: split win, d/D: del/!del, w/W: delout erase buf!!  
+ 
+>;tt : file manage  
 ;uu ;ut : see all undo tree  
 ;xx ...: code comment  
-;cc ...: manage buffer/file/mru  
-;hm ...: convert 0xff byte  
-;mm ;ma ;n ;* ;/: good marks  
-;cal : calendar in vim  
-<space>hjklweb : quickly move  
-<shift or ctrl> : can move or change window size  
-ysiwb ysawB ysib" : add symbol for words  
-csb" cs{[ : revise symbol  
-dsb dsB ds" : del symbol  
+;cb ;cc ;cm ;cu ;cg : manage buffer/file/mru/undo/tags  
+;mm ;ma ;n ;* ;/ ;mt: good marks  
 
-**More shortcutkeys:**  
+>\<space\>h/j/k/l/w/e/b : quickly move  
+\<ctrl/shift\>↑/↓/←/→ : move window or resize  
+\\= : generate nim or another language tags  
+
+>;cal : calendar in vim  
+;hm ...: convert 0xff byte  
+
+>ysiwb ysawB ysib" : add symbol for words  
+csb" cs\[\( ...: revise symbol  
+dsb dsB ds" ... : del symbol  
+Sb SB S\[ S" ...: add symbol
+
+**More shortcutkeys:  
+You can test them if has similar operation.**  
 >mapleader is ,  
 
-><f1> ;we ;bb ;bd ;uu ;ut ;lr ;ld  
+>\<f1\> ;we ;bb ;bd ;uu ;ut ;lr ;ld  
 ;xA ;xa ;x$ ;xu ;xn ;xb ;xl ;xy ;xi ;xs ;xm ;x<Space> ;xx  
 ;# ;* ;N ;n ;mt ;ma ;mc ;/ ;mm  
 ;tt ;tl ;tq ;to ;tL ;cc ;ca ;cu ;cg ;cm ;cb ;fl  
@@ -49,10 +58,11 @@ dsb dsB ds" : del symbol
 
 >,bv ,bs ,bt ,be ,mm ,ma ,mc ,mt  
 ,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
-,dk ,dj ,dp ,dg ,sc ,sy ,caL ,cal  
+sc ,sy ,caL ,cal  
 
 >... and more shortcutkeys.  
 hope you like them :)  
 
 ## Features
 - Happy coding.
+
