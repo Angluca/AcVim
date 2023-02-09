@@ -33,6 +33,23 @@ fu! AcCreateDir(dir_name)
 	endif
 endf
 
+fu! AcClearUndo()
+    echo "Do you wan clear all undo? [y]: "
+    if getchar() != 121 "y
+		echo "" | redraw
+        return
+    endif
+	let ul_bak = &undolevels
+	let md_bak = &modified
+	let &undolevels=-1
+	exe "normal a \<BS>\<Esc>"
+	let &undolevels = ul_bak
+	let &modified = md_bak
+	unlet ul_bak md_bak
+	redraw
+	echo "Clear finish."
+endf
+
 fu! ToggleVisualEditMode()
 if !exists('s:visualEditMode')
 	let		s:visualEditMode = 1
@@ -502,6 +519,7 @@ nmap ;ve :call	ToggleVisualEditMode() <cr>
 vmap ;ve :call	ToggleVisualEditMode() <cr>
 "undo list
 nmap ;ul :undol<cr>
+nmap ;uc :call AcClearUndo() <cr>
 
 "Fast saving
 nmap <silent> ;ww :update<cr>

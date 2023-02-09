@@ -19,8 +19,8 @@ au FileType nim,nims set tags+=./nimtags,./../nimtags
 """"""""""""""""""""
 "Sketch seting
 """"""""""""""""""""
-nmap <F1> :call ToggleSketch()<CR>
-imap <F1> <esc>
+nmap <F10> :call ToggleSketch()<CR>
+"imap <F10> <esc>
 """"""""""""""""""""
 "ShowMarks seting
 """"""""""""""""""""
@@ -83,7 +83,7 @@ nmap <silent> ;cu :CtrlPUndo<cr>
 nmap <silent> ;ca :CtrlPMixed<cr>
 let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar)$',
+			\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
 			\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 			\ }
 """"""""""""""""""""
@@ -347,12 +347,15 @@ let g:lightline = {
 """"""""""""""""""""
 "undotree
 """"""""""""""""""""
+"let g:undotree_RelativeTimestamp = 0
+"let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_WindowLayout = 3
 nmap ;ut :UndotreeToggle<cr>
-nmap ;uu :UndotreeShow<cr>
+nmap ;uu :UndotreeShow<cr>:UndotreeFocus<cr>
 
 "-------------------------
 "Custom settings
-"You cann see AcVim maps
+"You can see AcVim maps
 ":verbose nmap ;
 ":verbose nmap ,
 "-------------------------

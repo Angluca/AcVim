@@ -28,17 +28,19 @@ Let's open the vim.**
  --> j/k/l/f/q: move, s/v: split win, d/D: del/!del, w/W: delout erase buf!!  
  
 >;tt : file manage  
-;uu ;ut : see all undo tree  
+;uu ;ut ;uc: see all undo tree and clear all undo  
 ;xx ...: code comment  
 ;cb ;cc ;cm ;cu ;cg : manage buffer/file/mru/undo/tags  
 ;mm ;ma ;n ;* ;/ ;mt: good marks  
 
 >\<space\>h/j/k/l/w/e/b : quickly move  
 \<ctrl/shift\>↑/↓/←/→ : move window or resize  
-\\= : generate nim or another language tags  
+;cl ;cn ;cp ;co ;ci : operation quickfix  
+\\= : generate language tags  
 
 >;cal : calendar in vim  
 ;hm ...: convert 0xff byte  
+<f10>: draw!
 
 >ysiwb ysawB ysib" : add symbol for words  
 csb" cs\[\( ...: revise symbol  
@@ -49,7 +51,7 @@ Sb SB S\[ S" ...: add symbol
 You can test them if has similar operation.**  
 >mapleader is ,  
 
->\<f1\> ;we ;bb ;bd ;uu ;ut ;lr ;ld  
+>\<f10\> ;we ;bb ;bd ;uu ;ut ;lr ;ld  
 ;xA ;xa ;x$ ;xu ;xn ;xb ;xl ;xy ;xi ;xs ;xm ;x<Space> ;xx  
 ;# ;* ;N ;n ;mt ;ma ;mc ;/ ;mm  
 ;tt ;tl ;tq ;to ;tL ;cc ;ca ;cu ;cg ;cm ;cb ;fl  
