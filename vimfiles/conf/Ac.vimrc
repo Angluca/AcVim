@@ -34,9 +34,11 @@ fu! AcCreateDir(dir_name)
 endf
 
 fu! AcClearUndo()
-    echo "Do you wan clear all undo? [y]: "
-    if getchar() != 121 "y
-		echo "" | redraw
+	echoh WarningMsg| echo "Do you want clear all undo? [Y]: "
+    if getchar() != 89 "Y89y121 
+		redraw 
+		echo "Cencel"
+		echoh None
         return
     endif
 	let ul_bak = &undolevels
@@ -47,7 +49,8 @@ fu! AcClearUndo()
 	let &modified = md_bak
 	unlet ul_bak md_bak
 	redraw
-	echo "Clear finish."
+	echoh Question| echo "Clear finish"
+	echoh None
 endf
 
 fu! ToggleVisualEditMode()

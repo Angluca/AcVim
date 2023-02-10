@@ -14,9 +14,11 @@ exe "nnoremap <unique>" g:qb_hotkey " :cal <SID>init(1)<cr>:cal SBRun()<cr>"
 
 let s:action2cmd = {
 			\"z": 'call <SID>switchbuf(#,"")', "!z": 'call <SID>switchbuf(#,"!")',
-			\"f": "hid b #|let s:cursel = (s:cursel+1) % s:blen",
+			\"f": 'call <SID>switchbuf(#,"")', "!f": 'call <SID>switchbuf(#,"!")',
+			\"F": 'call <SID>switchbuf(#,"!")',
 			\"s": "sb #",
 			\"v": "vert sb #",
+			\"e": "hid b #|let s:cursel = (s:cursel+1) % s:blen",
 			\"d": 'call <SID>qbufdcmd(#,"")', "!d": 'call <SID>qbufdcmd(#,"!")',
 			\"D": 'call <SID>qbufdcmd(#,"!")',
 			\"w": "bw #", "!w": "bw! #",
@@ -105,7 +107,7 @@ function SBRun()
 	call s:setcmdh(s:blen+1)
 endfunc
 
-let s:klist = ["j","J","k","K", "f", "d", "D", "w", "W", "l", "s", "v", "c", "q"]
+let s:klist = ["j","J","k","K", "f", "F", "e", "d", "D", "w", "W", "l", "s", "v", "c", "q"]
 function s:init(onStart)
 	if a:onStart
 		set nolazyredraw
@@ -117,7 +119,7 @@ function s:init(onStart)
 
 		for l:key in s:klist
 			if l:key == "q"
-				exe "cnoremap ".l:key." <Esc>"
+				exe "cnoremap ".l:key." :cal s:init(0)<cr>:echo''<cr>"
 			else
 				exe "cnoremap ".l:key." ".l:key."<cr>:cal SBRun()<cr>"
 			endif
@@ -125,7 +127,7 @@ function s:init(onStart)
 		cmap <up> k
 		cmap <down> j
 		cnoremap <space> <cr>
-		cnoremap <c-c> <esc>
+		exe "cnoremap <c-c> :cal s:init(0)<cr>:echo''<cr>"
 
 		call s:rebuild()
 		let s:cursel = match(s:buflist, '^\d*\*')

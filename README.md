@@ -25,10 +25,11 @@ Let's open the vim.**
 :E \<a-1~9,0\> \<a-h,l,H,L\> gt gT tq: tabnew, switch tab page, H L move tab, tq close  
 
 >;bb : very easy and practice to operate buffer  
- --> j/k/l/f/q: move, s/v: split win, d/D: del/!del, w/W: delout erase buf!!  
+ --> j/k: move, f/e: open/quicksee win, s/v: split win  
+ -> d/D: del/!del buf, w/W: wipe out buf, l: see deleted buf  
  
 >;tt : file manage  
-;uu ;ut ;uc: see all undo tree and clear all undo  
+;uu ;ut ;uc: open undo tree and clear all undo  
 ;xx ...: code comment  
 ;cb ;cc ;cm ;cu ;cg : manage buffer/file/mru/undo/tags  
 ;mm ;ma ;n ;* ;/ ;mt: good marks  
