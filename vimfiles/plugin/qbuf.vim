@@ -1,3 +1,7 @@
+"=====================
+"	QuickBuf
+"	version 1.6
+"=====================
 if v:version < 700
 	finish
 endif

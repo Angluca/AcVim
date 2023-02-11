@@ -1,6 +1,7 @@
 "=================================
 " General
 "=================================
+"--------------------------------------------
 "load plugins conf
 so $VIMCONF/plugins.vimrc
 nma<silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
@@ -8,7 +9,7 @@ nma<silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 execute pathogen#infect()
 execute pathogen#infect('bundle_custom/{}')
 "call pathogen#runtime_append_all_bundles()
-
+"--------------------------------------------
 " Ignore these filenames during enhanced command line completion.
 set wildignore+=*.luac " Lua byte code
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.a,*.dylib " compiled object files
@@ -28,9 +29,9 @@ endif
 endf
 
 fu! AcCreateDir(dir_name)
-	if finddir(a:dir_name) == ''
+if finddir(a:dir_name) == ''
 	silent call mkdir(a:dir_name)
-	endif
+endif
 endf
 
 fu! AcClearUndo()
@@ -545,48 +546,8 @@ nmap <silent> ;tq :tabc<cr>
 
 "generate tags
 nmap \= :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
-""""""""""""""""""""
-"User base filetypes
-""""""""""""""""""""
-au BufNewFile,BufRead README*,COPYING setlocal ft=txt
-au BufNewFile,BufRead *.txt setl ft=txt
-au BufNewFile,BufRead *.log setl ft=txt
-au BufNewFile,BufRead *.asm setl ft=masm
-au BufNewFile,BufRead *.inc setl ft=masm
-au BufNewFile,BufRead *.asm setl mp=fasm\ %:p
-
-au BufNewFile,BufRead *.mxml setl ft=mxml
-au BufNewFile,BufRead *.as setl ft=actionscript
-au BufNewFile,BufRead CMakeLists.txt setl ft=cmake
-au BufNewFile,BufRead *.p setl ft=pawn
-au BufNewFile,BufRead *.md,*.markdown setl ft=markdown
-au BufNewFile,BufRead *.shd,*.sc setl ft=glsl
-
-"objc
-au BufNewFile,BufRead *.mm setl ft=objc
-"squirrel script
-au BufNewFile,BufRead *.nut setl ft=squirrel
-au BufNewFile,BufRead *.nut setl mp=sq\ %:p
-au BufNewFile,BufRead *.nut setl efm=%f:%l:%m
-
-"godot script
-au BufNewFile,BufRead *.gd setl ft=gdscript
-"weixin
-au BufNewFile,BufRead *.wxml setl ft=html
-au BufNewFile,BufRead *.wxss setl ft=css
-
-"if all file save will del trailing whitespace!!! like it
-"au BufWrite *.* call DeleteTrailingWS()
-" do not automaticlly remove trailing whitespace
-"au BufWrite *.txt call DeleteTrailingWS()
-au BufWrite *.nim,*.nims :call DeleteTrailingWS()
-au BufWrite *.zig call DeleteTrailingWS()
-au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
-
 "--------------------------------------------
-""""""""""""""""""""
-"AutoComplpop seting
-""""""""""""""""""""
+"filetype and acp
 so $VIMCONF/autocomplete.vimrc
 nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 "load user conf
