@@ -85,31 +85,6 @@ let g:ctrlp_custom_ignore = {
 			\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 			\ }
 """"""""""""""""""""
-"BufExplorer setting
-""""""""""""""""""""
-"let g:bufExplorerDisableDefaultKeyMapping=1
-"let g:bufExplorerReverseSort=0
-"let g:bufExplorerFindActive=0 
-let g:bufExplorerSplitBelow=1 
-let g:bufExplorerShowUnlisted=1
-"let g:bufExplorerShowTabBuffer=1
-"let g:bufExplorerShowNoName=1 
-"let g:bufExplorerDefaultHelp=1
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerShowDirectories=1
-let g:bufExplorerSortBy='mru' " 'extension''fullpath''mru''name''number'   
-let g:bufExplorerSplitRight=0
-let g:bufExplorerSplitVertical=0
-let g:bufExplorerSplitHorzSize=10
-let g:bufExplorerSplitVertSize = 30
-"let g:bufExplorerSplitOutPathName=1
-"nmap <silent> <leader>be :BufExplorer<CR>
-nmap <silent> <leader>be :ToggleBufExplorer<CR>
-nmap <silent> <leader>bt :ToggleBufExplorer<CR>
-nmap <silent> <leader>bb :BufExplorerHorizontalSplit<CR>
-nmap <silent> <leader>bv :BufExplorerVerticalSplit<CR>
-
-""""""""""""""""""""
 "Taglist
 """"""""""""""""""""
 "if has("win32")
@@ -196,14 +171,16 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 """"""""""""""""""""
 "NERDTree seting
 """"""""""""""""""""
+"let NERDTreeMinimalUI=1
+"let NERDTreeMinimalMenu=1
 let NERDChristmasTree=0
 let NERDTreeAutoCenter=1
 let NERDTreeMouseMode=1
 let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 let NERDTreeShowLineNumbers=0
 let NERDTreeWinPos='left'
-let NERDTreeWinSize=20
+let NERDTreeWinSize=30
 let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.tar\.gz$','\.7z$','\.zip$','\.rar$','\.swp$','\.dll$','\.obj$']
 nmap <silent> ;tt :NERDTreeToggle <cr>
 """"""""""""""""""""
@@ -211,16 +188,16 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 """"""""""""""""""""
 nmap <silent> ;mm <Plug>MarkSet
 vmap <silent> ;mm <Plug>MarkSet
-nmap <silent> ;/ <Plug>MarkRegex
-vmap <silent> ;/ <Plug>MarkRegex
+nmap <silent> ;mr <Plug>MarkRegex
+vmap <silent> ;mr <Plug>MarkRegex
 nmap <silent> ;mc <Plug>MarkClear
-nmap <silent> ;ma <Plug>MarkAllClear
+nmap <silent> ;mC <Plug>MarkAllClear
 nmap <silent> ;mt <Plug>MarkToggle
 
-nmap <silent> ;n <Plug>MarkSearchCurrentNext
-nmap <silent> ;N <Plug>MarkSearchCurrentPrev
-nmap <silent> ;* <Plug>MarkSearchAnyNext
-nmap <silent> ;# <Plug>MarkSearchAnyPrev
+nmap <silent> ;* <Plug>MarkSearchCurrentNext
+nmap <silent> ;# <Plug>MarkSearchCurrentPrev
+nmap <silent> ;/ <Plug>MarkSearchAnyNext
+nmap <silent> ;? <Plug>MarkSearchAnyPrev
 nmap <silent> * <Plug>MarkSearchNext
 nmap <silent> # <Plug>MarkSearchPrev
 """"""""""""""""""""

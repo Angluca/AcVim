@@ -30,7 +30,6 @@ Plug 'vim-scripts/AutoClose--Alves'
 Plug 'vim-scripts/Mark--Karkat'
 
 Plug 'junegunn/vim-easy-align'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'plasticboy/vim-markdown'
 Plug 'jeetsukumaran/vim-buffersaurus'
 Plug 'jeetsukumaran/vim-filesearch'

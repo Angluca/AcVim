@@ -32,8 +32,7 @@ Let's open the vim.**
 ;uu ;ut ;uc: open undo tree and clear all undo  
 ;xx ...: code comment  
 ;cb ;cc ;cm ;cu ;cg ;cx ;cd ;cD: manage buffer/file/mru/undo/tags  
-;mm ;ma ;n ;N ;* ;/ ;mt: good marks  
-,bv ,bb ,bt ,be: buffer explorer
+;mm ;mc ;mC ;mt ;* ;# ;/ ;? * #: good marks  
 
 >\<space\>h/j/k/l/w/e/b : quickly move  
 \<ctrl/shift\>¡ü/¡ý/¡û/¡ú : move window or resize  
