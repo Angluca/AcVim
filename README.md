@@ -31,11 +31,12 @@ Let's open the vim.**
 >;tt : file manage  
 ;uu ;ut ;uc: open undo tree and clear all undo  
 ;xx ...: code comment  
-;cb ;cc ;cm ;cu ;cg : manage buffer/file/mru/undo/tags  
-;mm ;ma ;n ;* ;/ ;mt: good marks  
+;cb ;cc ;cm ;cu ;cg ;cx ;cd ;cD: manage buffer/file/mru/undo/tags  
+;mm ;ma ;n ;N ;* ;/ ;mt: good marks  
+,bv ,bb ,bt ,be: buffer explorer
 
 >\<space\>h/j/k/l/w/e/b : quickly move  
-\<ctrl/shift\>‚Üë/‚Üì/‚Üê/‚Üí : move window or resize  
+\<ctrl/shift\>°¸/°˝/°˚/°˙ : move window or resize  
 ;cl ;cn ;cp ;co ;ci : operation quickfix  
 \\= : generate language tags  
 
@@ -52,14 +53,14 @@ Sb SB S\[ S" ...: add symbol
 You can test them if has similar operation.**  
 >mapleader is ,  
 
->\<f10\> ;we ;bb ;bd ;uu ;ut ;lr ;ld  
+>\<f10\> ;we ;bb ;bd ;uu ;ut ;lr ;ld ;fl  
 ;xA ;xa ;x$ ;xu ;xn ;xb ;xl ;xy ;xi ;xs ;xm ;x<Space> ;xx  
 ;# ;* ;N ;n ;mt ;ma ;mc ;/ ;mm  
-;tt ;tl ;tq ;to ;tL ;cc ;ca ;cu ;cg ;cm ;cb ;fl  
+;tt ;tl ;tq ;to ;tL ;cc ;ca ;cu ;cg ;cm ;cb ;cd ;cD  
 ;qa ;qq ;qf ;qw ;wf ;ww ;ul ;ve ;P  
-;ci ;co ;cp ;cn ;cl ;fg ;fu ;ff ;pp ;yx ;yy ;wsf ;wss  
+;ci ;co ;cp ;cn ;cl ;fg ;fu ;ff ;pp ;yx ;yy ;dw  
 
->,bv ,bs ,bt ,be ,mm ,ma ,mc ,mt  
+>,bv ,bb ,bt ,be ,mm ,ma ,mc ,mt  
 ,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
 sc ,sy ,caL ,cal  
 

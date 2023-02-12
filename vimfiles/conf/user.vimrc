@@ -63,12 +63,22 @@ vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "Ctrlp setting
 """"""""""""""""""""
 let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
+let g:ctrlp_max_files = 99
+let g:ctrlp_mruf_max = 66
+"let g:ctrlp_max_depth = 40
+"let g:ctrlp_mruf_save_on_update = 0
+"let g:ctrlp_use_caching = 1
+"let g:ctrlp_open_new_file = 'v' "thvr
+
 let g:ctrlp_map = ';cc'
 nmap <silent> ;cb :CtrlPBuffer<cr>
 nmap <silent> ;cm :CtrlPMRUFiles<cr>
 nmap <silent> ;cg :CtrlPTag<cr>
 nmap <silent> ;cu :CtrlPUndo<cr>
+nmap <silent> ;cx :CtrlPQuickfix<cr>
 nmap <silent> ;ca :CtrlPMixed<cr>
+nmap <silent> ;cd :CtrlPClearCache<cr>
+nmap <silent> ;cD :CtrlPClearAllCaches<cr>
 let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 			\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
@@ -77,14 +87,27 @@ let g:ctrlp_custom_ignore = {
 """"""""""""""""""""
 "BufExplorer setting
 """"""""""""""""""""
-let g:bufExplorerDefaultHelp=1 " Do not show default help.
-let g:bufExplorerShowRelativePath=1 " Show relative paths.
-let g:bufExplorerSortBy='mru' " Sort by most recently used.
-let g:bufExplorerSplitRight=0 " Split left.
-let g:bufExplorerSplitVertical=1 " Split vertically.
-"let g:bufExplorerSplitVertSize = 30 " Split width
-let g:bufExplorerUseCurrentWindow=1 " Open in new window.
-"let g:bufExplorerMaxHeight=50 " Max height
+"let g:bufExplorerDisableDefaultKeyMapping=1
+"let g:bufExplorerReverseSort=0
+"let g:bufExplorerFindActive=0 
+let g:bufExplorerSplitBelow=1 
+let g:bufExplorerShowUnlisted=1
+"let g:bufExplorerShowTabBuffer=1
+"let g:bufExplorerShowNoName=1 
+"let g:bufExplorerDefaultHelp=1
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerShowDirectories=1
+let g:bufExplorerSortBy='mru' " 'extension''fullpath''mru''name''number'   
+let g:bufExplorerSplitRight=0
+let g:bufExplorerSplitVertical=0
+let g:bufExplorerSplitHorzSize=10
+let g:bufExplorerSplitVertSize = 30
+"let g:bufExplorerSplitOutPathName=1
+"nmap <silent> <leader>be :BufExplorer<CR>
+nmap <silent> <leader>be :ToggleBufExplorer<CR>
+nmap <silent> <leader>bt :ToggleBufExplorer<CR>
+nmap <silent> <leader>bb :BufExplorerHorizontalSplit<CR>
+nmap <silent> <leader>bv :BufExplorerVerticalSplit<CR>
 
 """"""""""""""""""""
 "Taglist

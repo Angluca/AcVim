@@ -28,30 +28,44 @@ if !hasmapto(a:target, 'v')
 endif
 endf
 
-fu! AcCreateDir(dir_name)
-if finddir(a:dir_name) == ''
-	silent call mkdir(a:dir_name)
-endif
+fu! AcCreateDir(ds)
+	if finddir(a:ds) == ''
+		silent call mkdir(a:ds)
+	endif
 endf
 
 fu! AcClearUndo()
-	echoh WarningMsg| echo "Do you want clear all undo? [Y]: "
-    if getchar() != 89 "Y89y121 
-		redraw 
-		echo "Cencel"
-		echoh None
-        return
-    endif
-	let ul_bak = &undolevels
-	let md_bak = &modified
-	let &undolevels=-1
-	exe "normal a \<BS>\<Esc>"
-	let &undolevels = ul_bak
-	let &modified = md_bak
-	unlet ul_bak md_bak
-	redraw
-	echoh Question| echo "Clear finish"
+	if AcIsOK(-1, "Do you want clear all undo? [Y]: ", 0, "Cancel") != 0
+		let ul_bak = &undolevels
+		let md_bak = &modified
+		let &undolevels=-1
+		exe "normal a \<BS>\<Esc>"
+		let &undolevels = ul_bak
+		let &modified = md_bak
+		call AcIsOK(1, 0, "Clear finish", 0 )
+	endif
+endf
+
+fu! AcIsOK(yn, emsg, ymsg, nmsg) "yn:-1/0/1
+	echoh WarningMsg
+	if len(a:emsg) > 1
+		echo a:emsg 
+	endif
+	let s:ret = a:yn
+	let s:rmsg = a:nmsg
+	if a:yn == -1
+		let s:ret = getchar() == 89 ? 1:0 "Y89y121
+	endif
+	if s:ret > 0
+		let s:rmsg = a:ymsg
+		echoh Question
+	endif
+	if len(s:rmsg) > 1
+		redraw
+		echo s:rmsg
+	endif
 	echoh None
+	return s:ret
 endf
 
 fu! ToggleVisualEditMode()
@@ -151,11 +165,16 @@ fu! <SID>BufcloseCloseIt()
 	endif
 endf
 
-func! DeleteTrailingWS()
-exe "normal mz"
-%s/\s\+$//ge
-nohl
-exe "normal `z"
+func! DeleteTrailingWS(bb=0)
+	if a:bb != 0 
+	if AcIsOK(-1, "Clear trailing white space? [Y]: ", "Clear finish", "Cancel") == 0
+		return
+	endif
+	endif
+	exe "normal mz"
+	%s/\s\+$//ge
+	nohl
+	exe "normal `z"
 endfunc
 """"""""""""""""""""
 "Create directory
@@ -487,8 +506,9 @@ nmap $ g$
 
 au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
 
-nmap <silent> ;wss :call DeleteTrailingWS()<cr>:w<cr>
-nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
+"nmap <silent> ;wss :call DeleteTrailingWS()<cr>:w<cr>
+"nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
+nmap <silent> ;dw :call DeleteTrailingWS(2)<cr>
 
 "complete
 imap <s-space> <c-x><c-o>
