@@ -1,11 +1,11 @@
-*howto.txt*	For Vim version 8.0.  最近更新: 2006年5月
+*howto.txt*	适用于 Vim 9.0 版本。	最近更新: 2006年5月
 
 
 		  VIM 参考手册    by Bram Moolenaar
-	   译者: iCrazy <icrazy@ustc.edu>  http://vimcdoc.sf.net
+				译者: iCrazy <icrazy@ustc.edu>
 
 
-如何……					*howdoi* *how-do-i* *howto* *how-to*
+如何……				*howdoi* *how-do-i* *howto* *how-to*
 
 |tutor|			入门
 |:quit|			退出？我被困住了，请帮帮我！
@@ -91,4 +91,4 @@
 |2html.vim|		把一个彩色的文件转换成 HTML
 |less|			用 Vim 模拟 less 或 more，但带有语法高亮
 
- vim:tw=78:ts=8:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl:

@@ -1,7 +1,7 @@
-*usr_31.txt*	For Vim version 8.0.  最近更新: 2006年5月
+*usr_31.txt*	适用于 Vim 9.0 版本。	最近更新: 2020年9月
 
 		     VIM 用户手册 - by Bram Moolenaar
-		     译者: lang2 http://vimcdoc.sf.net
+				译者: lang2
 
 			      利用 GUI
 
@@ -104,8 +104,8 @@ Vim 会弹出一个类似下面的对话框:
 	在对话框中你可以使用键盘来作选择操作。通常来说 <Tab> 键和光标键可以改
 	变选项。键入 <Enter> 会确认选项。但这也跟你用的系统有关。
 
-当你不是使用 GUI 版本的时候， ":confirm" 也是有效的。Vim 不会弹出一个对话框，
-而是将询问显示在 Vim 窗口的底部并提示你键入选择。>
+当你不是使用 GUI 版本的时候，":confirm" 也是有效的。Vim 不会弹出一个对话框，而
+是将询问显示在 Vim 窗口的底部并提示你键入选择。 >
 
 	:confirm edit main.c
 <	Save changes to "Untitled"? ~
@@ -125,7 +125,7 @@ Window 菜单。
 可以选中它了。
 
 在用 <Alt> 键选中菜单后，你可以用光标键来在菜单内移动。<Right> 选择一个子菜
-单， <Left> 关闭之。<Esc> 也用来关闭菜单。<Enter> 选中一个菜单项。
+单，<Left> 关闭之。<Esc> 也用来关闭菜单。<Enter> 选中一个菜单项。
 
 使用 <Alt> 键来操作菜单和使用 <Alt> 键的映射会出现冲突。'winaltkeys' 可以用来
 告诉 Vim 如何对待 <Alt> 键。
@@ -173,9 +173,9 @@ Vim 窗口的大小是以字符数目计算的。因此它和所使用的字体�
 
 在启动 X-Window 版本的 gvim 时你可以在命令行指定窗口的位置和大小: >
 
-	gvim -geometry {width}x{height}+{x_offset}+{y_offset}
+	gvim -geometry {width}x{height}+{x-offset}+{y-offset}
 
-{width} 和 {height} 的单位是字符。{x_offset} 和 {y_offset} 的单位是像素。例: >
+{width} 和 {height} 的单位是字符。{x-offset} 和 {y-offset} 的单位是像素。例: >
 
 	gvim -geometry 80x25+100+300
 
@@ -185,25 +185,25 @@ Vim 窗口的大小是以字符数目计算的。因此它和所使用的字体�
 你可以使用 gvim 来编辑一个 e-mail。在你的 e-mail 程序里你得选择 gvim 作为其编
 辑程序。当你尝试这种配置的时候，你会发现行不通: 邮件程序认为编辑已经结束了，可
 实际上 gvim 还在运行着！
-   这里的情况是由于 gvim 启动时会将自己从 shell 分离出来的缘故。如果你是从终端
-启动 gvim 的话这当然没有问题，你还可以在 shell 里作其它事。但如果你的确希望等
-待 gvim 结束的话，你必须阻止这个分离动作。"-f" 参数就是用来做这个的: >
+   这里的情况是由于 gvim 启动时会将自己从外壳分离出来的缘故。如果你是从终端启
+动 gvim 的话这当然没有问题，你还可以在外壳里作其它事。但如果你的确希望等待
+gvim 结束的话，你必须阻止这个分离动作。"-f" 参数就是用来做这个的: >
 
 	gvim -f file.txt
 
-"-f" 代表前台 (foreground)。这样 Vim 就会挂起它启动所在的 shell，直到你编辑完
-毕并退出为止。
+"-f" 代表前台 (foreground)。这样 Vim 就会挂起它启动所在的外壳，直到你编辑完毕
+并退出为止。
 
 
 推 迟 启 动 GUI
 
-在 Unix 上你可以先在终端里启动 Vim。当你在一个 shell 里完成各种不同任务的时候
-这很有方便。如果当你在编辑某个文件时决定你想使用 GUI，你可以这样做: >
+在 Unix 上你可以先在终端里启动 Vim。当你在一个外壳里完成各种不同任务的时候这很
+有方便。如果当你在编辑某个文件时决定你想使用 GUI，你可以这样做: >
 
 	:gui
 
-Vim 就会打开 GUI 窗口并不再使用终端。你可以继续在终端里作其它事情。 "-f" 参数
-在这里也可以用来将 GUI 放置在前台: ":gui -f"。
+Vim 就会打开 GUI 窗口并不再使用终端。你可以继续在终端里作其它事情。"-f" 参数在
+这里也可以用来将 GUI 放置在前台: ":gui -f"。
 
 
 GVIM 启 动 文 件
@@ -235,4 +235,4 @@ gvimrc 文件可以被用来为 GUI 设定专用的选项和命令。例如，�
 
 下一章: |usr_32.txt| 撤销树
 
-版权: 参见 |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:
+版权: 参见 |manual-copyright|  vim:tw=78:ts=8:noet:ft=help:norl:

@@ -1,9 +1,8 @@
-*os_qnx.txt*    For Vim version 8.0.  最近更新: 2006年2月
+*os_qnx.txt*    适用于 Vim 9.0 版本。	最近更新: 2006年2月
 
 
 		  VIM 参考手册    by Julian Kinraid
 				译者: Willis
-				http://vimcdoc.sf.net
 
 
 							*QNX* *qnx*
@@ -19,7 +18,7 @@
 
 1. 概述							*qnx-general*
 
-QNX 上的 Vim 和其他的 unix 版本行为大致相同。 |os_unix.txt|
+QNX 上的 Vim 和其他的 unix 版本行为大致相同。|os_unix.txt|
 
 
 2. 编译 Vim						*qnx-compiling*
@@ -130,4 +129,4 @@ shift、ctrl、或是 alt，pterm 自己会处理鼠标事件。它会选择文�
 
 	- 在启动外部程序时，不要使用带 spawn() 的 fork()。
 
- vim:tw=78:sw=4:ts=8:ts=8:ft=help:norl:
+ vim:tw=78:sw=4:ts=8:noet:ft=help:norl:

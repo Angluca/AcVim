@@ -59,12 +59,11 @@ You can test them if has similar operation.**
 ;qa ;qq ;qf ;qw ;wf ;ww ;ul ;ve ;P  
 ;ci ;co ;cp ;cn ;cl ;fg ;fu ;ff ;pp ;yx ;yy ;dw  
 
->,bv ,bb ,bt ,be ,mm ,ma ,mc ,mt  
+>mm ,ma ,mc ,mt, sc ,sy ,caL ,cal  
 ,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
-sc ,sy ,caL ,cal  
 
->... and more shortcutkeys.  
-hope you like them :)  
+>... and some hotkeys.  
+hope you like it :)  
 
 ## Features
 - Happy coding.

@@ -1,14 +1,14 @@
-*usr_43.txt*	For Vim version 8.0.  最近更新: 2017年8月
+*usr_43.txt*	适用于 Vim 9.0 版本。	最近更新: 2017年8月
 
 		     VIM 用户手册 - by Bram Moolenaar
-		     译者: lang2 http://vimcdoc.sf.net
+				译者: lang2
 
 			       使用文件类型
 
 
-当你在编辑某一类型文件时，例如一个 C 程序或者一个 shell 脚本，你通常重复使用同
-样的设置和键盘映射。很快你就会对每一次都要手动设置这些感到厌烦。这一章就告诉你
-如果自动化这些设置。
+当你在编辑某一类型文件时，例如一个 C 程序或者一个外壳脚本，你通常重复使用同样
+的设置和键盘映射。很快你就会对每一次都要手动设置这些感到厌烦。这一章就告诉你如
+果自动化这些设置。
 
 |43.1|	为一类文件编写的插件
 |43.2|	添加一个文件类型
@@ -156,4 +156,4 @@ $VIMRUNTIME 中的 filetype.vim，因为该目录在 'runtimepath' 的中部。�
 
 下一章: |usr_44.txt|  自定义语法高亮
 
-版权: 参见 |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:
+版权: 参见 |manual-copyright|  vim:tw=78:ts=8:noet:ft=help:norl:

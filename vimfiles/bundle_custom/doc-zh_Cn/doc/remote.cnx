@@ -1,9 +1,8 @@
-*remote.txt*    For Vim version 8.0.  最近更新: 2017年8月
+*remote.txt*    适用于 Vim 9.0 版本。	最近更新: 2022年7月
 
 
 		  VIM 参考手册    by Bram Moolenaar
-				译者: Willis，tocer
-				http://vimcdoc.sf.net
+				译者: Willis、tocer
 
 
 Vim 客户-服务器 通信					*client-server*
@@ -11,8 +10,6 @@ Vim 客户-服务器 通信					*client-server*
 1. 通用功能			|clientserver|
 2. X11 专用条目			|x11-clientserver|
 3. MS-Windows 专用条目		|w32-clientserver|
-
-{Vi 没有任何这里的功能}
 
 ==============================================================================
 1. 通用功能						*clientserver*
@@ -51,16 +48,16 @@ Vim 客户-服务器 通信					*client-server*
 							*--remote-tab-wait*
    --remote-tab-wait		同 --remote-wait 但用新标签页打开每个文件。
 
-    						*--remote-tab-wait-silent*
+						*--remote-tab-wait-silent*
    --remote-tab-wait-silent	同 --remote-wait-silent 但用新标签页打开每个文
-   				件。
+				件。
 								*--servername*
    --servername {name}		成为用 {name} 作为名字的服务器。如果同时也用了
 				某个 --remote 命令，连接到服务器 {name}，而不
-				使用缺省的名字。 (见下)。
+				使用缺省的名字。(见下)。用大写形式的名字。
 								*--remote-send*
    --remote-send {keys}		发送键序列 {keys} 到服务器，然后退出。{keys}
-   				不通过映射。能识别特殊的键名，如 "<CR>" 会生成
+				不通过映射。能识别特殊的键名，如 "<CR>" 会生成
 				CR 字符。
 								*--remote-expr*
    --remote-expr {expr}		在服务器上执行 {expr}。然后在标准输出上打出结
@@ -91,7 +88,7 @@ Vim 客户-服务器 通信					*client-server*
     vim --servername BLA --remote-send '<C-\><C-N>:wqa<CR>'
 
 
-服 务 器 名
+服 务 器 名						*client-server-name*
 
 缺省地，Vim 试图用启动时的名字注册服务器名 (gvim、egvim ...)，你可以用
 --servername 参数覆盖之。如果不能用指定的名字，尝试附加一个后缀，直到找到一个
@@ -110,6 +107,9 @@ Vim 客户-服务器 通信					*client-server*
 
 --serverlist 参数让 Vim 在标准输出 (stdout) 上打出所有已经注册的命令服务器，然
 后退出。
+							*{server}*
+若干函数使用 {server} 参数。如为空串，Unix 上会使用缺省服务器名，即 "GVIM"。
+MS-Windows 上空串不能工作。
 
 Win32 注意事项: 不一定总能把 Vim 服务器切换到在前台，因为 MS-Windows 不允许这
 么做。客户通过 --remote 和 --remote-wait 参数调用而服务器名以 "g" 开始的时候，
@@ -126,8 +126,8 @@ Win32 注意事项: 不一定总能把 Vim 服务器切换到在前台，因为 
 
 函 数
 								*E240* *E573*
-若干 Vim 的函数可以用来书写命令服务器的脚本。参见 |eval.txt| 的描述，也可以在
-下面的函数名字上按 CTRL-] 以得到它们完整的描述。
+若干 Vim 的函数可以用来书写命令服务器的脚本。参见 |builtin.txt| 的描述，也可以
+在下面的函数名字上按 CTRL-] 以得到它们完整的描述。
 
     摘要				     解释 ~
     remote_startserver( name)		     运行服务器
@@ -158,7 +158,8 @@ X11 GUI 的 Vim (gvim) 启动时，会试图在根窗口的 'VimRegistry' 属性
 务器的名字。
 
 非 GUI 但可以访问到 X11 显示的 Vim (打开了 |xterm-clipboard|) 也可以作为命令服
-务器，只要服务器名通过 --servername 参数明确给出就行了。
+务器，只要服务器名通过 --servername 参数明确给出，或者 Vim 编译时带
+|+autoservername| 特性就行了。
 
 空的 --servername 参数关闭命令服务器。
 
@@ -179,4 +180,4 @@ X11 GUI 的 Vim (gvim) 启动时，会试图在根窗口的 'VimRegistry' 属性
 
 	start /w gvim --remote-wait file.txt
 <
- vim:tw=78:sw=4:ts=8:ft=help:norl:
+ vim:tw=78:sw=4:ts=8:noet:ft=help:norl:

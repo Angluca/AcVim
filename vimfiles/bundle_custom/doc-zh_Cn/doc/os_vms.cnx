@@ -1,9 +1,8 @@
-*os_vms.txt*    For Vim version 8.0.  最近更新: 2017年8月
+*os_vms.txt*    适用于 Vim 9.0 版本。	最近更新: 2022年7月
 
 
 		  VIM 参考手册
 				译者: Willis
-				http://vimcdoc.sf.net
 
 
 							*VMS* *vms*
@@ -95,6 +94,8 @@ Vim 命令行提示下的 :help xim。
 
 你还可以使用带有 GTK 图标的 GUI。为此，你需要下载和安装 OpenVMS 版本的 GTK，或
 至少是运行库里共享的图片: polarhome.com 里有 LIBGTK。
+7.2 版本后 Vim 使用 GTK2+，而 OpenVMS 最后的 GTK 版本是 1.2.10，所以 GTK 版本
+不再可用。
 
 如果你有更多更高级的问题，请把你的问题发送到 Vim on VMS 邮件列表
 <vim-vms@polarhome.com>
@@ -186,10 +187,10 @@ $TMP 的方法是定义逻辑名: >
 
 LOGIN.COM 示例: >
 
-	$ define/nolog VIM RF10:[UTIL.VIM]
+	$ define/nolog VIM DKA0:[UTIL.VIM81]
 	$ vi*m :== mcr VIM:VIM.EXE
 	$ gv*im:== spawn/nowait/input=NLA0 mcr VIM:VIM.EXE -g -GEOMETRY 80x40
-	$ set disp/create/node=192.168.5.223/trans=tcpip
+	$ set disp/create/node=192.168.10.202/trans=tcpip
 
 注意: 这样的设置就可以了。如果你在单独的服务器或者簇环境下工作，但是你想使用
 Vim 作为 DECNET 环境下的中继编辑器，它也够用了。你只要加上 "完整的" 路径: >
@@ -244,7 +245,7 @@ OpenVMS 是一个真正的大型机操作系统。因此，即使它有一个 GU
 些共享库找不到。
 
 其三: 如果你选择执行带有附加功能，如 GUI/GTK 的 Vim，你需要安装 GTK 或至少有
-GTK 运行环境 (LIBGTK 可在  http://www.polarhome.com/vim/ 下载)。
+GTK 运行环境 (LIBGTK 可在 http://www.polarhome.com/vim/ 下载)。
 
 1) 如果你使用 VMS X/Motif 控制台工作:
    这样启动 Vim: >
@@ -400,7 +401,6 @@ Terminal entry not found in termcap
     builtin_gui
     builtin_riscos
     builtin_amiga
-    builtin_beos-ansi
     builtin_ansi
     builtin_vt320
     builtin_vt52
@@ -472,7 +472,7 @@ http://ctags.sourceforge.net/ctags.html 提供的 CTAGS 文档。
 
 如果你想使用用从别的平台上通过 ftp 等方式带来的 .vimrc 和 .gvimrc (例如，MS
 Windows)，可能会有问题。因为 VMS 使用不同的行尾表示方式。
-具体症状就是， Vim 不能执行你的 .vimrc/.gvimrc，即使你说: >
+具体症状就是， Vim 不能执行你的 .vimrc/.gvimrc，即使你说:
 >
 	:so sys$login:.vimrc
 
@@ -513,7 +513,7 @@ Windows 上的 Xterm 窗口，或者从 VMS telnet 到 Windows 上)。
 
 6.0 版本开始实现了 diff 功能。但是 OpenVMS 并不使用 GNU/Unix 类似的 diff，而内
 建的 diff 不能工作。以下是一个简单的解决此问题的方法。安装一个 Unix 兼容的
-diff，则 Vim 就能正常在 diff 模式下工作了。只要你重定义 diff 程序如下: >
+diff，则 Vim 就能正常在比较模式下工作了。只要你重定义 diff 程序如下: >
 
 	define /nolog diff <GNU_PATH>diff.exe
 
@@ -552,13 +552,13 @@ http://www.polarhome.com/vim/files/gnu_tools.zip。我建议把它解压到一�
 	function MyDiff()
 	   let opt = ""
 	   if &diffopt =~ "icase"
-	     let opt = opt . "-i "
+	     let opt = opt .. "-i "
 	   endif
 	   if &diffopt =~ "iwhite"
-	     let opt = opt . "-b "
+	     let opt = opt .. "-b "
 	   endif
-	   silent execute "!mc GNU:diff.exe -a " . opt . v:fname_in . " " .  v:fname_new .
-		\  " > " . v:fname_out
+	   silent execute "!mc GNU:diff.exe -a " .. opt .. v:fname_in .. " " ..  v:fname_new ..
+		\  " > " .. v:fname_out
 	endfunction
       endif
 
@@ -646,13 +646,13 @@ VIMTUTOR.COM DCL 脚本可以帮助 Vim 初学者学习/掌握在 OpenVMS 上运
 $show cluster
 View of Cluster from system ID 11655  node: TOR                                                                     18-AUG-2008 11:58:31
 +---------------------------------+
-¦        SYSTEMS        ¦ MEMBERS ¦
-+-----------------------+---------¦
-¦  NODE  ¦   SOFTWARE   ¦  STATUS ¦
-+--------+--------------+---------¦
-¦ TOR    ¦ VMS V7.3-2   ¦ MEMBER  ¦
-¦ TITAN2 ¦ VMS V8.3     ¦ MEMBER  ¦
-¦ ODIN   ¦ VMS V7.3-2   ¦ MEMBER  ¦
+|        SYSTEMS        | MEMBERS |
++-----------------------+---------|
+|  NODE  |   SOFTWARE   |  STATUS |
++--------+--------------+---------|
+| TOR    | VMS V7.3-2   | MEMBER  |
+| TITAN2 | VMS V8.3     | MEMBER  |
+| ODIN   | VMS V7.3-2   | MEMBER  |
 +---------------------------------+
 
 如果能够有一个公共的 VIM 目录，但分别执行不同的可执行程序，会很方便。
@@ -705,6 +705,25 @@ View of Cluster from system ID 11655  node: TOR                                 
 ==============================================================================
 
 9. VMS 相关修改记录 (英文)				*vms-changes*
+
+Version 8.2
+- make all changes needed for clean compile build of v8.2 on VMS on all platforms
+- fix the call mkdir bug (vicente_polo@yahoo.es)
+- test on VSI OpenVMS Alpha and Itanium platforms
+- added LUA support
+- added XPM support - Motif GUI with toolbar on all platforms
+- XPM v3.4.11 libraries for IA64, AXP and VAX are added
+- start integrating the new test scripts
+
+Version 8.1
+- make necessary changes to build v8.1 on VMS
+
+Version 8.0
+- solve the 100% cpu usage issue while waiting for a keystroke
+- correct the VMS warnings and errors around handling the INFINITY (used in json.c)
+- minor VMS port related changes
+- correct the make_vms.mms file for 8.0
+- fix [.TESTDIR]make_vms.mms for 8.0
 
 Version 7.4
 - Undo: VMS can not handle more than one dot in the filenames use "dir/name" -> "dir/_un_name"
@@ -893,4 +912,4 @@ OpenVMS Vim page: http://www.polarhome.com/vim/
 	Bruce Hunsaker <BNHunsaker@chq.byu.edu>
 	Sandor Kopanyi <sandor.kopanyi@mailbox.hu>
 
- vim:tw=78:ts=8:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl:

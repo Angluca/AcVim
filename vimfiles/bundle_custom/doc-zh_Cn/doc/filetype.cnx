@@ -1,9 +1,8 @@
-*filetype.txt*  For Vim version 8.0.  最近更新: 2017年7月
+*filetype.txt*  适用于 Vim 9.0 版本。	最近更新: 2022年7月
 
 
 		  VIM 参考手册    by Bram Moolenaar
-				译者: Willis, tocer
-				http://vimcdoc.sf.net
+				译者: Willis、tocer
 
 
 文件类型						*filetype* *file-type*
@@ -13,8 +12,6 @@
 3. 缺省文件类型插件的文档			|ftplugin-docs|
 
 另见 |autocmd.txt|。
-
-{Vi 没有这些命令}
 
 ==============================================================================
 1. 文件类型					*filetypes* *file-types*
@@ -29,20 +26,19 @@ Vim 可以检测要编辑的文件类型。这是通过检查文件名完成的�
 'filetype' 选项。同时，也触发 FileType 事件。该事件可以设置语法高亮，特定选
 项，等等。
 
-注意: 文件类型和 'compatibile' 不能很好的一起工作。因为 Vi 兼容意味着所有的选
-项都是全局的。如果你还那么做，建议复位 'compatible' 选项。
+注意: 文件类型和 'compatible' 不能很好的一起工作。因为 Vi 兼容意味着所有的选项
+都是全局的。如果你还那么做，建议复位 'compatible' 选项。
 
 详情: ":filetype on" 命令会加载以下文件中的一个:
 		Amiga	    $VIMRUNTIME/filetype.vim
 		Mac	    $VIMRUNTIME:filetype.vim
-		MS-DOS	    $VIMRUNTIME\filetype.vim
-		RiscOS	    Vim:Filetype
+		MS-Windows  $VIMRUNTIME\filetype.vim
 		Unix	    $VIMRUNTIME/filetype.vim
 		VMS	    $VIMRUNTIME/filetype.vim
 	该文件是一个 Vim 脚本，其中定义了 BufNewFile 和 BufRead 事件的自动命
 	令。如果根据文件名不能检测到文件类型，则使用 $VIMRUNTIME/scripts.vim
 	来根据文件内容检测之。
-	正在或即将启动 GUI 时，同时也会执行 menu.vim 脚本。如果不想要，参见
+	正在或即将启动 GUI 时，同时也会执行 |menu.vim| 脚本。如果不想要，参见
 	|'go-M'|。
 
 要加入你自己的文件类型，见下面的 |new-filetype|。要查找一种文件类型的帮助，加
@@ -124,21 +120,39 @@ Vim 可以检测要编辑的文件类型。这是通过检查文件名完成的�
    如果文件类型检测被关闭，它会先被打开。就像用了 "on" 参数那样。
 
 							*filetype-overrule*
-如果两个不同的文件类型使用了相同的扩展名，Vim 试图猜测到底该文件属于哪个类型。
+如果多个不同的文件类型使用了相同的扩展名，Vim 试图猜测到底该文件属于哪个类型。
 这并不总行。一些全局变量可以用来为某些特定的扩展名决定具体的文件类型:
 
 	文件名		变量 ~
 	*.asa		g:filetype_asa	|ft-aspvbs-syntax| |ft-aspperl-syntax|
-	*.asp		g:filetype_asp	|ft-aspvbs-syntax| |ft-aspperl-syntax|
 	*.asm		g:asmsyntax	|ft-asm-syntax|
-	*.prg		g:filetype_prg
-	*.pl		g:filetype_pl
-	*.inc		g:filetype_inc
-	*.w		g:filetype_w	|ft-cweb-syntax|
+	*.asp		g:filetype_asp	|ft-aspvbs-syntax| |ft-aspperl-syntax|
+	*.bas		g:filetype_bas	|ft-basic-syntax|
+	*.cfg		g:filetype_cfg
+	*.cls		g:filetype_cls
+	*.csh		g:filetype_csh	|ft-csh-syntax|
+	*.dat		g:filetype_dat
+	*.frm		g:filetype_frm	|ft-form-syntax|
+	*.fs		g:filetype_fs	|ft-forth-syntax|
 	*.i		g:filetype_i	|ft-progress-syntax|
+	*.inc		g:filetype_inc
+	*.m		g:filetype_m	|ft-mathematica-syntax|
+	*.mod		g:filetype_mod
 	*.p		g:filetype_p	|ft-pascal-syntax|
+	*.pl		g:filetype_pl
+	*.pp		g:filetype_pp	|ft-pascal-syntax|
+	*.prg		g:filetype_prg
+	*.r		g:filetype_r
+	*.sig		g:filetype_sig
+	*.sql		g:filetype_sql	|ft-sql-syntax|
+	*.src		g:filetype_src
+	*.sys		g:filetype_sys
 	*.sh		g:bash_is_sh	|ft-sh-syntax|
 	*.tex		g:tex_flavor	|ft-tex-plugin|
+	*.w		g:filetype_w	|ft-cweb-syntax|
+
+对一些文件类型而言，全局变量只用于文件类型无法检测的场合:
+	*.r		g:filetype_r	|ft-rexx-syntax|
 
 							*filetype-ignore*
 要避免检测某些文件，用 g:ft_ignore_pat 变量。缺省值是: >
@@ -276,15 +290,18 @@ filetype.vim 和 scripts.vim 写到一个大家都能用的运行时目录里。
 
 产生这样的输出:
 
-	runtimepath=/etc/vim,~/.vim,/usr/local/share/vim/vim60 ~
+	runtimepath=/etc/vim,~/.vim,/usr/local/share/vim/vim82 ~
 
 那么 Vim 会调入以下目录及其下的所有插件:
 
 	/etc/vim/plugin/ ~
 	~/.vim/plugin/ ~
-	/usr/local/share/vim/vim60/plugin/ ~
+	/usr/local/share/vim/vim82/plugin/ ~
 
 注意 最后一项是 $VIMRUNTIME 被扩展的值。
+
+备注 使用插件管理器或 |packages| 时，会在 'runtimepath' 中加入很多目录。这些插
+件每个需要自己的目录，请不要把它们直接加进 ~/.vim/plugin。
 
 有没有可能你的插件好像没有被调入呢？通过 |-V| 参数，你可以看看 Vim 启动的时候
 发生了什么: >
@@ -311,13 +328,13 @@ filetype.vim 和 scripts.vim 写到一个大家都能用的运行时目录里。
 2. 定义你自己的映射。例如: >
 	:map ,p <Plug>MailQuote
 <  你需要检查下面给出的插件文件的描述，以了解它们的功能和映射到的字符串。
-   你需要在插件载入之前定义自己的映射。 (在编辑该类型的文件之前)。该插件就可以
+   你需要在插件载入之前定义自己的映射。(在编辑该类型的文件之前)。该插件就可以
    跳过缺省映射的安装了。
-						*no_mail_maps*
+					*no_mail_maps* *g:no_mail_maps*
 3. 屏蔽特定文件类型的映射可以通过设置一个变量进行。该变量包含文件类型的名字。
    对于 "mail" 文件类型它可能是: >
 	:let no_mail_maps = 1
-<						*no_plugin_maps*
+<					*no_plugin_maps* *g:no_plugin_maps*
 4. 通过设置变量屏蔽所有文件类型的映射: >
 	:let no_plugin_maps = 1
 <
@@ -349,6 +366,12 @@ filetype.vim 和 scripts.vim 写到一个大家都能用的运行时目录里。
 3.  缺省文件类型插件的文档				*ftplugin-docs*
 
 
+AWK							*ft-awk-plugin*
+
+GNU Awk 的特定功能，如 @include，的支持，可以这样打开: >
+	let g:awk_is_gawk = 1
+
+
 CHANGELOG						*ft-changelog-plugin*
 
 允许方便的输入 Changlog 文件的 Changelog 段 (entry)。有些命令，映射和变量值得
@@ -363,7 +386,7 @@ CHANGELOG						*ft-changelog-plugin*
 NewChangelogEntry	智能地增加新的 Changelog 段 (见下)。
 
 局部映射:
-<Leader>o		同样智能地开始一个新的 Changlog 段  (见下)。
+<Leader>o		同样智能地开始一个新的 Changlog 段 (见下)。
 
 全局映射:
 			注意: 全局设置是通过先执行 ftplugin/changelog.vim 文件
@@ -456,10 +479,33 @@ FORTRAN							*ft-fortran-plugin*
 |ft-fortran-syntax|。
 
 
+FREEBASIC						*ft-freebasic-plugin*
+
+此插件用于把四种 FreeBASIC 方言，"fb"、"qb"、"fblite" 和 "deprecated" 当作不同
+的语言。
+
+方言根据 g:freebasic_forcelang、待编辑文件中的任何 #lang 指令 或 $lang 宏命
+令、最后是 g:freebase_lang 中首个找到的名字。概念上，这些全局变量对应 fbc 选项
+-forcelang 和 -lang。方言没有显式指定时，用 "fb"。
+
+例如，要设置方言缺省为 "fblite"，但允许 #lang 指令覆盖，可用: >
+
+     let g:freebasic_lang = "fblite"
+
+
 GIT COMMIT                                              *ft-gitcommit-plugin*
 
 提供了一个命令 :DiffGitCached 来在预览窗口中显示当前提交的差异部分。等价于
 "git diff --cached" 加上此命令后面的参数。
+
+
+GPROF							*ft-gprof-plugin*
+
+gprof 文件类型插件定义了 <C-]>，从 gprof flat profile 或调用关系图 (call
+graph) 里的函数项目跳转到调用关系图里的函数细节。
+
+可如此关闭此映射: >
+	let g:no_gprof_maps = 1
 
 
 MAIL							*ft-mail-plugin*
@@ -478,15 +524,15 @@ MAIL							*ft-mail-plugin*
 
 MAN					*ft-man-plugin* *:Man* *man.vim*
 
-较好地显示手册页。另见用户手册中的 |find-manpage|。
+此插件以友好方式显示手册页。详情可见用户手册中的 |find-manpage|。
 
-要在调入任何手册页之前就能使用 ":Man" 命令，你需要在启动的 vimrc 文件里先执行
-以下脚本: >
+要在调入任何手册页之前就能使用 |:Man| 命令，你需要在启动的 |vimrc| 文件里先执
+行以下脚本: >
 
 	runtime ftplugin/man.vim
 
 选项:
-'iskeyword'	加入 '.' 字符，以便能在手册页名字上使用 CTRL-]。
+'iskeyword'	加入 '.' 字符，提供能在手册页名字上使用 CTRL-] 的支持。
 
 命令:
 Man {name}	在窗口里显示 {name} 的手册页
@@ -495,23 +541,28 @@ Man {number} {name}
 
 全局映射:
 <Leader>K	显示当前光标下的单词的相应手册页。
-<Plug>ManPreGetPage  同上，可用于映射: >
+<Plug>ManPreGetPage
+		同上，可用于映射: >
 			nmap <F1> <Plug>ManPreGetPage<CR>
 
 局部映射:
 CTRL-]		跳到当前光标下的单词的相应手册页。
 CTRL-T		跳回前一次的手册页。
-q		同 ":quit"
+q		同 |:quit| 命令。
 
-要使用垂直映射而不是水平映射： >
+要使用垂直映射而不是水平映射: >
 	let g:ft_man_open_mode = 'vert'
 要用新标签页: >
 	let g:ft_man_open_mode = 'tab'
 
 要打开折叠: >
 	let g:ft_man_folding_enable = 1
-如果不喜欢缺省的折叠方式，使用自动命令加入你喜欢和折叠风格。例如: >
-        autocmd FileType man setlocal foldmethod=indent foldenable
+如果不喜欢缺省的折叠方式，使用 |autocommand| 加入你喜欢和折叠风格。例如: >
+	autocmd FileType man setlocal foldmethod=indent foldenable
+
+如果你希望 :Man {number} {name} 像 man {number} {name} 那样，如果找不到页面就
+不运行 man {name}，可以这样用: >
+	let g:ft_man_no_sect_fallback = 1
 
 你可能还想设置 'keywordprg'，使 |K| 命令在 Vim 窗口打开手册页: >
 	set keywordprg=:Man
@@ -519,41 +570,31 @@ q		同 ":quit"
 
 MANPAGER				      *manpager.vim*
 
-:Man 命令把 Vim 变成手册浏览器 (语法高亮手册页，按 CTRL-] 时点击相连的手册
+|:Man| 命令把 Vim 变成手册浏览器 (语法高亮手册页，按 CTRL-] 时点击相连的手册
 页)。
-
-可用于:
-
-  - Linux
-  - Mac OS
-  - FreeBSD
-  - Cygwin
-  - Win 10 的 Bash
-
-未经测试:
-
-  - Amiga OS
-  - BeOS
-  - OS/2
 
 对 bash、zsh、ksh 或 dash，加入对应的配置文件 (.bashrc、.zshrc、...)
 
-	export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
+	export MANPAGER="vim +MANPAGER --not-a-term -"
 
 对 (t)csh，加入配置文件
 
-	setenv MANPAGER "env MAN_PN=1 vim -M +MANPAGER -"
+	setenv MANPAGER "vim +MANPAGER --not-a-term -"
 
 对 fish，加入配置文件
 
-	set -x MANPAGER "env MAN_PN=1 vim -M +MANPAGER -"
+	set -x MANPAGER "vim +MANPAGER --not-a-term -"
 
-如果 man 设置了 $MAN_PN 环境变量，象 Linux 和 Mac OS 最常见的实现 man-db 那
-样，那么上述 "env MAN_PN=1 " 部分就是多余的。
+
+MARKDOWN                                                *ft-markdown-plugin*
+
+要打开折叠，可用: >
+	let g:markdown_folding = 1
+<
 
 PDF							*ft-pdf-plugin*
 
-提供两个映射， <C-]> 和 <C-T>，来模拟用于 PDF 浏览的标签栈。以下内容视为标签:
+提供两个映射，<C-]> 和 <C-T>，来模拟用于 PDF 浏览的标签栈。以下内容视为标签:
 
 - "startxref" 后指向 xref 表的字节位移
 - 文件尾部中 /Prev 键后指向以前 xref 表的字节位移
@@ -573,6 +614,41 @@ PYTHON						*ft-python-plugin* *PEP8*
 要关闭此行为，在 vimrc 里设置变量: >
 
 	let g:python_recommended_style = 0
+
+
+QF QUICKFIX					    *qf.vim* *ft-qf-plugin*
+
+"qf" 文件类型用于快速修复窗口，见 |quickfix-window|。
+
+快速修复文件类型插件包括在 |status-line| 中显示生成快速修复列表命令的配置。要
+关闭此设置，可以这样配置: >
+	:let g:qf_disable_statusline = 1
+
+
+R MARKDOWN						*ft-rmd-plugin*
+
+缺省不执行 ftplugin/html.vim。要执行之，在 |vimrc| 中加入: >
+	let rmd_include_html = 1
+
+动态地设置 R 代码和 markdown 代码不同的 'formatexpr' 值。如果你宁可
+'formatexpr' 不置位，在 |vimrc| 中加入: >
+	let rmd_dynamic_comments = 0
+
+
+R RESTRUCTURED TEXT					*ft-rrst-plugin*
+
+动态地设置 R 代码和 ReStructured 代码不同的 'formatexpr' 值。如果你宁可
+'formatexpr' 不置位，在 |vimrc| 中加入: >
+	let rrst_dynamic_comments = 0
+
+
+RESTRUCTUREDTEXT					*ft-rst-plugin*
+
+以下排版设置可选: >
+	setlocal expandtab shiftwidth=3 softtabstop=3 tabstop=8
+
+要打开此排版，在 vimrc 中设置以下变量: >
+	let g:rst_style = 1
 
 
 RPM SPEC						*ft-spec-plugin*
@@ -604,4 +680,22 @@ TEX						*ft-tex-plugin* *g:tex_flavor*
 目前还不能识别其它格式。
 
 
- vim:tw=78:ts=8:ft=help:norl:
+VIM							*ft-vim-plugin*
+
+Vim 文件类型插件定义 [[ 和 ]] 用来移动到函数开头和结尾处的映射。用 ]" 和 [" 在
+注释间移动。
+
+可以这样关闭这些映射: >
+	let g:no_vim_maps = 1
+
+
+ZIMBU							*ft-zimbu-plugin*
+
+Zimbu 文件类型插件定义 [[ 和 ]] 用来移动到函数开头和结尾处的映射。
+
+可以这样关闭这些映射: >
+	let g:no_zimbu_maps = 1
+<
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

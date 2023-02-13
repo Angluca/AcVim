@@ -1,8 +1,8 @@
-*if_pyth.txt*   For Vim version 8.0.  最近更新: 2017年7月
+*if_pyth.txt*   适用于 Vim 9.0 版本。	最近更新: 2022年7月
 
 
 		  VIM 参考手册    by Paul Moore
-		  译者: lang2，Willis http://vimcdoc.sf.net
+				译者: lang2、Willis
 
 
 Vim 的 Python 编程接口					*python* *Python*
@@ -20,11 +20,12 @@ Vim 的 Python 编程接口					*python* *Python*
 11. Python X					|python_x|
 12. 编译时带 Python 支持			|python-building|
 
-{Vi 无此功能}
-
 Vim 的 Python 2.x 接口仅当 |+python| 特性被编译进 Vim 时才有效。
 Vim 的 Python 3 接口仅当 |+python3| 特性被编译进 Vim 时才有效。
 可以同时使用两者，但请阅读 |python-2-and-3|。
+
+备注: Python 2 太老也不再开发了。强烈推荐使用 Python 3。如果不再工作，Python
+2 支持有朝一日会被停止。
 
 ==============================================================================
 1. 命令							*python-commands*
@@ -35,16 +36,17 @@ Vim 的 Python 3 接口仅当 |+python3| 特性被编译进 Vim 时才有效。
 			用的简单检查: >
 				:python print "Hello"
 
-:[range]py[thon] << {endmarker}
+:[range]py[thon] << [trim] [{endmarker}]
 {script}
 {endmarker}
 			执行 Python 脚本 {script}。
 			备注: 此命令在没有编译进 Python 特性时无效。为了避免这
 			样的错误，参阅 |script-here|。
 
-{endmarker} 前面_不能_有任何空白字符。如果在 "<<" 之后省略了 {endmarker}，在
-{script} 之后一定要有一个点 '.'。这和 |:append| 及 |:insert| 命令的道理是一样
-的。这种形式的 |:python| 命令主要用于在 Vim 脚本中嵌入 Python 代码。
+如果在 "<<" 之后省略了 [endmarker]，就像 |:append| 及 |:insert| 命令那样，在
+{script} 之后一定要有一个点 '.'。更多详情可见 |:let-heredoc|。
+
+这种形式的 |:python| 命令主要用于在 Vim 脚本中嵌入 Python 代码。
 
 例子: >
 	function! IcecreamInitialize()
@@ -56,8 +58,13 @@ Vim 的 Python 3 接口仅当 |+python3| 特性被编译进 Vim 时才有效。
 	endfunction
 
 要看运行的 Python 版本: >
-	:python import sys
 	:python print(sys.version)
+
+没必要 import sys，缺省就会。
+
+							*python-environment*
+Vim 设置的环境变量不总是在 Python 里可用。取决于 Vim 和 Python 是如何编译的。
+另见 https://docs.python.org/3/library/os.html#os.environ
 
 备注: Python 对于缩进是非常敏感的。要确保 "class" 所在行及 "EOF" 没有任何缩
 进。
@@ -68,19 +75,29 @@ Vim 的 Python 3 接口仅当 |+python3| 特性被编译进 Vim 时才有效。
 			行不带尾部 <EOL> 的文本，以及行号。该函数应该返回字符
 			串或者 None。如果返回字符串，它会用来替代当前执行的
 			行。缺省 [range] 为整个文件: "1,$"。
-			{Vi 无此功能}
 
 示例:
 >
 	:pydo return "%s\t%d" % (line[::-1], len(line))
 	:pydo if line: return "%4d: %s" % (linenr, line)
 <
+可以和 `:py` 配合，用 `:pydo` 来利用 python 过滤行范围。例如: >
+
+	:py3 << EOF
+	needle = vim.eval('@a')
+	replacement = vim.eval('@b')
+
+	def py_vim_string_replace(str):
+		return str.replace(needle, replacement)
+	EOF
+	:'<,'>py3do return py_vim_string_replace(line)
+<
 							*:pyfile* *:pyf*
 :[range]pyf[ile] {file}
 			执行 {file} 文件中包含的 Python 脚本。整个参数被用作一
-			个文件名。 {Vi 无此功能}
+			个文件名。
 
-这些命令根本上都差不多 － 它们都将当前范围 |python-range| 设定为指定的行范围，
+这些命令根本上都差不多 - 它们都将当前范围 |python-range| 设定为指定的行范围，
 并对其执行 Python 代码。
 
 :python 的情况所执行的代码来自命令行。
@@ -90,7 +107,6 @@ Python 命令不能在 |sandbox| 里使用。
 
 需要传递参数的话，你得使用 sys.argv[]。例如: >
 
-	:python import sys
 	:python sys.argv = ["foo", "bar"]
 	:pyfile myscript.py
 
@@ -108,7 +124,7 @@ Python 命令不能在 |sandbox| 里使用。
 ==============================================================================
 2. vim 模块						*python-vim*
 
-Python 的代码所有对 Vim 的操作 (只有一个例外 － 看下面的 |python-output|) 都是
+Python 的代码所有对 Vim 的操作 (只有一个例外 - 看下面的 |python-output|) 都是
 通过 "vim" 模块来进行的。该模块包括两个方法，三个常量，以及一个异常对象。在使
 用它们之前你得先导入 (import) vim 模块。
 
@@ -157,19 +173,23 @@ vim.eval(str)						*python-eval*
 	-如果 Vim 表达式计算结果是 Vim 字典，那么返回一个字典
 	字典和列表被递归扩展。
 	例: >
+	    :" 'textwidth' 选项值
 	    :py text_width = vim.eval("&tw")
-	    :py str = vim.eval("12+12")		# 注意: 结果是个字符串！
-						# 使用 string.atoi()
-						# 把它转换成数字
-
+	    :
+	    :" 'a' 寄存器的内容
+	    :py a_reg = vim.eval("@a")
+	    :
+	    :" 结果是个字符串！使用 string.atoi() 把它转换成数值。
+	    :py str = vim.eval("12+12")
+	    :
 	    :py tagList = vim.eval('taglist("eval_expr")')
 <	后一个将返回一个 python 类型的字典列表，例如:
 	[{'cmd': '/^eval_expr(arg, nextcmd)$/', 'static': 0, 'name': ~
 	'eval_expr', 'kind': 'f', 'filename': './src/eval.c'}] ~
 
 vim.bindeval(str)					*python-bindeval*
-	类似于 |python-eval|，但返回 |python-bindeval-objects| 中描述的特殊
-	对象。这些 python 对象可用于修改 (|List| 或 |Dictionary|) 或调用
+	类似于 |python-eval|，但返回 |python-bindeval-objects| 中描述的特殊对
+	象。这些 python 对象可用于修改 (|List| 或 |Dictionary|) 或调用
 	(|Funcref|) vim 对象。
 
 vim.strwidth(str)					*python-strwidth*
@@ -198,7 +218,7 @@ vim.fchdir(*args, **kwargs)				*python-fchdir*
 			# nothing in register a
 
 "vim" 模块中的常量
-	注意 这些其实并非真正的常量 － 你还是可以对它们赋值。但这毫无意义，因
+	注意 这些其实并非真正的常量 - 你还是可以对它们赋值。但这毫无意义，因
 	为你会丢失该 vim 对象本来代表的值。
 
 vim.buffers						*python-buffers*
@@ -402,7 +422,7 @@ vim._get_paths						*python-_get_paths*
 			(也可以用于 []"<> 等标记)
 	b.range(s,e)	返回一个范围对象 (参见 |python-range|) 用来代表指定缓
 			冲区中行 s 与 行 e (包含 s 和 e |inclusive|) 之间的部
-		 	分。
+			分。
 
 注意: 当增加一行的时候，这一行里一定不要含有换行符 '\n'。行尾的 '\n' 可以，
 但会被忽略，所以下面的操作是可以的:
@@ -419,11 +439,11 @@ vim._get_paths						*python-_get_paths*
 	:py del b[2]			# 删除一行 (第三行)
 	:py b.append("bottom")		# 在缓冲区结尾添加一行
 	:py n = len(b)			# 总行数
-	:py (row,col) = b.mark('a') 	# 命名标记
+	:py (row,col) = b.mark('a')	# 命名标记
 	:py r = b.range(1,5)		# 缓冲区内的一个范围
 	:py b.vars["foo"] = "bar"	# 给 b:foo 变量赋值
 	:py b.options["ff"] = "dos"	# 设置 fileformat
-	:py del b.options["ar"]		# 等同于 :set autoread<
+	:py del b.options["ar"]		# 同 :set autoread<
 
 ==============================================================================
 4. 范围对象						*python-range*
@@ -624,7 +644,8 @@ vim.Function 对象				*python-Function*
             endfunction
         ''')
         f = vim.bindeval('function("DictFun")')
-        print f(self={})			# 相当于 call('DictFun', [], {})
+        print f(self={})			# 相当于
+						# call('DictFun', [], {})
         print isinstance(f, vim.Function)	# True
 
         p = vim.Function('DictFun', self={})
@@ -637,6 +658,8 @@ vim.Function 对象				*python-Function*
 
 为了访问双向接口的方便，可用 |pyeval()| 和 |py3eval()| 函数来计算 Python 表达
 式然后返回计算结果给 Vim 脚本。也可用 |pyxeval()|。
+
+Python "None" 值转化为 v:none。
 
 ==============================================================================
 9. 动态调入						*python-dynamic*
@@ -655,8 +678,8 @@ MS-Windows ~
 指定 Python DLL。
 
 DLL 的名字应该匹配 Vim 编译时所使用的 Python 版本。目前，用于 Python 2 的名字
-为 "python27.dll"，也就是 Python 2.7。用于 Python 3 的是 python35.dll (Python
-3.5)。要确信这一点，编辑 "gvim.exe" 文件并查找 "python\d*.dll\c"。
+为 "python27.dll"，也就是 Python 2.7。用于 Python 3 的是 python36.dll (Python
+3.6)。要确信这一点，编辑 "gvim.exe" 文件并查找 "python\d*.dll\c"。
 
 
 Unix ~
@@ -669,17 +692,28 @@ Unix ~
 10. Python 3						*python3*
 
 							*:py3* *:python3*
-`:py3` 和 `:python3` 命令和 `:python` 类似。判断 `:py3` 命令是否可用的一个简单
-检查: >
-	:py3 print("Hello")
+:[range]py3 {stmt}
+:[range]py3 << [trim] [{endmarker}]
+{script}
+{endmarker}
 
-要看运行的 Python 版本: >
-	:py3 import sys
-	:py3 print(sys.version)
+:[range]python3 {stmt}
+:[range]python3 << [trim] [{endmarker}]
+{script}
+{endmarker}
+	`:py3` 和 `:python3` 命令和 `:python` 类似。判断 `:py3` 命令是否可用的
+	一个简单检查: >
+		:py3 print("Hello")
+<
+	要看运行的 Python 版本: >
+		:py3 import sys
+		:py3 print(sys.version)
 <							*:py3file*
-`:py3file` 命令和 `:pyfile` 类似。
+:[range]py3f[ile] {file}
+	`:py3file` 命令和 `:pyfile` 类似。
 							*:py3do*
-`:py3do` 命令和 `:pydo` 类似。
+:[range]py3do {body}
+	`:py3do` 命令和 `:pydo` 类似。
 
 
 Vim 可以用四种方式编译 (:version 输出结果):
@@ -715,12 +749,23 @@ Vim 的配置脚本根据一个特定的 Python 标准库 (termios) 对所有的
 从 python 抛出 SystemExit 例外不是退出 vim 的好方法，要用: >
 	:py vim.command("qall!")
 <
+							*E1266*
+Python 3 不能载入必需的模块时出现此错误。这意味着没有正确安装 Python 3，或者设
+置有问题。请检查以下项目:
+1. 确证正确安装了 Python 3。然后检查 python 版本。
+2. 检查 'pythonthreedll' 选项。
+3. 检查 'pythonthreehome' 选项。
+4. 如果没设置过 'pythonthreedll'，检查 PATH 环境变量。
+   MS-Windows 上，可用 where.exe 来查找载入了哪个 dll。例如 >
+	where.exe python310.dll
+5. 检查 PYTHONPATH 和 PYTHONHOME 环境变量。
 
 							*has-python*
 以下方法可用来测试哪个 Python 版本可用: >
 	if has('python')
 	  echo '有 Python 2.x'
-  	elseif has('python3')
+	endif
+	if has('python3')
 	  echo '有 Python 3.x'
 	endif
 
@@ -728,10 +773,26 @@ Vim 的配置脚本根据一个特定的 Python 标准库 (termios) 对所有的
 它们。如果两个版本不能同时载入，单单对 Python 2 或 3 是否可用的检查就会导致另
 一个版本不能调入。
 
+要避免载入动态库，只需要检查 Vim 编译时是否有 python 支持: >
+	if has('python_compiled')
+	  echo '编译时带 Python 2.x 支持'
+	  if has('python_dynamic')
+	    echo 'Python 2.x 已动态载入'
+	  endif
+	endif
+	if has('python3_compiled')
+	  echo '编译时带 Python 3.x 支持'
+	  if has('python3_dynamic')
+	    echo 'Python 3.x 已动态载入'
+	  endif
+	endif
+
+这段代码也会告诉你 Python 是否已动态载入，如果找不到运行库时会报错。
+
 ==============================================================================
 11. Python X						*python_x* *pythonx*
 
-大多数 python 代码可以用 python 2.6+ 和 python 3 兼容的方式编写，因而我们提供
+大多数 python 代码可以用 Python 2.6+ 和 Python 3 兼容的方式编写，因而我们提供
 了 pyx+ 函数和命令。其工作方式和 Python 2 和 3 变种完全相同，但根据
 'pyxversion' 设置选择 Python 版本。
 
@@ -767,7 +828,7 @@ Vim 的配置脚本根据一个特定的 Python 标准库 (termios) 对所有的
 							*has-pythonx*
 可以这样测试 pyx* 系列命令是否可用: >
 	if has('pythonx')
-	  echo 'pyx* 命令可用. (Python ' . &pyx . ')'
+	  echo 'pyx* 命令可用. (Python ' .. &pyx .. ')'
 	endif
 
 如果编译时只有 |+python| 或 |+python3| 之一，has() 返回 1。
@@ -800,13 +861,13 @@ Ubuntu 上需要为 Python 2 安装以下包:
 	python-dev
 Python 3:
 	python3
-	pytyon3-dev
+	python3-dev
 Python 3.6:
 	python3.6
-	pytyon3.6-dev
+	python3.6-dev
 
 如果有多于一个 Python 3 版本，在运行 configure 前链接 python3 到你选择的那
 个版本。
 
 ==============================================================================
- vim:tw=78:ts=8:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl:

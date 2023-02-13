@@ -1,9 +1,8 @@
-*version5.txt*  For Vim version 8.0.  最近更新: 2017年8月
+*version5.txt*  适用于 Vim 9.0 版本。	最近更新: 2022年7月
 
 
 		  VIM 参考手册    by Bram Moolenaar
 				译者: Willis
-				http://vimcdoc.sf.net
 
 欢迎来到 Vim 5.0 版本！
 
@@ -25,7 +24,7 @@ $VIM 的使用				|$VIM-use|
 MS-DOS 和 Win32 的 $HOME 的使用		|$HOME-use|
 改变标签文件格式			|tags-file-changed|
 改变的选项				|options-changed|
-取消插入命令的 CTRL-B 			|i_CTRL-B-gone|
+取消插入命令的 CTRL-B			|i_CTRL-B-gone|
 
 新 特 性:				|new-5|
 
@@ -38,7 +37,7 @@ BeOS 版本				|added-BeOS|
 Macintosh GUI 版本			|added-Mac|
 和 Vi 更兼容				|more-compatible|
 从标准输入读取输入			|read-stdin|
-正规表达式模式				|added-regexp|
+正则表达式模式				|added-regexp|
 重载的标签				|tag-overloaded|
 新命令					|new-commands|
 新选项					|added-options|
@@ -93,8 +92,8 @@ GTK GUI 移植版本			|new-GTK-GUI|
 若干新选项				|new-options-5.4|
 Vim 脚本				|new-script-5.4|
 避免 hit-enter 提示			|avoid-hit-enter|
-改进 quickfix				|improved-quickfix|
-正规表达式				|regexp-changes-5.4|
+改进快速修复				|improved-quickfix|
+正则表达式				|regexp-changes-5.4|
 改动					|changed-5.4|
 新增					|added-5.4|
 修正					|fixed-5.4|
@@ -186,7 +185,7 @@ Vim 5.0 版本试图变得和 Vi 更兼容。这有助于那些使用 Vim 作为
 旧版: "vim -v file"	|-v|
 新版: "vim -R file"	|-R|
 
-"-e" 现在意味着启动 Vi 进入 Ex 模式，使用 "-q" 进入 quickfix。
+"-e" 现在意味着启动 Vi 进入 Ex 模式，使用 "-q" 进入快速修复。
 旧版: "vim -e errorfile"	|-e|
 新版: "vim -q errorfile" |-q|
 
@@ -210,7 +209,7 @@ Vim 允许有不超过十个的 "+cmd" 和 "-c cmd" 参数。过去，Vim 只执
 两次。这个限制导致了一些问题。因此，Vim 记住所有的自动命令，并以它们定义的顺序
 保存。
 
-- 在定义自动命令之前，删除任何可能定义两次的自动命令。例如: >
+- 在定义自动命令之前，删除任何可能已经定义过的自动命令。例如: >
 	:au! * *.ext
 	:au BufEnter *.ext ...
 
@@ -251,11 +250,11 @@ Vim 允许有不超过十个的 "+cmd" 和 "-c cmd" 参数。过去，Vim 只执
 可视模式命令。因为不再提供单字符的名字，文本对象名字现在需要两个字符。第一个字
 符总是 'i' 或 'a'。
 	旧版	新版	~
-	a	aw	一个单词 			|v_aw|
-	A	aW	一个字串 			|v_aW|
-	s	as	一个句子 			|v_as|
-	p	ap	一个段落 			|v_ap|
-	S	ab	一个 () 块 			|v_ab|
+	a	aw	一个单词			|v_aw|
+	A	aW	一个字串			|v_aW|
+	s	as	一个句子			|v_as|
+	p	ap	一个段落			|v_ap|
+	S	ab	一个 () 块			|v_ab|
 	P	aB	一个 {} 块			|v_aB|
 
 有另外一组文本对象，它们以 "i" 开始，代表 "inner" (内部)。它们选择相同的对象，
@@ -374,7 +373,7 @@ Vim 可以用 ":python" 和 ":pyfile" 调用 Python 命令。见 |python|。
 Win32 GUI 版本						*added-win32-GUI*
 -----------------
 
-GUI 被移植到 MS Windows 95 和 NT 上。Windows 用户现在可以使用 X11 GUI 的所有特
+GUI 被移植到 MS-Windows 95 和 NT 上。Windows 用户现在可以使用 X11 GUI 的所有特
 性了。|gui-w32|
 这也修正了在 Windows 95 里运行 Win32 控制台的问题，那里，控制台的支持总是很
 差。
@@ -425,11 +424,11 @@ CTRL-R 用于重复撤销或重做 (像 Nvi 里的 ".")。
 见 |--|。
 
 
-正规表达式模式						*added-regexp*
+正则表达式模式						*added-regexp*
 ---------------------------
 
 增加了指定匹配原匹配次数的范围: "\{a,b}"。	|/\{|
-增加了 "最短匹配" 正规表达式 "\{-}" (Webb)。
+增加了 "最短匹配" 正则表达式 "\{-}" (Webb)。
 增加了 "\s"，匹配空白字符。可以替换 "[ \t]"。	|/\s|
 增加了 "\S"，匹配非空白字符，可以替换 "[^ \t]"。|/\S|
 
@@ -673,7 +672,7 @@ CTRL-R 用于重复撤销或重做 (像 Nvi 里的 ".")。
 - 使得 ":autocmd" 的输出更短且更好。
 - ":autocmd" 在定义时扩展 <sfile>。|<sfile>|
 - ":autocmd" 加入 "nested" 标志位，允许嵌套。|autocmd-nested|
-- ":autocmd" 加入 [group] 参数。覆盖目前设置的组。 |autocmd-groups|
+- ":autocmd" 加入 [group] 参数。覆盖目前设置的组。|autocmd-groups|
 - 新事件:
   |BufUnload|		缓冲区卸载前
   |BufDelete|		缓冲区从缓冲区列表删除前
@@ -721,7 +720,7 @@ Shift-Insert、Ctrl-Insert、Ctrl-Del 和 Shift-Del。
 
 Unix: 除了 CTRL-C 以外，也可用 tty 设置的 INTR 字符。有人把 INTR 设为 DEL。
 
-允许 ":help" 命令参数里的 <LF> 结束帮助命令，从而可以跟随下一个命令。
+允许 ":help" 命令参数里的 <NL> 结束帮助命令，从而可以跟随下一个命令。
 
 "   #if" 开头的行上按 "%" 过去不跳转到匹配的 "#else"。
 'cpo' 包含 '%' 时，'%' 不识别 "#if"、"#else" 等。|%|
@@ -783,7 +782,7 @@ MS-DOS、Win32 和 OS/2: 自动命令比较文件时，不区别路径分隔符 
 
 Unix: 补丁和备份文件的时间设置为和原来文件相同的时间。(Hiebert)。
 
-Amiga: QuickFix 模式不再打开另一个窗口。现在可以用外壳命令。
+Amiga: 快速修复模式不再打开另一个窗口。现在可以用外壳命令。
 
 加入 David Binette 的 decmouse 补丁。只要编译时打开。现在可以使用 Dec 和
 Netterm 鼠标。
@@ -1575,7 +1574,7 @@ expand() 函数现在用 <NL> 分隔文件名而不是空格。避免内嵌空�
 
 Win32 GUI 新图标。
 
-":tag"、":tselect" 等只当参数以 '/' 开始时把它当作正规表达式。避免 ":tag xx~"
+":tag"、":tselect" 等只当参数以 '/' 开始时把它当作正则表达式。避免 ":tag xx~"
 给出错误信息: "No previous sub.  regexp"。:tag 参数包含通配字符时亦然，过去和
 Vi 不兼容。
 用 '/' 时，按本义接受参数有更高的优先级，在通配匹配之前先使用。
@@ -1985,7 +1984,7 @@ RISC OS 版本。(Thomas Leonard) 见 |riscos|。
 删除了 "os_archie" 文件，反正它们也不再工作了。
 
 
-多字节支持						*new-multi-byte*
+多字节支持				*new-multi-byte* *new-multibyte*
 ------------------
 
 Win32 GUI 的多字节支持。(Baek)
@@ -2037,7 +2036,7 @@ Win32 GUI 的多字节支持。(Baek)
 'selection'	如果设为 "inclusive" 或 "exclusive"，光标可以在可视或选择模式
 		里到行尾之后一个字符的位置。如果设为 "old"，则使用旧行为。如果
 		是 "inclusive"，光标所在的字符包含在操作里。如果使用
-		"exclusive"，使用 'guicursor' 新的 "ve" 入口。缺省为垂直线。
+		"exclusive"，使用 'guicursor' 新的 "ve" 项。缺省为垂直线。
 'selectmode'	说明何时开始选择模式，而不是可视模式。
 'sessionoptions' 设置 ":mksession" 的行为。(Negri)
 'showfulltag'	在插入模式补全标签时，显示标签搜索模式 (整齐格式) 作为可能的一
@@ -2060,12 +2059,12 @@ Win32 GUI 的多字节支持。(Baek)
 新 Ex 命令						*new-ex-commands-5.2*
 ---------------
 
-|:badd|		把文件名夹道缓冲区列表，没有副作用。(Negri)
+|:badd|		把文件名加到缓冲区列表，没有副作用。(Negri)
 |:behave|	快速设置 MS-Windows 或 xterm 行为。
 |:browse|	使用文件选择对话框。
 |:call|		调用函数，可选使用行范围。
 |:cnewer|
-|:colder|	访问 quickfix 错误列表的堆栈。
+|:colder|	访问快速修复错误列表的堆栈。
 |:comclear|	清除所有的用户定义命令。
 |:command|	定义用户命令。
 |:continue|	回到 ":while"。
@@ -2172,7 +2171,7 @@ configure 参数 --with-motif-lib，使用静态 Motif 库。
 支持数字键盘 +、-、*、/ 键的映射。(Negri)
 如果不映射，和普通字符相同。
 
-Win32 GUI: 如果放置目录到 gvim 上，cd 到那里并编辑新缓冲区。(Negri)
+Win32 GUI: 如果放置目录到 gVim 上，cd 到那里并编辑新缓冲区。(Negri)
 
 Win32 GUI: CTRL-Break 用于中断，这样 CTRL-C 就可用作映射。
 
@@ -2255,7 +2254,7 @@ Default 和 Syntax 菜单现在包含项目的优先级。可以在缺省项目�
 
 MSDOS 和 Win32 控制台: 'guicursor' 设置光标的厚度。(Negri)
 
-包含新的 Farsi 字体集合。(Shiran)
+包含新的波斯语字体集合。(Shiran)
 
 加速键文本现在也能用于 Motif。所有菜单可以用 & 定义助记，TAB 定义加速键文本。
 不支持的系统忽略之。
@@ -2283,11 +2282,11 @@ Unix: 找到已有但不能打开的交换文件时，在 ATTENTION 消息里提
 ":menu" 命令可用 "<Tab>" 代替菜单路径里真正的制表。这使输入更容易，因为不需要
 反斜杠。
 
-POSIX 兼容的正规表达式字符类: [:alnum:]、[:alpha:]、[:blank:]、[:cntrl:]、
+POSIX 兼容的正则表达式字符类: [:alnum:]、[:alpha:]、[:blank:]、[:cntrl:]、
 [:digit:]、[:graph:]、[:lower:]、[:print:]、[:punct:], [:space:]、[:upper:]
 和 [:xdigit:]。(Briscoe)
 
-正规表达式字符类 (为了快速语法高亮匹配):
+正则表达式字符类 (为了快速语法高亮匹配):
 	数字:	    \d [0-9]		\D  非数字 (Roemer)
 	十六进制:   \x [0-9a-fA-F]	\X  非十六进制
 	八进制:	    \o [0-7]		\O  非八进制
@@ -3231,7 +3230,7 @@ Vim 4.x 类似。
 
 加入 'shortmess' 的 'T' 标志位: 截短所有会产生 hit-enter 提示的消息 (除了总会
 发生的那些)。
-'shortmess' 的 'O' 标志位现在也适用于 quickfix 消息，比如，从 ":cn" 命令那里。
+'shortmess' 的 'O' 标志位现在也适用于快速修复消息，比如，从 ":cn" 命令那里。
 
 'shortmess' 的缺省值现在是 "filnxtToO"，使得多数消息能放在命令行上，而不需要
 hit-enter 提示。
@@ -3239,10 +3238,10 @@ hit-enter 提示。
 以前的消息可以用新的 |:messages| 命令看到。
 
 即使 'shortmess' 指示要缩短消息，有些消息仍然被完整显示，因为用户期待完整地看
-到它们: CTRL-G 和一些 quickfix 命令。
+到它们: CTRL-G 和一些快速修复命令。
 
 
-改进 quickfix					*improved-quickfix*
+改进快速修复					*improved-quickfix*
 -----------------
 
 分析 gmake 的改变目录行: "make[1]: Entering directory 'name'"。
@@ -3263,18 +3262,18 @@ hit-enter 提示。
 'makeprg' 里的 "$*" 被 ":make" 的参数替换。(Roemer)
 
 
-正规表达式						*regexp-changes-5.4*
+正则表达式						*regexp-changes-5.4*
 -------------------
 
-正规表达式里，"\)" 之前的 '$' 被认为是一行的结束。|/$|
+正则表达式里，"\)" 之前的 '$' 被认为是一行的结束。|/$|
 模式里，"\|" 或 "\(" 之后的 "^" 被认为是一行的开始。|/^| (Robinson)
 
-正规表达式里，在 "\)" 和 "\|" 的前面，"$" 和 "\$" 过去都被认为是一行的结束。现
+正则表达式里，在 "\)" 和 "\|" 的前面，"$" 和 "\$" 过去都被认为是一行的结束。现
 在，"$" 用作行尾而 "\$" 用作按本义出现的美元符号。这同样适用于 "\(" 和 "\|" 之
 后的 '^'。|/\$| |/\^|
 
 有些搜索模式即使它们实际上并不是不合法，但它们可能非常慢。比如:
-"\([^a-z]\+\)\+Q"。用 CTRL-C 可以中止任何正规表达式的搜索。
+"\([^a-z]\+\)\+Q"。用 CTRL-C 可以中止任何正则表达式的搜索。
 
 寄存器 "/: 最近的搜索字符串 (只读)，(Kohan) 被改变为最近使用的搜索模式 (就像
 'hlsearch' 用的一样)。可以这样设置搜索模式 ":let @/ = {expr}"。
@@ -3376,7 +3375,7 @@ Perl 接口支持 Perl 5.005 和线程。(Verdoolaege)
 - 命令行 ":function"、":delfunction"、":let"、":call"、":if" 等的补全。
   (Roemer)
 - 使用 CTRL-D 对有 "-complete=tag_listfiles" 的用户命令进行补全时同时列出文件
-  名。 (Madsen)
+  名。(Madsen)
 - 补全 ":command" 命令的参数。(Webb)
 - 命令行的 CTRL-R . 插入最近插入的文本。CTRL-R 之后的 CTRL-F、CTRL-P、CTRL-W
   和 CTRL-A 用于插入光标所在的对象。(Madsen)
@@ -3392,10 +3391,10 @@ uganda.txt 的文本关于复制 Vi 的部分更加明确。
 
 多字节支持:
 - 多字节字符的 X 输入法。多字节支持的其它一些修正。(Nam)
-- Hangul 输入法特性: |hangul|。 (Nam)
-- 清理了多字节支持、XIM、字体集和 Hangul 输入的配置。现在每项可以单独配置。
+- 韩语输入法特性: |hangul|。(Nam)
+- 清理了多字节支持、XIM、字体集和韩语输入的配置。现在每项可以单独配置。
 - 修改 GTK_KEYBOARD 的检查为对 HANGUL_KEYBOARD_TYPE 的检查。(Nam)
-- 加入 doc/hangulin.txt: Hangul 输入代码的文档。(Nam)
+- 加入 doc/hangulin.txt: 韩语输入代码的文档。(Nam)
 - GTK+ 的 XIM 支持。(Nam)
 - 包含 SJTS 编码支持的第一次尝试。(Nagano)
 - 如果多字节字符在行尾放不下，在那里放上 "~" 然后在下一行显示。
@@ -3580,8 +3579,8 @@ errors]。
 
 组合若干功能成为新的特性，这样做的主要目的是为了能控制最小版本的大小:
 +linebreak:	'showbreak'、'breakat' 和 'linebreak'
-+visualextra:	可视列块模式的插入 ("I") 和附加 ("A")、列块中 修改 ("c") 所有
-		行、 ">" 和 "<": 左/右移列块、"r": 用单个字符替换可视区域。
++visualextra:	可视列块模式的插入 ("I") 和附加 ("A")、在列块所有行上修改
+		("c")、">" 和 "<": 左/右移列块、"r": 用单个字符替换可视区域。
 +comments:	'comments'
 +cmdline_info:	'ruler' 和 'showcmd'。替换过去的 +showcmd。
 "+title"	MSDOS 不加入设置标题和图标的代码，反正这也不可能做到。
@@ -3734,7 +3733,7 @@ compiling pathdef.c.  Replaced it with "tr".
 
 Perl: DO_JOIN was redefined by Perl.  Undefined it in the perl files.
 
-Various XIM and multi-byte fixes:
+Various XIM and multibyte fixes:
 - Fix user cannot see his language while he is typing his language with
   off-the-spot method. (Nagano)
 - Fix preedit position using text/edit area (using gui.wid). (Nagano)
@@ -3751,7 +3750,7 @@ Various XIM and multi-byte fixes:
 - XIM: Composed strings were sometimes ignored.  Vim crashed when compose
   string was longer than 256 bytes.  IM's geometry control is fixed. (Nam,
   Nagano)
-- Win32 multi-byte: hollowed cursor width on a double byte char was wrong.
+- Win32 multibyte: hollowed cursor width on a double byte char was wrong.
   (Nagano)
 - When there is no GUI, selecting XIM caused compilation problems.
   Automatically disable XIM when there is no GUI in configure.
@@ -4074,7 +4073,7 @@ the last char of the line, "<<" moved an extra line.  Also for other operators
 that always work on lines.
 
 link.sh changed "-lnsl_s" to "_s" when looking for "nsl" to be removed.
-Now it only remove whole words.
+Now it only removes whole words.
 
 When jumped to a mark or using "fz", and there is an error, the current column
 was lost.  E.g. when using "$fzj".
@@ -4088,7 +4087,7 @@ Now map <xF4> to <F4>, so that the user can override this.
 When compiling os_win32.c with MIN_FEAT the apply_autocmds() should not be
 used. (Aaron)
 
-This autocommand looped forever: ":au FileChangedShell * nested e <afile>"
+This autocommand looped forever: ":au FileChangedShell * ++nested e <afile>"
 Now FileChangeShell never nests. (Roemer)
 
 When evaluating an ":elseif" that was not going to matter anyway, ignore
@@ -5163,7 +5162,7 @@ Patch 5.4.25
 相关文件:   src/misc1.c
 
 Patch 5.4.26
-问题:	    Multi-byte: a multi-byte character is never recognized in a file
+问题:	    Multi-byte: a multibyte character is never recognized in a file
 	    name, causing a backslash before it to be removed on Windows.
 解决方案:   Assume that a leading-byte character is a file name character in
 	    vim_isfilec().
@@ -5578,7 +5577,7 @@ xpm2		X Pixmap v2 (Steve Wall)
 用 'cpoptions' 的 'C' 标志位可以关闭源代码行的连接功能。见下 patch 5.5.013。
 |line-continuation|
 
-":syntax" 命令的 "excludenl" 参数。见下 patch 5.5.032。 |:syn-excludenl|
+":syntax" 命令的 "excludenl" 参数。见下 patch 5.5.032。|:syn-excludenl|
 
 实现 |z+| 和 |z^| 命令。见下 patch 5.5.050。
 
@@ -5610,7 +5609,7 @@ __TIME__. (John Card II)
 BeOS: Adjust computing the char_height and char_ascent.  Round them up
 separately, avoids redrawing artifacts. (Mike Steed)
 
-Fix a few multi-byte problems in menu_name_skip(), set_reg_ic(), searchc() and
+Fix a few multibyte problems in menu_name_skip(), set_reg_ic(), searchc() and
 findmatchlimit(). (Taro Muraoka)
 
 GTK GUI:
@@ -6296,9 +6295,9 @@ Patch 5.6a.027 (extra)
 相关文件:   src/dosinst.c, src/uninstal.c, gvimext/*, runtime/doc/gui_w32.txt
 
 Patch 5.6a.028 (extra)
-问题:	    Win32 GUI: Dialogs and tear-off menus can't handle multi-byte
+问题:	    Win32 GUI: Dialogs and tear-off menus can't handle multibyte
 	    characters.
-解决方案:   Adjust nCopyAnsiToWideChar() to handle multi-byte characters
+解决方案:   Adjust nCopyAnsiToWideChar() to handle multibyte characters
 	    correctly.
 相关文件:   src/gui_w32.c
 
@@ -6391,9 +6390,9 @@ Many fixes to Macintosh specific parts: (mostly by Dany StAmant)
 - Add digraphs table. (Axel Kielhorn)
 - Multi-byte support: (Kenichi Asai)
   Switch keyscript when going in/out of Insert mode.
-  Draw multi-byte character correctly.
-  Don't use mblen() but highest bit of char to detect multi-byte char.
-  Display value of multi-byte in statusline (also for other systems).
+  Draw multibyte character correctly.
+  Don't use mblen() but highest bit of char to detect multibyte char.
+  Display value of multibyte in statusline (also for other systems).
 - mouse button was not initialized properly to MOUSE_LEFT when
   USE_CTRLCLICKMENU not defined.
 - With Japanese SJIS characters: Make "w", "b", and "e" work
@@ -6645,7 +6644,7 @@ Patch 5.6.036
 相关文件:   src/gui_gtk_x11.c
 
 Patch 5.6.037
-问题:	    Multi-byte: Can't use "f" command with multi-byte character in GUI.
+问题:	    Multi-byte: Can't use "f" command with multibyte character in GUI.
 解决方案:   Enable XIM in Normal mode for the GUI. (Sung-Hyun Nam)
 相关文件:   src/gui_gtk_x11.c, src/multbyte.c
 
@@ -6758,7 +6757,7 @@ Patch 5.6.051
 Patch 5.6.052
 问题:	    Multi-byte: When an Ex command has a '|' or '"' as a second byte,
 	    it terminates the command.
-解决方案:   Skip second byte of multi-byte char when checking for '|' and '"'.
+解决方案:   Skip second byte of multibyte char when checking for '|' and '"'.
 	    (Asai Kenichi)
 相关文件:   src/ex_docmd.c
 
@@ -6910,7 +6909,7 @@ Patch 5.6.073 (extra) (depends on 5.6.034)
 
 Patch 5.6.074 (extra)
 问题:	    Entering CSI directly doesn't always work, because it's recognized
-	    as the start of a special key.  Mostly a problem with multi-byte
+	    as the start of a special key.  Mostly a problem with multibyte
 	    in the GUI.
 解决方案:   Use K_CSI for a typed CSI character.  Use <CSI> for a normal CSI,
 	    <xCSI> for a CSI typed in the GUI.
@@ -7001,7 +7000,7 @@ Patch 5.6.086 (extra)
 相关文件:   src/os_win32.c
 
 Patch 5.6.087
-问题:	    Multi-byte: Commands and messages with multi-byte characters are
+问题:	    Multi-byte: Commands and messages with multibyte characters are
 	    displayed wrong.
 解决方案:   Detect double-byte characters. (Yasuhiro Matsumoto)
 相关文件:   src/ex_getln.c, src/message.c, src/misc2.c, src/screen.c
@@ -7048,9 +7047,9 @@ Patch 5.6.093 (extra)
 相关文件:   src/fileio.c
 
 Patch 5.6.094
-问题:	    Problem with multi-byte string for ":echo var".
+问题:	    Problem with multibyte string for ":echo var".
 解决方案:   Check for length in msg_outtrans_len_attr(). (Sung-Hyun Nam)
-	    Also make do_echo() aware of multi-byte characters.
+	    Also make do_echo() aware of multibyte characters.
 相关文件:   src/eval.c, src/message.c
 
 Patch 5.6.095
@@ -7081,9 +7080,9 @@ Patch 5.7a.002
 
 Patch 5.7a.003
 问题:	    Multi-byte: After using CTRL-O in Insert mode with the cursor at
-	    the end of the line on a multi-byte character the cursor moves to
+	    the end of the line on a multibyte character the cursor moves to
 	    the left.
-解决方案:   Check for multi-byte character at end-of-line. (Taro Muraoka)
+解决方案:   Check for multibyte character at end-of-line. (Taro Muraoka)
 	    Also: fix cls() to detect a double-byte character. (Chong-Dae Park)
 相关文件:   src/edit.c, src/search.c
 
@@ -7277,14 +7276,14 @@ VMS doesn't always have lstat(), added an #ifdef around it.
 
 Added a few corrections for the Macintosh. (Axel Kielhorn)
 
-Win32: Gvimext could not edit more than a few files at once, the length of the
+Win32: GvimExt could not edit more than a few files at once, the length of the
 argument was fixed.
 
 
 Vim 5.7 预发布补丁:
 
 Patch 5.7.001
-问题:	    When the current buffer is crypted, and another modified buffer
+问题:	    When the current buffer is encrypted, and another modified buffer
 	    isn't, ":wall" will encrypt the other buffer.
 解决方案:   In buf_write() use "buf" instead of "curbuf" to check for the
 	    crypt key.
@@ -7398,7 +7397,7 @@ Patch 5.7.018
 相关文件:   src/misc1.c, src/os_unix.c
 
 Patch 5.7.019
-问题:	    Multibyte: In a substitute string, a multi-byte character isn't
+问题:	    Multibyte: In a substitute string, a multibyte character isn't
 	    skipped properly, can be a problem when the second byte is a
 	    backslash.
 解决方案:   Skip an extra byte for a double-byte character. (Muraoka Taro)
@@ -7472,4 +7471,4 @@ Patch 5.7.030
 相关文件:   src/ex_docmd.c
 
 
- vim:tw=78:ts=8:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl:
