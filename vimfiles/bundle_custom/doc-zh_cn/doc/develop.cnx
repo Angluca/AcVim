@@ -1,8 +1,8 @@
-*develop.txt*	For Vim version 8.0.  最近更新: 2017年7月
+*develop.txt*	适用于 Vim 9.0 版本。	最近更新: 2020年4月
 
 
 		  VIM 参考手册    by Bram Moolenaar
-		  译者: jwdu，iCrazy，tocer (http://vimcdoc.sf.net)
+				译者: jwdu、iCrazy、tocer
 
 
 Vim 的开发						*development*
@@ -16,9 +16,9 @@ Vim 的开发						*development*
 
 请先看一下 "src" 目录下的 README.txt 以便对源代码有一个总体的了解。
 
-Vim 是开源软件，鼓励所有人参与并改进 Vim。如果你想递交 patch，请使用 "diff -c"
-来产生上下文 (context) 格式的 diff 文件。
-另见 http://vim.wikia.com/wiki/How_to_make_and_submit_a_patch 。
+Vim 是开源软件，鼓励所有人参与并改进 Vim。如果你想递交 patch，请使用 "diff -u"
+来产生合并 (unified) 格式的 diff 文件。
+另见 http://vim.wikia.com/wiki/How_to_make_and_submit_a_patch。
 
 ==============================================================================
 1. 设计目标						*design-goals*
@@ -85,7 +85,7 @@ VIM 是 ... 速 度 快 、 体 积 小 的			*design-speed-size*
 Vim 不能大量消耗系统资源，必须使它体积小且速度快。
 - 计算机每年都在变得更快、更大。Vim 也可以同样的变化，但是速度不能超过计算机的
   变化速度。要使 Vim 在老的计算机上也可以使用。
-- 许多使用者经常从 shell 启动 Vim。启用时间必须尽量短。
+- 许多使用者经常从外壳启动 Vim。启用时间必须尽量短。
 - 指令必须有效的工作，它们消耗的时间要尽可能的短。有用的指令可以多消耗一点时
   间。
 - 注意到许多人在慢速线路上使用 Vim，因此，要使通信的开销尽可能的少。
@@ -112,13 +112,15 @@ Vim 应该让使用它的人很容易在他们喜欢的风格下工作，而不�
 以用命令和选项来调整 Vim 来满足他们和环境的需要。
 
 
-VIM 不 是 ... 						*design-not*
+VIM 不 是 ...						*design-not*
 
-- Vim 不是一个 shell 或操作系统。你不能在 Vim 内运行一个 shell 或使用它控制一
-  个调试器。应该使用相反的方式工作: 把 Vim 当作来自 shell 或 IDE 中的一个部分
-  来使用。这里有一个讽刺的说法: "Vim 不像 Emacs 那样会包含除厨房中的水槽以外的
-  每件事物，但有人说如果你需要的话，却可以用它来洗盘子。;-)"
-  要在 Vim 中使用 gdb，参见: http://www.agide.org 和 http://clewn.sf.net。
+- Vim 不是一个外壳或操作系统。它确实提供自己的终端窗口，可在其中运行外壳或调试
+  噐，以便于在 ssh 会话中应用。但如果不需要文本编辑，这些功能就超出了它的应用
+  范围 (请改用 screen 或 tmux 这样的工具)。
+  这里有一个讽刺的说法: "Vim 不像 Emacs 那样会包含除厨房中的水槽以外的每件事
+  物，但有人说如果你需要的话，却可以用它来洗盘子。;-)"
+  要在 Vim 中使用 gdb，参见 |terminal-debugger|。其它 (老式的) 工具可见:
+  http://www.agide.org 和 http://clewn.sf.net。
 - Vim 不是一个为了看起来漂亮而牺牲多平台一致性的华而不实的 GUI 编辑器。但我们
   依然欢迎有效的 GUI 特性。
 
@@ -139,19 +141,49 @@ VIM 不 是 ... 						*design-not*
 2. 首先调整文档，这样做将使你对你的更改如何影响使用者有一个印象。
 3. 改变源代码。
 4. 检查 ../doc/todo.txt，看看所作的修改是否影响其中的项目。
-5. 用 "git diff" 做一个补丁。也可以在 github 上创建 pull 请求，但主要是 diff
-   的部分。
+5. 用 "git diff" 做一个补丁。也可以在 github 上创建拉取请求，但主要是 diff 的
+   部分。
 6. 写一个修改了哪些地方的记录，最好提到相关问题和解决方案。给 vim-dev 邮件组发
-   信包含这个解释和 diff 本身。也可以在 github 上创建 pull 请求。
+   信包含这个解释和 diff 本身。也可以在 github 上创建拉取请求。
 
 
-C COMPILER						*style-compiler*
+C COMPILER				*style-compiler* *ANSI-C* *C89* *C99*
 
-支持的 C 编译器最低版本是 C89，也即 ANSI C。之后的标准没有太多新功能，而 C89
-的支持最广泛。
+支持的 C 编译器最低版本是 C89，也即 ANSI C。之后的标准，如 C99，还没有得到广泛
+的支持，或至少没有得到 100% 的支持。因此我们只使用部分 C99 特性而禁止其它的一
+些特性 (至少目前如此)。
 
-这意味着一个限制: 不能用 // 注释，只能用 /* 注释 */。
+请不要在任何地方修改代码来应用 C99 特性，这会给现有补丁的合并带来困难。C99 特
+性仅限于新增或需要改动的代码。
 
+注释 ~
+
+Vim 传统上使用 /* 注释 */。我们打算继续在文件和函数头部，还有大块代码处使用这
+种风格，如:
+	/*
+	 * The "foo" argument does something useful.
+	 * Return OK or FAIL.
+	 */
+新代码或需要改动的代码上建议使用 // 注释，特别是在代码之后的注释:
+	int some_var;  // 这里可用单行注释
+
+枚举 ~
+
+枚举的最后一项可有拖尾的逗号。C89 过去不允许。
+
+类型 ~
+
+允许使用 "long long"，并应假定为 64 位。printf 格式中对应可用 %lld。另外，%llu
+可用于 "long long unsigned"。
+
+不使用 ~
+
+不使用以下 C99 特性，因为支持的编译器尚不广泛:
+- 语句之后的声明 (MSVC 2012 不支持)。所有的声明必须在块的开始处。
+- 可变长度数组 (即便在 C11 中也是一个可选的特性)。
+- _Bool 和 _Complex 类型。
+- "inline" (也几乎用不到，让优化器自己去做吧)
+- 灵活数组成员 (Flexible Array Member): HP-UX C 编译器不支持 (John Marriott)
 
 普 通 函 数 的 使 用					*style-functions*
 
@@ -180,7 +212,7 @@ memset()	vim_memset()	对所有系统通用
 不要使用 "delete" 或 "this" 作为变量名称，C++ 不喜欢这样。
 
 因为 Vim 需要在尽可能多的平台上运行，所以我们需要避免那些已经被系统定义过的名
-称。这里是一个已知会造成麻烦的名称列表 (使用正规表达式模式给出)。
+称。这里是一个已知会造成麻烦的名称列表 (使用正则表达式模式给出)。
 
 is.*()		POSIX，ctype.h
 to.*()		POSIX，ctype.h
@@ -208,7 +240,6 @@ wait		不要使用它作为函数的参数，和 types.h 冲突
 index		屏蔽全局声明
 time		屏蔽全局声明
 new		C++ 保留关键字
-try		Borland C++ 不希望它作为变量名被使用。
 
 clear		Mac curses.h
 echo		Mac curses.h
@@ -250,19 +281,19 @@ get_env_value()	Linux 系统函数
 
 一般原则: 每行一条语句。
 
-错误: 	    if (cond) a = 1;
+错误:	    if (cond) a = 1;
 
-正确: 	    if (cond)
+正确:	    if (cond)
 		a = 1;
 
-错误: 	    while (cond);
+错误:	    while (cond);
 
-正确: 	    while (cond)
+正确:	    while (cond)
 		;
 
-错误: 	    do a = 1; while (cond);
+错误:	    do a = 1; while (cond);
 
-正确: 	    do
+正确:	    do
 		a = 1;
 	    while (cond);
 
@@ -285,21 +316,37 @@ get_env_value()	Linux 系统函数
                cmd;
 	    }
 
+单行的块可以省略花括号。if/else 一个单行的块有括号时，另一个块最好也有括号:
+正确:	    if (cond)
+	       cmd;
+	    else
+               cmd;
+
+正确:	    if (cond)
+	    {
+	       cmd;
+	    }
+	    else
+	    {
+               cmd;
+               cmd;
+	    }
+
 使用 ANSI (新风格) 函数声明，返回类型在单独缩进的一行上。
 
-错误: 	int function_name(int arg1, int arg2)
+错误:	int function_name(int arg1, int arg2)
 
-正确: 	/*
+正确:	/*
 	 * 解释函数的功能。
 	 *
 	 * 解释返回值。
 	 */
 	    int
 	function_name(
-	    int		arg1,		/* arg1 的简短注释 */
-	    int		arg2)		/* arg2 的简短注释 */
+	    int		arg1,		// arg1 的简短注释
+	    int		arg2)		// arg2 的简短注释
 	{
-	    int		local;		/* local 的注释 */
+	    int		local;		// local 的注释
 
 	    local = arg1 * arg2;
 
@@ -310,27 +357,27 @@ get_env_value()	Linux 系统函数
 不要在函数名和括号间留空格:
 
 错误:   func (arg);
-正确: 	func(arg);
+正确:	func(arg);
 
 但请在 if，while，switch 等之后留一个空格:
 
-错误: 	if(arg)		for(;;)
-正确: 	if (arg)	for (;;)
+错误:	if(arg)		for(;;)
+正确:	if (arg)	for (;;)
 
 在逗号和分号后留一个空格:
 
 错误:   func(arg1,arg2);	for (i = 0;i < 2;++i)
-正确: 	func(arg1, arg2);	for (i = 0; i < 2; ++i)
+正确:	func(arg1, arg2);	for (i = 0; i < 2; ++i)
 
 在 '='，'+'，'/' 等的前后各留一个空格:
 
-错误: 	var=a*5;
-正确: 	var = a * 5;
+错误:	var=a*5;
+正确:	var = a * 5;
 
 一般地: 使用空行来把代码分组。在每组代码的上面写上注释，这样就可以快速的知道这
 些代码是用来干什么的。
 
-正确: 	/* Prepare for building the table. */
+正确:	/* Prepare for building the table. */
 	get_first_item();
 	table_idx = 0;
 
@@ -362,12 +409,12 @@ get_env_value()	Linux 系统函数
 述:
 
 screen		整个屏幕。对于 GUI 来说，就是类似于 1024x768 像素之类的东西。
-		Vim shell 可以使用整个屏幕 (例如，在控制台上运行时) 或它的一部
-		分 (xterm 或 GUI)。
+		Vim 外壳可以使用整个屏幕 (例如，在控制台上运行时) 或它的一部分
+		(xterm 或 GUI)。
 shell		Vim 这个应用程序。它可以覆盖整个屏幕 (例如，在控制台上运行时)
 		或它的一部分 (xterm 或 GUI)。
 window		用来查看缓冲区内容的地方。Vim 中可以包括很多窗口，还有命令行、
-		菜单栏、工具栏等。它们被整合到 shell 中。
+		菜单栏、工具栏等。它们被整合到外壳中。
 
 
 拼写检查						*develop-spell*
@@ -401,7 +448,7 @@ window		用来查看缓冲区内容的地方。Vim 中可以包括很多窗口�
 1. 尝试轻微改变错误的单词，然后检查能否和正确的单词匹配。或者浏览正确单词列
    表，轻微改变它们，看能否和错误的单词匹配。这里所指的改动包括: 删除一个字
    符，插入一个字符，交换两个字符等。
-2. 比较坏词和好词列表的发音来寻找匹配。可能也需要象第一种方法那样对单词做少许
+2. 比较坏词和好词列表的发音来寻找匹配。可能也需要像第一种方法那样对单词做少许
    改变。
 
 第一种方法的优势在于查找录入错误。在使用哈希表试验和参考了其他拼写检查程序的方
@@ -463,4 +510,4 @@ long	    32 或 64 位有符号数，可具有指针
 注意: 某些编译器不能处理过长的源码行或者字符串。C89 标准规定限制在 509 个字符
 以内。
 
- vim:tw=78:ts=8:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl:

@@ -1,10 +1,9 @@
-*if_perl.txt*   For Vim version 8.0.  最近更新: 2017年7月
+*if_perl.txt*   适用于 Vim 9.0 版本。	最近更新: 2022年7月
 
 
 		  VIM 参考手册    by Sven Verdoolaege
 					 and Matt Gerassimof
-			    译者: foolstone@ustc.edu，Willis，tocer
-			    http://vimcdoc.sf.net
+				译者: foolstone@ustc.edu、Willis、tocer
 
 
 Perl 与 Vim						*perl* *Perl*
@@ -14,8 +13,7 @@ Perl 与 Vim						*perl* *Perl*
 3. Perl 接口的使用		|perl-using|
 4. 动态调入			|perl-dynamic|
 
-{Vi 没有上述这些功能}
-Perl 接口只有在编译 Vim 时加入 |+perl| 才能使用。
+{仅当编译 Vim 时加入 |+perl| 特性才有效}
 
 ==============================================================================
 1. 编辑 Perl 文件					*perl-editing*
@@ -24,8 +22,9 @@ Vim 语法高亮显示支持 Perl 和 POD 文件。Vim 假设后缀为 .pl 和 .
 文件。Vim 同时不管文件后缀而测试文件的首行来检查一个文件是否为 Perl 脚本 (参见
 Vim 的 syntax 目录下的 scripts.vim)。Vim 假设带后缀 .POD 的文件是 POD 文本。
 
-要使用 Perl 标签，你需要 Exuberant ctags 的最新版本。在这里可以找到它:
-	http://ctags.sourceforge.net
+要使用 Perl 标签，你需要 Universal/Exuberant ctags。在这里可以找到:
+	Universal Ctags (推荐): https://ctags.io
+	Exuberant Ctags: http://ctags.sourceforge.net
 
 当然，作为选择你还可以用一个叫 pltags.pl 的 Perl 脚本，它和 Vim 一起发行的，位
 于 $VIMRUNTIME/tools 目录下。这个脚本比 Exuberant ctags 的 Perl 支持具备更多的
@@ -44,8 +43,9 @@ Vim 的 Perl 补丁由
 	Matt Gerassimof
 制作。
 
-Perl 的 MS-Windows 版本可以在下面这个网址找到: http://www.perl.com/
-ActiveState 的版本应该可用。
+Perl 的 MS-Windows (和其它平台) 版本可以在下面这个网址找到:
+	http://www.perl.org/
+ActiveState 的版本应该可用，Strawberry Perl 是另一个好的版本。
 
 ==============================================================================
 3. Perl 接口的使用					*perl-using*
@@ -55,14 +55,17 @@ ActiveState 的版本应该可用。
 			否可用的简单例子: >
 				:perl VIM::Msg("Hello")
 
-:pe[rl] << {endpattern}
+:pe[rl] << [trim] [{endmarker}]
 {script}
-{endpattern}
+{endmarker}
 			执行 Perl 脚本 {script}。
-			{endpattern} _不能_有任何前导空格。如果忽略了
-			{endpattern}，就会像 |:append| 和 |:insert| 命令那样，
-			默认为点 '.'。在函数内使用时，最好指明 '.'，因为 "$i;"
-			看起来像 Vim 的 |:insert| 命令的开始。
+			{script} 之下的 {endmarker} _不能_有任何前导空白。
+
+			如果省略了 [endmarker]，默认为一个点号 '.'，就会像
+			|:append| 和 |:insert| 命令那样。在函数内使用时，最好
+			指明 '.'，因为 "$i;" 看起来像 Vim 的 |:insert| 命令的
+			开始。
+
 			|:perl| 命令的这种形式主要是用来在 vim 脚本里面包含
 			perl 代码。
 			备注: 当 Perl 特性没有被编译进 vim 时这条命令不能工
@@ -94,9 +97,7 @@ vim 脚本示例: >
   :perldo $_ = reverse($_);1
   :perl VIM::Msg("hello")
   :perl $line = $curbuf->Get(42)
-<
-
-							*E299*
+<							*E299*
 在沙盘 |sandbox| 里执行 Perl 命令是受限制的。":perldo" 根本就不能执行。如果可
 能，":perl" 会在安全环境下被执行。
 
@@ -104,7 +105,7 @@ vim 脚本示例: >
 下面是在 Perl 下可用的函数概要: >
 
   :perl VIM::Msg("Text")		# 显示信息
-  :perl VIM::Msg("Error", "ErrorMsg")	# 显示错误信息
+  :perl VIM::Msg("Wrong!", "ErrorMsg")	# 显示错误信息
   :perl VIM::Msg("remark", "Comment")	# 显示高亮的信息
   :perl VIM::SetOption("ai")		# 设定一个 vim 选项
   :perl $nbuf = VIM::Buffers()		# 返回缓冲区的个数
@@ -127,14 +128,14 @@ vim 脚本示例: >
   :perl $l = $curbuf->Get(10)		# 返回第 10 行
   :perl @l = $curbuf->Get(1 .. 5)	# 返回第 1 到第 5 行
   :perl $curbuf->Delete(10)		# 删除第 10 行
-  :perl $curbuf->Delete(10, 20)		# 删除第 10－20 行
+  :perl $curbuf->Delete(10, 20)		# 删除第 10-20 行
   :perl $curbuf->Append(10, "Line")	# 添加一行
   :perl $curbuf->Append(10, "Line1", "Line2", "Line3") # 添加三行
   :perl @l = ("L1", "L2", "L3")
   :perl $curbuf->Append(10, @l)		# 添加 L1，L2 和 L3
   :perl $curbuf->Set(10, "Line")	# 替换第 10 行
   :perl $curbuf->Set(10, "Line1", "Line2")      # 替换第 10 行和第 11 行
-  :perl $curbuf->Set(10, @l)		# 分别用 L1，L2 和 L3 替换 10－12 行
+  :perl $curbuf->Set(10, @l)		# 分别用 L1，L2 和 L3 替换 10-12 行
 <
 							*perl-Msg*
 VIM::Msg({msg}, {group}?)
@@ -168,12 +169,15 @@ VIM::DoCommand({cmd})   执行 Ex 命令 {cmd}。
 VIM::Eval({expr})       对 {expr} 求值并在列表上下文返回 (success，value)，在
 			标量上下文则只返回 value。
 			success=1 表示 val 包含 {expr} 的值。success=0 表示表
-			达式求值失败。 '@x' 返回寄存器 x 的内容， '&x' 返回选
-			项 x 的值，'x' 返回内部变量 x 的值，'$x' 等价于 perl
+			达式求值失败。'@x' 返回寄存器 x 的内容，'&x' 返回选项
+			x 的值，'x' 返回内部变量 x 的值，'$x' 等价于 perl
 			中的 $ENV{x}。所有在命令行可以访问的函数都可用于
 			{expr}。
 			列表 |List| 通过连接项目并在项目间插入换行符来转化为字
 			符串。
+
+							*perl-Blob*
+VIM::Blob({expr})	返回来自标量值的 |Blob| 字面常量字符串 0zXXXX。
 
 							*perl-SetHeight*
 Window->SetHeight({height})
@@ -273,4 +277,4 @@ Unix ~
 文件。共享库的版本必须和 Vim 编译使用的 Perl 版本保持一致。
 
 ==============================================================================
- vim:tw=78:ts=8:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl:

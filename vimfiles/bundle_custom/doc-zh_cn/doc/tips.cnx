@@ -1,8 +1,8 @@
-*tips.txt*	For Vim version 8.0.  最近更新: 2010年5月
+*tips.txt*	适用于 Vim 9.0 版本。	最近更新: 2022年7月
 
 
 		  VIM 参考手册    by Bram Moolenaar
-	   译者: iCrazy <icrazy@ustc.edu>, tocer http://vimcdoc.sf.net
+				译者: iCrazy <icrazy@ustc.edu>、tocer
 
 
 使用 Vim 的技巧						*tips*
@@ -26,10 +26,11 @@ http://www.vim.org
 加速外部命令的执行				|speed-up|
 一些有用的映射					|useful-mappings|
 压缩帮助文件					|gzip-helpfile|
-在一个窗口中执行 shell 命令			|shell-window|
+在一个窗口中执行外壳命令			|shell-window|
 十六进制编辑					|hex-editing|
 在自动命令中使用 <> 记法			|autocmd-<>|
 高亮匹配括号					|match-parens|
+在当前窗口打开帮助				|help-curwin|
 
 ==============================================================================
 编辑 C 程序						*C-editing*
@@ -87,18 +88,18 @@ Vim 里面有不少功能可以帮助你们编辑 C 程序。以下是一个概�
 
 你所需要的:
 - 安装 GNU id 工具集 (mkid 是用来创建 ID 的，lid 是用来运行宏的)
-- 一个在当前目录下名为 "ID" 的标识符数据库。你可以用 shell 命令 "mkid file1
-  file2 .." 来创建它。
+- 一个在当前目录下名为 "ID" 的标识符数据库。你可以用外壳命令 "mkid file1 file2
+  .." 来创建它。
 
 把这些添加写你的 .vimrc 文件中: >
-	map _u :call ID_search()<Bar>execute "/\\<" . g:word . "\\>"<CR>
-	map _n :n<Bar>execute "/\\<" . g:word . "\\>"<CR>
+	map _u :call ID_search()<Bar>execute "/\\<" .. g:word .. "\\>"<CR>
+	map _n :n<Bar>execute "/\\<" .. g:word .. "\\>"<CR>
 
 	function! ID_search()
 	  let g:word = expand("<cword>")
-	  let x = system("lid --key=none ". g:word)
+	  let x = system("lid --key=none " .. g:word)
 	  let x = substitute(x, "\n", " ", "g")
-	  execute "next " . x
+	  execute "next " .. x
 	endfun
 
 使用的时候，把光标放在一个单词上，敲入 "_u"，然后 vim 会读入含有这个单词的文
@@ -155,22 +156,22 @@ Vim 里面有不少功能可以帮助你们编辑 C 程序。以下是一个概�
 ==============================================================================
 在插入模式下滚屏					*scroll-insert*
 
-如果你处于插入模式下并且希望看一些恰好在屏幕范围以外的东西，你可以使用 CTRL-X
-CTRL-E 和 CTRL-X CTRL-Y 来滚屏。
+如果你处于插入模式下并且想看恰好在屏幕范围以外的一些东西，可用 CTRL-X CTRL-E
+和 CTRL-X CTRL-Y 来滚屏。
 						|i_CTRL-X_CTRL-E|
 
-为了使这个简单些，你可以用这些映射: >
+更简便地，可用以下映射: >
 	:inoremap <C-E> <C-X><C-E>
 	:inoremap <C-Y> <C-X><C-Y>
 (逐字敲入这些字符，并确认 '<' 标志位不在 'cpoptions' 选项中)。
 不过这样你就不能使用从光标上一行/下一行拷贝文字的功能了 |i_CTRL-E|。
 
-你还可以考虑把 'scrolloff' 设置得大一些，这样你就总能看到光标附近的上下文了。
-如果 'scrolloff' 的值大于窗口高度的一半，在向上或向下移动光标时，文字会上下卷
-动，但是光标会始终停留在屏幕中间的位置。
+还可以考虑把 'scrolloff' 设置得大一些，这样就总能看到光标附近的上下文了。如果
+'scrolloff' 的值大于窗口高度的一半，在向上或向下移动光标时，文字会上下卷动，但
+是光标会始终停留在屏幕中间的位置。
 
 ==============================================================================
-平滑的滚屏						*scroll-smooth*
+平滑滚屏						*scroll-smooth*
 
 如果你希望你的滚屏更加平滑一些，你可以使用以下的映射: >
 	:map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
@@ -197,27 +198,27 @@ CTRL-E 和 CTRL-X CTRL-Y 来滚屏。
 	:%s/the/&/gn		任何地方出现的 "the"
 	:%s/\<the\>/&/gn	作为单词出现的 "the"
 
-你可能希望复位 'hlsearch' 或者使用 ":nohlsearch"。
-如果你希望没有匹配的时候不显示错误，那么增加标志位 'e'。
+此时你可能希望复位 'hlsearch' 或者使用 ":nohlsearch"。
+如果你希望没有匹配的时候不报错，加上标志位 'e'。
 
 另一种办法就是在可视模式下使用 |v_g_CTRL-G|。
 
 如果你想在多个文件中查找匹配，用 |:vimgrep|。
 
 							*count-bytes*
-如果你想数字节数，你可以这样做:
+如果你想统计字节数，可以这样做:
 
-	选中那些字符 (列块选择也可以)
+	可视选择那些字符 (列块选择也可以)
 	使用 "y" 来拷贝这些字符
 	使用 strlen() 函数: >
 		:echo strlen(@")
-一个换行符被当做一个字节。
+这里换行符被当做一个字节。
 
 ==============================================================================
 恢复光标位置						*restore-position*
 
-有时你希望写一个映射，让它在文件中的其他地方做一些修改然后恢复光标的位置 (不滚
-动文本)。例如，修改一个文件中的日期标记: >
+有时你希望写一个在文件中的其他地方做一些修改然后恢复光标的位置且不滚动文本的映
+射。例如，要修改文件中的日期标记，可以这样: >
 
    :map <F2> msHmtgg/Last [cC]hange:\s*/e+1<CR>"_D"=strftime("%Y %b %d")<CR>p'tzt`s
 
@@ -231,7 +232,7 @@ CTRL-E 和 CTRL-X CTRL-Y 来滚屏。
 	zt	滚屏，使这一行位于窗口的顶端
 	`s	跳转到最初光标的位置
 
-更高级的功能见 |winsaveview()| 和 |winrestview()|。
+更高级的方法见 |winsaveview()| 和 |winrestview()|。
 
 ==============================================================================
 文件更名						*rename-files*
@@ -261,7 +262,7 @@ digraph.c
 		:%s/Allen/Peter/g
 		:update
 <
-	在所有你要改动的文件上执行 Vim，然后为每个参数执行脚本: >
+	在所有你要改动的文件上执行 Vim，然后为每个参数执行该脚本: >
 
 		vim *.let
 		argdo source subs.vim
@@ -271,13 +272,13 @@ digraph.c
 ==============================================================================
 加速外部命令的执行					*speed-up*
 
-在一些情况下，外部命令执行起来非常地慢。而且还会减慢 Unix 上的通配符扩展。这儿
-有一些建议可以加快速度:
+在某些情况下，外部命令执行起来非常地慢。而且还会减慢 Unix 上的通配符扩展。这儿
+有一些可以加快速度的建议:
 
-如果你的 .cshrc 文件 (根据你使用的 shell，文件名可能不同) 非常地长，你应该把它
-分割成两节: 需要和用户交互的、无需和用户交互的 (经常被称作二级 shell)。当你在
-Vim 中执行一个类似 ":!ls" 的命令时，你就不需要和用户交互的那一部分 (例如: 设置
-提示符)。把那些不必要的部分放到下面这些行后面去: >
+如果你的 .cshrc 文件 (根据你使用的外壳，文件名可能不同) 非常地长，你应该把它分
+割成两节: 需要和用户交互的、无需和用户交互的 (经常被称作二级外壳)。当你在 Vim
+中执行一个类似 ":!ls" 的命令时，你就不需要和用户交互的那一部分 (例如: 设置提示
+符)。把那些不必要的部分放到下面这些行后面去: >
 
 	if ($?prompt == 0) then
 		exit 0
@@ -291,9 +292,9 @@ Vim 中执行一个类似 ":!ls" 的命令时，你就不需要和用户交互�
 这样就会使 csh 完全跳过 .cshrc 文件。不过这样可能会造成一些程序不能正常运行。
 
 ==============================================================================
-一些有用的映射					*useful-mappings*
+有用的映射					*useful-mappings*
 
-这里有一些人们喜欢使用的映射。
+这里提供一些部分人喜欢使用的映射。
 
 							*map-backtick*  >
 	:map ' `
@@ -324,16 +325,16 @@ Vim 中执行一个类似 ":!ls" 的命令时，你就不需要和用户交互�
 备注: 前提条件是 '<' 标志位不在 'cpoptions' 选项中。|<>|
 
 							*format-bullet-list*
-这个映射可以格式化任何带符号的 (bullet) 列表，不过它需要在每一个条目的上下都各
-有一个空行。使用表达式命令，以便对映射的部分进行注释: >
+这个映射可以排版任何带符号的 (bullet) 列表，不过它需要在每一个条目的上下都各有
+一个空行。使用表达式命令，以便对映射的部分进行注释: >
 
 	:let m =     ":map _f  :set ai<CR>"   " 需要置位 'autoindent'
-	:let m = m . "{O<Esc>"		      " 在项目上面加入空行
-	:let m = m . "}{)^W"		      " 跳转到 bullet 之后的文本
-	:let m = m . "i     <CR>     <Esc>"   " 为缩进加空格
-	:let m = m . "gq}"		      " 排版 bullet 之后的文本
-	:let m = m . "{dd"		      " 删除空行
-	:let m = m . "5lDJ"		      " 把文本放到 bullet 之后
+	:let m ..= "{O<Esc>"		      " 在项目上面加入空行
+	:let m ..= "}{)^W"		      " 跳转到 bullet 之后的文本
+	:let m ..= "i     <CR>     <Esc>"     " 为缩进加空格
+	:let m ..= "gq}"		      " 排版 bullet 之后的文本
+	:let m ..= "{dd"		      " 删除空行
+	:let m ..= "5lDJ"		      " 把文本放到 bullet 之后
 	:execute m			      |" 定义这个 mapping
 
 (<> 记法 |<>|。注意 必须按照字面逐个输入。^W 是 "^" 和 "W"，而不是 CTRL-W。如
@@ -367,18 +368,18 @@ Vim 中执行一个类似 ":!ls" 的命令时，你就不需要和用户交互�
 (3) 把这一行加入到你的 vimrc 文件中: >
 	set helpfile={dirname}/help.txt.gz
 
-这儿 {dirname} 是存放帮助文件的目录。|gzip| 这个插件会负责解压缩这些文件的。
-如果其它 Vim 文件所在的位置和存放压缩帮助的 "doc" 目录不一致，你必须肯定已经把
-$VIMRUNTIME 设置成存放 Vim 文件的目录。参见: |$VIMRUNTIME|。
+这儿 {dirname} 是存放帮助文件的目录。|gzip| 插件会负责解压这些文件。
+如果其它 Vim 文件和存放压缩帮助的 "doc" 目录所在的位置不一致，要确保
+$VIMRUNTIME 设为存放那些 Vim 文件的目录。参见: |$VIMRUNTIME|。
 
 ==============================================================================
-在一个窗口中执行 shell 命令				*shell-window*
+在一个窗口中执行外壳命令				*shell-window*
 
-很多人都询问能不能在 Vim 中的一个窗口内执行 shell 命令。答案是: 不行！加入这个
-功能会给 Vim 增加很多代码量，这也是为什么我们没有这样做的一个很好的理由。毕
-竟，Vim 只是一个编辑器，它本身并不是用来做那些非编辑类工作的。然而，要达到这样
-的目的，你可以用 "splitvt" 程序把你的终端屏幕或显示窗口进行分割。在一些 ftp 服
-务器上你可以找到这个工具。Sam Lantinga <slouken@cs.ucdavis.edu> 对此了解颇多。
+见 |terminal|。
+
+另一个方法是用 "splitvt" 程序把你的终端屏幕或显示窗口进行分割。在一些 ftp 服务
+器上你可以找到这个工具。Sam Lantinga <slouken@cs.ucdavis.edu> 对此了解颇多。
+
 另一种办法是使用在 BSD Unix 系统上出现的 "window" 命令，它支持多个重叠的窗口。
 或者使用最先出现在 www.uni-erlangen.de 上的 "screen" 程序，它支持窗口栈。
 
@@ -435,14 +436,14 @@ $VIMRUNTIME 设置成存放 Vim 文件的目录。参见: |$VIMRUNTIME|。
 本例演示一些高级技巧的用法:
 - 使用 |CursorMoved| 自动命令事件
 - 使用 |searchpairpos()| 查找匹配括号
-- 使用 |synID()| 检测光标是否在字符串或注释上
+- 使用 |synID()| 检测光标是否在字符串或注释里
 - 使用 |:match| 高亮一些内容
 - 使用 |pattern| 匹配文件的特定位置。
 
-它应该被放在 Vim 脚本里，因为使用了局部于脚本的变量。它跳过字符串或注释里的匹
-配，除非光标起始于字符串或者注释的内部。这需要语法高亮的支持。
+它应该被放在 Vim 脚本里，因为使用了局部于脚本的变量。除非光标起始于字符串或者
+注释的内部，它会跳过字符串或注释里的匹配。这需要语法高亮的支持。
 
-|matchparen| 插件使用稍稍改进的版本。
+|matchparen| 插件使用的是一个稍稍改进的版本。
 >
 	let s:paren_hl_on = 0
 	function s:Highlight_Matching_Paren()
@@ -472,15 +473,15 @@ $VIMRUNTIME 设置成存放 Vim 文件的目录。参见: |$VIMRUNTIME|。
 	    let c = '\['
 	    let c2 = '\]'
 	  endif
-	  let s_skip ='synIDattr(synID(line("."), col("."), 0), "name") ' .
+	  let s_skip ='synIDattr(synID(line("."), col("."), 0), "name") ' ..
 		\ '=~?  "string\\|comment"'
 	  execute 'if' s_skip '| let s_skip = 0 | endif'
 
 	  let [m_lnum, m_col] = searchpairpos(c, '', c2, s_flags, s_skip)
 
 	  if m_lnum > 0 && m_lnum >= line('w0') && m_lnum <= line('w$')
-	    exe 'match Search /\(\%' . c_lnum . 'l\%' . c_col .
-		  \ 'c\)\|\(\%' . m_lnum . 'l\%' . m_col . 'c\)/'
+	    exe 'match Search /\(\%' .. c_lnum .. 'l\%' .. c_col ..
+		  \ 'c\)\|\(\%' .. m_lnum .. 'l\%' .. m_col .. 'c\)/'
 	    let s:paren_hl_on = 1
 	  endif
 	endfunction
@@ -489,4 +490,29 @@ $VIMRUNTIME 设置成存放 Vim 文件的目录。参见: |$VIMRUNTIME|。
 	autocmd InsertEnter * match none
 <
 
- vim:tw=78:ts=8:ft=help:norl:
+==============================================================================
+在当前窗口打开帮助						*help-curwin*
+
+缺省在分割窗口打开帮助。如果喜欢在当前窗口打开帮助，可用下面的定制命令
+`:HelpCurwin`:
+>
+	command -bar -nargs=? -complete=help HelpCurwin execute s:HelpCurwin(<q-args>)
+	let s:did_open_help = v:false
+
+	function s:HelpCurwin(subject) abort
+	  let mods = 'silent noautocmd keepalt'
+	  if !s:did_open_help
+	    execute mods .. ' help'
+	    execute mods .. ' helpclose'
+	    let s:did_open_help = v:true
+	  endif
+	  if !getcompletion(a:subject, 'help')->empty()
+	    execute mods .. ' edit ' .. &helpfile
+	    set buftype=help
+	  endif
+	  return 'help ' .. a:subject
+	endfunction
+<
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

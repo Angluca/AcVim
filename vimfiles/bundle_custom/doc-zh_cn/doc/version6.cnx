@@ -1,9 +1,8 @@
-*version6.txt*  For Vim version 8.0.  最近更新: 2017年8月
+*version6.txt*  适用于 Vim 9.0 版本。	最近更新: 2022年7月
 
 
 		  VIM 参考手册    by Bram Moolenaar
 				译者: Willis
-				http://vimcdoc.sf.net
 
 
 欢迎来到 Vim 6.0 版本！新版本增加了很多新特性。本文档列出所有加入的新项目、已
@@ -21,7 +20,7 @@
 改变二合字母				|digraphs-changed|
 改变文件类型检测			|filetypedetect-changed|
 引入列表外缓冲区			|new-unlisted-buffers|
-改变命令行模式的 CTRL-U 		|CTRL-U-changed|
+改变命令行模式的 CTRL-U			|CTRL-U-changed|
 去掉 Ctags				|ctags-gone|
 重新调整文档				|documentation-6|
 无模式选择和剪贴板			|modeless-and-clipboard|
@@ -31,7 +30,7 @@
 
 折叠					|new-folding|
 垂直分割窗口				|new-vertsplit|
-diff 模式				|new-diff-mode|
+比较模式				|new-diff-mode|
 简易 Vim: 点击-输入			|new-evim|
 用户手册				|new-user-manual|
 灵活的缩进方式				|new-indent-flex|
@@ -50,7 +49,7 @@ Vim 间的通信				|new-vim-server|
 缓冲区类型选项				|new-buftype|
 打印					|new-printing|
 移植版本				|ports-6|
-扩展的 Quickfix				|quickfix-6|
+扩展的快速修复				|quickfix-6|
 操作符修饰符				|new-operator-mod|
 搜索路径				|new-search-path|
 改进文件写入				|new-file-writing|
@@ -169,7 +168,7 @@ FileType 事件和 'syntax' 选项的设置之间的联系，以前在 "syntax" 
 引入列表外缓冲区				*new-unlisted-buffers*
 ---------------------------
 
-现在缓冲区有不出现在缓冲区列表和实际不在缓冲区列表的区别。":ls"、 ":bnext"、
+现在缓冲区有不出现在缓冲区列表和实际不在缓冲区列表的区别。":ls"、":bnext"、
 ":blast" 和 Buffers 菜单的命令会跳过不出现在缓冲区列表的缓冲区。
 |unlisted-buffer|
 'buflisted' 选项可以用来决定缓冲区是否出现在缓冲区列表里。
@@ -243,8 +242,8 @@ Vim 5.x 里，总是使用无模式的选择。MS-Windows 上，这导致剪贴�
 -----------------------
 
 为了更好的安全性，模式行上不再能设置 'backupdir'、'cdpath'、'directory'、
-'equalprg'、'errorfile'、'formatprg'、 'grepprg'、'helpfile'、'makeef'、
-'makeprg'、'keywordprg'、'cscopeprg'、 'viminfo' 和 'runtimepath'。
+'equalprg'、'errorfile'、'formatprg'、'grepprg'、'helpfile'、'makeef'、
+'makeprg'、'keywordprg'、'cscopeprg'、'viminfo' 和 'runtimepath'。
 
 'breakat' 的缺省删除了 '_':  关键字里经常用到。
 
@@ -323,7 +322,7 @@ Motif 的菜单和滚动条现在使用系统的缺省颜色。过去是灰色�
 book" 的部分内容，而后者也在 OPL 下发行。不利之处是，我们不能再强制销售手册的
 人为乌干达作贡献了。
 
-"ayy 之后，不要让 ""yy  或  :let @" = val 覆盖 "a 寄存器。使用无名寄存器代替。
+"ayy 之后，不要让 ""yy 或 :let @" = val 覆盖 "a 寄存器。使用无名寄存器代替。
 
 MSDOS: 模式 "*.*" 过去也匹配没有句号的文件名。这和其它版本不一致。
 
@@ -419,33 +418,33 @@ Vim 现在可以显示文本折叠的缓冲区。能用于快速浏览文件结�
 窗口。
 
 
-diff 模式						*new-diff-mode*
+比较模式						*new-diff-mode*
 ---------
 
-在 diff 模式里，Vim 显示两个、三个或四个文件的差异。折叠用来隐藏文件的相同部
-分。高亮用来显示删除和改变的行。见 |diff-mode|。
+在比较模式里，Vim 显示两个、三个或四个文件的差异。折叠用来隐藏文件的相同部分。
+高亮用来显示删除和改变的行。见 |diff-mode|。
 
-启动 diff 模式的简单方法是用 "vimdiff file1 file2" 启动 Vim。
+启动比较模式的简单方法是用 "vimdiff file1 file2" 启动 Vim。
 加入了 vimdiff 手册页面。
 
-在运行中的 Vim 里，|:diffsplit| 命令用当前文件和另一个文件开始 diff 模式。
-|:diffpatch| 命令使用当前文件和补丁文件开始 diff 模式。|:diffthis| 命令开始当
-前窗口的 diff 模式。
+在运行中的 Vim 里，|:diffsplit| 命令用当前文件和另一个文件开始比较模式。
+|:diffpatch| 命令使用当前文件和补丁文件开始比较模式。|:diffthis| 命令开始当前
+窗口的比较模式。
 
 可以用 |:diffget| 和 |:diffput| 命令消除不同之处。
 
-- 'diff' 选项打开窗口的 diff 模式。
+- 'diff' 选项打开窗口的比较模式。
 - |:diffupdate| 命令刷新比较结果。
 - 'diffopt' 选项改变差异文的显示方法。
 - 'diffexpr' 选项可以设置如何得到比较结果。
 - 'patchexpr' 选项可以设置如何把补丁应用到文件上。
-- 加入 "diff" 折叠方法。如果打开窗口进入 diff 模式，设置 'foldlevel' 为零并打
-  开 'foldenable' 可以关闭折叠。
+- 加入 "diff" 折叠方法。如果打开窗口进入比较模式，设置 'foldlevel' 为零并打开
+  'foldenable' 可以关闭折叠。
 - 加入 DiffAdd、DiffChange、DiffDelete 和 DiffText 高亮组以指定差异文的高亮方
   式。缺省设置挺难看的...
 - Unix:  "make install" 里使 vimdiff 成为一个符号链接。
 - 从发布里删除现在废弃的 "vimdiff.vim" 脚本。
-- 加入 "[c" 和 "]c" 命令，在 diff 模式里移动到下一个/前一个改变。
+- 加入 "[c" 和 "]c" 命令，在比较模式里移动到下一个/前一个改变。
 
 
 简易 Vim: 点击-输入					*new-evim*
@@ -497,14 +496,14 @@ CTRL-C 来复制文本到剪贴板。
 扩展的搜索模式						*new-searchpat*
 ------------------------
 
-增加了模式匹配多行的可能性。 (部分由 Loic Grenie 提供)
+增加了模式匹配多行的可能性。(部分由 Loic Grenie 提供)
 搜索模式里增加的用于多行匹配的新项目:
 \n		匹配行尾，在 [] 里也是
 \_[]		匹配范围里的字符还有行尾
 \_x		匹配字符类还有行尾
 \_.		匹配任何字符还有行尾
-\_^		匹配行首，可以用在正规表达式的任何位置
-\_$		匹配行尾，可以用在正规表达式的任何位置
+\_^		匹配行首，可以用在正则表达式的任何位置
+\_$		匹配行尾，可以用在正则表达式的任何位置
 
 若干其它搜索模式的新项目:
 \c		忽略整个模式的大小写
@@ -558,7 +557,7 @@ UTF-8 支持						*new-utf-8*
 -------------
 
 Vim 现在可以编辑 UTF-8 编码的文件。可以使用至多 31 位的字符，但只能显示 16 位
-字符。支持不超过两个的组合用字符，它们叠加在前导字符之上。还支持双宽字符。见
+字符。支持不超过两个的组合字符，它们叠加在前导字符之上。还支持双宽字符。见
 |UTF-8|。
 
 也支持 UCS-2、UCS-4 和 UTF-16 编码，它们在内部转换为 UTF-8。还提供在 Latin1
@@ -590,7 +589,7 @@ Vim 现在可以编辑 UTF-8 编码的文件。可以使用至多 31 位的字�
 - Win32 使用 Mingw: 编译时加入 iconv 库。(Ron Aaron)
 - Win32 使用 MSVC: 动态载入 iconv.dll 库。(Muraoka Taro)
 - 可以用 Borland 5.5 编译多字节版本和 iconv 支持。(Yasuhiro Matsumoto)
-- 加入 'delcombine' 选项: 单独删除组合用字符。(Ron Aaron)
+- 加入 'delcombine' 选项: 单独删除组合字符。(Ron Aaron)
 -  "xim" 不需要 "xfontset" 特性。现在，它们是两个独立的特性。
 - XIM: 输入语言字符时打开 XIM (插入模式、搜索模式、"f" 或 "r" 命令)。输入普通
   模式命令时关闭 XIM。
@@ -601,7 +600,7 @@ Vim 现在可以编辑 UTF-8 编码的文件。可以使用至多 31 位的字�
 - 使 ":syntax keyword" 能用于多字节字符。
 - 加入 Unicode 大写/小写反转和比较的支持。(基于 Raphael Finkel 的补丁)
   有第三种写法 ("title case"，词首字母大写) 的多字节字符上用 "~" 可以在三种写
-  法间切换。 (Raphael Finkel)
+  法间切换。(Raphael Finkel)
 
 允许为多字节字符定义二合字母。
 加入 Unicode 的 RFC1345 二合字母。
@@ -633,8 +632,8 @@ Vim 现在可以编辑 UTF-8 编码的文件。可以使用至多 31 位的字�
   设定他喜欢的颜色。
   韩语输入页使用光标颜色。(Sung-Hyun Nam)
 - 如果语言映射打开，'showmode' 里显示 "(lang)"。
-- UTF-8: "r" 可用包含合成用字符的 ":lmap"。也适用于 "f，现在可以寻找包含合成用
-  字符的字符。
+- UTF-8: "r" 可用包含组合字符的 ":lmap"。也适用于 "f，现在可以寻找包含组合字符
+  的字符。
 
 其它多字节字符的新增特点:
 - euc-jp 支持双字节单宽度字符: 0x8E 开始的字符。增加 ScreenLines2[] 来保存第二
@@ -686,8 +685,8 @@ Fernandez)、意大利语 (Antonio Colombo)、日语 (Yasuhiro Matsumoto) 和法
 --------------
 
 要在启动 Vim 时非常方便地载入 Vim 脚本，可以用 "plugin" 运行时目录。所以这里面
-的 "*.vim" 文件被自动载入。Unix 上，缺省使用 "~/.vim/plugin"。 'runtimepath'
-选项可以设置在别的目录下查找插件。|load-plugins| |add-plugin|
+的 "*.vim" 文件被自动载入。Unix 上，缺省使用 "~/.vim/plugin"。'runtimepath' 选
+项可以设置在别的目录下查找插件。|load-plugins| |add-plugin|
 
 加入 |:runtime| 命令以载入一个或多个 'runtimepath' 的文件。
 
@@ -768,7 +767,7 @@ scp://、rcp://、ftp:// 和 http:// 开始的文件被识别为远程文件。�
 允许在 'path' 里使用 URL。使得 ":find index.html" 可以工作。
 
 GTK: 允许在 Vim 上放置 (drop) http:// 和 ftp:// URL。netrw 插件会处理文件的下
-载。 (Mikael Berthe)
+载。(Mikael Berthe)
 
 
 命令行编辑的窗口					*new-cmdwin*
@@ -820,7 +819,7 @@ Tingley 提供)
 加入 ":sign" 命令，定义和放置标号。它们可以显示为两个 ASCII 字符或一个图标。标
 号之后的行被高亮显示。可以用来显示断点和当前的 PC 位置。
 
-加入 |:wsverb| 命令来执行调试器命令。
+加入 :wsverb 命令来执行调试器命令。
 
 加入气泡的设置: 'balloondelay' 和 'ballooneval' 选项。
 
@@ -892,7 +891,7 @@ OS/390 Unix 的移植版本 (Ralf Schandl)
 包含 jsbmouse 支持。(Darren Garth)
 Unix 上支持 dec 鼠标。(Steve Wall)
 
-移植到 16 位 MS Windows (Windows 3.1x) (Vince Negri)
+移植到 16 位 MS-Windows (Windows 3.1x) (Vince Negri)
 
 移植到 QNX。支持 Photon GUI、鼠标等。(Julian Kinraid)
 
@@ -912,18 +911,18 @@ Mac: 使得 Vim 能用 Apple 提供的免费的 MPW 编译器编译。CodeWarrio
 加入一些类型转换和 ifdef，作为 Vim 在 Win64 上工作的开始 (George Reilly)
 
 
-扩展的 Quickfix						*quickfix-6*
+扩展的快速修复						*quickfix-6*
 -----------------
 
 加入 "错误窗口"。它包含了所有的当前错误列表的错误。在一行上按 <Enter> 使得 Vim
 跳转到该行上 (在别的窗口里)。这使得错误列表的导航容易得多。|quickfix-window|。
 
-- |:copen| 打开 quickfix 窗口。
-- |:cclose| 关闭 quickfix 窗口。
-- |:cwindow| 只在有识别出来的错误时，才打开 quickfix 窗口。(Dan Sharp)
+- |:copen| 打开快速修复窗口。
+- |:cclose| 关闭快速修复窗口。
+- |:cwindow| 只在有识别出来的错误时，才打开快速修复窗口。(Dan Sharp)
 
-- 除了 "warning" 和 "error" 类型以外，Quickfix 也知道 "info"。"%I" 可用来定义
-  多行信息消息的开始。(Tony Leneis)
+- 除了 "warning" 和 "error" 类型以外，快速修复也知道 "info"。"%I" 可用来定义多
+  行信息消息的开始。(Tony Leneis)
 - 'errorformat' 里的 "%p" 参数可用来得到指针行的列号，其中 "^" 指向该列。
   (Stefan Roemer)
 - DOS/Windows 系统上，'errorformat' 的 "%f" 会在文件名里加入 "c:"，即使使用的
@@ -1004,7 +1003,7 @@ SGI 亦然。
 加入 'viewoptions' 以指定 ":mkview" 的工作方式。
 
 现在，":mksession" 也支持垂直分割。它被进一步改进，以恢复每个窗口的视图。它对
-预览和 quickfix 窗口同样能正确工作。
+预览和快速修复窗口同样能正确工作。
 
 'sessionoptions' 也用于 ":mkview"。
 'sessionoptions' 加入 "curdir" 和 "sesdir"。它们可以选择如何恢复当前目录。
@@ -1112,7 +1111,7 @@ Ex 命令: ~
 :enew		编辑新的无名缓冲区。这有必要，因为 ":edit" 重新编辑同一文件。
 		(Wall)
 
-:quitall	等同于 ":qall"。
+:quitall	同 ":qall"。
 
 :match		定义局部于窗口的匹配高亮。可以为当前窗口高亮项目，而不会影响语
 		法高亮。
@@ -1164,7 +1163,7 @@ eventhandler()	如果在事件处理程序而不能使用交互命令的时候�
 executable()	检查是否程序或批处理脚本可执行。
 filewritable()	检查文件是否可写。(Ron Aaron)
 foldclosed()	检查是否有关闭折叠。(Johannes Zellner)。
-foldcloseend()	发现关闭折叠的结尾。
+foldclosedend()	发现关闭折叠的结尾。
 foldlevel()	发现折叠级别。(Johannes Zellner)
 foreground()	把 GUI 窗口移到前台。
 getchar()	让用户输入一个字符。可以用来定义接受一个参数的映射。
@@ -1288,7 +1287,7 @@ MS-DOS 和 MS-Windows 也读入系统范围的 vimrc 文件 $VIM/vimrc。多用�
 加入 runtime/delmenu.vim。执行之可以删除所有菜单并为载入新菜单做好准备。可用于
 修改 'langmenu'。
 
-Perl 脚本，用来过滤 Perl 错误信息并转化为 quickfix 可用的格式。(Joerg Ziefle)
+Perl 脚本，用来过滤 Perl 错误信息并转化为快速修复可用的格式。(Joerg Ziefle)
 
 加入 runtime/macros/less.vim: 模拟 less 的 Vim 脚本，但提供语法高亮。
 
@@ -1333,7 +1332,7 @@ Tingley)
 
 可视模式里，在 'showcmd' 的位置提及选择区域的大小。
 
-加入 "b:changedtick" 变量。每次改变都递增，包括撤消。用于在缓冲区有改变时采取
+加入 "b:changedtick" 变量。每次改变都递增，包括撤销。用于在缓冲区有改变时采取
 行动。
 
 ":s" 命令的替代字符串中，用 "\=" 可以替代为表达式的运算结果。该表达式内部可用
@@ -1365,12 +1364,12 @@ submatch() 函数访问子匹配。
   配。
 
 性能:
-- 使得显示更新更有效率。所有改变都可能会使用插入/删除行，包括撤消/重做。
+- 使得显示更新更有效率。所有改变都可能会使用插入/删除行，包括撤销/重做。
 - 如果插入模式下有预输入，不刷新显示。大大加快了 CTRL-R。
 - 为 32 位 DOS 版本改进了屏幕的输出速度。(Vince Negri)
 - 鼠标拖动时，往前看鼠标代码，如果下面还有一个，跳过之前的鼠标键。这使得鼠标拖
   动快很多。
-- 另一个内存用量的改进: 如果调用 u_save 时只有一行且该行最近已经为相同的撤消保
+- 另一个内存用量的改进: 如果调用 u_save 时只有一行且该行最近已经为相同的撤销保
   存过，不再保存。
 - 使用一次附加一个字符的脚本时，过去分配的内存慢慢增加。'undolevels' 为 -1 也
   是如此。因为 "U" 保存的行从来不释放。现在撤销块为空时就释放内存。
@@ -1388,7 +1387,7 @@ submatch() 函数访问子匹配。
 - 加入字符时不清除命令行，避免调用 screen_fill 而不做任何事。
 
 健壮性:
-- Unix: 执行正规表达式时检查堆栈是否溢出。避免很麻烦的溢出。只用于支持能在另一
+- Unix: 执行正则表达式时检查堆栈是否溢出。避免很麻烦的溢出。只用于支持能在另一
   个堆栈上运行 signal 函数的系统。
 - 不允许 ":source <dirname>"。Unix 上可以读取目录，但用它作为 Vim 命令没有任何
   意义。
@@ -1604,7 +1603,7 @@ Macintosh: (Dany St-Amant)
 高亮:
 - ":highlight" 列表中，用高亮自己的颜色显示 "xxx"。
 - 加入 xterm 88 色或 256 色的支持。正确的高亮数目被用作 ":highlight" 命令的名
-  字。 (Steve Wall)
+  字。(Steve Wall)
 - ":highlight" 加入 "default" 参数。如果包含且该高亮组已经定义，忽略此命令。
   所有的语法文件现在使用 ":hi default ..."，这样用户可以在自己的 vimrc 文件里
   指定颜色。另外，不再需要 "if did_xxx_syntax_inits"。这大大简化了为特定语言使
@@ -1663,7 +1662,7 @@ Python 接口: 允许设置垂直分割窗口的宽度。(John Cook)
   一个文件 (如果用 O_EXCL 打开文件时拒绝符号链接的话) 现在检查符号链接是否指向
   存在的文件。也在建立之前检查交换文件是否已经存在以发现符号链接攻击。
 
-g CTRL-G 命令也可用于可视模式并计算单词的个数。 (Chase Tingley)
+g CTRL-G 命令也可用于可视模式并计算单词的个数。(Chase Tingley)
 
 如果使用 'shell' 但为空，报错。
 
@@ -1857,8 +1856,8 @@ Win32: 合并 Make_gvc.mak 和 Make_ovc.mak 为一个文件: Make_ivc.mak。它�
 增加 Make_dvc.mak，允许调试 MS-Devstudio 的 Make_mvc.mak 生成的 exe。
 (Walter Briscoe)
 
-MS-Windows: big 版本的 gvim.exe，包括  OLE，现在也包含了动态载入的 Tcl、Perl
-和 Python。它使用 ActivePerl 5.6.1、ActivePython 2.1.1 和 ActiveTCL 8.3.3
+MS-Windows: big 版本的 gvim.exe，包括 OLE，现在也包含了动态载入的 Tcl、Perl 和
+Python。它使用 ActivePerl 5.6.1、ActivePython 2.1.1 和 ActiveTCL 8.3.3
 
 configure.in 里加入 AC_EXEEXT，在 Cygwin 或 MingW 下检查可执行文件是否需要
 ".exe"，以便在 Makefile 里把 SUFFIX 换名为 EXEEXT。
@@ -2150,7 +2149,7 @@ Motif: When adding many menu items, the "Help" menu disappeared but the
 menubar didn't wrap.  Now manually set the menubar height.
 
 When using <BS> in Insert mode to remove a line break, or using "J" to join
-lines, the cursor could end up halfway a multi-byte character. (Muraoka Taro)
+lines, the cursor could end up halfway a multibyte character. (Muraoka Taro)
 
 Removed defining SVR4 in configure.  It causes problems for some X header
 files and doesn't appear to be used anywhere.
@@ -2300,12 +2299,12 @@ column.  Can't encode a larger number in a character.  Now limit the number to
 222, don't jump back to the first column.
 
 GUI: In some versions CSI would cause trouble, either when typed directly or
-when part of a multi-byte sequence.
+when part of a multibyte sequence.
 
 When using multibyte characters in a ":normal" command, a trailing byte that
 is CSI or K_SPECIAL caused problems.
 
-Wildmenu didn't handle multi-byte characters.
+Wildmenu didn't handle multibyte characters.
 
 ":sleep 10" could not be interrupted on Windows, while "gs" could.  Made them
 both work the same.
@@ -2356,7 +2355,7 @@ path.
 Multi-byte:
 - Using an any-but character range [^x] in a regexp didn't work for UTF-8.
   (Muraoka Taro)
-- When backspacing over inserted characters in Replace mode multi-byte
+- When backspacing over inserted characters in Replace mode multibyte
   characters were not handled correctly. (Muraoka Taro)
 - Search commands "#" and "*" didn't work with multibyte characters. (Muraoka
   Taro)
@@ -2373,19 +2372,19 @@ Multi-byte:
   wrong error number. (Muraoka Taro)
 - Using Alt-x in the GUI while 'encoding' was set to "utf-8" didn't produce
   the right character.
-- When using Visual block selection and only the left halve of a double-wide
+- When using Visual block selection and only the left half of a double-wide
   character is selected, the highlighting continued to the end of the line.
-- Visual-block delete didn't work properly when deleting the right halve of a
+- Visual-block delete didn't work properly when deleting the right half of a
   double-wide character.
 - Overstrike mode for the cmdline replaced only the first byte of a multibyte
   character.
-- The cursor in Replace mode (also in the cmdline) was to small on a
+- The cursor in Replace mode (also in the cmdline) was too small on a
   double-wide character.
 - When a multibyte character contained a 0x80 byte, it didn't work (was using
   a CSI byte instead). (Muraoka Taro)
 - Wordwise selection with the mouse didn't work.
-- Yanking a modeless selection of multi-byte characters didn't work.
-- When 'selection' is "exclusive", selecting a word that ends in a multi-byte
+- Yanking a modeless selection of multibyte characters didn't work.
+- When 'selection' is "exclusive", selecting a word that ends in a multibyte
   character used wrong highlighting for the following character.
 
 Win32 with Make_mvc.mak: Didn't compile for debugging. (Craig Barkhouse)
@@ -2478,13 +2477,13 @@ GTK: Crash when 'shell' doesn't exist and doing":!ls".  Use _exit() instead of
 exit() when the child couldn't execute the shell.
 
 Multi-byte:
-- GUI with double-byte encoding: a mouse click in left halve of double-wide
+- GUI with double-byte encoding: a mouse click in left half of double-wide
   character put the cursor in previous char.
 - Using double-byte encoding and 'selection' is "exclusive": "vey" and "^Vey"
   included the character after the word.
 - When using a double-byte encoding and there is a lead byte at the end of the
   line, the preceding line would be displayed.  "ga" also showed wrong info.
-- "gf" didn't include multi-byte characters before the cursor properly.
+- "gf" didn't include multibyte characters before the cursor properly.
   (Muraoka Taro)
 
 GUI: The cursor was sometimes not removed when scrolling.  Changed the policy
@@ -2602,7 +2601,7 @@ The message remembered for displaying later (keep_msg) was sometimes pointing
 into a generic buffer, which might be changed by the time the message is
 displayed.  Now make a copy of the message.
 
-When using multi-byte characters in a menu and a trailing byte is a backslash,
+When using multibyte characters in a menu and a trailing byte is a backslash,
 the menu would not be created correctly.  (Muraoka Taro)
 Using a multibyte character in the substitute string where a trail byte is a
 backslash didn't work.  (Muraoka Taro)
@@ -2641,7 +2640,7 @@ the output.
 Don't define the <NetMouse> termcode in an xterm, reduces the problem when
 someone types <Esc> } in Insert mode.
 
-Made slash_adjust() work correctly for multi-byte characters. (Yasuhiro
+Made slash_adjust() work correctly for multibyte characters. (Yasuhiro
 Matsumoto)
 Using a filename in Big5 encoding for autocommands didn't work (backslash in
 trailbyte).  (Yasuhiro Matsumoto)
@@ -2650,7 +2649,7 @@ DOS and Windows: Expanding *.vim also matched file.vimfoo.  Expand path like
 Unix to avoid problems with Windows dir functions.  Merged the DOS and Win32
 functions.
 
-Win32: Gvimext could not edit more than a few files at once, the length of the
+Win32: GvimExt could not edit more than a few files at once, the length of the
 argument was fixed.
 
 "ls -1 * | xargs vim" worked, but the input was in cooked mode.  Now switch to
@@ -2830,7 +2829,7 @@ available space correctly.  Was counting the menu height twice.
 Conversion of the docs to HTML didn't handle the line with the +quickfix tag
 correctly. (Antonio Colombo)
 
-Win32: fname_case() didn't handle multi-byte characters correctly. (Yasuhiro
+Win32: fname_case() didn't handle multibyte characters correctly. (Yasuhiro
 Matsumoto)
 
 The Cygwin version had trouble with fchdir().  Don't use that function for
@@ -2847,10 +2846,10 @@ the terminal it was started in.
 
 When using ESC in Insert mode, an autoindent that wraps to the next line
 caused the cursor to move to the end of the line temporarily.  When the
-character before the cursor was a double-wide multi-byte character the cursor
-would be on the right halve, which causes problems with some terminals.
+character before the cursor was a double-wide multibyte character the cursor
+would be on the right half, which causes problems with some terminals.
 
-Didn't handle multi-byte characters correctly when expanding a file name.
+Didn't handle multibyte characters correctly when expanding a file name.
 (Yasuhiro Matsumoto)
 
 Win32 GUI: Errors generated before the GUI is decided to start were not
@@ -2990,7 +2989,7 @@ started from the desktop (no place to display messages) it would hang.  Now
 open the GUI window early to be able to display the messages and pop up the
 dialog.
 
-"r<CR>" on a multi-byte character deleted only the first byte of the
+"r<CR>" on a multibyte character deleted only the first byte of the
 character.  "3r<CR>" deleted three bytes instead of three characters.
 
 When interrupting reading a file, Vi considers the buffer modified.  Added the
@@ -3114,7 +3113,7 @@ Patch 6.0aw.010
 相关文件:   src/gui_w48.c
 
 Athena file browser: On some systems wcstombs() can't be used to get the
-length of a multi-byte string.  Use the maximum length then. (Yasuhiro
+length of a multibyte string.  Use the maximum length then. (Yasuhiro
 Matsumoto)
 
 Patch 6.0ax.001
@@ -3217,7 +3216,7 @@ sendpr		Send-pr (Hendrik Scholz)
 加入 Scheme 缩进文件。(Dorai Sitaram)
 加入 Prolog 缩进文件。(Kontra Gergely)
 加入 Povray 缩进文件。(David Necas)
-加入 IDL 缩进文件  (Aleksandar Jelenak)
+加入 IDL 缩进文件 (Aleksandar Jelenak)
 加入 C# 缩进和文件类型插件脚本。
 
 加入乌克兰语菜单翻译。(Bohdan Vlasyuk)
@@ -3464,7 +3463,7 @@ Patch 6.0.018
 相关文件:   src/mbyte.c
 
 Patch 6.0.019
-问题:	    Converting a string with multi-byte characters to a printable
+问题:	    Converting a string with multibyte characters to a printable
 	    string, e.g., with strtrans(), may cause a crash. (Tomas Zellerin)
 解决方案:   Correctly compute the length of the result in transstr().
 相关文件:   src/charset.c
@@ -3828,9 +3827,9 @@ Patch 6.0.073 (extra)
 相关文件:   src/os_msdos.c
 
 Patch 6.0.074
-问题:	    When using "&" in a substitute string a multi-byte character with
+问题:	    When using "&" in a substitute string a multibyte character with
 	    a trailbyte 0x5c is not handled correctly.
-解决方案:   Recognize multi-byte characters inside the "&" part. (Muraoka Taro)
+解决方案:   Recognize multibyte characters inside the "&" part. (Muraoka Taro)
 相关文件:   src/regexp.c
 
 Patch 6.0.075
@@ -3991,7 +3990,7 @@ Patch 6.0.096
 
 Patch 6.0.097
 问题:	    Re-indenting in Insert mode with CTRL-F may cause a crash with a
-	    multi-byte encoding.
+	    multibyte encoding.
 解决方案:   Avoid using a character before the start of a line. (Sergey
 	    Vlasov)
 相关文件:   src/edit.c
@@ -4036,7 +4035,7 @@ Patch 6.0.103
 
 Patch 6.0.104
 问题:	    Multi-byte: When '$' is in 'cpoptions', typing a double-wide
-	    character that overwrites the left halve of an old double-wide
+	    character that overwrites the left half of an old double-wide
 	    character causes a redraw problem and the cursor stops blinking.
 解决方案:   Clear the right half of the old character. (Yasuhiro Matsumoto)
 相关文件:   src/edit.c, src/screen.c
@@ -4349,14 +4348,14 @@ Patch 6.0.149
 相关文件:   src/regexp.c
 
 Patch 6.0.150
-问题:	    When using a multi-byte encoding, patch 6.0.148 causes "p" to work
+问题:	    When using a multibyte encoding, patch 6.0.148 causes "p" to work
 	    like "P". (Sung-Hyun Nam)
-解决方案:   Compute the byte length of a multi-byte character.
+解决方案:   Compute the byte length of a multibyte character.
 相关文件:   src/ops.c
 
 Patch 6.0.151
 问题:	    Redrawing the status line and ruler can be wrong when it contains
-	    multi-byte characters.
+	    multibyte characters.
 解决方案:   Use character width and byte length correctly. (Yasuhiro Matsumoto)
 相关文件:   src/screen.c
 
@@ -4558,7 +4557,7 @@ Patch 6.0.181
 相关文件:   src/misc2.c
 
 Patch 6.0.182
-问题:	    When using a regexp on multi-byte characters, could try to read a
+问题:	    When using a regexp on multibyte characters, could try to read a
 	    character before the start of the line.
 解决方案:   Don't decrement a pointer to before the start of the line.
 相关文件:   src/regexp.c
@@ -4740,7 +4739,7 @@ Patch 6.0.208
 
 Patch 6.0.209
 问题:	    GUI GTK: After selecting a 'guifont' with the font dialog there
-	    are redraw problems for multi-byte characters.
+	    are redraw problems for multibyte characters.
 解决方案:   Separate the font dialog from setting the new font name to avoid
 	    that "*" is used to find wide and bold fonts.
 	    When redrawing extra characters for the bold trick, take care of
@@ -4883,14 +4882,14 @@ Patch 6.0.228
 
 Patch 6.0.229
 问题:	    Multi-byte: With 'm' in 'formatoptions', formatting doesn't break
-	    at a multi-byte char followed by an ASCII char, and the other way
+	    at a multibyte char followed by an ASCII char, and the other way
 	    around. (Muraoka Taro)
-	    When joining lines a space is inserted between multi-byte
+	    When joining lines a space is inserted between multibyte
 	    characters, which is not always wanted.
-解决方案:   Check for multi-byte character before and after the breakpoint.
-	    Don't insert a space before or after a multi-byte character when
+解决方案:   Check for multibyte character before and after the breakpoint.
+	    Don't insert a space before or after a multibyte character when
 	    joining lines and the 'M' flag is in 'formatoptions'.  Don't
-	    insert a space between multi-byte characters when the 'B' flag is
+	    insert a space between multibyte characters when the 'B' flag is
 	    in 'formatoptions'.
 相关文件:   src/edit.c, src/ops.c, src/option.h
 
@@ -4970,7 +4969,7 @@ Patch 6.0.241
 问题:	    Win32: Expanding the old value of an option that is a path that
 	    starts with a backslash, an extra backslash is inserted.
 解决方案:   Only insert backslashes where needed.
-	    Also handle multi-byte characters properly when removing
+	    Also handle multibyte characters properly when removing
 	    backslashes.
 相关文件:   src/option.c
 
@@ -4992,7 +4991,7 @@ Patch 6.0.244
 	    file name (e.g., icon text, status line).
 解决方案:   Correctly handle unprintable characters.  Catch illegal UTF-8
 	    characters and replace them with <xx>.  Truncating the status line
-	    wasn't done correctly at a multi-byte character. (Yasuhiro
+	    wasn't done correctly at a multibyte character. (Yasuhiro
 	    Matsumoto)
 	    Added correct_cmdspos() and transchar_byte().
 相关文件:   src/buffer.c, src/charset.c, src/ex_getln.c, src/gui.c,
@@ -5104,7 +5103,7 @@ Patch 6.0.260
 相关文件:   src/fileio.c, src/gui.c, src/misc1.c, src/ui.c
 
 Patch 6.0.261
-问题:	    nr2char() and char2nr() don't work with multi-byte characters.
+问题:	    nr2char() and char2nr() don't work with multibyte characters.
 解决方案:   Use 'encoding' for these functions. (Yasuhiro Matsumoto)
 相关文件:   runtime/doc/eval.txt, src/eval.c
 
@@ -5145,7 +5144,7 @@ Patch 6.0.266
 Patch 6.0.267
 问题:	    UTF-8: Although 'isprint' says a character is printable,
 	    utf_char2cells() still considers it unprintable.
-解决方案:   Use vim_isprintc() for characters upto 0x100. (Yasuhiro Matsumoto)
+解决方案:   Use vim_isprintc() for characters up to 0x100. (Yasuhiro Matsumoto)
 相关文件:   src/mbyte.c
 
 Patch 6.0.268 (extra) (depends on patch 6.0.255)
@@ -5197,7 +5196,7 @@ Patch 6.1a.005 (extra)
 相关文件:   src/os_mswin.c
 
 Patch 6.1a.006
-问题:	    multi-byte: after setting 'encoding' the window title might be
+问题:	    multibyte: after setting 'encoding' the window title might be
 	    wrong.
 解决方案:   Force resetting the title. (Yasuhiro Matsumoto)
 相关文件:   src/option.c
@@ -5334,7 +5333,7 @@ Patch 6.1a.028
 
 Patch 6.1a.029
 问题:	    After patch 6.1a.028 can't compile GTK version with XIM but
-	    without multi-byte chars.
+	    without multibyte chars.
 解决方案:   Add an #ifdef. (Aschwin Marsman)
 相关文件:   src/mbyte.c
 
@@ -5381,9 +5380,9 @@ Patch 6.1a.034 (extra)
 相关文件:   src/os_win32.c
 
 Patch 6.1a.035
-问题:	    multi-byte: When using ":sh" in the GUI, typed and displayed
-	    multi-byte characters are not handled correctly.
-解决方案:   Deal with multi-byte characters to and from the shell. (Yasuhiro
+问题:	    multibyte: When using ":sh" in the GUI, typed and displayed
+	    multibyte characters are not handled correctly.
+解决方案:   Deal with multibyte characters to and from the shell. (Yasuhiro
 	    Matsumoto)  Also handle UTF-8 composing characters.
 相关文件:   src/os_unix.c
 
@@ -5428,9 +5427,9 @@ Patch 6.1a.042
 
 
 Patch 6.1b.001 (extra)
-问题:	    Checking for wildcards in a path does not handle multi-byte
+问题:	    Checking for wildcards in a path does not handle multibyte
 	    characters with a trail byte which is a wildcard.
-解决方案:   Handle multi-byte characters correctly. (Muraoka Taro)
+解决方案:   Handle multibyte characters correctly. (Muraoka Taro)
 相关文件:   src/os_amiga.c, src/os_mac.c, src/os_msdos.c, src/os_mswin.c,
 	    src/os_unix.c
 
@@ -5806,7 +5805,7 @@ Win32 的 makefile 更加统一，也能编译 gvimext.dll。(Dan Sharp)
 新色彩方案:
 	desert (Hans Fugal)
 
-阿拉伯专用特性。'arabicshape'、'termbidi'、'arabic' 和 'rightleftcmd' 选项。
+阿拉伯语专用特性。'arabicshape'、'termbidi'、'arabic' 和 'rightleftcmd' 选项。
 (Nadim Shaikli 和 Isam Bayazidi)
 
 支持 neXtaw GUI toolkit，基本类似于 Athena。(Alexey Froloff)
@@ -5868,7 +5867,7 @@ Dosinst.exe 也会在 "GvimExt" 目录里寻找 gvimext.dll。用于在 "src" �
 
 Mac OSX: 多语言支持: iconv 和 gettext。(Muraoka Taro，Axel Kielhorn)
 
-模式里的 "\Z" 标志位: 忽略组合用字符的差异。(Ron Aaron)
+模式里的 "\Z" 标志位: 忽略组合字符的差异。(Ron Aaron)
 
 加入 'preserveindent' 和 'copyindent' 选项。它们使用已存在的空白字符，而不是尽
 可能多地使用制表。(Chris Leishman)
@@ -5880,7 +5879,7 @@ Mac OSX: 多语言支持: iconv 和 gettext。(Muraoka Taro，Axel Kielhorn)
 Win32: 加入 ":8" 文件名修饰符以得到短文件名。Test50 测试 Win32 系统的 ":8" 扩
 展。(Michael Geddes)
 
-'cscopequickfix' 选项: Cscope 命令的 quickfix 窗口。同时清理代码，给出消息。
+'cscopequickfix' 选项: Cscope 命令的快速修复窗口。同时清理代码，给出消息。
 (Khorev Sergey)
 
 GUI: 鼠标位置支持多于 222 列。
@@ -6056,7 +6055,7 @@ wrong (back)slashes.
 
 Win32: printer dialog texts were not translated. (Yasuhiro Matsumoto)
 
-When using a multi-byte character with a K_SPECIAL byte or a special key code
+When using a multibyte character with a K_SPECIAL byte or a special key code
 with "--remote-send" the received byte sequence was mangled.  Put it in the
 typeahead buffer instead of the input buffer.
 
@@ -6101,7 +6100,7 @@ library version of fgets() to work correctly for Metrowerks 2.2. (Axel
 Kielhorn)
 
 When typing a password a "*" was shown for each byte instead of for each
-character.  Added multi-byte handling to displaying the stars. (Yasuhiro
+character.  Added multibyte handling to displaying the stars. (Yasuhiro
 Matsumoto)
 
 When using Perl 5.6 accessing $curbuf doesn't work.  Add an #ifdef to use
@@ -6353,9 +6352,9 @@ Patch 6.1.037
 相关文件:   src/main.c, src/screen.c
 
 Patch 6.1.038
-问题:	    Multi-byte: When a ":s" command contains a multi-byte character
+问题:	    Multi-byte: When a ":s" command contains a multibyte character
 	    where the trail byte is '~' the text is messed up.
-解决方案:   Properly skip multi-byte characters in regtilde() (Muraoka Taro)
+解决方案:   Properly skip multibyte characters in regtilde() (Muraoka Taro)
 相关文件:   src/regexp.c
 
 Patch 6.1.039
@@ -6732,7 +6731,7 @@ Patch 6.1.095
 相关文件:   src/gui_x11.c
 
 Patch 6.1.096
-问题:	    When erasing the right halve of a double-byte character, it may
+问题:	    When erasing the right half of a double-byte character, it may
 	    cause further characters to be erased. (Yasuhiro Matsumoto)
 解决方案:   Make sure only one character is erased.
 相关文件:   src/screen.c
@@ -6768,7 +6767,7 @@ Patch 6.1.101
 相关文件:   runtime/optwin.vim
 
 Patch 6.1.102
-问题:	    Unprintable and multi-byte characters in a statusline item are not
+问题:	    Unprintable and multibyte characters in a statusline item are not
 	    truncated correctly. (Yasuhiro Matsumoto)
 解决方案:   Count the width of characters instead of the number of bytes.
 相关文件:   src/buffer.c
@@ -7143,7 +7142,7 @@ Patch 6.1.158
 相关文件:   src/normal.c
 
 Patch 6.1.159
-问题:	    When expanding an abbreviation that includes a multi-byte
+问题:	    When expanding an abbreviation that includes a multibyte
 	    character too many characters are deleted. (Andrey Urazov)
 解决方案:   Delete the abbreviation counting characters instead of bytes.
 相关文件:   src/getchar.c
@@ -7545,7 +7544,7 @@ Patch 6.1.220
 Patch 6.1.221
 问题:	    Changing case may not work properly, depending on the current
 	    locale.
-解决方案:   Add the 'casemap' option to let the user chose how changing case
+解决方案:   Add the 'casemap' option to let the user choose how changing case
 	    is to be done.
 	    Also fix lowering case when an UTF-8 character doesn't keep the
 	    same byte length.
@@ -7627,10 +7626,10 @@ Patch 6.1.230 (extra)
 
 Patch 6.1.231
 问题:	    Double clicking with the mouse to select a word does not work for
-	    multi-byte characters.
+	    multibyte characters.
 解决方案:   Use vim_iswordc() instead of vim_isIDc().  This means 'iskeyword'
 	    is used instead of 'isident'.  Also fix that mixing ASCII with
-	    multi-byte word characters doesn't work, the mouse class for
+	    multibyte word characters doesn't work, the mouse class for
 	    punctuation and word characters was mixed up.
 相关文件:   src/normal.c
 
@@ -7719,7 +7718,7 @@ Patch 6.1.244
 Patch 6.1.245
 问题:	    Comparing with ignored case does not work properly for Unicode
 	    with a locale where case folding an ASCII character results in a
-	    multi-byte character. (Glenn Maynard)
+	    multibyte character. (Glenn Maynard)
 解决方案:   Handle ignore-case compare for Unicode differently.
 相关文件:   src/mbyte.c
 
@@ -7744,8 +7743,8 @@ Patch 6.1.248
 
 Patch 6.1.249
 问题:	    Can't expand a path on the command line if it includes a "|" as a
-	    trail byte of a multi-byte character.
-解决方案:   Check for multi-byte characters. (Yasuhiro Matsumoto)
+	    trail byte of a multibyte character.
+解决方案:   Check for multibyte characters. (Yasuhiro Matsumoto)
 相关文件:   src/ex_docmd.c
 
 Patch 6.1.250
@@ -7840,9 +7839,9 @@ Patch 6.1.262
 相关文件:   src/fold.c
 
 Patch 6.1.263
-问题:	    When typing a multi-byte character that triggers an abbreviation
+问题:	    When typing a multibyte character that triggers an abbreviation
 	    it is not inserted properly.
-解决方案:   Handle adding the typed multi-byte character. (Yasuhiro Matsumoto)
+解决方案:   Handle adding the typed multibyte character. (Yasuhiro Matsumoto)
 相关文件:   src/getchar.c
 
 Patch 6.1.264 (depends on patch 6.1.254)
@@ -7870,7 +7869,7 @@ Patch 6.1.267
 相关文件:   src/ops.c
 
 Patch 6.1.268
-问题:	    When triggering an abbreviation with a multi-byte character, this
+问题:	    When triggering an abbreviation with a multibyte character, this
 	    character is not correctly inserted after expanding the
 	    abbreviation. (Taro Muraoka)
 解决方案:   Add ABBR_OFF to all characters above 0xff.
@@ -7984,7 +7983,7 @@ Patch 6.1.285
 	    src/quickfix.c
 
 Patch 6.1.286
-问题:	    'showbreak' cannot contain multi-byte characters.
+问题:	    'showbreak' cannot contain multibyte characters.
 解决方案:   Allow using all printable characters for 'showbreak'.
 相关文件:   src/charset.c, src/move.c, src/option.c
 
@@ -8006,9 +8005,9 @@ Patch 6.1.289 (depends on 6.1.278)
 相关文件:   src/screen.c
 
 Patch 6.1.290 (extra)
-问题:	    Truncating long text for message box may break multi-byte
+问题:	    Truncating long text for message box may break multibyte
 	    character.
-解决方案:   Adjust to start of multi-byte character. (Yasuhiro Matsumoto)
+解决方案:   Adjust to start of multibyte character. (Yasuhiro Matsumoto)
 相关文件:   src/os_mswin.c
 
 Patch 6.1.291 (extra)
@@ -8031,7 +8030,7 @@ Patch 6.1.293
 相关文件:   src/memline.c
 
 Patch 6.1.294
-问题:	    Can't include a multi-byte character in a string by its hex value.
+问题:	    Can't include a multibyte character in a string by its hex value.
 	    (Benji Fisher)
 解决方案:   Add "\u....": a character specified with up to four hex numbers
 	    and stored according to the value of 'encoding'.
@@ -8454,7 +8453,7 @@ Patch 6.1.359 (extra)
 相关文件:   src/gui_mac.c
 
 Patch 6.1.360 (depends on 6.1.341)
-问题:	    In Insert mode CTRL-K ESC messes up a multi-byte character.
+问题:	    In Insert mode CTRL-K ESC messes up a multibyte character.
 	    (Anders Helmersson)
 解决方案:   Save all bytes of a character when displaying a character
 	    temporarily.
@@ -8625,7 +8624,7 @@ Patch 6.1.382 (extra)
 
 Patch 6.1.383
 问题:	    The filling of the status line doesn't work properly for
-	    multi-byte characters. (Nam SungHyun)
+	    multibyte characters. (Nam SungHyun)
 	    There is no check for going past the end of the buffer.
 解决方案:   Properly distinguish characters and bytes.  Properly check for
 	    running out of buffer space.
@@ -8639,13 +8638,13 @@ Patch 6.1.384
 	    src/version.c
 
 Patch 6.1.385 (depends on 6.1.383)
-问题:	    Can't compile without the multi-byte feature.
+问题:	    Can't compile without the multibyte feature.
 解决方案:   Move an #ifdef.  (Christian J. Robinson)
 相关文件:   src/buffer.c
 
 Patch 6.1.386
 问题:	    Get duplicate tags when running ":helptags".
-解决方案:   Do the other halve of moving a section to another help file.
+解决方案:   Do the other half of moving a section to another help file.
 相关文件:   runtime/tagsrch.txt
 
 Patch 6.1.387 (depends on 6.1.373)
@@ -8864,10 +8863,10 @@ Patch 6.1.416 (depends on 6.1.366)
 相关文件:   src/netbeans.c
 
 Patch 6.1.417
-问题:	    Unprintable multi-byte characters are not handled correctly.
+问题:	    Unprintable multibyte characters are not handled correctly.
 	    Multi-byte characters above 0xffff are displayed as another
 	    character.
-解决方案:   Handle unprintable multi-byte characters.  Display multi-byte
+解决方案:   Handle unprintable multibyte characters.  Display multibyte
 	    characters above 0xffff with a marker.  Recognize UTF-16 words and
 	    BOM words as unprintable.  (Daniel Elstner)
 相关文件:   src/charset.c, src/mbyte.c, src/screen.c
@@ -8989,7 +8988,7 @@ Patch 6.1.436
 相关文件:   src/fileio.c
 
 Patch 6.1.437 (extra, depends on 6.1.421)
-问题:	    Using multi-byte functions when they are not available.
+问题:	    Using multibyte functions when they are not available.
 解决方案:   Put the clipboard conversion inside an #ifdef. (Vince Negri)
 	    Also fix a pointer type mistake. (Walter Briscoe)
 相关文件:   src/os_mswin.c
@@ -9189,8 +9188,8 @@ Patch 6.1.468
 相关文件:   src/ex_docmd.c
 
 Patch 6.1.469
-问题:	    'listchars' cannot contain multi-byte characters.
-解决方案:   Handle multi-byte UTF-8 list characters. (Matthew Samsonoff)
+问题:	    'listchars' cannot contain multibyte characters.
+解决方案:   Handle multibyte UTF-8 list characters. (Matthew Samsonoff)
 相关文件:   src/message.c, src/option.c, src/screen.c
 
 Patch 6.1.470 (lang)
@@ -9312,7 +9311,7 @@ Patch 6.2f.015 (extra)
 
 Patch 6.2f.016
 问题:	    "vim --version > ff" on non-Unix systems results in a file with a
-	    missing line break at the end. (Bill McCArthy)
+	    missing line break at the end. (Bill McCarthy)
 解决方案:   Add a line break.
 相关文件:   src/main.c
 
@@ -9324,7 +9323,7 @@ Patch 6.2f.017
 相关文件:   src/os_unix.c
 
 Patch 6.2f.018
-问题:	    Mac OS X 10.2: OK is defined to zero in cursus.h while Vim uses
+问题:	    Mac OS X 10.2: OK is defined to zero in curses.h while Vim uses
 	    one.  Redefining it causes a warning message.
 解决方案:   Undefine OK before defining it to one. (Taro Muraoka)
 相关文件:   src/vim.h
@@ -9666,7 +9665,7 @@ Patch 6.2.009
 
 Patch 6.2.010
 问题:	    When 'virtualedit' is effective and a line starts with a
-	    multi-byte character, moving the cursor right doesn't work.
+	    multibyte character, moving the cursor right doesn't work.
 解决方案:   Obtain the right character to compute the column offset. (Taro
 	    Muraoka)
 相关文件:   src/charset.c
@@ -9766,7 +9765,7 @@ Patch 6.2.026
 
 Patch 6.2.027
 问题:	    Warning for uninitialized variable.
-解决方案:   Set mb_l to one when not using multi-byte characters.
+解决方案:   Set mb_l to one when not using multibyte characters.
 相关文件:   src/message.c
 
 Patch 6.2.028
@@ -9928,15 +9927,15 @@ Patch 6.2.053
 Patch 6.2.054
 问题:	    A double-byte character with a second byte that is a backslash
 	    causes problems inside a string.
-解决方案:   Skip over multi-byte characters in a string properly. (Yasuhiro
+解决方案:   Skip over multibyte characters in a string properly. (Yasuhiro
 	    Matsumoto)
 相关文件:   src/eval.c
 
 Patch 6.2.055
 问题:	    Using col('.') from CTRL-O in Insert mode does not return the
-	    correct value for multi-byte characters.
+	    correct value for multibyte characters.
 解决方案:   Correct the cursor position when it is necessary, move to the
-	    first byte of a multi-byte character. (Yasuhiro Matsumoto)
+	    first byte of a multibyte character. (Yasuhiro Matsumoto)
 相关文件:   src/edit.c
 
 Patch 6.2.056 (extra)
@@ -10508,7 +10507,7 @@ Patch 6.2.142 (after 6.2.124)
 
 Patch 6.2.143
 问题:	    Using "K" on Visually selected text doesn't work if it ends in
-	    a multi-byte character.
+	    a multibyte character.
 解决方案:   Include all the bytes of the last character. (Taro Muraoka)
 相关文件:   src/normal.c
 
@@ -10926,12 +10925,12 @@ Patch 6.2.205 (extra)
 Patch 6.2.206
 问题:	    Multi-byte characters cannot be used as hotkeys in a console
 	    dialog.  (Mattias Erkisson)
-解决方案:   Handle multi-byte characters properly.  Also put () or [] around
+解决方案:   Handle multibyte characters properly.  Also put () or [] around
 	    default hotkeys.
 相关文件:   src/message.c, src/macros.h
 
 Patch 6.2.207
-问题:	    When 'encoding' is a multi-byte encoding, expanding an
+问题:	    When 'encoding' is a multibyte encoding, expanding an
 	    abbreviation that starts where insertion started results in
 	    characters before the insertion to be deleted.  (Xiangjiang Ma)
 解决方案:   Stop searching leftwards for the start of the word at the position
@@ -11001,7 +11000,7 @@ Patch 6.2.215
 Patch 6.2.216 (after 6.2.206)
 问题:	    Multi-byte characters still cannot be used as hotkeys in a console
 	    dialog.  (Mattias Erkisson)
-解决方案:   Make get_keystroke() handle multi-byte characters.
+解决方案:   Make get_keystroke() handle multibyte characters.
 相关文件:   src/misc1.c
 
 Patch 6.2.217
@@ -11367,7 +11366,7 @@ Patch 6.2.268
 Patch 6.2.269
 问题:	    Diff mode does not highlight a change in a combining character.
 	    (Raphael Finkel)
-解决方案:   Make diff_find_change() multi-byte aware: find the start byte of
+解决方案:   Make diff_find_change() multibyte aware: find the start byte of
 	    a character that contains a change.
 相关文件:   src/diff.c
 
@@ -11889,7 +11888,7 @@ Patch 6.2.347 (extra)
 
 Patch 6.2.348
 问题:	    Win32: "vim c:\dir\(test)" doesn't work, because the 'isfname'
-	    default value doesn't contain parenthesis.
+	    default value doesn't contain parentheses.
 解决方案:   Temporarily add '(' and ')' to 'isfname' when expanding file name
 	    arguments.
 相关文件:   src/main.c
@@ -12104,7 +12103,7 @@ Patch 6.2.380 (extra)
 相关文件:   src/Make_bc5.mak, src/testdir/Make_dos.mak
 
 Patch 6.2.381
-问题:	    Setting 'fileencoding' to a comma separated list (confusing it
+问题:	    Setting 'fileencoding' to a comma-separated list (confusing it
 	    with 'fileencodings') does not result in an error message.
 	    Setting 'fileencoding' in an empty file marks it as modified.
 	    There is no "+" in the title after setting 'fileencoding'.
@@ -12162,7 +12161,7 @@ Patch 6.2.389
 相关文件:   src/screen.c
 
 Patch 6.2.390
-问题:	    Using "r*" in Visual mode on multi-byte characters only replaces
+问题:	    Using "r*" in Visual mode on multibyte characters only replaces
 	    every other character. (Tyson Roberts)
 解决方案:   Correct the cursor position after replacing each character.
 相关文件:   src/ops.c
@@ -12402,7 +12401,7 @@ Patch 6.2.426
 相关文件:   src/syntax.c
 
 Patch 6.2.427 (extra)
-问题:	    When pasting a lot of text in a multi-byte encoding, conversion
+问题:	    When pasting a lot of text in a multibyte encoding, conversion
 	    from 'termencoding' to 'encoding' may fail for some characters.
 	    (Kuang-che Wu)
 解决方案:   When there is an incomplete byte sequence at the end of the read
@@ -12521,7 +12520,7 @@ Patch 6.2.443
 Patch 6.2.444
 问题:	    When adding the 'c' flag to a ":substitute" command it may replace
 	    more times than without the 'c' flag.  Happens for a  match that
-	    starts with "\ze" (Marcel Svitalsk) and when using "\@<=" (Klaus
+	    starts with "\ze" (Marcel Svitalsky) and when using "\@<=" (Klaus
 	    Bosau).
 解决方案:   Correct "prev_matchcol" when replacing the line.  Don't replace
 	    the line when the pattern uses look-behind matching.
@@ -12641,7 +12640,7 @@ Patch 6.2.461
 Patch 6.2.462
 问题:	    Finding a matching parenthesis does not correctly handle a
 	    backslash in a trailing byte.
-解决方案:   Handle multi-byte characters correctly. (Taro Muraoka)
+解决方案:   Handle multibyte characters correctly. (Taro Muraoka)
 相关文件:   src/search.c
 
 Patch 6.2.463 (extra)
@@ -12672,7 +12671,7 @@ Patch 6.2.466 (extra, after 6.2.456)
 相关文件:   src/os_win32.c
 
 Patch 6.2.467 (extra, after 6.2.463)
-问题:	    Win32: can't compile without multi-byte feature. (Ajit Thakkar)
+问题:	    Win32: can't compile without multibyte feature. (Ajit Thakkar)
 解决方案:   Add #ifdefs around the info stream code.
 相关文件:   src/os_win32.c
 
@@ -12840,8 +12839,8 @@ Patch 6.2.490
 相关文件:   src/search.c
 
 Patch 6.2.491
-问题:	    Decrementing a position doesn't take care of multi-byte chars.
-解决方案:   Adjust the column for multi-byte characters.  Remove mb_dec().
+问题:	    Decrementing a position doesn't take care of multibyte chars.
+解决方案:   Adjust the column for multibyte characters.  Remove mb_dec().
 	    (Yasuhiro Matsumoto)
 相关文件:   src/mbyte.c, src/misc2.c, src/proto/mbyte.pro
 
@@ -13011,12 +13010,12 @@ Patch 6.2.516
 	    src/screen.c, src/syntax.c, src/vim.h
 
 Patch 6.2.517
-问题:	    Using "r*" in Visual mode on multi-byte characters replaces
+问题:	    Using "r*" in Visual mode on multibyte characters replaces
 	    too many characters.  In Visual Block mode replacing with a
-	    multi-byte character doesn't work.
+	    multibyte character doesn't work.
 解决方案:   Adjust the operator end for the difference in byte length of the
 	    original and the replaced character.  Insert all bytes of a
-	    multi-byte character, take care of double-wide characters.
+	    multibyte character, take care of double-wide characters.
 相关文件:   src/ops.c
 
 Patch 6.2.518
@@ -13095,7 +13094,7 @@ Patch 6.2.528
 解决方案:   Call netbeans_inserted() after performing "~". (Gordon Prieur)
 	    Also change NetBeans debugging to append to the log file.
 	    Also fix that "~" in Visual block mode changes too much if there
-	    are multi-byte characters.
+	    are multibyte characters.
 相关文件:   src/nbdebug.c, src/normal.c, src/ops.c
 
 Patch 6.2.529 (extra)
@@ -13209,7 +13208,7 @@ Patch 6.3a.013 (extra)
 相关文件:   src/gui_w32.c, src/gui_w48.c
 
 Patch 6.3a.014
-问题:	    Using multi-byte text and highlighting in a statusline causes gaps
+问题:	    Using multibyte text and highlighting in a statusline causes gaps
 	    to appear. (Helmut Stiegler)
 解决方案:   Advance the column by text width instead of number of bytes.  Add
 	    the vim_strnsize() function.
@@ -13696,19 +13695,19 @@ Patch 6.3.020
 相关文件:   src/misc1.c
 
 Patch 6.3.021
-问题:	    When the last character of a file name is a multi-byte character
+问题:	    When the last character of a file name is a multibyte character
 	    and the last byte is a path separator, the file cannot be edited.
-解决方案:   Check for the last byte to be part of a multi-byte character.
+解决方案:   Check for the last byte to be part of a multibyte character.
 	    (Taro Muraoka)
 相关文件:   src/fileio.c
 
 Patch 6.3.022 (extra)
-问题:	    Win32: When the last character of a file name is a multi-byte
+问题:	    Win32: When the last character of a file name is a multibyte
 	    character and the last byte is a path separator, the file cannot
 	    be written.  A trail byte that is a space makes that a file cannot
 	    be opened from the command line.
 解决方案:   Recognize double-byte characters when parsing the command line.
-	    In mch_stat() check for the last byte to be part of a multi-byte
+	    In mch_stat() check for the last byte to be part of a multibyte
 	    character.  (Taro Muraoka)
 相关文件:   src/gui_w48.c, src/os_mswin.c
 
@@ -13878,7 +13877,7 @@ Patch 6.3.045
 相关文件:   src/option.c, runtime/doc/options.txt
 
 Patch 6.3.046
-问题:	    ":registers" doesn't show multi-byte characters properly.
+问题:	    ":registers" doesn't show multibyte characters properly.
 	    (Valery Kondakoff)
 解决方案:   Get the length of each character before displaying it.
 相关文件:   src/ops.c
@@ -13906,9 +13905,9 @@ Patch 6.3.050
 相关文件:   src/misc1.c, src/main.c
 
 Patch 6.3.051
-问题:	    When 'wildmenu' is set and completed file names contain multi-byte
+问题:	    When 'wildmenu' is set and completed file names contain multibyte
 	    characters Vim may crash.
-解决方案:   Reserve room for multi-byte characters. (Yasuhiro Matsumoto)
+解决方案:   Reserve room for multibyte characters. (Yasuhiro Matsumoto)
 相关文件:   src/screen.c
 
 Patch 6.3.052 (extra)
@@ -13942,9 +13941,9 @@ Patch 6.3.055 (after 6.3.013)
 相关文件:   src/ex_getln.c
 
 Patch 6.3.056
-问题:	    The last characters of a multi-byte file name may not be displayed
+问题:	    The last characters of a multibyte file name may not be displayed
 	    in the window title.
-解决方案:   Avoid to remove a multi-byte character where the last byte looks
+解决方案:   Avoid to remove a multibyte character where the last byte looks
 	    like a path separator character. (Yasuhiro Matsumoto)
 相关文件:   src/buffer.c, src/ex_getln.c
 
@@ -13975,9 +13974,9 @@ Patch 6.3.060
 
 Patch 6.3.061
 问题:	    When editing a utf-8 file in an utf-8 xterm and there is a
-	    multi-byte character in the last column, displaying is messed up.
+	    multibyte character in the last column, displaying is messed up.
 	    (Joël Rio)
-解决方案:   Check for a multi-byte character, not a multi-column character.
+解决方案:   Check for a multibyte character, not a multi-column character.
 相关文件:   src/screen.c
 
 Patch 6.3.062
@@ -14040,7 +14039,7 @@ Patch 6.3.071
 Patch 6.3.072
 问题:	    Crash in giving substitute message when language is Chinese and
 	    encoding is utf-8. (Yongwei)
-解决方案:   Make the msg_buf size larger when using multi-byte.
+解决方案:   Make the msg_buf size larger when using multibyte.
 相关文件:   src/vim.h
 
 Patch 6.3.073
@@ -14164,7 +14163,7 @@ Patch 6.4b.001
 相关文件:   src/version.h
 
 Patch 6.4b.002
-问题:	    In Insert mode, pasting a multi-byte character after the end of
+问题:	    In Insert mode, pasting a multibyte character after the end of
 	    the line leaves the cursor just before that character.
 解决方案:   Make sure "gP" leaves the cursor in the right place when
 	    'virtualedit' is set.
@@ -14183,4 +14182,4 @@ Patch 6.4b.004
 相关文件:   src/search.c
 
 
- vim:tw=78:ts=8:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl:
