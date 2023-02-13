@@ -1,8 +1,9 @@
-*if_tcl.txt*    适用于 Vim 9.0 版本。	最近更新: 2022年7月
+*if_tcl.txt*    For Vim version 8.0.  最近更新: 2017年7月
 
 
 		  VIM 参考手册	  by Ingo Wilken
 				译者: Willis
+				http://vimcdoc.sf.net
 
 
 Vim 的 Tcl 接口				*tcl* *Tcl* *TCL*
@@ -17,29 +18,29 @@ Vim 的 Tcl 接口				*tcl* *Tcl* *TCL*
 8. 示例					|tcl-examples|
 9. 动态调入				|tcl-dynamic|
 
-{仅当 Vim 编译时加入 |+tcl| 特性时才有效}
+{Vi 没有这些命令} *E280*
 
-							*E280*
+只有在 Vim 编译时加入 |+tcl| 特性时，才有 Tcl 接口。
+
 警告: 可能还有没发现的漏洞。请把漏洞报告、意见、建议等等发送到
 <Ingo.Wilken@informatik.uni-oldenburg.de>
 
 ==============================================================================
 1. 命令					*tcl-ex-commands* *E571* *E572*
 
-							*:tcl*
-:tcl {cmd}		执行 Tcl 命令 {cmd}。测试 `:tcl` 是否可用的简单检查: >
+							*:tcl* *:tc*
+:tc[l] {cmd}		执行 Tcl 命令 {cmd}。测试 `:tcl` 是否可用的简单检查: >
 				:tcl puts "Hello"
 
-:[range]tcl << [trim] [{endmarker}]
+:[range]tc[l] << {endmarker}
 {script}
 {endmarker}
 			执行 Tcl 脚本 {script}。
 			注意: 如果编译时没有加入 Tcl 特性，该命令不会工作。要
 			避免错误，参见 |script-here|。
 
-若 "<<" 之后省略 [endmarker]，{script} 之后必须有一个点号 '.'，就像 |:append|
-和 |:insert| 命令那样。更多详情可见 |:let-heredoc|。
-
+{endmarker} _不能_有前导空白。若 "<<" 之后省略 {endmarker}，{script} 之后必须
+由句号 '.' 结束，类似于 |:append| 和 |:insert| 命令。
 这种形式的 |:tcl| 命令主要用于在 Vim 脚本里包含 tcl 代码。
 
 示例: >
@@ -61,11 +62,11 @@ Vim 的 Tcl 接口				*tcl* *Tcl* *TCL*
 			号。改变 "line" 会改变文本，但是你不能用此命令增加或者
 			删除行。如果 {cmd} 有错，整个命令被中断。缺省的范围
 			[range] 是整个文件，"1,$"。参见 |tcl-var-line| 和
-			|tcl-var-lnum|。
+			|tcl-var-lnum|。 {Vi 无此功能}
 
 							*:tclfile* *:tclf*
 :tclf[ile] {file}	执行 Tcl 脚本文件 {file}。它和 ":tcl source {file}" 相
-			当，但可用文件名自动补全功能。
+			当，但可用文件名自动补全功能。 {Vi 无此功能}
 
 
 注意 Tcl 对象 (类似于变量) 在命令之间保持值不变。就像在 Tcl 外壳里使用那样。
@@ -191,9 +192,9 @@ Tcl 完全通过 "::vim" 命名空间的命令访问 vim 的功能。已实现�
 	lnum						*tcl-var-lnum*
 	这些全局变量只在 ":tcldo" 这个 Ex 命令执行时可用。 它们分别包含文本和
 	数字形式的当前行号。当 ":tcldo" 激活的 Tcl 命令执行完毕时，当前行被设
-	为 "line" 变量的内容，除非该变量被 Tcl 命令删除 (unset)。"lnum" 变量是
-	只读的。这些变量不在 "::vim" 命名空间里，这是为了 ":tcldo" 里使用时能
-	减少点输入 (将来的版本里可能会改变)。 另见 |tcl-linenumbers|。
+	为 "line" 变量的内容，除非该变量被 Tcl 命令删除 (unset)。 "lnum" 变量
+	是只读的。这些变量不在 "::vim" 命名空间里，这是为了 ":tcldo" 里使用时
+	能减少点输入 (将来的版本里可能会改变)。 另见 |tcl-linenumbers|。
 
 ==============================================================================
 4. Tcl 窗口命令						*tcl-window-cmds*
@@ -378,11 +379,11 @@ Tcl 完全通过 "::vim" 命名空间的命令访问 vim 的功能。已实现�
 ==============================================================================
 6. 杂项；Tcl 的输出				*tcl-misc* *tcl-output*
 
-标准 Tcl 命令 "exit" 和 "catch" 被定制的版本所取代。"exit" 终止当前 Tcl 脚本并
-返回 vim，并关闭 Tcl 解释器。 下一个 ":tcl" 的调用相应的创建一个新的 Tcl 解释
-器。"exit" 并_不_终止 vim！"catch" 和原先的工作方式相同，只不过，它不能防止脚
-本从 "exit" 退出。退出时，非零的结束代码使得执行 Tcl 脚本的 Ex 命令生成一个错
-误。
+标准 Tcl 命令 "exit" 和 "catch" 被定制的版本所取代。 "exit" 终止当前 Tcl 脚本
+并返回 vim，并关闭 Tcl 解释器。 下一个 ":tcl" 的调用相应的创建一个新的 Tcl 解
+释器。"exit" 并_不_终止 vim！"catch" 和原先的工作方式相同，只不过，它不能防止
+脚本从 "exit" 退出。退出时，非零的结束代码使得执行 Tcl 脚本的 Ex 命令生成一个
+错误。
 
 在 Tcl 里，有两个新的 I/O 流: "vimout" 和 "vimerr"。所有其上的输出都在 vim 的
 消息区域分别作为消息和错误显示。标准的 Tcl 输出流 stdout 和 stderr 被映射为
@@ -393,7 +394,7 @@ vimout 和 vimerr。从而，正常的 "puts" 命令可以用来在 vim 里显�
 
 在 Tcl 里调用另一个 Tcl 的 Ex 命令 (通过 "::vim::command") 可能有意想不到的副
 作用。该命令创建的新的解释器和标准的解释器的能力相同。因而，在安全的子解释器里
-使得 "::vim::command" 可用使得该子解释器不再安全。(为了防止这一点而防止嵌套的
+使得 "::vim::command" 可用使得该子解释器不再安全。 (为了防止这一点而防止嵌套的
 :tcl* 调用很容易，但不切实际。因为根据具体的 vim 的配置，"::vim::command" 可以
 在任何其他的脚本语言里执行任何代码。) 在这个新的解释器里 "exit" 不会影响旧的解
 释器；它只会终止新的解释器，而旧解释器的脚本处理继续进行。
@@ -482,4 +483,4 @@ Unix ~
 件。共享库的版本必须和 Vim 编译使用的 Tcl 版本保持一致。
 
 ==============================================================================
- vim:tw=78:ts=8:noet:ft=help:norl:
+ vim:tw=78:ts=8:ft=help:norl:

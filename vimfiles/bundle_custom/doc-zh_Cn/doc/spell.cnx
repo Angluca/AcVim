@@ -1,8 +1,9 @@
-*spell.txt*	适用于 Vim 9.0 版本。	最近更新: 2022年8月
+*spell.txt*	For Vim version 8.0.  最近更新: 2017年8月
 
 
 		  VIM 参考手册	  by Bram Moolenaar
 				译者: Willis
+				http://vimcdoc.sf.net
 
 
 拼写检查						*spell*
@@ -12,7 +13,9 @@
 3. 生成拼写文件			|spell-mkspell|
 4. 拼写文件格式			|spell-file-format|
 
-{仅当编译时加入 |+syntax| 特性才有效}
+{Vi 无此功能}
+
+如果编译时没有加入 |+syntax| 特性，不能使用拼写检查。
 
 备注: 另有一个 vimspell 插件。如果你安装了，通过 ":help vimspell" 可以了解它。
 不过你可能更想把这个插件删掉而用 'spell' 选项。后者更好。
@@ -27,7 +30,7 @@
 它打开 'spell' 选项并指定检查美国英语。
 
 有问题的单词使用下面的高亮:
-	SpellBad	不能识别的单词 (坏词)			|hl-SpellBad|
+	SpellBad	不能识别的单词 (坏词) 			|hl-SpellBad|
 	SpellCap	开头没有大写的单词			|hl-SpellCap|
 	SpellRare	偏僻词					|hl-SpellRare|
 	SpellLocal	不符合所选区域的拼写方式		|hl-SpellLocal|
@@ -88,9 +91,9 @@ zug			撤销 |zw| 和 |zg|，从 'spellfile' 里删除单词。计数的使
 
 zuW							*zuG* *zuW*
 zuG			撤销 |zW| 和 |zG|，从内部单词列表里删除单词。计数的使
-			用方法同 |zg|。
+			用方法同 |zg| (译者注: ？)。
 
-						*:spe* *:spellgood* *E1280*
+							*:spe* *:spellgood*
 :[count]spe[llgood] {word}
 			把 {word} 作为一个好词加入到 'spellfile'，类似 |zg|。
 			如果没有计数，使用第一个名字项目，计数为 2 使用第二个
@@ -106,21 +109,6 @@ zuG			撤销 |zW| 和 |zG|，从内部单词列表里删除单词。计数的使
 
 :spellw[rong]! {word}	把 {word} 作为一个坏 (错误: wrong) 词加入到内部单词列
 			表。类似 |zW|。
-
-							*:spellra* *:spellrare*
-:[count]spellr[are] {word}
-			把 {word} 作为一个罕见词加入到 'spellfile'，类似
-			|zw|。如果没有计数，使用第一个名字项目，计数为 2 使用
-			第二个项目，等等。
-
-			没有普通模式命令来标记单词为罕见词，因为这是很不常用的
-			命令，而所有直观的命令已经被用掉了。如果你要，可以自动
-			增加映射，如: >
-		nnoremap z?  :exe ':spellrare  ' .. expand('<cWORD>')<CR>
-		nnoremap z/  :exe ':spellrare! ' .. expand('<cWORD>')<CR>
-<			|:spellundo|、|zuw| 或 |zuW| 可用来撤销此行为。
-
-:spellr[rare]! {word}	把 {word} 作为一个罕见词加入内部单词列表，类似 |zW|。
 
 :[count]spellu[ndo] {word}				*:spellu* *:spellundo*
 			类似于 |zuw|，[count] 的使用同 |:spellgood|。
@@ -180,8 +168,6 @@ z=			为光标所在/之后的单词提供正确拼写单词的建议。即使�
 'spellcapcheck' 选项用来检查句子第一个单词是否以大写字母开头。这不用于文件的首
 个单词。如果句子之后立即换行，下一行的高亮可能被延迟。如果需要的话，用
 |CTRL-L|。另见 |set-spc-auto| 了解如何在设置 'spelllang' 时自动设置本选项。
-
-'spelloptions' 选项有更多的影响拼写检查的工作方式的一些标志位。
 
 Vim 计算好词的使用次数并用来对建议进行排序: 出现过的单词有较小的奖励，经常见到
 的单词有较大的奖励。字缀文件里 COMMON 项目也用来定义常用词，这样新文件或短文件
@@ -276,29 +262,29 @@ Vim 在 'runtimepath' 里的 "spell" 子目录查找拼写文件。名字规则�
   有作用。
 - 如果 'encoding' 没有对应的拼写文件，Vim 尝试用 "ascii" 代替。这只能用于单词
   几乎全是 ASCII 字符构成的语言，例如英语。可用 'encoding' 不是 "latin1"，如
-  iso-8859-2，但要编辑英文文本的场合。".add" 文件使用和找到的主拼写文件相同的
+  iso-8859-2，但要编辑英文文本的场合。 ".add" 文件使用和找到的主拼写文件相同的
   名字。
 
 例如，如果设置如下:
-	'runtimepath' 是 "~/.vim,/usr/share/vim82,~/.vim/after"
+	'runtimepath' 是 "~/.vim,/usr/share/vim70,~/.vim/after"
 	'encoding'    是 "iso-8859-2"
 	'spelllang'   是 "pl"
 
 Vim 会寻找:
 1. ~/.vim/spell/pl.iso-8859-2.spl
-2. /usr/share/vim82/spell/pl.iso-8859-2.spl
+2. /usr/share/vim70/spell/pl.iso-8859-2.spl
 3. ~/.vim/spell/pl.iso-8859-2.add.spl
-4. /usr/share/vim82/spell/pl.iso-8859-2.add.spl
+4. /usr/share/vim70/spell/pl.iso-8859-2.add.spl
 5. ~/.vim/after/spell/pl.iso-8859-2.add.spl
 
 这里假设没找到 1 但找到了 2。
 
 如果 'encoding' 为 "latin1"，Vim 会寻找:
 1. ~/.vim/spell/pl.latin1.spl
-2. /usr/share/vim82/spell/pl.latin1.spl
+2. /usr/share/vim70/spell/pl.latin1.spl
 3. ~/.vim/after/spell/pl.latin1.spl
 4. ~/.vim/spell/pl.ascii.spl
-5. /usr/share/vim82/spell/pl.ascii.spl
+5. /usr/share/vim70/spell/pl.ascii.spl
 6. ~/.vim/after/spell/pl.ascii.spl
 
 这里假设以上文件都找不到 (如果去掉所有的非 ASCII 字符，波兰语无法阅读)。
@@ -543,11 +529,10 @@ Vim 会报告重复单词的个数。这可能是单词列表里的错误，但�
 供你下载拼写文件的机会。你只要按照指示去做就可以了，它会告诉你把文件写到哪里
 (为此，'runtimepath' 中必须要有一个可写的目录)。
 
-该插件里，用于寻找拼写文件的缺省位置使用 Vim 的 ftp 服务器。为安全起见，使用
-SSL (https://) 协议。如果你想用其它位置或者其它协议，设置 g:spellfile_URL 变量
-为保存拼写文件目录的位置。可用 http:// 或 ftp://，但请自行承担安全风险。
-|netrw| 插件用来得到该文件，那里提供了 URL 的格式说明。例如: >
-	let g:spellfile_URL = 'https://ftp.nluug.nl/vim/runtime/spell'
+包含在该插件里用于寻找拼写文件的缺省位置使用 Vim 的 ftp 服务器。如果你想用其它
+位置或者其它协议，设置 g:spellfile_URL 变量为保存拼写文件目录的位置。|netrw|
+插件用来得到该文件，那里提供了 URL 的格式说明。例如: >
+	let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
 你可能需要转义字符。
 
 关于下载语言，该插件只会询问你一次。如果你想再做一次，重启 Vim 或者设置
@@ -617,7 +602,7 @@ g:spellfile_URL 为其它值 (比如，在前面加一个空格)。
     =		大小写必须准确匹配。
     ?		偏僻词。
     !		坏 (错误) 词。
-    1 到 9	包含该单词的合法区域。如果不指定区域，该词在所有区域均合法。
+    digit	包含该单词的合法区域。如果不指定区域，该词在所有区域均合法。
 
 示例:
 
@@ -1080,7 +1065,7 @@ COMPOUNDRULE 项目可以出现多次。它的参数包含一或多个组。每�
 	+	该组出现一或多次，例如，c+
 	?	该组出现零或一次，例如，x?
 
-这和正则表达式的语法相似 (但不完全相同！)。一些例子如下，这里同时列出它们所要
+这和正规表达式的语法相似 (但不完全相同！)。一些例子如下，这里同时列出它们所要
 求的标志位序列:
     COMPOUNDRULE x+	   x xx xxx 等
     COMPOUNDRULE yz	   yz
@@ -1216,7 +1201,7 @@ Vim 会试图判断哪里单词结束而下一个单词开始。如果有拼写�
 							*spell-COMMON*
 可用 COMMON 项目指定常用词。编辑短文件时，它会提供更好的建议。例如:
 
-	COMMON  the of to and a in is it you that he she was for on are ~
+	COMMON  the of to and a in is it you that he was for on are ~
 
 这些单词必须用空格分隔，一行至多 25 个。
 如果 ":mkspell" 命令指定多个区域，所有区域的常用词进行合并并用于所有区域。
@@ -1351,10 +1336,6 @@ CHECKCOMPOUNDREP  (Hunspell)			*spell-CHECKCOMPOUNDREP*
 CHECKCOMPOUNDTRIPLE  (Hunspell)			*spell-CHECKCOMPOUNDTRIPLE*
 		禁止复合时出现三个相同的字符。不支持。
 
-CHECKSHARPS  (Hunspell))			*spell-CHECKSHARPS*
-		大写 (德语) 单词中的 SS 字母对可以是大写的 sharp s (ß)。不支
-		持。
-
 COMPLEXPREFIXES  (Hunspell)				*spell-COMPLEXPREFIXES*
 		允许使用两个前缀。不支持。
 
@@ -1368,18 +1349,12 @@ COMPOUNDFIRST	(Hunspell)				*spell-COMPOUNDFIRST*
 		用 COMPOUNDRULE 代替。|spell-COMPOUNDRULE|
 
 COMPOUNDBEGIN	(Hunspell)				*spell-COMPOUNDBEGIN*
-		COMPOUNDBEGIN 签字的单词可能是复合词的起始元素。
-		用 COMPOUNDRULE 代替。|spell-COMPOUNDRULE|
-
-COMPOUNDLAST	(Hunspell)				*spell-COMPOUNDLAST*
-		COMPOUNDLAST 签字的单词可能是复合词的结尾元素。
 		用 COMPOUNDRULE 代替。|spell-COMPOUNDRULE|
 
 COMPOUNDEND	(Hunspell)				*spell-COMPOUNDEND*
-		大概和 COMPOUNDLAST 相同
+		用 COMPOUNDRULE 代替。|spell-COMPOUNDRULE|
 
 COMPOUNDMIDDLE	(Hunspell)				*spell-COMPOUNDMIDDLE*
-		COMPOUNDMIDDLE 签字的单词可能是复合词的中间元素。
 		用 COMPOUNDRULE 代替。|spell-COMPOUNDRULE|
 
 COMPOUNDRULES	(Hunspell)				*spell-COMPOUNDRULES*
@@ -1420,4 +1395,4 @@ WORDCHARS	(Hunspell)				*spell-WORDCHARS*
 		用于识别单词。Vim 不需要，因为没有检查单词之前分隔单词的必要
 		(我们用 trie 树代替了哈希表)。
 
- vim:tw=78:sw=4:ts=8:noet:ft=help:norl:
+ vim:tw=78:sw=4:ts=8:ft=help:norl:

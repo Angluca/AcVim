@@ -1,15 +1,15 @@
-*if_cscop.txt*  适用于 Vim 9.0 版本。	最近更新: 2022年7月
+*if_cscop.txt*  For Vim version 8.0.  最近更新: 2017年7月
 
 
 		  VIM 参考手册    by Andy Kahn
-				译者: lang2、tocer
+		译者: lang2，tocer http://vimcdoc.sf.net
 
 							*cscope* *Cscope*
 本文档阐述如何使用 Vim 的 cscope 接口。
 
 Cscope 是一个类似 ctags 的工具。 你可以把它想作是超过频的 ctags，因为它功能比
-ctags 强大很多。 在 Vim 里，通过 cscope 查询结果来跳转就像跳转到其他的标签完全
-一样；它被保存在标签栈里。这样你就可以像使用 |tags| 一样在函数等等之间便捷的跳
+ctags 强大很多。 在 Vim 里，通过 cscope 查询结果来跳转就象跳转到其他的标签完全
+一样；它被保存在标签栈里。这样你就可以象使用 |tags| 一样在函数等等之间便捷的跳
 转。
 
 1. Cscope 简介			|cscope-intro|
@@ -21,6 +21,7 @@ ctags 强大很多。 在 Vim 里，通过 cscope 查询结果来跳转就像跳
 7. 如何获取 cscope 等信息	|cscope-info|
 
 目前为止 cscope 接口仅在 Unix 及 Win32 平台上有效。
+{Vi 无此功能}
 
 ==============================================================================
 1. Cscope 简介						*cscope-intro*
@@ -67,8 +68,8 @@ ctags 强大很多。 在 Vim 里，通过 cscope 查询结果来跳转就像跳
 件时，你无法像在 vi 中使用 Ctrl-] 或 :tag 命令那样方便地跳转。
 
 Vim 的 cscope 接口的工作原理是: 先调用 cscope 的命令行接口，然后分析其输出结果
-从而找到匹配处。最终结果是: cscope 查询结果就像一般的标签一样。你可以使用一般
-的标签命令 (Ctrl-］ 或 :tag) 然后再用 Ctrl-T 回跳。(注意 不过，其实你不能直接
+从而找到匹配处。最终结果是: cscope 查询结果就象一般的标签一样。你可以使用一般
+的标签命令 (Ctrl-］ 或 :tag) 然后再用 Ctrl-T 回跳。 (注意 不过，其实你不能直接
 使用 Ctrl-] 或 :tag 跳转到标签。在那之前你必须重新定义映射或设定一些选项值。下
 面的几节会告诉你 cscope 接口如何工作，以及建议的使用方式。)
 
@@ -76,17 +77,15 @@ Vim 的 cscope 接口的工作原理是: 先调用 cscope 的命令行接口，�
 ==============================================================================
 2. Cscope 相关命令					*cscope-commands*
 
-		*:cscope* *:cs* *:scs* *:scscope* *E259* *E262* *E560* *E561*
-所有 cscope 命令都是通过 ":cscope" 命令的子项完成的。
-	`:cscope` 或 `:cs` 是主命令
-	`:scscope` 或 `:scs` 做同样的事并分割窗口
-	`:lcscope` 或 `:lcs` 使用位置列表，见 |:lcscope|
+		*:cscope* *:cs* *:scs* *:scscope* *E259* *E262* *E561* *E560*
+所有命令都是通过主命令 ":cscope" 的子项完成的。主命令最短的缩写是 ":cs"。
+":scscope" 完成同样的功能的同时还可以分割窗口 (缩写: "scs")。
 
 可用的子命令有:
 
 			*E563* *E564* *E566* *E568* *E622* *E623* *E625*
 			*E626* *E609*
-    add   : 添加一个新的 cscope 数据库/连接。
+    add   : 添加一个新的 cscope 数据库／连接。
 
 	用法	:cs add {file|dir} [pre-path] [flags]
 
@@ -101,7 +100,7 @@ Vim 的 cscope 接口的工作原理是: 先调用 cscope 的命令行接口，�
 <
 				      *cscope-find* *cs-find* *E567*
     find  : 查询 cscope。除了第 5 个之外的所有 cscope 查询功能都可以使用。
-	    第 5 个是 "Change this grep pattern"。
+    	    第 5 个是 "Change this grep pattern"。
 
 	用法	:cs find {querytype} {name}
 
@@ -115,7 +114,7 @@ Vim 的 cscope 接口的工作原理是: 先调用 cscope 的命令行接口，�
 		6 或 e: 查找本 egrep 模式
 		7 或 f: 查找本文件
 		8 或 i: 查找包含本文件的文件
-		9 或 a: 查找此符号被赋值的位置
+		9 or a: 查找此符号被赋值的位置
 
 	除了 4 和 6 之外的类型忽略 {name} 之前的空格。4 和 6 在 {querytype} 和
 	{name} 之间只能有一个空格分隔。多余的空格是 {name} 的一部分。
@@ -200,7 +199,7 @@ Vim 的 cscope 接口的工作原理是: 先调用 cscope 的命令行接口，�
 
 							*:lcscope* *:lcs*
 此命令和 ":cscope" 命令相同，除了在置位选项 'cscopequickfix' 的时候，使用当前
-窗口的位置列表而不是快速修复列表来显示 cscope 的结果。
+窗口的位置列表而不是 quickfix 列表来显示 cscope 的结果。
 
 							*:cstag* *E257* *E562*
 如果你同时使用 cscope 和 ctags，|:cstag| 允许你在跳转前对两者都进行查询。例
@@ -225,12 +224,12 @@ Vim 的 cscope 接口的工作原理是: 先调用 cscope 的命令行接口，�
 <
 					    *cscopequickfix* *csqf* *E469*
 {仅当编译时加入 |+quickfix| 特性才有效}
-'cscopequickfix' 设定是否使用快速修复窗口来显示 cscope 结果。这是一组用逗号分
-隔的值。每个值可以代表一个 |cscope-find| 命令 (s、g、d、c、t、e、f、i 或 a) 加
-一个标志位 (+、- 或 0)。
-'+' 表示结果必须被添加到快速修复窗口中。'-' 表示清除上次的结果，'0' 或命令本身
-不存在表示不使用快速修复。搜索从字符串首开始直到命令第一次出现时结束。缺省值是
-"" (不使用快速修复窗口)。下面是个可能有用的值: >
+'cscopequickfix' 设定是否使用 quickfix 窗口来显示 cscope 结果。这是一组用逗号
+分隔的值。每个值可以代表一个 |cscope-find| 命令 (s、g、d、c、t、e、f、i 或 a)
+加一个标志位 (+、- 或 0)。
+'+' 表示结果必须被添加到 quickfix 窗口中。'-' 表示清除上次的结果，'0' 或命令本
+身不存在表示不使用 quickfix。搜索从字符串首开始直到命令第一次出现时结束。缺省
+值是 "" (不使用 quickfix 窗口)。下面是个可能有用的值: >
 	:set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 <
 							*cscopetag* *cst*
@@ -414,19 +413,35 @@ http://cscope.sourceforge.net 的 DJGPP 编译版本已知不能和 Vim 一起�
 	http://cscope.sourceforge.net/
 这是 SCO 以 BSD 许可发布的。
 
-在 Solaris 2.x 上，如果你有 C 编译器的许可，你也就有 cscope。两者通常都位于
+如果你想要更新的版本，你可以购买它。根据 (旧的) nvi 文档:
+
+	你可以用 $400 从 AT&T Software Solutions 购买无限制的许可的源码。致电
+	+1-800-462-8146。
+
+你还可以从 World-Wide Exptools Open Sourcean 的网页下载 cscope 13.x 及
+mlcscope 14.x (多语言 cscope，支持 C、C++、Java、lex、yacc、breakpoint
+listing、Ingres 及 SDL)。网址如下:
+	http://www.bell-labs.com/project/wwexptools/packages.html
+
+在 Solaris 2.x 上，如果你有 C 编译器的许可，你也就有 cscope。两者通常位于
 /opt/SUNWspro/bin。
+
+SGI 开发者也可以得到 cscope。在以下的地址搜索 cscope:
+	http://freeware.sgi.com/index-by-alpha.html
+	https://toolbox.sgi.com/toolbox/utilities/cscope/
+第二个地址仅对那些拥有 SGI toolbox 密码的用户有效。
 
 网上还有一个旧版本的 cscope 的克隆 (叫 "cs") 。出于各种原因，Vim 不支持该程
 序。
 
 Vim cscope 接口/支持的原作者是 Andy Kahn <ackahn@netapp.com>。原始的结构 (包括
-很少一部分代码) 来自 nvi 的 cscope 接口。
+很少一部分代码) 来自 nvi 的 cscope 接口。如果你在使用 Vim cscope 接口时有任何
+问题，建议，patches 等等，请与他联系。
 							*cscope-win32*
-这里可以找到一个 Win32 版本的 cscope (看来已放弃):
-	https://code.google.com/archive/p/cscope-win32/
+这里可以找到一个 Win32 版本的 cscope:
+	http://code.google.com/p/cscope-win32/
 
 Win32 支持是 Sergey Khorev <sergey.khorev@gmail.com> 加入的。如果你有 Win32 相
 关的问题，请联系他。
 
- vim:tw=78:ts=8:noet:ft=help:norl:
+ vim:tw=78:ts=8:ft=help:norl:

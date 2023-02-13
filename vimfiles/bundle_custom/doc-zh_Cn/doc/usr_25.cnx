@@ -1,7 +1,7 @@
-*usr_25.txt*	适用于 Vim 9.0 版本。	最近更新: 2020年1月
+*usr_25.txt*	For Vim version 8.0.  最近更新: 2017年8月
 
 		     VIM 用户手册 - by Bram Moolenaar
-				译者: snoopyxp
+		     译者: snoopyxp http://vimcdoc.sf.net
 
 		           编辑带格式的文本
 
@@ -320,13 +320,12 @@ tabstop 的正常值为 8。你可以通过把 'tabstop' 的值设置为 3 来�
 
 	g0		移动到当前行的第一个可见字符
 	g^		移动到当前行的第一个非空白的可见字符
-	gm		移动到屏幕行的中点
-	gM		移动到当前行的文本中点
+	gm		移动到当前行的中点
 	g$		移动到当前行的最后一个可见字符
 
-		|<--	   窗口      -->|
-	some long    text, part of which is visible in one line ~
-		 g0  g^    gm	   gM g$
+		|<--	  窗口     -->|
+	some long    text, part of which is visible ~
+		 g0  g^    gm	     g$
 
 
 断 词						*edit-no-break*
@@ -415,7 +414,7 @@ tabstop 的正常值为 8。你可以通过把 'tabstop' 的值设置为 3 来�
 	+----------------------------------+
 
 注意 当分隔段落的行是含有空格和/或制表符的空白行而不是空行时，这行命令将不起作
-用。下列的命令对于空白行仍起作用:
+用。下列的命令对于空白行仍起作用: >
 >
 	:g/\S/,/^\s*$/join
 
@@ -536,4 +535,4 @@ Vim 已经自动为你填充了新文本前面的间隙。现在，要到此列�
 
 下一章: |usr_26.txt|  重复
 
-版权: 参见 |manual-copyright|  vim:tw=78:ts=8:noet:ft=help:norl:
+版权: 参看 |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:

@@ -1,26 +1,27 @@
-*ft_ada.txt*	适用于 Vim 9.0 版本。	最近更新: 2022年7月
+*ft_ada.txt*	For Vim version 8.0.  最近更新: 2017年7月
 
 
 		    ADA 文 件 类 型 参 考 手 册~
 				译者: Willis
+				http://vimcdoc.sf.net
 
 ADA								      *ada.vim*
 
 1.  语法高亮				    |ft-ada-syntax|
-2.  文件类型插件			    |ft-ada-plugin|
+2.  文件类型插件    			    |ft-ada-plugin|
 3.  全能补全				    |ft-ada-omni|
     3.1 使用 "gnat xref" 的全能补全		|gnat-xref|
     3.2 使用 "ctags" 的全能补全			|ada-ctags|
-4.  编译器支持				    |ada-compiler|
+4.  编译器支持	    			    |ada-compiler|
     4.1 GNAT					|compiler-gnat|
     4.2 Dec Ada					|compiler-decada|
 5.  参考				    |ada-reference|
     5.1 选项					|ft-ada-options|
     5.2 命令					|ft-ada-commands|
-    5.3 变量					|ft-ada-variables|
-    5.4 常数					|ft-ada-constants|
-    5.5 函数					|ft-ada-functions|
-6.  附加插件				    |ada-extra-plugins|
+    5.3 变量	    				|ft-ada-variables|
+    5.4 常数	    				|ft-ada-constants|
+    5.5 函数	    				|ft-ada-functions|
+6.  附加插件	    			    |ada-extra-plugins|
 
 ==============================================================================
 1. 语法高亮 ~
@@ -66,13 +67,13 @@ ctermfg=White 通常就有不错的显示效果)。
 
 Ada 插件提供以下支持:
 
- - 自动缩进		(|indent.txt|)
- - 插入补全		(|i_CTRL-N|)
- - 用户定义补全		(|i_CTRL-X_CTRL-U|)
+ - 自动缩进	    	(|indent.txt|)
+ - 插入补全	    	(|i_CTRL-N|)
+ - 用户定义补全	    	(|i_CTRL-X_CTRL-U|)
  - 标签搜索		(|tagsrch.txt|)
- - 快速修复		(|quickfix.txt|)
- - 退格处理		(|'backspace'|)
- - 注释处理		(|'comments'|、|'commentstring'|)
+ - Quick Fix		(|quickfix.txt|)
+ - 退格处理	  	(|'backspace'|)
+ - 注释处理	    	(|'comments'|、|'commentstring'|)
 
 当且仅当打开 Ada 文件时，本插件才激活 Ada 模式的功能，并把 Ada 相关的条目加到
 主菜单和弹出菜单中。
@@ -81,9 +82,9 @@ Ada 插件提供以下支持:
 3. 全能补全 ~
 								 *ft-ada-omni*
 
-Ada 全能补全 (|i_CTRL-X_CTRL-O|) 使用 "gnat xref -v" 或 "Universal Ctags"
-(http://ctags.io) 创建的标签数据库。补全函数会自动地识别创建标签文件使用的工
-具。
+Ada 全能补全 (|i_CTRL-X_CTRL-O|) 使用 "gnat xref -v" 或 "exuberant Ctags
+(http://ctags.sourceforge.net) 创建的标签数据库。补全函数会自动地识别创建标签
+文件使用的工具。
 
 ------------------------------------------------------------------------------
 3.1 使用 "gnat xref" 的全能补全 ~
@@ -111,15 +112,15 @@ GNAT XREF 使用编译器的内部信息 (ali-文件) 来产生标签文件。�
 3.2 使用 "ctags" 的全能补全 ~
 								   *ada-ctags*
 
-Universal/Exuberant Ctags 使用自己的多语言代码分析器。分析速度快，产生很多附加
-的信息，并且能处理尚不能编译的文件。
+Exuberant Ctags 使用自己的多语言代码分析器。分析速度快，产生很多附加的信息
+(因此得名 "Exuberant (丰富的) Ctags")，并且能处理尚不能编译的文件。
 
-有大量其它的 Vim 工具使用 Universal/Exuberant Ctags。建议使用 Universal
-Ctags，Exuberant Ctags 不再开发了。
+有大量其它的 Vim 工具使用 exuberant Ctags。
 
-需要安装 Universal Ctags 版本，可从 https://ctags.io 获取。
+You 需要安装带有 Ada 支持补丁的 Exuberant Ctags 版本。GNU Ada 项目提供这样的版
+本 (http://gnuada.sourceforge.net)。
 
-Universal/Exuberant Ctags 的 Ada 分析器还很新 - 不要过多期望完整的支持。
+Exuberant Ctags 的 Ada 分析器还很新 - 不要过多期望完整的支持。
 
 ==============================================================================
 4. 编译器支持 ~
@@ -220,7 +221,7 @@ g:decada.Make_Command	字符串
 		用于 |g:decada.Make()| 的外部命令 (|'makeprg'|)。
 
 						       *g:decada.Error_Format*
-g:decada.Error_Format	字符串
+g:decada.Error_Format|	string
 		错误格式 (|'errorformat'|)。
 
 ==============================================================================
@@ -254,7 +255,7 @@ g:ada_line_errors	  布尔型 (如果存在即为真)
 
 							 *g:ada_rainbow_color*
 g:ada_rainbow_color	  布尔型 (如果存在即为真)
-		'(' 和 ')' 使用彩虹色。为此你需要 rainbow_parenthesis。
+		'(' 和 ')' 使用彩虹色。为此你需要 rainbox_parenthesis。
 
 							       *g:ada_folding*
 g:ada_folding		  集合型 ('sigpft')
@@ -383,15 +384,15 @@ g:decada		  对象
 
 							     *g:ada#WordRegex*
 g:ada#WordRegex		  字符串
-		搜索 Ada 单词的正则表达式。
+		搜索 Ada 单词的正规表达式。
 
 							  *g:ada#DotWordRegex*
 g:ada#DotWordRegex	  字符串
-		搜索句号分隔的 Ada 单词的正则表达式。
+		搜索句号分隔的 Ada 单词的正规表达式。
 
 							       *g:ada#Comment*
 g:ada#Comment		  字符串
-		搜索 Ada 注释的正则表达式。
+		搜索 Ada 注释的正规表达式。
 
 							      *g:ada#Keywords*
 g:ada#Keywords		  字典的列表

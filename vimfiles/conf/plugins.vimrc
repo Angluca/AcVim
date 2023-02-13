@@ -1,18 +1,17 @@
-"-------------------------------------------------------
+"==============
+"Plug
 if !filereadable(expand("$VIM/autoload/plug.vim"))
 	!curl -fLo $VIM/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 let s:bundle_dir = expand("$VIM/bundle/")
 call plug#begin(s:bundle_dir)
-"-------------------------------------------------------
-" Plugin
-"==================
-"bundle_custom
-"Plug 'eikenb/acp'
-"==================
-"bundle
-"-----------------------
+
+"==============
+"AcVim
+Plug 'Angluca/AutoCompPop'
+"==============
+"Custom
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-repeat'
@@ -22,8 +21,8 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mbbill/undotree'
-Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'wuhulalala/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
+Plug 'wuhulalala/ctrlp.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
@@ -49,7 +48,11 @@ Plug 'ziglang/zig.vim'
 "Plug 'ycm-core/YouCompleteMe'
 "Plug 'dkprice/vim-easygrep'
 
-"-----------------
 call plug#end()
-"==============
 
+"==============
+"Options
+if has("win32")
+	"Not use Clang_complete in WIN
+	let g:clang_complete_loaded = 1
+endif

@@ -1,11 +1,12 @@
-*netbeans.txt*  适用于 Vim 9.0 版本。	最近更新: 2022年7月
+*netbeans.txt*  For Vim version 8.0.  最近更新: 2017年8月
 
 
 		  VIM 参考手册    by Gordon Prieur et al.
 				译者: Willis
+				http://vimcdoc.sf.net
 
 
-					*netbeans* *NetBeans* *netbeans-support*
+					*netbeans* *netbeans-support*
 
 Vim NetBeans 协议: 把 Vim 集成到 IDE 中的套接字接口。
 
@@ -25,6 +26,7 @@ Vim NetBeans 协议: 把 Vim 集成到 IDE 中的套接字接口。
     10.4. 取得外部编辑器模块			|obtaining-exted|
     10.5. 设置 NetBeans 以运行 Vim		|netbeans-setup|
 
+{Vi 没有这些功能}
 {仅当编译时加入 |+netbeans_intg| 特性才有效}
 
 ==============================================================================
@@ -39,26 +41,21 @@ Vim 的 NetBeans 协议是一个建立在传统的 TCP 套接字接口之上的�
 用该协议控制 Vim。该协议已经有 C、C++、Python 和 Java 的实现。今天我们之所以还
 保持 NetBeans 这个名字，只是基于历史上的渊源。
 
-使用 Vim 的 NetBeans 协议的活跃项目:
-- Eclim, http://eclim.org/
-
-VimIntegration，有关于若干 Vim 集成项目的描述:
-	http://www.freehackers.org/VimIntegration
-
 目前使用 Vim 的 NetBeans 协议的项目有:
-- Agide，Python 编写的用于 AAP 项目的 IDE (现在被 |:Termdebug| 替代):
+- VimIntegration，有关于若干 Vim 集成项目的描述:
+	http://www.freehackers.org/VimIntegration
+- Agide，Python 编写的用于 AAP 项目的 IDE:
 	http://www.a-a-p.org
 - Clewn，C 编写的 Vim 上的 gdb 集成:
 	http://clewn.sourceforge.net/
 - Pyclewn，Python 编写的 Vim 的 gdb 集成:
 	http://pyclewn.sourceforge.net/
-- VimWrapper，方便把 Vim 集成到 IDE 的库:
-	http://www.freehackers.org/VimWrapper
-过时的项目 (链接不再有效):
 - VimPlugin，Eclipse 上的 Vim 集成:
 	http://vimplugin.sourceforge.net/wiki/pmwiki.php
 - PIDA，Python 编写的集成 Vim 的 IDE:
 	http://pida.co.uk/
+- VimWrapper，方便把 Vim 集成到 IDE 的库:
+	http://www.freehackers.org/VimWrapper
 
 查阅具体的项目页面来了解如何在这些项目中使用 Vim。
 
@@ -114,18 +111,10 @@ Vim 的 NetBeans 套接字接口可以从 Vim 那里得到信息或者告诉 Vim
 的一行的注释。
 
 目前，支持 Netbeans 接口的有控制台运行的 Vim 和运行以下 GUI 的 gvim: GTK、
-GNOME、Windows 和 Motif。
+GNOME、Windows、Athena 和 Motif。
 
-							*netbeans-xpm*
-如果需要 Motif 支持，用户应该提供 XPM 库。
-支持 Motif 的 Vim 要显示图像，XPM 库是必需的。没有它，工具栏和标号 (sign) 特性
-会被关闭。
-
-XPM 库由法国国立计算机科学与控制研究学院的 Arnaud Le Hors 提供，它可在
-http://cgit.freedesktop.org/xorg/lib/libXpm 下载。撰写此文时，它的最新版本是
-xpm-3.4k-solaris.tgz，这是一个 gzip 压缩的 tar 文件。如果你建立目录
-/usr/local/xpm 然后在那里解包，就可以直接使用 Makefile 里去掉注释的行而无须修
-改。如果安装在别的目录，请修改 src/Makefile 里的 XPM_DIR。
+如果需要 Motif 支持，用户应该提供 XPM 库。参见 |workshop-xpm| 了解如何得到最新
+版本的 XPM 的详情。
 
 
 在 MS-Windows 上:
@@ -368,8 +357,8 @@ defineAnnoType typeNum typeName tooltip glyphFile fg bg
 		   bg		color	高亮行背景色
 		Vim 会定义评注所用的标号。
 		如果 color 为数值，解释为 "#rrggbb"，即红绿蓝色彩值 (见
-		|gui-colors|)，高亮只在 gVim 有定义。
-		如果 color 为名字，该颜色在带色彩的终端和 gVim 都有定义。
+		|gui-colors|)，高亮只在 GVim 有定义。
+		如果 color 为名字，该颜色在带色彩的终端和 GVim 都有定义。
 		当 "fg" 和 "bg" 都是 "none" 的时候，不使用高亮行 (2.1 版本新出
 		现)。
 		当 "glyphFile" 为空时，不使用文本标号 (2.1 版本新出现)。
@@ -404,11 +393,10 @@ guard off len
 initDone	标识这个缓冲区可用。这也隐含地意味着它成为当前缓冲区。激活
 		BufReadPost 自动事件。
 
-insertDone starteol readonly
+insertDone
 		Vim 控制器发送，告知 Vim 完成了初始的文件插入。这使得读入信息
-		被显示。如果 "starteol" 为 "F" 则末行不带换行符。如果
-		"readonly" 为 "T" 则文件标记为只读。2.3 版本之前，打开文件之后
-		不会显示读入消息。2.3 版本新出现。
+		被显示。2.3 版本之前，打开文件之后不会显示读入消息。
+		2.3 版本新出现。
 
 moveAnnoToFront serNum
 		没有实现。
@@ -489,9 +477,9 @@ setModtime time
 		在 Vim 控制器自己保存文件后，更新缓冲区的修改时间。
 		2.3 版本新出现。
 
-setReadOnly readonly
-		当布尔参数 "readonly" 为代表真值的 "T" 时，标记缓冲区为只读，
-		当它为代表假值的 "F" 时，标记其为非只读。2.3 版本中实现。
+setReadOnly
+		设置文件为只读
+		2.3 版本已经实现。
 
 setStyle	没有实现。
 
@@ -891,4 +879,4 @@ http://externaleditor.netbeans.org 和 http://www.netbeans.org。不幸的是，
 器只会使用这个属性所指定的 MIME 类型。
 
 
- vim:tw=78:ts=8:noet:ft=help:norl:
+ vim:tw=78:ts=8:ft=help:norl:

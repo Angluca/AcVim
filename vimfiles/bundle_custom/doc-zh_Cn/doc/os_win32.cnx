@@ -1,14 +1,15 @@
-*os_win32.txt*  适用于 Vim 9.0 版本。	最近更新: 2022年7月
+*os_win32.txt*  For Vim version 8.0.  最近更新: 2017年8月
 
 
 		  VIM 参考手册    by George Reilly
-				译者: Dasn、tocer
+		                     译者: Dasn, tocer
+		                     http://vimcdoc.sf.net
 
 						*win32* *Win32* *MS-Windows*
 本文描述 Vim Win32 版本的一些特性。
 
-Vim 的 Win32 版本可以在 Windows XP、Vista、7、8、10 和 11 版本上运行，并且有
-console (控制台，就是命令提示符窗口 译者) 和 GUI (图形界面) 两个版本。
+Vim 的 Win32 版本可以在 Windows XP、Vista、7、8 和 10 版本 上运行，并且有
+console (控制 台，就是命令提示符窗口 译者) 和 GUI (图形界面) 两个版本。
 
 32 位版本也可运行在 64 位 MS-Windows 系统上。
 
@@ -18,8 +19,7 @@ console (控制台，就是命令提示符窗口 译者) 和 GUI (图形界面) 
 4. 使用鼠标			|win32-mouse|
 5. 在 Windows 95 下运行		|win32-win95|
 6. 在 Windows 3.1 下运行	|win32-win3.1|
-7. 安装包			|win32-installer|
-8. Win32 常见问题解答 (迷你版)	|win32-faq|
+7. Win32 常见问题解答 (迷你版)	|win32-faq|
 
 此外，还有一些 Win32 和 DOS 版本通用的条目:
 文件位置			|dos-locations|
@@ -30,8 +30,7 @@ console (控制台，就是命令提示符窗口 译者) 和 GUI (图形界面) 
 :cd 命令			|dos-:cd|
 中止键				|dos-CTRL-Break|
 临时文件			|dos-temp-files|
-默认的外壳选项			|dos-shell|
-PowerShell 缺省			|dos-powershell|
+默认的 Shell 选项		|dos-shell|
 
 Win32 用户图形界面		|gui-w32|
 
@@ -42,11 +41,6 @@ Win32 版本的作者是 George V. Reilly <george@reilly.org>。
 GUI 版本的作者是 George V. Reilly 和 Robert Webb。
 
 有关编译的讨论请参考 "src/INSTALLpc.txt"。		*win32-compiling*
-
-							*WSL*
-在 WSL (Windows Subsystem for Linux，适用于 Linux 的 Windows 子系统) 上运行
-Vim 时此处说明不适用，此时 `has('win32')` 会返回假值。如果需要知道 Vim 是否在
-WSL 上运行，可用 `exists('$WSLENV')`。
 
 ==============================================================================
 1. 一些已知的问题					*win32-problems*
@@ -85,41 +79,9 @@ $PATH 环境变量						*win32-PATH*
 Vim 可执行程序的路径被加入到变量 $PATH 中。这主要使 "!xxd" 能够运行，因为它在
 工具菜单中。这也意味着当 executable() 返回 1 时，该可执行程序确实能够执行。
 
-命令行参数						*win32-cmdargs*
+文件名内的引号						*win32-quotes*
 
-对 MS-Windows 把命令行分解为参数的分析没有一个标准。Vim 和 gvim 过去使用不同
-的逻辑来处理命令行 (7.4.432 之前)，而且这些逻辑也取决于如何地编译。现在 Vim
-和 gvim 两者都使用 CommandLineToArgvW() Win32 API，从而行为一致。
-
-基本规则是:						*win32-backslashes*
-      a) 参数是图形字符的序列。
-      b) 参数似空白分隔。
-      c) 参数可以双引号包围，其中可包含空白。
-      d) 零和多个反斜杠 (\) 和一个双引号 (") 是特别的。有效的反斜杠减半往下取
-	整。偶数反斜杠反转空格和制表的可接受性，奇数反斜杠生成按本义出现的双
-	引号。
-
-因而:
-	"	是特殊双引号
-	\"	是按本义出现的双引号
-	\\"	是一个按本义出现的反引号和一个特殊双引号
-	\\\"	是一个按本义出现的反引号和一个按本义出现的双引号
-	\\\\"	是两个按本义出现的反引号和一个特殊双引号
-	\\\\\"	是两个按本义出现的反引号和一个按本义出现的双引号
-	等等
-
-示例: >
-	vim "C:\My Music\freude" +"set ignorecase" +/"\"foo\\" +\"bar\\\"
-
-打开 "C:\My Music\freude" 并执行行模式命令: >
-	set ignorecase; /"foo\ and /bar\"
-
-CommandLineToArgvW API 的参考中也有这些规则的描述:
-    https://msdn.microsoft.com/en-us/library/windows/desktop/bb776391.aspx
-
-							*win32-quotes*
-引号还有额外的规则 (这里文档不甚完整)。如上所述，文件名 (或任何其它命令行参数)
-内的引号可以用反斜杠转义。例如 >
+文件名 (或任何其它命令行参数) 内的引号可以用反斜杠转义。例如 >
 	vim -c "echo 'foo\"bar'"
 
 也可要用三个引号来表示一个实际一个引号: >
@@ -152,7 +114,7 @@ CommandLineToArgvW API 的参考中也有这些规则的描述:
 4. 使用鼠标						*win32-mouse*
 
 Vim 的 Win32 版本支持鼠标。如果你使用两键鼠标，可以用同时按下左右两键的办法来
-模拟第三键 (中键) - 但是，请注意: 在 Win32 GUI 上，如果你的右键用来呼叫弹出菜
+模拟第三键 (中键) － 但是，请注意: 在 Win32 GUI 上，如果你的右键用来呼叫弹出菜
 单 (参见 'mouse')，那么你最好先按下鼠标左键 (左右两键同时按的时候，左键略快于
 右键 译者)。						|mouse-using|
 
@@ -166,30 +128,12 @@ Vim 的 Win32 版本支持鼠标。如果你使用两键鼠标，可以用同时
 ==============================================================================
 6. 在 Windows 3.1 下运行				*win32-win3.1*
 
-				*win32s* *windows-3.1* *gui-w32s* *win16*
+					*win32s* *windows-3.1* *gui-w32s*
 有一个特殊的 Win32 版本的 Gvim 可以在 Windows 3.1 和 3.11 运行。
-7.4.1364 补丁删除了此支持。
+7.4.1363 补丁删除了此支持。
 
 ==============================================================================
-7. 安装包						*win32-installer*
-
-http://www.vim.org/download.php 提供了 windows 的简单安装程序，而
-https://github.com/vim/vim-win32-installer/releases/ 也提供每日构建版。
-
-每日构建版包含 32 位和 64 位版本，打开多数特性，通常也包含额外的已加密签名的安
-装程序，以免 Windows 抱怨。
-
-要使用安装程序可简单执行 exe 文件。也支持以下开关: >
-
-    gvim_<version>.exe /S           -> 安静安装，无对话框
-    gvim_<version>.exe /D=C:\vim    -> 安装到目录 c:\vim
-                                    -> /D 必须是最末的参数
-    gvim_<version>.exe /S /D=c:\vim -> 安静安装到 c:\vim
-<
-通过设置 $VIM 环境变量，也可以指定不同于缺省的安装目录。
-
-==============================================================================
-8. Win32 常见问题解答 (迷你版)				*win32-faq*
+7. Win32 常见问题解答 (迷你版)				*win32-faq*
 
 问: 怎样改变字体？
 答: 在 GUI 版本里，可以用 'guifont' 选项。例如: >
@@ -209,7 +153,7 @@ https://github.com/vim/vim-win32-installer/releases/ 也提供每日构建版。
     同。在非 UNIX 系统上，首先原文件被改名，然后写入新文件。只有保护位和原文件
     相同。但是，这个方法不能处理 NFS 文件系统，那里除了链接还有一些其它问题。
     唯一的解决办法是禁用备份文件，可以通过命令 ":set nobackup nowritebackup"
-    实现						|'writebackup'|
+    实现 						|'writebackup'|
 
 问: 我正通过 Samba 使用 Vim 编辑 Unix 系统上的一个文件。当我保存文件时，文件所
     有者被改变了。为什么？
@@ -268,7 +212,7 @@ https://github.com/vim/vim-win32-installer/releases/ 也提供每日构建版。
        /min  最小化方式打开窗口
        /b    不打开控制台窗口
     一次只能使用一个参数。第二个参数会被当作命令的一部分。
-						*windows-asynchronously*
+
 问: 如何避免异步远行的程序打开窗口？
 答: 取决于你实际需要，有两个方案:
     1) 用 /min 标志位，以最小化方式运行，其他不作改变。对控制台和 GUI
@@ -279,15 +223,15 @@ https://github.com/vim/vim-win32-installer/releases/ 也提供每日构建版。
 
    运行 Exuberant ctags 的控制台示例: >
         :!start /min ctags -R .
-<   程序结束时你会看到名为 "tags" 文件在当前目录出现。你会注意到底下任务栏上
+<  程序结束时你会看到名为 "tags" 文件在当前目录出现。你会注意到底下任务栏上
    窗口标题在闪烁。尤其对需时较长的命令更容易看到。
    现在删除 "tags" 文件，然后执行: >
         :!start /b ctags -R .
-<   还是会产生 "tags" 文件，但这次任务栏不会闪烁了。
+<  还是会产生 "tags" 文件，但这次任务栏不会闪烁了。
    GUI 应用的示例: >
         :!start /min notepad
         :!start /b notepad
-<   前一个命令以最小化方式运行 notepad，后一个命令以正常方式运行。
+<  前一个命令以最小化方式运行 notepad，后一个命令以正常方式运行。
 
 						*windows-icon*
 问: 我不喜欢 Vim 图标，如何改变？
@@ -295,4 +239,4 @@ https://github.com/vim/vim-win32-installer/releases/ 也提供每日构建版。
     ~/vimfiles/bitmaps/vim.ico。
 
 
- vim:tw=78:ts=8:noet:ft=help:norl:
+ vim:tw=78:fo=tcq2:ts=8:ft=help:norl:

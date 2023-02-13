@@ -1,6 +1,9 @@
 "=================================
 " Plugin configuration
 "=================================
+"-------------------------
+"AcVim plugins
+"-------------------------
 """"""""""""""""""""
 "Sketch seting
 """"""""""""""""""""
@@ -59,26 +62,13 @@ vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 """"""""""""""""""""
 "Ctrlp setting
 """"""""""""""""""""
-"let g:ctrlp_use_caching = 1
-"let g:ctrlp_arg_map = 1
-"let g:ctrlp_follow_symlinks = 0
-"let g:ctrlp_types = ['fil', 'buf', 'mru'].
-"let g:ctrlp_mruf_include = '\.c$\|\.h$'
-"let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
-                          "\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir']
-let g:ctrlp_tilde_homedir = 1
-let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
 let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
-let g:ctrlp_max_files = 666
+let g:ctrlp_max_files = 99
 let g:ctrlp_mruf_max = 66
-let g:ctrlp_max_depth = 44
-"let g:ctrlp_mruf_save_on_update = 1
-let g:ctrlp_open_multiple_files = 't'
-let g:ctrlp_switch_buffer = 'Etvh'
-let g:ctrlp_open_new_file = 't' "thvr
-let g:ctrlp_show_hidden = 0
-let g:ctrlp_clear_cache_on_exit = 1
+"let g:ctrlp_max_depth = 40
+"let g:ctrlp_mruf_save_on_update = 0
+"let g:ctrlp_use_caching = 1
+"let g:ctrlp_open_new_file = 'v' "thvr
 
 let g:ctrlp_map = ';cc'
 nmap <silent> ;cb :CtrlPBuffer<cr>
