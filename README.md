@@ -31,12 +31,12 @@ Let's open the vim.**
 >;tt : file manage  
 ;uu ;ut ;uc: open undo tree and clear all undo  
 ;xx ...: code comment  
-;cb ;cc ;cm ;cu ;cg ;cx ;cd ;cD: manage buffer/file/mru/undo/tags  
+;cc ;cC ;ca ;cu ;cg ;cG ;cm ;cb ;ci ;cI ;cr ;cx ;cl ;cd ;cD  
+ --> manage buffer/file/mru/undo/tags/dir/change/mixd/rtscript  
 ;mm ;mc ;mC ;mt ;* ;# ;/ ;? * #: good marks  
 
 >\<space\>h/j/k/l/w/e/b : quickly move  
 \<ctrl/shift\>¡ü/¡ý/¡û/¡ú : move resize win  
-;cl ;cn ;cp ;co ;ci : quickfix  
 \\= : generate tags  
 
 >;cal : calendar in vim  
@@ -53,15 +53,18 @@ Sb SB S\[ S" ...: add symbol
 You can test them if has similar operation.**  
 >mapleader is ,  
 
->\<f10\> ;we ;bb ;bd ;uu ;ut ;uc ;lr ;ld ;fl  
+>;cc ;cC ;ca ;cu ;cg ;cG ;cm ;cb ;ci ;cI ;cr ;cx ;cl ;cd ;cD  
 ;xA ;xa ;x$ ;xu ;xn ;xb ;xl ;xy ;xi ;xs ;xm ;x<Space> ;xx  
+;we ;bb ;bd ;uu ;ut ;uc ;lr ;ld ;fl  
+;qa ;qq ;qf ;qw ;wf ;ww ;ve ;P  
+;fg ;fu ;ff ;pp ;yx ;yy ;ds  
 ;# ;* ;/ ;? ;mt ;ma ;mc ;mm  
-;tt ;tl ;tq ;to ;tL ;cc ;ca ;cu ;cg ;cm ;cb ;cd ;cD  
-;qa ;qq ;qf ;qw ;wf ;ww ;ul ;ve ;P  
-;ci ;co ;cp ;cn ;cl ;fg ;fu ;ff ;pp ;yx ;yy ;dw  
+;tt ;tl ;tq ;to ;tL  
 
->mm ,ma ,mc ,mt ,sc ,sy ,caL ,cal  
-,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
+>,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
+mm ,ma ,mc ,mt ,sc ,sy ,caL ,cal  
+
+>\<f10\>  
 
 >... and more hotkey.  
 hope you like them :)  

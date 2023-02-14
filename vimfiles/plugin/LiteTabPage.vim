@@ -1,8 +1,8 @@
 "
 " Name: LiteTabPage, VIM plugin for GVIM 7.0 or above
-" Author: AyuanX ( ayuanx (at) gmail (dot) com )
-" Version: 1.2
-"
+" Author: AyuanX ( ayuanx|gmail|com ): v1.2
+"		  Angluca: v1.3
+" Version 1.3
 " Description:
 "
 " This is an (extremely) simple plugin, which makes VIM Tab Page functions more user-friendly. 
@@ -49,21 +49,27 @@ nnoremap <unique> <A-0> 10gt
 
 nnoremap <unique> <A-h> gT
 nnoremap <unique> <A-l> gt
-nnoremap <silent> <A-H> :call <SID>LiteTabMove(-2)<CR>
-nnoremap <silent> <A-L> :call <SID>LiteTabMove(0)<CR>
+nnoremap <silent> <A-H> :call <SID>LiteTabMove(0)<CR>
+nnoremap <silent> <A-L> :call <SID>LiteTabMove(1)<CR>
 
-function! s:LiteTabMove(idx)
-	let index = tabpagenr() + a:idx
-	if (index < 0)
-		return
+function! s:LiteTabMove(lr) "left=0,right!=0
+	let s:tmlr = a:lr == 0 ? '-' : '+'
+	let s:idx = tabpagenr()
+	if a:lr == 0
+		if (s:idx < 2)
+			return
+		endif
+	else
+		if s:idx > tabpagenr('$') - 1
+			return
+		endif
 	endif
-    silent execute 'tabmove ' . index
+    silent execute s:tmlr. 'tabmove'
 endfunction
 
 function! LiteTabLabel()
 	let label = tabpagenr().':'
 	let bufnrlist = tabpagebuflist(v:lnum)
-
 	" Add '+' if one of the buffers in the tab page is modified
 	for bufnr in bufnrlist
 		if getbufvar(bufnr, "&modified")
@@ -71,7 +77,6 @@ function! LiteTabLabel()
 			break
 		endif
 	endfor
-
 	" Append the buffer name
 	return label . fnamemodify(bufname(bufnrlist[tabpagewinnr(v:lnum)-1]), ":t")
 endfunction

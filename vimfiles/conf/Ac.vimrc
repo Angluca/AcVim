@@ -68,15 +68,15 @@ fu! AcIsOK(yn, emsg, ymsg, nmsg) "yn:-1/0/1
 	return s:ret
 endf
 
-fu! ToggleVisualEditMode()
-if !exists('s:visualEditMode')
-	let		s:visualEditMode = 1
+fu! ToggleVirtualEditMode()
+if !exists('s:vem')
+	let		s:vem = 1
 	set		ve=all
-	echo	'visual edit on'
+	echo	'virtual edit on'
 else
-	unlet	s:visualEditMode
+	unlet	s:vem
 	set		ve=
-	echo	'visual edit off'
+	echo	'virtual edit off'
 endif
 endf
 
@@ -167,7 +167,7 @@ endf
 
 func! DeleteTrailingWS(bb=0)
 	if a:bb != 0 
-	if AcIsOK(-1, "Clear trailing white space? [Y]: ", "Clear finish", "Cancel") == 0
+	if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
 		return
 	endif
 	endif
@@ -245,6 +245,7 @@ if has("unix")
 endif
 
 if has("mac")
+	set macmeta
 	set guifont=Menlo:h14
 endif
 
@@ -508,10 +509,10 @@ au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
 
 "nmap <silent> ;wss :call DeleteTrailingWS()<cr>:w<cr>
 "nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
-nmap <silent> ;dw :call DeleteTrailingWS(2)<cr>
+nmap <silent> ;ds :call DeleteTrailingWS(1)<cr>
 
 "complete
-imap <s-space> <c-x><c-o>
+"imap <s-space> <cr>
 
 "cut, copy & paste
 "vmap <a-c> <c-insert>
@@ -532,17 +533,16 @@ nmap ;ff :call FileFormatOption()<cr>
 nmap ;fu :se fenc=utf-8<cr>
 nmap ;fg :se fenc=GBK<cr>
 "quickfix
-nmap ;cl :call	ToggleQuickfix() <cr>
-nmap ;cn :cn <cr>
-nmap ;cp :cp <cr>
-nmap ;co :cold <cr>
-nmap ;ci :cnew <cr>
-"visual edit mode
-nmap ;ve :call	ToggleVisualEditMode() <cr>
-"call AcCreateMaps('ToggleVisualEditMode', ';ve')
-vmap ;ve :call	ToggleVisualEditMode() <cr>
+"nmap ;cl :call	ToggleQuickfix() <cr>
+"nmap ;cn :cn <cr>
+"nmap ;cp :cp <cr>
+"nmap ;co :cold <cr>
+"nmap ;ci :cnew <cr>
+"virtual edit mode
+"nmap ;ve :call	ToggleVisualEditMode() <cr>
+"vmap ;ve :call	ToggleVisualEditMode() <cr>
+call AcCreateMaps(':call ToggleVirtualEditMode()<cr>', ';ve')
 "undo list
-nmap ;ul :undol<cr>
 nmap ;uc :call AcClearUndo() <cr>
 
 "Fast saving
@@ -557,8 +557,8 @@ nmap <silent> ;<esc> :<esc>
 "Fast remove highlight search
 nmap <silent> ;<cr> :noh<cr>
 
-nmap <silent> ;to :tabo<cr>
-nmap <silent> ;tq :tabc<cr>
+nmap <silent> ;tn :tabnew<cr>
+nmap <silent> ;tO :tabo<cr>
 ""Fast redraw
 "nmap <silent> ;rr :redraw!<cr>
 ""Fast rewind

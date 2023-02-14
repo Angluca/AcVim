@@ -54,21 +54,24 @@ nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 
 "-------------------------
-"Custom plugins
+"bundle plugins
 "-------------------------
 """"""""""""""""""""
 "Ctrlp setting
 """"""""""""""""""""
+"let g:ctrlp_by_filename = 0
 "let g:ctrlp_use_caching = 1
-"let g:ctrlp_arg_map = 1
+"let g:ctrlp_lazy_update = 0
+"let g:ctrlp_regexp = 0
 "let g:ctrlp_follow_symlinks = 0
 "let g:ctrlp_types = ['fil', 'buf', 'mru'].
-"let g:ctrlp_mruf_include = '\.c$\|\.h$'
 "let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
-                          "\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir']
+						  "\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
+let g:ctrlp_extensions = ['tag', 'buffertag', 'dir']
+let g:ctrlp_arg_map = 1
 let g:ctrlp_tilde_homedir = 1
-let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
+"let g:ctrlp_mruf_include = '\.c$\|\.h$'
+"let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
 let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
 let g:ctrlp_max_files = 666
 let g:ctrlp_mruf_max = 66
@@ -79,21 +82,27 @@ let g:ctrlp_switch_buffer = 'Etvh'
 let g:ctrlp_open_new_file = 't' "thvr
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_clear_cache_on_exit = 1
-
-let g:ctrlp_map = ';cc'
-nmap <silent> ;cb :CtrlPBuffer<cr>
-nmap <silent> ;cm :CtrlPMRUFiles<cr>
-nmap <silent> ;cg :CtrlPTag<cr>
-nmap <silent> ;cu :CtrlPUndo<cr>
-nmap <silent> ;cx :CtrlPQuickfix<cr>
-nmap <silent> ;ca :CtrlPMixed<cr>
-nmap <silent> ;cd :CtrlPClearCache<cr>
-nmap <silent> ;cD :CtrlPClearAllCaches<cr>
 let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 			\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
 			\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 			\ }
+
+let g:ctrlp_map = ';cc'
+nmap <silent> ;cC :CtrlPChangeAll<cr>
+nmap <silent> ;cb :CtrlPBuffer<cr>
+nmap <silent> ;cm :CtrlPMRUFiles<cr>
+nmap <silent> ;cg :CtrlPTag<cr>
+nmap <silent> ;cG :CtrlPBufTagAll<cr>
+nmap <silent> ;ci :CtrlPDir<cr>
+nmap <silent> ;cI :CtrlPBookmarkDir<cr>
+nmap <silent> ;cr :CtrlPRTS<cr>
+nmap <silent> ;cu :CtrlPUndo<cr>
+nmap <silent> ;cx :CtrlPQuickfix<cr>
+nmap <silent> ;ca :CtrlPMixed<cr>
+nmap <silent> ;cl :CtrlPLine<cr>
+nmap <silent> ;cd :CtrlPClearCache<cr>
+nmap <silent> ;cD :CtrlPClearAllCaches<cr>
 """"""""""""""""""""
 "Taglist
 """"""""""""""""""""
@@ -348,8 +357,8 @@ let g:lightline = {
 "let g:undotree_RelativeTimestamp = 0
 "let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
-nmap ;ut :UndotreeToggle<cr>
-nmap ;uu :UndotreeShow<cr>:UndotreeFocus<cr>
+nmap ;ut :UndotreeToggle<cr>:UndotreeFocus<cr>
+nmap ;uu :UndotreeToggle<cr>
 
 "-------------------------
 "Custom settings
