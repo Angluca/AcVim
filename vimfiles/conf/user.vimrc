@@ -274,7 +274,6 @@ let g:EasyMotion_enter_jump_first = 1
 "EasyAlign
 """"""""""""""""""""
 vnoremap <silent> <Enter> :EasyAlign<cr>
-
 """"""""""""""""""""
 "syntasic
 """"""""""""""""""""
@@ -367,7 +366,7 @@ nmap ;uu :UndotreeToggle<cr>
 ":verbose nmap ,
 "-------------------------
 "auto-pair
-"let g:AutoPairsShortcutToggle = '<M-a>'
+"let g:AutoPairsShortcutToggle = '<a-a>'
 
 
 

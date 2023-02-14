@@ -31,7 +31,7 @@ Let's open the vim.**
 >;tt : file manage  
 ;uu ;ut ;uc: open undo tree and clear all undo  
 ;xx ...: code comment  
-;cc ;cC ;ca ;cu ;cg ;cG ;cm ;cb ;ci ;cI ;cr ;cx ;cl ;cd ;cD  
+;cc ;ce ;ca ;cu ;cg ;ct ;cm ;cM ;cb ;ci ;cr ;cx ;cl ;cs ;cd ;cD  
  --> manage buffer/file/mru/undo/tags/dir/change/mixd/rtscript  
 ;mm ;mc ;mC ;mt ;* ;# ;/ ;? * #: good marks  
 
@@ -53,13 +53,13 @@ Sb SB S\[ S" ...: add symbol
 You can test them if has similar operation.**  
 >mapleader is ,  
 
->;cc ;cC ;ca ;cu ;cg ;cG ;cm ;cb ;ci ;cI ;cr ;cx ;cl ;cd ;cD  
+>;cc ;ce ;ca ;cu ;cg ;ct ;cm ;cM ;cb ;ci ;cr ;cx ;cl ;cs ;cd ;cD  
 ;xA ;xa ;x$ ;xu ;xn ;xb ;xl ;xy ;xi ;xs ;xm ;x<Space> ;xx  
 ;we ;bb ;bd ;uu ;ut ;uc ;lr ;ld ;fl  
 ;qa ;qq ;qf ;qw ;wf ;ww ;ve ;P  
 ;fg ;fu ;ff ;pp ;yx ;yy ;ds  
 ;# ;* ;/ ;? ;mt ;ma ;mc ;mm  
-;tt ;tl ;tq ;to ;tL  
+;tt ;tl ;tL ;tO   
 
 >,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
 mm ,ma ,mc ,mt ,sc ,sy ,caL ,cal  

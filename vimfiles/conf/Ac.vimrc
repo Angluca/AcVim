@@ -557,7 +557,7 @@ nmap <silent> ;<esc> :<esc>
 "Fast remove highlight search
 nmap <silent> ;<cr> :noh<cr>
 
-nmap <silent> ;tn :tabnew<cr>
+"nmap <silent> ;to :tabnew<cr>
 nmap <silent> ;tO :tabo<cr>
 ""Fast redraw
 "nmap <silent> ;rr :redraw!<cr>
