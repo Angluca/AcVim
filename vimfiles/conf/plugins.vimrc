@@ -43,6 +43,7 @@ Plug 'zah/nim.vim'
 Plug 'ziglang/zig.vim'
 
 "Plug 'vim-scripts/VimIM'
+"Plug 'garbas/vim-snipmate'
 "Plug 'tikhomirov/vim-glsl'
 "Plug 'Rip-Rip/clang_complete'
 "Plug 'mattn/emmet-vim'

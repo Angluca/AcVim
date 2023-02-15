@@ -179,15 +179,12 @@ endfunc
 """"""""""""""""""""
 "Create directory
 """"""""""""""""""""
-let data_dir = $HOME.'/vimdata/'
-call AcCreateDir(data_dir)
-call AcCreateDir(data_dir.'backup')
-call AcCreateDir(data_dir.'swap')
-call AcCreateDir(data_dir.'cache')
-unlet data_dir
-set backupdir=$HOME/vimdata/backup " where to put backup file
-set directory=$HOME/vimdata/swap " where to put swap file
-
+call AcCreateDir($VIMDATA)
+call AcCreateDir($VIMDATA.'backup')
+call AcCreateDir($VIMDATA.'swap')
+call AcCreateDir($VIMDATA.'cache')
+set backupdir=$VIMDATA/backup " where to put backup file
+set directory=$VIMDATA/swap " where to put swap file
 """"""""""""""""""""
 "Base settings
 """"""""""""""""""""
@@ -245,7 +242,9 @@ if has("unix")
 endif
 
 if has("mac")
-	set macmeta
+	if has("gui_running")
+		set macmeta
+	endif
 	set guifont=Menlo:h14
 endif
 
@@ -367,8 +366,8 @@ endtry
 "else
 "nmap ;et :tabnew $TEMP/scratch.txt<cr>
 "endif
-set viminfo='10,\"30,!,:10,n~/vimdata/cache/_viminfo
-"set viminfo='10,\"30,:10,%,nTemp/.viminfo
+"set viminfo='10,\"30,!,:10,n~/vimdata/cache/_viminfo
+set viminfo='10,\"30,!,:10,n$VIMDATA/cache/_viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 "Don't close window, when deleting a buffer
 com! Bclose call <SID>BufcloseCloseIt()
@@ -450,7 +449,7 @@ au FileType html set syntax=html
 "Netrw
 """"""""""""""""""""
 let g:netrw_winsize = 30
-let	g:netrw_home	=	$HOME.'/vimdata/cache'
+let	g:netrw_home	= $VIMDATA.'cache'
 "nmap <silent> ;Se :Sexplore!<cr>
 
 """"""""""""""""""""

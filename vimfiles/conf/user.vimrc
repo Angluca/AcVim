@@ -72,7 +72,7 @@ let g:ctrlp_arg_map = 1
 let g:ctrlp_tilde_homedir = 1
 "let g:ctrlp_mruf_include = '\.c$\|\.h$'
 "let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
-let g:ctrlp_cache_dir = $HOME.'/vimdata/ctrlp'
+let g:ctrlp_cache_dir = $VIMDATA.'ctrlp'
 let g:ctrlp_max_files = 666
 let g:ctrlp_mruf_max = 66
 let g:ctrlp_max_depth = 44
@@ -250,10 +250,10 @@ let	g:vimwiki_menu	=	''
 let	g:vimwiki_CJK_length	=	1
 let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
 
-let	g:vimwiki_list	=	[{'path':$HOME.'/vimdata/vimwiki/',
-			\	'path_html':$HOME.'/vimdata/vimwiki/html/',
-			\	'html_header':$HOME.'/vimdata/vimwiki/template/header.tpl',
-			\	'html_footer':$HOME.'/vimdata/vimwiki/template/footer.tpl',
+let	g:vimwiki_list	=	[{'path':$VIMDATA.'/vimwiki/',
+			\	'path_html':$VIMDATA.'/gevimwiki/html/',
+			\	'html_header':$VIMDATA.'/gevimwiki/template/header.tpl',
+			\	'html_footer':$VIMDATA.'/gevimwiki/template/footer.tpl',
 			\	'diary_link_count':8}]
 
 """"""""""""""""""""
@@ -367,7 +367,5 @@ nmap ;uu :UndotreeToggle<cr>
 ":verbose nmap ,
 "-------------------------
 "auto-pair
-"let g:AutoPairsShortcutToggle = '<a-a>'
-
-
+"let g:AutoPairsShortcutToggle = '<m-a>'
 

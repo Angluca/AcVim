@@ -45,28 +45,32 @@ au FileType nim,nims set tags+=./nimtags,./../nimtags
 
 
 """"""""""""""
-" acp base
+" acp base 
 """"""""""""""
-"let g:acp_behaviorRubyOmniMethodLength = 0
-"let g:acp_behaviorRubyOmniSymbolLength = 1
-"let g:acp_behaviorPerlOmniLength = -1
-"let g:acp_behaviorPythonOmniLength = 0
-"let g:acp_behaviorXmlOmniLength = 0
-"let g:acp_behaviorHtmlOmniLength = 0
-"let g:acp_behaviorCssOmniPropertyLength = 1
+" -1=nopop
+let g:acp_behaviorRubyOmniMethodLength = 2
+let g:acp_behaviorRubyOmniSymbolLength = 1
+let g:acp_behaviorPerlOmniLength = 2
+let g:acp_behaviorPythonOmniLength = 2
+let g:acp_behaviorXmlOmniLength = 1
+let g:acp_behaviorHtmlOmniLength = 1
+let g:acp_behaviorCssOmniPropertyLength = 1
+let g:acp_behaviorCssOmniValueLength = 1
 
-let g:acp_enableAtStartup = 1
 let g:acp_behaviorKeywordLength=2
-let g:acp_ignorecaseOption = 1
-"let g:acp_mappingDriven = 1
-"let g:acp_behaviorSnipmateLength = 1
-"let g:acp_completeoptPreview = 1
+let g:acp_behaviorSnipmateLength = -1
+let g:acp_behaviorFileLength = 1
 "let g:acp_behaviorUserDefinedFunction = ''
 "let g:acp_behaviorUserDefinedMeets = ''
 "let g:acp_behaviorKeywordCommand = "\<C-n>"
 "let g:acp_behaviorKeywordIgnores = []
-"let g:acp_behaviorFileLength = 0
 "let g:acp_behavior = {}
+
+
+let g:acp_enableAtStartup = 1
+let g:acp_ignorecaseOption = 1
+"let g:acp_mappingDriven = 1
+"let g:acp_completeoptPreview = 1
 let g:acp_completeOption='.,w,b,u,t,i,k'
 
 """"""""""""""""""""

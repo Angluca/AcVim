@@ -1,3 +1,3 @@
-pwd |xargs -i ln -s {}/_vimrc $HOME/.vimrc 
-pwd |xargs -i ln -s {}/vimfiles $HOME/.vim 
+ln -s $PWD/_vimrc $HOME/.vimrc
+ln -s $PWD/vimfiles $HOME/.vim 
 echo "setup finish"
