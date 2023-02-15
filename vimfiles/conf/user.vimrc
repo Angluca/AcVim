@@ -82,21 +82,22 @@ let g:ctrlp_switch_buffer = 'Etvh'
 let g:ctrlp_open_new_file = 't' "thvr
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_clear_cache_on_exit = 1
-let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
-			\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-			\ }
+"let g:ctrlp_custom_ignore = {
+			"\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+			"\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
+			"\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+			"\ }
 
 let g:ctrlp_map = ';cc'
-nmap <silent> ;cC :CtrlPChangeAll<cr>
+nmap <silent> ;ce :CtrlPChangeAll<cr>
 nmap <silent> ;cb :CtrlPBuffer<cr>
-nmap <silent> ;cm :CtrlPMRUFiles<cr>
-nmap <silent> ;cg :CtrlPTag<cr>
-nmap <silent> ;cG :CtrlPBufTagAll<cr>
+nmap <silent> ;cr :CtrlPMRUFiles<cr>
+nmap <silent> ;ct :CtrlPTag<cr>
+nmap <silent> ;cg :CtrlPBufTagAll<cr>
 nmap <silent> ;ci :CtrlPDir<cr>
-nmap <silent> ;cI :CtrlPBookmarkDir<cr>
-nmap <silent> ;cr :CtrlPRTS<cr>
+nmap <silent> ;cm :CtrlPBookmarkDir<cr>
+nmap <silent> ;cM :CtrlPBookmarkDirAdd<cr>
+nmap <silent> ;cs :CtrlPRTS<cr>
 nmap <silent> ;cu :CtrlPUndo<cr>
 nmap <silent> ;cx :CtrlPQuickfix<cr>
 nmap <silent> ;ca :CtrlPMixed<cr>
