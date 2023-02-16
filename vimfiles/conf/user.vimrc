@@ -5,7 +5,6 @@
 "Sketch seting
 """"""""""""""""""""
 nmap <F10> :call ToggleSketch()<CR>
-"imap <F10> <esc>
 """"""""""""""""""""
 "ShowMarks seting
 """"""""""""""""""""
@@ -27,22 +26,21 @@ let g:proj_window_increment = 50
 """"""""""""""""""""
 let errormarker_disablemappings = 1
 """"""""""""""""""""
-"DoxygenToolkit
-""""""""""""""""""""
-let g:DoxygenToolkit_briefTag_pre="@Synopsis  "
-let g:DoxygenToolkit_paramTag_pre="@Param "
-let g:DoxygenToolkit_returnTag="@Returns   "
-let g:DoxygenToolkit_blockHeader="-------------------------------------------"
-let g:DoxygenToolkit_blockFooter="-------------------------------------------"
-let g:DoxygenToolkit_authorName="name"
-let g:DoxygenToolkit_authorEmail="my@mail"
-""""""""""""""""""""
 "EchoFunc
 """"""""""""""""""""
-"mouse cant show function
+"let mouse dont show func = 0
 let g:EchoFuncAutoStartBalloonDeclaration = 0
-"let g:EchoFuncKeyNext=',ew'
-"let g:EchoFuncKeyPrev=',er'
+"let g:EchoFuncBallonOnly = 1
+"let g:EchoFuncShowOnStatus = 1
+let g:EchoFuncKeyNext='<m-=>'
+let g:EchoFuncKeyPrev='<m-->'
+"use EchoFunc on all file if no set
+"let g:EchoFuncLangsUsed = ["java","cpp"]
+"let g:EchoFuncPathMappingEnabled = 1
+"let g:EchoFuncPathMapping = [
+			"\ [expand("$VIMDICT") , '$VIMDICT']
+			"\]
+
 """"""""""""""""""""
 "qbuf
 """"""""""""""""""""
@@ -112,9 +110,10 @@ nmap <silent> ;cD :CtrlPClearAllCaches<cr>
 "elseif has("unix")
 	"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 "endif
-let Tlist_Show_One_File = 0
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 0
+let Tlist_Auto_Highlight_Tag = 1
+let Tlist_Auto_Update = 0
 let Tlist_Auto_Open = 0
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Show_One_File = 1 " Displaying tags for only one file~
@@ -122,15 +121,15 @@ let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself
 let Tlist_Use_Right_Window = 1 " split to the right side of the screen
 let Tlist_Sort_Type = "order" " sort by order or name
 let Tlist_Display_Prototype = 0 " do not show prototypes and not tags in the taglist window.
-let Tlist_Compart_Format = 1 " Remove extra information and blank lines from the taglist window.
 let Tlist_GainFocus_On_ToggleOpen = 1 " Jump to taglist window on open.
 let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
 let Tlist_Close_On_Select = 1 " Close the taglist window when a file or tag is selected.
 let Tlist_BackToEditBuffer = 0 " If no close on select, let the user choose back to edit buffer or not
 let Tlist_Enable_Fold_Column = 0 " Don't Show the fold indicator column in the taglist window.
-let Tlist_WinWidth = 20
-let Tlist_Compact_Format = 1 " do not show help
-"let tlist_hlsl_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
+let Tlist_WinWidth = 30
+"let Tlist_Max_Submenu_Items = 30
+let Tlist_Compact_Format = 0 " do not show help
+let tlist_zig_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
 nmap <silent> ;tL :Tlist<cr>
 
 """"""""""""""""""""
@@ -142,52 +141,12 @@ let g:tagbar_width = 28
 let g:tagbar_autofocus = 1
 let g:tagbar_compact = 1
 "let g:tagbar_sort = 0
-"let g:tagbar_expand = 1
+"let g:tagbar_expand = 0
 "let g:tagbar_singleclick = 1
 "let g:tagbar_foldlevel = 2
-"let g:tagbar_systemenc = 'cp936'
+"let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
 nmap <silent> ;tl :TagbarToggle<cr>
-""""""""""""""""""""
-"Omnicppcompl setting
-""""""""""""""""""""
-if has("win32")
-	"au FileType c,cpp set tags +=$VIMDICT/winxtags
-endif
-au FileType c,cpp set tags +=$VIMDICT/cpptags
-
-" set completeopt as don't show menu and preview
-set completeopt=menuone
-" use global scope search
-let OmniCpp_GlobalScopeSearch = 1
-" 0 = namespaces disabled
-" 1 = search namespaces in the current buffer
-" 2 = search namespaces in the current buffer and in included files
-let OmniCpp_NamespaceSearch = 1
-" 0 = auto
-" 1 = always show all members
-"let OmniCpp_DisplayMode = 1
-" 0 = don't show scope in abbreviation
-" 1 = show scope in abbreviation and remove the last column
-let OmniCpp_ShowScopeInAbbr = 0
-" This option allows to display the prototype of a function in the abbreviation part of the popup menu.
-" 0 = don't display prototype in abbreviation
-" 1 = display prototype in abbreviation
-let OmniCpp_ShowPrototypeInAbbr = 1
-" This option allows to show/hide the access information ('+', '#', '-') in the popup menu.
-" 0 = hide access
-" 1 = show access
-let OmniCpp_ShowAccess = 1
-" This option can be use if you don't want to parse using namespace declarations in included files and want to add namespaces that are always used in your project.
-let OmniCpp_DefaultNamespaces = ["std","_GLIBCXX_STD"]
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-""""""""""""""""""""
-"Neocomplete
-""""""""""""""""""""
-"so $VIMCONF/vneocomplete.conf
-"nmap <silent> \nn :call SwitchToBuf("$VIMCONF/neocomplete.vimrc")<cr>
 """"""""""""""""""""
 "NERDTree seting
 """"""""""""""""""""
@@ -214,12 +173,12 @@ nmap <silent> ;mc <Plug>MarkClear
 nmap <silent> ;mC <Plug>MarkAllClear
 nmap <silent> ;mt <Plug>MarkToggle
 
-nmap <silent> ;* <Plug>MarkSearchCurrentNext
-nmap <silent> ;# <Plug>MarkSearchCurrentPrev
+nmap <silent> ;n <Plug>MarkSearchCurrentNext
+nmap <silent> ;N <Plug>MarkSearchCurrentPrev
 nmap <silent> ;/ <Plug>MarkSearchAnyNext
 nmap <silent> ;? <Plug>MarkSearchAnyPrev
-nmap <silent> * <Plug>MarkSearchNext
-nmap <silent> # <Plug>MarkSearchPrev
+"nmap <silent> * <Plug>MarkSearchNext
+"nmap <silent> # <Plug>MarkSearchPrev
 """"""""""""""""""""
 "NERD_commenter setting
 """"""""""""""""""""
@@ -250,10 +209,10 @@ let	g:vimwiki_menu	=	''
 let	g:vimwiki_CJK_length	=	1
 let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
 
-let	g:vimwiki_list	=	[{'path':$VIMDATA.'/vimwiki/',
-			\	'path_html':$VIMDATA.'/gevimwiki/html/',
-			\	'html_header':$VIMDATA.'/gevimwiki/template/header.tpl',
-			\	'html_footer':$VIMDATA.'/gevimwiki/template/footer.tpl',
+let	g:vimwiki_list	=	[{'path':$VIMDATA.'vimwiki/',
+			\	'path_html':$VIMDATA.'gevimwiki/html/',
+			\	'html_header':$VIMDATA.'gevimwiki/template/header.tpl',
+			\	'html_footer':$VIMDATA.'gevimwiki/template/footer.tpl',
 			\	'diary_link_count':8}]
 
 """"""""""""""""""""
@@ -303,15 +262,6 @@ let g:clever_f_smart_case = 0
 let g:clever_f_fix_key_direction = 1
 let g:clever_f_show_prompt = 0
 """"""""""""""""""""
-"airline
-""""""""""""""""""""
-set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_min_count = 2
-let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#show_close_button = 0
-""""""""""""""""""""
 "clang_complete
 """"""""""""""""""""
 let g:clang_use_library=1
@@ -340,17 +290,14 @@ let g:ycm_global_ycm_extra_conf = $VIM .'/bundle/YouCompleteMe/cpp/ycm/.ycm_extr
 """"""""""""""""""""
 "vim-markdown
 """"""""""""""""""""
-"let g:vim_markdown_folding_disabled=1
-"
-let g:vim_markdown_initial_foldlevel=3
+let g:vim_markdown_folding_disabled=1
+"let g:vim_markdown_initial_foldlevel=3
 
 """"""""""""""""""""
 "lightline
 """"""""""""""""""""
 set laststatus=2
-let g:lightline = {
-	  \ 'colorscheme': 'jellybeans',
-	  \ }
+let g:lightline = {'colorscheme': 'jellybeans',}
 """"""""""""""""""""
 "undotree
 """"""""""""""""""""
@@ -366,6 +313,4 @@ nmap ;uu :UndotreeToggle<cr>
 ":verbose nmap ;
 ":verbose nmap ,
 "-------------------------
-"auto-pair
-"let g:AutoPairsShortcutToggle = '<m-a>'
-
+"

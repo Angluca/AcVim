@@ -32,17 +32,17 @@ au BufNewFile,BufRead *.wxml setl ft=html
 au BufNewFile,BufRead *.wxss setl ft=css
 
 " automaticlly remove trailing whitespace
-"au BufWrite *.* call DeleteTrailingWS() "All kill!!!?
-"au BufWrite *.txt call DeleteTrailingWS()
-au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DeleteTrailingWS()
+"au BufWrite *.* call DelTWS() "All kill!!!?
+"au BufWrite *.txt call DelTWS()
+au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :call DelTWS()
 
-au BufWrite *.nim,*.nims,*.zig :call DeleteTrailingWS()
+au BufWrite *.nim,*.nims,*.zig :call DelTWS()
 
 "for nim language
 au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/^[^\#]*\s+(\w+)\*\s*\{.*\}/\1/t,type/" --regex-nim="/^[^\#]*\s+(\w+)\*.*=/\1/t,type/" --regex-nim="/^[^\#]*proc\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*method\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*auto\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*template\s+(\w+)\*/\1/m,macro/" --regex-nim="/^[^\#]*macro\s+(\w+)\*/\1/m,macro/" --regex-nim="/^[^\#]*\s+`(\w+)[=]?`\*/\1/o,operator/" --regex-nim="/^[^\#]*iterator\s+(\w+)\*/\1/i,iterator/" -f nimtags <cr>{{{}}}
 
-au FileType nim,nims set tags+=./nimtags,./../nimtags
-
+au FileType nim,nims set tags+=$VIMDICT/nimtags,./nimtags
+au FileType c,cpp set tags +=$VIMDICT/cpptags
 
 """"""""""""""
 " acp base 
@@ -74,33 +74,41 @@ let g:acp_ignorecaseOption = 1
 let g:acp_completeOption='.,w,b,u,t,i,k'
 
 """"""""""""""""""""
-" complete option
+" acp dict
 """"""""""""""""""""
-"fu! s:SetCpOpt(ft, opt)
-	"exec 'au FileType ' . a:ft . " let g:acp_completeOption='" . a:opt ."'"
-"endf
-"call s:SetCpOpt("zig", '.,w,b,u,t,i,k')
-"call s:SetCpOpt("vim", '.,w,b,u,t,i,k'.$VIMDICT.'/vim.dict')
+fun! SetFiletypeDict(ft, df, op=0)
+	if len(a:df) < 3 || a:ft == ''
+		return
+	endif
+	let s:cp = a:op == '' ? g:acp_completeOption : a:op
+
+	exe 'au FileType ' . a:ft . " let g:acp_completeOption='".s:cp . a:df ."'"
+	"echow a:op."op:". len(a:op) .'!!!'
+	"echow s:cp."cp:". len(s:cp) .'@@@'
+	"exe 'au FileType ' .a:ft. ' echow "' .a:ft. ' dict ='.a:df .'"'
+endf
+
 if has("win32")
-	au FileType asm let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/win32.dict'
-	au FileType c,cpp let g:acp_completeOption='.,w,b,u,i,k'.$VIMDICT.'/win32.dict,k'.$VIMDICT.'/c.dict,k'.$VIMDICT.'/cpp.dict'
+	call SetFiletypeDict('asm', $VIMDICT.'win32.dict')
+	call SetFiletypeDict('c,cpp', $VIMDICT.'win32.dict,k'.$VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict', '.,w,b,u,i,k')
 else
-	au FileType c,cpp let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/c.dict,k'.$VIMDICT.'/cpp.dict'.',k'.$VIMDICT.'/gl.dict'
+	"au FileType c,cpp let g:acp_completeOption= $VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict'.',k'.$VIMDICT.'gl.dict'
+	call SetFiletypeDict('c,cpp', $VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict'.',k')
 endif
-au FileType java let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/java.dict'
-au FileType js let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/javascript.dict'
-au FileType vim let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/vim.dict'
-au FileType perl let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/perl.dict'
-au FileType php let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/php.dict,k'.$VIMDICT.'/html.dict'
-au FileType html let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/javascript.dict,k'.$VIMDICT.'/html.dict,k'.$VIMDICT.'/html5.dict'
-au FileType actionscript let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/as3.dict'
-au FileType sh let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/bash.dict'
-"au BufNewFile,BufRead *.nut let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/squirrel.dict'
-au FileType squirrel let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/squirrel.dict'
-au FileType lua let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/lua.dict'
-au FileType nim let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/nim.dict'
-au FileType zig let g:acp_completeOption='.,w,b,u,t,i,k'.$VIMDICT.'/c.dict,k'.$VIMDICT.'/cpp.dict'
-"au FileType zig let g:acp_completeOption='.,w,b,u,t,i,k'
-"au FileType lua setl tags+=$VIMDICT/quick2dx.tags
-"au FileType lua setl dict+=$VIMDICT/quick2dx.tags
+call SetFiletypeDict('java', $VIMDICT.'java.dict')
+call SetFiletypeDict('js', $VIMDICT.'javascript.dict')
+call SetFiletypeDict('vim', $VIMDICT.'vim.dict')
+call SetFiletypeDict('perl', $VIMDICT.'perl.dict')
+call SetFiletypeDict('php', $VIMDICT.'php.dict,k'.$VIMDICT.'html.dict')
+call SetFiletypeDict('html', $VIMDICT.'javascript.dict,k'.$VIMDICT.'html.dict,k'.$VIMDICT.'html5.dict')
+call SetFiletypeDict('actionscript', $VIMDICT.'as3.dict')
+call SetFiletypeDict('sh', $VIMDICT.'bash.dict')
+"au BufNewFile,BufRead *.nut let g:acp_completeOption= $VIMDICT.'squirrel.dict'
+call SetFiletypeDict('squirrel', $VIMDICT.'squirrel.dict')
+call SetFiletypeDict('lua', $VIMDICT.'lua.dict')
+call SetFiletypeDict('nim', $VIMDICT.'nim.dict')
+call SetFiletypeDict('zig', $VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict', '.,w,b,k')
+"call SetFiletypeDict('zig','.,w,b,u,t,i,k')
+"au FileType lua setl tags+=$VIMDICTquick2dx.tags
+"au FileType lua setl dict+=$VIMDICTquick2dx.tags
 

@@ -1,5 +1,5 @@
 " ============================================================================
-"    Copyright: Copyright (C) 2007,2010 Michael Hofmann
+"    Copyright: Copyright (C) 2007,2016 Michael Hofmann
 "               Permission is hereby granted to use and distribute this code,
 "               with or without modifications, provided that this copyright
 "               notice is copied with it. Like anything else that's free,
@@ -9,7 +9,7 @@
 "               resulting from the use of this software.
 " Name Of File: errormarker.vim
 "  Description: Sets markers for compile errors
-"   Maintainer: Michael Hofmann (mh21 at piware dot de)
+"   Maintainer: Michael Hofmann (mh21 at mh21 dot de)
 "      Version: See g:loaded_errormarker for version number.
 "        Usage: Normally, this file should reside in the plugins
 "               directory and be automatically sourced. If not, you must
@@ -33,15 +33,21 @@ if exists("g:loaded_errormarker") || &compatible
 endif
 
 " Version number.
-let g:loaded_errormarker = "0.1.13"
+let g:loaded_errormarker = "0.2.2"
 
 let s:save_cpo = &cpo
 set cpo&vim
 
-command ErrorAtCursor call ShowErrorAtCursor()
+command ErrorAtCursor call s:ShowErrorAtCursor()
+command RemoveErrorMarkers call s:RemoveErrorMarkers()
+
 if !hasmapto(":ErrorAtCursor<cr>", "n") &&
             \ (!exists('g:errormarker_disablemappings') || !g:errormarker_disablemappings)
-	nmap <silent> <unique> <Leader>_cc :ErrorAtCursor<CR>
+    nmap <silent> <unique> <Leader>cc :ErrorAtCursor<CR>
+endif
+if !hasmapto(":RemoveErrorMarkers<cr>", "n") &&
+            \ (!exists('g:errormarker_disablemappings') || !g:errormarker_disablemappings)
+    nmap <silent> <unique> <Leader>cr :RemoveErrorMarkers<CR>
 endif
 
 function! s:DefineVariable(name, default)
@@ -52,27 +58,25 @@ endfunction
 
 " === Variables =========================================================={{{1
 
+let s:iconpath = expand("<sfile>:h:h") . "/icons/"
+
 " Defines the icon to show for errors in the gui
-call s:DefineVariable("g:errormarker_erroricon",
-            \ has('win32') ? expand("~/vimfiles/icons/error.bmp") :
-                \ "/usr/share/icons/gnome/16x16/status/dialog-error.png")
+call s:DefineVariable("g:errormarker_erroricon", s:iconpath . "error.ico")
 
 " Defines the icon to show for warnings in the gui
-call s:DefineVariable("g:errormarker_warningicon",
-            \ has('win32') ? expand("~/vimfiles/icons/warning.bmp") :
-                \ "/usr/share/icons/gnome/16x16/status/dialog-warning.png")
+call s:DefineVariable("g:errormarker_warningicon", s:iconpath . "warning.ico")
 
-" Defines the text (two characters) to show for errors in the gui
+" Defines the text (two characters) to show in the gui
 call s:DefineVariable("g:errormarker_errortext", "EE")
-
-" Defines the text (two characters) to show for warnings in the gui
 call s:DefineVariable("g:errormarker_warningtext", "WW")
 
-" Defines the highlighting group to use for errors in the gui
-call s:DefineVariable("g:errormarker_errorgroup", "Todo")
-
-" Defines the highlighting group to use for warnings in the gui
+" Defines the highlighting group to use in the gui
+call s:DefineVariable("g:errormarker_errorgroup", "ErrorMsg")
 call s:DefineVariable("g:errormarker_warninggroup", "Todo")
+
+" Defines the highlighting group to use for the marker in the gui
+call s:DefineVariable("g:errormarker_errortextgroup", "ErrorMsg")
+call s:DefineVariable("g:errormarker_warningtextgroup", "Todo")
 
 " Defines the error types that should be treated as warning
 call s:DefineVariable("g:errormarker_warningtypes", "wW")
@@ -89,19 +93,25 @@ if filereadable(g:errormarker_warningicon)
     let s:warningicon = " icon=" . escape(g:errormarker_warningicon, '| \')
 endif
 execute "sign define errormarker_error text=" . g:errormarker_errortext .
-            \ " linehl=" . g:errormarker_errorgroup . s:erroricon
+            \ " linehl=" . g:errormarker_errorgroup .
+            \ " texthl=" . g:errormarker_errortextgroup .
+            \ s:erroricon
 
 execute "sign define errormarker_warning text=" . g:errormarker_warningtext .
-            \ " linehl=" . g:errormarker_warninggroup . s:warningicon
+            \ " linehl=" . g:errormarker_warninggroup .
+            \ " texthl=" . g:errormarker_warningtextgroup .
+            \ s:warningicon
 
-" Setup the autocommands that handle the MRUList and other stuff.
+let s:positions = {}
+
+" Setup the autocommands
 augroup errormarker
     autocmd QuickFixCmdPost make call <SID>SetErrorMarkers()
 augroup END
 
 " === Functions =========================================================={{{1
 
-function! ShowErrorAtCursor()
+function! s:ShowErrorAtCursor()
     let [l:bufnr, l:lnum] = getpos(".")[0:1]
     let l:bufnr = bufnr("%")
     for l:d in getqflist()
@@ -113,25 +123,39 @@ function! ShowErrorAtCursor()
     echo
 endfunction
 
+function! s:RemoveErrorMarkers()
+    for l:key in keys(s:positions)
+        execute ":sign unplace " . l:key
+    endfor
+
+    let s:positions = {}
+
+    if !has('gui_running')
+        redraw!
+    endif
+endfunction
+
 function! s:SetErrorMarkers()
     if has ('balloon_eval')
         let &balloonexpr = "<SNR>" . s:SID() . "_ErrorMessageBalloons()"
         set ballooneval
     endif
 
-    sign unplace *
+    for l:key in keys(s:positions)
+        execute ":sign unplace " . l:key
+    endfor
 
-    let l:positions = {}
+    let s:positions = {}
     for l:d in getqflist()
         if (l:d.bufnr == 0 || l:d.lnum == 0)
             continue
         endif
 
         let l:key = l:d.bufnr . l:d.lnum
-        if has_key(l:positions, l:key)
+        if has_key(s:positions, l:key)
             continue
         endif
-        let l:positions[l:key] = 1
+        let s:positions[l:key] = 1
 
         if strlen(l:d.type) &&
                     \ stridx(g:errormarker_warningtypes, l:d.type) >= 0
@@ -142,6 +166,10 @@ function! s:SetErrorMarkers()
         execute ":sign place " . l:key . " line=" . l:d.lnum . " name=" .
                     \ l:name . " buffer=" . l:d.bufnr
     endfor
+
+    if !has('gui_running')
+        redraw!
+    endif
 endfunction
 
 function! s:ErrorMessageBalloons()
@@ -157,12 +185,9 @@ function! s:SID()
     return matchstr(expand('<sfile>'), '<SNR>\zs\d\+\ze_SID$')
 endfunction
 
-" === Help file installation ============================================={{{1
-" Original version: Copyright (C) Mathieu Clabaut, author of vimspell
-" http://www.vim.org/scripts/script.php?script_id=465
 " === Cleanup ============================================================{{{1
 
 let &cpo = s:save_cpo
-
 finish
+
 " vim:ft=vim foldmethod=marker tw=78

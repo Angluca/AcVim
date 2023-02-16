@@ -67,6 +67,9 @@ endif
 if !exists("g:user_defined_snippets")
     let g:user_defined_snippets = "$VIMRUNTIME/plugin/my_snippets.vim"
 endif
+if !exists("g:user_snippet_dir")
+    let g:user_snippet_dir = $VIM.'template/snippets/'
+endif
 
 " ----------------------------
 let s:expanded = 0  "in case of inserting char after expand
@@ -74,9 +77,17 @@ let s:signature_list = []
 let s:jumppos = -1
 let s:doappend = 1
 
+"let g:user_snippet_dir = ''
 " Autocommands: {{{1
 "autocmd BufReadPost,BufNewFile * call CodeCompleteStart()
-autocmd BufReadPost,BufNewFile *.cc,*.cpp,*.cxx,*.hpp,*.[ch] call CodeCompleteStart()
+"autocmd BufReadPost,BufNewFile *.cc,*.cpp,*.cxx,*.hpp,*.[ch] call CodeCompleteStart()
+fun! SetFileTypeSnippet(ft, tpf)
+    exe 'au FileType ' .a:ft. ' silent! runtime '.g:user_snippet_dir.a:tpf
+    exe 'au FileType ' .a:ft. ' call CodeCompleteStart()'
+    exe 'au FileType ' .a:ft. ' echow "' .a:ft. ' 22222222silent! runtime '.g:user_snippet_dir. a:tpf .'"'
+    "echow '!!!'. g:user_snippet_dir. '/'. a:tpf
+endf
+call SetFileTypeSnippet('cpp', 'c_c.vim')
 
 " Menus:
 "menu <silent>       &Tools.Code\ Complete\ Start          :call CodeCompleteStart()<CR>
@@ -87,6 +98,7 @@ autocmd BufReadPost,BufNewFile *.cc,*.cpp,*.cxx,*.hpp,*.[ch] call CodeCompleteSt
 function! CodeCompleteStart()
     "exec "silent! iunmap  <buffer> ".g:completekey
     exec "inoremap <buffer> ".g:completekey." <c-r>=CodeComplete()<cr><c-r>=SwitchRegion()<cr>"
+    echow '!!!'. g:user_snippet_dir
 endfunction
 
 function! CodeCompleteStop()
@@ -262,16 +274,18 @@ let g:template['c']['dunion'] = "union ".g:rs."...".g:re." \<cr>{\<cr>".g:rs."..
 " ---------------------------------------------
 " C++ templates
 let g:template['cpp'] = g:template['c']
-let g:template['cpp']['dclass'] = "class ".g:rs."...".g:re." \<cr>{\<cr>\<BS>public:\<cr>".g:rs."...".g:re."\<cr>};"
+"let g:template['cpp']['dclass'] = "class ".g:rs."...".g:re." \<cr>{\<cr>\<BS>public:\<cr>".g:rs."...".g:re."\<cr>};"
 
 
 " ---------------------------------------------
 " common templates
 let g:template['_'] = {}
+let g:template['_']['xt'] = "\<c-r>=strftime(\"%Y-%m-%d %H:%M:%S\")\<cr>"
 
 " ---------------------------------------------
 " load user defined snippets
-exec "silent! runtime ".g:user_defined_snippets
+"exec "silent! runtime ".g:user_defined_snippets
+"exec "silent! runtime ".g:user_snippet_dir. 'c_c.vim'
 
 
 " vim: set fdm=marker et :

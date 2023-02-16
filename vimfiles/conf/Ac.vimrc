@@ -165,7 +165,8 @@ fu! <SID>BufcloseCloseIt()
 	endif
 endf
 
-func! DeleteTrailingWS(bb=0)
+func! DelTWS(bb=0)
+"DeleteTrailingWS
 	if a:bb != 0 
 	if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
 		return
@@ -455,8 +456,8 @@ let	g:netrw_home	= $VIMDATA.'cache'
 """"""""""""""""""""
 "User base options
 """"""""""""""""""""
-"My information
-iab actime <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+"time
+iab xt <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 "edit vimrc enable fold
 set fdm=marker
 "au BufRead,BufNewFile Ac.vimrc setl fdm=marker fen
@@ -506,9 +507,9 @@ nmap $ g$
 
 au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
 
-"nmap <silent> ;wss :call DeleteTrailingWS()<cr>:w<cr>
-"nmap <silent> ;wsf :call DeleteTrailingWS()<cr>:w!<cr>
-nmap <silent> ;ds :call DeleteTrailingWS(1)<cr>
+"nmap <silent> ;wss :call DelTWS()<cr>:w<cr>
+"nmap <silent> ;wsf :call DelTWS()<cr>:w!<cr>
+nmap <silent> ;ds :call DelTWS(1)<cr>
 
 "complete
 "imap <s-space> <cr>
@@ -522,11 +523,11 @@ nmap ;yx V"+x
 vmap ;yx "+x
 nmap ;pp "*gP
 vmap ;pp "*gP
-nmap <a-c> "+y
-vmap <a-c> "+y
-nmap <a-v> "*gP
-vmap <a-v> "*gP
-imap <a-v> "*gP
+nmap <m-c> "+y
+vmap <m-c> "+y
+nmap <m-v> "*gP
+vmap <m-v> "*gP
+imap <m-v> "*gP
 "file type
 nmap ;ff :call FileFormatOption()<cr>
 nmap ;fu :se fenc=utf-8<cr>

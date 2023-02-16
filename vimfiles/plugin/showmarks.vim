@@ -3,8 +3,8 @@
 " Description:   Visually displays the location of marks.
 " Authors:       Anthony Kruize <trandor@labyrinth.net.au>
 "                Michael Geddes <michaelrgeddes@optushome.com.au>
-" Version:       2.2
-" Modified:      17 August 2004
+" Version:       2.3
+" Modified:      2.16.2023
 " License:       Released into the public domain.
 " ChangeLog:     See :help showmarks-changelog
 "
@@ -392,7 +392,7 @@ fun! s:ShowMarks()
 					exe 'hi link '.s:ShowMarksDLink{nm}.nm.' '.b:ShowMarksLink{nm}
 				endif
 				let mark_at{ln} = nm
-				if !exists('b:placed_'.nm) || b:placed_{nm} != ln
+				if ln > 0 && (!exists('b:placed_'.nm) || b:placed_{nm} != ln)
 					exe 'sign unplace '.id.' buffer='.winbufnr(0)
 					exe 'sign place '.id.' name=ShowMark'.nm.' line='.ln.' buffer='.winbufnr(0)
 					let b:placed_{nm} = ln
