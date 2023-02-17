@@ -33,15 +33,14 @@ Let's open the vim.**
 ;xx ...: code comment  
 ;cc ;ce ;ca ;cu ;cg ;ct ;cm ;cM ;cb ;ci ;cr ;cx ;cl ;cs ;cd ;cD  
  --> manage buffer/file/mru/undo/tags/dir/change/mixd/rtscript  
-;mm ;mc ;mC ;mt ;* ;# ;/ ;? * #: good marks  
+;mm ;mc ;mC ;mt ;n ;N ;/ ;?: good marks  
 
 >\<space\>h/j/k/l/w/e/b : quickly move  
 \<ctrl/shift\>¡ü/¡ý/¡û/¡ú : move resize win  
 \\= : generate tags  
 
->;cal : calendar in vim  
-;hm ...: convert 0xff byte  
-<f10>: draw!
+>;hm ...: convert 0xff byte  
+\<f10\>: draw!
 
 >ysiwb ysawB ysib" : add symbol for words  
 csb" cs\[\( ... : revise symbol  
@@ -62,7 +61,7 @@ You can test them if has similar operation.**
 ;tt ;tl ;tL ;tO   
 
 >,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
-mm ,ma ,mc ,mt ,sc ,sy ,caL ,cal  
+mm ,ma ,mc ,mt ,sc ,sy  
 
 >\<f10\>  
 

@@ -471,15 +471,15 @@ let g:wm_move_x = 20
 let g:wm_move_y = 15
 
 "Bash like
-cmap <C-A> <Home>
-cmap <C-E> <End>
-cmap <C-B> <Left>
-cmap <C-F> <Right>
+cmap <c-a> <Home>
+cmap <c-e> <End>
+cmap <c-b> <Left>
+cmap <c-f> <Right>
 
-imap <C-A> <C-O>^
-imap <C-E> <End>
-imap <C-B> <Left>
-imap <C-F> <Right>
+imap <c-a> <C-O>^
+imap <c-e> <End>
+imap <c-b> <Left>
+imap <c-f> <Right>
 
 "Smart way to move btw. windows
 nmap <C-j> <C-W>j
@@ -496,6 +496,8 @@ nmap j gj
 nmap k gk
 nmap ^ g^
 nmap $ g$
+xno < <gv
+xno > >gv
 "nmap 0 g0
 
 "vn <C-S-X> "+x
