@@ -41,8 +41,12 @@ au BufWrite *.nim,*.nims,*.zig :call DelTWS()
 "for nim language
 au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/^[^\#]*\s+(\w+)\*\s*\{.*\}/\1/t,type/" --regex-nim="/^[^\#]*\s+(\w+)\*.*=/\1/t,type/" --regex-nim="/^[^\#]*proc\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*method\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*auto\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*template\s+(\w+)\*/\1/m,macro/" --regex-nim="/^[^\#]*macro\s+(\w+)\*/\1/m,macro/" --regex-nim="/^[^\#]*\s+`(\w+)[=]?`\*/\1/o,operator/" --regex-nim="/^[^\#]*iterator\s+(\w+)\*/\1/i,iterator/" -f nimtags <cr>{{{}}}
 
-au FileType nim,nims set tags+=$VIMDICT/nimtags,./nimtags
-au FileType c,cpp set tags +=$VIMDICT/cpptags
+"g/^\(\k\+\t\).*$\n\1.*/d
+"$ziglib in tags
+let $ZIGLIB = $HOME.'/SDK/zig/bin/lib'
+au FileType nim,nims setl tags+=$VIMDICT/nimtags,./nimtags
+au FileType c,cpp setl tags +=$VIMDICT/cpptags
+au FileType zig setl tags +=$VIMDICT/zigtags
 
 """"""""""""""
 " acp base 
@@ -71,20 +75,33 @@ let g:acp_enableAtStartup = 1
 let g:acp_ignorecaseOption = 1
 "let g:acp_mappingDriven = 1
 "let g:acp_completeoptPreview = 1
-let g:acp_completeOption='.,w,b,u,t,i,k'
+let g:acp_completeOption='.,w,b,u,t,k'
+"let g:acp_completeOption='.,w,b,u,t,i,k'
+"set cpt=".,w,b,u,t,i,k"
+".. 当前缓冲区
+"w. 其它窗口的缓冲区
+"b. 其它载入的缓冲区
+"u. 卸载的缓冲区
+"t. 标签
+"i. 头文件
+"k. 文件
+
 
 """"""""""""""""""""
 " acp dict
 """"""""""""""""""""
 fun! SetFiletypeDict(ft, df, op=0)
-	if len(a:df) < 3 || a:ft == ''
+	if a:ft == '' || (a:df == '' && a:op == '')
 		return
 	endif
 	let s:cp = a:op == '' ? g:acp_completeOption : a:op
+	let s:acpt = a:df == '' ? s:cp : s:cp . a:df
+	exe 'au FileType ' . a:ft . " let g:acp_completeOption='".s:acpt."'"
+	"exe 'au FileType ' . a:ft . " set cpt=".s:acpt.""
 
-	exe 'au FileType ' . a:ft . " let g:acp_completeOption='".s:cp . a:df ."'"
 	"echow a:op."op:". len(a:op) .'!!!'
 	"echow s:cp."cp:". len(s:cp) .'@@@'
+	"echow s:cp."acp:". len(s:acpt) .'#####'
 	"exe 'au FileType ' .a:ft. ' echow "' .a:ft. ' dict ='.a:df .'"'
 endf
 
@@ -107,7 +124,8 @@ call SetFiletypeDict('sh', $VIMDICT.'bash.dict')
 call SetFiletypeDict('squirrel', $VIMDICT.'squirrel.dict')
 call SetFiletypeDict('lua', $VIMDICT.'lua.dict')
 call SetFiletypeDict('nim', $VIMDICT.'nim.dict')
-call SetFiletypeDict('zig', $VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict', '.,w,b,k')
+call SetFiletypeDict('zig', $VIMDICT.'zigtags')
+"call SetFiletypeDict('zig','','.,w')
 "call SetFiletypeDict('zig','.,w,b,u,t,i,k')
 "au FileType lua setl tags+=$VIMDICTquick2dx.tags
 "au FileType lua setl dict+=$VIMDICTquick2dx.tags

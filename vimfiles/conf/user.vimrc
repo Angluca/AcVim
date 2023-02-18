@@ -306,6 +306,11 @@ let g:lightline = {'colorscheme': 'jellybeans',}
 let g:undotree_WindowLayout = 3
 nmap ;ut :UndotreeToggle<cr>:UndotreeFocus<cr>
 nmap ;uu :UndotreeToggle<cr>
+""""""""""""""""""""
+"zig
+""""""""""""""""""""
+"let g:zig_fmt_autosave = 0
+"au filetype zig AcpDisable
 
 "-------------------------
 "Custom settings
