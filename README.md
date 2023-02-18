@@ -22,7 +22,7 @@ Let's open the vim.**
 \uu: edit custom option  
 
 >;yy ;pp or \<alt-c\> \<alt-v\> : system copy paste  
-:E \<a-1~9,0\> \<a-h,l,H,L\> gt gT: tabnew, switch tab page, a-HL move tab pos  
+:E \<a-1~9,0,(,)\> gt gT: tabnew, switch tab page, a-() move tab pos  
 
 >;bb : very easy and practice to operate buffer  
  --> j/k: move, f/e: open/quicksee win, s/v: split win  

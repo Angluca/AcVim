@@ -463,34 +463,38 @@ set fdm=marker
 "au BufRead,BufNewFile Ac.vimrc setl fdm=marker fen
 
 "window move
-let g:wm_move_up = '<S-Up>'
-let g:wm_move_right = '<S-Right>'
-let g:wm_move_down = '<S-Down>'
-let g:wm_move_left = '<S-Left>'
+let g:wm_move_up = '<m-S-Up>'
+let g:wm_move_down = '<m-S-Down>'
+let g:wm_move_left = '<m-S-Left>'
+let g:wm_move_right = '<m-S-Right>'
 let g:wm_move_x = 20
 let g:wm_move_y = 15
 
-"Bash like
-cmap <c-a> <Home>
-cmap <c-e> <End>
-cmap <c-b> <Left>
-cmap <c-f> <Right>
+nmap <s-up> <C-W>+
+nmap <s-down> <C-W>-
+nmap <s-left> <C-W><
+nmap <s-right> <C-W>>
 
-imap <c-a> <C-O>^
-imap <c-e> <End>
-imap <c-b> <Left>
-imap <c-f> <Right>
+"Bash like
+cmap <m-H> <Home>
+cmap <m-L> <End>
+cmap <m-j> <c-n>
+cmap <m-k> <c-p>
+cmap <m-h> <Left>
+cmap <m-l> <Right>
+
+imap <m-H> <c-o>^
+imap <m-L> <c-o>$
+imap <m-j> <Down>
+imap <m-k> <Up>
+imap <m-h> <Left>
+imap <m-l> <Right>
 
 "Smart way to move btw. windows
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
-nmap <C-l> <C-W>l
-
-nmap <C-UP> <C-W>+
-nmap <C-DOWN> <C-W>-
-nmap <C-LEFT> <C-W><
-nmap <C-RIGHT> <C-W>>
+nmap <m-j> <C-W>j
+nmap <m-k> <C-W>k
+nmap <m-h> <C-W>h
+nmap <m-l> <C-W>l
 
 nmap j gj
 nmap k gk
@@ -498,6 +502,8 @@ nmap ^ g^
 nmap $ g$
 xno < <gv
 xno > >gv
+
+"nmap <silent> <m-t> :tabnew<cr>
 "nmap 0 g0
 
 "vn <C-S-X> "+x
@@ -560,7 +566,7 @@ nmap <silent> ;<esc> :<esc>
 nmap <silent> ;<cr> :noh<cr>
 
 "nmap <silent> ;to :tabnew<cr>
-nmap <silent> ;tO :tabo<cr>
+"nmap <silent> ;tO :tabo<cr>
 ""Fast redraw
 "nmap <silent> ;rr :redraw!<cr>
 ""Fast rewind

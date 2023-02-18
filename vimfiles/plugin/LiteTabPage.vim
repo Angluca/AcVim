@@ -44,13 +44,13 @@ nnoremap <unique> <A-5> 5gt
 nnoremap <unique> <A-6> 6gt
 nnoremap <unique> <A-7> 7gt
 nnoremap <unique> <A-8> 8gt
-nnoremap <unique> <A-9> 9gt
-nnoremap <unique> <A-0> 10gt
+"nnoremap <unique> <A-9> 9gt
+"nnoremap <unique> <A-0> 10gt
 
-nnoremap <unique> <A-h> gT
-nnoremap <unique> <A-l> gt
-nnoremap <silent> <A-H> :call <SID>LiteTabMove(0)<CR>
-nnoremap <silent> <A-L> :call <SID>LiteTabMove(1)<CR>
+nnoremap <unique> <a-9> gT
+nnoremap <unique> <a-0> gt
+nnoremap <silent> <a-(> :call <SID>LiteTabMove(0)<CR>
+nnoremap <silent> <a-)> :call <SID>LiteTabMove(1)<CR>
 
 function! s:LiteTabMove(lr) "left=0,right!=0
 	let s:tmlr = a:lr == 0 ? '-' : '+'

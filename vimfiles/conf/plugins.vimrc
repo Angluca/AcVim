@@ -40,16 +40,24 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'vim-scripts/VisIncr'
 Plug 'zah/nim.vim'
 Plug 'ziglang/zig.vim'
+"Plug 'maralla/completor.vim'
+"Plug 'lifepillar/vim-mucomplete'
 
 "Plug 'mattn/emmet-vim'
 "Plug 'vim-scripts/VimIM'
-"Plug 'garbas/vim-snipmate'
 "Plug 'tikhomirov/vim-glsl'
 "Plug 'Rip-Rip/clang_complete'
 "Plug 'ycm-core/YouCompleteMe'
+"Plug 'tenfyzhong/CompleteParameter.vim'
+"Plug 'prabirshrestha/asyncomplete.vim'
 "Plug 'dkprice/vim-easygrep'
 "Plug 'godlygeek/tabular'
 "Plug 'preservim/vimux'
+
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'tomtom/tlib_vim'
+"Plug 'garbas/vim-snipmate'
+"Plug 'honza/vim-snippets'
 
 "-----------------
 call plug#end()

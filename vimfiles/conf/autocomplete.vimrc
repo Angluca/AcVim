@@ -44,9 +44,10 @@ au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --reg
 "g/^\(\k\+\t\).*$\n\1.*/d
 "$ziglib in tags
 let $ZIGLIB = $HOME.'/SDK/zig/bin/lib'
-au FileType nim,nims setl tags+=$VIMDICT/nimtags,./nimtags
-au FileType c,cpp setl tags +=$VIMDICT/cpptags
-au FileType zig setl tags +=$VIMDICT/zigtags
+au FileType nim,nims set tags+=$VIMDICT/nimtags,./nimtags
+au FileType c,cpp set tags +=$VIMDICT/cpptags
+au FileType zig set tags +=$VIMDICT/zigtags
+"au FileType zig set directory +=$zigGLIB/
 
 """"""""""""""
 " acp base 
@@ -97,7 +98,7 @@ fun! SetFiletypeDict(ft, df, op=0)
 	let s:cp = a:op == '' ? g:acp_completeOption : a:op
 	let s:acpt = a:df == '' ? s:cp : s:cp . a:df
 	exe 'au FileType ' . a:ft . " let g:acp_completeOption='".s:acpt."'"
-	"exe 'au FileType ' . a:ft . " set cpt=".s:acpt.""
+	exe 'au FileType ' . a:ft . " set cpt=".s:acpt.""
 
 	"echow a:op."op:". len(a:op) .'!!!'
 	"echow s:cp."cp:". len(s:cp) .'@@@'

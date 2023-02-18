@@ -302,9 +302,10 @@ let g:lightline = {'colorscheme': 'jellybeans',}
 "undotree
 """"""""""""""""""""
 "let g:undotree_RelativeTimestamp = 0
-"let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
-nmap ;ut :UndotreeToggle<cr>:UndotreeFocus<cr>
+"nmap ;ut :UndotreeToggle<cr>:UndotreeFocus<cr>
+nmap ;ut :UndotreeToggle<cr>
 nmap ;uu :UndotreeToggle<cr>
 """"""""""""""""""""
 "zig
@@ -312,6 +313,18 @@ nmap ;uu :UndotreeToggle<cr>
 "let g:zig_fmt_autosave = 0
 "au filetype zig AcpDisable
 
+"map <tab> <Plug>CompletorCppJumpToPlaceholder
+"imap <tab> <Plug>CompletorCppJumpToPlaceholder
+let g:completor_zig_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+\.[\w-]*)$'
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+if has("autocmd") && exists("+omnifunc")
+autocmd Filetype *
+		\	if &omnifunc == "" |
+		\		setlocal omnifunc=syntaxcomplete#Complete |
+		\	endif
+endif
 "-------------------------
 "Custom settings
 "You can see AcVim maps

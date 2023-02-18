@@ -471,6 +471,7 @@ function! EchoFuncStart()
     let b:maparg_right = {}
     if maparg("(","i") == ''
         inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>)<left>
+        "inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>
     elseif maparg("(",'i',0,1)['expr'] == 0
         let b:maparg_left = maparg("(",'i',0,1)
         let map = maparg("(", "i", 0, 1)['noremap'] ? "inoremap" : "imap"
