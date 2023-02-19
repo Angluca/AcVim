@@ -463,10 +463,10 @@ set fdm=marker
 "au BufRead,BufNewFile Ac.vimrc setl fdm=marker fen
 
 "window move
-let g:wm_move_up = '<m-S-Up>'
-let g:wm_move_down = '<m-S-Down>'
-let g:wm_move_left = '<m-S-Left>'
-let g:wm_move_right = '<m-S-Right>'
+let g:wm_move_up = '<m-s-Up>'
+let g:wm_move_down = '<m-s-Down>'
+let g:wm_move_left = '<m-s-Left>'
+let g:wm_move_right = '<m-s-Right>'
 let g:wm_move_x = 20
 let g:wm_move_y = 15
 

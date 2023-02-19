@@ -98,7 +98,7 @@ fun! SetFiletypeDict(ft, df, op=0)
 	let s:cp = a:op == '' ? g:acp_completeOption : a:op
 	let s:acpt = a:df == '' ? s:cp : s:cp . a:df
 	exe 'au FileType ' . a:ft . " let g:acp_completeOption='".s:acpt."'"
-	exe 'au FileType ' . a:ft . " set cpt=".s:acpt.""
+	"exe 'au FileType ' . a:ft . " set cpt=".s:acpt.""
 
 	"echow a:op."op:". len(a:op) .'!!!'
 	"echow s:cp."cp:". len(s:cp) .'@@@'

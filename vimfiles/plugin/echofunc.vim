@@ -252,6 +252,7 @@ function! s:EchoFuncDisplay()
     endif
     let &cmdheight=height
     echohl Type | echo content | echohl None
+    "echow content
 endfunction
 
 " add this function to avoid E432
@@ -273,7 +274,6 @@ function! s:GetFunctions(fun, fn_only)
     let w:res=[]
     let funpat=escape(a:fun,'[\*~^')
     let ftags=s:CallTagList('^'.funpat.'$')
-
     if (type(ftags)==type(0) || ((type(ftags)==type([])) && ftags==[]))
         if &filetype=='cpp' && funpat!~'^\(catch\|if\|for\|while\|switch\)$'
             " Namespaces may be omitted
@@ -287,6 +287,8 @@ function! s:GetFunctions(fun, fn_only)
     for i in ftags
         if !has_key(i,'name')
             continue
+        elseif strlen(i.name) < 4 "dont small"
+            return
         endif
         if has_key(i,'language')
             if !has_key(g:EchoFuncLangsDict,&filetype)
@@ -299,7 +301,11 @@ function! s:GetFunctions(fun, fn_only)
         endif
         if has_key(i,'kind')
             " p: prototype/procedure; f: function; m: member
-            if (!a:fn_only || (i.kind=='p' || i.kind=='f') ||
+            if (i.kind == 'function' || i.kind == 'field' || 
+                        \i.kind == 'constant') && 
+                        \has_key(i,'cmd')
+                let fil_tag+=[i]
+            elseif (!a:fn_only || (i.kind=='p' || i.kind=='f') ||
                         \(i.kind == 'm' && has_key(i,'cmd') &&
                         \                  match(i.cmd,'(') != -1)) &&
                         \i.name=~funpat
@@ -332,7 +338,8 @@ function! s:GetFunctions(fun, fn_only)
             let name=substitute(i.cmd[2:-3],tmppat,'','').i.name.i.signature
         elseif has_key(i,'kind')
             if i.kind == 'd'
-                let name='macro ' . i.name
+            elseif i.kind == 'cmd'
+                let name= i.cmd
             elseif i.kind == 'c'
                 let name='class ' . i.name
             elseif i.kind == 's'
@@ -385,19 +392,26 @@ function! s:GetFunctions(fun, fn_only)
         else
             let name=i.name
         endif
-        let name=substitute(name,'^\s\+','','')
-        let name=substitute(name,'\s\+$','','')
-        let name=substitute(name,'\s\+',' ','g')
-        let file_line=s:EchoFuncPathMapping(i.filename)
+        let name = matchstr(i.cmd, '[(:=][^\/{\$]*')
+        let name = i.name .' '. name
+        "let name=substitute(name,'^\s\+','','')
+        "let name=substitute(name,'\s\+$','','')
+        "let name=substitute(name,'\s\+',' ','g')
+        "let file_line=s:EchoFuncPathMapping(i.filename)
+        let file_line=matchstr(i.filename, '\k*[\/\\]*[^\/\\]*\k*$')
+        "wet_tewt/tewta_tewst/test.zig
+        "echow string([i])."----------@@@"
         if i.cmd > 0
             let file_line=file_line . ':' . i.cmd
         endif
         let w:res+=[name.' ('.(index(fil_tag,i)+1).'/'.len(fil_tag).') '.file_line]
+        "echow string(w:res)."----------finish"
     endfor
 endfunction
 
 function! s:GetFuncName(text)
     let name=substitute(a:text,'.\{-}\(\(\k\+::\)*\(\~\?\k*\|'.
+                \'\|'.
                 \'operator\s\+new\(\[]\)\?\|'.
                 \'operator\s\+delete\(\[]\)\?\|'.
                 \'operator\s*[[\]()+\-*/%<>=!~\^&|]\+'.
@@ -416,7 +430,7 @@ function! EchoFunc()
     endif
     "if str == '' || str !~# '\m\k\+\s*($'
     "temporarily disable the check
-    if str == ''
+    if str == '' && strlen(str) < 4
         return ''
     endif
     let str = substitute(str, '\m\s*(\+$','', "")
@@ -470,8 +484,9 @@ function! EchoFuncStart()
     let b:maparg_left = {}
     let b:maparg_right = {}
     if maparg("(","i") == ''
+        "inoremap <silent> <buffer>  (   ()<left><C-R>=EchoFunc()<CR>
         inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>)<left>
-        "inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>
+       "inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>
     elseif maparg("(",'i',0,1)['expr'] == 0
         let b:maparg_left = maparg("(",'i',0,1)
         let map = maparg("(", "i", 0, 1)['noremap'] ? "inoremap" : "imap"
