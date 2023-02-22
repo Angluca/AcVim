@@ -39,33 +39,33 @@ fu! AcClearUndo()
 		let ul_bak = &undolevels
 		let md_bak = &modified
 		let &undolevels=-1
-		exe "normal a \<BS>\<Esc>"
+		exe "normal 0a \<BS>\<Esc>"
 		let &undolevels = ul_bak
 		let &modified = md_bak
 		call AcIsOK(1, 0, "Clear finish", 0 )
 	endif
 endf
 
-fu! AcIsOK(yn, emsg, ymsg, nmsg) "yn:-1/0/1
+fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
 	echoh WarningMsg
 	if len(a:emsg) > 1
 		echo a:emsg 
 	endif
-	let s:ret = a:yn
-	let s:rmsg = a:nmsg
+	let l:ret = a:yn
+	let l:rmsg = a:nmsg
 	if a:yn == -1
-		let s:ret = getchar() == 89 ? 1:0 "Y89y121
+		let l:ret = getchar() == 89 ? 1:0 "Y89y121
 	endif
-	if s:ret > 0
-		let s:rmsg = a:ymsg
+	if l:ret > 0
+		let l:rmsg = a:ymsg
 		echoh Question
 	endif
-	if len(s:rmsg) > 1
+	if len(l:rmsg) > 1
 		redraw
-		echo s:rmsg
+		echo l:rmsg
 	endif
 	echoh None
-	return s:ret
+	return l:ret
 endf
 
 fu! ToggleVirtualEditMode()
@@ -93,32 +93,32 @@ endif
 endf
 
 fu! QfMakeConv()
-let qflist = getqflist()
-for i in qflist
-	let i.text = iconv(i.text, "cp936", "utf-8")
+let l:qflist = getqflist()
+for i in l:qflist
+	let l:i.text = iconv(l:i.text, "cp936", "utf-8")
 endfor
-call setqflist(qflist)
+call setqflist(l:qflist)
 endf
 
 fu! SwitchToBuf(filename)
 " find in current tab
-let bufwinnr = bufwinnr(a:filename)
-if bufwinnr != -1
-	exec bufwinnr . "wincmd w"
+let l:bufwinnr = bufwinnr(a:filename)
+if l:bufwinnr != -1
+	exec l:bufwinnr . "wincmd w"
 	return
 else
 	" find in each tab
 	tabfirst
-	let tab = 1
-	while tab <= tabpagenr("$")
-		let bufwinnr = bufwinnr(a:filename)
-		if bufwinnr != -1
-			exec "normal " . tab . "gt"
-			exec bufwinnr . "wincmd w"
+	let l:tab = 1
+	while l:tab <= tabpagenr("$")
+		let l:bufwinnr = bufwinnr(a:filename)
+		if l:bufwinnr != -1
+			exec "normal " . l:tab . "gt"
+			exec l:bufwinnr . "wincmd w"
 			return
 		endif
 		tabnext
-		let tab = tab + 1
+		let l:tab = tab + 1
 	endwhile
 	" not exist, new tab
 	exec "e " . a:filename
@@ -126,27 +126,27 @@ endif
 endf
 
 fun! FileFormatOption()
-if !exists("g:menutrans_fileformat_dialog")
-	let g:menutrans_fileformat_dialog = "Select format for writing the file"
-endif
-if !exists("g:menutrans_fileformat_choices")
-	let g:menutrans_fileformat_choices = "&Unix\n&Dos\n&Mac\n&Cancel"
-endif
-if &ff == "dos"
-	let def = 2
-elseif &ff == "mac"
-	let def = 3
-else
-	let def = 1
-endif
-let n = confirm(g:menutrans_fileformat_dialog, g:menutrans_fileformat_choices, def, "Question")
-if n == 1
-	set ff=unix
-elseif n == 2
-	set ff=dos
-elseif n == 3
-	set ff=mac
-endif
+	if !exists("g:menutrans_fileformat_dialog")
+		let g:menutrans_fileformat_dialog = "Select format for writing the file"
+	endif
+	if !exists("g:menutrans_fileformat_choices")
+		let g:menutrans_fileformat_choices = "&Unix\n&Dos\n&Mac\n&Cancel"
+	endif
+	if &ff == "dos"
+		let l:def = 2
+	elseif &ff == "mac"
+		let l:def = 3
+	else
+		let l:def = 1
+	endif
+	let l:n = confirm(g:menutrans_fileformat_dialog, g:menutrans_fileformat_choices, l:def, "Question")
+	if l:n == 1
+		set ff=unix
+	elseif l:n == 2
+		set ff=dos
+	elseif l:n == 3
+		set ff=mac
+	endif
 endfun
 
 fu! <SID>BufcloseCloseIt()
@@ -165,8 +165,8 @@ fu! <SID>BufcloseCloseIt()
 	endif
 endf
 
-func! DelTWS(bb=0)
-"DeleteTrailingWS
+com -nargs=? DelTWS call DeleteTrailingWS(<args>)
+func! DeleteTrailingWS(bb=0)
 	if a:bb != 0 
 	if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
 		return
@@ -445,14 +445,11 @@ au FileType html set syntax=html
 "Vim section
 """"""""""""""""""""
 "au FileType vim set nofen
-
 """"""""""""""""""""
 "Netrw
 """"""""""""""""""""
 let g:netrw_winsize = 30
 let	g:netrw_home	= $VIMDATA.'cache'
-"nmap <silent> ;Se :Sexplore!<cr>
-
 """"""""""""""""""""
 "User base options
 """"""""""""""""""""
@@ -485,10 +482,11 @@ cmap <m-l> <Right>
 
 imap <m-H> <c-o>^
 imap <m-L> <c-o>$
-imap <m-j> <Down>
-imap <m-k> <Up>
-imap <m-h> <Left>
-imap <m-l> <Right>
+imap <m-j> <down>
+imap <m-k> <up>
+imap <m-h> <left>
+imap <m-l> <right>
+"imap <m-]> <bs>
 
 "Smart way to move btw. windows
 nmap <m-j> <C-W>j
@@ -512,12 +510,11 @@ xno > >gv
 "vn <C-S-V> "+gP
 "cmap <C-S-V> <C-R>+
 "imap <C-S-V> <C-R>+
-
-au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
+"au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
 
 "nmap <silent> ;wss :call DelTWS()<cr>:w<cr>
 "nmap <silent> ;wsf :call DelTWS()<cr>:w!<cr>
-nmap <silent> ;ds :call DelTWS(1)<cr>
+nmap <silent> ;ds :DelTWS(1)<cr>
 
 "complete
 "imap <s-space> <cr>
@@ -554,8 +551,8 @@ call AcCreateMaps(':call ToggleVirtualEditMode()<cr>', ';ve')
 nmap ;uc :call AcClearUndo() <cr>
 
 "Fast saving
-nmap <silent> ;ww :update<cr>
-nmap <silent> ;wf :update!<cr>
+nmap ;ww :update<cr>
+nmap ;wf :update!<cr>
 "Fast quiting
 nmap <silent> ;qw :wq<cr>
 nmap <silent> ;qf :q!<cr>
@@ -564,6 +561,9 @@ nmap <silent> ;qa :qa<cr>
 nmap <silent> ;<esc> :<esc>
 "Fast remove highlight search
 nmap <silent> ;<cr> :noh<cr>
+"For f t finding
+nmap <silent> ;; ;<space>
+nmap <silent> ,, ,<space>
 
 "nmap <silent> ;to :tabnew<cr>
 "nmap <silent> ;tO :tabo<cr>
@@ -573,7 +573,7 @@ nmap <silent> ;<cr> :noh<cr>
 "nmap <silent> ;re :rewind<cr>
 
 "generate tags
-nmap \= :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
+"nmap \= :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
 "--------------------------------------------
 "filetype and acp
 so $VIMCONF/autocomplete.vimrc

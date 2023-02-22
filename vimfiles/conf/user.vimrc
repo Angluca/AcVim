@@ -306,7 +306,7 @@ let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
 "nmap ;ut :UndotreeToggle<cr>:UndotreeFocus<cr>
 nmap ;ut :UndotreeToggle<cr>
-nmap ;uu :UndotreeToggle<cr>
+"nmap ;uu :UndotreeToggle<cr>
 """"""""""""""""""""
 "zig
 """"""""""""""""""""

@@ -430,7 +430,7 @@ function! EchoFunc()
     endif
     "if str == '' || str !~# '\m\k\+\s*($'
     "temporarily disable the check
-    if str == '' && strlen(str) < 4
+    if str == '' && strlen(str) < 2
         return ''
     endif
     let str = substitute(str, '\m\s*(\+$','', "")
