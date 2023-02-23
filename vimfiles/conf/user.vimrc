@@ -4,7 +4,7 @@
 """"""""""""""""""""
 "Sketch seting
 """"""""""""""""""""
-nmap <F10> :call ToggleSketch()<CR>
+#nmap <F10> :call ToggleSketch()<CR>
 """"""""""""""""""""
 "ShowMarks seting
 """"""""""""""""""""
@@ -40,7 +40,6 @@ let g:EchoFuncKeyPrev='<m-->'
 "let g:EchoFuncPathMapping = [
 			"\ [expand("$VIMDICT") , '$VIMDICT']
 			"\]
-
 """"""""""""""""""""
 "qbuf
 """"""""""""""""""""
@@ -165,23 +164,25 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 """"""""""""""""""""
 "Mark seting
 """"""""""""""""""""
-nmap <silent> ;mm <Plug>MarkSet
-vmap <silent> ;mm <Plug>MarkSet
-nmap <silent> ;mr <Plug>MarkRegex
-vmap <silent> ;mr <Plug>MarkRegex
-nmap <silent> ;mc <Plug>MarkClear
-nmap <silent> ;mC <Plug>MarkAllClear
-nmap <silent> ;mt <Plug>MarkToggle
+#nmap <silent> ;mm <Plug>MarkSet
+#vmap <silent> ;mm <Plug>MarkSet
+#nmap <silent> ;mr <Plug>MarkRegex
+#vmap <silent> ;mr <Plug>MarkRegex
+#nmap <silent> ;mc <Plug>MarkClear
+#nmap <silent> ;mC <Plug>MarkAllClear
+#nmap <silent> ;mt <Plug>MarkToggle
 
-nmap <silent> ;n <Plug>MarkSearchCurrentNext
-nmap <silent> ;N <Plug>MarkSearchCurrentPrev
-nmap <silent> ;/ <Plug>MarkSearchAnyNext
-nmap <silent> ;? <Plug>MarkSearchAnyPrev
-"nmap <silent> * <Plug>MarkSearchNext
-"nmap <silent> # <Plug>MarkSearchPrev
+#nmap <silent> ;n <Plug>MarkSearchCurrentNext
+#nmap <silent> ;N <Plug>MarkSearchCurrentPrev
+#nmap <silent> ;/ <Plug>MarkSearchAnyNext
+#nmap <silent> ;? <Plug>MarkSearchAnyPrev
 """"""""""""""""""""
 "NERD_commenter setting
 """"""""""""""""""""
+let g:NERDCustomDelimiters = {
+	\ 'vim': { 'left': '#' }
+	\ }
+
 let g:NERDCreateDefaultMappings=0
 call AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
 call AcCreateMaps('<plug>NERDCommenterToggle',     ';x<space>')
@@ -216,15 +217,10 @@ let	g:vimwiki_list	=	[{'path':$VIMDATA.'vimwiki/',
 			\	'diary_link_count':8}]
 
 """"""""""""""""""""
-"linediff
-""""""""""""""""""""
-nmap	;ld	:Linediff <CR>
-vmap	;ld	:Linediff <CR>
-nmap	;lr	:LinediffReset <cr>
-""""""""""""""""""""
 "easymotion
 """"""""""""""""""""
-"let g:EasyMotion_keys = 'asdfghjkl;'
+#let g:EasyMotion_keys= 'asdghklqwertyuiopzxcvbnmfj;'
+let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
 let g:EasyMotion_leader_key = '<space>'
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_do_shade = 0

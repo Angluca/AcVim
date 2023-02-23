@@ -39,7 +39,7 @@ fu! AcClearUndo()
 		let ul_bak = &undolevels
 		let md_bak = &modified
 		let &undolevels=-1
-		exe "normal 0a \<BS>\<Esc>"
+		exe "normal I \<BS>\<Esc>"
 		let &undolevels = ul_bak
 		let &modified = md_bak
 		call AcIsOK(1, 0, "Clear finish", 0 )
@@ -575,7 +575,7 @@ nmap <silent> ,, ,<space>
 "generate tags
 "nmap \= :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
 "--------------------------------------------
-"filetype and acp
+"filetype and completer
 so $VIMCONF/autocomplete.vimrc
 nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 "load user conf

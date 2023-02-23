@@ -25,7 +25,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'wuhulalala/ctrlp.vim'
 "Plug 'rhysd/clever-f.vim'
 Plug 'preservim/tagbar'
-"Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'Eliot00/auto-pairs' "v9s
