@@ -4,7 +4,7 @@
 """"""""""""""""""""
 "Sketch seting
 """"""""""""""""""""
-#nmap <F10> :call ToggleSketch()<CR>
+"nmap <F10> :call ToggleSketch()<CR>
 """"""""""""""""""""
 "ShowMarks seting
 """"""""""""""""""""
@@ -164,18 +164,18 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 """"""""""""""""""""
 "Mark seting
 """"""""""""""""""""
-#nmap <silent> ;mm <Plug>MarkSet
-#vmap <silent> ;mm <Plug>MarkSet
-#nmap <silent> ;mr <Plug>MarkRegex
-#vmap <silent> ;mr <Plug>MarkRegex
-#nmap <silent> ;mc <Plug>MarkClear
-#nmap <silent> ;mC <Plug>MarkAllClear
-#nmap <silent> ;mt <Plug>MarkToggle
-
-#nmap <silent> ;n <Plug>MarkSearchCurrentNext
-#nmap <silent> ;N <Plug>MarkSearchCurrentPrev
-#nmap <silent> ;/ <Plug>MarkSearchAnyNext
-#nmap <silent> ;? <Plug>MarkSearchAnyPrev
+"nmap <silent> ;mm <Plug>MarkSet
+"vmap <silent> ;mm <Plug>MarkSet
+"nmap <silent> ;mr <Plug>MarkRegex
+"vmap <silent> ;mr <Plug>MarkRegex
+"nmap <silent> ;mc <Plug>MarkClear
+"nmap <silent> ;mC <Plug>MarkAllClear
+"nmap <silent> ;mt <Plug>MarkToggle
+"
+"nmap <silent> ;n <Plug>MarkSearchCurrentNext
+"nmap <silent> ;N <Plug>MarkSearchCurrentPrev
+"nmap <silent> ;/ <Plug>MarkSearchAnyNext
+"nmap <silent> ;? <Plug>MarkSearchAnyPrev
 """"""""""""""""""""
 "NERD_commenter setting
 """"""""""""""""""""
@@ -219,7 +219,7 @@ let	g:vimwiki_list	=	[{'path':$VIMDATA.'vimwiki/',
 """"""""""""""""""""
 "easymotion
 """"""""""""""""""""
-#let g:EasyMotion_keys= 'asdghklqwertyuiopzxcvbnmfj;'
+"let g:EasyMotion_keys= 'asdghklqwertyuiopzxcvbnmfj;'
 let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
 let g:EasyMotion_leader_key = '<space>'
 let g:EasyMotion_startofline = 0
