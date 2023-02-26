@@ -179,9 +179,9 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 """"""""""""""""""""
 "NERD_commenter setting
 """"""""""""""""""""
-let g:NERDCustomDelimiters = {
-	\ 'vim': { 'left': '#' }
-	\ }
+"let g:NERDCustomDelimiters = {
+	"\ 'vim': { 'left': '#' }
+	"\ }
 
 let g:NERDCreateDefaultMappings=0
 call AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
@@ -236,9 +236,12 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 "nmap	;sc	:SyntasticCheck<CR>
 "nmap	;se	:Errors<CR>
 "nmap	;st	:SyntasticToggleMode<CR>
-let g:syntastic_mode_map = { 'mode': 'active',
-			\ 'active_filetypes': [],
-			\ 'passive_filetypes': ['c', 'cpp'] }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+"let g:syntastic_mode_map = { 'mode': 'active',
+			"\ 'active_filetypes': [],
+			"\ 'passive_filetypes': ['c', 'cpp'] }
 """"""""""""""""""""
 "vimim
 """"""""""""""""""""
@@ -321,6 +324,13 @@ autocmd Filetype *
 		\		setlocal omnifunc=syntaxcomplete#Complete |
 		\	endif
 endif
+""""""""""""""""""""
+"elm
+""""""""""""""""""""
+let g:elm_detailed_complete = 1
+let g:elm_format_autosave = 1
+let g:elm_syntastic_show_warnings = 1
+
 "-------------------------
 "Custom settings
 "You can see AcVim maps

@@ -7,17 +7,17 @@ let acp_did_snipmate = 1
 " To get this to work see the Snipmate section in the docs.
 
 " Called to add snipmate indefaults
-function acp#snipmate#getBehavior(key)
+function acp#snipmate#GetBehavior(key)
 	return {
 				\ 'command'      : "\<C-x>\<C-u>",
-				\ 'completefunc' : 'acp#snipmate#completeSnipmate',
-				\ 'meets'        : 'acp#snipmate#meetsForSnipmate',
-				\ 'onPopupClose' : 'acp#snipmate#onPopupCloseSnipmate',
+				\ 'completefunc' : 'acp#snipmate#CompleteSnipmate',
+				\ 'meets'        : 'acp#snipmate#MeetsForSnipmate',
+				\ 'onPopupClose' : 'acp#snipmate#OnPopupCloseSnipmate',
 				\ 'repeat'       : 0,
 				\ }
 endfunction
 
-function acp#snipmate#meetsForSnipmate(context)
+function acp#snipmate#MeetsForSnipmate(context)
 	if g:acp_behaviorSnipmateLength < 0
 		return 0
 	endif
@@ -26,7 +26,7 @@ function acp#snipmate#meetsForSnipmate(context)
 	return !empty(matches) && !empty(s:getMatchingSnipItems(matches[2]))
 endfunction
 
-function acp#snipmate#completeSnipmate(findstart, base)
+function acp#snipmate#CompleteSnipmate(findstart, base)
 	if a:findstart
 		let s:posSnipmateCompletion = len(matchstr(s:getCurrentText(), '.*\U'))
 		return s:posSnipmateCompletion
@@ -37,7 +37,7 @@ function acp#snipmate#completeSnipmate(findstart, base)
 	return map(sort(items(items)), 's:makeSnipmateItem(v:val[0], v:val[1])')
 endfunction
 
-function acp#snipmate#onPopupCloseSnipmate()
+function acp#snipmate#OnPopupCloseSnipmate()
 	let word = s:getCurrentText()[s:posSnipmateCompletion :]
 	for trigger in keys(GetSnipsInCurrentScope())
 		if word ==# trigger

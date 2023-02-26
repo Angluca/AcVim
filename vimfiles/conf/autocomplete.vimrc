@@ -10,6 +10,7 @@ fun! s:setFiletype(fn, ft, bop=0)
 	"echow l:opt. ' | '
 	exe $"au BufNewFile,BufRead {a:fn} {l:opt}"
 endf
+SetFiletype('*.vimbp', 'vim')
 SetFiletype('README*,COPYING', 'txt')
 SetFiletype('*.txt', 'txt')
 SetFiletype('*.txt', 'txt')
@@ -46,7 +47,7 @@ au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --reg
 
 "g/^\(\k\+\t\).*$\n\1.*/d
 "$ziglib in tags
-let $ZIGLIB = $HOME.'/SDK/zig/bin/lib'
+let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType nim,nims setl tags+=$VIMDICT/nimtags,./nimtags
 au FileType c,cpp setl tags +=$VIMDICT/cpptags
 au FileType zig setl tags +=$VIMDICT/zigtags
@@ -94,7 +95,8 @@ fun! s:setCompleteOpt(ft, df='', bop=0)
 	endif
 	let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
 	"echo l:opt . ' |'
-	exe 'au FileType ' . a:ft . " let g:acp_completeOption='".l:opt."'"
+	exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
+	"exe 'au FileType ' . a:ft . ' set complete=' . l:opt
 endf
 
 if has("win32")
@@ -117,7 +119,7 @@ SetAcpDict('sh', $VIMDICT.'bash.dict')
 SetAcpDict('squirrel', $VIMDICT.'squirrel.dict')
 SetAcpDict('lua', $VIMDICT.'lua.dict')
 SetAcpDict('nim', $VIMDICT.'nim.dict')
-SetAcpDict('zig', $VIMDICT.'zigtags')
+"SetAcpDict('zig', $VIMDICT.'zigtags')
 "SetAcpDict('zig')
 "SetAcpDict('zig','.,w,b,u,t,i,k', 1)
 "au FileType lua setl tags+=$VIMDICTquick2dx.tags

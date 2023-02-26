@@ -1,7 +1,7 @@
 if exists("acp_did_ruby") | finish | endif
 let acp_did_ruby = 1
 
-function acp#ruby#meetsForOmni(context)
+function acp#ruby#MeetsForOmni(context)
 	if !has('ruby')
 		return 0
 	endif
@@ -18,12 +18,12 @@ function acp#ruby#meetsForOmni(context)
 	return 0
 endfunction
 
-function acp#ruby#makeBehavior()
-	let behavs = acp#getDefaults('ruby')
+function acp#ruby#MakeBehavior()
+	let behavs = acp#GetDefaults('ruby')
 	"---------------------------------------------------------------------------
 	call add(behavs.ruby, {
 				\ 'command' : "\<C-x>\<C-o>",
-				\ 'meets'   : 'acp#ruby#meetsForOmni',
+				\ 'meets'   : 'acp#ruby#MeetsForOmni',
 				\ 'repeat'  : 0,
 				\ })
 	return behavs

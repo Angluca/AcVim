@@ -7,7 +7,7 @@
 
 if exists('g:loaded_acp')
   finish
-elseif v:version < 702
+elseif v:version < 802
   echoerr 'AutoComplPop does not support this version of vim (' . v:version . ').'
   finish
 endif
@@ -17,7 +17,8 @@ let g:loaded_acp = 1
 "=============================================================================
 " FUNCTION: {{{1
 
-"
+import autoload 'acp.vim'
+
 function s:defineOption(name, default)
   if !exists(a:name)
     let {a:name} = a:default
@@ -26,8 +27,8 @@ endfunction
 
 "
 function s:makeDefaultBehavior()
-  let behavs = acp#getDefaults('*')
-  return behavs
+	let behavs = acp#GetDefaults('*')
+	return behavs
 endfunction
 
 " }}}1
@@ -51,10 +52,10 @@ call s:defineOption('g:acp_behavior', {})
 "-----------------------------------------------------------------------------
 call extend(g:acp_behavior, s:makeDefaultBehavior(), 'keep')
 "-----------------------------------------------------------------------------
-command! -bar -narg=0 AcpEnable  call acp#enable()
-command! -bar -narg=0 AcpDisable call acp#disable()
-command! -bar -narg=0 AcpLock    call acp#lock()
-command! -bar -narg=0 AcpUnlock  call acp#unlock()
+command! -bar -narg=0 AcpEnable  call acp#Enable()
+command! -bar -narg=0 AcpDisable call acp#Disable()
+command! -bar -narg=0 AcpLock    call acp#Lock()
+command! -bar -narg=0 AcpUnlock  call acp#Unlock()
 "-----------------------------------------------------------------------------
 " legacy commands
 command! -bar -narg=0 AutoComplPopEnable  AcpEnable

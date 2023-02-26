@@ -7,7 +7,7 @@ let acp_did_perl = 1
 "
 " It is passed the 'context' or the current line from the beginning up to the
 " cursor. See the s:getCurrentText() function in autoload/acp.vim.
-function acp#perl#meetsForOmni(context)
+function acp#perl#MeetsForOmni(context)
 	" the length variable here can disable omni complete, if less the 0,
 	" otherwise it specifies the number of characters that must be typed
 	" before the pattern will match and completion is triggered.
@@ -16,11 +16,11 @@ function acp#perl#meetsForOmni(context)
 endfunction
 
 " This function sets up all the auto completion for this filetype.
-function acp#perl#makeBehavior()
+function acp#perl#MakeBehavior()
 	" It starts with setting the defaults, which include file, keyword and
 	" optionally snipmate and user defined completions as discussed in the
 	" docs. You need to pass in the name of the filetype you are working with.
-	let behavs = acp#getDefaults('perl')
+	let behavs = acp#GetDefaults('perl')
 	" behavs is a list of dictionaries containing the data needed for the
 	" completion system.
 	"---------------------------------------------------------------------------
@@ -28,7 +28,7 @@ function acp#perl#makeBehavior()
 	" Again the name here must match the filetype.
 	call add(behavs.perl, {
 				\ 'command' : "\<C-x>\<C-o>",
-				\ 'meets'   : 'acp#perl#meetsForOmni',
+				\ 'meets'   : 'acp#perl#MeetsForOmni',
 				\ 'repeat'  : 0,
 				\ })
 	return behavs

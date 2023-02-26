@@ -546,6 +546,7 @@ let s:tlist_def_vim_settings =
 
 " yacc language
 let s:tlist_def_yacc_settings = 'yacc;l:label'
+let s:tlist_def_zig_settings = 'zig;function:func;field:var;v:val;constant:cont'
 
 "------------------- end of language specific options --------------------
 

@@ -84,7 +84,7 @@ let s:doappend = 1
 fun! SetFileTypeSnippet(ft, tpf)
     exe 'au FileType ' .a:ft. ' silent! runtime '.g:user_snippet_dir.a:tpf
     exe 'au FileType ' .a:ft. ' call CodeCompleteStart()'
-    exe 'au FileType ' .a:ft. ' echow "' .a:ft. ' 22222222silent! runtime '.g:user_snippet_dir. a:tpf .'"'
+    "exe 'au FileType ' .a:ft. ' echow "' .a:ft. ' 22222222silent! runtime '.g:user_snippet_dir. a:tpf .'"'
     "echow '!!!'. g:user_snippet_dir. '/'. a:tpf
 endf
 call SetFileTypeSnippet('cpp', 'c_c.vim')
@@ -98,7 +98,7 @@ call SetFileTypeSnippet('cpp', 'c_c.vim')
 function! CodeCompleteStart()
     "exec "silent! iunmap  <buffer> ".g:completekey
     exec "inoremap <buffer> ".g:completekey." <c-r>=CodeComplete()<cr><c-r>=SwitchRegion()<cr>"
-    echow '!!!'. g:user_snippet_dir
+    "echow '!!!'. g:user_snippet_dir
 endfunction
 
 function! CodeCompleteStop()

@@ -301,18 +301,23 @@ function! s:GetFunctions(fun, fn_only)
         endif
         if has_key(i,'kind')
             " p: prototype/procedure; f: function; m: member
-            if (i.kind == 'function' || i.kind == 'field' || 
-                        \i.kind == 'constant') && 
+            if (i.kind =~ "^f*" || i.kind =~ "^m*" || 
+                        \i.kind =~ "^v*" || i.kind =~ "^s*" || 
+                        \i.kind =~ "^l*" || i.kind =~ "^t*" || 
+                        \i.kind =~ "^g*" || i.kind =~ "^u*" || 
+                        \i.kind =~ "^p*" || i.kind =~ "^i*" || 
+                        \i.kind =~ "^c*") && 
                         \has_key(i,'cmd')
-                let fil_tag+=[i]
-            elseif (!a:fn_only || (i.kind=='p' || i.kind=='f') ||
-                        \(i.kind == 'm' && has_key(i,'cmd') &&
-                        \                  match(i.cmd,'(') != -1)) &&
-                        \i.name=~funpat
-                if &filetype!='cpp' || !has_key(i,'class') ||
-                            \i.name!~'::' || i.name=~i.class
                     let fil_tag+=[i]
-                endif
+            "elseif (!a:fn_only || (i.kind=='p' || i.kind=='f') ||
+            "if (!a:fn_only || (i.kind=='p' || i.kind=='f') ||
+                        "\(i.kind == 'm' && has_key(i,'cmd') &&
+                        "\                  match(i.cmd,'(') != -1)) &&
+                        "\i.name=~funpat
+                "if &filetype!='cpp' || !has_key(i,'class') ||
+                            "\i.name!~'::' || i.name=~i.class
+                    "let fil_tag+=[i]
+                "endif
             endif
         else
             if !a:fn_only && i.name == a:fun
@@ -399,13 +404,10 @@ function! s:GetFunctions(fun, fn_only)
         "let name=substitute(name,'\s\+',' ','g')
         "let file_line=s:EchoFuncPathMapping(i.filename)
         let file_line=matchstr(i.filename, '\k*[\/\\]*[^\/\\]*\k*$')
-        "wet_tewt/tewta_tewst/test.zig
-        "echow string([i])."----------@@@"
         if i.cmd > 0
             let file_line=file_line . ':' . i.cmd
         endif
         let w:res+=[name.' ('.(index(fil_tag,i)+1).'/'.len(fil_tag).') '.file_line]
-        "echow string(w:res)."----------finish"
     endfor
 endfunction
 
