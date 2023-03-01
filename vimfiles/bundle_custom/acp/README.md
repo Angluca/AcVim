@@ -1,12 +1,6 @@
-ACP v9s
+ACP
 ---
-Copy [eikenb/acp](https://github.com/eikenb/acp)
 
-I like autocomplpop,So upgrade to support vim9script  
-Maybe can increase ACP speed :)
-
-Original introduction
----
 ACP is a fork of autocomplpop 2.14.1. I liked the auto-completion feature and
 preferred the much simpler code of autocomplpop to the alternatives. But it
 seemed like it was no longer supported and was structured in a monolithic way
