@@ -309,21 +309,21 @@ nmap ;ut :UndotreeToggle<cr>
 """"""""""""""""""""
 "zig
 """"""""""""""""""""
-"let g:zig_fmt_autosave = 0
+let g:zig_fmt_autosave = 0
 "au filetype zig AcpDisable
 
 "map <tab> <Plug>CompletorCppJumpToPlaceholder
 "imap <tab> <Plug>CompletorCppJumpToPlaceholder
-let g:completor_zig_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+\.[\w-]*)$'
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-if has("autocmd") && exists("+omnifunc")
-autocmd Filetype *
-		\	if &omnifunc == "" |
-		\		setlocal omnifunc=syntaxcomplete#Complete |
-		\	endif
-endif
+"let g:completor_zig_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+\.[\w-]*)$'
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+"if has("autocmd") && exists("+omnifunc")
+"autocmd Filetype *
+		"\	if &omnifunc == "" |
+		"\		setlocal omnifunc=syntaxcomplete#Complete |
+		"\	endif
+"endif
 """"""""""""""""""""
 "elm
 """"""""""""""""""""
