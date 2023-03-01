@@ -47,12 +47,11 @@ au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --reg
 
 "g/^\(\k\+\t\).*$\n\1.*/d
 "$ziglib in tags
-let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
-let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
+au FileType nim,nims let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
 au FileType nim,nims setl tags+=$VIMDICT/nimtags,./nimtags
 au FileType c,cpp setl tags +=$VIMDICT/cpptags
+au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType zig setl tags +=$VIMDICT/zigtags
-"au FileType zig set directory +=$zigGLIB/
 
 """"""""""""""
 " acp base 
