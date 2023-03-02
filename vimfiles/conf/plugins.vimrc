@@ -1,10 +1,11 @@
 "-------------------------------------------------------
-if !filereadable(expand("$VIM/autoload/plug.vim"))
+if !filereadable(expand("$VIM/autoload/plug.vim")) "{{{
 	!curl -fLo $VIM/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 let s:bundle_dir = expand("$VIM/bundle/")
 call plug#begin(s:bundle_dir)
+"}}}
 "-------------------------------------------------------
 " Plugin
 "==================
@@ -39,7 +40,7 @@ Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/VisIncr'
 "Plug 'tpope/vim-fugitive'
 "Plug 'AndrewRadev/linediff.vim'
-"Plug 'zah/nim.vim'
+Plug 'zah/nim.vim'
 "Plug 'ziglang/zig.vim'
 "Plug 'elmcast/elm-vim'
 "Plug 'skywind3000/vim-quickui'

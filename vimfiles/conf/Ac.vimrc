@@ -22,12 +22,12 @@ set wildignore+=*.sw? " Vim swap files
 "Functions {{{
 """"""""""""""""""""
 fu! AcCreateMaps(target, combo) "{{{
-if !hasmapto(a:target, 'n')
-	exec 'nmap ' . a:combo . ' ' . a:target
-endif
-if !hasmapto(a:target, 'v')
-	exec 'vmap ' . a:combo . ' ' . a:target
-endif
+	if !hasmapto(a:target, 'n')
+		exec 'nmap ' . a:combo . ' ' . a:target
+	endif
+	if !hasmapto(a:target, 'v')
+		exec 'vmap ' . a:combo . ' ' . a:target
+	endif
 endf "}}}
 
 fu! AcCreateDir(ds) "{{{
@@ -70,13 +70,17 @@ fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1 {{{
 	return l:ret
 endf "}}}
 
-com! Ftags call s:formatTags() "{{{
-fu! s:formatTags()
+com! -nargs=? Ftags call s:formatTags(<args>) "{{{
+fu! s:formatTags(rd='')
 	exe ':g/^\(\k\+\t\).*$\n\1.*/d'
-	exe ':%s/^\a\t.*\n//ge'
+	exe ':%s/^\k\t.*\n//ge'
 	exe ':%s/^!_.*\n//ge'
+	if a:rd !=''
+		exe ':%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
+	endif
 endf
-nmap \- :Ftags<cr> 
+"nmap \- :Ftags<cr> 
+nmap \- :Ftags '$NIMLIB'<cr> 
 "}}}
 
 com! -nargs=+ Mtags call s:MakeTags(<f-args>) "{{{
@@ -94,15 +98,15 @@ fu! s:setFiletype(fn, ft, bop=0)
 endf "}}}
 
 fu! ToggleVirtualEditMode() "{{{
-if !exists('s:vem')
-	let		s:vem = 1
-	set		ve=all
-	echo	'virtual edit on'
-else
-	unlet	s:vem
-	set		ve=
-	echo	'virtual edit off'
-endif
+	if !exists('s:vem')
+		let		s:vem = 1
+		set		ve=all
+		echo	'virtual edit on'
+	else
+		unlet	s:vem
+		set		ve=
+		echo	'virtual edit off'
+	endif
 endf "}}}
 
 com -nargs=+ SetAcpDict call s:setCompleteOpt<args> "{{{
@@ -116,48 +120,48 @@ fu! s:setCompleteOpt(ft, df='', bop=0)
 endf "}}}
 
 fu! ToggleQuickfix() "{{{
-redir => ls_output
-execute ':silent! ls'
-redir END
-let exists = match(ls_output, "Quickfix")
-if exists == -1
-	execute ':copen'
-else
-	execute ':cclose'
-endif
+	redir => ls_output
+	execute ':silent! ls'
+	redir END
+	let exists = match(ls_output, "Quickfix")
+	if exists == -1
+		execute ':copen'
+	else
+		execute ':cclose'
+	endif
 endf "}}}
 
 fu! QfMakeConv() "{{{
-let l:qflist = getqflist()
-for i in l:qflist
-	let l:i.text = iconv(l:i.text, "cp936", "utf-8")
-endfor
-call setqflist(l:qflist)
+	let l:qflist = getqflist()
+	for i in l:qflist
+		let l:i.text = iconv(l:i.text, "cp936", "utf-8")
+	endfor
+	call setqflist(l:qflist)
 endf "}}}
 
 fu! SwitchToBuf(filename) "{{{
-" find in current tab
-let l:bufwinnr = bufwinnr(a:filename)
-if l:bufwinnr != -1
-	exec l:bufwinnr . "wincmd w"
-	return
-else
-	" find in each tab
-	tabfirst
-	let l:tab = 1
-	while l:tab <= tabpagenr("$")
-		let l:bufwinnr = bufwinnr(a:filename)
-		if l:bufwinnr != -1
-			exec "normal " . l:tab . "gt"
-			exec l:bufwinnr . "wincmd w"
-			return
-		endif
-		tabnext
-		let l:tab = tab + 1
-	endwhile
-	" not exist, new tab
-	exec "e " . a:filename
-endif
+	" find in current tab
+	let l:bufwinnr = bufwinnr(a:filename)
+	if l:bufwinnr != -1
+		exec l:bufwinnr . "wincmd w"
+		return
+	else
+		" find in each tab
+		tabfirst
+		let l:tab = 1
+		while l:tab <= tabpagenr("$")
+			let l:bufwinnr = bufwinnr(a:filename)
+			if l:bufwinnr != -1
+				exec "normal " . l:tab . "gt"
+				exec l:bufwinnr . "wincmd w"
+				return
+			endif
+			tabnext
+			let l:tab = tab + 1
+		endwhile
+		" not exist, new tab
+		exec "e " . a:filename
+	endif
 endf "}}}
 
 fu! FileFormatOption() "{{{
@@ -203,9 +207,9 @@ endf "}}}
 com -nargs=? DelTWS call DeleteTrailingWS(<args>) "{{{
 fu! DeleteTrailingWS(bb=0)
 	if a:bb != 0 
-	if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
-		return
-	endif
+		if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
+			return
+		endif
 	endif
 	exe "normal mz"
 	%s/\s\+$//ge
@@ -234,11 +238,11 @@ set history=20
 "utf-8 , ANSI, UNICODE
 set encoding=utf-8
 if has("win32")
-set termencoding=utf-8
-set fileencoding=utf-8
+	set termencoding=utf-8
+	set fileencoding=utf-8
 else
-set termencoding=utf-8
-set fileencoding=utf-8
+	set termencoding=utf-8
+	set fileencoding=utf-8
 endif
 
 set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
@@ -251,7 +255,7 @@ if v:lang == "zh_CN"
 	else
 		language messages en_US.UTF-8
 	endif
-"else
+	"else
 	"set langmenu=en_US.UTF-8
 	"language messages en_US.UTF-8
 endif
@@ -269,7 +273,7 @@ set autoread
 set mouse=a
 
 if	has("win32")
-au QuickfixCmdPost make call QfMakeConv()
+	au QuickfixCmdPost make call QfMakeConv()
 endif
 
 "set path in current dir
@@ -295,30 +299,30 @@ nmap <silent> \ee :call SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
 "au! bufwritepost Ac.vimrc so $VIMCONF/Ac.vimrc
 " Avoid clearing hilight definition in plugins
 if !exists("g:vimrc_loaded")
-"}}}
-""""""""""""""""""""
-"Colors and Fonts {{{
-""""""""""""""""""""
-"Set font
-"if has("unix")
-"set gfn=Monospace\ 11
-"endif
-"Enable syntax hl
-syntax enable
-" color scheme
-if has("gui_running")
-	"start gvim maximized
-	"if has("au")
-	"au GUIEnter * simalt ~x
+	"}}}
+	""""""""""""""""""""
+	"Colors and Fonts {{{
+	""""""""""""""""""""
+	"Set font
+	"if has("unix")
+	"set gfn=Monospace\ 11
 	"endif
-	set guioptions-=T
-	set guioptions-=m
-	set guioptions-=L
-	"set guioptions-=r
-	"hi normal guibg=#294d4a
-else
-	set t_Co=256
-endif " has
+	"Enable syntax hl
+	syntax enable
+	" color scheme
+	if has("gui_running")
+		"start gvim maximized
+		"if has("au")
+		"au GUIEnter * simalt ~x
+		"endif
+		set guioptions-=T
+		set guioptions-=m
+		set guioptions-=L
+		"set guioptions-=r
+		"hi normal guibg=#294d4a
+	else
+		set t_Co=256
+	endif " has
 endif " exists(...)
 colorscheme maroloccio
 "}}}
@@ -388,8 +392,8 @@ set showmatch
 "set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 "Actually, the tab does not switch buffers, but my arrows
 try
-set switchbuf=useopen
-set stal=1
+	set switchbuf=useopen
+	set stal=1
 catch
 endtry
 "}}}
@@ -409,7 +413,10 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 "Don't close window, when deleting a buffer
 com! Bclose call <SID>BufcloseCloseIt()
 "Bclose function can be found in "Buffer related" section
-nmap ;bd :Bclose<cr>
+"nmap ;bd :Bclose<cr>
+"nmap ;bD :Bclose 1<cr>
+nmap ;bd :silent bd!<cr>
+nmap ;bD :silent bw<cr>
 "}}}
 """"""""""""""""""""
 "Session options {{{
@@ -439,9 +446,9 @@ endif
 """"""""""""""""""""
 "Text options {{{
 """"""""""""""""""""
-set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
-set softtabstop=4
-set tabstop=4 " Set tabstop to 4 characters
+set cindent shiftwidth=2 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
+set softtabstop=2
+set tabstop=2 " Set tabstop to 4 characters
 "au FileType c,cpp,h,hpp,cc,cxx set expandtab
 "set expandtab " Set expandtab on, the tab will be change to space automaticaly
 "}}}
@@ -462,9 +469,9 @@ set wrap
 """"""""""""""""""""
 if has("cscope")
 	"if has("win32")
-		"set csprg=$VIMRUNTIME/cscope.exe
+	"set csprg=$VIMRUNTIME/cscope.exe
 	"else
-		"set csprg=/usr/bin/cscope
+	"set csprg=/usr/bin/cscope
 	"endif
 	set csto=1
 	set cscopequickfix=s-,c-,d-,i-,t-,e-

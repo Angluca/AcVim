@@ -1,6 +1,7 @@
 "=================================
 "autocomplete
 "=================================
+"nim.vim must comment nim#init()
 """"""""""""""
 " filetypes {{{
 """"""""""""""
@@ -47,7 +48,6 @@ au FileType zig setl tags +=$VIMDICT/zigtags
 """"""""""""""
 " acp option {{{
 """"""""""""""
-" -1=nopop
 let g:acp_behaviorKeywordLength=2
 "let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorFileLength = 1
@@ -97,10 +97,11 @@ SetAcpDict('sh', $VIMDICT.'bash.dict')
 "au BufNewFile,BufRead *.nut let g:acp_completeOption= $VIMDICT.'squirrel.dict'
 SetAcpDict('squirrel', $VIMDICT.'squirrel.dict')
 SetAcpDict('lua', $VIMDICT.'lua.dict')
-SetAcpDict('nim', $VIMDICT.'nim.dict')
 SetAcpDict('zig', $VIMDICT.'zigtags')
-"SetAcpDict('zig')
-"SetAcpDict('zig','.,w,b,u,t,i,k', 1)
+"SetAcpDict('nim', $VIMDICT.'nim.dict')
+SetAcpDict('nim', $VIMDICT.'nimtags')
+"SetAcpDict('nim','.,w,b,u,t,i,k', 1)
+"SetAcpDict('nim')
 "au FileType lua setl tags+=$VIMDICTquick2dx.tags
 "au FileType lua setl dict+=$VIMDICTquick2dx.tags
 "}}}

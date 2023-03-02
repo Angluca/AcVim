@@ -40,8 +40,8 @@ let g:EchoFuncKeyPrev='<m-->'
 "let g:EchoFuncLangsUsed = ["java","cpp"]
 "let g:EchoFuncPathMappingEnabled = 1
 "let g:EchoFuncPathMapping = [
-			"\ [expand("$VIMDICT") , '$VIMDICT']
-			"\]
+"\ [expand("$VIMDICT") , '$VIMDICT']
+"\]
 "}}}
 """"""""""""""""""""
 "qbuf {{{
@@ -69,7 +69,7 @@ vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "let g:ctrlp_follow_symlinks = 0
 "let g:ctrlp_types = ['fil', 'buf', 'mru'].
 "let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
-						  "\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
+"\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 let g:ctrlp_extensions = ['tag', 'buffertag', 'dir']
 let g:ctrlp_arg_map = 1
 let g:ctrlp_tilde_homedir = 1
@@ -86,10 +86,10 @@ let g:ctrlp_open_new_file = 't' "thvr
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_clear_cache_on_exit = 1
 "let g:ctrlp_custom_ignore = {
-			"\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			"\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
-			"\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-			"\ }
+"\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
+"\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+"\ }
 
 let g:ctrlp_map = ';cc'
 nmap <silent> ;ce :CtrlPChangeAll<cr>
@@ -112,9 +112,9 @@ nmap <silent> ;cD :CtrlPClearAllCaches<cr>
 "Taglist {{{
 """"""""""""""""""""
 "if has("win32")
-	"let Tlist_Ctags_Cmd = 'ctags'
+"let Tlist_Ctags_Cmd = 'ctags'
 "elseif has("unix")
-	"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 "endif
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 0
@@ -190,8 +190,8 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 "NERD_commenter {{{
 """"""""""""""""""""
 "let g:NERDCustomDelimiters = {
-	"\ 'vim': { 'left': '#' }
-	"\ }
+"\ 'vim': { 'left': '#' }
+"\ }
 
 let g:NERDCreateDefaultMappings=0
 call AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
@@ -249,8 +249,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 "let g:syntastic_mode_map = { 'mode': 'active',
-			"\ 'active_filetypes': [],
-			"\ 'passive_filetypes': ['c', 'cpp'] }
+"\ 'active_filetypes': [],
+"\ 'passive_filetypes': ['c', 'cpp'] }
 "}}}
 """"""""""""""""""""
 "vimim {{{
