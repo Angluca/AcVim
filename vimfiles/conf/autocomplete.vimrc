@@ -1,15 +1,9 @@
 "=================================
-" Filetypes autocomplete
+"autocomplete
 "=================================
 """"""""""""""
-" filetype
+" filetypes {{{
 """"""""""""""
-com -nargs=+ SetFiletype call s:setFiletype<args>
-fun! s:setFiletype(fn, ft, bop=0)
-	let l:opt = a:bop == v:false ? ('setl ft='.a:ft) : (a:ft)
-	"echow l:opt. ' | '
-	exe $"au BufNewFile,BufRead {a:fn} {l:opt}"
-endf
 SetFiletype('*.vimbp', 'vim')
 SetFiletype('README*,COPYING', 'txt')
 SetFiletype('*.txt', 'txt')
@@ -42,19 +36,16 @@ SetFiletype('*.wxss', 'css')
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
 au BufWrite *.nim,*.nims,*.zig :DelTWS
 
-"for nim language
-au FileType nim nmap \= :silent !ctags -R --langdef=nim --langmap=nim:.nim --regex-nim="/^[^\#]*\s+(\w+)\*\s*\{.*\}/\1/t,type/" --regex-nim="/^[^\#]*\s+(\w+)\*.*=/\1/t,type/" --regex-nim="/^[^\#]*proc\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*method\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*auto\s+(\w+)\*/\1/f,func/" --regex-nim="/^[^\#]*template\s+(\w+)\*/\1/m,macro/" --regex-nim="/^[^\#]*macro\s+(\w+)\*/\1/m,macro/" --regex-nim="/^[^\#]*\s+`(\w+)[=]?`\*/\1/o,operator/" --regex-nim="/^[^\#]*iterator\s+(\w+)\*/\1/i,iterator/" -f nimtags <cr>{{{}}}
-
-"g/^\(\k\+\t\).*$\n\1.*/d
-"$ziglib in tags
+"for language
+au FileType nim,nims nmap \= :Mtags nimtags $VIMDICT/nim.ctags<cr>
 au FileType nim,nims let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
-au FileType nim,nims setl tags+=$VIMDICT/nimtags,./nimtags
+au FileType nim,nims setl tags+=$VIMDICT/nimtags,nimtags
 au FileType c,cpp setl tags +=$VIMDICT/cpptags
 au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType zig setl tags +=$VIMDICT/zigtags
-
+"}}}
 """"""""""""""
-" acp base 
+" acp option {{{
 """"""""""""""
 " -1=nopop
 let g:acp_behaviorKeywordLength=2
@@ -65,7 +56,6 @@ let g:acp_behaviorFileLength = 1
 "let g:acp_behaviorKeywordCommand = "\<C-n>"
 "let g:acp_behaviorKeywordIgnores = []
 "let g:acp_behavior = {}
-
 
 let g:acp_enableAtStartup = 1
 let g:acp_ignorecaseOption = 1
@@ -84,22 +74,10 @@ exe 'set cpt=' . g:acp_completeOption
 "i. 头文件
 "d. 头文件里定义或宏
 "k. 文件
-
-
+"}}}
 """"""""""""""""""""
-" acp dict
+" acp dictags {{{
 """"""""""""""""""""
-com -nargs=+ SetAcpDict call s:setCompleteOpt<args>
-fun! s:setCompleteOpt(ft, df='', bop=0)
-	if a:ft == '' || (a:df == '' && a:bop == v:true)
-		return
-	endif
-	let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
-	"echo l:opt . ' |'
-	exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
-	"exe 'au FileType ' . a:ft . ' set complete=' . l:opt
-endf
-
 if has("win32")
 	SetAcpDict('asm', $VIMDICT.'win32.dict')
 	"SetAcpDict('c,cpp', $VIMDICT.'win32.dict,k'.$VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict', '.,w,b,u,i,k')
@@ -125,4 +103,5 @@ SetAcpDict('zig', $VIMDICT.'zigtags')
 "SetAcpDict('zig','.,w,b,u,t,i,k', 1)
 "au FileType lua setl tags+=$VIMDICTquick2dx.tags
 "au FileType lua setl dict+=$VIMDICTquick2dx.tags
-
+"}}}
+"-------------------

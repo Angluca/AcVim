@@ -1,12 +1,11 @@
 "=================================
 " Plugin configuration
 "=================================
+"-------------------------
+"simple plugins {{{
+"-------------------------
 """"""""""""""""""""
-"Sketch seting
-""""""""""""""""""""
-"nmap <F10> :call ToggleSketch()<CR>
-""""""""""""""""""""
-"ShowMarks seting
+"ShowMarks seting {{{
 """"""""""""""""""""
 let showmarks_include = "abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_ignore_type="hmpq"    "help,non-modify,preview,quick-fix buffer do not display
@@ -15,18 +14,21 @@ let g:showmarks_ignore_type="hmpq"    "help,non-modify,preview,quick-fix buffer 
 "<leader>mc ShowmarksClearMark
 "<leader>ma ShowmarksClearAll
 "<leader>mm ShowmarksPlaceMark
+"}}}
 """"""""""""""""""""
-"Project seting
+"Project seting {{{
 """"""""""""""""""""
 nmap <silent> ;P <Plug>ToggleProject
 let g:proj_window_width = 20
 let g:proj_window_increment = 50
+"}}}
 """"""""""""""""""""
-"errormarker
+"errormarker {{{
 """"""""""""""""""""
 let errormarker_disablemappings = 1
+"}}}
 """"""""""""""""""""
-"EchoFunc
+"EchoFunc {{{
 """"""""""""""""""""
 "let mouse dont show func = 0
 let g:EchoFuncAutoStartBalloonDeclaration = 0
@@ -40,21 +42,25 @@ let g:EchoFuncKeyPrev='<m-->'
 "let g:EchoFuncPathMapping = [
 			"\ [expand("$VIMDICT") , '$VIMDICT']
 			"\]
+"}}}
 """"""""""""""""""""
-"qbuf
+"qbuf {{{
 """"""""""""""""""""
 let g:qb_hotkey = ";bb"
+"}}}
 """"""""""""""""""""
-"fliplr
+"fliplr {{{
 """"""""""""""""""""
 nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
-
+"}}}
+"-------------------
+"}}}
 "-------------------------
-"bundle plugins
+"bundle plugins {{{
 "-------------------------
 """"""""""""""""""""
-"Ctrlp setting
+"Ctrlp {{{
 """"""""""""""""""""
 "let g:ctrlp_by_filename = 0
 "let g:ctrlp_use_caching = 1
@@ -101,8 +107,9 @@ nmap <silent> ;ca :CtrlPMixed<cr>
 nmap <silent> ;cl :CtrlPLine<cr>
 nmap <silent> ;cd :CtrlPClearCache<cr>
 nmap <silent> ;cD :CtrlPClearAllCaches<cr>
+"}}}
 """"""""""""""""""""
-"Taglist
+"Taglist {{{
 """"""""""""""""""""
 "if has("win32")
 	"let Tlist_Ctags_Cmd = 'ctags'
@@ -130,9 +137,9 @@ let Tlist_WinWidth = 30
 let Tlist_Compact_Format = 0 " do not show help
 let tlist_zig_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
 nmap <silent> ;tL :Tlist<cr>
-
+"}}}
 """"""""""""""""""""
-"Tagbar (similar taglist)
+"Tagbar (similar taglist) {{{
 """"""""""""""""""""
 "let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_autoclose = 1
@@ -146,8 +153,9 @@ let g:tagbar_compact = 1
 "let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
 nmap <silent> ;tl :TagbarToggle<cr>
+"}}}
 """"""""""""""""""""
-"NERDTree seting
+"NERDTree  {{{
 """"""""""""""""""""
 "let NERDTreeMinimalUI=1
 "let NERDTreeMinimalMenu=1
@@ -161,8 +169,9 @@ let NERDTreeWinPos='left'
 let NERDTreeWinSize=30
 let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.tar\.gz$','\.7z$','\.zip$','\.rar$','\.swp$','\.dll$','\.obj$']
 nmap <silent> ;tt :NERDTreeToggle <cr>
+"}}}
 """"""""""""""""""""
-"Mark seting
+"Mark {{{
 """"""""""""""""""""
 "nmap <silent> ;mm <Plug>MarkSet
 "vmap <silent> ;mm <Plug>MarkSet
@@ -176,8 +185,9 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 "nmap <silent> ;N <Plug>MarkSearchCurrentPrev
 "nmap <silent> ;/ <Plug>MarkSearchAnyNext
 "nmap <silent> ;? <Plug>MarkSearchAnyPrev
+"}}}
 """"""""""""""""""""
-"NERD_commenter setting
+"NERD_commenter {{{
 """"""""""""""""""""
 "let g:NERDCustomDelimiters = {
 	"\ 'vim': { 'left': '#' }
@@ -197,12 +207,9 @@ call AcCreateMaps('<plug>NERDCommenterUncomment',  ';xu')
 call AcCreateMaps('<plug>NERDCommenterToEOL',      ';x$')
 call AcCreateMaps('<plug>NERDCommenterAltDelims',  ';xa')
 call AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
+"}}}
 """"""""""""""""""""
-"vcscommand setting
-""""""""""""""""""""
-let VCSCommandDeleteOnHide=1
-""""""""""""""""""""
-"vimwiki
+"vimwiki {{{
 """"""""""""""""""""
 let	g:vimwiki_use_mouse	=	1
 let	g:vimwiki_hl_cb_checked	=	1
@@ -215,9 +222,9 @@ let	g:vimwiki_list	=	[{'path':$VIMDATA.'vimwiki/',
 			\	'html_header':$VIMDATA.'gevimwiki/template/header.tpl',
 			\	'html_footer':$VIMDATA.'gevimwiki/template/footer.tpl',
 			\	'diary_link_count':8}]
-
+"}}}
 """"""""""""""""""""
-"easymotion
+"easymotion {{{
 """"""""""""""""""""
 "let g:EasyMotion_keys= 'asdghklqwertyuiopzxcvbnmfj;'
 let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
@@ -226,12 +233,14 @@ let g:EasyMotion_startofline = 0
 let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 0
 let g:EasyMotion_enter_jump_first = 1
+"}}}
 """"""""""""""""""""
-"EasyAlign
+"EasyAlign {{{
 """"""""""""""""""""
 vnoremap <silent> <Enter> :EasyAlign<cr>
+"}}}
 """"""""""""""""""""
-"syntasic
+"syntasic {{{
 """"""""""""""""""""
 "nmap	;sc	:SyntasticCheck<CR>
 "nmap	;se	:Errors<CR>
@@ -242,8 +251,9 @@ let g:syntastic_check_on_wq = 0
 "let g:syntastic_mode_map = { 'mode': 'active',
 			"\ 'active_filetypes': [],
 			"\ 'passive_filetypes': ['c', 'cpp'] }
+"}}}
 """"""""""""""""""""
-"vimim
+"vimim {{{
 """"""""""""""""""""
 let g:vimim_cloud = -1
 "let g:vimim_map = ''
@@ -252,89 +262,50 @@ let g:vimim_mycloud = 0
 let g:vimim_punctuation = 0
 let g:vimim_shuangpin = 0
 let g:vimim_toggle = 'wubi'
+"}}}
 """"""""""""""""""""
-"clever-f
+"clever-f {{{
 """"""""""""""""""""
 let g:clever_f_across_no_line = 1
 let g:clever_f_ignore_case = 0
 let g:clever_f_smart_case = 0
 let g:clever_f_fix_key_direction = 1
 let g:clever_f_show_prompt = 0
+"}}}
 """"""""""""""""""""
-"clang_complete
-""""""""""""""""""""
-let g:clang_use_library=1
-let g:clang_complete_patterns = 1
-let g:clang_snippets = 1
-let g:clang_complete_macros = 1
-"let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
-if has("win32")
-	let g:clang_library_path='D:/Develop/tools/clang3.3/'
-else
-	let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
-endif
-"let g:clang_user_options='-stdlib=libc++ -std=c++11'
-let g:clang_user_options='-std=c++11'
-""""""""""""""""""""
-"YouCompleteMe
-""""""""""""""""""""
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_key_invoke_completion = '<s-space>'
-let g:ycm_key_detailed_diagnostics = ''
-let g:ycm_register_as_syntastic_checker = 0
-
-let g:ycm_global_ycm_extra_conf = $VIM .'/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-""""""""""""""""""""
-"vim-markdown
+"vim-markdown {{{
 """"""""""""""""""""
 let g:vim_markdown_folding_disabled=1
 "let g:vim_markdown_initial_foldlevel=3
-
+"}}}
 """"""""""""""""""""
-"lightline
+"lightline {{{
 """"""""""""""""""""
 set laststatus=2
 let g:lightline = {'colorscheme': 'jellybeans',}
+"}}}
 """"""""""""""""""""
-"undotree
+"undotree {{{
 """"""""""""""""""""
 "let g:undotree_RelativeTimestamp = 0
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
-"nmap ;ut :UndotreeToggle<cr>:UndotreeFocus<cr>
 nmap ;ut :UndotreeToggle<cr>
-"nmap ;uu :UndotreeToggle<cr>
+"}}}
 """"""""""""""""""""
-"zig
-""""""""""""""""""""
-let g:zig_fmt_autosave = 0
-"au filetype zig AcpDisable
-
-"map <tab> <Plug>CompletorCppJumpToPlaceholder
-"imap <tab> <Plug>CompletorCppJumpToPlaceholder
-"let g:completor_zig_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+\.[\w-]*)$'
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-"if has("autocmd") && exists("+omnifunc")
-"autocmd Filetype *
-		"\	if &omnifunc == "" |
-		"\		setlocal omnifunc=syntaxcomplete#Complete |
-		"\	endif
-"endif
-""""""""""""""""""""
-"elm
+"elm {{{
 """"""""""""""""""""
 let g:elm_detailed_complete = 1
 let g:elm_format_autosave = 1
 let g:elm_syntastic_show_warnings = 1
-
+"}}}
+"-------------------
+"}}}
 "-------------------------
 "Custom settings
-"You can see AcVim maps
+"You can see maps
 ":verbose nmap ;
 ":verbose nmap ,
 "-------------------------
-"
+
+

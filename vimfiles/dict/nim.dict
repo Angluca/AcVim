@@ -1,6 +1,3 @@
-/*INCLUDESECTION*/
-/*TYPESECTION*/
-/*VARSECTION*/
 ABDAY_1
 ABDAY_2
 ABDAY_3
@@ -34,7 +31,6 @@ AI_NUMERICHOST
 AI_NUMERICSERV
 AI_PASSIVE
 AI_V4MAPPED
-ALLOC_0
 ALT_DIGITS
 AM_STR
 ANCHORED
@@ -103,7 +99,6 @@ B600
 B75
 B921600
 B9600
-BACKSPACE
 BIO
 BIO_ctrl
 BIO_do_connect
@@ -143,7 +138,6 @@ BufferSize
 ByteAddress
 CASELESS
 CFilePtr
-CLANG_NO_SANITIZE_ADDRESS
 CLOCAL
 CLOCKS_PER_SEC
 CLOCK_MONOTONIC
@@ -180,7 +174,6 @@ CMSG_LEN
 CMSG_NXTHDR
 CMSG_SPACE
 CODESET
-COMMA
 CONFIG_BSR
 CONFIG_JIT
 CONFIG_JITTARGET
@@ -228,20 +221,6 @@ CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS
 CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS
 CS_POSIX_V6_LPBIG_OFFBIG_LIBS
 CS_POSIX_V6_WIDTH_RESTRICTED_ENVS
-CTRL_A
-CTRL_B
-CTRL_C
-CTRL_D
-CTRL_E
-CTRL_F
-CTRL_H
-CTRL_K
-CTRL_L
-CTRL_N
-CTRL_P
-CTRL_T
-CTRL_U
-CTRL_W
 C_JmpBuf
 CacheCounter
 CacheSeq
@@ -313,7 +292,6 @@ DFA_RESTART
 DFA_SHORTEST
 DLLSSLName
 DLLUtilName
-DL_ALLOC_0
 DOLLAR_ENDONLY
 DOMAIN_ALIAS_RID_ADMINS
 DOTALL
@@ -449,7 +427,6 @@ ENOTEMPTY
 ENOTSOCK
 ENOTSUP
 ENOTTY
-ENTER
 ENXIO
 EOFError
 EOPNOTSUPP
@@ -537,7 +514,6 @@ ERR_get_error
 ERR_load_BIO_strings
 ERR_peek_last_error
 ERR_print_errors_fp
-ESC
 ESPIPE
 ESRCH
 ESTALE
@@ -625,7 +601,6 @@ EncodingConverter
 EncodingError
 EndOfFile
 Endianness
-Entry
 Entrypoint
 EnumMode
 EpollEvent
@@ -810,7 +785,6 @@ FutureError
 FutureInfo
 FutureStream
 FutureVar
-GC_GUARD
 GC_Strategy
 GC_collectZct
 GC_disable
@@ -857,9 +831,6 @@ GetCurrentFiber
 Gid
 Goo
 HANDLE_FLAG_INHERIT
-HAVE_CSTDINT
-HAVE_STDINT_H
-HAVE_TICK_COUNTER
 HDC
 HGLRC
 HIGH_PRIORITY_CLASS
@@ -962,7 +933,6 @@ IF_NAMESIZE
 IGNBRK
 IGNCR
 IGNPAR
-IL64
 IN6ADDR_ANY_INIT
 IN6ADDR_LOOPBACK_INIT
 IN6_IS_ADDR_LINKLOCAL
@@ -983,7 +953,6 @@ INADDR_LOOPBACK
 INADDR_NONE
 INET6_ADDRSTRLEN
 INET_ADDRSTRLEN
-INF
 INFINITE
 INFO_BACKREFMAX
 INFO_CAPTURECOUNT
@@ -1013,7 +982,6 @@ INFO_REQUIREDCHARFLAGS
 INFO_SIZE
 INFO_STUDYSIZE
 INLCR
-INLINE_ELAPSED
 INPCK
 INVALID_FILE_SIZE
 INVALID_HANDLE_VALUE
@@ -1146,9 +1114,7 @@ JsonNodeMode
 JsonNodeObj
 JsonParser
 JsonParsingError
-KEY_ACTION
 KEY_EVENT_RECORD
-KEY_NULL
 Key
 KeyError
 KeyboardEvent
@@ -1160,10 +1126,6 @@ LC_MESSAGES
 LC_MONETARY
 LC_NUMERIC
 LC_TIME
-LINENOISE_DEFAULT_HISTORY_MAX_LEN
-LINENOISE_HISTORY_NEXT
-LINENOISE_HISTORY_PREV
-LINENOISE_MAX_LINE
 LIO_NOP
 LIO_NOWAIT
 LIO_READ
@@ -1309,7 +1271,6 @@ MimeDB
 MimeType
 MinFloatNormal
 MinuteRange
-Misc
 Mode
 MonoTime
 Month
@@ -1323,10 +1284,7 @@ MsgKind
 MultipartData
 MultipartEntries
 MultipleValueSetting
-NAN
-NAN_INFINITY
 NCCS
-NCSTRING
 NEPOLL_MAX
 NETDB_ELEM_SIZE
 NETIF_ADDR_IDX_MAX
@@ -1359,34 +1317,6 @@ NEWLINE_ANYCRLF
 NEWLINE_CR
 NEWLINE_CRLF
 NEWLINE_LF
-NF
-NF32
-NF64
-NI
-NI16
-NI32
-NI64
-NI8
-NIMBASE_H
-NIM_ALIGN
-NIM_ALIGNOF
-NIM_BOOL
-NIM_CAST
-NIM_CHAR
-NIM_CONST
-NIM_EXTERNC
-NIM_FALSE
-NIM_IMAN
-NIM_LIKELY
-NIM_NIL
-NIM_NOALIAS
-NIM_POSIX_INIT
-NIM_STATIC_ASSERT
-NIM_STRLIT_FLAG
-NIM_THREADVAR
-NIM_THREAD_LOCAL
-NIM_TRUE
-NIM_UNLIKELY
 NI_DGRAM
 NI_NAMEREQD
 NI_NOFQDN
@@ -1442,38 +1372,6 @@ NO_START_OPTIMIZE
 NO_UTF16_CHECK
 NO_UTF32_CHECK
 NO_UTF8_CHECK
-NU
-NU16
-NU32
-NU64
-NU8
-N_CDECL
-N_CDECL_PTR
-N_CLOSURE
-N_CLOSURE_PTR
-N_FASTCALL
-N_FASTCALL_PTR
-N_INLINE
-N_INLINE_PTR
-N_LIB_EXPORT
-N_LIB_EXPORT_VAR
-N_LIB_IMPORT
-N_LIB_PRIVATE
-N_NIMCALL
-N_NIMCALL_PTR
-N_NOCONV
-N_NOCONV_PTR
-N_NOINLINE
-N_NOINLINE_PTR
-N_RAW_NIMCALL
-N_SAFECALL
-N_SAFECALL_PTR
-N_STDCALL
-N_STDCALL_PTR
-N_SYSCALL
-N_SYSCALL_PTR
-N_THISCALL
-N_THISCALL_PTR
 NaN
 NanosecondRange
 Natural
@@ -1482,7 +1380,6 @@ NegInf
 Newlines
 NilAccessDefect
 NilAccessError
-Nim
 NimAsyncContinueSuffix
 NimIdent
 NimMajor
@@ -1503,7 +1400,6 @@ Node
 NodeType
 NonTerminal
 NonTerminalFlag
-Numbers
 OCRNL
 OFDEL
 OFILL
@@ -1556,7 +1452,6 @@ OrderedSet
 OrderedTable
 OrderedTableRef
 OrdinalEnum
-Ordinals
 OsPlatform
 OutOfMemDefect
 OutOfMemError
@@ -1774,10 +1669,7 @@ PunctuationChars
 QuitFailure
 QuitSuccess
 RADIXCHAR
-RDTSC
 REALTIME_PRIORITY_CLASS
-REG_ARG1
-REG_ARG2
 RLIMIT_NOFILE
 RLock
 RSA_free
@@ -1982,7 +1874,6 @@ SEEK_CUR
 SEEK_END
 SEEK_SET
 SEM_FAILED
-SEQ_DECL_SIZE
 SHUT_RD
 SHUT_RDWR
 SHUT_WR
@@ -2202,7 +2093,6 @@ STD_ERROR_HANDLE
 STD_INPUT_HANDLE
 STD_OUTPUT_HANDLE
 STILL_ACTIVE
-STRING_LITERAL
 STUDY_EXTRA_NEEDED
 STUDY_JIT_COMPILE
 STUDY_JIT_PARTIAL_HARD_COMPILE
@@ -2257,10 +2147,8 @@ SelectEvent
 Selection
 Selector
 Sem
-Seqs
 Servent
 SetElement
-Sets
 Sha1Digest
 Sha1State
 ShadowRoot
@@ -2339,7 +2227,6 @@ StringStreamObj
 StringTableMode
 StringTableObj
 StringTableRef
-Strings and characters	system_overview.rst	/^Strings and characters$/;"	c
 StudyError
 Style
 Suseconds
@@ -2349,7 +2236,6 @@ SysCond
 SysLock
 SysThread
 SystemInfo
-TAB
 TAB0
 TAB1
 TAB2
@@ -2373,10 +2259,8 @@ TCSAFLUSH
 TCSANOW
 TFdSet
 TFrame
-TFrame_
 THOUSEP
 TIMER_ABSTIME
-TIME_MIN
 TIOCGWINSZ
 TLSEXT_NAMETYPE_host_name
 TLS_client_method
@@ -2397,11 +2281,9 @@ TableRef
 TaintedString
 Task
 TerminalCmd
-Terminals, in 2010.	wrappers/linenoise/README.markdown	/^## Terminals, in 2010.$/;"	s	chapter:Linenoise
 Termios
 TestResult
 TestStatus
-Tested with...	wrappers/linenoise/README.markdown	/^## Tested with...$/;"	s	chapter:Linenoise
 TextAreaElement
 Tfenv
 Tfexcept
@@ -2442,7 +2324,6 @@ UIEvent
 ULONG
 ULONG_PTR
 UNGREEDY
-USE_NIM_NAMESPACE
 UTC
 UTF16
 UTF16_ERR0
@@ -2644,25 +2525,6 @@ XmlParser
 YESEXPR
 YeardayRange
 ZonedTime
-_GENODE_CPP__SYSLOCKS_H_
-_GENODE_CPP__THREAD_H_
-_GNU_SOURCE
-_HUGE_ENUF
-_NIM_SIGNALS_H_
-__DECLSPEC_SUPPORTED
-__LINENOISE_H
-__anon247c834f0102
-_arg
-_func
-_locked
-_mutex_a
-_mutex_b
-_semaphore
-_thread
-_tls
-abAppend
-abFree
-abInit
 abbr
 abbrev
 abort
@@ -2670,7 +2532,6 @@ abortOnError
 abs
 abs2
 absolutePath
-abuf
 accept
 accept4
 acceptAddr
@@ -2791,7 +2652,6 @@ arctan
 arctan2
 arctanh
 area
-arg
 ariaAttr
 arity
 article
@@ -2814,7 +2674,6 @@ atEnd
 atan
 atan2
 atanh
-atexit_registered
 atom
 atomicAddFetch
 atomicAlwaysLockFree
@@ -2903,8 +2762,6 @@ br
 broadcast
 broadcastSysCond
 bsd_signal
-buf
-buflen
 buildCPU
 buildOS
 button
@@ -2936,7 +2793,6 @@ c_strcmp
 c_strlen
 callSoon
 callback
-calldepth
 callsite
 canShare
 cancelAnimationFrame
@@ -3196,7 +3052,6 @@ colYellow
 colYellowGreen
 colgroup
 collect
-cols
 combine
 commandLineParams
 commitHead
@@ -3213,9 +3068,7 @@ compileString
 compiles
 complement
 complete
-completeLine
 completePass2
-completionCallback
 complex
 complex32
 complex64
@@ -3347,7 +3200,6 @@ cursorDown
 cursorForward
 cursorUp
 cushort
-cvec
 cycle
 d2i_X509
 data
@@ -3437,7 +3289,6 @@ disableCache
 disableExternalCapture
 disableParamFiltering
 disableProfiling
-disableRawMode
 disableTrueColors
 disabled
 disarm
@@ -3479,7 +3330,6 @@ echo
 echoForeignDeps
 editDistance
 editDistanceAscii
-elapsed
 elementFromPoint
 elementName
 elementType
@@ -3491,7 +3341,6 @@ emulatedThreadVars
 enableCache
 enableExternalCapture
 enableProfiling
-enableRawMode
 enableTrueColors
 encode
 encodeMime
@@ -3514,7 +3363,6 @@ endservent
 entityName
 entityToRune
 entityToUtf8
-entry
 enumLen
 enumerate
 envPairs
@@ -3642,7 +3490,6 @@ fileNewer
 fileReaderDone
 fileReaderEmpty
 fileReaderLoading
-filename
 fill
 filter
 filterIt
@@ -3717,14 +3564,10 @@ forwardImpl
 fpRadix
 fpathconf
 frameMsgBuf
-frameMsgLen
 free
 freeAddrInfo
-freeCompletions
 freeEnvironmentStringsA
 freeEnvironmentStringsW
-freeHintsCallback
-freeHistory
 freeShared
 freeSid
 free_study
@@ -3748,7 +3591,6 @@ ftruncate
 ftw
 fullSet
 fullinfo
-func
 gLogger
 gai_strerror
 gamma
@@ -3789,7 +3631,6 @@ getChar
 getClockStr
 getColNumber
 getColumn
-getColumns
 getCommand
 getCommandLine
 getCommandLineA
@@ -3811,7 +3652,6 @@ getCurrentExceptionMsg
 getCurrentLine
 getCurrentProcess
 getCurrentProcessId
-getCursorPosition
 getCustomPragmaVal
 getData
 getDataDir
@@ -4065,7 +3905,6 @@ getservent
 getsid
 getsockname
 getsockopt
-getticks
 getuid
 getwd
 glob
@@ -4094,8 +3933,6 @@ handleEvent
 handleHexChar
 handleLF
 handleRefillChar
-handle_signal
-handler
 hasAllocStack
 hasAnyModuleChanged
 hasArgOfName
@@ -4147,15 +3984,10 @@ hiddenBit
 hideCursor
 high
 hint
-hintsCallback
-history
 historyAdd
 historyLoad
 historySave
 historySetMaxLen
-history_index
-history_len
-history_max_len
 home
 hostCPU
 hostOS
@@ -4182,7 +4014,6 @@ if_freenameindex
 if_indextoname
 if_nameindex
 if_nametoindex
-ifd
 iframe
 ignoreMsg
 im
@@ -4356,7 +4187,6 @@ isSuccess
 isTitle
 isTrueColorSupported
 isUndefined
-isUnsupportedTerm
 isUpper
 isUpperAscii
 isValid
@@ -4372,7 +4202,6 @@ items
 itemsWithPrefix
 iterAndMutate
 iterToProc
-iterator
 javaEnabled
 jit_exec
 jit_free_unused_memory
@@ -4432,44 +4261,6 @@ likely
 line
 lineInfo
 lineInfoObj
-linenoise
-linenoiseAddCompletion
-linenoiseAtExit
-linenoiseBeep
-linenoiseClearScreen
-linenoiseCompletionCallback
-linenoiseCompletions
-linenoiseData
-linenoiseEdit
-linenoiseEditBackspace
-linenoiseEditDelete
-linenoiseEditDeletePrevWord
-linenoiseEditHistoryNext
-linenoiseEditInsert
-linenoiseEditMoveEnd
-linenoiseEditMoveHome
-linenoiseEditMoveLeft
-linenoiseEditMoveRight
-linenoiseExtra
-linenoiseFree
-linenoiseFreeHintsCallback
-linenoiseHintsCallback
-linenoiseHistoryAdd
-linenoiseHistoryLoad
-linenoiseHistorySave
-linenoiseHistorySetMaxLen
-linenoiseNoTTY
-linenoisePrintKeyCodes
-linenoiseRaw
-linenoiseSetCompletionCallback
-linenoiseSetFreeHintsCallback
-linenoiseSetHintsCallback
-linenoiseSetMultiLine
-linenoiseState
-linenoiseStatus
-linenoiseStatus_ctrl_C
-linenoiseStatus_ctrl_D
-linenoiseStatus_ctrl_unknown
 lines
 link
 lio_listio
@@ -4481,7 +4272,6 @@ littleEndian16
 littleEndian32
 littleEndian64
 ln
-lndebug
 lo32
 load
 loadConfig
@@ -4508,7 +4298,6 @@ low
 lowerBound
 lseek
 lstat
-macro
 maction
 main
 makeUnixAddr
@@ -4542,7 +4331,6 @@ maxStackTraceLines
 maxSymlinkLen
 maxVarIntLen
 maximumPositiveValue
-maxrows
 md5
 md5Final
 md5Init
@@ -4605,7 +4393,6 @@ mkstemp
 mkstemps
 mktime
 mlabeledtr
-mlmode
 mlock
 mlockall
 mmap
@@ -4680,10 +4467,6 @@ nameToCodePage
 nanosecond
 nanoseconds
 nanosleep
-narch_coroExecWithStack
-narch_longjmp
-narch_longjmp_1
-narch_setjmp
 nativeToUnixPath
 natural
 nav
@@ -4799,9 +4582,6 @@ nextPowerOfTwo
 nextSplitPoint
 nftw
 nice
-nim
-nimAddInt
-nimAddInt64
 nimCStrLen
 nimCmpMem
 nimCopyMem
@@ -4810,13 +4590,7 @@ nimGC_setStackBottom
 nimIdentBackticksNormalize
 nimIdentNormalize
 nimMaxDescriptorsFallback
-nimModInt
-nimModInt64
-nimMulInt
-nimMulInt64
 nimSetMem
-nimSubInt
-nimSubInt64
 nimThreadDestructionHandlers
 nimThreadProcWrapperBody
 nimZeroMem
@@ -4850,9 +4624,7 @@ nxt
 object
 obstackPtr
 of
-ofd
 off
-offMainThread
 offsetHeight
 offsetLeft
 offsetOf
@@ -4860,7 +4632,6 @@ offsetTop
 offsetWidth
 ol
 old
-oldpos
 on
 onFailedAssert
 onSignal
@@ -4874,12 +4645,10 @@ openFileStream
 openHandle
 openProcess
 opendir
-operator
 optgroup
 option
 or
 ord
-orig_termios
 osErrorMsg
 osInvalidSocket
 osLastError
@@ -4992,7 +4761,6 @@ pinnedSpawn
 pipe
 pipe2
 play
-plen
 pointer
 pointerBase
 polar
@@ -5004,7 +4772,6 @@ popLast
 popcount
 popen
 portal
-pos
 posix_fadvise
 posix_fallocate
 posix_madvise
@@ -5061,7 +4828,6 @@ procCall
 procName
 processID
 processedRows
-procname
 prod
 product
 programResult
@@ -5216,7 +4982,6 @@ rawTag
 rawText
 rawWrite
 rawWriteString
-rawmode
 rb
 rdFileSize
 rdFileTime
@@ -5286,10 +5051,6 @@ recvmsg
 reduce
 ref
 refcount
-refreshLine
-refreshMultiLine
-refreshShowHints
-refreshSingleLine
 register
 registerEvent
 registerHandle
@@ -5710,7 +5471,6 @@ stat
 static
 staticExec
 staticRead
-status
 statvfs
 stderr
 stdin
@@ -5820,8 +5580,6 @@ thead
 then
 thinout
 thisDir
-threadVarGetValue
-threadVarSetValue
 ticks
 time
 timeEnd
@@ -5951,6 +5709,7 @@ uint
 uint16
 uint32
 uint64
+uint64_t
 uint64x2
 uint8
 ul
@@ -5988,7 +5747,6 @@ unsafeNew
 unsafeNewFetchOptions
 unsafeRead
 unsetControlCHook
-unsupported_term
 untyped
 unzip
 update

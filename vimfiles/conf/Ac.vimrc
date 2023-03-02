@@ -1,40 +1,42 @@
 "=================================
-" General
+" General: \ee \uu \aa \pp
 "=================================
-"--------------------------------------------
-"load plugins conf
+"---------------------------------
+"load plugins conf {{{
 so $VIMCONF/plugins.vimrc
 nma<silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 "call pathogen#helptags()
 execute pathogen#infect()
 execute pathogen#infect('bundle_custom/{}')
 "call pathogen#runtime_append_all_bundles()
+"}}}
 "--------------------------------------------
-" Ignore these filenames during enhanced command line completion.
+" Ignore these filenames during enhanced command line completion. {{{
 set wildignore+=*.luac " Lua byte code
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.a,*.dylib " compiled object files
 set wildignore+=*.pyc " Python byte code
 set wildignore+=*.spl " compiled spelling word lists
 set wildignore+=*.sw? " Vim swap files
+"}}}
 """"""""""""""""""""
-"Functions
+"Functions {{{
 """"""""""""""""""""
-fu! AcCreateMaps(target, combo)
+fu! AcCreateMaps(target, combo) "{{{
 if !hasmapto(a:target, 'n')
 	exec 'nmap ' . a:combo . ' ' . a:target
 endif
 if !hasmapto(a:target, 'v')
 	exec 'vmap ' . a:combo . ' ' . a:target
 endif
-endf
+endf "}}}
 
-fu! AcCreateDir(ds)
+fu! AcCreateDir(ds) "{{{
 	if finddir(a:ds) == ''
 		silent call mkdir(a:ds)
 	endif
-endf
+endf "}}}
 
-fu! AcClearUndo()
+fu! AcClearUndo() "{{{
 	if AcIsOK(-1, "Do you want clear all undo? [Y]: ", 0, "Cancel") != 0
 		let ul_bak = &undolevels
 		let md_bak = &modified
@@ -44,9 +46,9 @@ fu! AcClearUndo()
 		let &modified = md_bak
 		call AcIsOK(1, 0, "Clear finish", 0 )
 	endif
-endf
+endf "}}}
 
-fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
+fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1 {{{
 	echoh WarningMsg
 	if len(a:emsg) > 1
 		echo a:emsg 
@@ -66,9 +68,32 @@ fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
 	endif
 	echoh None
 	return l:ret
-endf
+endf "}}}
 
-fu! ToggleVirtualEditMode()
+com! Ftags call s:formatTags() "{{{
+fu! s:formatTags()
+	exe ':g/^\(\k\+\t\).*$\n\1.*/d'
+	exe ':%s/^\a\t.*\n//ge'
+	exe ':%s/^!_.*\n//ge'
+endf
+nmap \- :Ftags<cr> 
+"}}}
+
+com! -nargs=+ Mtags call s:MakeTags(<f-args>) "{{{
+fu! s:MakeTags(f, opt='')
+	let l:opt = a:opt==''?'':'--options='.a:opt
+	exe ':silent !ctags '.l:opt.' -R -f '.a:f
+endf
+"}}}
+
+com -nargs=+ SetFiletype call s:setFiletype<args> "{{{
+fu! s:setFiletype(fn, ft, bop=0)
+	let l:opt = a:bop == v:false ? ('setl ft='.a:ft) : (a:ft)
+	"echow l:opt. ' | '
+	exe $"au BufNewFile,BufRead {a:fn} {l:opt}"
+endf "}}}
+
+fu! ToggleVirtualEditMode() "{{{
 if !exists('s:vem')
 	let		s:vem = 1
 	set		ve=all
@@ -78,9 +103,19 @@ else
 	set		ve=
 	echo	'virtual edit off'
 endif
-endf
+endf "}}}
 
-fu! ToggleQuickfix()
+com -nargs=+ SetAcpDict call s:setCompleteOpt<args> "{{{
+fu! s:setCompleteOpt(ft, df='', bop=0)
+	if a:ft == '' || (a:df == '' && a:bop == v:true)
+		return
+	endif
+	let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
+	exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
+	"exe 'au FileType ' . a:ft . ' set complete=' . l:opt
+endf "}}}
+
+fu! ToggleQuickfix() "{{{
 redir => ls_output
 execute ':silent! ls'
 redir END
@@ -90,17 +125,17 @@ if exists == -1
 else
 	execute ':cclose'
 endif
-endf
+endf "}}}
 
-fu! QfMakeConv()
+fu! QfMakeConv() "{{{
 let l:qflist = getqflist()
 for i in l:qflist
 	let l:i.text = iconv(l:i.text, "cp936", "utf-8")
 endfor
 call setqflist(l:qflist)
-endf
+endf "}}}
 
-fu! SwitchToBuf(filename)
+fu! SwitchToBuf(filename) "{{{
 " find in current tab
 let l:bufwinnr = bufwinnr(a:filename)
 if l:bufwinnr != -1
@@ -123,9 +158,9 @@ else
 	" not exist, new tab
 	exec "e " . a:filename
 endif
-endf
+endf "}}}
 
-fun! FileFormatOption()
+fu! FileFormatOption() "{{{
 	if !exists("g:menutrans_fileformat_dialog")
 		let g:menutrans_fileformat_dialog = "Select format for writing the file"
 	endif
@@ -147,9 +182,9 @@ fun! FileFormatOption()
 	elseif l:n == 3
 		set ff=mac
 	endif
-endfun
+endfun "}}}
 
-fu! <SID>BufcloseCloseIt()
+fu! <SID>BufcloseCloseIt() "{{{
 	let l:currentBufNum = bufnr("%")
 	let l:alternateBufNum = bufnr("#")
 	if buflisted(l:alternateBufNum)
@@ -163,10 +198,10 @@ fu! <SID>BufcloseCloseIt()
 	if buflisted(l:currentBufNum)
 		execute("bdelete! ".l:currentBufNum)
 	endif
-endf
+endf "}}}
 
-com -nargs=? DelTWS call DeleteTrailingWS(<args>)
-func! DeleteTrailingWS(bb=0)
+com -nargs=? DelTWS call DeleteTrailingWS(<args>) "{{{
+fu! DeleteTrailingWS(bb=0)
 	if a:bb != 0 
 	if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
 		return
@@ -176,9 +211,11 @@ func! DeleteTrailingWS(bb=0)
 	%s/\s\+$//ge
 	nohl
 	exe "normal `z"
-endfunc
+endf "}}}
+"-------------------
+"}}}
 """"""""""""""""""""
-"Create directory
+"Create directory {{{
 """"""""""""""""""""
 call AcCreateDir($VIMDATA)
 call AcCreateDir($VIMDATA.'backup')
@@ -186,8 +223,9 @@ call AcCreateDir($VIMDATA.'swap')
 call AcCreateDir($VIMDATA.'cache')
 set backupdir=$VIMDATA/backup " where to put backup file
 set directory=$VIMDATA/swap " where to put swap file
+"}}}
 """"""""""""""""""""
-"Base settings
+"Base settings {{{
 """"""""""""""""""""
 "Get out of VI's compatible mode..
 set nocompatible
@@ -257,9 +295,9 @@ nmap <silent> \ee :call SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
 "au! bufwritepost Ac.vimrc so $VIMCONF/Ac.vimrc
 " Avoid clearing hilight definition in plugins
 if !exists("g:vimrc_loaded")
-
+"}}}
 """"""""""""""""""""
-"Colors and Fonts
+"Colors and Fonts {{{
 """"""""""""""""""""
 "Set font
 "if has("unix")
@@ -283,8 +321,9 @@ else
 endif " has
 endif " exists(...)
 colorscheme maroloccio
+"}}}
 """"""""""""""""""""
-"Fileformats
+"VIM userinterface {{{
 """"""""""""""""""""
 "Some nice mapping to switch syntax (useful if one mixes different languages in one file)
 "nmap ;$ :syntax sync fromstart<cr>
@@ -292,9 +331,6 @@ au BufEnter * :syntax sync fromstart
 "Favorite filetypes
 set ffs=unix,dos
 "set ffs=unix
-""""""""""""""""""""
-"VIM userinterface
-""""""""""""""""""""
 "Set 7 lines to the curors - when moving vertical..
 "set so=7
 "set autochdir "auto set dir
@@ -336,9 +372,9 @@ set novisualbell
 set showmatch
 "How many tenths of a second to blink
 "set mat=1
-
+"}}}
 """"""""""""""""""""
-"Statusline
+"Statusline {{{
 """"""""""""""""""""
 "Always hide the statusline
 "set laststatus=2
@@ -356,9 +392,9 @@ set switchbuf=useopen
 set stal=1
 catch
 endtry
-
+"}}}
 """"""""""""""""""""
-"Buffer realted
+"Buffer realted {{{
 """"""""""""""""""""
 "Open a dummy buffer for paste
 "nmap ;en :tabnew<cr>:setl buftype=nofile<cr>
@@ -374,21 +410,23 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 com! Bclose call <SID>BufcloseCloseIt()
 "Bclose function can be found in "Buffer related" section
 nmap ;bd :Bclose<cr>
-
+"}}}
 """"""""""""""""""""
-"Session options
+"Session options {{{
 """"""""""""""""""""
 set sessionoptions-=curdir
 set sessionoptions+=sesdir
+"}}}
 """"""""""""""""""""
-"Files and backups
+"Files and backups {{{
 """"""""""""""""""""
 "Turn backup off
 set nobackup
 set nowb
 "set noswapfile
+"}}}
 """"""""""""""""""""
-"Folding
+"Folding {{{
 """"""""""""""""""""
 "Enable folding, I find it very useful
 if exists("&foldenable")
@@ -397,16 +435,18 @@ endif
 if exists("&foldlevel")
 	set fdl=0
 endif
+"}}}
 """"""""""""""""""""
-"Text options
+"Text options {{{
 """"""""""""""""""""
 set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
 set softtabstop=4
 set tabstop=4 " Set tabstop to 4 characters
 "au FileType c,cpp,h,hpp,cc,cxx set expandtab
 "set expandtab " Set expandtab on, the tab will be change to space automaticaly
+"}}}
 """"""""""""""""""""
-"Indent
+"Indent {{{
 """"""""""""""""""""
 "Auto indent
 set ai
@@ -416,8 +456,9 @@ set si
 set cindent
 "Wrap lines
 set wrap
+"}}}
 """"""""""""""""""""
-"cscope setting
+"cscope setting {{{
 """"""""""""""""""""
 if has("cscope")
 	"if has("win32")
@@ -428,9 +469,9 @@ if has("cscope")
 	set csto=1
 	set cscopequickfix=s-,c-,d-,i-,t-,e-
 endif
-
+"}}}
 """"""""""""""""""""
-"HTML related
+"HTML related {{{
 """"""""""""""""""""
 " HTML entities - used by xml edit plugin
 let xml_use_xhtml = 1
@@ -441,17 +482,15 @@ let html_number_lines = 0
 let use_xhtml = 1
 au FileType html set ft=xml
 au FileType html set syntax=html
+"}}}
 """"""""""""""""""""
-"Vim section
-""""""""""""""""""""
-"au FileType vim set nofen
-""""""""""""""""""""
-"Netrw
+"Netrw {{{
 """"""""""""""""""""
 let g:netrw_winsize = 30
 let	g:netrw_home	= $VIMDATA.'cache'
+"}}}
 """"""""""""""""""""
-"User base options
+"User options {{{
 """"""""""""""""""""
 "time
 iab xt <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
@@ -565,20 +604,13 @@ nmap <silent> ;<cr> :noh<cr>
 nmap <silent> ;; ;<space>
 nmap <silent> ,, ,<space>
 
-"nmap <silent> ;to :tabnew<cr>
-"nmap <silent> ;tO :tabo<cr>
-""Fast redraw
-"nmap <silent> ;rr :redraw!<cr>
-""Fast rewind
-"nmap <silent> ;re :rewind<cr>
-
-"generate tags
-"nmap \= :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q <cr>
-"--------------------------------------------
-"filetype and completer
+"}}}
+"---------------------------------
+"load filetype and complete conf {{{
 so $VIMCONF/autocomplete.vimrc
 nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 "load user conf
 so $VIMCONF/user.vimrc
 nmap <silent> \uu :call SwitchToBuf("$VIMCONF/user.vimrc")<cr>
-"--------------------------------------------
+"}}}
+"---------------------------------
