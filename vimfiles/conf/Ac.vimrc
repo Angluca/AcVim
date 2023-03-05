@@ -1,10 +1,9 @@
 "=================================
-" General: \ee \uu \aa \pp
+" General: \ee \pp \aa \uu 
 "=================================
 "---------------------------------
 "load plugins conf {{{
 so $VIMCONF/plugins.vimrc
-nma<silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 "call pathogen#helptags()
 execute pathogen#infect()
 execute pathogen#infect('bundle_custom/{}')
@@ -21,6 +20,7 @@ set wildignore+=*.sw? " Vim swap files
 """"""""""""""""""""
 "Functions {{{
 """"""""""""""""""""
+com! -nargs=+ CreateMaps call AcCreateMaps<args> "{{{
 fu! AcCreateMaps(target, combo) "{{{
 	if !hasmapto(a:target, 'n')
 		exec 'nmap ' . a:combo . ' ' . a:target
@@ -44,6 +44,7 @@ fu! AcClearUndo() "{{{
 		exe "normal I \<BS>\<Esc>"
 		let &undolevels = ul_bak
 		let &modified = md_bak
+		"exe ":cle"
 		call AcIsOK(1, 0, "Clear finish", 0 )
 	endif
 endf "}}}
@@ -72,7 +73,8 @@ endf "}}}
 
 com! -nargs=? Ftags call s:formatTags(<args>) "{{{
 fu! s:formatTags(rd='')
-	exe ':g/^\(\k\+\t\).*$\n\1.*/d'
+	"exe ':g/^\(\k\+\t\).*$\n\1.*/d'
+	exe ':g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
 	exe ':%s/^\k\t.*\n//ge'
 	exe ':%s/^!_.*\n//ge'
 	if a:rd !=''
@@ -294,7 +296,6 @@ endif
 "Set mapleader
 let g:mapleader = ","
 "Fast editing of _vimrc
-nmap <silent> \ee :call SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
 "When _vimrc is edited, reload it
 "au! bufwritepost Ac.vimrc so $VIMCONF/Ac.vimrc
 " Avoid clearing hilight definition in plugins
@@ -370,6 +371,7 @@ set hlsearch
 set magic
 "No sound on errors.
 au vimEnter * set vb t_vb=
+au vimEnter * :clearjumps
 set noerrorbells
 set novisualbell
 "show matching bracets
@@ -408,15 +410,13 @@ endtry
 "nmap ;et :tabnew $TEMP/scratch.txt<cr>
 "endif
 "set viminfo='10,\"30,!,:10,n~/vimdata/cache/_viminfo
-set viminfo='10,\"30,!,:10,n$VIMDATA/cache/_viminfo
+set viminfo='0,<0,@0,f0,!,h,/10,:10,n$VIMDATA/cache/_viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 "Don't close window, when deleting a buffer
 com! Bclose call <SID>BufcloseCloseIt()
 "Bclose function can be found in "Buffer related" section
-"nmap ;bd :Bclose<cr>
-"nmap ;bD :Bclose 1<cr>
-nmap ;bd :silent bd!<cr>
-nmap ;bD :silent bw<cr>
+nmap ;bd :Bclose<cr>
+nmap ;bw :silent bw<cr>
 "}}}
 """"""""""""""""""""
 "Session options {{{
@@ -592,7 +592,8 @@ nmap ;fg :se fenc=GBK<cr>
 "virtual edit mode
 "nmap ;ve :call	ToggleVisualEditMode() <cr>
 "vmap ;ve :call	ToggleVisualEditMode() <cr>
-call AcCreateMaps(':call ToggleVirtualEditMode()<cr>', ';ve')
+"call AcCreateMaps(':call ToggleVirtualEditMode()<cr>', ';ve')
+CreateMaps(':call ToggleVirtualEditMode()<cr>', ';ve')
 "undo list
 nmap ;uc :call AcClearUndo() <cr>
 
@@ -615,9 +616,12 @@ nmap <silent> ,, ,<space>
 "---------------------------------
 "load filetype and complete conf {{{
 so $VIMCONF/autocomplete.vimrc
-nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 "load user conf
 so $VIMCONF/user.vimrc
+
+nmap <silent> \ee :call SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
+nmap <silent> \pp :call SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
+nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 nmap <silent> \uu :call SwitchToBuf("$VIMCONF/user.vimrc")<cr>
 "}}}
 "---------------------------------

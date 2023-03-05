@@ -32,7 +32,7 @@ SetFiletype('*.wxml', 'html')
 SetFiletype('*.wxss', 'css')
 
 " automaticlly remove trailing whitespace
-"au BufWrite *.* call DelTWS() "All kill!!!?
+"au BufWrite *.* :DelTWS "All kill!!!?
 "au BufWrite *.txt call DelTWS()
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
 au BufWrite *.nim,*.nims,*.zig :DelTWS

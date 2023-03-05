@@ -242,9 +242,9 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 """"""""""""""""""""
 "syntasic {{{
 """"""""""""""""""""
-"nmap	;sc	:SyntasticCheck<CR>
-"nmap	;se	:Errors<CR>
-"nmap	;st	:SyntasticToggleMode<CR>
+nmap	;sk	:SyntasticCheck<CR>
+nmap	;sl	:Errors<CR>
+nmap	;st	:SyntasticToggleMode<CR>
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
