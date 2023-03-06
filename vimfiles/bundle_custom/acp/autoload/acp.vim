@@ -141,8 +141,9 @@ export def OnPopupPost(): string
 		inoremap <silent> <expr> <BS>  OnBs()
 		# a command to restore to original text and select the first match
 		return (behavsCurrent[iBehavs].command =~ 
-			"\<C-n>" ?  "\<C-p>" : "\<C-n>") #cot+= noselect
+			"\<C-p>" ?  "\<Up>" : "\<Down>") #cot+= noselect
 			#"\<C-p>" ?  "\<C-n>\<Up>" : "\<C-p>\<Down>") #cot-= noselect
+		#return ''
 	endif
 	iBehavs += 1
 	if len(behavsCurrent) > iBehavs
@@ -335,7 +336,7 @@ def FeedPopup(): string
 	# or try popup once. So first completion is duplicated.
 	insert(behavsCurrent, behavsCurrent[iBehavs])
 	SetTempOption(GROUP0, 'spell', false)
-	SetTempOption(GROUP0, 'completeopt', 'menuone' .. (g:acp_completeoptPreview ? ',preview' : ''))
+	SetTempOption(GROUP0, 'completeopt', 'menuone,noselect' .. (g:acp_completeoptPreview ? ',preview' : ''))
 	SetTempOption(GROUP0, 'complete', g:acp_completeOption)
 	SetTempOption(GROUP0, 'ignorecase', g:acp_ignorecaseOption ? true : false)
 	# NOTE: With CursorMovedI driven, Set 'lazyredraw' to avoid flickering.

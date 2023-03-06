@@ -409,27 +409,31 @@ function! EchoFuncStart()
     let s:CmdHeight=&cmdheight
     let b:maparg_left = {}
     let b:maparg_right = {}
-    if maparg("(","i") == ''
+    if maparg("<c-p>","i") == ''
         "inoremap <silent> <buffer>  (   ()<left><C-R>=EchoFunc()<CR>
-        inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>)<left>
-        "inoremap <silent> <buffer>  <space>   <space><C-R>=EchoFunc()<CR>
+        inoremap <silent> <buffer>  <c-p>   <c-p><C-R>=EchoFunc()<CR>
+        inoremap <silent> <buffer>  <c-n>   <c-n><C-R>=EchoFunc()<CR>
+        inoremap <silent> <buffer>  <cr>   <C-R>=EchoFunc()<CR><cr>
        "inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>
-    elseif maparg("(",'i',0,1)['expr'] == 0
-        let b:maparg_left = maparg("(",'i',0,1)
-        let map = maparg("(", "i", 0, 1)['noremap'] ? "inoremap" : "imap"
-        let buffer = maparg("(", "i", 0, 1)['buffer'] ? '<buffer>' : ''
-        execute map." ".buffer." ( ".maparg("(", "i").'<C-R>=EchoFunc()<CR>'
+    elseif maparg("<c-p>",'i',0,1)['expr'] == 0
+        let b:maparg_left = maparg("<c-p>",'i',0,1)
+        let map = maparg("<c-p>", "i", 0, 1)['noremap'] ? "inoremap" : "imap"
+        let buffer = maparg("<c-p>", "i", 0, 1)['buffer'] ? '<buffer>' : ''
+        execute map." ".buffer." <c-p> ".maparg("<c-p>", "i").'<C-R>=EchoFunc()<CR>'
     else
         echo "can't map ( for echofunc"
     endif
 
-    if maparg(")","i") == ''
-        inoremap <silent> <buffer>  )   )<C-R>=EchoFuncClear()<CR>
-    elseif maparg(")",'i',0,1)['expr'] == 0
-        let b:maparg_right = maparg(")",'i',0,1)
-        let map = maparg(")", "i", 0, 1)['noremap'] ? "inoremap" : "imap"
-        let buffer = maparg(")", "i", 0, 1)['buffer'] ? '<buffer>' : ''
-        execute map." ".buffer." ) ".maparg(")", "i").'<C-R>=EchoFuncClear()<CR>'
+    if maparg("<esc>","i") == ''
+        inoremap <silent> <buffer>  <esc>   <C-R>=EchoFuncClear()<CR><esc>
+        inoremap <silent> <buffer>  <bs>   <C-R>=EchoFuncClear()<CR><bs>
+        inoremap <silent> <buffer>  <c-h>   <C-R>=EchoFuncClear()<CR><c-h>
+        "inoremap <silent> <buffer>  )   )<C-R>=EchoFuncClear()<CR>
+    elseif maparg("<esc>",'i',0,1)['expr'] == 0
+        let b:maparg_right = maparg("<esc>",'i',0,1)
+        let map = maparg("<esc>", "i", 0, 1)['noremap'] ? "inoremap" : "imap"
+        let buffer = maparg("<esc>", "i", 0, 1)['buffer'] ? '<buffer>' : ''
+        execute map." ".buffer." <esc> ".maparg("<esc>", "i").'<C-R>=EchoFuncClear()<CR>'
     else
         echo "can't map ) for echofunc"
     endif
@@ -493,8 +497,10 @@ function! EchoFuncStop()
     if !exists('b:EchoFuncStarted')
         return
     endif
-    if maparg("(","i") == "(<C-R>=EchoFunc()<CR>"
-        iunmap      <buffer>    (
+    if maparg("<c-p>","i") == "<c-p><C-R>=EchoFunc()<CR>"
+        iunmap      <buffer>    <c-p>
+        iunmap      <buffer>    <c-n>
+        iunmap      <buffer>    <cr>
     elseif b:maparg_left != {}
         execute (b:maparg_left['noremap'] ? "inoremap" : "imap").' '
                     \.(b:maparg_left['buffer'] ? "<buffer>" : "")
@@ -502,8 +508,10 @@ function! EchoFuncStop()
                     \.b:maparg_left['lhs'].' '.b:maparg_left['rhs']
     endif
 
-    if maparg(")","i") == ")<C-R>=EchoFuncClear()<CR>"
-        iunmap      <buffer>    )
+    if maparg("<esc>","i") == "<C-R>=EchoFuncClear()<CR><esc>"
+        iunmap      <buffer>    <esc>
+        iunmap      <buffer>    <bs>
+        iunmap      <buffer>    <c-h>
     elseif b:maparg_right != {}
         execute (b:maparg_right['noremap'] ? "inoremap" : "imap").' '
                     \.(b:maparg_right['buffer'] ? "<buffer>" : "")
