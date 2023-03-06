@@ -118,7 +118,7 @@ fu! s:setCompleteOpt(ft, df='', bop=0)
 	endif
 	let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
 	exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
-	"exe 'au FileType ' . a:ft . ' set complete=' . l:opt
+	"exe 'au FileType ' . a:ft . ' set cpt=' . l:opt
 endf "}}}
 
 fu! ToggleQuickfix() "{{{
@@ -369,15 +369,19 @@ set incsearch
 set hlsearch
 "Set magic on
 set magic
-"No sound on errors.
-au vimEnter * set vb t_vb=
-au vimEnter * :clearjumps
 set noerrorbells
 set novisualbell
 "show matching bracets
 set showmatch
 "How many tenths of a second to blink
 "set mat=1
+"set shortmess+=c    " Shut off completion messages
+set shortmess=aoOtTcCS
+set cot-=preview
+set cot+=menuone,noselect
+"No sound on errors and clear jumplist.
+au vimEnter * set vb t_vb=
+au vimEnter * :clearjumps
 "}}}
 """"""""""""""""""""
 "Statusline {{{

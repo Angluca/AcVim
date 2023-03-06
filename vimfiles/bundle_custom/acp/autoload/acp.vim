@@ -141,7 +141,8 @@ export def OnPopupPost(): string
 		inoremap <silent> <expr> <BS>  OnBs()
 		# a command to restore to original text and select the first match
 		return (behavsCurrent[iBehavs].command =~ 
-			"\<C-p>" ?  "\<C-n>\<Up>" : "\<C-p>\<Down>")
+			"\<C-n>" ?  "\<C-p>" : "\<C-n>") #cot+= noselect
+			#"\<C-p>" ?  "\<C-n>\<Up>" : "\<C-p>\<Down>") #cot-= noselect
 	endif
 	iBehavs += 1
 	if len(behavsCurrent) > iBehavs
@@ -153,7 +154,6 @@ export def OnPopupPost(): string
 			'word': GetCurrentWord(),
 			'commands': map(copy(behavsCurrent), 'v:val.command')[1 :]
 		}
-		echo lastUncompletable
 		FinishPopup(0)
 		return "\<C-e>"
 	endif
@@ -174,7 +174,7 @@ enddef
 # LOCAL FUNCTIONS: {{{1
 
 #
-const keysMappingDriven_ = [
+const keysMappingDriven = [
 	'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 	'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
@@ -182,25 +182,26 @@ const keysMappingDriven_ = [
 	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 	'-', '_', '~', '^', '.', ',', ':', '!', '#', '=',
 	'%', '$', '@', '<', '>', '/', '\', '<Space>', '<C-h>', '<BS>', ]
-var keysMappingDriven = []
+var isKeysMappingDriven = false
+
 def MapForMappingDriven()
 	UnmapForMappingDriven()
-	keysMappingDriven = keysMappingDriven_
 	for key in keysMappingDriven
 		execute printf('inoremap <silent> %s %s<C-r>=<SID>FeedPopup()<CR>',
 		key, key)
 	endfor
+	isKeysMappingDriven = true
 enddef
 
 #
 def UnmapForMappingDriven()
-	if !exists('keysMappingDriven') || keysMappingDriven == []
+	if !isKeysMappingDriven
 		return
 	endif
 	for key in keysMappingDriven
 		execute 'iunmap ' .. key
 	endfor
-	keysMappingDriven = []
+	isKeysMappingDriven = false
 enddef
 
 #
@@ -220,11 +221,10 @@ def SetTempOption(group: number, name: string, value: any = 0)
 	endif
 enddef
 
+
 #
 def RestoreTempOptions(group: number)
-	#echo tempOptionSet
 	for [name, value] in items(tempOptionSet[group])
-		#echo $"{name} .. {value}"
 		var v = value->type()
 		if v == v:t_string
 			execute printf(':set %s=%s', name, value)
@@ -293,7 +293,6 @@ def MakeCurrentBehaviorSet(): list<dict<any>>
 	elseif exists('behavsCurrent[iBehavs]')
 		return []
 	elseif modified
-		#echo g:acp_behavior
 		behavs = copy(exists('g:acp_behavior[&filetype]')
 			? g:acp_behavior[&filetype]
 			: g:acp_behavior['*'])

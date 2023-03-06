@@ -63,9 +63,9 @@ let g:acp_ignorecaseOption = 1
 "let g:acp_completeoptPreview = 1
 "let g:acp_completeOption='.,w,b,u,t,d,k'
 let g:acp_completeOption='.,w,b,u,t,k'
-exe 'set cpt=' . g:acp_completeOption
+"exe 'set cpt=' . g:acp_completeOption
 "let g:acp_completeOption='.,w,b,u,t,i,k'
-"set cpt=".,w,b,u,t,d,k"
+"set cpt=".,w,b,u,t,k"
 ".. 当前缓冲区
 "w. 其它窗口的缓冲区
 "b. 其它载入的缓冲区

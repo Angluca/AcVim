@@ -301,23 +301,14 @@ function! s:GetFunctions(fun, fn_only)
         endif
         if has_key(i,'kind')
             " p: prototype/procedure; f: function; m: member
-            if (i.kind =~ "^f*" || i.kind =~ "^m*" || 
-                        \i.kind =~ "^v*" || i.kind =~ "^s*" || 
-                        \i.kind =~ "^l*" || i.kind =~ "^t*" || 
-                        \i.kind =~ "^g*" || i.kind =~ "^u*" || 
-                        \i.kind =~ "^p*" || i.kind =~ "^i*" || 
-                        \i.kind =~ "^c*") && 
+            if (i.kind =~ "f*" || i.kind =~ "m*" || 
+                        \i.kind =~ "v*" || i.kind =~ "s*" || 
+                        \i.kind =~ "l*" || i.kind =~ "t*" || 
+                        \i.kind =~ "g*" || i.kind =~ "u*" || 
+                        \i.kind =~ "p*" || i.kind =~ "i*" || 
+                        \i.kind =~ "c*") && 
                         \has_key(i,'cmd')
                     let fil_tag+=[i]
-            "elseif (!a:fn_only || (i.kind=='p' || i.kind=='f') ||
-            "if (!a:fn_only || (i.kind=='p' || i.kind=='f') ||
-                        "\(i.kind == 'm' && has_key(i,'cmd') &&
-                        "\                  match(i.cmd,'(') != -1)) &&
-                        "\i.name=~funpat
-                "if &filetype!='cpp' || !has_key(i,'class') ||
-                            "\i.name!~'::' || i.name=~i.class
-                    "let fil_tag+=[i]
-                "endif
             endif
         else
             if !a:fn_only && i.name == a:fun
@@ -330,73 +321,6 @@ function! s:GetFunctions(fun, fn_only)
     endif
     let w:count=1
     for i in fil_tag
-        if has_key(i,'kind') && has_key(i,'name') && has_key(i,'signature')
-            let tmppat=substitute(escape(i.name,'[\*~^'),'^.*::','','')
-            if &filetype == 'cpp'
-                let tmppat=substitute(tmppat,'\<operator ','operator\\s*','')
-                "let tmppat=substitute(tmppat,'^\(.*::\)','\\(\1\\)\\?','')
-                let tmppat=tmppat . '\s*(.*'
-                let tmppat='\([A-Za-z_][A-Za-z_0-9]*::\)*'.tmppat
-            else
-                let tmppat=tmppat . '\>.*'
-            endif
-            let name=substitute(i.cmd[2:-3],tmppat,'','').i.name.i.signature
-        elseif has_key(i,'kind')
-            if i.kind == 'd'
-            elseif i.kind == 'cmd'
-                let name= i.cmd
-            elseif i.kind == 'c'
-                let name='class ' . i.name
-            elseif i.kind == 's'
-                let name='struct ' . i.name
-            elseif i.kind == 'u'
-                let name='union ' . i.name
-            elseif (match('fpmvt',i.kind) != -1) &&
-                        \(has_key(i,'cmd') && i.cmd[0] == '/')
-                let tmppat='\(\<'.i.name.'\>.\{-}\)'
-                if &filetype == 'c' ||
-                            \&filetype == 'cpp' ||
-                            \&filetype == 'cs' ||
-                            \&filetype == 'java' ||
-                            \&filetype == 'javascript'
-                    let tmppat=tmppat . ';.*'
-                elseif &filetype == 'python' &&
-                            \(i.kind == 'm' || i.kind == 'f')
-                    let tmppat=tmppat . ':.*'
-                elseif &filetype == 'tcl' &&
-                            \(i.kind == 'm' || i.kind == 'p')
-                    let tmppat=tmppat . '\({\)\?$'
-                endif
-                if i.kind == 'm' && &filetype == 'cpp'
-                    let tmppat=substitute(tmppat,'^\(.*::\)','\\(\1\\)\\?','')
-                endif
-                if match(i.cmd[2:-3],tmppat) != -1
-                    let name=substitute(i.cmd[2:-3],tmppat,'\1','')
-                    if i.kind == 't' && name !~ '^\s*typedef\>'
-                        let name='typedef ' . i.name
-                    endif
-                elseif i.kind == 't'
-                    let name='typedef ' . i.name
-                elseif i.kind == 'v'
-                    let name='var ' . i.name
-                else
-                    let name=i.name
-                endif
-                if i.kind == 'm'
-                    if has_key(i,'class')
-                        let name=name . ' <-- class ' . i.class
-                    elseif has_key(i,'struct')
-                        let name=name . ' <-- struct ' . i.struct
-                    elseif has_key(i,'union')
-                        let name=name . ' <-- union ' . i.union
-                    endif
-                endif
-            else
-                let name=i.name
-            endif
-        else
-            let name=i.name
-        endif
         let name = matchstr(i.cmd, '[(:=][^\/{\$]*')
         let name = i.name .' '. name
         "let name=substitute(name,'^\s\+','','')
@@ -488,6 +412,7 @@ function! EchoFuncStart()
     if maparg("(","i") == ''
         "inoremap <silent> <buffer>  (   ()<left><C-R>=EchoFunc()<CR>
         inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>)<left>
+        "inoremap <silent> <buffer>  <space>   <space><C-R>=EchoFunc()<CR>
        "inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>
     elseif maparg("(",'i',0,1)['expr'] == 0
         let b:maparg_left = maparg("(",'i',0,1)
