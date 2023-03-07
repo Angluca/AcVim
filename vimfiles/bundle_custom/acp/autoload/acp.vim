@@ -143,7 +143,6 @@ export def OnPopupPost(): string
 		return (behavsCurrent[iBehavs].command =~ 
 			"\<C-p>" ?  "\<Up>" : "\<Down>") #cot+= noselect
 			#"\<C-p>" ?  "\<C-n>\<Up>" : "\<C-p>\<Down>") #cot-= noselect
-		#return ''
 	endif
 	iBehavs += 1
 	if len(behavsCurrent) > iBehavs

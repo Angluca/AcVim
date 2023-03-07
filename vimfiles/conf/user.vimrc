@@ -116,26 +116,26 @@ nmap <silent> ;cD :CtrlPClearAllCaches<cr>
 "elseif has("unix")
 "let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 "endif
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Use_Right_Window = 0
+let Tlist_Inc_Winwidth = 0
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Update = 0
 let Tlist_Auto_Open = 0
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Show_One_File = 1 " Displaying tags for only one file~
-let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself
+let Tlist_Exist_OnlyWindow = 0 " if you are the last, kill yourself
 let Tlist_Use_Right_Window = 1 " split to the right side of the screen
 let Tlist_Sort_Type = "order" " sort by order or name
 let Tlist_Display_Prototype = 0 " do not show prototypes and not tags in the taglist window.
 let Tlist_GainFocus_On_ToggleOpen = 1 " Jump to taglist window on open.
 let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
 let Tlist_Close_On_Select = 1 " Close the taglist window when a file or tag is selected.
-let Tlist_BackToEditBuffer = 0 " If no close on select, let the user choose back to edit buffer or not
+let Tlist_BackToEditBuffer = 1 " If no close on select, let the user choose back to edit buffer or not
 let Tlist_Enable_Fold_Column = 0 " Don't Show the fold indicator column in the taglist window.
-let Tlist_WinWidth = 30
+let Tlist_WinWidth = 28
 "let Tlist_Max_Submenu_Items = 30
 let Tlist_Compact_Format = 0 " do not show help
 let tlist_zig_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
+let tlist_nim_settings = 'vim;o:operator;t:type;f:func;m:macro;i:iterator'
 nmap <silent> ;tL :Tlist<cr>
 "}}}
 """"""""""""""""""""

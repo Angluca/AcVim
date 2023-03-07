@@ -7,12 +7,10 @@
 """"""""""""""
 SetFiletype('*.vimbp', 'vim')
 SetFiletype('README*,COPYING', 'txt')
-SetFiletype('*.txt', 'txt')
-SetFiletype('*.txt', 'txt')
-SetFiletype('*.log', 'txt')
+SetFiletype('*.txt,*.log', 'txt')
 SetFiletype('*.asm', 'masm')
 SetFiletype('*.inc', 'masm')
-SetFiletype('*.asm', 'setl mp=fasm\ %:p', 1)
+SetFtCmd('masm', 'setl mp=fasm\ %:p')
 
 SetFiletype('*.mxml', 'mxml')
 SetFiletype('*.as', 'actionscript')
@@ -23,24 +21,26 @@ SetFiletype('*.shd,*.sc', 'glsl')
 SetFiletype('*.mm', 'objc')
 "squirrel script
 SetFiletype('*.nut', 'squirrel')
-SetFiletype('*.nut', 'setl mp=sq\ %:p', 1)
-SetFiletype('*.nut', 'setl efm=%f:%l:%m', 1)
+SetFtCmd('squirrel', 'setl mp=sq\ %:p')
+SetFtCmd('squirrel', 'setl efm=%f:%l:%m')
 "godot script
 SetFiletype('*.gd', 'gdscript')
 "weixin
 SetFiletype('*.wxml', 'html')
 SetFiletype('*.wxss', 'css')
+"nim
+SetFiletype('*.nim,*.nims', 'nim')
 
 " automaticlly remove trailing whitespace
-"au BufWrite *.* :DelTWS "All kill!!!?
 "au BufWrite *.txt call DelTWS()
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
+"SetFtCmd('*.nim,*.nims,*.zig','DelTWS','BufWrite')
 au BufWrite *.nim,*.nims,*.zig :DelTWS
 
 "for language
-au FileType nim,nims nmap \= :Mtags nimtags $VIMDICT/nim.ctags<cr>
-au FileType nim,nims let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
-au FileType nim,nims setl tags+=$VIMDICT/nimtags,nimtags
+au FileType nim nmap \= :Mtags nimtags $VIMDICT/nim.ctags<cr>
+au FileType nim let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
+au FileType nim setl tags+=$VIMDICT/nimtags,nimtags
 au FileType c,cpp setl tags +=$VIMDICT/cpptags
 au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType zig setl tags +=$VIMDICT/zigtags

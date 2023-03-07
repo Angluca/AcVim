@@ -93,10 +93,24 @@ endf
 "}}}
 
 com -nargs=+ SetFiletype call s:setFiletype<args> "{{{
-fu! s:setFiletype(fn, ft, bop=0)
+fu! s:setFiletype(fn, ft, bop=0,bc='BufEnter')
 	let l:opt = a:bop == v:false ? ('setl ft='.a:ft) : (a:ft)
-	"echow l:opt. ' | '
-	exe $"au BufNewFile,BufRead {a:fn} {l:opt}"
+	exe $"au {a:bc} {a:fn} {l:opt}"
+endf "}}}
+
+com -nargs=+ SetFtCmd call s:setFtCmd<args> "{{{
+fu! s:setFtCmd(ft, cmd, bc='FileType')
+	exe $"au {a:bc} {a:ft} {a:cmd}"
+endf "}}}
+
+com -nargs=+ SetAcpDict call s:setCompleteOpt<args> "{{{
+fu! s:setCompleteOpt(ft, df='', bop=0)
+	if a:ft == '' || (a:df == '' && a:bop == v:true)
+		return
+	endif
+	let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
+	exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
+	"exe 'au FileType ' . a:ft . ' set cpt=' . l:opt
 endf "}}}
 
 fu! ToggleVirtualEditMode() "{{{
@@ -109,16 +123,6 @@ fu! ToggleVirtualEditMode() "{{{
 		set		ve=
 		echo	'virtual edit off'
 	endif
-endf "}}}
-
-com -nargs=+ SetAcpDict call s:setCompleteOpt<args> "{{{
-fu! s:setCompleteOpt(ft, df='', bop=0)
-	if a:ft == '' || (a:df == '' && a:bop == v:true)
-		return
-	endif
-	let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
-	exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
-	"exe 'au FileType ' . a:ft . ' set cpt=' . l:opt
 endf "}}}
 
 fu! ToggleQuickfix() "{{{
@@ -414,7 +418,7 @@ endtry
 "nmap ;et :tabnew $TEMP/scratch.txt<cr>
 "endif
 "set viminfo='10,\"30,!,:10,n~/vimdata/cache/_viminfo
-set viminfo='0,<0,@0,f0,!,h,/10,:10,n$VIMDATA/cache/_viminfo
+set viminfo='10,<10,s100,@0,f0,!,h,/10,:10,n$VIMDATA/cache/_viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 "Don't close window, when deleting a buffer
 com! Bclose call <SID>BufcloseCloseIt()
