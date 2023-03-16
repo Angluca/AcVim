@@ -152,6 +152,18 @@ let g:tagbar_compact = 1
 "let g:tagbar_foldlevel = 2
 "let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
+let g:tagbar_type_nim = {
+			\ 'ctagstype' : 'nim',
+			\ 'kinds'     : [
+			\ 'o:operator',
+			\ 'f:proc:0:0',
+			\ 'i:iterator',
+			\ 't:type:1:0',
+			\ 'm:macro:1:0'
+			\ ],
+			\ 'sort'    : 0,
+			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/nim.ctags'
+			\ }
 nmap <silent> ;tl :TagbarToggle<cr>
 "}}}
 """"""""""""""""""""

@@ -1,3 +1,6 @@
+/*VARSECTION*/
+/*TYPESECTION*/
+/*INCLUDESECTION*/
 compiler/wordrecg.nim
 acyclic
 addr
