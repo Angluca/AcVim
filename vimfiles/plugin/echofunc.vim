@@ -414,7 +414,7 @@ function! EchoFuncStart()
         inoremap <silent> <buffer>  <c-p>   <c-p><C-R>=EchoFunc()<CR>
         inoremap <silent> <buffer>  <c-n>   <c-n><C-R>=EchoFunc()<CR>
         inoremap <silent> <buffer>  <cr>   <C-R>=EchoFunc()<CR><cr>
-       "inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>
+        inoremap <silent> <buffer>  (   (<C-R>=EchoFunc()<CR>
     elseif maparg("<c-p>",'i',0,1)['expr'] == 0
         let b:maparg_left = maparg("<c-p>",'i',0,1)
         let map = maparg("<c-p>", "i", 0, 1)['noremap'] ? "inoremap" : "imap"
@@ -428,7 +428,7 @@ function! EchoFuncStart()
         inoremap <silent> <buffer>  <esc>   <C-R>=EchoFuncClear()<CR><esc>
         inoremap <silent> <buffer>  <bs>   <C-R>=EchoFuncClear()<CR><bs>
         inoremap <silent> <buffer>  <c-h>   <C-R>=EchoFuncClear()<CR><c-h>
-        "inoremap <silent> <buffer>  )   )<C-R>=EchoFuncClear()<CR>
+        inoremap <silent> <buffer>  )   )<C-R>=EchoFuncClear()<CR>
     elseif maparg("<esc>",'i',0,1)['expr'] == 0
         let b:maparg_right = maparg("<esc>",'i',0,1)
         let map = maparg("<esc>", "i", 0, 1)['noremap'] ? "inoremap" : "imap"
