@@ -502,7 +502,8 @@ au FileType html set syntax=html
 "Netrw {{{
 """"""""""""""""""""
 let g:netrw_winsize = 30
-let	g:netrw_home	= $VIMDATA.'cache'
+let g:netrw_home = $VIMDATA.'cache'
+let g:netrw_nogx = 1
 "}}}
 """"""""""""""""""""
 "User options {{{
