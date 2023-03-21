@@ -377,6 +377,8 @@ set noerrorbells
 set novisualbell
 "show matching bracets
 set showmatch
+"show all
+"set conceallevel=0
 "How many tenths of a second to blink
 "set mat=1
 "set shortmess+=c    " Shut off completion messages

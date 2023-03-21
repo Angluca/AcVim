@@ -288,9 +288,11 @@ let g:clever_f_show_prompt = 0
 "vim-markdown {{{
 """"""""""""""""""""
 let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_conceal = 0
-let g:vim_markdown_no_default_key_mappings = 0
+"let g:vim_markdown_toc_autofit = 0
+"let g:vim_markdown_folding_style_pythonic = 1
 "let g:vim_markdown_initial_foldlevel=3
 "}}}
 """"""""""""""""""""
