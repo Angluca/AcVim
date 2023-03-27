@@ -36,7 +36,7 @@ Let's open the vim.**
 ;mm ;mc ;mC ;mt ;* ;# ;/ ;? * #: good marks  
 
 >\<space\>h/j/k/l/w/e/b : quickly move  
-\<ctrl/shift\><up>/<down>/<left>/<right> : move resize win  
+\<ctrl/shift\>\<up>/\<down>/\<left>/\<right> : move resize win  
 \\= : generate tags  
 
 >;cal : calendar in vim  
