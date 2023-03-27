@@ -22,7 +22,7 @@ Let's open the vim.**
 \uu: edit custom option  
 
 >;yy ;pp or \<alt-c\> \<alt-v\> : system copy paste  
-:E \<a-1~9,0,(,)\> gt gT: tabnew, switch tab page, a-() move tab pos  
+:E \<a-1~9,0\> \<a-h,l,H,L\> gt gT: tabnew, switch tab page, a-HL move tab pos  
 
 >;bb : very easy and practice to operate buffer  
  --> j/k: move, f/e: open/quicksee win, s/v: split win  
@@ -33,14 +33,15 @@ Let's open the vim.**
 ;xx ...: code comment  
 ;cc ;ce ;ca ;cu ;cg ;ct ;cm ;cM ;cb ;ci ;cr ;cx ;cl ;cs ;cd ;cD  
  --> manage buffer/file/mru/undo/tags/dir/change/mixd/rtscript  
-;mm ;mc ;mC ;mt ;n ;N ;/ ;?: good marks  
+;mm ;mc ;mC ;mt ;* ;# ;/ ;? * #: good marks  
 
 >\<space\>h/j/k/l/w/e/b : quickly move  
-\<ctrl/shift\>¡ü/¡ý/¡û/¡ú : move resize win  
+\<ctrl/shift\><up>/<down>/<left>/<right> : move resize win  
 \\= : generate tags  
 
->;hm ...: convert 0xff byte  
-\<f10\>: draw!
+>;cal : calendar in vim  
+;hm ...: convert 0xff byte  
+<f10>: draw!
 
 >ysiwb ysawB ysib" : add symbol for words  
 csb" cs\[\( ... : revise symbol  
@@ -61,7 +62,7 @@ You can test them if has similar operation.**
 ;tt ;tl ;tL ;tO   
 
 >,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
-mm ,ma ,mc ,mt ,sc ,sy  
+mm ,ma ,mc ,mt ,sc ,sy ,caL ,cal  
 
 >\<f10\>  
 
