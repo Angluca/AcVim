@@ -57,9 +57,7 @@ You can test them if has similar operation.**
 ;# ;* ;/ ;? ;mt ;ma ;mc ;mm  
 ;tt ;tl ;tL ;tO   
 
->,hf ,hs ,ht ,hp ,hn ,hg ,hi ,hd ,hm  
-mm ,ma ,mc ,mt ,sc ,sy ,caL ,cal  
-
+>mm ,ma ,mc ,mt ,sc ,sy  
 >\<f10\>  
 
 >... and more hotkey.  
