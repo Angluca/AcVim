@@ -39,10 +39,6 @@ Let's open the vim.**
 \<alt+shift/shift\>\<up>/\<down>/\<left>/\<right> : move resize win  
 \\= : generate tags  
 
->;cal : calendar in vim  
-;hm ...: convert 0xff byte  
-<f10>: draw!
-
 >ysiwb ysawB ysib" : add symbol for words  
 csb" cs\[\( ... : revise symbol  
 dsb dsB ds" ... : del symbol  
