@@ -29,7 +29,7 @@ SetFiletype('*.gd', 'gdscript')
 SetFiletype('*.wxml', 'html')
 SetFiletype('*.wxss', 'css')
 "nim
-SetFiletype('*.nim,*.nims', 'nim')
+SetFiletype('*.nim,*.nims,*.c2nim', 'nim')
 
 " automaticlly remove trailing whitespace
 "au BufWrite *.txt call DelTWS()
