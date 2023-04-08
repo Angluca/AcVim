@@ -74,6 +74,7 @@ endf "}}}
 com! -nargs=? Ftags call s:formatTags(<args>) "{{{
 fu! s:formatTags(rd='')
 	"exe ':g/^\(\k\+\t\).*$\n\1.*/d'
+	"exe ':g/^\(\k\+\t\).*=\scint(\d*).*$\n\1.*/d'
 	exe ':g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
 	exe ':%s/^\k\t.*\n//ge'
 	exe ':%s/^!_.*\n//ge'

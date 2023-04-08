@@ -1,0 +1,1098 @@
+AudioCallback	$NAYLIB/raylib.nim	/^  AudioCallback* = proc (bufferData: pointer, frames: uint32) {.cdecl.} ## Audio thread callback/;"	t
+AudioStream	$NAYLIB/raylib.nim	/^  AudioStream* {.importc, header: "raylib.h", bycopy.} = object ## AudioStream, custom audio str/;"	t
+Beige	$NAYLIB/raylib.nim	/^  Beige* = Color(r: 211, g: 176, b: 131, a: 255)$/;"	t
+Black	$NAYLIB/raylib.nim	/^  Black* = Color(r: 0, g: 0, b: 0, a: 255)$/;"	t
+Blank	$NAYLIB/raylib.nim	/^  Blank* = Color(r: 0, g: 0, b: 0, a: 0)$/;"	t
+BlendEquationRgb	$NAYLIB/rlgl.nim	/^template BlendEquationRgb*(_: typedesc[BlendFuncOrEq]): untyped = BlendEquation$/;"	m
+BlendEquationRgb	$NAYLIB/rlgl.nim	/^template BlendEquationRgb*(_: typedesc[BlendFuncOrEq]): untyped = BlendEquation$/;"	t
+BlendFactor	$NAYLIB/rlgl.nim	/^  BlendFactor* {.size: sizeof(int32).} = enum ## GL blending factors$/;"	t
+BlendFuncOrEq	$NAYLIB/rlgl.nim	/^  BlendFuncOrEq* {.size: sizeof(int32).} = enum ## GL blending functions\/equations$/;"	t
+BlendMode	$NAYLIB/raylib.nim	/^  BlendMode* {.size: sizeof(int32).} = enum ## Color blending modes (pre-defined)$/;"	t
+Blue	$NAYLIB/raylib.nim	/^  Blue* = Color(r: 0, g: 121, b: 241, a: 255)$/;"	t
+BoneInfo	$NAYLIB/raylib.nim	/^  BoneInfo* {.importc, header: "raylib.h", bycopy.} = object ## Bone, skeletal animation bone$/;"	t
+BoundingBox	$NAYLIB/raylib.nim	/^  BoundingBox* {.importc, header: "raylib.h", bycopy.} = object ## BoundingBox$/;"	t
+Brown	$NAYLIB/raylib.nim	/^  Brown* = Color(r: 127, g: 106, b: 79, a: 255)$/;"	t
+BufferUsageHint	$NAYLIB/rlgl.nim	/^  BufferUsageHint* {.size: sizeof(int32).} = enum ## GL buffer usage hint$/;"	t
+Camera	$NAYLIB/raylib.nim	/^  Camera* = Camera3D ## Camera type fallback, defaults to Camera3D$/;"	t
+Camera2D	$NAYLIB/raylib.nim	/^  Camera2D* {.importc, header: "raylib.h", bycopy.} = object ## Camera2D, defines position\/orie/;"	t
+Camera3D	$NAYLIB/raylib.nim	/^  Camera3D* {.importc, header: "raylib.h", bycopy.} = object ## Camera, defines position\/orient/;"	t
+CameraMode	$NAYLIB/raylib.nim	/^  CameraMode* {.size: sizeof(int32).} = enum ## Camera system modes$/;"	t
+CameraProjection	$NAYLIB/raylib.nim	/^  CameraProjection* {.size: sizeof(int32).} = enum ## Camera projection$/;"	t
+Color	$NAYLIB/raylib.nim	/^  Color* {.importc, header: "raylib.h", bycopy.} = object ## Color, 4 components, R8G8B8A8 (32bi/;"	t
+ConfigFlags	$NAYLIB/raylib.nim	/^  ConfigFlags* {.size: sizeof(int32).} = enum ## System\/Window config flags$/;"	t
+CubemapLayout	$NAYLIB/raylib.nim	/^  CubemapLayout* {.size: sizeof(int32).} = enum ## Cubemap layouts$/;"	t
+CullDistanceFar	$NAYLIB/rlgl.nim	/^  CullDistanceFar* = 1000.0 ## Default far cull distance$/;"	t
+CullDistanceNear	$NAYLIB/rlgl.nim	/^  CullDistanceNear* = 0.01 ## Default near cull distance$/;"	t
+CullMode	$NAYLIB/rlgl.nim	/^  CullMode* {.size: sizeof(int32).} = enum ## Face culling mode$/;"	t
+DarkBlue	$NAYLIB/raylib.nim	/^  DarkBlue* = Color(r: 0, g: 82, b: 172, a: 255)$/;"	t
+DarkBrown	$NAYLIB/raylib.nim	/^  DarkBrown* = Color(r: 76, g: 63, b: 47, a: 255)$/;"	t
+DarkGray	$NAYLIB/raylib.nim	/^  DarkGray* = Color(r: 80, g: 80, b: 80, a: 255)$/;"	t
+DarkGreen	$NAYLIB/raylib.nim	/^  DarkGreen* = Color(r: 0, g: 117, b: 44, a: 255)$/;"	t
+DarkPurple	$NAYLIB/raylib.nim	/^  DarkPurple* = Color(r: 112, g: 31, b: 126, a: 255)$/;"	t
+DefaultBatchBufferElements	$NAYLIB/rlgl.nim	/^  const DefaultBatchBufferElements* = 2048 ## We reduce memory sizes for embedded systems (RPI a/;"	t
+DefaultBatchBufferElements	$NAYLIB/rlgl.nim	/^  const DefaultBatchBufferElements* = 8192 ## This is the maximum amount of elements (quads) per/;"	t
+DefaultBatchBuffers	$NAYLIB/rlgl.nim	/^  DefaultBatchBuffers* = 1 ## Default number of batch buffers (multi-buffering)$/;"	t
+DefaultBatchDrawCalls	$NAYLIB/rlgl.nim	/^  DefaultBatchDrawCalls* = 256 ## Default number of batch draw calls (by state changes: mode, te/;"	t
+DefaultBatchMaxTextureUnits	$NAYLIB/rlgl.nim	/^  DefaultBatchMaxTextureUnits* = 4 ## Maximum number of textures units that can be activated on /;"	t
+DefaultShaderVariableName	$NAYLIB/rlgl.nim	/^  DefaultShaderVariableName* = enum ## Default shader vertex attribute names to set location poi/;"	t
+Diffuse	$NAYLIB/raylib.nim	/^template Diffuse*(_: typedesc[MaterialMapIndex]): untyped = Albedo$/;"	m
+Diffuse	$NAYLIB/raylib.nim	/^template Diffuse*(_: typedesc[MaterialMapIndex]): untyped = Albedo$/;"	t
+DrawCall	$NAYLIB/rlgl.nim	/^  DrawCall* {.importc: "rlDrawCall", nodecl, bycopy.} = object ## of those state-change happens /;"	t
+DrawMode	$NAYLIB/rlgl.nim	/^  DrawMode* {.size: sizeof(int32).} = enum ## Primitive assembly draw modes$/;"	t
+EmbeddedFont	$NAYLIB/raylib.nim	/^  EmbeddedFont* = distinct Font$/;"	t
+EmbeddedImage	$NAYLIB/raylib.nim	/^  EmbeddedImage* = distinct Image$/;"	t
+EmbeddedWave	$NAYLIB/raylib.nim	/^  EmbeddedWave* = distinct Wave$/;"	t
+Flags	$NAYLIB/raylib.nim	/^  Flags*[E: FlagsEnum] = distinct uint32$/;"	t
+Float16	$NAYLIB/raymath.nim	/^  Float16* = array[16, float32]$/;"	t
+Float3	$NAYLIB/raymath.nim	/^  Float3* = array[3, float32]$/;"	t
+Font	$NAYLIB/raylib.nim	/^  Font* {.importc, header: "raylib.h", bycopy.} = object ## Font, font texture and GlyphInfo arr/;"	t
+FontGlyphs	$NAYLIB/raylib.nim	/^  FontGlyphs* = distinct Font$/;"	t
+FontRecs	$NAYLIB/raylib.nim	/^  FontRecs* = distinct Font$/;"	t
+FontType	$NAYLIB/raylib.nim	/^  FontType* {.size: sizeof(int32).} = enum ## Font type, defines generation method$/;"	t
+FramebufferAttachTextureType	$NAYLIB/rlgl.nim	/^  FramebufferAttachTextureType* {.size: sizeof(int32).} = enum ## Framebuffer texture attachment/;"	t
+FramebufferAttachType	$NAYLIB/rlgl.nim	/^  FramebufferAttachType* {.size: sizeof(int32).} = enum ## Framebuffer attachment type$/;"	t
+GamepadAxis	$NAYLIB/raylib.nim	/^  GamepadAxis* {.size: sizeof(int32).} = enum ## Gamepad axis$/;"	t
+GamepadButton	$NAYLIB/raylib.nim	/^  GamepadButton* {.size: sizeof(int32).} = enum ## Gamepad buttons$/;"	t
+Gesture	$NAYLIB/raylib.nim	/^  Gesture* {.size: sizeof(int32).} = enum ## Gesture$/;"	t
+GlType	$NAYLIB/rlgl.nim	/^  GlType* {.size: sizeof(int32).} = enum ## GL equivalent data types$/;"	t
+GlVersion	$NAYLIB/rlgl.nim	/^  GlVersion* {.size: sizeof(int32).} = enum ## OpenGL version$/;"	t
+GlyphInfo	$NAYLIB/raylib.nim	/^  GlyphInfo* {.importc, header: "raylib.h", bycopy.} = object ## GlyphInfo, font characters glyp/;"	t
+Gold	$NAYLIB/raylib.nim	/^  Gold* = Color(r: 255, g: 203, b: 0, a: 255)$/;"	t
+Gray	$NAYLIB/raylib.nim	/^  Gray* = Color(r: 130, g: 130, b: 130, a: 255)$/;"	t
+Green	$NAYLIB/raylib.nim	/^  Green* = Color(r: 0, g: 228, b: 48, a: 255)$/;"	t
+Image	$NAYLIB/raylib.nim	/^  Image* {.importc, header: "raylib.h", bycopy.} = object ## Image, pixel data stored in CPU mem/;"	t
+IndicesArr	$NAYLIB/rlgl.nim	/^  type IndicesArr* = array[6, uint16]$/;"	t
+IndicesArr	$NAYLIB/rlgl.nim	/^  type IndicesArr* = array[6, uint32]$/;"	t
+KeyboardKey	$NAYLIB/raylib.nim	/^  KeyboardKey* {.size: sizeof(int32).} = enum ## Keyboard keys (US keyboard layout)$/;"	t
+LightGray	$NAYLIB/raylib.nim	/^  LightGray* = Color(r: 200, g: 200, b: 200, a: 255)$/;"	t
+Lime	$NAYLIB/raylib.nim	/^  Lime* = Color(r: 0, g: 158, b: 47, a: 255)$/;"	t
+LoadFileDataCallback	$NAYLIB/raylib.nim	/^  LoadFileDataCallback* = proc (fileName: cstring; bytesRead: ptr uint32): ptr UncheckedArray[ui/;"	t
+LoadFileTextCallback	$NAYLIB/raylib.nim	/^  LoadFileTextCallback* = proc (fileName: cstring): cstring {.cdecl.} ## FileIO: Load text data$/;"	t
+Magenta	$NAYLIB/raylib.nim	/^  Magenta* = Color(r: 255, g: 0, b: 255, a: 255)$/;"	t
+MapDiffuse	$NAYLIB/raylib.nim	/^template MapDiffuse*(_: typedesc[ShaderLocationIndex]): untyped = MapAlbedo$/;"	m
+MapDiffuse	$NAYLIB/raylib.nim	/^template MapDiffuse*(_: typedesc[ShaderLocationIndex]): untyped = MapAlbedo$/;"	t
+MapSpecular	$NAYLIB/raylib.nim	/^template MapSpecular*(_: typedesc[ShaderLocationIndex]): untyped = MapMetalness$/;"	m
+MapSpecular	$NAYLIB/raylib.nim	/^template MapSpecular*(_: typedesc[ShaderLocationIndex]): untyped = MapMetalness$/;"	t
+Maroon	$NAYLIB/raylib.nim	/^  Maroon* = Color(r: 190, g: 33, b: 55, a: 255)$/;"	t
+Material	$NAYLIB/raylib.nim	/^  Material* {.importc, header: "raylib.h", bycopy.} = object ## Material, includes shader and ma/;"	t
+MaterialMap	$NAYLIB/raylib.nim	/^  MaterialMap* {.importc, header: "raylib.h", bycopy.} = object ## MaterialMap$/;"	t
+MaterialMapIndex	$NAYLIB/raylib.nim	/^  MaterialMapIndex* {.size: sizeof(int32).} = enum ## Material map index$/;"	t
+MaterialMaps	$NAYLIB/raylib.nim	/^  MaterialMaps* = distinct Material$/;"	t
+Matrix	$NAYLIB/raylib.nim	/^  Matrix* {.importc, header: "raylib.h", bycopy.} = object ## Matrix, 4x4 components, column maj/;"	t
+MatrixMode	$NAYLIB/rlgl.nim	/^  MatrixMode* {.size: sizeof(int32).} = enum ## Matrix modes (equivalent to OpenGL)$/;"	t
+MaxMaterialMaps	$NAYLIB/raylib.nim	/^  MaxMaterialMaps* = 12 ## Maximum number of shader maps supported$/;"	t
+MaxMatrixStackSize	$NAYLIB/rlgl.nim	/^  MaxMatrixStackSize* = 32 ## Maximum size of Matrix stack$/;"	t
+MaxMeshVertexBuffers	$NAYLIB/raylib.nim	/^  MaxMeshVertexBuffers* = 7 ## Maximum vertex buffers (VBO) per mesh$/;"	t
+MaxShaderLocations	$NAYLIB/raylib.nim	/^  MaxShaderLocations* = 32 ## Maximum number of shader locations supported$/;"	t
+Menu	$NAYLIB/raylib.nim	/^template Menu*(_: typedesc[KeyboardKey]): untyped = R ## Key: Android menu button$/;"	m
+Menu	$NAYLIB/raylib.nim	/^template Menu*(_: typedesc[KeyboardKey]): untyped = R ## Key: Android menu button$/;"	t
+Mesh	$NAYLIB/raylib.nim	/^  Mesh* {.importc, header: "raylib.h", bycopy.} = object ## Mesh, vertex data and vao\/vbo$/;"	t
+MeshAnimNormals	$NAYLIB/raylib.nim	/^  MeshAnimNormals* = distinct Mesh$/;"	t
+MeshAnimVertices	$NAYLIB/raylib.nim	/^  MeshAnimVertices* = distinct Mesh$/;"	t
+MeshBoneIds	$NAYLIB/raylib.nim	/^  MeshBoneIds* = distinct Mesh$/;"	t
+MeshBoneWeights	$NAYLIB/raylib.nim	/^  MeshBoneWeights* = distinct Mesh$/;"	t
+MeshColors	$NAYLIB/raylib.nim	/^  MeshColors* = distinct Mesh$/;"	t
+MeshIndices	$NAYLIB/raylib.nim	/^  MeshIndices* = distinct Mesh$/;"	t
+MeshNormals	$NAYLIB/raylib.nim	/^  MeshNormals* = distinct Mesh$/;"	t
+MeshTangents	$NAYLIB/raylib.nim	/^  MeshTangents* = distinct Mesh$/;"	t
+MeshTexcoords	$NAYLIB/raylib.nim	/^  MeshTexcoords* = distinct Mesh$/;"	t
+MeshTexcoords2	$NAYLIB/raylib.nim	/^  MeshTexcoords2* = distinct Mesh$/;"	t
+MeshVboId	$NAYLIB/raylib.nim	/^  MeshVboId* = distinct Mesh$/;"	t
+MeshVertices	$NAYLIB/raylib.nim	/^  MeshVertices* = distinct Mesh$/;"	t
+Model	$NAYLIB/raylib.nim	/^  Model* {.importc, header: "raylib.h", bycopy.} = object ## Model, meshes, materials and animat/;"	t
+ModelAnimation	$NAYLIB/raylib.nim	/^  ModelAnimation* {.importc, header: "raylib.h", bycopy.} = object ## ModelAnimation$/;"	t
+ModelAnimationBones	$NAYLIB/raylib.nim	/^  ModelAnimationBones* = distinct ModelAnimation$/;"	t
+ModelAnimationFramePoses	$NAYLIB/raylib.nim	/^  ModelAnimationFramePoses* = distinct ModelAnimation$/;"	t
+ModelBindPose	$NAYLIB/raylib.nim	/^  ModelBindPose* = distinct Model$/;"	t
+ModelBones	$NAYLIB/raylib.nim	/^  ModelBones* = distinct Model$/;"	t
+ModelMaterials	$NAYLIB/raylib.nim	/^  ModelMaterials* = distinct Model$/;"	t
+ModelMeshMaterial	$NAYLIB/raylib.nim	/^  ModelMeshMaterial* = distinct Model$/;"	t
+ModelMeshes	$NAYLIB/raylib.nim	/^  ModelMeshes* = distinct Model$/;"	t
+MouseButton	$NAYLIB/raylib.nim	/^  MouseButton* {.size: sizeof(int32).} = enum ## Mouse buttons$/;"	t
+MouseCursor	$NAYLIB/raylib.nim	/^  MouseCursor* {.size: sizeof(int32).} = enum ## Mouse cursor$/;"	t
+Music	$NAYLIB/raylib.nim	/^  Music* {.importc, header: "raylib.h", bycopy.} = object ## Music, audio stream, anything longe/;"	t
+NPatchInfo	$NAYLIB/raylib.nim	/^  NPatchInfo* {.importc, header: "raylib.h", bycopy.} = object ## NPatchInfo, n-patch layout inf/;"	t
+NPatchLayout	$NAYLIB/raylib.nim	/^  NPatchLayout* {.size: sizeof(int32).} = enum ## N-patch layout$/;"	t
+Orange	$NAYLIB/raylib.nim	/^  Orange* = Color(r: 255, g: 161, b: 0, a: 255)$/;"	t
+Pink	$NAYLIB/raylib.nim	/^  Pink* = Color(r: 255, g: 109, b: 194, a: 255)$/;"	t
+Pixel	$NAYLIB/raylib.nim	/^  Pixel* = concept$/;"	t
+PixelFormat	$NAYLIB/raylib.nim	/^  PixelFormat* {.size: sizeof(int32).} = enum ## Pixel formats$/;"	t
+Purple	$NAYLIB/raylib.nim	/^  Purple* = Color(r: 200, g: 122, b: 255, a: 255)$/;"	t
+Quaternion	$NAYLIB/raylib.nim	/^  Quaternion* = Vector4 ## Quaternion, 4 components (Vector4 alias)$/;"	t
+RArray	$NAYLIB/raylib.nim	/^  RArray*[T] = object$/;"	t
+Ray	$NAYLIB/raylib.nim	/^  Ray* {.importc, header: "raylib.h", bycopy.} = object ## Ray, ray for raycasting$/;"	t
+RayCollision	$NAYLIB/raylib.nim	/^  RayCollision* {.importc, header: "raylib.h", bycopy.} = object ## RayCollision, ray hit inform/;"	t
+RayWhite	$NAYLIB/raylib.nim	/^  RayWhite* = Color(r: 245, g: 245, b: 245, a: 255)$/;"	t
+RaylibError	$NAYLIB/raylib.nim	/^  RaylibError* = object of CatchableError$/;"	t
+RaylibVersion	$NAYLIB/raylib.nim	/^  RaylibVersion* = (4, 5, 0)$/;"	t
+Rectangle	$NAYLIB/raylib.nim	/^  Rectangle* {.importc, header: "raylib.h", bycopy.} = object ## Rectangle, 4 components$/;"	t
+Red	$NAYLIB/raylib.nim	/^  Red* = Color(r: 230, g: 41, b: 55, a: 255)$/;"	t
+RenderBatch	$NAYLIB/rlgl.nim	/^  RenderBatch* {.importc: "rlRenderBatch", nodecl, bycopy.} = object ## rlRenderBatch type$/;"	t
+RenderBatchDraws	$NAYLIB/rlgl.nim	/^  RenderBatchDraws* = distinct RenderBatch$/;"	t
+RenderBatchVertexBuffer	$NAYLIB/rlgl.nim	/^  RenderBatchVertexBuffer* = distinct RenderBatch$/;"	t
+RenderTexture	$NAYLIB/raylib.nim	/^  RenderTexture* {.importc, header: "raylib.h", bycopy.} = object ## RenderTexture, fbo for text/;"	t
+RenderTexture2D	$NAYLIB/raylib.nim	/^  RenderTexture2D* = RenderTexture ## RenderTexture2D, same as RenderTexture$/;"	t
+RlglVersion	$NAYLIB/rlgl.nim	/^  RlglVersion* = (4, 5, 0)$/;"	t
+SaveFileDataCallback	$NAYLIB/raylib.nim	/^  SaveFileDataCallback* = proc (fileName: cstring; data: pointer; bytesToWrite: uint32): bool {.$/;"	t
+SaveFileTextCallback	$NAYLIB/raylib.nim	/^  SaveFileTextCallback* = proc (fileName: cstring; text: cstring): bool {.cdecl.} ## FileIO: Sav/;"	t
+Shader	$NAYLIB/raylib.nim	/^  Shader* {.importc, header: "raylib.h", bycopy.} = object ## Shader$/;"	t
+ShaderAttributeDataType	$NAYLIB/raylib.nim	/^  ShaderAttributeDataType* {.size: sizeof(int32).} = enum ## Shader attribute data types$/;"	t
+ShaderLocation	$NAYLIB/raylib.nim	/^  ShaderLocation* = distinct int32 ## Shader location$/;"	t
+ShaderLocationIndex	$NAYLIB/raylib.nim	/^  ShaderLocationIndex* {.size: sizeof(int32).} = enum ## Shader location index$/;"	t
+ShaderLocs	$NAYLIB/raylib.nim	/^  ShaderLocs* = distinct Shader$/;"	t
+ShaderLocsPtr	$NAYLIB/raylib.nim	/^  ShaderLocsPtr* = distinct typeof(Shader.locs)$/;"	t
+ShaderType	$NAYLIB/rlgl.nim	/^  ShaderType* {.size: sizeof(int32).} = enum ## GL Shader type$/;"	t
+ShaderUniformDataType	$NAYLIB/raylib.nim	/^  ShaderUniformDataType* {.size: sizeof(int32).} = enum ## Shader uniform data type$/;"	t
+ShaderV	$NAYLIB/raylib.nim	/^  ShaderV* = concept$/;"	t
+SkyBlue	$NAYLIB/raylib.nim	/^  SkyBlue* = Color(r: 102, g: 191, b: 255, a: 255)$/;"	t
+Sound	$NAYLIB/raylib.nim	/^  Sound* {.importc, header: "raylib.h", bycopy.} = object ## Sound$/;"	t
+Specular	$NAYLIB/raylib.nim	/^template Specular*(_: typedesc[MaterialMapIndex]): untyped = Metalness$/;"	m
+Specular	$NAYLIB/raylib.nim	/^template Specular*(_: typedesc[MaterialMapIndex]): untyped = Metalness$/;"	t
+Texture	$NAYLIB/raylib.nim	/^  Texture* {.importc, header: "raylib.h", bycopy.} = object ## Texture, tex data stored in GPU m/;"	t
+Texture2D	$NAYLIB/raylib.nim	/^  Texture2D* = Texture ## Texture2D, same as Texture$/;"	t
+TextureCubemap	$NAYLIB/raylib.nim	/^  TextureCubemap* = Texture ## TextureCubemap, same as Texture$/;"	t
+TextureFilter	$NAYLIB/raylib.nim	/^  TextureFilter* {.size: sizeof(int32).} = enum ## Texture parameters: filter mode$/;"	t
+TextureParameter	$NAYLIB/rlgl.nim	/^  TextureParameter* {.size: sizeof(int32).} = enum ## Texture parameters (equivalent to OpenGL d/;"	t
+TextureWrap	$NAYLIB/raylib.nim	/^  TextureWrap* {.size: sizeof(int32).} = enum ## Texture parameters: wrap mode$/;"	t
+TraceLogCallback	$NAYLIB/raylib.nim	/^  TraceLogCallback* = proc (logLevel: TraceLogLevel;$/;"	t
+TraceLogLevel	$NAYLIB/raylib.nim	/^  TraceLogLevel* {.size: sizeof(int32).} = enum ## Trace log level$/;"	t
+Transform	$NAYLIB/raylib.nim	/^  Transform* {.importc, header: "raylib.h", bycopy.} = object ## Transform, vertex transformatio/;"	t
+Vector2	$NAYLIB/raylib.nim	/^  Vector2* {.importc, header: "raylib.h", bycopy.} = object ## Vector2, 2 components$/;"	t
+Vector3	$NAYLIB/raylib.nim	/^  Vector3* {.importc, header: "raylib.h", bycopy.} = object ## Vector3, 3 components$/;"	t
+Vector4	$NAYLIB/raylib.nim	/^  Vector4* {.importc, header: "raylib.h", bycopy.} = object ## Vector4, 4 components$/;"	t
+VertexBuffer	$NAYLIB/rlgl.nim	/^  VertexBuffer* {.importc: "rlVertexBuffer", nodecl, bycopy.} = object ## Dynamic vertex buffers/;"	t
+VertexBufferColors	$NAYLIB/rlgl.nim	/^  VertexBufferColors* = distinct VertexBuffer$/;"	t
+VertexBufferIndices	$NAYLIB/rlgl.nim	/^  VertexBufferIndices* = distinct VertexBuffer$/;"	t
+VertexBufferTexcoords	$NAYLIB/rlgl.nim	/^  VertexBufferTexcoords* = distinct VertexBuffer$/;"	t
+VertexBufferVertices	$NAYLIB/rlgl.nim	/^  VertexBufferVertices* = distinct VertexBuffer$/;"	t
+Violet	$NAYLIB/raylib.nim	/^  Violet* = Color(r: 135, g: 60, b: 190, a: 255)$/;"	t
+VrDeviceInfo	$NAYLIB/raylib.nim	/^  VrDeviceInfo* {.importc, header: "raylib.h", bycopy.} = object ## VrDeviceInfo, Head-Mounted-D/;"	t
+VrStereoConfig	$NAYLIB/raylib.nim	/^  VrStereoConfig* {.importc, header: "raylib.h", bycopy.} = object ## VrStereoConfig, VR stereo /;"	t
+Wave	$NAYLIB/raylib.nim	/^  Wave* {.importc, header: "raylib.h", bycopy.} = object ## Wave, audio wave data$/;"	t
+White	$NAYLIB/raylib.nim	/^  White* = Color(r: 255, g: 255, b: 255, a: 255)$/;"	t
+Yellow	$NAYLIB/raylib.nim	/^  Yellow* = Color(r: 253, g: 249, b: 0, a: 255)$/;"	t
+activeDrawBuffers	$NAYLIB/rlgl.nim	/^proc activeDrawBuffers*(count: int32) {.importc: "rlActiveDrawBuffers".}$/;"	f
+activeTextureSlot	$NAYLIB/rlgl.nim	/^proc activeTextureSlot*(slot: int32) {.importc: "rlActiveTextureSlot".}$/;"	f
+add	$NAYLIB/raymath.nim	/^func add*(left, right: Matrix): Matrix {.inline.} =$/;"	t
+add	$NAYLIB/raymath.nim	/^func add*(q1, q2: Quaternion): Quaternion {.inline.} =$/;"	t
+add	$NAYLIB/raymath.nim	/^func add*(v1, v2: Vector2): Vector2 {.inline.} =$/;"	t
+add	$NAYLIB/raymath.nim	/^func add*(v1, v2: Vector3): Vector3 {.inline.} =$/;"	t
+addValue	$NAYLIB/raymath.nim	/^func addValue*(q: Quaternion; add: float32): Quaternion {.inline.} =$/;"	t
+addValue	$NAYLIB/raymath.nim	/^func addValue*(v: Vector2; add: float32): Vector2 {.inline.} =$/;"	t
+addValue	$NAYLIB/raymath.nim	/^func addValue*(v: Vector3; add: float32): Vector3 {.inline.} =$/;"	t
+angle	$NAYLIB/raymath.nim	/^func angle*(v1, v2: Vector3): float32 {.inline.} =$/;"	t
+angle	$NAYLIB/raymath.nim	/^func angle*(v1: Vector2; v2: Vector2): float32 {.inline.} =$/;"	t
+animNormals	$NAYLIB/raylib.nim	/^template animNormals*(x: Mesh): MeshAnimNormals = MeshAnimNormals(x)$/;"	m
+animNormals	$NAYLIB/raylib.nim	/^template animNormals*(x: Mesh): MeshAnimNormals = MeshAnimNormals(x)$/;"	t
+animVertices	$NAYLIB/raylib.nim	/^template animVertices*(x: Mesh): MeshAnimVertices = MeshAnimVertices(x)$/;"	m
+animVertices	$NAYLIB/raylib.nim	/^template animVertices*(x: Mesh): MeshAnimVertices = MeshAnimVertices(x)$/;"	t
+attachAudioMixedProcessor	$NAYLIB/raylib.nim	/^proc attachAudioMixedProcessor*(processor: AudioCallback) {.importc: "AttachAudioMixedProcessor"/;"	f
+attachAudioStreamProcessor	$NAYLIB/raylib.nim	/^proc attachAudioStreamProcessor*(stream: AudioStream, processor: AudioCallback) {.importc: "Atta/;"	f
+backIn	$NAYLIB/reasings.nim	/^func backIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+backInOut	$NAYLIB/reasings.nim	/^func backInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+backOut	$NAYLIB/reasings.nim	/^func backOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+barycenter	$NAYLIB/raymath.nim	/^func barycenter*(p, a, b, c: Vector3): Vector3 {.inline.} =$/;"	t
+beginBlendMode	$NAYLIB/raylib.nim	/^proc beginBlendMode*(mode: BlendMode) {.importc: "BeginBlendMode".}$/;"	f
+beginDrawing	$NAYLIB/raylib.nim	/^proc beginDrawing*() {.importc: "BeginDrawing".}$/;"	f
+beginMode2D	$NAYLIB/raylib.nim	/^proc beginMode2D*(camera: Camera2D) {.importc: "BeginMode2D".}$/;"	f
+beginMode3D	$NAYLIB/raylib.nim	/^proc beginMode3D*(camera: Camera3D) {.importc: "BeginMode3D".}$/;"	f
+beginScissorMode	$NAYLIB/raylib.nim	/^proc beginScissorMode*(x: int32, y: int32, width: int32, height: int32) {.importc: "BeginScissor/;"	f
+beginShaderMode	$NAYLIB/raylib.nim	/^proc beginShaderMode*(shader: Shader) {.importc: "BeginShaderMode".}$/;"	f
+beginTextureMode	$NAYLIB/raylib.nim	/^proc beginTextureMode*(target: RenderTexture2D) {.importc: "BeginTextureMode".}$/;"	f
+beginVrStereoMode	$NAYLIB/raylib.nim	/^proc beginVrStereoMode*(config: VrStereoConfig) {.importc: "BeginVrStereoMode".}$/;"	f
+bindImageTexture	$NAYLIB/rlgl.nim	/^proc bindImageTexture*(id: uint32, index: uint32, format: PixelFormat, readonly: bool) {.importc/;"	f
+bindPose	$NAYLIB/raylib.nim	/^template bindPose*(x: Model): ModelBindPose = ModelBindPose(x)$/;"	m
+bindPose	$NAYLIB/raylib.nim	/^template bindPose*(x: Model): ModelBindPose = ModelBindPose(x)$/;"	t
+bindShaderBuffer	$NAYLIB/rlgl.nim	/^proc bindShaderBuffer*(id: uint32, index: uint32) {.importc: "rlBindShaderBuffer".}$/;"	f
+blendMode	$NAYLIB/raylib.nim	/^template blendMode*(mode: BlendMode; body: untyped) =$/;"	m
+blendMode	$NAYLIB/raylib.nim	/^template blendMode*(mode: BlendMode; body: untyped) =$/;"	t
+boneCount	$NAYLIB/raylib.nim	/^proc boneCount*(x: Model): int32 {.inline.} = x.boneCount$/;"	f
+boneCount	$NAYLIB/raylib.nim	/^proc boneCount*(x: Model): int32 {.inline.} = x.boneCount$/;"	t
+boneCount	$NAYLIB/raylib.nim	/^proc boneCount*(x: ModelAnimation): int32 {.inline.} = x.boneCount$/;"	f
+boneCount	$NAYLIB/raylib.nim	/^proc boneCount*(x: ModelAnimation): int32 {.inline.} = x.boneCount$/;"	t
+boneIds	$NAYLIB/raylib.nim	/^template boneIds*(x: Mesh): MeshBoneIds = MeshBoneIds(x)$/;"	m
+boneIds	$NAYLIB/raylib.nim	/^template boneIds*(x: Mesh): MeshBoneIds = MeshBoneIds(x)$/;"	t
+boneWeights	$NAYLIB/raylib.nim	/^template boneWeights*(x: Mesh): MeshBoneWeights = MeshBoneWeights(x)$/;"	m
+boneWeights	$NAYLIB/raylib.nim	/^template boneWeights*(x: Mesh): MeshBoneWeights = MeshBoneWeights(x)$/;"	t
+bones	$NAYLIB/raylib.nim	/^template bones*(x: Model): ModelBones = ModelBones(x)$/;"	m
+bones	$NAYLIB/raylib.nim	/^template bones*(x: Model): ModelBones = ModelBones(x)$/;"	t
+bones	$NAYLIB/raylib.nim	/^template bones*(x: ModelAnimation): ModelAnimationBones = ModelAnimationBones(x)$/;"	m
+bones	$NAYLIB/raylib.nim	/^template bones*(x: ModelAnimation): ModelAnimationBones = ModelAnimationBones(x)$/;"	t
+bounceIn	$NAYLIB/reasings.nim	/^func bounceIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+bounceInOut	$NAYLIB/reasings.nim	/^func bounceInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+bounceOut	$NAYLIB/reasings.nim	/^func bounceOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+buffer	$NAYLIB/raylib.nim	/^proc buffer*(x: AudioStream): ptr rAudioBuffer {.inline.} = x.buffer$/;"	f
+buffer	$NAYLIB/raylib.nim	/^proc buffer*(x: AudioStream): ptr rAudioBuffer {.inline.} = x.buffer$/;"	t
+bufferCount	$NAYLIB/rlgl.nim	/^proc bufferCount*(x: RenderBatch): int32 {.inline.} = x.bufferCount$/;"	f
+bufferCount	$NAYLIB/rlgl.nim	/^proc bufferCount*(x: RenderBatch): int32 {.inline.} = x.bufferCount$/;"	t
+checkCollisionBoxSphere	$NAYLIB/raylib.nim	/^proc checkCollisionBoxSphere*(box: BoundingBox, center: Vector3, radius: float32): bool {.import/;"	f
+checkCollisionBoxes	$NAYLIB/raylib.nim	/^proc checkCollisionBoxes*(box1: BoundingBox, box2: BoundingBox): bool {.importc: "CheckCollision/;"	f
+checkCollisionCircleRec	$NAYLIB/raylib.nim	/^proc checkCollisionCircleRec*(center: Vector2, radius: float32, rec: Rectangle): bool {.importc:/;"	f
+checkCollisionCircles	$NAYLIB/raylib.nim	/^proc checkCollisionCircles*(center1: Vector2, radius1: float32, center2: Vector2, radius2: float/;"	f
+checkCollisionLines	$NAYLIB/raylib.nim	/^proc checkCollisionLines*(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vec/;"	f
+checkCollisionPointCircle	$NAYLIB/raylib.nim	/^proc checkCollisionPointCircle*(point: Vector2, center: Vector2, radius: float32): bool {.import/;"	f
+checkCollisionPointLine	$NAYLIB/raylib.nim	/^proc checkCollisionPointLine*(point: Vector2, p1: Vector2, p2: Vector2, threshold: int32): bool /;"	f
+checkCollisionPointPoly	$NAYLIB/raylib.nim	/^proc checkCollisionPointPoly*(point: Vector2, points: openArray[Vector2]): bool =$/;"	f
+checkCollisionPointPoly	$NAYLIB/raylib.nim	/^proc checkCollisionPointPoly*(point: Vector2, points: openArray[Vector2]): bool =$/;"	t
+checkCollisionPointRec	$NAYLIB/raylib.nim	/^proc checkCollisionPointRec*(point: Vector2, rec: Rectangle): bool {.importc: "CheckCollisionPoi/;"	f
+checkCollisionPointTriangle	$NAYLIB/raylib.nim	/^proc checkCollisionPointTriangle*(point: Vector2, p1: Vector2, p2: Vector2, p3: Vector2): bool {/;"	f
+checkCollisionRecs	$NAYLIB/raylib.nim	/^proc checkCollisionRecs*(rec1: Rectangle, rec2: Rectangle): bool {.importc: "CheckCollisionRecs"/;"	f
+checkCollisionSpheres	$NAYLIB/raylib.nim	/^proc checkCollisionSpheres*(center1: Vector3, radius1: float32, center2: Vector3, radius2: float/;"	f
+checkErrors	$NAYLIB/rlgl.nim	/^proc checkErrors*() {.importc: "rlCheckErrors".}$/;"	f
+checkRenderBatchLimit	$NAYLIB/rlgl.nim	/^proc checkRenderBatchLimit*(vCount: int32): bool {.importc: "rlCheckRenderBatchLimit".}$/;"	f
+circIn	$NAYLIB/reasings.nim	/^func circIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+circInOut	$NAYLIB/reasings.nim	/^func circInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+circOut	$NAYLIB/reasings.nim	/^func circOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+clamp	$NAYLIB/raymath.nim	/^func clamp*(v, min, max: Vector2): Vector2 {.inline.} =$/;"	t
+clamp	$NAYLIB/raymath.nim	/^func clamp*(v, min, max: Vector3): Vector3 {.inline.} =$/;"	t
+clampValue	$NAYLIB/raymath.nim	/^func clampValue*(v: Vector2; min, max: float32): Vector2 {.inline.} =$/;"	t
+clampValue	$NAYLIB/raymath.nim	/^func clampValue*(v: Vector3; min, max: float32): Vector3 {.inline.} =$/;"	t
+clearBackground	$NAYLIB/raylib.nim	/^proc clearBackground*(color: Color) {.importc: "ClearBackground".}$/;"	f
+clearColor	$NAYLIB/rlgl.nim	/^proc clearColor*(r: uint8, g: uint8, b: uint8, a: uint8) {.importc: "rlClearColor".}$/;"	f
+clearScreenBuffers	$NAYLIB/rlgl.nim	/^proc clearScreenBuffers*() {.importc: "rlClearScreenBuffers".}$/;"	f
+clearWindowState	$NAYLIB/raylib.nim	/^proc clearWindowState*(flags: Flags[ConfigFlags]) {.importc: "ClearWindowState".}$/;"	f
+closeAudioDevice	$NAYLIB/raylib.nim	/^proc closeAudioDevice*() {.importc: "CloseAudioDevice".}$/;"	f
+closeWindow	$NAYLIB/raylib.nim	/^proc closeWindow*() {.importc: "CloseWindow".}$/;"	f
+color3f	$NAYLIB/rlgl.nim	/^proc color3f*(x: float32, y: float32, z: float32) {.importc: "rlColor3f".}$/;"	f
+color4f	$NAYLIB/rlgl.nim	/^proc color4f*(x: float32, y: float32, z: float32, w: float32) {.importc: "rlColor4f".}$/;"	f
+color4ub	$NAYLIB/rlgl.nim	/^proc color4ub*(r: uint8, g: uint8, b: uint8, a: uint8) {.importc: "rlColor4ub".}$/;"	f
+colorAlpha	$NAYLIB/raylib.nim	/^proc colorAlpha*(color: Color, alpha: float32): Color {.importc: "ColorAlpha".}$/;"	f
+colorAlphaBlend	$NAYLIB/raylib.nim	/^proc colorAlphaBlend*(dst: Color, src: Color, tint: Color): Color {.importc: "ColorAlphaBlend".}$/;"	f
+colorBrightness	$NAYLIB/raylib.nim	/^proc colorBrightness*(color: Color, factor: float32): Color {.importc: "ColorBrightness".}$/;"	f
+colorContrast	$NAYLIB/raylib.nim	/^proc colorContrast*(color: Color, contrast: float32): Color {.importc: "ColorContrast".}$/;"	f
+colorFromHSV	$NAYLIB/raylib.nim	/^proc colorFromHSV*(hue: float32, saturation: float32, value: float32): Color {.importc: "ColorFr/;"	f
+colorFromNormalized	$NAYLIB/raylib.nim	/^proc colorFromNormalized*(normalized: Vector4): Color {.importc: "ColorFromNormalized".}$/;"	f
+colorNormalize	$NAYLIB/raylib.nim	/^proc colorNormalize*(color: Color): Vector4 {.importc: "ColorNormalize".}$/;"	f
+colorTint	$NAYLIB/raylib.nim	/^proc colorTint*(color: Color, tint: Color): Color {.importc: "ColorTint".}$/;"	f
+colorToHSV	$NAYLIB/raylib.nim	/^proc colorToHSV*(color: Color): Vector3 {.importc: "ColorToHSV".}$/;"	f
+colorToInt	$NAYLIB/raylib.nim	/^proc colorToInt*(color: Color): int32 {.importc: "ColorToInt".}$/;"	f
+colors	$NAYLIB/raylib.nim	/^template colors*(x: Mesh): MeshColors = MeshColors(x)$/;"	m
+colors	$NAYLIB/raylib.nim	/^template colors*(x: Mesh): MeshColors = MeshColors(x)$/;"	t
+colors	$NAYLIB/rlgl.nim	/^template colors*(x: VertexBuffer): VertexBufferColors = VertexBufferColors(x)$/;"	m
+colors	$NAYLIB/rlgl.nim	/^template colors*(x: VertexBuffer): VertexBufferColors = VertexBufferColors(x)$/;"	t
+compileShader	$NAYLIB/rlgl.nim	/^proc compileShader*(shaderCode: cstring, `type`: ShaderType): uint32 {.importc: "rlCompileShader/;"	f
+computeShaderDispatch	$NAYLIB/rlgl.nim	/^proc computeShaderDispatch*(groupX: uint32, groupY: uint32, groupZ: uint32) {.importc: "rlComput/;"	f
+copyShaderBuffer	$NAYLIB/rlgl.nim	/^proc copyShaderBuffer*(destId: uint32, srcId: uint32, destOffset: uint32, srcOffset: uint32, cou/;"	f
+crossProduct	$NAYLIB/raymath.nim	/^func crossProduct*(v1, v2: Vector3): Vector3 {.inline.} =$/;"	t
+cubicIn	$NAYLIB/reasings.nim	/^func cubicIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+cubicInOut	$NAYLIB/reasings.nim	/^func cubicInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+cubicOut	$NAYLIB/reasings.nim	/^func cubicOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+detachAudioMixedProcessor	$NAYLIB/raylib.nim	/^proc detachAudioMixedProcessor*(processor: AudioCallback) {.importc: "DetachAudioMixedProcessor"/;"	f
+detachAudioStreamProcessor	$NAYLIB/raylib.nim	/^proc detachAudioStreamProcessor*(stream: AudioStream, processor: AudioCallback) {.importc: "Deta/;"	f
+determinant	$NAYLIB/raymath.nim	/^func determinant*(mat: Matrix): float32 {.inline.} =$/;"	t
+disableBackfaceCulling	$NAYLIB/rlgl.nim	/^proc disableBackfaceCulling*() {.importc: "rlDisableBackfaceCulling".}$/;"	f
+disableColorBlend	$NAYLIB/rlgl.nim	/^proc disableColorBlend*() {.importc: "rlDisableColorBlend".}$/;"	f
+disableCursor	$NAYLIB/raylib.nim	/^proc disableCursor*() {.importc: "DisableCursor".}$/;"	f
+disableDepthMask	$NAYLIB/rlgl.nim	/^proc disableDepthMask*() {.importc: "rlDisableDepthMask".}$/;"	f
+disableDepthTest	$NAYLIB/rlgl.nim	/^proc disableDepthTest*() {.importc: "rlDisableDepthTest".}$/;"	f
+disableEventWaiting	$NAYLIB/raylib.nim	/^proc disableEventWaiting*() {.importc: "DisableEventWaiting".}$/;"	f
+disableFramebuffer	$NAYLIB/rlgl.nim	/^proc disableFramebuffer*() {.importc: "rlDisableFramebuffer".}$/;"	f
+disableScissorTest	$NAYLIB/rlgl.nim	/^proc disableScissorTest*() {.importc: "rlDisableScissorTest".}$/;"	f
+disableShader	$NAYLIB/rlgl.nim	/^proc disableShader*() {.importc: "rlDisableShader".}$/;"	f
+disableSmoothLines	$NAYLIB/rlgl.nim	/^proc disableSmoothLines*() {.importc: "rlDisableSmoothLines".}$/;"	f
+disableStatePointer	$NAYLIB/rlgl.nim	/^proc disableStatePointer*(vertexAttribType: int32) {.importc: "rlDisableStatePointer".}$/;"	f
+disableStereoRender	$NAYLIB/rlgl.nim	/^proc disableStereoRender*() {.importc: "rlDisableStereoRender".}$/;"	f
+disableTexture	$NAYLIB/rlgl.nim	/^proc disableTexture*() {.importc: "rlDisableTexture".}$/;"	f
+disableTextureCubemap	$NAYLIB/rlgl.nim	/^proc disableTextureCubemap*() {.importc: "rlDisableTextureCubemap".}$/;"	f
+disableVertexArray	$NAYLIB/rlgl.nim	/^proc disableVertexArray*() {.importc: "rlDisableVertexArray".}$/;"	f
+disableVertexAttribute	$NAYLIB/rlgl.nim	/^proc disableVertexAttribute*(index: uint32) {.importc: "rlDisableVertexAttribute".}$/;"	f
+disableVertexBuffer	$NAYLIB/rlgl.nim	/^proc disableVertexBuffer*() {.importc: "rlDisableVertexBuffer".}$/;"	f
+disableVertexBufferElement	$NAYLIB/rlgl.nim	/^proc disableVertexBufferElement*() {.importc: "rlDisableVertexBufferElement".}$/;"	f
+disableWireMode	$NAYLIB/rlgl.nim	/^proc disableWireMode*() {.importc: "rlDisableWireMode".}$/;"	f
+distance	$NAYLIB/raymath.nim	/^func distance*(v1, v2: Vector2): float32 {.inline.} =$/;"	t
+distance	$NAYLIB/raymath.nim	/^func distance*(v1, v2: Vector3): float32 {.inline.} =$/;"	t
+distanceSqr	$NAYLIB/raymath.nim	/^func distanceSqr*(v1, v2: Vector2): float32 {.inline.} =$/;"	t
+divide	$NAYLIB/raymath.nim	/^func divide*(q1, q2: Quaternion): Quaternion {.inline.} =$/;"	t
+divide	$NAYLIB/raymath.nim	/^func divide*(v1, v2: Vector2): Vector2 {.inline.} =$/;"	t
+divide	$NAYLIB/raymath.nim	/^func divide*(v1, v2: Vector3): Vector3 {.inline.} =$/;"	t
+dotProduct	$NAYLIB/raymath.nim	/^func dotProduct*(v1, v2: Vector2): float32 {.inline.} =$/;"	t
+dotProduct	$NAYLIB/raymath.nim	/^func dotProduct*(v1, v2: Vector3): float32 {.inline.} =$/;"	t
+drawBillboard	$NAYLIB/raylib.nim	/^proc drawBillboard*(camera: Camera, texture: Texture2D, position: Vector3, size: float32, tint: /;"	f
+drawBillboard	$NAYLIB/raylib.nim	/^proc drawBillboard*(camera: Camera, texture: Texture2D, source: Rectangle, position: Vector3, si/;"	f
+drawBillboard	$NAYLIB/raylib.nim	/^proc drawBillboard*(camera: Camera, texture: Texture2D, source: Rectangle, position: Vector3, up/;"	f
+drawBoundingBox	$NAYLIB/raylib.nim	/^proc drawBoundingBox*(box: BoundingBox, color: Color) {.importc: "DrawBoundingBox".}$/;"	f
+drawCapsule	$NAYLIB/raylib.nim	/^proc drawCapsule*(startPos: Vector3, endPos: Vector3, radius: float32, slices: int32, rings: int/;"	f
+drawCapsuleWires	$NAYLIB/raylib.nim	/^proc drawCapsuleWires*(startPos: Vector3, endPos: Vector3, radius: float32, slices: int32, rings/;"	f
+drawCircle	$NAYLIB/raylib.nim	/^proc drawCircle*(center: Vector2, radius: float32, color: Color) {.importc: "DrawCircleV".}$/;"	f
+drawCircle	$NAYLIB/raylib.nim	/^proc drawCircle*(centerX: int32, centerY: int32, radius: float32, color: Color) {.importc: "Draw/;"	f
+drawCircle3D	$NAYLIB/raylib.nim	/^proc drawCircle3D*(center: Vector3, radius: float32, rotationAxis: Vector3, rotationAngle: float/;"	f
+drawCircleGradient	$NAYLIB/raylib.nim	/^proc drawCircleGradient*(centerX: int32, centerY: int32, radius: float32, color1: Color, color2:/;"	f
+drawCircleLines	$NAYLIB/raylib.nim	/^proc drawCircleLines*(centerX: int32, centerY: int32, radius: float32, color: Color) {.importc: /;"	f
+drawCircleSector	$NAYLIB/raylib.nim	/^proc drawCircleSector*(center: Vector2, radius: float32, startAngle: float32, endAngle: float32,/;"	f
+drawCircleSectorLines	$NAYLIB/raylib.nim	/^proc drawCircleSectorLines*(center: Vector2, radius: float32, startAngle: float32, endAngle: flo/;"	f
+drawCube	$NAYLIB/raylib.nim	/^proc drawCube*(position: Vector3, size: Vector3, color: Color) {.importc: "DrawCubeV".}$/;"	f
+drawCube	$NAYLIB/raylib.nim	/^proc drawCube*(position: Vector3, width: float32, height: float32, length: float32, color: Color/;"	f
+drawCubeWires	$NAYLIB/raylib.nim	/^proc drawCubeWires*(position: Vector3, size: Vector3, color: Color) {.importc: "DrawCubeWiresV"./;"	f
+drawCubeWires	$NAYLIB/raylib.nim	/^proc drawCubeWires*(position: Vector3, width: float32, height: float32, length: float32, color: /;"	f
+drawCylinder	$NAYLIB/raylib.nim	/^proc drawCylinder*(position: Vector3, radiusTop: float32, radiusBottom: float32, height: float32/;"	f
+drawCylinder	$NAYLIB/raylib.nim	/^proc drawCylinder*(startPos: Vector3, endPos: Vector3, startRadius: float32, endRadius: float32,/;"	f
+drawCylinderWires	$NAYLIB/raylib.nim	/^proc drawCylinderWires*(position: Vector3, radiusTop: float32, radiusBottom: float32, height: fl/;"	f
+drawCylinderWires	$NAYLIB/raylib.nim	/^proc drawCylinderWires*(startPos: Vector3, endPos: Vector3, startRadius: float32, endRadius: flo/;"	f
+drawEllipse	$NAYLIB/raylib.nim	/^proc drawEllipse*(centerX: int32, centerY: int32, radiusH: float32, radiusV: float32, color: Col/;"	f
+drawEllipseLines	$NAYLIB/raylib.nim	/^proc drawEllipseLines*(centerX: int32, centerY: int32, radiusH: float32, radiusV: float32, color/;"	f
+drawFPS	$NAYLIB/raylib.nim	/^proc drawFPS*(posX: int32, posY: int32) {.importc: "DrawFPS".}$/;"	f
+drawGrid	$NAYLIB/raylib.nim	/^proc drawGrid*(slices: int32, spacing: float32) {.importc: "DrawGrid".}$/;"	f
+drawLine	$NAYLIB/raylib.nim	/^proc drawLine*(startPos: Vector2, endPos: Vector2, color: Color) {.importc: "DrawLineV".}$/;"	f
+drawLine	$NAYLIB/raylib.nim	/^proc drawLine*(startPos: Vector2, endPos: Vector2, thick: float32, color: Color) {.importc: "Dra/;"	f
+drawLine	$NAYLIB/raylib.nim	/^proc drawLine*(startPosX: int32, startPosY: int32, endPosX: int32, endPosY: int32, color: Color)/;"	f
+drawLine3D	$NAYLIB/raylib.nim	/^proc drawLine3D*(startPos: Vector3, endPos: Vector3, color: Color) {.importc: "DrawLine3D".}$/;"	f
+drawLineBezier	$NAYLIB/raylib.nim	/^proc drawLineBezier*(startPos: Vector2, endPos: Vector2, thick: float32, color: Color) {.importc/;"	f
+drawLineBezierCubic	$NAYLIB/raylib.nim	/^proc drawLineBezierCubic*(startPos: Vector2, endPos: Vector2, startControlPos: Vector2, endContr/;"	f
+drawLineBezierQuad	$NAYLIB/raylib.nim	/^proc drawLineBezierQuad*(startPos: Vector2, endPos: Vector2, controlPos: Vector2, thick: float32/;"	f
+drawLineStrip	$NAYLIB/raylib.nim	/^proc drawLineStrip*(points: openArray[Vector2]; color: Color) {.inline.} =$/;"	f
+drawLineStrip	$NAYLIB/raylib.nim	/^proc drawLineStrip*(points: openArray[Vector2]; color: Color) {.inline.} =$/;"	t
+drawMesh	$NAYLIB/raylib.nim	/^proc drawMesh*(mesh: Mesh, material: Material, transform: Matrix) {.importc: "DrawMesh".}$/;"	f
+drawMeshInstanced	$NAYLIB/raylib.nim	/^proc drawMeshInstanced*(mesh: Mesh; material: Material; transforms: openArray[Matrix]) =$/;"	f
+drawMeshInstanced	$NAYLIB/raylib.nim	/^proc drawMeshInstanced*(mesh: Mesh; material: Material; transforms: openArray[Matrix]) =$/;"	t
+drawMode	$NAYLIB/rlgl.nim	/^template drawMode*(mode: DrawMode; body: untyped) =$/;"	m
+drawMode	$NAYLIB/rlgl.nim	/^template drawMode*(mode: DrawMode; body: untyped) =$/;"	t
+drawModel	$NAYLIB/raylib.nim	/^proc drawModel*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: float32, /;"	f
+drawModel	$NAYLIB/raylib.nim	/^proc drawModel*(model: Model, position: Vector3, scale: float32, tint: Color) {.importc: "DrawMo/;"	f
+drawModelWires	$NAYLIB/raylib.nim	/^proc drawModelWires*(model: Model, position: Vector3, rotationAxis: Vector3, rotationAngle: floa/;"	f
+drawModelWires	$NAYLIB/raylib.nim	/^proc drawModelWires*(model: Model, position: Vector3, scale: float32, tint: Color) {.importc: "D/;"	f
+drawPixel	$NAYLIB/raylib.nim	/^proc drawPixel*(posX: int32, posY: int32, color: Color) {.importc: "DrawPixel".}$/;"	f
+drawPixel	$NAYLIB/raylib.nim	/^proc drawPixel*(position: Vector2, color: Color) {.importc: "DrawPixelV".}$/;"	f
+drawPlane	$NAYLIB/raylib.nim	/^proc drawPlane*(centerPos: Vector3, size: Vector2, color: Color) {.importc: "DrawPlane".}$/;"	f
+drawPoint3D	$NAYLIB/raylib.nim	/^proc drawPoint3D*(position: Vector3, color: Color) {.importc: "DrawPoint3D".}$/;"	f
+drawPoly	$NAYLIB/raylib.nim	/^proc drawPoly*(center: Vector2, sides: int32, radius: float32, rotation: float32, color: Color) /;"	f
+drawPolyLines	$NAYLIB/raylib.nim	/^proc drawPolyLines*(center: Vector2, sides: int32, radius: float32, rotation: float32, color: Co/;"	f
+drawPolyLines	$NAYLIB/raylib.nim	/^proc drawPolyLines*(center: Vector2, sides: int32, radius: float32, rotation: float32, lineThick/;"	f
+drawRay	$NAYLIB/raylib.nim	/^proc drawRay*(ray: Ray, color: Color) {.importc: "DrawRay".}$/;"	f
+drawRectangle	$NAYLIB/raylib.nim	/^proc drawRectangle*(posX: int32, posY: int32, width: int32, height: int32, color: Color) {.impor/;"	f
+drawRectangle	$NAYLIB/raylib.nim	/^proc drawRectangle*(position: Vector2, size: Vector2, color: Color) {.importc: "DrawRectangleV"./;"	f
+drawRectangle	$NAYLIB/raylib.nim	/^proc drawRectangle*(rec: Rectangle, color: Color) {.importc: "DrawRectangleRec".}$/;"	f
+drawRectangle	$NAYLIB/raylib.nim	/^proc drawRectangle*(rec: Rectangle, origin: Vector2, rotation: float32, color: Color) {.importc:/;"	f
+drawRectangleGradient	$NAYLIB/raylib.nim	/^proc drawRectangleGradient*(rec: Rectangle, col1: Color, col2: Color, col3: Color, col4: Color) /;"	f
+drawRectangleGradientH	$NAYLIB/raylib.nim	/^proc drawRectangleGradientH*(posX: int32, posY: int32, width: int32, height: int32, color1: Colo/;"	f
+drawRectangleGradientV	$NAYLIB/raylib.nim	/^proc drawRectangleGradientV*(posX: int32, posY: int32, width: int32, height: int32, color1: Colo/;"	f
+drawRectangleLines	$NAYLIB/raylib.nim	/^proc drawRectangleLines*(posX: int32, posY: int32, width: int32, height: int32, color: Color) {./;"	f
+drawRectangleLines	$NAYLIB/raylib.nim	/^proc drawRectangleLines*(rec: Rectangle, lineThick: float32, color: Color) {.importc: "DrawRecta/;"	f
+drawRectangleRounded	$NAYLIB/raylib.nim	/^proc drawRectangleRounded*(rec: Rectangle, roundness: float32, segments: int32, color: Color) {./;"	f
+drawRectangleRoundedLines	$NAYLIB/raylib.nim	/^proc drawRectangleRoundedLines*(rec: Rectangle, roundness: float32, segments: int32, lineThick: /;"	f
+drawRenderBatch	$NAYLIB/rlgl.nim	/^proc drawRenderBatch*(batch: var RenderBatch) {.importc: "rlDrawRenderBatch".}$/;"	f
+drawRenderBatchActive	$NAYLIB/rlgl.nim	/^proc drawRenderBatchActive*() {.importc: "rlDrawRenderBatchActive".}$/;"	f
+drawRing	$NAYLIB/raylib.nim	/^proc drawRing*(center: Vector2, innerRadius: float32, outerRadius: float32, startAngle: float32,/;"	f
+drawRingLines	$NAYLIB/raylib.nim	/^proc drawRingLines*(center: Vector2, innerRadius: float32, outerRadius: float32, startAngle: flo/;"	f
+drawSphere	$NAYLIB/raylib.nim	/^proc drawSphere*(centerPos: Vector3, radius: float32, color: Color) {.importc: "DrawSphere".}$/;"	f
+drawSphere	$NAYLIB/raylib.nim	/^proc drawSphere*(centerPos: Vector3, radius: float32, rings: int32, slices: int32, color: Color)/;"	f
+drawSphereWires	$NAYLIB/raylib.nim	/^proc drawSphereWires*(centerPos: Vector3, radius: float32, rings: int32, slices: int32, color: C/;"	f
+drawText	$NAYLIB/raylib.nim	/^proc drawText*(font: Font, text: cstring, position: Vector2, fontSize: float32, spacing: float32/;"	f
+drawText	$NAYLIB/raylib.nim	/^proc drawText*(font: Font, text: cstring, position: Vector2, origin: Vector2, rotation: float32,/;"	f
+drawText	$NAYLIB/raylib.nim	/^proc drawText*(text: cstring, posX: int32, posY: int32, fontSize: int32, color: Color) {.importc/;"	f
+drawTextCodepoint	$NAYLIB/raylib.nim	/^proc drawTextCodepoint*(font: Font, codepoint: Rune, position: Vector2, fontSize: float32, tint:/;"	f
+drawTextCodepoints	$NAYLIB/raylib.nim	/^proc drawTextCodepoints*(font: Font; codepoints: openArray[Rune]; position: Vector2;$/;"	f
+drawTexture	$NAYLIB/raylib.nim	/^proc drawTexture*(texture: Texture2D, posX: int32, posY: int32, tint: Color) {.importc: "DrawTex/;"	f
+drawTexture	$NAYLIB/raylib.nim	/^proc drawTexture*(texture: Texture2D, position: Vector2, rotation: float32, scale: float32, tint/;"	f
+drawTexture	$NAYLIB/raylib.nim	/^proc drawTexture*(texture: Texture2D, position: Vector2, tint: Color) {.importc: "DrawTextureV"./;"	f
+drawTexture	$NAYLIB/raylib.nim	/^proc drawTexture*(texture: Texture2D, source: Rectangle, dest: Rectangle, origin: Vector2, rotat/;"	f
+drawTexture	$NAYLIB/raylib.nim	/^proc drawTexture*(texture: Texture2D, source: Rectangle, position: Vector2, tint: Color) {.impor/;"	f
+drawTextureNPatch	$NAYLIB/raylib.nim	/^proc drawTextureNPatch*(texture: Texture2D, nPatchInfo: NPatchInfo, dest: Rectangle, origin: Vec/;"	f
+drawTriangle	$NAYLIB/raylib.nim	/^proc drawTriangle*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color) {.importc: "DrawTriangle/;"	f
+drawTriangle3D	$NAYLIB/raylib.nim	/^proc drawTriangle3D*(v1: Vector3, v2: Vector3, v3: Vector3, color: Color) {.importc: "DrawTriang/;"	f
+drawTriangleFan	$NAYLIB/raylib.nim	/^proc drawTriangleFan*(points: openArray[Vector2]; color: Color) =$/;"	f
+drawTriangleFan	$NAYLIB/raylib.nim	/^proc drawTriangleFan*(points: openArray[Vector2]; color: Color) =$/;"	t
+drawTriangleLines	$NAYLIB/raylib.nim	/^proc drawTriangleLines*(v1: Vector2, v2: Vector2, v3: Vector2, color: Color) {.importc: "DrawTri/;"	f
+drawTriangleStrip	$NAYLIB/raylib.nim	/^proc drawTriangleStrip*(points: openArray[Vector2]; color: Color) =$/;"	f
+drawTriangleStrip	$NAYLIB/raylib.nim	/^proc drawTriangleStrip*(points: openArray[Vector2]; color: Color) =$/;"	t
+drawTriangleStrip3D	$NAYLIB/raylib.nim	/^proc drawTriangleStrip3D*(points: openArray[Vector3]; color: Color) =$/;"	f
+drawTriangleStrip3D	$NAYLIB/raylib.nim	/^proc drawTriangleStrip3D*(points: openArray[Vector3]; color: Color) =$/;"	t
+drawVertexArray	$NAYLIB/rlgl.nim	/^proc drawVertexArray*(offset: int32, count: int32) {.importc: "rlDrawVertexArray".}$/;"	f
+drawVertexArrayElements	$NAYLIB/rlgl.nim	/^proc drawVertexArrayElements*(offset: int32, count: int32, buffer: pointer) {.importc: "rlDrawVe/;"	f
+drawVertexArrayElementsInstanced	$NAYLIB/rlgl.nim	/^proc drawVertexArrayElementsInstanced*(offset: int32, count: int32, buffer: pointer, instances: /;"	f
+drawVertexArrayInstanced	$NAYLIB/rlgl.nim	/^proc drawVertexArrayInstanced*(offset: int32, count: int32, instances: int32) {.importc: "rlDraw/;"	f
+drawing	$NAYLIB/raylib.nim	/^template drawing*(body: untyped) =$/;"	m
+drawing	$NAYLIB/raylib.nim	/^template drawing*(body: untyped) =$/;"	t
+draws	$NAYLIB/rlgl.nim	/^template draws*(x: RenderBatch): RenderBatchDraws = RenderBatchDraws(x)$/;"	m
+draws	$NAYLIB/rlgl.nim	/^template draws*(x: RenderBatch): RenderBatchDraws = RenderBatchDraws(x)$/;"	t
+elasticIn	$NAYLIB/reasings.nim	/^func elasticIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+elasticInOut	$NAYLIB/reasings.nim	/^func elasticInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+elasticOut	$NAYLIB/reasings.nim	/^func elasticOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+elementCount	$NAYLIB/rlgl.nim	/^proc elementCount*(x: VertexBuffer): int32 {.inline.} = x.elementCount$/;"	f
+elementCount	$NAYLIB/rlgl.nim	/^proc elementCount*(x: VertexBuffer): int32 {.inline.} = x.elementCount$/;"	t
+emCallbackFunc	$NAYLIB/raylib.nim	/^  type emCallbackFunc* = proc() {.cdecl.}$/;"	t
+emscriptenSetMainLoop	$NAYLIB/raylib.nim	/^  proc emscriptenSetMainLoop*(f: emCallbackFunc, fps: cint, simulateInfiniteLoop: cint) {.$/;"	f
+enableBackfaceCulling	$NAYLIB/rlgl.nim	/^proc enableBackfaceCulling*() {.importc: "rlEnableBackfaceCulling".}$/;"	f
+enableColorBlend	$NAYLIB/rlgl.nim	/^proc enableColorBlend*() {.importc: "rlEnableColorBlend".}$/;"	f
+enableCursor	$NAYLIB/raylib.nim	/^proc enableCursor*() {.importc: "EnableCursor".}$/;"	f
+enableDepthMask	$NAYLIB/rlgl.nim	/^proc enableDepthMask*() {.importc: "rlEnableDepthMask".}$/;"	f
+enableDepthTest	$NAYLIB/rlgl.nim	/^proc enableDepthTest*() {.importc: "rlEnableDepthTest".}$/;"	f
+enableEventWaiting	$NAYLIB/raylib.nim	/^proc enableEventWaiting*() {.importc: "EnableEventWaiting".}$/;"	f
+enableFramebuffer	$NAYLIB/rlgl.nim	/^proc enableFramebuffer*(id: uint32) {.importc: "rlEnableFramebuffer".}$/;"	f
+enableScissorTest	$NAYLIB/rlgl.nim	/^proc enableScissorTest*() {.importc: "rlEnableScissorTest".}$/;"	f
+enableShader	$NAYLIB/rlgl.nim	/^proc enableShader*(id: uint32) {.importc: "rlEnableShader".}$/;"	f
+enableSmoothLines	$NAYLIB/rlgl.nim	/^proc enableSmoothLines*() {.importc: "rlEnableSmoothLines".}$/;"	f
+enableStatePointer	$NAYLIB/rlgl.nim	/^proc enableStatePointer*(vertexAttribType: int32, buffer: pointer) {.importc: "rlEnableStatePoin/;"	f
+enableStereoRender	$NAYLIB/rlgl.nim	/^proc enableStereoRender*() {.importc: "rlEnableStereoRender".}$/;"	f
+enableTexture	$NAYLIB/rlgl.nim	/^proc enableTexture*(id: uint32) {.importc: "rlEnableTexture".}$/;"	f
+enableTextureCubemap	$NAYLIB/rlgl.nim	/^proc enableTextureCubemap*(id: uint32) {.importc: "rlEnableTextureCubemap".}$/;"	f
+enableVertexArray	$NAYLIB/rlgl.nim	/^proc enableVertexArray*(vaoId: uint32): bool {.importc: "rlEnableVertexArray".}$/;"	f
+enableVertexAttribute	$NAYLIB/rlgl.nim	/^proc enableVertexAttribute*(index: uint32) {.importc: "rlEnableVertexAttribute".}$/;"	f
+enableVertexBuffer	$NAYLIB/rlgl.nim	/^proc enableVertexBuffer*(id: uint32) {.importc: "rlEnableVertexBuffer".}$/;"	f
+enableVertexBufferElement	$NAYLIB/rlgl.nim	/^proc enableVertexBufferElement*(id: uint32) {.importc: "rlEnableVertexBufferElement".}$/;"	f
+enableWireMode	$NAYLIB/rlgl.nim	/^proc enableWireMode*() {.importc: "rlEnableWireMode".}$/;"	f
+endBlendMode	$NAYLIB/raylib.nim	/^proc endBlendMode*() {.importc: "EndBlendMode".}$/;"	f
+endDrawing	$NAYLIB/raylib.nim	/^proc endDrawing*() {.importc: "EndDrawing".}$/;"	f
+endMode2D	$NAYLIB/raylib.nim	/^proc endMode2D*() {.importc: "EndMode2D".}$/;"	f
+endMode3D	$NAYLIB/raylib.nim	/^proc endMode3D*() {.importc: "EndMode3D".}$/;"	f
+endScissorMode	$NAYLIB/raylib.nim	/^proc endScissorMode*() {.importc: "EndScissorMode".}$/;"	f
+endShaderMode	$NAYLIB/raylib.nim	/^proc endShaderMode*() {.importc: "EndShaderMode".}$/;"	f
+endTextureMode	$NAYLIB/raylib.nim	/^proc endTextureMode*() {.importc: "EndTextureMode".}$/;"	f
+endVrStereoMode	$NAYLIB/raylib.nim	/^proc endVrStereoMode*() {.importc: "EndVrStereoMode".}$/;"	f
+equals	$NAYLIB/raymath.nim	/^func equals*(p, q: Quaternion, tol = 1.0e-6'f32): bool {.inline.} =$/;"	t
+equals	$NAYLIB/raymath.nim	/^func equals*(p, q: Vector2, tol = 1.0e-6'f32): bool {.inline.} =$/;"	t
+equals	$NAYLIB/raymath.nim	/^func equals*(p, q: Vector3, tol = 1.0e-6'f32): bool {.inline.} =$/;"	t
+equals	$NAYLIB/raymath.nim	/^func equals*(x, y: float32, tol = 1.0e-6'f32): bool {.inline.} =$/;"	t
+expoIn	$NAYLIB/reasings.nim	/^func expoIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+expoInOut	$NAYLIB/reasings.nim	/^func expoInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+expoOut	$NAYLIB/reasings.nim	/^func expoOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+exportDataAsCode	$NAYLIB/raylib.nim	/^proc exportDataAsCode*(data: openArray[byte], fileName: string): bool =$/;"	f
+exportDataAsCode	$NAYLIB/raylib.nim	/^proc exportDataAsCode*(data: openArray[byte], fileName: string): bool =$/;"	t
+exportFontAsCode	$NAYLIB/raylib.nim	/^proc exportFontAsCode*(font: Font, fileName: cstring): bool {.importc: "ExportFontAsCode".}$/;"	f
+exportImage	$NAYLIB/raylib.nim	/^proc exportImage*(image: Image, fileName: cstring): bool {.importc: "ExportImage".}$/;"	f
+exportImageAsCode	$NAYLIB/raylib.nim	/^proc exportImageAsCode*(image: Image, fileName: cstring): bool {.importc: "ExportImageAsCode".}$/;"	f
+exportMesh	$NAYLIB/raylib.nim	/^proc exportMesh*(mesh: Mesh, fileName: cstring): bool {.importc: "ExportMesh".}$/;"	f
+exportWave	$NAYLIB/raylib.nim	/^proc exportWave*(wave: Wave, fileName: cstring): bool {.importc: "ExportWave".}$/;"	f
+exportWaveAsCode	$NAYLIB/raylib.nim	/^proc exportWaveAsCode*(wave: Wave, fileName: cstring): bool {.importc: "ExportWaveAsCode".}$/;"	f
+fade	$NAYLIB/raylib.nim	/^proc fade*(color: Color, alpha: float32): Color {.importc: "Fade".}$/;"	f
+flags	$NAYLIB/raylib.nim	/^proc flags*[E: FlagsEnum](e: varargs[E]): Flags[E] {.inline.} =$/;"	f
+flags	$NAYLIB/raylib.nim	/^proc flags*[E: FlagsEnum](e: varargs[E]): Flags[E] {.inline.} =$/;"	t
+frameCount	$NAYLIB/raylib.nim	/^proc frameCount*(x: ModelAnimation): int32 {.inline.} = x.frameCount$/;"	f
+frameCount	$NAYLIB/raylib.nim	/^proc frameCount*(x: ModelAnimation): int32 {.inline.} = x.frameCount$/;"	t
+framePoses	$NAYLIB/raylib.nim	/^template framePoses*(x: ModelAnimation): ModelAnimationFramePoses = ModelAnimationFramePoses(x)$/;"	m
+framePoses	$NAYLIB/raylib.nim	/^template framePoses*(x: ModelAnimation): ModelAnimationFramePoses = ModelAnimationFramePoses(x)$/;"	t
+framebufferAttach	$NAYLIB/rlgl.nim	/^proc framebufferAttach*(fboId: uint32, texId: uint32, attachType: FramebufferAttachType, texType/;"	f
+framebufferComplete	$NAYLIB/rlgl.nim	/^proc framebufferComplete*(id: uint32): bool {.importc: "rlFramebufferComplete".}$/;"	f
+fromAxisAngle	$NAYLIB/raymath.nim	/^func fromAxisAngle*(axis: Vector3; angle: float32): Quaternion {.inline.} =$/;"	t
+fromEuler	$NAYLIB/raymath.nim	/^func fromEuler*(pitch, yaw, roll: float32): Quaternion {.inline.} =$/;"	t
+fromMatrix	$NAYLIB/raymath.nim	/^func fromMatrix*(mat: Matrix): Quaternion {.inline.} =$/;"	t
+fromVector3ToVector3	$NAYLIB/raymath.nim	/^func fromVector3ToVector3*(`from`, to: Vector3): Quaternion {.inline.} =$/;"	t
+frustum	$NAYLIB/raymath.nim	/^func frustum*(left, right, bottom, top, near, far: float): Matrix {.inline.} =$/;"	t
+frustum	$NAYLIB/rlgl.nim	/^proc frustum*(left: float, right: float, bottom: float, top: float, znear: float, zfar: float) {/;"	f
+genImageCellular	$NAYLIB/raylib.nim	/^proc genImageCellular*(width: int32, height: int32, tileSize: int32): Image {.importc: "GenImage/;"	f
+genImageChecked	$NAYLIB/raylib.nim	/^proc genImageChecked*(width: int32, height: int32, checksX: int32, checksY: int32, col1: Color, /;"	f
+genImageColor	$NAYLIB/raylib.nim	/^proc genImageColor*(width: int32, height: int32, color: Color): Image {.importc: "GenImageColor"/;"	f
+genImageFontAtlas	$NAYLIB/raylib.nim	/^proc genImageFontAtlas*(chars: openArray[GlyphInfo]; recs: out RArray[Rectangle]; fontSize: int3/;"	f
+genImageGradientH	$NAYLIB/raylib.nim	/^proc genImageGradientH*(width: int32, height: int32, left: Color, right: Color): Image {.importc/;"	f
+genImageGradientRadial	$NAYLIB/raylib.nim	/^proc genImageGradientRadial*(width: int32, height: int32, density: float32, inner: Color, outer:/;"	f
+genImageGradientV	$NAYLIB/raylib.nim	/^proc genImageGradientV*(width: int32, height: int32, top: Color, bottom: Color): Image {.importc/;"	f
+genImagePerlinNoise	$NAYLIB/raylib.nim	/^proc genImagePerlinNoise*(width: int32, height: int32, offsetX: int32, offsetY: int32, scale: fl/;"	f
+genImageText	$NAYLIB/raylib.nim	/^proc genImageText*(width: int32, height: int32, text: cstring): Image {.importc: "GenImageText"./;"	f
+genImageWhiteNoise	$NAYLIB/raylib.nim	/^proc genImageWhiteNoise*(width: int32, height: int32, factor: float32): Image {.importc: "GenIma/;"	f
+genMeshCone	$NAYLIB/raylib.nim	/^proc genMeshCone*(radius: float32, height: float32, slices: int32): Mesh {.importc: "GenMeshCone/;"	f
+genMeshCube	$NAYLIB/raylib.nim	/^proc genMeshCube*(width: float32, height: float32, length: float32): Mesh {.importc: "GenMeshCub/;"	f
+genMeshCubicmap	$NAYLIB/raylib.nim	/^proc genMeshCubicmap*(cubicmap: Image, cubeSize: Vector3): Mesh {.importc: "GenMeshCubicmap".}$/;"	f
+genMeshCylinder	$NAYLIB/raylib.nim	/^proc genMeshCylinder*(radius: float32, height: float32, slices: int32): Mesh {.importc: "GenMesh/;"	f
+genMeshHeightmap	$NAYLIB/raylib.nim	/^proc genMeshHeightmap*(heightmap: Image, size: Vector3): Mesh {.importc: "GenMeshHeightmap".}$/;"	f
+genMeshHemiSphere	$NAYLIB/raylib.nim	/^proc genMeshHemiSphere*(radius: float32, rings: int32, slices: int32): Mesh {.importc: "GenMeshH/;"	f
+genMeshKnot	$NAYLIB/raylib.nim	/^proc genMeshKnot*(radius: float32, size: float32, radSeg: int32, sides: int32): Mesh {.importc: /;"	f
+genMeshPlane	$NAYLIB/raylib.nim	/^proc genMeshPlane*(width: float32, length: float32, resX: int32, resZ: int32): Mesh {.importc: "/;"	f
+genMeshPoly	$NAYLIB/raylib.nim	/^proc genMeshPoly*(sides: int32, radius: float32): Mesh {.importc: "GenMeshPoly".}$/;"	f
+genMeshSphere	$NAYLIB/raylib.nim	/^proc genMeshSphere*(radius: float32, rings: int32, slices: int32): Mesh {.importc: "GenMeshSpher/;"	f
+genMeshTangents	$NAYLIB/raylib.nim	/^proc genMeshTangents*(mesh: var Mesh) {.importc: "GenMeshTangents".}$/;"	f
+genMeshTorus	$NAYLIB/raylib.nim	/^proc genMeshTorus*(radius: float32, size: float32, radSeg: int32, sides: int32): Mesh {.importc:/;"	f
+genTextureMipmaps	$NAYLIB/raylib.nim	/^proc genTextureMipmaps*(texture: var Texture2D) {.importc: "GenTextureMipmaps".}$/;"	f
+genTextureMipmaps	$NAYLIB/rlgl.nim	/^proc genTextureMipmaps*(id: uint32, width: int32, height: int32, format: PixelFormat, mipmaps: o/;"	f
+getCameraMatrix	$NAYLIB/raylib.nim	/^proc getCameraMatrix*(camera: Camera): Matrix {.importc: "GetCameraMatrix".}$/;"	f
+getCameraMatrix2D	$NAYLIB/raylib.nim	/^proc getCameraMatrix2D*(camera: Camera2D): Matrix {.importc: "GetCameraMatrix2D".}$/;"	f
+getCharPressed	$NAYLIB/raylib.nim	/^proc getCharPressed*(): int32 {.importc: "GetCharPressed".}$/;"	f
+getClipboardText	$NAYLIB/raylib.nim	/^proc getClipboardText*(): string {.inline.} =$/;"	f
+getClipboardText	$NAYLIB/raylib.nim	/^proc getClipboardText*(): string {.inline.} =$/;"	t
+getCollisionRec	$NAYLIB/raylib.nim	/^proc getCollisionRec*(rec1: Rectangle, rec2: Rectangle): Rectangle {.importc: "GetCollisionRec"./;"	f
+getColor	$NAYLIB/raylib.nim	/^proc getColor*(hexValue: uint32): Color {.importc: "GetColor".}$/;"	f
+getCurrentMonitor	$NAYLIB/raylib.nim	/^proc getCurrentMonitor*(): int32 {.importc: "GetCurrentMonitor".}$/;"	f
+getDroppedFiles	$NAYLIB/raylib.nim	/^proc getDroppedFiles*(): seq[string] =$/;"	f
+getDroppedFiles	$NAYLIB/raylib.nim	/^proc getDroppedFiles*(): seq[string] =$/;"	t
+getFPS	$NAYLIB/raylib.nim	/^proc getFPS*(): int32 {.importc: "GetFPS".}$/;"	f
+getFontDefault	$NAYLIB/raylib.nim	/^proc getFontDefault*(): Font {.importc: "GetFontDefault".}$/;"	f
+getFrameTime	$NAYLIB/raylib.nim	/^proc getFrameTime*(): float32 {.importc: "GetFrameTime".}$/;"	f
+getFramebufferHeight	$NAYLIB/rlgl.nim	/^proc getFramebufferHeight*(): int32 {.importc: "rlGetFramebufferHeight".}$/;"	f
+getFramebufferWidth	$NAYLIB/rlgl.nim	/^proc getFramebufferWidth*(): int32 {.importc: "rlGetFramebufferWidth".}$/;"	f
+getGamepadAxisCount	$NAYLIB/raylib.nim	/^proc getGamepadAxisCount*(gamepad: int32): int32 {.importc: "GetGamepadAxisCount".}$/;"	f
+getGamepadAxisMovement	$NAYLIB/raylib.nim	/^proc getGamepadAxisMovement*(gamepad: int32, axis: GamepadAxis): float32 {.importc: "GetGamepadA/;"	f
+getGamepadButtonPressed	$NAYLIB/raylib.nim	/^proc getGamepadButtonPressed*(): GamepadButton {.importc: "GetGamepadButtonPressed".}$/;"	f
+getGamepadName	$NAYLIB/raylib.nim	/^proc getGamepadName*(gamepad: int32): string {.inline.} =$/;"	f
+getGamepadName	$NAYLIB/raylib.nim	/^proc getGamepadName*(gamepad: int32): string {.inline.} =$/;"	t
+getGestureDetected	$NAYLIB/raylib.nim	/^proc getGestureDetected*(): Gesture {.importc: "GetGestureDetected".}$/;"	f
+getGestureDragAngle	$NAYLIB/raylib.nim	/^proc getGestureDragAngle*(): float32 {.importc: "GetGestureDragAngle".}$/;"	f
+getGestureDragVector	$NAYLIB/raylib.nim	/^proc getGestureDragVector*(): Vector2 {.importc: "GetGestureDragVector".}$/;"	f
+getGestureHoldDuration	$NAYLIB/raylib.nim	/^proc getGestureHoldDuration*(): float32 {.importc: "GetGestureHoldDuration".}$/;"	f
+getGesturePinchAngle	$NAYLIB/raylib.nim	/^proc getGesturePinchAngle*(): float32 {.importc: "GetGesturePinchAngle".}$/;"	f
+getGesturePinchVector	$NAYLIB/raylib.nim	/^proc getGesturePinchVector*(): Vector2 {.importc: "GetGesturePinchVector".}$/;"	f
+getGlTextureFormats	$NAYLIB/rlgl.nim	/^proc getGlTextureFormats*(format: PixelFormat, glInternalFormat: out uint32, glFormat: out uint3/;"	f
+getGlyphAtlasRec	$NAYLIB/raylib.nim	/^proc getGlyphAtlasRec*(font: Font, codepoint: Rune): Rectangle {.importc: "GetGlyphAtlasRec".}$/;"	f
+getGlyphIndex	$NAYLIB/raylib.nim	/^proc getGlyphIndex*(font: Font, codepoint: Rune): int32 {.importc: "GetGlyphIndex".}$/;"	f
+getGlyphInfo	$NAYLIB/raylib.nim	/^proc getGlyphInfo*(font: Font, codepoint: Rune): GlyphInfo {.importc: "GetGlyphInfo".}$/;"	f
+getImageAlphaBorder	$NAYLIB/raylib.nim	/^proc getImageAlphaBorder*(image: Image, threshold: float32): Rectangle {.importc: "GetImageAlpha/;"	f
+getImageColor	$NAYLIB/raylib.nim	/^proc getImageColor*(image: Image, x: int32, y: int32): Color {.importc: "GetImageColor".}$/;"	f
+getKeyPressed	$NAYLIB/raylib.nim	/^proc getKeyPressed*(): KeyboardKey {.importc: "GetKeyPressed".}$/;"	f
+getLineWidth	$NAYLIB/rlgl.nim	/^proc getLineWidth*(): float32 {.importc: "rlGetLineWidth".}$/;"	f
+getLocationAttrib	$NAYLIB/rlgl.nim	/^proc getLocationAttrib*(shaderId: uint32, attribName: cstring): ShaderLocation {.importc: "rlGet/;"	f
+getLocationUniform	$NAYLIB/rlgl.nim	/^proc getLocationUniform*(shaderId: uint32, uniformName: cstring): ShaderLocation {.importc: "rlG/;"	f
+getMatrixModelview	$NAYLIB/rlgl.nim	/^proc getMatrixModelview*(): Matrix {.importc: "rlGetMatrixModelview".}$/;"	f
+getMatrixProjection	$NAYLIB/rlgl.nim	/^proc getMatrixProjection*(): Matrix {.importc: "rlGetMatrixProjection".}$/;"	f
+getMatrixProjectionStereo	$NAYLIB/rlgl.nim	/^proc getMatrixProjectionStereo*(eye: int32): Matrix {.importc: "rlGetMatrixProjectionStereo".}$/;"	f
+getMatrixTransform	$NAYLIB/rlgl.nim	/^proc getMatrixTransform*(): Matrix {.importc: "rlGetMatrixTransform".}$/;"	f
+getMatrixViewOffsetStereo	$NAYLIB/rlgl.nim	/^proc getMatrixViewOffsetStereo*(eye: int32): Matrix {.importc: "rlGetMatrixViewOffsetStereo".}$/;"	f
+getMeshBoundingBox	$NAYLIB/raylib.nim	/^proc getMeshBoundingBox*(mesh: Mesh): BoundingBox {.importc: "GetMeshBoundingBox".}$/;"	f
+getModelBoundingBox	$NAYLIB/raylib.nim	/^proc getModelBoundingBox*(model: Model): BoundingBox {.importc: "GetModelBoundingBox".}$/;"	f
+getMonitorCount	$NAYLIB/raylib.nim	/^proc getMonitorCount*(): int32 {.importc: "GetMonitorCount".}$/;"	f
+getMonitorHeight	$NAYLIB/raylib.nim	/^proc getMonitorHeight*(monitor: int32): int32 {.importc: "GetMonitorHeight".}$/;"	f
+getMonitorName	$NAYLIB/raylib.nim	/^proc getMonitorName*(monitor: int32): string {.inline.} =$/;"	f
+getMonitorName	$NAYLIB/raylib.nim	/^proc getMonitorName*(monitor: int32): string {.inline.} =$/;"	t
+getMonitorPhysicalHeight	$NAYLIB/raylib.nim	/^proc getMonitorPhysicalHeight*(monitor: int32): int32 {.importc: "GetMonitorPhysicalHeight".}$/;"	f
+getMonitorPhysicalWidth	$NAYLIB/raylib.nim	/^proc getMonitorPhysicalWidth*(monitor: int32): int32 {.importc: "GetMonitorPhysicalWidth".}$/;"	f
+getMonitorPosition	$NAYLIB/raylib.nim	/^proc getMonitorPosition*(monitor: int32): Vector2 {.importc: "GetMonitorPosition".}$/;"	f
+getMonitorRefreshRate	$NAYLIB/raylib.nim	/^proc getMonitorRefreshRate*(monitor: int32): int32 {.importc: "GetMonitorRefreshRate".}$/;"	f
+getMonitorWidth	$NAYLIB/raylib.nim	/^proc getMonitorWidth*(monitor: int32): int32 {.importc: "GetMonitorWidth".}$/;"	f
+getMouseDelta	$NAYLIB/raylib.nim	/^proc getMouseDelta*(): Vector2 {.importc: "GetMouseDelta".}$/;"	f
+getMousePosition	$NAYLIB/raylib.nim	/^proc getMousePosition*(): Vector2 {.importc: "GetMousePosition".}$/;"	f
+getMouseRay	$NAYLIB/raylib.nim	/^proc getMouseRay*(mousePosition: Vector2, camera: Camera): Ray {.importc: "GetMouseRay".}$/;"	f
+getMouseWheelMove	$NAYLIB/raylib.nim	/^proc getMouseWheelMove*(): float32 {.importc: "GetMouseWheelMove".}$/;"	f
+getMouseWheelMoveV	$NAYLIB/raylib.nim	/^proc getMouseWheelMoveV*(): Vector2 {.importc: "GetMouseWheelMoveV".}$/;"	f
+getMouseX	$NAYLIB/raylib.nim	/^proc getMouseX*(): int32 {.importc: "GetMouseX".}$/;"	f
+getMouseY	$NAYLIB/raylib.nim	/^proc getMouseY*(): int32 {.importc: "GetMouseY".}$/;"	f
+getMusicTimeLength	$NAYLIB/raylib.nim	/^proc getMusicTimeLength*(music: Music): float32 {.importc: "GetMusicTimeLength".}$/;"	f
+getMusicTimePlayed	$NAYLIB/raylib.nim	/^proc getMusicTimePlayed*(music: Music): float32 {.importc: "GetMusicTimePlayed".}$/;"	f
+getPixelColor	$NAYLIB/raylib.nim	/^proc getPixelColor*[T: Pixel](pixel: T): Color =$/;"	f
+getPixelColor	$NAYLIB/raylib.nim	/^proc getPixelColor*[T: Pixel](pixel: T): Color =$/;"	t
+getPixelDataSize	$NAYLIB/raylib.nim	/^proc getPixelDataSize*(width: int32, height: int32, format: PixelFormat): int32 {.importc: "GetP/;"	f
+getPixelFormatName	$NAYLIB/rlgl.nim	/^proc getPixelFormatName*(format: PixelFormat): string =$/;"	f
+getPixelFormatName	$NAYLIB/rlgl.nim	/^proc getPixelFormatName*(format: PixelFormat): string =$/;"	t
+getRayCollisionBox	$NAYLIB/raylib.nim	/^proc getRayCollisionBox*(ray: Ray, box: BoundingBox): RayCollision {.importc: "GetRayCollisionBo/;"	f
+getRayCollisionMesh	$NAYLIB/raylib.nim	/^proc getRayCollisionMesh*(ray: Ray, mesh: Mesh, transform: Matrix): RayCollision {.importc: "Get/;"	f
+getRayCollisionQuad	$NAYLIB/raylib.nim	/^proc getRayCollisionQuad*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3, p4: Vector3): RayColl/;"	f
+getRayCollisionSphere	$NAYLIB/raylib.nim	/^proc getRayCollisionSphere*(ray: Ray, center: Vector3, radius: float32): RayCollision {.importc:/;"	f
+getRayCollisionTriangle	$NAYLIB/raylib.nim	/^proc getRayCollisionTriangle*(ray: Ray, p1: Vector3, p2: Vector3, p3: Vector3): RayCollision {.i/;"	f
+getRenderHeight	$NAYLIB/raylib.nim	/^proc getRenderHeight*(): int32 {.importc: "GetRenderHeight".}$/;"	f
+getRenderWidth	$NAYLIB/raylib.nim	/^proc getRenderWidth*(): int32 {.importc: "GetRenderWidth".}$/;"	f
+getScreenHeight	$NAYLIB/raylib.nim	/^proc getScreenHeight*(): int32 {.importc: "GetScreenHeight".}$/;"	f
+getScreenToWorld2D	$NAYLIB/raylib.nim	/^proc getScreenToWorld2D*(position: Vector2, camera: Camera2D): Vector2 {.importc: "GetScreenToWo/;"	f
+getScreenWidth	$NAYLIB/raylib.nim	/^proc getScreenWidth*(): int32 {.importc: "GetScreenWidth".}$/;"	f
+getShaderBufferSize	$NAYLIB/rlgl.nim	/^proc getShaderBufferSize*(id: uint32): uint32 {.importc: "rlGetShaderBufferSize".}$/;"	f
+getShaderIdDefault	$NAYLIB/rlgl.nim	/^proc getShaderIdDefault*(): uint32 {.importc: "rlGetShaderIdDefault".}$/;"	f
+getShaderLocation	$NAYLIB/raylib.nim	/^proc getShaderLocation*(shader: Shader, uniformName: cstring): ShaderLocation {.importc: "GetSha/;"	f
+getShaderLocationAttrib	$NAYLIB/raylib.nim	/^proc getShaderLocationAttrib*(shader: Shader, attribName: cstring): ShaderLocation {.importc: "G/;"	f
+getShaderLocsDefault	$NAYLIB/rlgl.nim	/^proc getShaderLocsDefault*(): ShaderLocsPtr {.importc: "rlGetShaderLocsDefault".}$/;"	f
+getTextureIdDefault	$NAYLIB/rlgl.nim	/^proc getTextureIdDefault*(): uint32 {.importc: "rlGetTextureIdDefault".}$/;"	f
+getTime	$NAYLIB/raylib.nim	/^proc getTime*(): float {.importc: "GetTime".}$/;"	f
+getTouchPointCount	$NAYLIB/raylib.nim	/^proc getTouchPointCount*(): int32 {.importc: "GetTouchPointCount".}$/;"	f
+getTouchPointId	$NAYLIB/raylib.nim	/^proc getTouchPointId*(index: int32): int32 {.importc: "GetTouchPointId".}$/;"	f
+getTouchPosition	$NAYLIB/raylib.nim	/^proc getTouchPosition*(index: int32): Vector2 {.importc: "GetTouchPosition".}$/;"	f
+getTouchX	$NAYLIB/raylib.nim	/^proc getTouchX*(): int32 {.importc: "GetTouchX".}$/;"	f
+getTouchY	$NAYLIB/raylib.nim	/^proc getTouchY*(): int32 {.importc: "GetTouchY".}$/;"	f
+getVersion	$NAYLIB/rlgl.nim	/^proc getVersion*(): GlVersion {.importc: "rlGetVersion".}$/;"	f
+getWindowHandle	$NAYLIB/raylib.nim	/^proc getWindowHandle*(): pointer {.importc: "GetWindowHandle".}$/;"	f
+getWindowPosition	$NAYLIB/raylib.nim	/^proc getWindowPosition*(): Vector2 {.importc: "GetWindowPosition".}$/;"	f
+getWindowScaleDPI	$NAYLIB/raylib.nim	/^proc getWindowScaleDPI*(): Vector2 {.importc: "GetWindowScaleDPI".}$/;"	f
+getWorldToScreen	$NAYLIB/raylib.nim	/^proc getWorldToScreen*(position: Vector3, camera: Camera): Vector2 {.importc: "GetWorldToScreen"/;"	f
+getWorldToScreen	$NAYLIB/raylib.nim	/^proc getWorldToScreen*(position: Vector3, camera: Camera, width: int32, height: int32): Vector2 /;"	f
+getWorldToScreen2D	$NAYLIB/raylib.nim	/^proc getWorldToScreen2D*(position: Vector2, camera: Camera2D): Vector2 {.importc: "GetWorldToScr/;"	f
+glyphCount	$NAYLIB/raylib.nim	/^proc glyphCount*(x: Font): int32 {.inline.} = x.glyphCount$/;"	f
+glyphCount	$NAYLIB/raylib.nim	/^proc glyphCount*(x: Font): int32 {.inline.} = x.glyphCount$/;"	t
+glyphs	$NAYLIB/raylib.nim	/^template glyphs*(x: Font): FontGlyphs = FontGlyphs(x)$/;"	m
+glyphs	$NAYLIB/raylib.nim	/^template glyphs*(x: Font): FontGlyphs = FontGlyphs(x)$/;"	t
+hideCursor	$NAYLIB/raylib.nim	/^proc hideCursor*() {.importc: "HideCursor".}$/;"	f
+imageAlphaClear	$NAYLIB/raylib.nim	/^proc imageAlphaClear*(image: var Image, color: Color, threshold: float32) {.importc: "ImageAlpha/;"	f
+imageAlphaCrop	$NAYLIB/raylib.nim	/^proc imageAlphaCrop*(image: var Image, threshold: float32) {.importc: "ImageAlphaCrop".}$/;"	f
+imageAlphaMask	$NAYLIB/raylib.nim	/^proc imageAlphaMask*(image: var Image, alphaMask: Image) {.importc: "ImageAlphaMask".}$/;"	f
+imageAlphaPremultiply	$NAYLIB/raylib.nim	/^proc imageAlphaPremultiply*(image: var Image) {.importc: "ImageAlphaPremultiply".}$/;"	f
+imageBlurGaussian	$NAYLIB/raylib.nim	/^proc imageBlurGaussian*(image: var Image, blurSize: int32) {.importc: "ImageBlurGaussian".}$/;"	f
+imageClearBackground	$NAYLIB/raylib.nim	/^proc imageClearBackground*(dst: var Image, color: Color) {.importc: "ImageClearBackground".}$/;"	f
+imageColorBrightness	$NAYLIB/raylib.nim	/^proc imageColorBrightness*(image: var Image, brightness: int32) {.importc: "ImageColorBrightness/;"	f
+imageColorContrast	$NAYLIB/raylib.nim	/^proc imageColorContrast*(image: var Image, contrast: float32) {.importc: "ImageColorContrast".}$/;"	f
+imageColorGrayscale	$NAYLIB/raylib.nim	/^proc imageColorGrayscale*(image: var Image) {.importc: "ImageColorGrayscale".}$/;"	f
+imageColorInvert	$NAYLIB/raylib.nim	/^proc imageColorInvert*(image: var Image) {.importc: "ImageColorInvert".}$/;"	f
+imageColorReplace	$NAYLIB/raylib.nim	/^proc imageColorReplace*(image: var Image, color: Color, replace: Color) {.importc: "ImageColorRe/;"	f
+imageColorTint	$NAYLIB/raylib.nim	/^proc imageColorTint*(image: var Image, color: Color) {.importc: "ImageColorTint".}$/;"	f
+imageCopy	$NAYLIB/raylib.nim	/^proc imageCopy*(image: Image): Image {.importc: "ImageCopy".}$/;"	f
+imageCrop	$NAYLIB/raylib.nim	/^proc imageCrop*(image: var Image, crop: Rectangle) {.importc: "ImageCrop".}$/;"	f
+imageDither	$NAYLIB/raylib.nim	/^proc imageDither*(image: var Image, rBpp: int32, gBpp: int32, bBpp: int32, aBpp: int32) {.import/;"	f
+imageDraw	$NAYLIB/raylib.nim	/^proc imageDraw*(dst: var Image, src: Image, srcRec: Rectangle, dstRec: Rectangle, tint: Color) {/;"	f
+imageDrawCircle	$NAYLIB/raylib.nim	/^proc imageDrawCircle*(dst: var Image, center: Vector2, radius: int32, color: Color) {.importc: "/;"	f
+imageDrawCircle	$NAYLIB/raylib.nim	/^proc imageDrawCircle*(dst: var Image, centerX: int32, centerY: int32, radius: int32, color: Colo/;"	f
+imageDrawCircleLines	$NAYLIB/raylib.nim	/^proc imageDrawCircleLines*(dst: var Image, center: Vector2, radius: int32, color: Color) {.impor/;"	f
+imageDrawCircleLines	$NAYLIB/raylib.nim	/^proc imageDrawCircleLines*(dst: var Image, centerX: int32, centerY: int32, radius: int32, color:/;"	f
+imageDrawLine	$NAYLIB/raylib.nim	/^proc imageDrawLine*(dst: var Image, start: Vector2, `end`: Vector2, color: Color) {.importc: "Im/;"	f
+imageDrawLine	$NAYLIB/raylib.nim	/^proc imageDrawLine*(dst: var Image, startPosX: int32, startPosY: int32, endPosX: int32, endPosY:/;"	f
+imageDrawPixel	$NAYLIB/raylib.nim	/^proc imageDrawPixel*(dst: var Image, posX: int32, posY: int32, color: Color) {.importc: "ImageDr/;"	f
+imageDrawPixel	$NAYLIB/raylib.nim	/^proc imageDrawPixel*(dst: var Image, position: Vector2, color: Color) {.importc: "ImageDrawPixel/;"	f
+imageDrawRectangle	$NAYLIB/raylib.nim	/^proc imageDrawRectangle*(dst: var Image, posX: int32, posY: int32, width: int32, height: int32, /;"	f
+imageDrawRectangle	$NAYLIB/raylib.nim	/^proc imageDrawRectangle*(dst: var Image, position: Vector2, size: Vector2, color: Color) {.impor/;"	f
+imageDrawRectangle	$NAYLIB/raylib.nim	/^proc imageDrawRectangle*(dst: var Image, rec: Rectangle, color: Color) {.importc: "ImageDrawRect/;"	f
+imageDrawRectangleLines	$NAYLIB/raylib.nim	/^proc imageDrawRectangleLines*(dst: var Image, rec: Rectangle, thick: int32, color: Color) {.impo/;"	f
+imageDrawText	$NAYLIB/raylib.nim	/^proc imageDrawText*(dst: var Image, font: Font, text: cstring, position: Vector2, fontSize: floa/;"	f
+imageDrawText	$NAYLIB/raylib.nim	/^proc imageDrawText*(dst: var Image, text: cstring, posX: int32, posY: int32, fontSize: int32, co/;"	f
+imageFlipHorizontal	$NAYLIB/raylib.nim	/^proc imageFlipHorizontal*(image: var Image) {.importc: "ImageFlipHorizontal".}$/;"	f
+imageFlipVertical	$NAYLIB/raylib.nim	/^proc imageFlipVertical*(image: var Image) {.importc: "ImageFlipVertical".}$/;"	f
+imageFormat	$NAYLIB/raylib.nim	/^proc imageFormat*(image: var Image, newFormat: PixelFormat) {.importc: "ImageFormat".}$/;"	f
+imageFromImage	$NAYLIB/raylib.nim	/^proc imageFromImage*(image: Image, rec: Rectangle): Image {.importc: "ImageFromImage".}$/;"	f
+imageMipmaps	$NAYLIB/raylib.nim	/^proc imageMipmaps*(image: var Image) {.importc: "ImageMipmaps".}$/;"	f
+imageResize	$NAYLIB/raylib.nim	/^proc imageResize*(image: var Image, newWidth: int32, newHeight: int32) {.importc: "ImageResize"./;"	f
+imageResizeCanvas	$NAYLIB/raylib.nim	/^proc imageResizeCanvas*(image: var Image, newWidth: int32, newHeight: int32, offsetX: int32, off/;"	f
+imageResizeNN	$NAYLIB/raylib.nim	/^proc imageResizeNN*(image: var Image, newWidth: int32, newHeight: int32) {.importc: "ImageResize/;"	f
+imageRotateCCW	$NAYLIB/raylib.nim	/^proc imageRotateCCW*(image: var Image) {.importc: "ImageRotateCCW".}$/;"	f
+imageRotateCW	$NAYLIB/raylib.nim	/^proc imageRotateCW*(image: var Image) {.importc: "ImageRotateCW".}$/;"	f
+imageText	$NAYLIB/raylib.nim	/^proc imageText*(font: Font, text: cstring, fontSize: float32, spacing: float32, tint: Color): Im/;"	f
+imageText	$NAYLIB/raylib.nim	/^proc imageText*(text: cstring, fontSize: int32, color: Color): Image {.importc: "ImageText".}$/;"	f
+imageToPOT	$NAYLIB/raylib.nim	/^proc imageToPOT*(image: var Image, fill: Color) {.importc: "ImageToPOT".}$/;"	f
+indices	$NAYLIB/raylib.nim	/^template indices*(x: Mesh): MeshIndices = MeshIndices(x)$/;"	m
+indices	$NAYLIB/raylib.nim	/^template indices*(x: Mesh): MeshIndices = MeshIndices(x)$/;"	t
+indices	$NAYLIB/rlgl.nim	/^template indices*(x: VertexBuffer): VertexBufferIndices = VertexBufferIndices(x)$/;"	m
+indices	$NAYLIB/rlgl.nim	/^template indices*(x: VertexBuffer): VertexBufferIndices = VertexBufferIndices(x)$/;"	t
+initAudioDevice	$NAYLIB/raylib.nim	/^proc initAudioDevice*() {.importc: "InitAudioDevice".}$/;"	f
+initWindow	$NAYLIB/raylib.nim	/^proc initWindow*(width: int32, height: int32, title: string) =$/;"	f
+initWindow	$NAYLIB/raylib.nim	/^proc initWindow*(width: int32, height: int32, title: string) =$/;"	t
+invert	$NAYLIB/raymath.nim	/^func invert*(mat: Matrix): Matrix {.inline.} =$/;"	t
+invert	$NAYLIB/raymath.nim	/^func invert*(q: Quaternion): Quaternion {.inline.} =$/;"	t
+invert	$NAYLIB/raymath.nim	/^func invert*(v: Vector2): Vector2 {.inline.} =$/;"	t
+invert	$NAYLIB/raymath.nim	/^func invert*(v: Vector3): Vector3 {.inline.} =$/;"	t
+isAudioDeviceReady	$NAYLIB/raylib.nim	/^proc isAudioDeviceReady*(): bool {.importc: "IsAudioDeviceReady".}$/;"	f
+isAudioStreamPlaying	$NAYLIB/raylib.nim	/^proc isAudioStreamPlaying*(stream: AudioStream): bool {.importc: "IsAudioStreamPlaying".}$/;"	f
+isAudioStreamProcessed	$NAYLIB/raylib.nim	/^proc isAudioStreamProcessed*(stream: AudioStream): bool {.importc: "IsAudioStreamProcessed".}$/;"	f
+isAudioStreamReady	$NAYLIB/raylib.nim	/^proc isAudioStreamReady*(stream: AudioStream): bool {.importc: "IsAudioStreamReady".}$/;"	f
+isCursorHidden	$NAYLIB/raylib.nim	/^proc isCursorHidden*(): bool {.importc: "IsCursorHidden".}$/;"	f
+isCursorOnScreen	$NAYLIB/raylib.nim	/^proc isCursorOnScreen*(): bool {.importc: "IsCursorOnScreen".}$/;"	f
+isFileDropped	$NAYLIB/raylib.nim	/^proc isFileDropped*(): bool {.importc: "IsFileDropped".}$/;"	f
+isFontReady	$NAYLIB/raylib.nim	/^proc isFontReady*(font: Font): bool {.importc: "IsFontReady".}$/;"	f
+isGamepadAvailable	$NAYLIB/raylib.nim	/^proc isGamepadAvailable*(gamepad: int32): bool {.importc: "IsGamepadAvailable".}$/;"	f
+isGamepadButtonDown	$NAYLIB/raylib.nim	/^proc isGamepadButtonDown*(gamepad: int32, button: GamepadButton): bool {.importc: "IsGamepadButt/;"	f
+isGamepadButtonPressed	$NAYLIB/raylib.nim	/^proc isGamepadButtonPressed*(gamepad: int32, button: GamepadButton): bool {.importc: "IsGamepadB/;"	f
+isGamepadButtonReleased	$NAYLIB/raylib.nim	/^proc isGamepadButtonReleased*(gamepad: int32, button: GamepadButton): bool {.importc: "IsGamepad/;"	f
+isGamepadButtonUp	$NAYLIB/raylib.nim	/^proc isGamepadButtonUp*(gamepad: int32, button: GamepadButton): bool {.importc: "IsGamepadButton/;"	f
+isGestureDetected	$NAYLIB/raylib.nim	/^proc isGestureDetected*(gesture: Gesture): bool {.importc: "IsGestureDetected".}$/;"	f
+isImageReady	$NAYLIB/raylib.nim	/^proc isImageReady*(image: Image): bool {.importc: "IsImageReady".}$/;"	f
+isKeyDown	$NAYLIB/raylib.nim	/^proc isKeyDown*(key: KeyboardKey): bool {.importc: "IsKeyDown".}$/;"	f
+isKeyPressed	$NAYLIB/raylib.nim	/^proc isKeyPressed*(key: KeyboardKey): bool {.importc: "IsKeyPressed".}$/;"	f
+isKeyReleased	$NAYLIB/raylib.nim	/^proc isKeyReleased*(key: KeyboardKey): bool {.importc: "IsKeyReleased".}$/;"	f
+isKeyUp	$NAYLIB/raylib.nim	/^proc isKeyUp*(key: KeyboardKey): bool {.importc: "IsKeyUp".}$/;"	f
+isMaterialReady	$NAYLIB/raylib.nim	/^proc isMaterialReady*(material: Material): bool {.importc: "IsMaterialReady".}$/;"	f
+isModelAnimationValid	$NAYLIB/raylib.nim	/^proc isModelAnimationValid*(model: Model, anim: ModelAnimation): bool {.importc: "IsModelAnimati/;"	f
+isModelReady	$NAYLIB/raylib.nim	/^proc isModelReady*(model: Model): bool {.importc: "IsModelReady".}$/;"	f
+isMouseButtonDown	$NAYLIB/raylib.nim	/^proc isMouseButtonDown*(button: MouseButton): bool {.importc: "IsMouseButtonDown".}$/;"	f
+isMouseButtonPressed	$NAYLIB/raylib.nim	/^proc isMouseButtonPressed*(button: MouseButton): bool {.importc: "IsMouseButtonPressed".}$/;"	f
+isMouseButtonReleased	$NAYLIB/raylib.nim	/^proc isMouseButtonReleased*(button: MouseButton): bool {.importc: "IsMouseButtonReleased".}$/;"	f
+isMouseButtonUp	$NAYLIB/raylib.nim	/^proc isMouseButtonUp*(button: MouseButton): bool {.importc: "IsMouseButtonUp".}$/;"	f
+isMusicReady	$NAYLIB/raylib.nim	/^proc isMusicReady*(music: Music): bool {.importc: "IsMusicReady".}$/;"	f
+isMusicStreamPlaying	$NAYLIB/raylib.nim	/^proc isMusicStreamPlaying*(music: Music): bool {.importc: "IsMusicStreamPlaying".}$/;"	f
+isRenderTextureReady	$NAYLIB/raylib.nim	/^proc isRenderTextureReady*(target: RenderTexture2D): bool {.importc: "IsRenderTextureReady".}$/;"	f
+isShaderReady	$NAYLIB/raylib.nim	/^proc isShaderReady*(shader: Shader): bool {.importc: "IsShaderReady".}$/;"	f
+isSoundPlaying	$NAYLIB/raylib.nim	/^proc isSoundPlaying*(sound: Sound): bool {.importc: "IsSoundPlaying".}$/;"	f
+isSoundReady	$NAYLIB/raylib.nim	/^proc isSoundReady*(sound: Sound): bool {.importc: "IsSoundReady".}$/;"	f
+isStereoRenderEnabled	$NAYLIB/rlgl.nim	/^proc isStereoRenderEnabled*(): bool {.importc: "rlIsStereoRenderEnabled".}$/;"	f
+isTextureReady	$NAYLIB/raylib.nim	/^proc isTextureReady*(texture: Texture2D): bool {.importc: "IsTextureReady".}$/;"	f
+isWaveReady	$NAYLIB/raylib.nim	/^proc isWaveReady*(wave: Wave): bool {.importc: "IsWaveReady".}$/;"	f
+isWindowFocused	$NAYLIB/raylib.nim	/^proc isWindowFocused*(): bool {.importc: "IsWindowFocused".}$/;"	f
+isWindowFullscreen	$NAYLIB/raylib.nim	/^proc isWindowFullscreen*(): bool {.importc: "IsWindowFullscreen".}$/;"	f
+isWindowHidden	$NAYLIB/raylib.nim	/^proc isWindowHidden*(): bool {.importc: "IsWindowHidden".}$/;"	f
+isWindowMaximized	$NAYLIB/raylib.nim	/^proc isWindowMaximized*(): bool {.importc: "IsWindowMaximized".}$/;"	f
+isWindowMinimized	$NAYLIB/raylib.nim	/^proc isWindowMinimized*(): bool {.importc: "IsWindowMinimized".}$/;"	f
+isWindowReady	$NAYLIB/raylib.nim	/^proc isWindowReady*(): bool {.importc: "IsWindowReady".}$/;"	f
+isWindowResized	$NAYLIB/raylib.nim	/^proc isWindowResized*(): bool {.importc: "IsWindowResized".}$/;"	f
+isWindowState	$NAYLIB/raylib.nim	/^proc isWindowState*(flag: ConfigFlags): bool {.importc: "IsWindowState".}$/;"	f
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[Color]): PixelFormat = UncompressedR8g8b8a8$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[Color]): PixelFormat = UncompressedR8g8b8a8$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[Vector2]): ShaderUniformDataType = Vec2$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[Vector2]): ShaderUniformDataType = Vec2$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[Vector3]): ShaderUniformDataType = Vec3$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[Vector3]): ShaderUniformDataType = Vec3$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[Vector4]): ShaderUniformDataType = Vec4$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[Vector4]): ShaderUniformDataType = Vec4$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[2, float32]]): ShaderUniformDataType = Vec2$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[2, float32]]): ShaderUniformDataType = Vec2$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[2, int32]]): ShaderUniformDataType = Ivec2$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[2, int32]]): ShaderUniformDataType = Ivec2$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[3, float32]]): ShaderUniformDataType = Vec3$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[3, float32]]): ShaderUniformDataType = Vec3$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[3, int32]]): ShaderUniformDataType = Ivec3$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[3, int32]]): ShaderUniformDataType = Ivec3$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[4, float32]]): ShaderUniformDataType = Vec4$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[4, float32]]): ShaderUniformDataType = Vec4$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[4, int32]]): ShaderUniformDataType = Ivec4$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[array[4, int32]]): ShaderUniformDataType = Ivec4$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[float32]): ShaderUniformDataType = Float$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[float32]): ShaderUniformDataType = Float$/;"	t
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[int32]): ShaderUniformDataType = Int$/;"	m
+kind	$NAYLIB/raylib.nim	/^template kind*(x: typedesc[int32]): ShaderUniformDataType = Int$/;"	t
+len	$NAYLIB/raylib.nim	/^proc len*[T](x: RArray[T]): int {.inline.} = x.len$/;"	f
+len	$NAYLIB/raylib.nim	/^proc len*[T](x: RArray[T]): int {.inline.} = x.len$/;"	t
+length	$NAYLIB/raymath.nim	/^func length*(q: Quaternion): float32 {.inline.} =$/;"	t
+length	$NAYLIB/raymath.nim	/^func length*(v: Vector2): float32 {.inline.} =$/;"	t
+length	$NAYLIB/raymath.nim	/^func length*(v: Vector3): float32 {.inline.} =$/;"	t
+lengthSqr	$NAYLIB/raymath.nim	/^func lengthSqr*(v: Vector2): float32 {.inline.} =$/;"	t
+lengthSqr	$NAYLIB/raymath.nim	/^func lengthSqr*(v: Vector3): float32 {.inline.} =$/;"	t
+lerp	$NAYLIB/raymath.nim	/^func lerp*(q1, q2: Quaternion; amount: float32): Quaternion {.inline.} =$/;"	t
+lerp	$NAYLIB/raymath.nim	/^func lerp*(start, `end`, amount: float32): float32 {.inline.} =$/;"	t
+lerp	$NAYLIB/raymath.nim	/^func lerp*(v1, v2: Vector2; amount: float32): Vector2 {.inline.} =$/;"	t
+lerp	$NAYLIB/raymath.nim	/^func lerp*(v1, v2: Vector3; amount: float32): Vector3 {.inline.} =$/;"	t
+lineAngle	$NAYLIB/raymath.nim	/^func lineAngle*(v1, v2: Vector2): float32 {.inline.} =$/;"	t
+linearIn	$NAYLIB/reasings.nim	/^func linearIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+linearInOut	$NAYLIB/reasings.nim	/^func linearInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+linearNone	$NAYLIB/reasings.nim	/^func linearNone*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+linearOut	$NAYLIB/reasings.nim	/^func linearOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+loadAudioStream	$NAYLIB/raylib.nim	/^proc loadAudioStream*(sampleRate: uint32, sampleSize: uint32, channels: uint32): AudioStream =$/;"	f
+loadAudioStream	$NAYLIB/raylib.nim	/^proc loadAudioStream*(sampleRate: uint32, sampleSize: uint32, channels: uint32): AudioStream =$/;"	t
+loadComputeShaderProgram	$NAYLIB/rlgl.nim	/^proc loadComputeShaderProgram*(shaderId: uint32): uint32 {.importc: "rlLoadComputeShaderProgram"/;"	f
+loadDrawCube	$NAYLIB/rlgl.nim	/^proc loadDrawCube*() {.importc: "rlLoadDrawCube".}$/;"	f
+loadDrawQuad	$NAYLIB/rlgl.nim	/^proc loadDrawQuad*() {.importc: "rlLoadDrawQuad".}$/;"	f
+loadExtensions	$NAYLIB/rlgl.nim	/^proc loadExtensions*(loader: rlglLoadProc) {.importc: "rlLoadExtensions".}$/;"	f
+loadFont	$NAYLIB/raylib.nim	/^proc loadFont*(fileName: string): Font =$/;"	f
+loadFont	$NAYLIB/raylib.nim	/^proc loadFont*(fileName: string): Font =$/;"	t
+loadFont	$NAYLIB/raylib.nim	/^proc loadFont*(fileName: string; fontSize, glyphCount: int32): Font =$/;"	f
+loadFont	$NAYLIB/raylib.nim	/^proc loadFont*(fileName: string; fontSize, glyphCount: int32): Font =$/;"	t
+loadFont	$NAYLIB/raylib.nim	/^proc loadFont*(fileName: string; fontSize: int32; fontChars: openArray[int32]): Font =$/;"	f
+loadFont	$NAYLIB/raylib.nim	/^proc loadFont*(fileName: string; fontSize: int32; fontChars: openArray[int32]): Font =$/;"	t
+loadFontData	$NAYLIB/raylib.nim	/^proc loadFontData*(fileData: openArray[uint8]; fontSize, glyphCount: int32;$/;"	f
+loadFontData	$NAYLIB/raylib.nim	/^proc loadFontData*(fileData: openArray[uint8]; fontSize: int32; fontChars: openArray[int32];$/;"	f
+loadFontFromData	$NAYLIB/raylib.nim	/^proc loadFontFromData*(chars: sink RArray[GlyphInfo]; baseSize, padding: int32, packMethod: int3/;"	f
+loadFontFromData	$NAYLIB/raylib.nim	/^proc loadFontFromData*(chars: sink RArray[GlyphInfo]; baseSize, padding: int32, packMethod: int3/;"	t
+loadFontFromImage	$NAYLIB/raylib.nim	/^proc loadFontFromImage*(image: Image, key: Color, firstChar: int32): Font =$/;"	f
+loadFontFromImage	$NAYLIB/raylib.nim	/^proc loadFontFromImage*(image: Image, key: Color, firstChar: int32): Font =$/;"	t
+loadFontFromMemory	$NAYLIB/raylib.nim	/^proc loadFontFromMemory*(fileType: string; fileData: openArray[uint8]; fontSize: int32;$/;"	f
+loadFramebuffer	$NAYLIB/rlgl.nim	/^proc loadFramebuffer*(width: int32, height: int32): uint32 {.importc: "rlLoadFramebuffer".}$/;"	f
+loadIdentity	$NAYLIB/rlgl.nim	/^proc loadIdentity*() {.importc: "rlLoadIdentity".}$/;"	f
+loadImage	$NAYLIB/raylib.nim	/^proc loadImage*(fileName: string): Image =$/;"	f
+loadImage	$NAYLIB/raylib.nim	/^proc loadImage*(fileName: string): Image =$/;"	t
+loadImageAnim	$NAYLIB/raylib.nim	/^proc loadImageAnim*(fileName: cstring, frames: out int32): Image {.importc: "LoadImageAnim".}$/;"	f
+loadImageColors	$NAYLIB/raylib.nim	/^proc loadImageColors*(image: Image): RArray[Color] =$/;"	f
+loadImageColors	$NAYLIB/raylib.nim	/^proc loadImageColors*(image: Image): RArray[Color] =$/;"	t
+loadImageFromMemory	$NAYLIB/raylib.nim	/^proc loadImageFromMemory*(fileType: string; fileData: openArray[uint8]): Image =$/;"	f
+loadImageFromMemory	$NAYLIB/raylib.nim	/^proc loadImageFromMemory*(fileType: string; fileData: openArray[uint8]): Image =$/;"	t
+loadImageFromScreen	$NAYLIB/raylib.nim	/^proc loadImageFromScreen*(): Image {.importc: "LoadImageFromScreen".}$/;"	f
+loadImageFromTexture	$NAYLIB/raylib.nim	/^proc loadImageFromTexture*(texture: Texture2D): Image =$/;"	f
+loadImageFromTexture	$NAYLIB/raylib.nim	/^proc loadImageFromTexture*(texture: Texture2D): Image =$/;"	t
+loadImagePalette	$NAYLIB/raylib.nim	/^proc loadImagePalette*(image: Image; maxPaletteSize: int32): RArray[Color] =$/;"	f
+loadImagePalette	$NAYLIB/raylib.nim	/^proc loadImagePalette*(image: Image; maxPaletteSize: int32): RArray[Color] =$/;"	t
+loadImageRaw	$NAYLIB/raylib.nim	/^proc loadImageRaw*(fileName: string, width, height: int32, format: PixelFormat, headerSize: int3/;"	f
+loadImageRaw	$NAYLIB/raylib.nim	/^proc loadImageRaw*(fileName: string, width, height: int32, format: PixelFormat, headerSize: int3/;"	t
+loadMaterialDefault	$NAYLIB/raylib.nim	/^proc loadMaterialDefault*(): Material {.importc: "LoadMaterialDefault".}$/;"	f
+loadMaterials	$NAYLIB/raylib.nim	/^proc loadMaterials*(fileName: string): RArray[Material] =$/;"	f
+loadMaterials	$NAYLIB/raylib.nim	/^proc loadMaterials*(fileName: string): RArray[Material] =$/;"	t
+loadModel	$NAYLIB/raylib.nim	/^proc loadModel*(fileName: string): Model =$/;"	f
+loadModel	$NAYLIB/raylib.nim	/^proc loadModel*(fileName: string): Model =$/;"	t
+loadModelAnimations	$NAYLIB/raylib.nim	/^proc loadModelAnimations*(fileName: string): RArray[ModelAnimation] =$/;"	f
+loadModelAnimations	$NAYLIB/raylib.nim	/^proc loadModelAnimations*(fileName: string): RArray[ModelAnimation] =$/;"	t
+loadModelFromMesh	$NAYLIB/raylib.nim	/^proc loadModelFromMesh*(mesh: sink Mesh): Model =$/;"	f
+loadModelFromMesh	$NAYLIB/raylib.nim	/^proc loadModelFromMesh*(mesh: sink Mesh): Model =$/;"	t
+loadMusicStream	$NAYLIB/raylib.nim	/^proc loadMusicStream*(fileName: string): Music =$/;"	f
+loadMusicStream	$NAYLIB/raylib.nim	/^proc loadMusicStream*(fileName: string): Music =$/;"	t
+loadMusicStreamFromMemory	$NAYLIB/raylib.nim	/^proc loadMusicStreamFromMemory*(fileType: string; data: openArray[uint8]): Music =$/;"	f
+loadMusicStreamFromMemory	$NAYLIB/raylib.nim	/^proc loadMusicStreamFromMemory*(fileType: string; data: openArray[uint8]): Music =$/;"	t
+loadRenderBatch	$NAYLIB/rlgl.nim	/^proc loadRenderBatch*(numBuffers: int32, bufferElements: int32): RenderBatch {.importc: "rlLoadR/;"	f
+loadRenderTexture	$NAYLIB/raylib.nim	/^proc loadRenderTexture*(width: int32, height: int32): RenderTexture2D =$/;"	f
+loadRenderTexture	$NAYLIB/raylib.nim	/^proc loadRenderTexture*(width: int32, height: int32): RenderTexture2D =$/;"	t
+loadShader	$NAYLIB/raylib.nim	/^proc loadShader*(vsFileName, fsFileName: string): Shader =$/;"	f
+loadShader	$NAYLIB/raylib.nim	/^proc loadShader*(vsFileName, fsFileName: string): Shader =$/;"	t
+loadShaderBuffer	$NAYLIB/rlgl.nim	/^proc loadShaderBuffer*(size: uint32, data: pointer, usageHint: BufferUsageHint): uint32 {.import/;"	f
+loadShaderCode	$NAYLIB/rlgl.nim	/^proc loadShaderCode*(vsCode: cstring, fsCode: cstring): uint32 {.importc: "rlLoadShaderCode".}$/;"	f
+loadShaderFromMemory	$NAYLIB/raylib.nim	/^proc loadShaderFromMemory*(vsCode, fsCode: string): Shader =$/;"	f
+loadShaderFromMemory	$NAYLIB/raylib.nim	/^proc loadShaderFromMemory*(vsCode, fsCode: string): Shader =$/;"	t
+loadShaderProgram	$NAYLIB/rlgl.nim	/^proc loadShaderProgram*(vShaderId: uint32, fShaderId: uint32): uint32 {.importc: "rlLoadShaderPr/;"	f
+loadSound	$NAYLIB/raylib.nim	/^proc loadSound*(fileName: string): Sound =$/;"	f
+loadSound	$NAYLIB/raylib.nim	/^proc loadSound*(fileName: string): Sound =$/;"	t
+loadSoundFromWave	$NAYLIB/raylib.nim	/^proc loadSoundFromWave*(wave: Wave): Sound =$/;"	f
+loadSoundFromWave	$NAYLIB/raylib.nim	/^proc loadSoundFromWave*(wave: Wave): Sound =$/;"	t
+loadTexture	$NAYLIB/raylib.nim	/^proc loadTexture*(fileName: string): Texture2D =$/;"	f
+loadTexture	$NAYLIB/raylib.nim	/^proc loadTexture*(fileName: string): Texture2D =$/;"	t
+loadTexture	$NAYLIB/rlgl.nim	/^proc loadTexture*(data: pointer, width: int32, height: int32, format: int32, mipmapCount: int32)/;"	f
+loadTextureCubemap	$NAYLIB/raylib.nim	/^proc loadTextureCubemap*(image: Image, layout: CubemapLayout): TextureCubemap =$/;"	f
+loadTextureCubemap	$NAYLIB/raylib.nim	/^proc loadTextureCubemap*(image: Image, layout: CubemapLayout): TextureCubemap =$/;"	t
+loadTextureCubemap	$NAYLIB/rlgl.nim	/^proc loadTextureCubemap*(data: pointer, size: int32, format: PixelFormat): uint32 {.importc: "rl/;"	f
+loadTextureDepth	$NAYLIB/rlgl.nim	/^proc loadTextureDepth*(width: int32, height: int32, useRenderBuffer: bool): uint32 {.importc: "r/;"	f
+loadTextureFromData	$NAYLIB/raylib.nim	/^proc loadTextureFromData*[T: Pixel](pixels: openArray[T], width: int32, height: int32): Texture /;"	f
+loadTextureFromData	$NAYLIB/raylib.nim	/^proc loadTextureFromData*[T: Pixel](pixels: openArray[T], width: int32, height: int32): Texture /;"	t
+loadTextureFromImage	$NAYLIB/raylib.nim	/^proc loadTextureFromImage*(image: Image): Texture2D =$/;"	f
+loadTextureFromImage	$NAYLIB/raylib.nim	/^proc loadTextureFromImage*(image: Image): Texture2D =$/;"	t
+loadVertexArray	$NAYLIB/rlgl.nim	/^proc loadVertexArray*(): uint32 {.importc: "rlLoadVertexArray".}$/;"	f
+loadVertexBuffer	$NAYLIB/rlgl.nim	/^proc loadVertexBuffer*(buffer: pointer, size: int32, dynamic: bool): uint32 {.importc: "rlLoadVe/;"	f
+loadVertexBufferElement	$NAYLIB/rlgl.nim	/^proc loadVertexBufferElement*(buffer: pointer, size: int32, dynamic: bool): uint32 {.importc: "r/;"	f
+loadVrStereoConfig	$NAYLIB/raylib.nim	/^proc loadVrStereoConfig*(device: VrDeviceInfo): VrStereoConfig {.importc: "LoadVrStereoConfig".}$/;"	f
+loadWave	$NAYLIB/raylib.nim	/^proc loadWave*(fileName: string): Wave =$/;"	f
+loadWave	$NAYLIB/raylib.nim	/^proc loadWave*(fileName: string): Wave =$/;"	t
+loadWaveFromMemory	$NAYLIB/raylib.nim	/^proc loadWaveFromMemory*(fileType: string; fileData: openArray[uint8]): Wave =$/;"	f
+loadWaveFromMemory	$NAYLIB/raylib.nim	/^proc loadWaveFromMemory*(fileType: string; fileData: openArray[uint8]): Wave =$/;"	t
+loadWaveSamples	$NAYLIB/raylib.nim	/^proc loadWaveSamples*(wave: Wave): RArray[float32] =$/;"	f
+loadWaveSamples	$NAYLIB/raylib.nim	/^proc loadWaveSamples*(wave: Wave): RArray[float32] =$/;"	t
+locs	$NAYLIB/raylib.nim	/^proc `locs=`*(x: var Shader; locs: ShaderLocsPtr) {.inline.} =$/;"	o
+locs	$NAYLIB/raylib.nim	/^template locs*(x: Shader): ShaderLocs = ShaderLocs(x)$/;"	m
+locs	$NAYLIB/raylib.nim	/^template locs*(x: Shader): ShaderLocs = ShaderLocs(x)$/;"	t
+lookAt	$NAYLIB/raymath.nim	/^func lookAt*(eye, target, up: Vector3): Matrix {.inline.} =$/;"	t
+maps	$NAYLIB/raylib.nim	/^template maps*(x: Material): MaterialMaps = MaterialMaps(x)$/;"	m
+maps	$NAYLIB/raylib.nim	/^template maps*(x: Material): MaterialMaps = MaterialMaps(x)$/;"	t
+materialCount	$NAYLIB/raylib.nim	/^proc materialCount*(x: Model): int32 {.inline.} = x.materialCount$/;"	f
+materialCount	$NAYLIB/raylib.nim	/^proc materialCount*(x: Model): int32 {.inline.} = x.materialCount$/;"	t
+materials	$NAYLIB/raylib.nim	/^template materials*(x: Model): ModelMaterials = ModelMaterials(x)$/;"	m
+materials	$NAYLIB/raylib.nim	/^template materials*(x: Model): ModelMaterials = ModelMaterials(x)$/;"	t
+matrixIdentity	$NAYLIB/raymath.nim	/^func matrixIdentity*(): Matrix {.inline.} =$/;"	t
+matrixMode	$NAYLIB/rlgl.nim	/^proc matrixMode*(mode: MatrixMode) {.importc: "rlMatrixMode".}$/;"	f
+max	$NAYLIB/raymath.nim	/^func max*(v1, v2: Vector3): Vector3 {.inline.} =$/;"	t
+maximizeWindow	$NAYLIB/raylib.nim	/^proc maximizeWindow*() {.importc: "MaximizeWindow".}$/;"	f
+measureText	$NAYLIB/raylib.nim	/^proc measureText*(font: Font, text: cstring, fontSize: float32, spacing: float32): Vector2 {.imp/;"	f
+measureText	$NAYLIB/raylib.nim	/^proc measureText*(text: cstring, fontSize: int32): int32 {.importc: "MeasureText".}$/;"	f
+meshCount	$NAYLIB/raylib.nim	/^proc meshCount*(x: Model): int32 {.inline.} = x.meshCount$/;"	f
+meshCount	$NAYLIB/raylib.nim	/^proc meshCount*(x: Model): int32 {.inline.} = x.meshCount$/;"	t
+meshMaterial	$NAYLIB/raylib.nim	/^template meshMaterial*(x: Model): ModelMeshMaterial = ModelMeshMaterial(x)$/;"	m
+meshMaterial	$NAYLIB/raylib.nim	/^template meshMaterial*(x: Model): ModelMeshMaterial = ModelMeshMaterial(x)$/;"	t
+meshes	$NAYLIB/raylib.nim	/^template meshes*(x: Model): ModelMeshes = ModelMeshes(x)$/;"	m
+meshes	$NAYLIB/raylib.nim	/^template meshes*(x: Model): ModelMeshes = ModelMeshes(x)$/;"	t
+min	$NAYLIB/raymath.nim	/^func min*(v1, v2: Vector3): Vector3 {.inline.} =$/;"	t
+minimizeWindow	$NAYLIB/raylib.nim	/^proc minimizeWindow*() {.importc: "MinimizeWindow".}$/;"	f
+mode2D	$NAYLIB/raylib.nim	/^template mode2D*(camera: Camera2D; body: untyped) =$/;"	m
+mode2D	$NAYLIB/raylib.nim	/^template mode2D*(camera: Camera2D; body: untyped) =$/;"	t
+mode3D	$NAYLIB/raylib.nim	/^template mode3D*(camera: Camera3D; body: untyped) =$/;"	m
+mode3D	$NAYLIB/raylib.nim	/^template mode3D*(camera: Camera3D; body: untyped) =$/;"	t
+moveTowards	$NAYLIB/raymath.nim	/^func moveTowards*(v, target: Vector2; maxDistance: float32): Vector2 {.inline.} =$/;"	t
+multMatrixf	$NAYLIB/rlgl.nim	/^proc multMatrixf*(matf: array[16, float32]) {.importc: "rlMultMatrixf".}$/;"	f
+multiply	$NAYLIB/raymath.nim	/^func multiply*(left, right: Matrix): Matrix {.inline.} =$/;"	t
+multiply	$NAYLIB/raymath.nim	/^func multiply*(q1, q2: Quaternion): Quaternion {.inline.} =$/;"	t
+multiply	$NAYLIB/raymath.nim	/^func multiply*(v1, v2: Vector2): Vector2 {.inline.} =$/;"	t
+multiply	$NAYLIB/raymath.nim	/^func multiply*(v1, v2: Vector3): Vector3 {.inline.} =$/;"	t
+negate	$NAYLIB/raymath.nim	/^func negate*(v: Vector2): Vector2 {.inline.} =$/;"	t
+negate	$NAYLIB/raymath.nim	/^func negate*(v: Vector3): Vector3 {.inline.} =$/;"	t
+nlerp	$NAYLIB/raymath.nim	/^func nlerp*(q1, q2: Quaternion; amount: float32): Quaternion {.inline.} =$/;"	t
+normal3f	$NAYLIB/rlgl.nim	/^proc normal3f*(x: float32, y: float32, z: float32) {.importc: "rlNormal3f".}$/;"	f
+normalize	$NAYLIB/raymath.nim	/^func normalize*(q: Quaternion): Quaternion {.inline.} =$/;"	t
+normalize	$NAYLIB/raymath.nim	/^func normalize*(v: Vector2): Vector2 {.inline.} =$/;"	t
+normalize	$NAYLIB/raymath.nim	/^func normalize*(v: Vector3): Vector3 {.inline.} =$/;"	t
+normalize	$NAYLIB/raymath.nim	/^func normalize*(value, start, `end`: float32): float32 {.inline.} =$/;"	t
+normals	$NAYLIB/raylib.nim	/^template normals*(x: Mesh): MeshNormals = MeshNormals(x)$/;"	m
+normals	$NAYLIB/raylib.nim	/^template normals*(x: Mesh): MeshNormals = MeshNormals(x)$/;"	t
+one	$NAYLIB/raymath.nim	/^func one*(_: typedesc[Vector2]): Vector2 {.inline.} =$/;"	t
+one	$NAYLIB/raymath.nim	/^func one*(_: typedesc[Vector3]): Vector3 {.inline.} =$/;"	t
+ortho	$NAYLIB/raymath.nim	/^func ortho*(left, right, bottom, top, near, far: float): Matrix {.inline.} =$/;"	t
+ortho	$NAYLIB/rlgl.nim	/^proc ortho*(left: float, right: float, bottom: float, top: float, znear: float, zfar: float) {.i/;"	f
+orthoNormalize	$NAYLIB/raymath.nim	/^func orthoNormalize*(v1: var Vector3; v2: var Vector3) {.inline.} =$/;"	t
+pauseAudioStream	$NAYLIB/raylib.nim	/^proc pauseAudioStream*(stream: AudioStream) {.importc: "PauseAudioStream".}$/;"	f
+pauseMusicStream	$NAYLIB/raylib.nim	/^proc pauseMusicStream*(music: Music) {.importc: "PauseMusicStream".}$/;"	f
+pauseSound	$NAYLIB/raylib.nim	/^proc pauseSound*(sound: Sound) {.importc: "PauseSound".}$/;"	f
+perpendicular	$NAYLIB/raymath.nim	/^func perpendicular*(v: Vector3): Vector3 {.inline.} =$/;"	t
+perspective	$NAYLIB/raymath.nim	/^func perspective*(fovy, aspect, near, far: float): Matrix {.inline.} =$/;"	t
+playAudioStream	$NAYLIB/raylib.nim	/^proc playAudioStream*(stream: AudioStream) {.importc: "PlayAudioStream".}$/;"	f
+playMusicStream	$NAYLIB/raylib.nim	/^proc playMusicStream*(music: Music) {.importc: "PlayMusicStream".}$/;"	f
+playSound	$NAYLIB/raylib.nim	/^proc playSound*(sound: Sound) {.importc: "PlaySound".}$/;"	f
+pollInputEvents	$NAYLIB/raylib.nim	/^proc pollInputEvents*() {.importc: "PollInputEvents".}$/;"	f
+popMatrix	$NAYLIB/rlgl.nim	/^proc popMatrix*() {.importc: "rlPopMatrix".}$/;"	f
+processor	$NAYLIB/raylib.nim	/^proc processor*(x: AudioStream): ptr rAudioProcessor {.inline.} = x.processor$/;"	f
+processor	$NAYLIB/raylib.nim	/^proc processor*(x: AudioStream): ptr rAudioProcessor {.inline.} = x.processor$/;"	t
+pushMatrix	$NAYLIB/rlgl.nim	/^proc pushMatrix*() {.importc: "rlPushMatrix".}$/;"	f
+quadIn	$NAYLIB/reasings.nim	/^func quadIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+quadInOut	$NAYLIB/reasings.nim	/^func quadInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+quadOut	$NAYLIB/reasings.nim	/^func quadOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+quaternionIdentity	$NAYLIB/raymath.nim	/^func quaternionIdentity*(): Quaternion {.inline.} =$/;"	t
+readScreenPixels	$NAYLIB/rlgl.nim	/^proc readScreenPixels*(width: int32, height: int32): var uint8 {.importc: "rlReadScreenPixels".}$/;"	f
+readShaderBuffer	$NAYLIB/rlgl.nim	/^proc readShaderBuffer*(id: uint32, dest: pointer, count: uint32, offset: uint32) {.importc: "rlR/;"	f
+readTexturePixels	$NAYLIB/rlgl.nim	/^proc readTexturePixels*(id: uint32, width: int32, height: int32, format: PixelFormat): pointer {/;"	f
+recs	$NAYLIB/raylib.nim	/^template recs*(x: Font): FontRecs = FontRecs(x)$/;"	m
+recs	$NAYLIB/raylib.nim	/^template recs*(x: Font): FontRecs = FontRecs(x)$/;"	t
+reflect	$NAYLIB/raymath.nim	/^func reflect*(v, normal: Vector2): Vector2 {.inline.} =$/;"	t
+reflect	$NAYLIB/raymath.nim	/^func reflect*(v, normal: Vector3): Vector3 {.inline.} =$/;"	t
+remap	$NAYLIB/raymath.nim	/^func remap*(value, inputStart, inputEnd, outputStart, outputEnd: float32): float32 {.inline.} =$/;"	t
+restoreWindow	$NAYLIB/raylib.nim	/^proc restoreWindow*() {.importc: "RestoreWindow".}$/;"	f
+resumeAudioStream	$NAYLIB/raylib.nim	/^proc resumeAudioStream*(stream: AudioStream) {.importc: "ResumeAudioStream".}$/;"	f
+resumeMusicStream	$NAYLIB/raylib.nim	/^proc resumeMusicStream*(music: Music) {.importc: "ResumeMusicStream".}$/;"	f
+resumeSound	$NAYLIB/raylib.nim	/^proc resumeSound*(sound: Sound) {.importc: "ResumeSound".}$/;"	f
+rlBegin	$NAYLIB/rlgl.nim	/^proc rlBegin*(mode: DrawMode) {.importc: "rlBegin".}$/;"	f
+rlEnd	$NAYLIB/rlgl.nim	/^proc rlEnd*() {.importc: "rlEnd".}$/;"	f
+rlglClose	$NAYLIB/rlgl.nim	/^proc rlglClose*() {.importc: "rlglClose".}$/;"	f
+rlglInit	$NAYLIB/rlgl.nim	/^proc rlglInit*(width: int32, height: int32) {.importc: "rlglInit".}$/;"	f
+rlglLoadProc	$NAYLIB/rlgl.nim	/^  rlglLoadProc* = proc (name: cstring): pointer ## OpenGL extension functions loader signature (/;"	t
+rotate	$NAYLIB/raymath.nim	/^func rotate*(axis: Vector3; angle: float32): Matrix {.inline.} =$/;"	t
+rotate	$NAYLIB/raymath.nim	/^func rotate*(v: Vector2; angle: float32): Vector2 {.inline.} =$/;"	t
+rotateByAxisAngle	$NAYLIB/raymath.nim	/^func rotateByAxisAngle*(v, axis: Vector3; angle: float32): Vector3 {.inline.} =$/;"	t
+rotateByQuaternion	$NAYLIB/raymath.nim	/^func rotateByQuaternion*(v: Vector3; q: Quaternion): Vector3 {.inline.} =$/;"	t
+rotateX	$NAYLIB/raymath.nim	/^func rotateX*(angle: float32): Matrix {.inline.} =$/;"	t
+rotateXYZ	$NAYLIB/raymath.nim	/^func rotateXYZ*(angle: Vector3): Matrix {.inline.} =$/;"	t
+rotateY	$NAYLIB/raymath.nim	/^func rotateY*(angle: float32): Matrix {.inline.} =$/;"	t
+rotateZ	$NAYLIB/raymath.nim	/^func rotateZ*(angle: float32): Matrix {.inline.} =$/;"	t
+rotateZYX	$NAYLIB/raymath.nim	/^func rotateZYX*(angle: Vector3): Matrix {.inline.} =$/;"	t
+rotatef	$NAYLIB/rlgl.nim	/^proc rotatef*(angle: float32, x: float32, y: float32, z: float32) {.importc: "rlRotatef".}$/;"	f
+scale	$NAYLIB/raymath.nim	/^func scale*(q: Quaternion; mul: float32): Quaternion {.inline.} =$/;"	t
+scale	$NAYLIB/raymath.nim	/^func scale*(v: Vector2; scale: float32): Vector2 {.inline.} =$/;"	t
+scale	$NAYLIB/raymath.nim	/^func scale*(v: Vector3; scalar: float32): Vector3 {.inline.} =$/;"	t
+scale	$NAYLIB/raymath.nim	/^func scale*(x, y, z: float32): Matrix {.inline.} =$/;"	t
+scalef	$NAYLIB/rlgl.nim	/^proc scalef*(x: float32, y: float32, z: float32) {.importc: "rlScalef".}$/;"	f
+scissor	$NAYLIB/rlgl.nim	/^proc scissor*(x: int32, y: int32, width: int32, height: int32) {.importc: "rlScissor".}$/;"	f
+scissorMode	$NAYLIB/raylib.nim	/^template scissorMode*(x, y, width, height: int32; body: untyped) =$/;"	m
+scissorMode	$NAYLIB/raylib.nim	/^template scissorMode*(x, y, width, height: int32; body: untyped) =$/;"	t
+seekMusicStream	$NAYLIB/raylib.nim	/^proc seekMusicStream*(music: Music, position: float32) {.importc: "SeekMusicStream".}$/;"	f
+setAudioStreamBufferSizeDefault	$NAYLIB/raylib.nim	/^proc setAudioStreamBufferSizeDefault*(size: int32) {.importc: "SetAudioStreamBufferSizeDefault"./;"	f
+setAudioStreamCallback	$NAYLIB/raylib.nim	/^proc setAudioStreamCallback*(stream: AudioStream, callback: AudioCallback) {.importc: "SetAudioS/;"	f
+setAudioStreamPan	$NAYLIB/raylib.nim	/^proc setAudioStreamPan*(stream: AudioStream, pan: float32) {.importc: "SetAudioStreamPan".}$/;"	f
+setAudioStreamPitch	$NAYLIB/raylib.nim	/^proc setAudioStreamPitch*(stream: AudioStream, pitch: float32) {.importc: "SetAudioStreamPitch"./;"	f
+setAudioStreamVolume	$NAYLIB/raylib.nim	/^proc setAudioStreamVolume*(stream: AudioStream, volume: float32) {.importc: "SetAudioStreamVolum/;"	f
+setBlendFactors	$NAYLIB/rlgl.nim	/^proc setBlendFactors*(glSrcFactor: BlendFactor, glDstFactor: BlendFactor, glEquation: BlendFuncO/;"	f
+setBlendFactorsSeparate	$NAYLIB/rlgl.nim	/^proc setBlendFactorsSeparate*(glSrcRGB: BlendFactor, glDstRGB: BlendFactor, glSrcAlpha: BlendFac/;"	f
+setBlendMode	$NAYLIB/rlgl.nim	/^proc setBlendMode*(mode: BlendMode) {.importc: "rlSetBlendMode".}$/;"	f
+setClipboardText	$NAYLIB/raylib.nim	/^proc setClipboardText*(text: cstring) {.importc: "SetClipboardText".}$/;"	f
+setConfigFlags	$NAYLIB/raylib.nim	/^proc setConfigFlags*(flags: Flags[ConfigFlags]) {.importc: "SetConfigFlags".}$/;"	f
+setCullFace	$NAYLIB/rlgl.nim	/^proc setCullFace*(mode: CullMode) {.importc: "rlSetCullFace".}$/;"	f
+setExitKey	$NAYLIB/raylib.nim	/^proc setExitKey*(key: KeyboardKey) {.importc: "SetExitKey".}$/;"	f
+setFramebufferHeight	$NAYLIB/rlgl.nim	/^proc setFramebufferHeight*(height: int32) {.importc: "rlSetFramebufferHeight".}$/;"	f
+setFramebufferWidth	$NAYLIB/rlgl.nim	/^proc setFramebufferWidth*(width: int32) {.importc: "rlSetFramebufferWidth".}$/;"	f
+setGamepadMappings	$NAYLIB/raylib.nim	/^proc setGamepadMappings*(mappings: cstring): int32 {.importc: "SetGamepadMappings".}$/;"	f
+setGesturesEnabled	$NAYLIB/raylib.nim	/^proc setGesturesEnabled*(flags: Flags[Gesture]) {.importc: "SetGesturesEnabled".}$/;"	f
+setLineWidth	$NAYLIB/rlgl.nim	/^proc setLineWidth*(width: float32) {.importc: "rlSetLineWidth".}$/;"	f
+setLoadFileDataCallback	$NAYLIB/raylib.nim	/^proc setLoadFileDataCallback*(callback: LoadFileDataCallback) {.importc: "SetLoadFileDataCallbac/;"	f
+setLoadFileTextCallback	$NAYLIB/raylib.nim	/^proc setLoadFileTextCallback*(callback: LoadFileTextCallback) {.importc: "SetLoadFileTextCallbac/;"	f
+setMasterVolume	$NAYLIB/raylib.nim	/^proc setMasterVolume*(volume: float32) {.importc: "SetMasterVolume".}$/;"	f
+setMatrixModelview	$NAYLIB/rlgl.nim	/^proc setMatrixModelview*(view: Matrix) {.importc: "rlSetMatrixModelview".}$/;"	f
+setMatrixProjection	$NAYLIB/rlgl.nim	/^proc setMatrixProjection*(proj: Matrix) {.importc: "rlSetMatrixProjection".}$/;"	f
+setMatrixProjectionStereo	$NAYLIB/rlgl.nim	/^proc setMatrixProjectionStereo*(right: Matrix, left: Matrix) {.importc: "rlSetMatrixProjectionSt/;"	f
+setMatrixViewOffsetStereo	$NAYLIB/rlgl.nim	/^proc setMatrixViewOffsetStereo*(right: Matrix, left: Matrix) {.importc: "rlSetMatrixViewOffsetSt/;"	f
+setMouseCursor	$NAYLIB/raylib.nim	/^proc setMouseCursor*(cursor: MouseCursor) {.importc: "SetMouseCursor".}$/;"	f
+setMouseOffset	$NAYLIB/raylib.nim	/^proc setMouseOffset*(offsetX: int32, offsetY: int32) {.importc: "SetMouseOffset".}$/;"	f
+setMousePosition	$NAYLIB/raylib.nim	/^proc setMousePosition*(x: int32, y: int32) {.importc: "SetMousePosition".}$/;"	f
+setMouseScale	$NAYLIB/raylib.nim	/^proc setMouseScale*(scaleX: float32, scaleY: float32) {.importc: "SetMouseScale".}$/;"	f
+setMusicPan	$NAYLIB/raylib.nim	/^proc setMusicPan*(music: Music, pan: float32) {.importc: "SetMusicPan".}$/;"	f
+setMusicPitch	$NAYLIB/raylib.nim	/^proc setMusicPitch*(music: Music, pitch: float32) {.importc: "SetMusicPitch".}$/;"	f
+setMusicVolume	$NAYLIB/raylib.nim	/^proc setMusicVolume*(music: Music, volume: float32) {.importc: "SetMusicVolume".}$/;"	f
+setPixelColor	$NAYLIB/raylib.nim	/^proc setPixelColor*[T: Pixel](pixel: var T, color: Color) =$/;"	f
+setPixelColor	$NAYLIB/raylib.nim	/^proc setPixelColor*[T: Pixel](pixel: var T, color: Color) =$/;"	t
+setRenderBatchActive	$NAYLIB/rlgl.nim	/^proc setRenderBatchActive*(batch: var RenderBatch) {.importc: "rlSetRenderBatchActive".}$/;"	f
+setSaveFileDataCallback	$NAYLIB/raylib.nim	/^proc setSaveFileDataCallback*(callback: SaveFileDataCallback) {.importc: "SetSaveFileDataCallbac/;"	f
+setSaveFileTextCallback	$NAYLIB/raylib.nim	/^proc setSaveFileTextCallback*(callback: SaveFileTextCallback) {.importc: "SetSaveFileTextCallbac/;"	f
+setShader	$NAYLIB/rlgl.nim	/^proc setShader*(id: uint32, locs: ShaderLocsPtr) {.importc: "rlSetShader".}$/;"	f
+setShaderValue	$NAYLIB/raylib.nim	/^proc setShaderValue*[T: ShaderV](shader: Shader, locIndex: ShaderLocation, value: T) =$/;"	f
+setShaderValue	$NAYLIB/raylib.nim	/^proc setShaderValue*[T: ShaderV](shader: Shader, locIndex: ShaderLocation, value: T) =$/;"	t
+setShaderValueMatrix	$NAYLIB/raylib.nim	/^proc setShaderValueMatrix*(shader: Shader, locIndex: ShaderLocation, mat: Matrix) {.importc: "Se/;"	f
+setShaderValueTexture	$NAYLIB/raylib.nim	/^proc setShaderValueTexture*(shader: Shader, locIndex: ShaderLocation, texture: Texture2D) {.impo/;"	f
+setShaderValueV	$NAYLIB/raylib.nim	/^proc setShaderValueV*[T: ShaderV](shader: Shader, locIndex: ShaderLocation, value: openArray[T])/;"	f
+setShaderValueV	$NAYLIB/raylib.nim	/^proc setShaderValueV*[T: ShaderV](shader: Shader, locIndex: ShaderLocation, value: openArray[T])/;"	t
+setShapesTexture	$NAYLIB/raylib.nim	/^proc setShapesTexture*(texture: Texture2D, source: Rectangle) {.importc: "SetShapesTexture".}$/;"	f
+setSoundPan	$NAYLIB/raylib.nim	/^proc setSoundPan*(sound: Sound, pan: float32) {.importc: "SetSoundPan".}$/;"	f
+setSoundPitch	$NAYLIB/raylib.nim	/^proc setSoundPitch*(sound: Sound, pitch: float32) {.importc: "SetSoundPitch".}$/;"	f
+setSoundVolume	$NAYLIB/raylib.nim	/^proc setSoundVolume*(sound: Sound, volume: float32) {.importc: "SetSoundVolume".}$/;"	f
+setTargetFPS	$NAYLIB/raylib.nim	/^proc setTargetFPS*(fps: int32) {.importc: "SetTargetFPS".}$/;"	f
+setTexture	$NAYLIB/rlgl.nim	/^proc setTexture*(id: uint32) {.importc: "rlSetTexture".}$/;"	f
+setTextureFilter	$NAYLIB/raylib.nim	/^proc setTextureFilter*(texture: Texture2D, filter: TextureFilter) {.importc: "SetTextureFilter"./;"	f
+setTextureWrap	$NAYLIB/raylib.nim	/^proc setTextureWrap*(texture: Texture2D, wrap: TextureWrap) {.importc: "SetTextureWrap".}$/;"	f
+setTraceLogCallback	$NAYLIB/raylib.nim	/^proc setTraceLogCallback*(callback: TraceLogCallback) =$/;"	f
+setTraceLogCallback	$NAYLIB/raylib.nim	/^proc setTraceLogCallback*(callback: TraceLogCallback) =$/;"	t
+setTraceLogLevel	$NAYLIB/raylib.nim	/^proc setTraceLogLevel*(logLevel: TraceLogLevel) {.importc: "SetTraceLogLevel".}$/;"	f
+setUniform	$NAYLIB/rlgl.nim	/^proc setUniform*(locIndex: ShaderLocation, value: pointer, uniformType: ShaderUniformDataType, c/;"	f
+setUniformMatrix	$NAYLIB/rlgl.nim	/^proc setUniformMatrix*(locIndex: ShaderLocation, mat: Matrix) {.importc: "rlSetUniformMatrix".}$/;"	f
+setUniformSampler	$NAYLIB/rlgl.nim	/^proc setUniformSampler*(locIndex: ShaderLocation, textureId: uint32) {.importc: "rlSetUniformSam/;"	f
+setVertexAttribute	$NAYLIB/rlgl.nim	/^proc setVertexAttribute*(index: uint32, compSize: int32, `type`: GlType, normalized: bool, strid/;"	f
+setVertexAttributeDefault	$NAYLIB/rlgl.nim	/^proc setVertexAttributeDefault*(locIndex: ShaderLocation, value: pointer, attribType: ShaderAttr/;"	f
+setVertexAttributeDivisor	$NAYLIB/rlgl.nim	/^proc setVertexAttributeDivisor*(index: uint32, divisor: int32) {.importc: "rlSetVertexAttributeD/;"	f
+setWindowIcon	$NAYLIB/raylib.nim	/^proc setWindowIcon*(image: Image) {.importc: "SetWindowIcon".}$/;"	f
+setWindowIcons	$NAYLIB/raylib.nim	/^proc setWindowIcons*(images: openArray[Image]) =$/;"	f
+setWindowIcons	$NAYLIB/raylib.nim	/^proc setWindowIcons*(images: openArray[Image]) =$/;"	t
+setWindowMinSize	$NAYLIB/raylib.nim	/^proc setWindowMinSize*(width: int32, height: int32) {.importc: "SetWindowMinSize".}$/;"	f
+setWindowMonitor	$NAYLIB/raylib.nim	/^proc setWindowMonitor*(monitor: int32) {.importc: "SetWindowMonitor".}$/;"	f
+setWindowOpacity	$NAYLIB/raylib.nim	/^proc setWindowOpacity*(opacity: float32) {.importc: "SetWindowOpacity".}$/;"	f
+setWindowPosition	$NAYLIB/raylib.nim	/^proc setWindowPosition*(x: int32, y: int32) {.importc: "SetWindowPosition".}$/;"	f
+setWindowSize	$NAYLIB/raylib.nim	/^proc setWindowSize*(width: int32, height: int32) {.importc: "SetWindowSize".}$/;"	f
+setWindowState	$NAYLIB/raylib.nim	/^proc setWindowState*(flags: Flags[ConfigFlags]) {.importc: "SetWindowState".}$/;"	f
+setWindowTitle	$NAYLIB/raylib.nim	/^proc setWindowTitle*(title: cstring) {.importc: "SetWindowTitle".}$/;"	f
+shader	$NAYLIB/raylib.nim	/^proc `shader=`*(x: var Material, val: Shader) {.nodestroy, inline.} =$/;"	o
+shader	$NAYLIB/raylib.nim	/^proc shader*(x: Material): lent Shader {.inline.} =$/;"	f
+shader	$NAYLIB/raylib.nim	/^proc shader*(x: Material): lent Shader {.inline.} =$/;"	t
+shaderMode	$NAYLIB/raylib.nim	/^template shaderMode*(shader: Shader; body: untyped) =$/;"	m
+shaderMode	$NAYLIB/raylib.nim	/^template shaderMode*(shader: Shader; body: untyped) =$/;"	t
+showCursor	$NAYLIB/raylib.nim	/^proc showCursor*() {.importc: "ShowCursor".}$/;"	f
+sineIn	$NAYLIB/reasings.nim	/^func sineIn*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+sineInOut	$NAYLIB/reasings.nim	/^func sineInOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+sineOut	$NAYLIB/reasings.nim	/^func sineOut*(t, b, c, d: float32): float32 {.inline.} =$/;"	t
+slerp	$NAYLIB/raymath.nim	/^func slerp*(q1, q2: Quaternion; amount: float32): Quaternion {.inline.} =$/;"	t
+stopAudioStream	$NAYLIB/raylib.nim	/^proc stopAudioStream*(stream: AudioStream) {.importc: "StopAudioStream".}$/;"	f
+stopMusicStream	$NAYLIB/raylib.nim	/^proc stopMusicStream*(music: Music) {.importc: "StopMusicStream".}$/;"	f
+stopSound	$NAYLIB/raylib.nim	/^proc stopSound*(sound: Sound) {.importc: "StopSound".}$/;"	f
+subtract	$NAYLIB/raymath.nim	/^func subtract*(left, right: Matrix): Matrix {.inline.} =$/;"	t
+subtract	$NAYLIB/raymath.nim	/^func subtract*(q1, q2: Quaternion): Quaternion {.inline.} =$/;"	t
+subtract	$NAYLIB/raymath.nim	/^func subtract*(v1, v2: Vector2): Vector2 {.inline.} =$/;"	t
+subtract	$NAYLIB/raymath.nim	/^func subtract*(v1, v2: Vector3): Vector3 {.inline.} =$/;"	t
+subtractValue	$NAYLIB/raymath.nim	/^func subtractValue*(q: Quaternion; sub: float32): Quaternion {.inline.} =$/;"	t
+subtractValue	$NAYLIB/raymath.nim	/^func subtractValue*(v: Vector2; sub: float32): Vector2 {.inline.} =$/;"	t
+subtractValue	$NAYLIB/raymath.nim	/^func subtractValue*(v: Vector3; sub: float32): Vector3 {.inline.} =$/;"	t
+swapScreenBuffer	$NAYLIB/raylib.nim	/^proc swapScreenBuffer*() {.importc: "SwapScreenBuffer".}$/;"	f
+takeScreenshot	$NAYLIB/raylib.nim	/^proc takeScreenshot*(fileName: cstring) {.importc: "TakeScreenshot".}$/;"	f
+tangents	$NAYLIB/raylib.nim	/^template tangents*(x: Mesh): MeshTangents = MeshTangents(x)$/;"	m
+tangents	$NAYLIB/raylib.nim	/^template tangents*(x: Mesh): MeshTangents = MeshTangents(x)$/;"	t
+texCoord2f	$NAYLIB/rlgl.nim	/^proc texCoord2f*(x: float32, y: float32) {.importc: "rlTexCoord2f".}$/;"	f
+texcoords	$NAYLIB/raylib.nim	/^template texcoords*(x: Mesh): MeshTexcoords = MeshTexcoords(x)$/;"	m
+texcoords	$NAYLIB/raylib.nim	/^template texcoords*(x: Mesh): MeshTexcoords = MeshTexcoords(x)$/;"	t
+texcoords	$NAYLIB/rlgl.nim	/^template texcoords*(x: VertexBuffer): VertexBufferTexcoords = VertexBufferTexcoords(x)$/;"	m
+texcoords	$NAYLIB/rlgl.nim	/^template texcoords*(x: VertexBuffer): VertexBufferTexcoords = VertexBufferTexcoords(x)$/;"	t
+texcoords2	$NAYLIB/raylib.nim	/^template texcoords2*(x: Mesh): MeshTexcoords2 = MeshTexcoords2(x)$/;"	m
+texcoords2	$NAYLIB/raylib.nim	/^template texcoords2*(x: Mesh): MeshTexcoords2 = MeshTexcoords2(x)$/;"	t
+texture	$NAYLIB/raylib.nim	/^proc `texture=`*(x: var MaterialMap, val: Texture) {.nodestroy, inline.} =$/;"	o
+texture	$NAYLIB/raylib.nim	/^proc texture*(x: MaterialMap): lent Texture {.inline.} =$/;"	f
+texture	$NAYLIB/raylib.nim	/^proc texture*(x: MaterialMap): lent Texture {.inline.} =$/;"	t
+textureMode	$NAYLIB/raylib.nim	/^template textureMode*(target: RenderTexture2D; body: untyped) =$/;"	m
+textureMode	$NAYLIB/raylib.nim	/^template textureMode*(target: RenderTexture2D; body: untyped) =$/;"	t
+textureParameters	$NAYLIB/rlgl.nim	/^proc textureParameters*(id: uint32, param: TextureParameter, value: int32) {.importc: "rlTexture/;"	f
+toAxisAngle	$NAYLIB/raymath.nim	/^func toAxisAngle*(q: Quaternion; outAxis: var Vector3; outAngle: var float32) {.inline.} =$/;"	t
+toEmbedded	$NAYLIB/raylib.nim	/^proc toEmbedded*(data: openArray[byte], frameCount, sampleRate, sampleSize, channels: uint32): E/;"	f
+toEmbedded	$NAYLIB/raylib.nim	/^proc toEmbedded*(data: openArray[byte], frameCount, sampleRate, sampleSize, channels: uint32): E/;"	t
+toEmbedded	$NAYLIB/raylib.nim	/^proc toEmbedded*(data: openArray[byte], width, height: int32, format: PixelFormat): EmbeddedImag/;"	f
+toEmbedded	$NAYLIB/raylib.nim	/^proc toEmbedded*(data: openArray[byte], width, height: int32, format: PixelFormat): EmbeddedImag/;"	t
+toEuler	$NAYLIB/raymath.nim	/^func toEuler*(q: Quaternion): Vector3 {.inline.} =$/;"	t
+toFloatV	$NAYLIB/raymath.nim	/^func toFloatV*(mat: Matrix): Float16 {.inline, noinit.} =$/;"	t
+toFloatV	$NAYLIB/raymath.nim	/^func toFloatV*(v: Vector3): Float3 {.inline, noinit.} =$/;"	t
+toMatrix	$NAYLIB/raymath.nim	/^func toMatrix*(q: Quaternion): Matrix {.inline.} =$/;"	t
+toOpenArray	$NAYLIB/raylib.nim	/^template toOpenArray*(x: RArray): untyped =$/;"	m
+toOpenArray	$NAYLIB/raylib.nim	/^template toOpenArray*(x: RArray): untyped =$/;"	t
+toOpenArray	$NAYLIB/raylib.nim	/^template toOpenArray*(x: RArray, first, last: int): untyped =$/;"	m
+toOpenArray	$NAYLIB/raylib.nim	/^template toOpenArray*(x: RArray, first, last: int): untyped =$/;"	t
+toggleFullscreen	$NAYLIB/raylib.nim	/^proc toggleFullscreen*() {.importc: "ToggleFullscreen".}$/;"	f
+trace	$NAYLIB/raymath.nim	/^func trace*(mat: Matrix): float32 {.inline.} =$/;"	t
+traceLog	$NAYLIB/raylib.nim	/^proc traceLog*(logLevel: TraceLogLevel, text: cstring) {.importc: "TraceLog", varargs.}$/;"	f
+transform	$NAYLIB/raymath.nim	/^func transform*(q: Quaternion; mat: Matrix): Quaternion {.inline.} =$/;"	t
+transform	$NAYLIB/raymath.nim	/^func transform*(v: Vector2; mat: Matrix): Vector2 {.inline.} =$/;"	t
+transform	$NAYLIB/raymath.nim	/^func transform*(v: Vector3; mat: Matrix): Vector3 {.inline.} =$/;"	t
+translate	$NAYLIB/raymath.nim	/^func translate*(x, y, z: float32): Matrix {.inline.} =$/;"	t
+translatef	$NAYLIB/rlgl.nim	/^proc translatef*(x: float32, y: float32, z: float32) {.importc: "rlTranslatef".}$/;"	f
+transpose	$NAYLIB/raymath.nim	/^func transpose*(mat: Matrix): Matrix {.inline.} =$/;"	t
+triangleCount	$NAYLIB/raylib.nim	/^proc triangleCount*(x: Mesh): int32 {.inline.} = x.triangleCount$/;"	f
+triangleCount	$NAYLIB/raylib.nim	/^proc triangleCount*(x: Mesh): int32 {.inline.} = x.triangleCount$/;"	t
+unloadFramebuffer	$NAYLIB/rlgl.nim	/^proc unloadFramebuffer*(id: uint32) {.importc: "rlUnloadFramebuffer".}$/;"	f
+unloadRenderBatch	$NAYLIB/rlgl.nim	/^proc unloadRenderBatch*(batch: RenderBatch) {.importc: "rlUnloadRenderBatch".}$/;"	f
+unloadShaderBuffer	$NAYLIB/rlgl.nim	/^proc unloadShaderBuffer*(ssboId: uint32) {.importc: "rlUnloadShaderBuffer".}$/;"	f
+unloadShaderProgram	$NAYLIB/rlgl.nim	/^proc unloadShaderProgram*(id: uint32) {.importc: "rlUnloadShaderProgram".}$/;"	f
+unloadTexture	$NAYLIB/rlgl.nim	/^proc unloadTexture*(id: uint32) {.importc: "rlUnloadTexture".}$/;"	f
+unloadVertexArray	$NAYLIB/rlgl.nim	/^proc unloadVertexArray*(vaoId: uint32) {.importc: "rlUnloadVertexArray".}$/;"	f
+unloadVertexBuffer	$NAYLIB/rlgl.nim	/^proc unloadVertexBuffer*(vboId: uint32) {.importc: "rlUnloadVertexBuffer".}$/;"	f
+unproject	$NAYLIB/raymath.nim	/^func unproject*(source: Vector3; projection, view: Matrix): Vector3 {.inline.} =$/;"	t
+updateAudioStream	$NAYLIB/raylib.nim	/^proc updateAudioStream*[T](stream: var AudioStream, data: openArray[T]) =$/;"	f
+updateAudioStream	$NAYLIB/raylib.nim	/^proc updateAudioStream*[T](stream: var AudioStream, data: openArray[T]) =$/;"	t
+updateCamera	$NAYLIB/raylib.nim	/^proc updateCamera*(camera: var Camera, mode: CameraMode) {.importc: "UpdateCamera".}$/;"	f
+updateCamera	$NAYLIB/raylib.nim	/^proc updateCamera*(camera: var Camera, movement: Vector3, rotation: Vector3, zoom: float32) {.im/;"	f
+updateMeshBuffer	$NAYLIB/raylib.nim	/^proc updateMeshBuffer*[T](mesh: var Mesh, index: int32, data: openArray[T], offset: int32) =$/;"	f
+updateMeshBuffer	$NAYLIB/raylib.nim	/^proc updateMeshBuffer*[T](mesh: var Mesh, index: int32, data: openArray[T], offset: int32) =$/;"	t
+updateModelAnimation	$NAYLIB/raylib.nim	/^proc updateModelAnimation*(model: Model, anim: ModelAnimation, frame: int32) {.importc: "UpdateM/;"	f
+updateMusicStream	$NAYLIB/raylib.nim	/^proc updateMusicStream*(music: Music) {.importc: "UpdateMusicStream".}$/;"	f
+updateShaderBuffer	$NAYLIB/rlgl.nim	/^proc updateShaderBuffer*(id: uint32, data: pointer, dataSize: uint32, offset: uint32) {.importc:/;"	f
+updateSound	$NAYLIB/raylib.nim	/^proc updateSound*[T](sound: var Sound, data: openArray[T]) =$/;"	f
+updateSound	$NAYLIB/raylib.nim	/^proc updateSound*[T](sound: var Sound, data: openArray[T]) =$/;"	t
+updateTexture	$NAYLIB/raylib.nim	/^proc updateTexture*[T: Pixel](texture: Texture2D, pixels: openArray[T]) =$/;"	f
+updateTexture	$NAYLIB/raylib.nim	/^proc updateTexture*[T: Pixel](texture: Texture2D, pixels: openArray[T]) =$/;"	t
+updateTexture	$NAYLIB/raylib.nim	/^proc updateTexture*[T: Pixel](texture: Texture2D, rec: Rectangle, pixels: openArray[T]) =$/;"	f
+updateTexture	$NAYLIB/raylib.nim	/^proc updateTexture*[T: Pixel](texture: Texture2D, rec: Rectangle, pixels: openArray[T]) =$/;"	t
+updateTexture	$NAYLIB/rlgl.nim	/^proc updateTexture*(id: uint32, offsetX: int32, offsetY: int32, width: int32, height: int32, for/;"	f
+updateVertexBuffer	$NAYLIB/rlgl.nim	/^proc updateVertexBuffer*(bufferId: uint32, data: pointer, dataSize: int32, offset: int32) {.impo/;"	f
+updateVertexBufferElements	$NAYLIB/rlgl.nim	/^proc updateVertexBufferElements*(id: uint32, data: pointer, dataSize: int32, offset: int32) {.im/;"	f
+uploadMesh	$NAYLIB/raylib.nim	/^proc uploadMesh*(mesh: var Mesh, dynamic: bool) {.importc: "UploadMesh".}$/;"	f
+vboId	$NAYLIB/raylib.nim	/^template vboId*(x: Mesh): MeshVboId = MeshVboId(x)$/;"	m
+vboId	$NAYLIB/raylib.nim	/^template vboId*(x: Mesh): MeshVboId = MeshVboId(x)$/;"	t
+vertex2f	$NAYLIB/rlgl.nim	/^proc vertex2f*(x: float32, y: float32) {.importc: "rlVertex2f".}$/;"	f
+vertex2i	$NAYLIB/rlgl.nim	/^proc vertex2i*(x: int32, y: int32) {.importc: "rlVertex2i".}$/;"	f
+vertex3f	$NAYLIB/rlgl.nim	/^proc vertex3f*(x: float32, y: float32, z: float32) {.importc: "rlVertex3f".}$/;"	f
+vertexBuffer	$NAYLIB/rlgl.nim	/^template vertexBuffer*(x: RenderBatch): RenderBatchVertexBuffer = RenderBatchVertexBuffer(x)$/;"	m
+vertexBuffer	$NAYLIB/rlgl.nim	/^template vertexBuffer*(x: RenderBatch): RenderBatchVertexBuffer = RenderBatchVertexBuffer(x)$/;"	t
+vertexCount	$NAYLIB/raylib.nim	/^proc vertexCount*(x: Mesh): int32 {.inline.} = x.vertexCount$/;"	f
+vertexCount	$NAYLIB/raylib.nim	/^proc vertexCount*(x: Mesh): int32 {.inline.} = x.vertexCount$/;"	t
+vertices	$NAYLIB/raylib.nim	/^template vertices*(x: Mesh): MeshVertices = MeshVertices(x)$/;"	m
+vertices	$NAYLIB/raylib.nim	/^template vertices*(x: Mesh): MeshVertices = MeshVertices(x)$/;"	t
+vertices	$NAYLIB/rlgl.nim	/^template vertices*(x: VertexBuffer): VertexBufferVertices = VertexBufferVertices(x)$/;"	m
+vertices	$NAYLIB/rlgl.nim	/^template vertices*(x: VertexBuffer): VertexBufferVertices = VertexBufferVertices(x)$/;"	t
+viewport	$NAYLIB/rlgl.nim	/^proc viewport*(x: int32, y: int32, width: int32, height: int32) {.importc: "rlViewport".}$/;"	f
+vrStereoMode	$NAYLIB/raylib.nim	/^template vrStereoMode*(config: VrStereoConfig; body: untyped) =$/;"	m
+vrStereoMode	$NAYLIB/raylib.nim	/^template vrStereoMode*(config: VrStereoConfig; body: untyped) =$/;"	t
+waitTime	$NAYLIB/raylib.nim	/^proc waitTime*(seconds: float) {.importc: "WaitTime".}$/;"	f
+waveCopy	$NAYLIB/raylib.nim	/^proc waveCopy*(wave: Wave): Wave {.importc: "WaveCopy".}$/;"	f
+waveCrop	$NAYLIB/raylib.nim	/^proc waveCrop*(wave: var Wave, initSample: int32, finalSample: int32) {.importc: "WaveCrop".}$/;"	f
+waveFormat	$NAYLIB/raylib.nim	/^proc waveFormat*(wave: var Wave, sampleRate: int32, sampleSize: int32, channels: int32) {.import/;"	f
+windowShouldClose	$NAYLIB/raylib.nim	/^proc windowShouldClose*(): bool {.importc: "WindowShouldClose".}$/;"	f
+wrap	$NAYLIB/raymath.nim	/^func wrap*(value, min, max: float32): float32 {.inline.} =$/;"	t
+zero	$NAYLIB/raymath.nim	/^func zero*(_: typedesc[Vector2]): Vector2 {.inline.} =$/;"	t
+zero	$NAYLIB/raymath.nim	/^func zero*(_: typedesc[Vector3]): Vector3 {.inline.} =$/;"	t
