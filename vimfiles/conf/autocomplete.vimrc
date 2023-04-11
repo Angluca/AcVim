@@ -107,9 +107,9 @@ SetAcpDict('nim', $VIMDICT.'nimtags,k'.$VIMDICT.'nim.dict,k'.$VIMDICT.'nim_enums
 "}}}
 "-------------------
 "nico
-au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
-au FileType nim setl tags+=$VIMDICT/nicotags
-SetAcpDict('nim', $VIMDICT.'nimtags,k'.$VIMDICT.'nim.dict,k'.$VIMDICT.'nim_enums.dict,k'.$VIMDICT.'nico.dict')
+"au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
+"au FileType nim setl tags+=$VIMDICT/nicotags
+"SetAcpDict('nim', $VIMDICT.'nimtags,k'.$VIMDICT.'nim.dict,k'.$VIMDICT.'nim_enums.dict,k'.$VIMDICT.'nico.dict')
 "-------------------
 "naylib
 "au FileType nim let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
