@@ -637,3 +637,4 @@ nmap <silent> \aa :call SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 nmap <silent> \uu :call SwitchToBuf("$VIMCONF/user.vimrc")<cr>
 "}}}
 "---------------------------------
+" %s/u+\(.*\)/\=nr2char("0x"..submatch(1))/ge " u+n2unicode
