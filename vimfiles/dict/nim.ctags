@@ -5,6 +5,7 @@
 --regex-nim=/^[^\#]*\s+(\w+)\*\s*\{.*\}/\1/t,type/
 --regex-nim=/^[^\#]*\s+(\w+)\*.*=/\1/t,type/
 --regex-nim=/^[^\#]*proc\s+(\w+)\*/\1/f,func/
+--regex-nim=/^[^\#]*func\s+(\w+)\*/\1/f,func/
 --regex-nim=/^[^\#]*method\s+(\w+)\*/\1/f,func/
 --regex-nim=/^[^\#]*auto\s+(\w+)\*/\1/f,func/
 --regex-nim=/^[^\#]*template\s+(\w+)\*/\1/m,macro/

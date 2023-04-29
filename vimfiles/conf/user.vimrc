@@ -135,7 +135,7 @@ let Tlist_WinWidth = 28
 "let Tlist_Max_Submenu_Items = 30
 let Tlist_Compact_Format = 0 " do not show help
 let tlist_zig_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
-let tlist_nim_settings = 'vim;o:operator;t:type;f:func;m:macro;i:iterator'
+let tlist_nim_settings = 'python;t:type;f:proc;f:func;f:method;m:macro;i:iterator;e:enum;o:object;v:var;v:let'
 nmap <silent> ;tL :Tlist<cr>
 "}}}
 """"""""""""""""""""
@@ -153,12 +153,12 @@ let g:tagbar_compact = 1
 "let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
 let g:tagbar_type_nim = {
-			\ 'ctagstype' : 'nim',
+			\ 'ctagstype' : 'python',
 			\ 'kinds'     : [
-			\ 'o:operator',
-			\ 'f:proc:0:0',
-			\ 'i:iterator',
+			\ 'f:func:0:1',
 			\ 't:type:1:0',
+			\ 'i:iterator:1:0',
+			\ 'o:operator:1:0',
 			\ 'm:macro:1:0'
 			\ ],
 			\ 'sort'    : 0,
