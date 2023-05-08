@@ -1,7 +1,7 @@
 "=================================
-"autocomplete
+" auto complete
 "=================================
-"nim.vim must comment nim#init()
+" nim.vim must comment nim#init()
 """"""""""""""
 " filetypes {{{
 """"""""""""""
@@ -44,6 +44,26 @@ au FileType nim setl tags+=$VIMDICT/nimtags,nimtags
 au FileType c,cpp setl tags +=$VIMDICT/cpptags
 au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType zig setl tags +=$VIMDICT/zigtags
+"}}}
+""""""""""""""
+" easycomplete {{{
+""""""""""""""
+let g:easycomplete_diagnostics_enable = 0
+let g:easycomplete_lsp_checking = 0
+"let g:easycomplete_first_complete_hit = 0
+noremap <c-i> :EasyCompleteReference<CR>
+"noremap <c-]> :EasyCompleteGotoDefinition<CR>
+"noremap ,en :EasyCompleteRename<CR>
+noremap <c-[> :BackToOriginalBuffer<CR>
+"nnoremap <silent> <C-k> :EasyCompleteNextDiagnostic<CR>
+"nnoremap <silent> <C-j> :EasyCompletePreviousDiagnostic<CR>
+"let g:easycomplete_tab_trigger="<c-n>"
+"let g:easycomplete_shift_tab_trigger="<c-p>"
+"let g:easycomplete_tabnine_enable = 0
+"let g:easycomplete_tabnine_config = {
+		"\ 'line_limit': 1000,
+		"\ 'max_num_result' : 10,
+		"\ }
 "}}}
 """"""""""""""
 " acp option {{{
@@ -107,8 +127,9 @@ SetAcpDict('nim', $VIMDICT.'nimtags,k'.$VIMDICT.'nim.dict,k'.$VIMDICT.'nim_enums
 "}}}
 "-------------------
 "nico
-"au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
-"au FileType nim setl tags+=$VIMDICT/nicotags
+au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
+au FileType nim setl tags+=$VIMDICT/nicotags
+SetAcpDict('nim', $VIMDICT.'nim.dict,k'.$VIMDICT.'nim2.dict,k'.$VIMDICT.'nim_enums.dict,k'.$VIMDICT.'nico.dict')
 "SetAcpDict('nim', $VIMDICT.'nimtags,k'.$VIMDICT.'nim.dict,k'.$VIMDICT.'nim_enums.dict,k'.$VIMDICT.'nico.dict')
 "-------------------
 "naylib

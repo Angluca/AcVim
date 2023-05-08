@@ -49,6 +49,8 @@ Plug 'vim-scripts/VisIncr'
 "Plug 'lifepillar/vim-mucomplete'
 "Plug 'sheerun/vim-polyglot'
 
+Plug 'jayli/vim-easycomplete'
+"Plug 'SirVer/ultisnips'
 "Plug 'mattn/emmet-vim'
 "Plug 'vim-scripts/VimIM'
 "Plug 'tikhomirov/vim-glsl'

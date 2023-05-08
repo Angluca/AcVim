@@ -80,9 +80,11 @@ fu! s:formatTags(rd='')
 	exe ':%s/^!_.*\n//ge'
 	if a:rd !=''
 		exe ':%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
+	else
+		exe ':g/^\(\k\+\t\).*$\n\1.*/d'
 	endif
 endf
-"nmap \- :Ftags<cr> 
+nmap \0 :Ftags<cr> 
 nmap \- :Ftags '$NIMLIB'<cr> 
 "}}}
 
@@ -109,8 +111,10 @@ fu! s:setCompleteOpt(ft, df='', bop=0)
 	if a:ft == '' || (a:df == '' && a:bop == v:true)
 		return
 	endif
-	let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
-	exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
+	"let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
+	"exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
+	let l:dc = substitute(a:df, ',k', ',', "g")
+	exe 'au FileType ' . a:ft . ' set dict=' . l:dc
 	"exe 'au FileType ' . a:ft . ' set cpt=' . l:opt
 endf "}}}
 
@@ -590,7 +594,7 @@ nmap <m-c> "+y
 vmap <m-c> "+y
 nmap <m-v> "*gP
 vmap <m-v> "*gP
-imap <m-v> "*gP
+imap <m-v> <c-r>+
 "file type
 nmap ;ff :call FileFormatOption()<cr>
 nmap ;fu :se fenc=utf-8<cr>
