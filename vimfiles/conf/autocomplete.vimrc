@@ -5,7 +5,7 @@
 """"""""""""""
 " filetypes {{{
 """"""""""""""
-SetFiletype('*.vimbp', 'vim')
+SetFiletype('*.vimbp,*.vimspec', 'vim')
 SetFiletype('README*,COPYING', 'txt')
 SetFiletype('*.txt,*.log', 'txt')
 SetFiletype('*.asm', 'masm')
@@ -15,6 +15,7 @@ SetFtCmd('masm', 'setl mp=fasm\ %:p')
 SetFiletype('*.mxml', 'mxml')
 SetFiletype('*.as', 'actionscript')
 SetFiletype('CMakeLists.txt', 'cmake')
+SetFiletype('*.make', 'make')
 SetFiletype('*.p', 'pawn')
 SetFiletype('*.md,*.markdown', 'markdown')
 SetFiletype('*.shd,*.sc', 'glsl')
@@ -40,7 +41,7 @@ au BufWrite *.nim,*.nims,*.zig :DelTWS
 "for language
 au FileType nim nmap \= :Mtags nimtags $VIMDICT/nim.ctags<cr>
 au FileType nim let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
-au FileType nim setl tags+=$VIMDICT/nimtags,nimtags
+"au FileType nim setl tags+=$VIMDICT/nimtags,nimtags
 au FileType c,cpp setl tags +=$VIMDICT/cpptags
 au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType zig setl tags +=$VIMDICT/zigtags
@@ -68,6 +69,12 @@ noremap <c-[> :BackToOriginalBuffer<CR>
 """"""""""""""
 " acp option {{{
 """"""""""""""
+"-- easycomplete ---
+let g:apc_min_length = 2
+let g:apc_enable_ft = {'*':1}
+set cot=menu,menuone,noselect
+
+"---------------
 let g:acp_behaviorKeywordLength=2
 "let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorFileLength = 1
@@ -81,11 +88,10 @@ let g:acp_enableAtStartup = 1
 let g:acp_ignorecaseOption = 1
 "let g:acp_mappingDriven = 1
 "let g:acp_completeoptPreview = 1
-"let g:acp_completeOption='.,w,b,u,t,d,k'
-"let g:acp_completeOption='.,w,b,u,t,k'
-let g:acp_completeOption='.,w,b,u,t,i,k'
-"exe 'set cpt=' . g:acp_completeOption
-set cpt=".,w,b,u,t,k"
+"let g:acp_completeOption='.,w,b,u,t,i,d,k'
+let g:acp_completeOption='.,b,u,t,k'
+exe 'set cpt=' . g:acp_completeOption
+"set cpt=.,w,b,u,t,k
 ".. 当前缓冲区
 "w. 其它窗口的缓冲区
 "b. 其它载入的缓冲区
@@ -98,12 +104,11 @@ set cpt=".,w,b,u,t,k"
 """"""""""""""""""""
 " acp dictags {{{
 """"""""""""""""""""
+" Use nimlsp don't set dict, Will slow !!!
 if has("win32")
 	SetAcpDict('asm', $VIMDICT.'win32.dict')
-	"SetAcpDict('c,cpp', $VIMDICT.'win32.dict,k'.$VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict', '.,w,b,u,i,k')
 	SetAcpDict('c,cpp','.,w,b,u,i,k'.$VIMDICT.'win32.dict,k'.$VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict', 1)
 else
-	"au FileType c,cpp let g:acp_completeOption= '.w,b,u,k'.$VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict'.',k'.$VIMDICT.'gl.dict'
 	SetAcpDict('c,cpp', $VIMDICT.'c.dict,k'.$VIMDICT.'cpp.dict')
 endif
 SetAcpDict('java', $VIMDICT.'java.dict')
@@ -118,18 +123,16 @@ SetAcpDict('sh', $VIMDICT.'bash.dict')
 SetAcpDict('squirrel', $VIMDICT.'squirrel.dict')
 SetAcpDict('lua', $VIMDICT.'lua.dict')
 SetAcpDict('zig', $VIMDICT.'zigtags')
-SetAcpDict('nim', $VIMDICT.'nimtags,k'.$VIMDICT.'nim.dict,k'.$VIMDICT.'nim_enums.dict')
+"SetAcpDict('nim', $VIMDICT.'nimtags,k'.$VIMDICT.'nim.dict,k'.$VIMDICT.'nim_enums.dict')
 "SetAcpDict('nim', $VIMDICT.'nim.dict')
 "SetAcpDict('nim','.,w,b,u,t,i,k', 1)
 "SetAcpDict('nim')
-"au FileType lua setl tags+=$VIMDICTquick2dx.tags
-"au FileType lua setl dict+=$VIMDICTquick2dx.tags
 "}}}
 "-------------------
 "nico
 au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
-au FileType nim setl tags+=$VIMDICT/nicotags
-SetAcpDict('nim', $VIMDICT.'nim.dict,k'.$VIMDICT.'nim2.dict,k'.$VIMDICT.'nim_enums.dict,k'.$VIMDICT.'nico.dict')
+"au FileType nim setl tags+=$VIMDICT/nicotags
+"SetAcpDict('nim', $VIMDICT.'nim.dict,k'.$VIMDICT.'nim2.dict,k'.$VIMDICT.'nim_enums.dict,k'.$VIMDICT.'nico.dict')
 "SetAcpDict('nim', $VIMDICT.'nimtags,k'.$VIMDICT.'nim.dict,k'.$VIMDICT.'nim_enums.dict,k'.$VIMDICT.'nico.dict')
 "-------------------
 "naylib

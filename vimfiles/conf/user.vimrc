@@ -2,25 +2,18 @@
 " Plugin configuration
 "=================================
 "-------------------------
-"simple plugins {{{
+" plugins {{{
 "-------------------------
 """"""""""""""""""""
-"ShowMarks seting {{{
+"ShowMarks {{{
 """"""""""""""""""""
 let showmarks_include = "abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ"
-let g:showmarks_ignore_type="hmpq"    "help,non-modify,preview,quick-fix buffer do not display
+let g:showmarks_ignore_type = "hmpq"    "help,non-modify,preview,quick-fix buffer do not display
 "<leader>mt ShowMarksToggle
 "<leader>mo ShowmarksShowMarksOn
 "<leader>mc ShowmarksClearMark
 "<leader>ma ShowmarksClearAll
 "<leader>mm ShowmarksPlaceMark
-"}}}
-""""""""""""""""""""
-"Project seting {{{
-""""""""""""""""""""
-nmap <silent> ;P <Plug>ToggleProject
-let g:proj_window_width = 20
-let g:proj_window_increment = 50
 "}}}
 """"""""""""""""""""
 "errormarker {{{
@@ -46,7 +39,26 @@ let g:EchoFuncKeyPrev='<m-->'
 """"""""""""""""""""
 "qbuf {{{
 """"""""""""""""""""
-let g:qb_hotkey = ";bb"
+let g:qb_hotkey = ';bb'
+"}}}
+""""""""""""""""""""
+"bufexplorer {{{
+""""""""""""""""""""
+nmap <silent> ;be :BufExplorer<CR>
+nmap <silent> ;bt :ToggleBufExplorer<CR>
+nmap <silent> ;bs :BufExplorerHorizontalSplit<CR>
+nmap <silent> ;bv :BufExplorerVerticalSplit<CR>
+"let g:bufExplorerDefaultHelp=0
+"let g:bufExplorerReverseSort=1
+"let bufExplorerDetailedHelp=0
+"let g:bufExplorerSortBy='number'
+"let g:bufExplorerShowUnlisted=1
+"let g:bufExplorerShowTabBuffer=1
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerSplitRight=1
+let g:bufExplorerSplitBelow=1
+let g:bufExplorerSplitHorzSize=6
+let g:bufExplorerSplitVertSize=30 
 "}}}
 """"""""""""""""""""
 "fliplr {{{
@@ -63,18 +75,17 @@ vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "Ctrlp {{{
 """"""""""""""""""""
 "let g:ctrlp_by_filename = 0
-"let g:ctrlp_use_caching = 1
 "let g:ctrlp_lazy_update = 0
 "let g:ctrlp_regexp = 0
 "let g:ctrlp_follow_symlinks = 0
 "let g:ctrlp_types = ['fil', 'buf', 'mru'].
-"let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
-"\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
-let g:ctrlp_extensions = ['tag', 'buffertag', 'dir']
+"let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript', 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
+"let g:ctrlp_extensions = ['tag', 'buffertag', 'dir']
 let g:ctrlp_arg_map = 1
 let g:ctrlp_tilde_homedir = 1
 "let g:ctrlp_mruf_include = '\.c$\|\.h$'
 "let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
+let g:ctrlp_use_caching = 10
 let g:ctrlp_cache_dir = $VIMDATA.'ctrlp'
 let g:ctrlp_max_files = 666
 let g:ctrlp_mruf_max = 66
@@ -85,6 +96,7 @@ let g:ctrlp_switch_buffer = 'Etvh'
 let g:ctrlp_open_new_file = 't' "thvr
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_clear_cache_on_exit = 1
+"let g:ctrlp_mruf_relative = 0
 "let g:ctrlp_custom_ignore = {
 "\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 "\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
@@ -92,51 +104,21 @@ let g:ctrlp_clear_cache_on_exit = 1
 "\ }
 
 let g:ctrlp_map = ';cc'
-nmap <silent> ;ce :CtrlPChangeAll<cr>
+nmap <silent> ;cg :CtrlPChangeAll<cr>
 nmap <silent> ;cb :CtrlPBuffer<cr>
-nmap <silent> ;cr :CtrlPMRUFiles<cr>
-nmap <silent> ;ct :CtrlPTag<cr>
-nmap <silent> ;cg :CtrlPBufTagAll<cr>
+nmap <silent> ;cm :CtrlPMRUFiles<cr>
+nmap <silent> ;cT :CtrlPTag<cr>
+nmap <silent> ;ct :CtrlPBufTagAll<cr>
 nmap <silent> ;ci :CtrlPDir<cr>
-nmap <silent> ;cm :CtrlPBookmarkDir<cr>
-nmap <silent> ;cM :CtrlPBookmarkDirAdd<cr>
-nmap <silent> ;cs :CtrlPRTS<cr>
+"nmap <silent> ;cm :CtrlPBookmarkDir<cr>
+"nmap <silent> ;cM :CtrlPBookmarkDirAdd<cr>
+nmap <silent> ;cr :CtrlPRTS<cr>
 nmap <silent> ;cu :CtrlPUndo<cr>
-nmap <silent> ;cx :CtrlPQuickfix<cr>
+nmap <silent> ;cl :CtrlPQuickfix<cr>
 nmap <silent> ;ca :CtrlPMixed<cr>
-nmap <silent> ;cl :CtrlPLine<cr>
+nmap <silent> ;cf :CtrlPLine<cr>
 nmap <silent> ;cd :CtrlPClearCache<cr>
 nmap <silent> ;cD :CtrlPClearAllCaches<cr>
-"}}}
-""""""""""""""""""""
-"Taglist {{{
-""""""""""""""""""""
-"if has("win32")
-"let Tlist_Ctags_Cmd = 'ctags'
-"elseif has("unix")
-"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-"endif
-let Tlist_Inc_Winwidth = 0
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Update = 0
-let Tlist_Auto_Open = 0
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Show_One_File = 1 " Displaying tags for only one file~
-let Tlist_Exist_OnlyWindow = 0 " if you are the last, kill yourself
-let Tlist_Use_Right_Window = 1 " split to the right side of the screen
-let Tlist_Sort_Type = "order" " sort by order or name
-let Tlist_Display_Prototype = 0 " do not show prototypes and not tags in the taglist window.
-let Tlist_GainFocus_On_ToggleOpen = 1 " Jump to taglist window on open.
-let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
-let Tlist_Close_On_Select = 1 " Close the taglist window when a file or tag is selected.
-let Tlist_BackToEditBuffer = 1 " If no close on select, let the user choose back to edit buffer or not
-let Tlist_Enable_Fold_Column = 0 " Don't Show the fold indicator column in the taglist window.
-let Tlist_WinWidth = 28
-"let Tlist_Max_Submenu_Items = 30
-let Tlist_Compact_Format = 0 " do not show help
-let tlist_zig_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variable;f:function'
-let tlist_nim_settings = 'python;t:type;f:proc;f:func;f:method;m:macro;i:iterator;e:enum;o:object;v:var;v:let'
-nmap <silent> ;tL :Tlist<cr>
 "}}}
 """"""""""""""""""""
 "Tagbar (similar taglist) {{{
@@ -171,32 +153,17 @@ nmap <silent> ;tl :TagbarToggle<cr>
 """"""""""""""""""""
 "let NERDTreeMinimalUI=1
 "let NERDTreeMinimalMenu=1
+let NERDTreeQuitOnOpen=1
 let NERDChristmasTree=0
 let NERDTreeAutoCenter=1
 let NERDTreeMouseMode=1
 let NERDTreeShowFiles=1
 let NERDTreeShowHidden=0
 let NERDTreeShowLineNumbers=0
-let NERDTreeWinPos='left'
+"let NERDTreeWinPos='left'
 let NERDTreeWinSize=30
 let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.tar\.gz$','\.7z$','\.zip$','\.rar$','\.swp$','\.dll$','\.obj$']
 nmap <silent> ;tt :NERDTreeToggle <cr>
-"}}}
-""""""""""""""""""""
-"Mark {{{
-""""""""""""""""""""
-"nmap <silent> ;mm <Plug>MarkSet
-"vmap <silent> ;mm <Plug>MarkSet
-"nmap <silent> ;mr <Plug>MarkRegex
-"vmap <silent> ;mr <Plug>MarkRegex
-"nmap <silent> ;mc <Plug>MarkClear
-"nmap <silent> ;mC <Plug>MarkAllClear
-"nmap <silent> ;mt <Plug>MarkToggle
-"
-"nmap <silent> ;n <Plug>MarkSearchCurrentNext
-"nmap <silent> ;N <Plug>MarkSearchCurrentPrev
-"nmap <silent> ;/ <Plug>MarkSearchAnyNext
-"nmap <silent> ;? <Plug>MarkSearchAnyPrev
 "}}}
 """"""""""""""""""""
 "NERD_commenter {{{
@@ -206,34 +173,19 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 "\ }
 
 let g:NERDCreateDefaultMappings=0
-call AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
-call AcCreateMaps('<plug>NERDCommenterToggle',     ';x<space>')
-call AcCreateMaps('<plug>NERDCommenterMinimal',    ';xm')
-call AcCreateMaps('<plug>NERDCommenterSexy',       ';xs')
-call AcCreateMaps('<plug>NERDCommenterInvert',     ';xi')
-call AcCreateMaps('<plug>NERDCommenterYank',       ';xy')
-call AcCreateMaps('<plug>NERDCommenterAlignLeft',  ';xl')
-call AcCreateMaps('<plug>NERDCommenterAlignBoth',  ';xb')
-call AcCreateMaps('<plug>NERDCommenterNest',       ';xn')
-call AcCreateMaps('<plug>NERDCommenterUncomment',  ';xu')
-call AcCreateMaps('<plug>NERDCommenterToEOL',      ';x$')
-call AcCreateMaps('<plug>NERDCommenterAltDelims',  ';xa')
-call AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
-"}}}
-""""""""""""""""""""
-"vimwiki {{{
-""""""""""""""""""""
-let	g:vimwiki_use_mouse	=	1
-let	g:vimwiki_hl_cb_checked	=	1
-let	g:vimwiki_menu	=	''
-let	g:vimwiki_CJK_length	=	1
-let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
-
-let	g:vimwiki_list	=	[{'path':$VIMDATA.'vimwiki/',
-			\	'path_html':$VIMDATA.'gevimwiki/html/',
-			\	'html_header':$VIMDATA.'gevimwiki/template/header.tpl',
-			\	'html_footer':$VIMDATA.'gevimwiki/template/footer.tpl',
-			\	'diary_link_count':8}]
+AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
+AcCreateMaps('<plug>NERDCommenterToggle',     ';x<space>')
+AcCreateMaps('<plug>NERDCommenterMinimal',    ';xm')
+AcCreateMaps('<plug>NERDCommenterSexy',       ';xs')
+AcCreateMaps('<plug>NERDCommenterInvert',     ';xi')
+AcCreateMaps('<plug>NERDCommenterYank',       ';xy')
+AcCreateMaps('<plug>NERDCommenterAlignLeft',  ';xl')
+AcCreateMaps('<plug>NERDCommenterAlignBoth',  ';xb')
+AcCreateMaps('<plug>NERDCommenterNest',       ';xn')
+AcCreateMaps('<plug>NERDCommenterUncomment',  ';xu')
+AcCreateMaps('<plug>NERDCommenterToEOL',      ';x$')
+AcCreateMaps('<plug>NERDCommenterAltDelims',  ';xa')
+AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
 "}}}
 """"""""""""""""""""
 "easymotion {{{
@@ -243,8 +195,49 @@ let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
 let g:EasyMotion_leader_key = '<space>'
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_do_shade = 0
-let g:EasyMotion_smartcase = 0
+let g:EasyMotion_smartcase = 1
+"let g:EasyMotion_use_upper = 1
 let g:EasyMotion_enter_jump_first = 1
+"let g:EasyMotion_space_jump_first = 0
+"let g:EasyMotion_disable_two_key_combo = 0
+"let g:EasyMotion_off_screen_search = 0
+map  <space>f <Plug>(easymotion-bd-f)
+nmap <space>f <Plug>(easymotion-overwin-f)
+nmap <space>F <Plug>(easymotion-overwin-f2)
+map  <space>s <Plug>(easymotion-bd-fn)
+nmap  <space>s <Plug>(easymotion-bd-fn)
+map  t <Plug>(easymotion-bd-w)
+nmap  t <Plug>(easymotion-overwin-w)
+map T <Plug>(easymotion-bd-jk)
+nmap T <Plug>(easymotion-overwin-line)
+"}}}
+""""""""""""""""""""
+"incsearch {{{
+""""""""""""""""""""
+set hlsearch
+"let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+"map ? <Plug>(incsearch-stay)
+
+map g/ <Plug>(incsearch-fuzzy-/)
+map g? <Plug>(incsearch-fuzzy-/)
+"map g? <Plug>(incsearch-fuzzy-stay)
+
+"map <space>/ <Plug>(incsearch-fuzzyword-/)
+"map <space>? <Plug>(incsearch-fuzzyword-?)
+"map <space>g/ <Plug>(incsearch-fuzzyword-stay)
+
+"--select *find--
+vnoremap * y/<c-r>"<cr>
+
 "}}}
 """"""""""""""""""""
 "EasyAlign {{{
@@ -261,15 +254,15 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-"let g:syntastic_mode_map = { 'mode': 'active',
-"\ 'active_filetypes': [],
-"\ 'passive_filetypes': ['c', 'cpp'] }
+let g:syntastic_mode_map = { 'mode': 'passive',
+\ 'active_filetypes': [],
+\ 'passive_filetypes': [] }
 "}}}
 """"""""""""""""""""
 "vimim {{{
 """"""""""""""""""""
 let g:vimim_cloud = -1
-"let g:vimim_map = ''
+let g:vimim_map = 'no-gi'
 "let g:vimim_mode = 'dynamic'
 let g:vimim_mycloud = 0
 let g:vimim_punctuation = 0
@@ -288,10 +281,16 @@ let g:clever_f_show_prompt = 0
 """"""""""""""""""""
 "vim-markdown {{{
 """"""""""""""""""""
+let g:vim_markdown_fenced_languages = ['bash=sh', 'viml=vim', 'nims=nim', 'ini=dosini']
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_no_default_key_mappings = 1
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_conceal = 0
+let g:vim_markdown_override_foldtext = 0
+let g:tex_conceal = ""
+let g:vim_markdown_auto_insert_bullets = 0
+"let g:vim_markdown_auto_extension_ext = 'txt'
+"let g:vim_markdown_math = 1
 "let g:vim_markdown_toc_autofit = 0
 "let g:vim_markdown_folding_style_pythonic = 1
 "let g:vim_markdown_initial_foldlevel=3
@@ -317,6 +316,83 @@ let g:elm_detailed_complete = 1
 let g:elm_format_autosave = 1
 let g:elm_syntastic_show_warnings = 1
 "}}}
+""""""""""""""""""""
+"minisnip {{{
+""""""""""""""""""""
+let g:miniSnip_dirs = [ $VIM.'miniSnips' ]
+let g:miniSnip_local = 'miniSnips'
+let g:miniSnip_trigger = '<C-j>'
+let g:miniSnip_complkey ='<C-x><C-u>' 
+"let g:miniSnip_ext = 'snip'
+let g:miniSnip_extends = {
+			\ 'cpp' : [ 'c' ],
+			\ }
+"let g:miniSnip_extends['nim'] = [ 'nico' ]
+"}}}
+""""""""""""""""""""
+"AsyncRun&Task {{{
+""""""""""""""""""""
+"--Run-------------------------"
+com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
+com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
+com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
+let g:asyncrun_open = 8
+"let g:asyncrun_auto = 'make'
+"let g:asyncrun_last = 3
+"let g:asyncrun_mode = 'term'
+"let asyncrun_term_hidden = 1
+"let g:asyncrun_term_wipe = 1
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks']
+let g:asyncrun_capture_file = $VIMDATA.'cache/capture.tmp'
+nmap <space>l :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
+nmap <space>q :AsyncStop<cr>
+nmap <space>Q :AsyncStop!<cr>
+nmap <space><space> <esc>
+
+"nmap <space>R :AcRun! 
+nmap <space>r :AcRun 
+nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close zsh<cr>
+"&shell
+nmap <space>u :AcUiRun 
+nmap <space>U :AcUiRun -close zsh<cr>
+"let g:asyncrun_wrapper = ''
+"let g:asyncrun_shell = '/usr/bin/zsh'
+"let g:asyncrun_shellflag = '-c'
+"--Tasks-----------------------"
+com -nargs=? SetTasks call s:setTasks(<args>)
+"------
+fu s:setTasks(name='')
+	if g:asynctasks_config_name!='.tasks' && a:name==''
+		return
+	endif
+	let l:name = a:name == '' ? &ft.'.tasks' : a:name
+	let g:asynctasks_config_name = l:name
+	let g:asynctasks_rtp_config = 'tasks/'.l:name
+	"let g:asynctasks_extra_config = 'tasks/config.tasks'
+endf 
+"---
+nmap <space>t  :AsyncTask
+nmap <space>tt :AsyncTask 
+nmap <space>te :AsyncTaskEdit<cr>
+nmap <space>tE :AsyncTaskEdit!<cr>
+nmap <space>tl :AsyncTaskList<cr>
+nmap <space>tL :AsyncTaskList!<cr>
+nmap <space>th :AsyncTaskMacro<cr>
+nmap <space>tH :AsyncTask -M<cr>
+nmap <space>tp :AsyncTaskProfile<cr>
+nmap <space>tm :AsyncTask -h<cr>
+let g:asynctasks_term_focus = 0
+"let g:asynctasks_term_reuse = 1
+"let g:asynctasks_term_pos = 'macos'
+"let g:asynctasks_term_pos = 'quickui'
+let g:asynctasks_term_rows = 6
+let g:asynctasks_term_cols = 80
+"let g:asynctasks_term_close = 1
+let g:quickui_color_scheme = 'papercol'
+au FileType * SetTasks 
+"au FileType nim SetTasks 'nim.tasks'
+"au FileType c,cpp SetTasks 'c.tasks'
+"}}}
 "-------------------
 "}}}
 "-------------------------
@@ -325,5 +401,3 @@ let g:elm_syntastic_show_warnings = 1
 ":verbose nmap ;
 ":verbose nmap ,
 "-------------------------
-
-

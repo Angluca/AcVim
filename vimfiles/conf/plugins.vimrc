@@ -11,9 +11,18 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle_custom
 "Plug 'eikenb/acp'
+"Plug 'skywind3000/vim-auto-popmenu'
 "==================
 "bundle
 "-----------------------
+Plug 'Jorengarenar/miniSnip'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/vim-quickui.vim'
+Plug 'jayli/vim-easycomplete'
+
+Plug 'haya14busa/incsearch.vim'
+"Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-repeat'
@@ -23,7 +32,6 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'mbbill/undotree'
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'wuhulalala/ctrlp.vim'
 "Plug 'rhysd/clever-f.vim'
 Plug 'preservim/tagbar'
 Plug 'easymotion/vim-easymotion'
@@ -33,23 +41,21 @@ Plug 'jiangmiao/auto-pairs'
 "Plug 'vim-scripts/Mark--Karkat'
 
 Plug 'preservim/vim-markdown'
+"Plug 'tpope/vim-markdown'
 Plug 'jeetsukumaran/vim-buffersaurus'
-"Plug 'jeetsukumaran/vim-filesearch'
+"Plug 'jlanzarotta/bufexplorer'
 
 Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/VisIncr'
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 "Plug 'AndrewRadev/linediff.vim'
 "Plug 'zah/nim.vim'
 "Plug 'ziglang/zig.vim'
 "Plug 'elmcast/elm-vim'
-"Plug 'skywind3000/vim-quickui'
-"Plug 'SirVer/ultisnips'
 "Plug 'maralla/completor.vim'
 "Plug 'lifepillar/vim-mucomplete'
 "Plug 'sheerun/vim-polyglot'
 
-Plug 'jayli/vim-easycomplete'
 "Plug 'SirVer/ultisnips'
 "Plug 'mattn/emmet-vim'
 "Plug 'vim-scripts/VimIM'
@@ -66,6 +72,8 @@ Plug 'jayli/vim-easycomplete'
 "Plug 'tomtom/tlib_vim'
 "Plug 'garbas/vim-snipmate'
 "Plug 'honza/vim-snippets'
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'skywind3000/gutentags_plus'
 
 "-----------------
 call plug#end()

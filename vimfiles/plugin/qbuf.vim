@@ -1,6 +1,6 @@
 "=====================
 "	QuickBuf
-"	version 1.6
+"	version 1.7
 "=====================
 if v:version < 700
 	finish
@@ -75,6 +75,10 @@ function SBRun()
 	if !exists("s:old_cursel")
 		let s:old_cursel = s:cursel
 	endif
+	if !exists("s:hasMore")
+		let s:hasMore = &more
+	endif
+	set nomore
 
 	if s:blen < 1
 		echoh WarningMsg | echo "No" s:unlisted ? "unlisted" : "listed" "buffer!" | echoh None
@@ -96,22 +100,35 @@ function SBRun()
 	if s:unlisted
 		echoh None
 	endif
-	if l:pkey =~ "j$"
+	if l:pkey =~# "j$"
 		let s:cursel = (s:cursel+1) % s:blen
-	elseif l:pkey =~ "k$"
+	elseif l:pkey =~# "k$"
 		if s:cursel == 0
 			let s:cursel = s:blen - 1
 		else
 			let s:cursel -= 1
 		endif
+	elseif l:pkey =~# "J$"
+		let l:cl = s:cursel+5
+		let s:cursel = l:cl > s:blen ? s:blen : l:cl
+	elseif l:pkey =~# "K$"
+		let l:cl = s:cursel-5
+		let s:cursel = l:cl < 0 ? 0 : l:cl
+	elseif l:pkey =~# "G$"
+		let s:cursel = s:blen
+	elseif l:pkey =~# "g$"
+		let s:cursel = 0
 	elseif s:update_buf(l:pkey)
 		call s:init(0)
+		if s:hasMore
+			set more
+		endif
 		return
 	endif
 	call s:setcmdh(s:blen+1)
 endfunc
 
-let s:klist = ["j","J","k","K", "f", "F", "e", "d", "D", "w", "W", "l", "s", "v", "c", "q"]
+let s:klist = ["j","J","k","K","g","G","f","F","e","d","D","w","W","l","s","v","c","q"]
 function s:init(onStart)
 	if a:onStart
 		set nolazyredraw
@@ -181,8 +198,10 @@ endfunc
 
 function s:setcmdh(height)
 	if a:height > &lines - winnr('$') * (&winminheight+1) - 1
-		call s:init(0)
-		echo "\r"|echoerr "QBuf E1: No room to display buffer list"
+		"call s:init(0)
+		"exe "set cmdheight=".s:blen
+		exe "set cmdheight=".1
+		"echo "\r"|echoerr "QBuf E1: No room to display buffer list"
 	else
 		exe "set cmdheight=".a:height
 	endif

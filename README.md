@@ -25,7 +25,7 @@ Let's open the vim.**
 :E \<a-1~9,0\> \<a-h,l,H,L\> gt gT: tabnew, switch tab page, a-HL move tab pos  
 
 >;bb : very easy and practice to operate buffer  
- --> j/k: move, f/e: open/quicksee win, s/v: split win  
+ --> j/k J/K g/G: move, f/e: open/quicksee win, s/v: split win  
  -> d/D: del/!del buf, w/W: wipe out buf, l: see deleted buf  
  
 >;tt : file manage  
@@ -33,10 +33,11 @@ Let's open the vim.**
 ;xx ...: code comment  
 ;cc ;ce ;ca ;cu ;cg ;ct ;cm ;cM ;cb ;ci ;cr ;cx ;cl ;cs ;cd ;cD  
  --> manage buffer/file/mru/undo/tags/dir/change/mixd/rtscript  
-;mm ;mc ;mC ;mt ;* ;# ;/ ;? * #: good marks  
 
->\<space\>h/j/k/l/w/e/b : quickly move  
-\<alt+shift/shift\>\<up>/\<down>/\<left>/\<right> : move resize win  
+>\<space\>h/j/k/l/w/e/b/t/T/f/s: quickly move  
+\<space\>r/R/u/U/l/t/te/tE/th ... :async cmd tasks  
+\<alt+shift/shift\>\<up>/\<down>/\<left>/\<right>: move resize win  
+g/ g? / ?: fuzzy search for coder  
 \\= : generate tags  
 
 >ysiwb ysawB ysib" : add symbol for words  
@@ -51,13 +52,10 @@ You can test them if has similar operation.**
 
 >;cc ;ce ;ca ;cu ;cg ;ct ;cm ;cM ;cb ;ci ;cr ;cx ;cl ;cs ;cd ;cD  
 ;xA ;xa ;x$ ;xu ;xn ;xb ;xl ;xy ;xi ;xs ;xm ;x<Space> ;xx  
-;we ;bb ;bd ;uu ;ut ;uc ;lr ;ld ;fl  
+;we ;bb ;bd ;ut ;uc ;fl  
 ;qa ;qq ;qf ;qw ;wf ;ww ;ve ;P  
-;fg ;fu ;ff ;pp ;yx ;yy ;ds  
-;# ;* ;/ ;? ;mt ;ma ;mc ;mm  
-;tt ;tl ;tL ;tO   
+\\fg \\fu \\ff ;ds ;tt ;tl  
 
->mm ,ma ,mc ,mt ,sc ,sy  
 >\<f10\>  
 
 >... and more hotkey.  
