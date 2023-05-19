@@ -63,7 +63,7 @@ let g:bufExplorerSplitVertSize=30
 """"""""""""""""""""
 "fliplr {{{
 """"""""""""""""""""
-nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
+"nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "}}}
 "-------------------
@@ -201,11 +201,11 @@ let g:EasyMotion_enter_jump_first = 1
 "let g:EasyMotion_space_jump_first = 0
 "let g:EasyMotion_disable_two_key_combo = 0
 "let g:EasyMotion_off_screen_search = 0
-map  <space>f <Plug>(easymotion-bd-f)
-nmap <space>f <Plug>(easymotion-overwin-f)
-nmap <space>F <Plug>(easymotion-overwin-f2)
-map  <space>s <Plug>(easymotion-bd-fn)
-nmap  <space>s <Plug>(easymotion-bd-fn)
+map  f <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-overwin-f)
+nmap F <Plug>(easymotion-overwin-f2)
+map  <space>f <Plug>(easymotion-bd-fn)
+nmap  <space>f <Plug>(easymotion-bd-fn)
 map  t <Plug>(easymotion-bd-w)
 nmap  t <Plug>(easymotion-overwin-w)
 map T <Plug>(easymotion-bd-jk)
@@ -351,10 +351,10 @@ nmap <space><space> <esc>
 
 "nmap <space>R :AcRun! 
 nmap <space>r :AcRun 
-nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close zsh<cr>
+nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
 "&shell
 nmap <space>u :AcUiRun 
-nmap <space>U :AcUiRun -close zsh<cr>
+nmap <space>U :AcUiRun -close=1 zsh<cr>
 "let g:asyncrun_wrapper = ''
 "let g:asyncrun_shell = '/usr/bin/zsh'
 "let g:asyncrun_shellflag = '-c'

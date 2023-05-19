@@ -616,13 +616,12 @@ nmap <silent> ;qw :wq<cr>
 nmap <silent> ;qf :q!<cr>
 nmap <silent> ;qq :q<cr>
 nmap <silent> ;qa :qa<cr>
-nmap <silent> ;<esc> <esc>
 "Fast remove highlight search
 nmap <silent> ;<cr> :noh<cr>
-"For f t finding
-nmap <silent> ;; ;<space>
-nmap <silent> ,, ,<space>
-"dont like
+nmap <silent> ; <esc>
+nmap <silent> , <esc>
+
+"not use
 map ZZ <esc>
 map ZQ <esc>
 "set nomore
