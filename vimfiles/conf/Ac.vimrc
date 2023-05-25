@@ -89,11 +89,12 @@ fu! s:formatTags(rd='')
 endf
 nmap \0 :Ftags<cr> 
 nmap \- :Ftags '$NIMLIB'<cr> 
+"nmap \- :Ftags '$NIM'<cr> 
 "}}}
 
 com! -nargs=+ Mtags call s:makeTags(<f-args>) "{{{
 fu! s:makeTags(f, opt='')
-	if a:f
+	if a:f != ''
 		let l:opt = a:opt==''?'':'--options='.a:opt
 		exe ':silent !ctags '.l:opt.' -R -f '.a:f
 	endif
@@ -460,7 +461,7 @@ set cindent shiftwidth=2 " Set cindent on to autoinent when editing C/C++ file, 
 set softtabstop=2
 set tabstop=2 " Set tabstop to 4 characters
 "au FileType c,cpp,h,hpp,cc,cxx set expandtab
-"set expandtab " Set expandtab on, the tab will be change to space automaticaly
+set expandtab " Set expandtab on, the tab will be change to space automaticaly
 "}}}
 """"""""""""""""""""
 "Indent {{{

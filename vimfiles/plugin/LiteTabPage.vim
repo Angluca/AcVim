@@ -1,30 +1,14 @@
-"
-" Name: LiteTabPage, VIM plugin for GVIM 7.0 or above
+" Name: LiteTabPage
 " copy AyuanX v1.2
 " Author: Angluca: v2.0
-" Version 2.0
 " Description:
-"
-" This is an (extremely) simple plugin, which makes VIM Tab Page functions more user-friendly. 
-"
 " <> Features:
-" 1. ":E filename"			Open the file in a new tab page instead of in current window.
-"
+" 1. ":E filename"	Open the file in a new tab page instead of in current window.
 " 2. "<ALt-1>, <Alt-2> to <Alt-8>"	Switch to tab page 1/2/3/4/5/6/7/8/9/10.
-"
-" 3. "<Alt-9> / <Alt-0>"		Switch to previous/next tab page.
-"
-" 4. "<Alt-(> / <Alt-)>"		Move current tab page left/right.
-"
+" 3. "<Alt-9> / <Alt-0>"	Switch to previous/next tab page.
+" 4. "<Alt-(> / <Alt-)>"	Move current tab page left/right.
 " 5. Show GUI Tab Labels in format: "[Tab Number]:[+][Buffer Name]"
 " 	PS: [+] stands for one or more buffer in that tab page has been modified.
-"
-" <> How to Install:
-"    Simply put "LiteTabPage.vim" into path "~/.vim/plugin/" (unix) or "$VIM/vimfiles/plugin/" (windows).
-"
-" <> Feedback:
-"    You are always encouraged to modify this plugin freely to suit your own needs!
-"
 
 if exists('loaded_litetabpage')
   finish
@@ -35,17 +19,6 @@ let loaded_litetabpage = 1
 set winaltkeys=no
 
 com! -nargs=* -complete=file E tabnew <args>
-
-"nnoremap <unique> <A-1> <c-w>1gt
-"nnoremap <unique> <A-2> <c-w>2gt
-"nnoremap <unique> <A-3> <c-w>3gt
-"nnoremap <unique> <A-4> <c-w>4gt
-"nnoremap <unique> <A-5> <c-w>5gt
-"nnoremap <unique> <A-6> <c-w>6gt
-"nnoremap <unique> <A-7> <c-w>7gt
-"nnoremap <unique> <A-8> <c-w>8gt
-"nnoremap <unique> <A-9> <c-w>9gt
-"nnoremap <unique> <A-0> <c-w>10gt
 
 noremap <unique> <A-1> <c-w>1gt
 noremap <unique> <A-2> <c-w>2gt
@@ -103,4 +76,3 @@ function! LiteTabLabel()
 endfunction
 
 set guitablabel=%{LiteTabLabel()}
-

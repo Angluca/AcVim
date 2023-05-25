@@ -5,7 +5,7 @@
 """"""""""""""
 " filetypes {{{
 """"""""""""""
-SetFiletype('*.vimbp,*.vimspec', 'vim')
+SetFiletype('*.vim*,*.snip', 'vim')
 SetFiletype('README*,COPYING', 'txt')
 SetFiletype('*.txt,*.log', 'txt')
 SetFiletype('*.asm', 'masm')
@@ -58,8 +58,8 @@ noremap <c-i> :EasyCompleteReference<CR>
 noremap <c-[> :BackToOriginalBuffer<CR>
 "nnoremap <silent> <C-k> :EasyCompleteNextDiagnostic<CR>
 "nnoremap <silent> <C-j> :EasyCompletePreviousDiagnostic<CR>
-"let g:easycomplete_tab_trigger="<c-n>"
-"let g:easycomplete_shift_tab_trigger="<c-p>"
+"let g:easycomplete_tab_trigger="<m-tab>"
+"let g:easycomplete_shift_tab_trigger="<m-s-tab>"
 "let g:easycomplete_tabnine_enable = 0
 "let g:easycomplete_tabnine_config = {
 		"\ 'line_limit': 1000,
@@ -69,7 +69,7 @@ noremap <c-[> :BackToOriginalBuffer<CR>
 """"""""""""""
 " acp option {{{
 """"""""""""""
-"-- easycomplete ---
+"-- vim-auto-popmenu ---
 let g:apc_min_length = 2
 let g:apc_enable_ft = {'*':1}
 set cot=menu,menuone,noselect

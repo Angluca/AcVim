@@ -63,7 +63,7 @@ let g:bufExplorerSplitVertSize=30
 """"""""""""""""""""
 "fliplr {{{
 """"""""""""""""""""
-"nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
+nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "}}}
 "-------------------
@@ -171,7 +171,6 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 "let g:NERDCustomDelimiters = {
 "\ 'vim': { 'left': '#' }
 "\ }
-
 let g:NERDCreateDefaultMappings=0
 AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
 AcCreateMaps('<plug>NERDCommenterToggle',     ';x<space>')
@@ -190,26 +189,29 @@ AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
 """"""""""""""""""""
 "easymotion {{{
 """"""""""""""""""""
-"let g:EasyMotion_keys= 'asdghklqwertyuiopzxcvbnmfj;'
-let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
-let g:EasyMotion_leader_key = '<space>'
-let g:EasyMotion_startofline = 0
-let g:EasyMotion_do_shade = 0
-let g:EasyMotion_smartcase = 1
-"let g:EasyMotion_use_upper = 1
-let g:EasyMotion_enter_jump_first = 1
-"let g:EasyMotion_space_jump_first = 0
-"let g:EasyMotion_disable_two_key_combo = 0
-"let g:EasyMotion_off_screen_search = 0
-map  f <Plug>(easymotion-bd-f)
-nmap f <Plug>(easymotion-overwin-f)
-nmap F <Plug>(easymotion-overwin-f2)
-map  <space>f <Plug>(easymotion-bd-fn)
-nmap  <space>f <Plug>(easymotion-bd-fn)
-map  t <Plug>(easymotion-bd-w)
-nmap  t <Plug>(easymotion-overwin-w)
-map T <Plug>(easymotion-bd-jk)
-nmap T <Plug>(easymotion-overwin-line)
+""let EasyMotion_do_mapping = 0
+""let g:EasyMotion_keys= 'asdghklqwertyuiopzxcvbnmfj;'
+"let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
+"let g:EasyMotion_leader_key = '<space>'
+"let g:EasyMotion_startofline = 0
+"let g:EasyMotion_do_shade = 0
+"let g:EasyMotion_smartcase = 1
+""let g:EasyMotion_grouping = 1
+""let g:EasyMotion_use_upper = 1
+"let g:EasyMotion_enter_jump_first = 1
+""let g:EasyMotion_use_regexp = 1
+""let g:EasyMotion_space_jump_first = 0
+""let g:EasyMotion_disable_two_key_combo = 0
+""let g:EasyMotion_off_screen_search = 0
+""map  f <Plug>(easymotion-jumptoanywhere)
+"map  f <Plug>(easymotion-bd-f)
+"nmap f <Plug>(easymotion-overwin-f)
+"nmap F <Plug>(easymotion-overwin-f2)
+"map  F <Plug>(easymotion-bd-fn)
+"map  t <Plug>(easymotion-bd-w)
+"nmap  t <Plug>(easymotion-overwin-w)
+"map T <Plug>(easymotion-bd-jk)
+"nmap T <Plug>(easymotion-overwin-line)
 "}}}
 """"""""""""""""""""
 "incsearch {{{
@@ -275,7 +277,7 @@ let g:vimim_toggle = 'wubi'
 let g:clever_f_across_no_line = 1
 let g:clever_f_ignore_case = 0
 let g:clever_f_smart_case = 0
-let g:clever_f_fix_key_direction = 1
+let g:clever_f_fix_key_direction = 0
 let g:clever_f_show_prompt = 0
 "}}}
 """"""""""""""""""""
@@ -321,8 +323,8 @@ let g:elm_syntastic_show_warnings = 1
 """"""""""""""""""""
 let g:miniSnip_dirs = [ $VIM.'miniSnips' ]
 let g:miniSnip_local = 'miniSnips'
-let g:miniSnip_trigger = '<C-j>'
-let g:miniSnip_complkey ='<C-x><C-u>' 
+"let g:miniSnip_trigger = '<C-j>'
+"let g:miniSnip_complkey ='<C-x><C-u>' 
 "let g:miniSnip_ext = 'snip'
 let g:miniSnip_extends = {
 			\ 'cpp' : [ 'c' ],
@@ -330,12 +332,12 @@ let g:miniSnip_extends = {
 "let g:miniSnip_extends['nim'] = [ 'nico' ]
 "}}}
 """"""""""""""""""""
-"AsyncRun&Task {{{
+"AsyncRun {{{
 """"""""""""""""""""
 "--Run-------------------------"
 com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
-com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
+"com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
 let g:asyncrun_open = 8
 "let g:asyncrun_auto = 'make'
 "let g:asyncrun_last = 3
@@ -352,46 +354,11 @@ nmap <space><space> <esc>
 "nmap <space>R :AcRun! 
 nmap <space>r :AcRun 
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
-"&shell
-nmap <space>u :AcUiRun 
-nmap <space>U :AcUiRun -close=1 zsh<cr>
-"let g:asyncrun_wrapper = ''
-"let g:asyncrun_shell = '/usr/bin/zsh'
-"let g:asyncrun_shellflag = '-c'
-"--Tasks-----------------------"
-com -nargs=? SetTasks call s:setTasks(<args>)
-"------
-fu s:setTasks(name='')
-	if g:asynctasks_config_name!='.tasks' && a:name==''
-		return
-	endif
-	let l:name = a:name == '' ? &ft.'.tasks' : a:name
-	let g:asynctasks_config_name = l:name
-	let g:asynctasks_rtp_config = 'tasks/'.l:name
-	"let g:asynctasks_extra_config = 'tasks/config.tasks'
-endf 
-"---
-nmap <space>t  :AsyncTask
-nmap <space>tt :AsyncTask 
-nmap <space>te :AsyncTaskEdit<cr>
-nmap <space>tE :AsyncTaskEdit!<cr>
-nmap <space>tl :AsyncTaskList<cr>
-nmap <space>tL :AsyncTaskList!<cr>
-nmap <space>th :AsyncTaskMacro<cr>
-nmap <space>tH :AsyncTask -M<cr>
-nmap <space>tp :AsyncTaskProfile<cr>
-nmap <space>tm :AsyncTask -h<cr>
-let g:asynctasks_term_focus = 0
-"let g:asynctasks_term_reuse = 1
-"let g:asynctasks_term_pos = 'macos'
-"let g:asynctasks_term_pos = 'quickui'
-let g:asynctasks_term_rows = 6
-let g:asynctasks_term_cols = 80
-"let g:asynctasks_term_close = 1
-let g:quickui_color_scheme = 'papercol'
-au FileType * SetTasks 
-"au FileType nim SetTasks 'nim.tasks'
-"au FileType c,cpp SetTasks 'c.tasks'
+"nmap <space>u :AcUiRun 
+"nmap <space>U :AcUiRun -close=1 zsh<cr>
+""let g:asyncrun_wrapper = ''
+""let g:asyncrun_shell = '/usr/bin/zsh'
+""let g:asyncrun_shellflag = '-c'
 "}}}
 "-------------------
 "}}}
