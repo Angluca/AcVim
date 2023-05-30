@@ -1,0 +1,10 @@
+? ptr alloc autions!!!
+type Data = tuple[x, y: int, s: string]
+# 在堆上为Data分配内存:
+var d = cast[ptr Data](alloc0(sizeof(Data)))
+# 在垃圾回收(GC)堆上创建一个新的字符串:
+d.s = "abc"
+# 告知GC不再需要这个字符串:
+reset(d.s)
+# 释放内存:
+dealloc(d)

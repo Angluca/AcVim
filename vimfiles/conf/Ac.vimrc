@@ -112,17 +112,14 @@ fu! s:setFtCmd(ft, cmd, bc='FileType')
 	exe $"au {a:bc} {a:ft} {a:cmd}"
 endf "}}}
 
-com! -nargs=+ SetAcpDict call s:setCompleteOpt<args> "{{{
-fu! s:setCompleteOpt(ft, df='', bop=0)
-	if a:ft == '' || (a:df == '' && a:bop == v:true)
-		return
-	endif
-	"let l:opt = a:bop == 0 ? (g:acp_completeOption.a:df) : a:df
-	"exe 'au FileType ' . a:ft . ' let g:acp_completeOption=' . string(l:opt)
-	let l:dc = substitute(a:df, ',k', ',', "g")
-	exe 'au FileType ' . a:ft . ' set dict=' . l:dc
-	"exe 'au FileType ' . a:ft . ' set cpt=' . l:opt
-endf "}}}
+com! -nargs=+ SetAcpDict call s:setAcpDict<args> "{{{
+fu! s:setAcpDict(ft, ...)
+  let l:opt = ''
+  for l:file in a:000
+    let l:opt = l:opt.','.$VIMDICT.l:file
+  endfor
+  exe 'au FileType '.a:ft.' set dict='.l:opt
+endf
 
 com! ToggleVE call ToggleVirtualEditMode() "{{{
 fu! ToggleVirtualEditMode()
@@ -272,6 +269,7 @@ set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
 "chinese=zh_CN.UTF-8 english=en_US.UTF-8
 if v:lang == "zh_CN"
 	set langmenu=zh_CN.UTF-8
+  set helplang=cn
 	if has("gui_running")
 		language messages zh_CN.utf-8
 	else
@@ -507,7 +505,7 @@ let g:netrw_nogx = 1
 "User options {{{
 """"""""""""""""""""
 "time
-iab xt <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+"iab xt <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 "edit vimrc enable fold
 set fdm=marker
 "au BufRead,BufNewFile Ac.vimrc setl fdm=marker fen
@@ -621,6 +619,8 @@ nmap <silent> ;qa :qa<cr>
 nmap <silent> ;<cr> :noh<cr>
 nmap <silent> ; <esc>
 nmap <silent> , <esc>
+"nmap <space><space> \<space>
+nmap <space><space> <esc>
 
 "not use
 map ZZ <esc>

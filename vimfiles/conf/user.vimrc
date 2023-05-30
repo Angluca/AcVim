@@ -58,7 +58,7 @@ let g:bufExplorerShowRelativePath=1
 let g:bufExplorerSplitRight=1
 let g:bufExplorerSplitBelow=1
 let g:bufExplorerSplitHorzSize=6
-let g:bufExplorerSplitVertSize=30 
+let g:bufExplorerSplitVertSize=30
 "}}}
 """"""""""""""""""""
 "fliplr {{{
@@ -270,6 +270,9 @@ let g:vimim_mycloud = 0
 let g:vimim_punctuation = 0
 let g:vimim_shuangpin = 0
 let g:vimim_toggle = 'wubi'
+"--vime---
+"inoremap <silent><m-l>  <C-R>=VimeSwitch()<CR>
+"nnoremap <silent><m-l>  :call VimeInverseLookup()<CR>
 "}}}
 """"""""""""""""""""
 "clever-f {{{
@@ -324,7 +327,7 @@ let g:elm_syntastic_show_warnings = 1
 let g:miniSnip_dirs = [ $VIM.'miniSnips' ]
 let g:miniSnip_local = 'miniSnips'
 "let g:miniSnip_trigger = '<C-j>'
-"let g:miniSnip_complkey ='<C-x><C-u>' 
+"let g:miniSnip_complkey ='<C-x><C-u>'
 "let g:miniSnip_ext = 'snip'
 let g:miniSnip_extends = {
 			\ 'cpp' : [ 'c' ],
@@ -347,14 +350,13 @@ let g:asyncrun_open = 8
 let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks']
 let g:asyncrun_capture_file = $VIMDATA.'cache/capture.tmp'
 nmap <space>l :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
-nmap <space>q :AsyncStop<cr>
-nmap <space>Q :AsyncStop!<cr>
-nmap <space><space> <esc>
+"nmap <space>q :AsyncStop<cr>
+"nmap <space>Q :AsyncStop!<cr>
 
-"nmap <space>R :AcRun! 
-nmap <space>r :AcRun 
+"nmap <space>R :AcRun!
+nmap <space>r :AcRun
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
-"nmap <space>u :AcUiRun 
+"nmap <space>u :AcUiRun
 "nmap <space>U :AcUiRun -close=1 zsh<cr>
 ""let g:asyncrun_wrapper = ''
 ""let g:asyncrun_shell = '/usr/bin/zsh'
