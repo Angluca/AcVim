@@ -218,24 +218,24 @@ AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
 """"""""""""""""""""
 set hlsearch
 "let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
+nmap n  <Plug>(incsearch-nohl-n)
+nmap N  <Plug>(incsearch-nohl-N)
+nmap *  <Plug>(incsearch-nohl-*)
+nmap #  <Plug>(incsearch-nohl-#)
+nmap g* <Plug>(incsearch-nohl-g*)
+nmap g# <Plug>(incsearch-nohl-g#)
 
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
+nmap /  <Plug>(incsearch-forward)
+nmap ?  <Plug>(incsearch-backward)
 "map ? <Plug>(incsearch-stay)
 
-map g/ <Plug>(incsearch-fuzzy-/)
-map g? <Plug>(incsearch-fuzzy-/)
-"map g? <Plug>(incsearch-fuzzy-stay)
+nmap g/ <Plug>(incsearch-fuzzy-/)
+nmap g? <Plug>(incsearch-fuzzy-/)
+"nmap g? <Plug>(incsearch-fuzzy-stay)
 
-"map <space>/ <Plug>(incsearch-fuzzyword-/)
-"map <space>? <Plug>(incsearch-fuzzyword-?)
-"map <space>g/ <Plug>(incsearch-fuzzyword-stay)
+"nmap <space>/ <Plug>(incsearch-fuzzyword-/)
+"nmap <space>? <Plug>(incsearch-fuzzyword-?)
+"nmap <space>g/ <Plug>(incsearch-fuzzyword-stay)
 
 "--select *find--
 vnoremap * y/<c-r>"<cr>
