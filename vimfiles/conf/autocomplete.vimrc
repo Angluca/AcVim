@@ -89,9 +89,9 @@ let g:acp_enableAtStartup = 1
 let g:acp_ignorecaseOption = 1
 "let g:acp_mappingDriven = 1
 "let g:acp_completeoptPreview = 1
-"let g:acp_completeOption='.,w,b,u,t,i,d,k'
-let g:acp_completeOption='.,w,b,u,t,k'
-"let g:acp_completeOption='.,k,w,b'
+"let g:acp_completeOption='.,k,b,w,u,t,i,d'
+let g:acp_completeOption='.,k,b,w,u,t'
+"let g:acp_completeOption='.,k,b,w'
 exe 'set cpt=' . g:acp_completeOption
 "set cpt=.,w,b,u,t,k "单,k'可扫描所有dict的文件, 可以k+文件但没有必要
 ".. 当前缓冲区
@@ -125,15 +125,15 @@ SetAcpDict('sh', 'bash.dict')
 SetAcpDict('squirrel', 'squirrel.dict')
 SetAcpDict('lua', 'lua.dict')
 SetAcpDict('zig', 'zigtags')
-"SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict')
-SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
+SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict')
+"SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
 "}}}
 "-------------------
 "nico
 au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
 "au FileType nim setl tags+=$VIMDICT/nicotags
-"SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
-SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','nico.dict')
+SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
+"SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','nico.dict')
 "-------------------
 "naylib
 "au FileType nim let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'

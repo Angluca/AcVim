@@ -525,7 +525,7 @@ nmap <s-right> <C-W>>
 
 "Bash like
 map! <c-a> <home>
-map! <c-e> <end>
+cmap <c-e> <end>
 map! <c-f> <right>
 map! <c-b> <left>
 
