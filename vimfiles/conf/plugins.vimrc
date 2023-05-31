@@ -16,10 +16,6 @@ call plug#begin(s:bundle_dir)
 "bundle
 "-----------------------
 Plug 'Jorengarenar/miniSnip'
-Plug 'skywind3000/asyncrun.vim'
-"Plug 'skywind3000/asynctasks.vim'
-"Plug 'skywind3000/vim-quickui.vim'
-Plug 'jayli/vim-easycomplete'
 
 Plug 'haya14busa/incsearch.vim'
 "Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -56,7 +52,11 @@ Plug 'vim-scripts/VisIncr'
 "Plug 'lifepillar/vim-mucomplete'
 "Plug 'sheerun/vim-polyglot'
 
-"Plug 'SirVer/ultisnips'
+Plug 'hahdookin/miniterm.vim'
+Plug 'skywind3000/asyncrun.vim'
+"Plug 'skywind3000/asynctasks.vim'
+"Plug 'skywind3000/vim-quickui.vim'
+"Plug 'jayli/vim-easycomplete'
 "Plug 'mattn/emmet-vim'
 "Plug 'vim-scripts/VimIM'
 "Plug 'tikhomirov/vim-glsl'
@@ -67,6 +67,7 @@ Plug 'vim-scripts/VisIncr'
 "Plug 'dkprice/vim-easygrep'
 "Plug 'godlygeek/tabular'
 "Plug 'preservim/vimux'
+"Plug 'SirVer/ultisnips'
 
 "Plug 'MarcWeber/vim-addon-mw-utils'
 "Plug 'tomtom/tlib_vim'

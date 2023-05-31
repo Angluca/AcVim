@@ -40,7 +40,7 @@ au BufWrite *.nim,*.nims,*.zig :DelTWS
 "for language
 au FileType nim nmap \= :Mtags nimtags $VIMDICT/nim.ctags<cr>
 au FileType nim let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
-"au FileType nim setl tags+=$VIMDICT/nimtags,nimtags
+au FileType nim setl tags+=$VIMDICT/nimtags,nimtags
 au FileType c,cpp setl tags +=$VIMDICT/cpptags
 au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType zig setl tags +=$VIMDICT/zigtags
@@ -126,7 +126,7 @@ SetAcpDict('squirrel', 'squirrel.dict')
 SetAcpDict('lua', 'lua.dict')
 SetAcpDict('zig', 'zigtags')
 "SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict')
-"SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
+SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
 "}}}
 "-------------------
 "nico

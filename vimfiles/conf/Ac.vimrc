@@ -118,7 +118,7 @@ fu! s:setAcpDict(ft, ...)
   for l:file in a:000
     let l:opt = l:opt.','.$VIMDICT.l:file
   endfor
-  exe 'au FileType '.a:ft.' set dict='.l:opt
+  exe 'au FileType '.a:ft.' setl dict='.l:opt
 endf
 
 com! ToggleVE call ToggleVirtualEditMode() "{{{
