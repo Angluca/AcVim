@@ -348,7 +348,7 @@ C_JmpBuf	$NIMLIB/system/ansi_c.nim	/^    C_JmpBuf* {.importc: "jmp_buf", header:
 CacheCounter	$NIMLIB/core/macrocache.nim	/^  CacheCounter* = distinct string$/;"	t
 CacheSeq	$NIMLIB/core/macrocache.nim	/^  CacheSeq* = distinct string$/;"	t
 CacheTable	$NIMLIB/core/macrocache.nim	/^  CacheTable* = distinct string$/;"	t
-CallNodes	$NIMLIB/core/macros.nim	/^  CallNodes* = {nnkCall, nnkInfix, nnkPrefix, nnkPostfix, nnkCommand,$/;"	t
+CallNodes	$NIMLIB/core/macros.nim	/^  CallNodes* = nnkCallKinds$/;"	t
 Callback	$NIMLIB/pure/asyncdispatch.nim	/^    Callback* = proc (fd: AsyncFD): bool {.closure, gcsafe.}$/;"	t
 CalloutBlock	$NIMLIB/wrappers/pcre.nim	/^  CalloutBlock* = object$/;"	t
 CaptureBounds	$NIMLIB/impure/nre.nim	/^  CaptureBounds* = distinct RegexMatch$/;"	t
@@ -1336,7 +1336,6 @@ GC_disable	$NIMLIB/system/gc_interface.nim	/^  template GC_disable* =$/;"	t
 GC_disableMarkAndSweep	$NIMLIB/system/gc_interface.nim	/^  template GC_disableMarkAndSweep* =$/;"	t
 GC_disableMarkAndSweep	$NIMLIB/system/orc.nim	/^proc GC_disableMarkAndSweep*() =$/;"	t
 GC_disableOrc	$NIMLIB/system/orc.nim	/^proc GC_disableOrc*() =$/;"	t
-GC_dumpHeap	$NIMLIB/system/gc2.nim	/^proc GC_dumpHeap*(file: File) =$/;"	t
 GC_enable	$NIMLIB/system/gc_interface.nim	/^  template GC_enable* =$/;"	t
 GC_enableMarkAndSweep	$NIMLIB/system/gc_interface.nim	/^  template GC_enableMarkAndSweep* =$/;"	t
 GC_enableMarkAndSweep	$NIMLIB/system/orc.nim	/^proc GC_enableMarkAndSweep*() =$/;"	t
@@ -1353,10 +1352,8 @@ GC_ref	$NIMLIB/system/arc.nim	/^proc GC_ref*[T](x: ref T) =$/;"	t
 GC_ref	$NIMLIB/system/gc_interface.nim	/^  template GC_ref*[T](x: seq[T]) =$/;"	t
 GC_runOrc	$NIMLIB/system/orc.nim	/^proc GC_runOrc* =$/;"	t
 GC_setMaxPause	$NIMLIB/system/gc.nim	/^  proc GC_setMaxPause*(MaxPauseInUs: int) =$/;"	t
-GC_setMaxPause	$NIMLIB/system/gc2.nim	/^  proc GC_setMaxPause*(MaxPauseInUs: int) =$/;"	t
 GC_setStrategy	$NIMLIB/system/gc_interface.nim	/^  template GC_setStrategy* =$/;"	t
 GC_step	$NIMLIB/system/gc.nim	/^  proc GC_step*(us: int, strongAdvice = false, stackSize = -1) {.noinline.} =$/;"	t
-GC_step	$NIMLIB/system/gc2.nim	/^  proc GC_step*(us: int, strongAdvice = false, stackSize = -1) {.noinline.} =$/;"	t
 GC_unref	$NIMLIB/system/arc.nim	/^proc GC_unref*[T](x: ref T) =$/;"	t
 GC_unref	$NIMLIB/system/gc_interface.nim	/^  template GC_unref*[T](x: seq[T]) =$/;"	t
 GENERIC_ALL	$NIMLIB/windows/winlean.nim	/^  GENERIC_ALL* = 0x10000000'i32$/;"	t
@@ -1767,7 +1764,7 @@ IpAddress	$NIMLIB/pure/net.nim	/^  IpAddress* = object                  ## store
 IpAddressFamily	$NIMLIB/pure/net.nim	/^  IpAddressFamily* {.pure.} = enum ## Describes the type of an IP address$/;"	t
 IsoWeekRange	$NIMLIB/pure/times.nim	/^  IsoWeekRange* = range[1 .. 53]$/;"	t
 IsoYear	$NIMLIB/pure/times.nim	/^  IsoYear* = distinct int$/;"	t
-Isolated	$NIMLIB/std/isolation.nim	/^  Isolated*[T] = object ## Isolated data can only be moved, not copied.$/;"	t
+Isolated	$NIMLIB/std/isolation.nim	/^  Isolated*[T] {.sendable.} = object ## Isolated data can only be moved, not copied.$/;"	t
 Item	$NIMLIB/experimental/diff.nim	/^  Item* = object    ## An Item in the list of differences.$/;"	t
 JAVASCRIPT_COMPAT	$NIMLIB/wrappers/pcre.nim	/^  JAVASCRIPT_COMPAT* = 0x02000000  # C5$/;"	t
 JSON	$NIMLIB/js/jscore.nim	/^  JSON* {.importc, nodecl.}: JsonLib$/;"	t
@@ -5142,7 +5139,7 @@ defaultFindRefFile	$NIMLIB/packages/docutils/rst.nim	/^proc defaultFindRefFile*(
 defaultFmtStr	$NIMLIB/pure/logging.nim	/^  defaultFmtStr* = "$levelname "                         ## The default format string.$/;"	t
 defaultInitialSize	$NIMLIB/pure/collections/deques.nim	/^  defaultInitialSize* = 4$/;"	t
 defaultInitialSize	$NIMLIB/pure/collections/sets.nim	/^  defaultInitialSize* = 64$/;"	t
-defaultInitialSize	$NIMLIB/pure/collections/tables.nim	/^  defaultInitialSize* = 32$/;"	t
+defaultInitialSize	$NIMLIB/pure/collections/tableimpl.nim	/^  defaultInitialSize* = 32$/;"	t
 defaultMsgHandler	$NIMLIB/packages/docutils/rst.nim	/^proc defaultMsgHandler*(filename: string, line, col: int, msgkind: MsgKind,$/;"	f
 defineSymbol	$NIMLIB/wrappers/tinyc.nim	/^proc defineSymbol*(s: PccState, sym, value: cstring) {.cdecl,$/;"	f
 defined	$NIMLIB/system/compilation.nim	/^proc defined*(x: untyped): bool {.magic: "Defined", noSideEffect, compileTime.}$/;"	f
@@ -5377,10 +5374,10 @@ execvpe	$NIMLIB/posix/posix.nim	/^proc execvpe*(a1: cstring, a2: cstringArray, a
 exists	$NIMLIB/std/logic.nim	/^proc exists*(args: varargs[untyped]): bool {.magic: "Exists".}$/;"	f
 exists	$NIMLIB/system/nimscript.nim	/^proc exists*(key: string): bool =$/;"	t
 existsCookie	$NIMLIB/pure/cgi.nim	/^proc existsCookie*(name: string): bool =$/;"	t
-existsDir	$NIMLIB/pure/os.nim	/^    template existsDir*(args: varargs[untyped]): untyped {.deprecated: "use dirExists".} =$/;"	t
+existsDir	$NIMLIB/pure/os.nim	/^  template existsDir*(args: varargs[untyped]): untyped {.deprecated: "use dirExists".} =$/;"	t
 existsEnv	$NIMLIB/std/envvars.nim	/^    proc existsEnv*(key: string): bool {.tags: [ReadEnvEffect].} =$/;"	t
 existsEnv	$NIMLIB/system/nimscript.nim	/^proc existsEnv*(key: string): bool {.tags: [ReadIOEffect].} =$/;"	t
-existsFile	$NIMLIB/pure/os.nim	/^    template existsFile*(args: varargs[untyped]): untyped {.deprecated: "use fileExists".} =$/;"	t
+existsFile	$NIMLIB/pure/os.nim	/^  template existsFile*(args: varargs[untyped]): untyped {.deprecated: "use fileExists".} =$/;"	t
 existsOrCreateDir	$NIMLIB/std/dirs.nim	/^proc existsOrCreateDir*(dir: Path): bool {.inline, tags: [WriteDirEffect, ReadDirEffect].} =$/;"	t
 existsOrCreateDir	$NIMLIB/std/private/osdirs.nim	/^proc existsOrCreateDir*(dir: string): bool {.rtl, extern: "nos$1",$/;"	f
 exitStatusLikeShell	$NIMLIB/pure/os.nim	/^proc exitStatusLikeShell*(status: cint): cint =$/;"	t
@@ -5590,7 +5587,6 @@ gai_strerror	$NIMLIB/posix/posix.nim	/^proc gai_strerror*(a1: cint): cstring {.i
 gamma	$NIMLIB/pure/math.nim	/^    func gamma*(x: float64): float64 {.importc: "tgamma", header: "<math.h>".} =$/;"	t
 gauss	$NIMLIB/pure/random.nim	/^proc gauss*(r: var Rand; mu = 0.0; sigma = 1.0): float {.since: (1, 3).} =$/;"	t
 gcInvariant	$NIMLIB/system/gc.nim	/^proc gcInvariant*() =$/;"	t
-gcInvariant	$NIMLIB/system/gc2.nim	/^proc gcInvariant*() =$/;"	t
 gcd	$NIMLIB/pure/math.nim	/^func gcd*[T](x: openArray[T]): T {.since: (1, 1).} =$/;"	t
 genAst	$NIMLIB/std/genasts.nim	/^template genAst*(args: varargs[untyped]): untyped =$/;"	t
 genAstOpt	$NIMLIB/std/genasts.nim	/^macro genAstOpt*(options: static set[GenAstOpt], args: varargs[untyped]): untyped =$/;"	t
@@ -5666,6 +5662,7 @@ getData	$NIMLIB/pure/ioselects/ioselectors_kqueue.nim	/^proc getData*[T](s: Sele
 getData	$NIMLIB/pure/ioselects/ioselectors_poll.nim	/^proc getData*[T](s: Selector[T], fd: SocketHandle|int): var T =$/;"	t
 getData	$NIMLIB/pure/ioselects/ioselectors_select.nim	/^proc getData*[T](s: Selector[T], fd: SocketHandle|int): var T =$/;"	t
 getData	$NIMLIB/pure/selectors.nim	/^  proc getData*[T](s: Selector[T], fd: SocketHandle|int): var T =$/;"	t
+getDataDir	$NIMLIB/std/appdirs.nim	/^proc getDataDir*(): Path {.inline, tags: [ReadEnvEffect, ReadIOEffect].} =$/;"	t
 getDataDir	$NIMLIB/std/private/osappdirs.nim	/^proc getDataDir*(): string {.rtl, extern: "nos$1"$/;"	f
 getDataUri	$NIMLIB/pure/uri.nim	/^proc getDataUri*(data, mime: string, encoding = "utf-8"): string {.since: (1, 3).} =$/;"	t
 getDateStr	$NIMLIB/pure/times.nim	/^proc getDateStr*(dt = now()): string {.rtl, extern: "nt$1", tags: [TimeEffect].} =$/;"	t
@@ -6040,7 +6037,7 @@ hashIdentity	$NIMLIB/pure/hashes.nim	/^proc hashIdentity*[T: Ordinal|enum](x: T)
 hashIgnoreCase	$NIMLIB/pure/hashes.nim	/^proc hashIgnoreCase*(x: string): Hash =$/;"	t
 hashIgnoreStyle	$NIMLIB/pure/hashes.nim	/^proc hashIgnoreStyle*(x: string): Hash =$/;"	t
 hashWangYi1	$NIMLIB/pure/hashes.nim	/^proc hashWangYi1*(x: int64|uint64|Hash): Hash {.inline.} =$/;"	t
-hcrAddEventHandler	$NIMLIB/nimhcr.nim	/^  proc hcrAddEventHandler*(isBefore: bool, cb: proc ()) {.nimhcr.} =$/;"	t
+hcrAddEventHandler	$NIMLIB/nimhcr.nim	/^  proc hcrAddEventHandler*(isBefore: bool, cb: proc () {.nimcall.}) {.nimhcr.} =$/;"	t
 hcrAddModule	$NIMLIB/nimhcr.nim	/^  proc hcrAddModule*(module: cstring) {.nimhcr.} =$/;"	t
 hcrGeneration	$NIMLIB/nimhcr.nim	/^  proc hcrGeneration*(): int {.nimhcr.} =$/;"	t
 hcrGetGlobal	$NIMLIB/nimhcr.nim	/^  proc hcrGetGlobal*(module: cstring, name: cstring): pointer {.nimhcr.} =$/;"	t
@@ -6226,7 +6223,7 @@ intersection	$NIMLIB/std/packedsets.nim	/^proc intersection*[A](s1, s2: PackedSe
 inv	$NIMLIB/pure/complex.nim	/^func inv*[T](z: Complex[T]): Complex[T] =$/;"	t
 invalidFilenameChars	$NIMLIB/pure/os.nim	/^    invalidFilenameChars* = {'\/', '\\\\', ':', '*', '?', '"', '<', '>', '|', '^', '\\0'} ## \\$/;"	t
 invalidFilenames	$NIMLIB/pure/os.nim	/^    invalidFilenames* = [$/;"	t
-invoke	$NIMLIB/std/tasks.nim	/^proc invoke*(task: Task) {.inline, gcsafe.} =$/;"	t
+invoke	$NIMLIB/std/tasks.nim	/^proc invoke*(task: Task; res: pointer = nil) {.inline, gcsafe.} =$/;"	t
 invokeNew	$NIMLIB/core/typeinfo.nim	/^proc invokeNew*(x: Any) =$/;"	t
 invokeNewSeq	$NIMLIB/core/typeinfo.nim	/^proc invokeNewSeq*(x: Any, len: int) =$/;"	t
 ioctl	$NIMLIB/posix/posix.nim	/^proc ioctl*(f: FileHandle, device: uint): int {.importc: "ioctl",$/;"	f
@@ -6596,6 +6593,7 @@ min10Exponent	$NIMLIB/pure/fenv.nim	/^template min10Exponent*(T: typedesc[float6
 minExponent	$NIMLIB/pure/fenv.nim	/^template minExponent*(T: typedesc[float64]): int = DBL_MIN_EXP$/;"	t
 minIndex	$NIMLIB/pure/collections/sequtils.nim	/^func minIndex*[T](s: openArray[T]): int {.since: (1, 1).} =$/;"	t
 minimumPositiveValue	$NIMLIB/pure/fenv.nim	/^template minimumPositiveValue*(T: typedesc[float64]): float64 = DBL_MIN$/;"	t
+minmax	$NIMLIB/pure/collections/sequtils.nim	/^func minmax*[T](x: openArray[T]): (T, T) =$/;"	t
 minute	$NIMLIB/pure/times.nim	/^proc minute*(dt: DateTime): MinuteRange {.inline.} =$/;"	t
 minutes	$NIMLIB/pure/times.nim	/^proc minutes*(m: int): TimeInterval {.inline.} =$/;"	t
 missingOrExcl	$NIMLIB/pure/collections/critbits.nim	/^proc missingOrExcl*[T](c: var CritBitTree[T], key: string): bool =$/;"	t
@@ -8127,6 +8125,7 @@ toCstring	$NIMLIB/std/jsbigints.nim	/^func toCstring*(this: JsBigInt; radix: 2..
 toCstring	$NIMLIB/std/jsfetch.nim	/^func toCstring*(self: Request | Response | FetchOptions): cstring {.importjs: "JSON.stringify(#)/;"	f
 toCstring	$NIMLIB/std/jsformdata.nim	/^func toCstring*(self: FormData): cstring {.importjs: "JSON.stringify(#)".}$/;"	f
 toCstring	$NIMLIB/std/jsheaders.nim	/^func toCstring*(self: Headers): cstring {.importjs: "JSON.stringify(Array.from(#.entries()))".}$/;"	f
+toDateString	$NIMLIB/js/jscore.nim	/^func toDateString*(d: DateTime): cstring {.importcpp.}$/;"	f
 toDecimal64	$NIMLIB/std/private/dragonbox.nim	/^proc toDecimal64*(ieeeSignificand: uint64; ieeeExponent: uint64): FloatingDecimal64 {.$/;"	f
 toDecimal64AsymmetricInterval	$NIMLIB/std/private/dragonbox.nim	/^proc toDecimal64AsymmetricInterval*(e2: int32): FloatingDecimal64 {.inline.} =$/;"	t
 toDeque	$NIMLIB/pure/collections/deques.nim	/^proc toDeque*[T](x: openArray[T]): Deque[T] {.since: (1, 3).} =$/;"	t
@@ -8139,10 +8138,12 @@ toFloat	$NIMLIB/system.nim	/^proc toFloat*(i: int): float {.noSideEffect, inline
 toHashSet	$NIMLIB/pure/collections/sets.nim	/^proc toHashSet*[A](keys: openArray[A]): HashSet[A] =$/;"	t
 toHeapQueue	$NIMLIB/pure/collections/heapqueue.nim	/^proc toHeapQueue*[T](x: openArray[T]): HeapQueue[T] {.since: (1, 3).} =$/;"	t
 toHex	$NIMLIB/pure/strutils.nim	/^func toHex*[T: SomeInteger](x: T, len: Positive): string =$/;"	t
+toISOString	$NIMLIB/js/jscore.nim	/^func toISOString*(d: DateTime): cstring {.importcpp.}$/;"	f
 toInt	$NIMLIB/pure/nativesockets.nim	/^proc toInt*(typ: SockType): cint$/;"	f
 toInt	$NIMLIB/pure/rationals.nim	/^func toInt*[T](x: Rational[T]): int =$/;"	t
 toInt	$NIMLIB/system.nim	/^proc toInt*(f: float): int {.noSideEffect.} =$/;"	t
 toIntSet	$NIMLIB/pure/collections/intsets.nim	/^proc toIntSet*(x: openArray[int]): IntSet {.since: (1, 3), inline.} = toPackedSet[int](x)$/;"	t
+toJSON	$NIMLIB/js/jscore.nim	/^func toJSON*(d: DateTime): cstring {.importcpp.}$/;"	f
 toJs	$NIMLIB/js/jsffi.nim	/^template toJs*(s: string): JsObject = cstring(s).toJs$/;"	t
 toJsKey	$NIMLIB/js/jsffi.nim	/^proc toJsKey*[T: enum](text: cstring, t: type T): T =$/;"	t
 toJson	$NIMLIB/std/jsonutils.nim	/^proc toJson*[T](a: T, opt = initToJsonOptions()): JsonNode =$/;"	t
@@ -8185,10 +8186,12 @@ toTable	$NIMLIB/impure/nre.nim	/^func toTable*(pattern: Captures): Table[string,
 toTable	$NIMLIB/pure/collections/tables.nim	/^proc toTable*[A, B](pairs: openArray[(A, B)]): Table[A, B] =$/;"	t
 toTask	$NIMLIB/std/tasks.nim	/^macro toTask*(e: typed{nkCall | nkInfix | nkPrefix | nkPostfix | nkCommand | nkCallStrLit}): Tas/;"	t
 toTime	$NIMLIB/pure/times.nim	/^proc toTime*(dt: DateTime): Time {.tags: [], raises: [], benign.} =$/;"	t
+toTimeString	$NIMLIB/js/jscore.nim	/^func toTimeString*(d: DateTime): cstring {.importcpp.}$/;"	f
 toTitle	$NIMLIB/pure/unicode.nim	/^proc toTitle*(c: Rune): Rune {.rtl, extern: "nuc$1".} =$/;"	t
 toU16	$NIMLIB/system/arithmetics.nim	/^  proc toU16*(x: int): int16 {.deprecated.} =$/;"	t
 toU32	$NIMLIB/system/arithmetics.nim	/^  proc toU32*(x: int64): int32 {.deprecated.} =$/;"	t
 toU8	$NIMLIB/system/arithmetics.nim	/^  proc toU8*(x: int): int8 {.deprecated.} =$/;"	t
+toUTCString	$NIMLIB/js/jscore.nim	/^func toUTCString*(d: DateTime): cstring {.importcpp.}$/;"	f
 toUTF8	$NIMLIB/pure/unicode.nim	/^proc toUTF8*(c: Rune): string {.rtl, extern: "nuc$1".} =$/;"	t
 toUgly	$NIMLIB/pure/json.nim	/^proc toUgly*(result: var string, node: JsonNode) =$/;"	t
 toUnix	$NIMLIB/pure/times.nim	/^proc toUnix*(t: Time): int64 {.benign, tags: [], raises: [], noSideEffect.} =$/;"	t
@@ -8378,7 +8381,7 @@ warn	$NIMLIB/pure/logging.nim	/^template warn*(args: varargs[string, `$`]) =$/;"
 warning	$NIMLIB/core/macros.nim	/^proc warning*(msg: string, n: NimNode = nil) {.magic: "NWarning", benign.}$/;"	t
 warning	$NIMLIB/system/nimscript.nim	/^proc warning*(name: string; val: bool) =$/;"	t
 warningStr	$NIMLIB/pure/parsecfg.nim	/^proc warningStr*(c: CfgParser, msg: string): string {.rtl, extern: "npc$1".} =$/;"	t
-wasMoved	$NIMLIB/system.nim	/^proc wasMoved*[T](obj: var T) {.magic: "WasMoved", noSideEffect.} =$/;"	t
+wasMoved	$NIMLIB/system.nim	/^proc wasMoved*[T](obj: var T) {.inline, noSideEffect.} =$/;"	t
 wbr	$NIMLIB/pure/htmlgen.nim	/^macro wbr*(e: varargs[untyped]): untyped =$/;"	t
 wd	$NIMLIB/posix/inotify.nim	/^    wd* {.importc: "wd".}: FileHandle                  ## Watch descriptor.$/;"	t
 weekday	$NIMLIB/pure/times.nim	/^proc weekday*(dt: DateTime): WeekDay {.inline.} =$/;"	t

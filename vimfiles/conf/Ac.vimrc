@@ -94,10 +94,8 @@ nmap \- :Ftags '$NIMLIB'<cr>
 
 com! -nargs=+ Mtags call s:makeTags(<f-args>) "{{{
 fu! s:makeTags(f, opt='')
-	if a:f != ''
-		let l:opt = a:opt==''?'':'--options='.a:opt
-		exe ':silent !ctags '.l:opt.' -R -f '.a:f
-	endif
+  let l:opt = a:opt==''?'':'--options='.a:opt
+  exe ':silent !ctags '.l:opt.' -R -f '.a:f
 endf
 "}}}
 
@@ -593,6 +591,8 @@ nmap \ff :FmtOpt<cr>
 nmap \fu :se fenc=utf-8<cr>
 nmap \fg :se fenc=GBK<cr>
 "quickfix
+au Filetype qf set syntax=bash
+set syntax=markdown.nim
 "nmap ,cc :ToggleQuickfix<cr>
 "nmap ,cn :cn <cr>
 "nmap ,cp :cp <cr>
@@ -620,19 +620,18 @@ nmap <silent> ;<cr> :noh<cr>
 nmap <silent> ; <esc>
 nmap <silent> , <esc>
 "nmap <space><space> \<space>
-nmap <space><space> <esc>
+nmap <space><space> \<space>
 
 "not use
 map ZZ <esc>
 map ZQ <esc>
 "set nomore
-
 "}}}
 "---------------------------------
-"load filetype and complete conf {{{
-so $VIMCONF/autocomplete.vimrc
 "load user conf
 so $VIMCONF/user.vimrc
+"load filetype and complete conf {{{
+so $VIMCONF/autocomplete.vimrc
 
 nmap <silent> \ee :SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
 nmap <silent> \pp :SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>

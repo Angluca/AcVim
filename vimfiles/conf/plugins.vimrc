@@ -32,7 +32,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'preservim/tagbar'
 "Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'Angluca/auto-pairs'
 "Plug 'Eliot00/auto-pairs' "v9s
 "Plug 'vim-scripts/Mark--Karkat'
 
@@ -52,8 +52,8 @@ Plug 'vim-scripts/VisIncr'
 "Plug 'lifepillar/vim-mucomplete'
 "Plug 'sheerun/vim-polyglot'
 
-Plug 'hahdookin/miniterm.vim'
 Plug 'skywind3000/asyncrun.vim'
+"Plug 'hahdookin/miniterm.vim'
 "Plug 'skywind3000/asynctasks.vim'
 "Plug 'skywind3000/vim-quickui.vim'
 "Plug 'jayli/vim-easycomplete'

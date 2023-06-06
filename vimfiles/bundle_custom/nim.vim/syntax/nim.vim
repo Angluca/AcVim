@@ -35,7 +35,7 @@ syn region nimBrackets       contained extend keepend matchgroup=Bold start=+\(\
 
 syn keyword nimKeyword       addr and as asm atomic
 syn keyword nimKeyword       bind block break
-syn keyword nimKeyword       case cast concept const continue converter
+syn keyword nimKeyword       case cast concept const continue converter class
 syn keyword nimKeyword       defer discard distinct div do
 syn keyword nimKeyword       elif else end enum except export
 syn keyword nimKeyword       finally for from
@@ -49,7 +49,7 @@ syn keyword nimKeyword       proc func method macro template nextgroup=nimFuncti
 syn keyword nimKeyword       ptr
 syn keyword nimKeyword       raise ref return
 syn keyword nimKeyword       shared shl shr static
-syn keyword nimKeyword       try tuple type
+syn keyword nimKeyword       try tuple type typeof
 syn keyword nimKeyword       var vtref vtptr
 syn keyword nimKeyword       when while with without
 syn keyword nimKeyword       xor
@@ -111,7 +111,7 @@ if nim_highlight_builtins == 1
   syn keyword nimBuiltin tofloat toFloat tobiggestfloat toBiggestFloat toint toInt tobiggestint toBiggestInt
   syn keyword nimBuiltin addquitproc addQuitProc
   syn keyword nimBuiltin copy setlen setLen newstring newString zeromem zeroMem copymem copyMem movemem moveMem
-  syn keyword nimBuiltin equalmem equalMem alloc alloc0 realloc dealloc assert
+  syn keyword nimBuiltin equalmem equalMem alloc alloc0 realloc dealloc assert reset
   syn keyword nimBuiltin typedesc typed untyped stmt expr
   syn keyword nimBuiltin echo swap getrefcount getRefcount getcurrentexception getCurrentException Msg
   syn keyword nimBuiltin getoccupiedmem getOccupiedMem getfreemem getFreeMem gettotalmem getTotalMem isnil isNil seqtoptr seqToPtr

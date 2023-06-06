@@ -6,7 +6,7 @@
 " filetypes {{{
 """"""""""""""
 SetFiletype('*.vim*', 'vim')
-SetFiletype('README*,COPYING', 'txt')
+SetFiletype('COPYING', 'txt')
 SetFiletype('*.txt,*.log', 'txt')
 SetFiletype('*.asm', 'masm')
 SetFiletype('*.inc', 'masm')
@@ -17,7 +17,7 @@ SetFiletype('*.as', 'actionscript')
 SetFiletype('CMakeLists.txt', 'cmake')
 SetFiletype('*.make', 'make')
 SetFiletype('*.p', 'pawn')
-SetFiletype('*.md,*.markdown', 'markdown')
+SetFiletype('*.md,*.markdown,README*', 'markdown')
 SetFiletype('*.shd,*.sc', 'glsl')
 SetFiletype('*.mm', 'objc')
 "squirrel script
@@ -30,7 +30,7 @@ SetFiletype('*.gd', 'gdscript')
 SetFiletype('*.wxml', 'html')
 SetFiletype('*.wxss', 'css')
 "nim
-SetFiletype('*.nim,*.nims,*.c2nim,*.snip', 'nim')
+SetFiletype('*.nim*,*.c2nim,*.snip', 'nim')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS

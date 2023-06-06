@@ -341,7 +341,7 @@ let g:miniSnip_extends = {
 com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
 "com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
-let g:asyncrun_open = 8
+let g:asyncrun_open = 12
 "let g:asyncrun_auto = 'make'
 "let g:asyncrun_last = 3
 "let g:asyncrun_mode = 'term'
@@ -354,13 +354,17 @@ nmap <space>l :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
 "nmap <space>Q :AsyncStop!<cr>
 
 "nmap <space>R :AcRun!
-nmap <space>r :AcRun
+nmap <space>r :AcRun 
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
 "nmap <space>u :AcUiRun
 "nmap <space>U :AcUiRun -close=1 zsh<cr>
 ""let g:asyncrun_wrapper = ''
 ""let g:asyncrun_shell = '/usr/bin/zsh'
 ""let g:asyncrun_shellflag = '-c'
+"}}}
+""""""""""""""""""""
+"another {{{
+""""""""""""""""""""
 "}}}
 "-------------------
 "}}}
