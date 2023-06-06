@@ -229,7 +229,7 @@ fu! DeleteTrailingWS(bb=0)
 		endif
 	endif
 	exe "normal mz"
-	%s/\s*\r\?$//ge
+	%s/\s\+\r\?$//ge
 	nohl
 	exe "normal `z"
 endf "}}}
@@ -345,7 +345,7 @@ colorscheme maroloccio
 """"""""""""""""""""
 "Some nice mapping to switch syntax (useful if one mixes different languages in one file)
 "nmap ;$ :syntax sync fromstart<cr>
-au BufEnter * :syntax sync fromstart
+au FileType * :syntax sync fromstart
 "Favorite filetypes
 set ffs=unix,dos
 "set ffs=unix
@@ -591,7 +591,7 @@ nmap \ff :FmtOpt<cr>
 nmap \fu :se fenc=utf-8<cr>
 nmap \fg :se fenc=GBK<cr>
 "quickfix
-au Filetype qf set syntax=bash
+au Filetype qf set syntax=sh
 set syntax=markdown.nim
 "nmap ,cc :ToggleQuickfix<cr>
 "nmap ,cn :cn <cr>
@@ -619,7 +619,7 @@ nmap <silent> ;qa :qa<cr>
 nmap <silent> ;<cr> :noh<cr>
 nmap <silent> ; <esc>
 nmap <silent> , <esc>
-"nmap <space><space> \<space>
+"nmap <space><space> \<esc>
 nmap <space><space> \<space>
 
 "not use
