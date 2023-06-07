@@ -70,8 +70,8 @@ let g:easycomplete_lsp_checking = 0
 " acp option {{{
 """"""""""""""
 "-- vim-auto-popmenu ---
-let g:apc_min_length = 2
 "let g:apc_enable_tab = 0
+let g:apc_min_length = 2
 let g:apc_enable_ft = {'*':1}
 set cot=menu,menuone,noselect
 
