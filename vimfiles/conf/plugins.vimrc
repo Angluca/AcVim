@@ -15,7 +15,7 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
-Plug 'Jorengarenar/miniSnip'
+"Plug 'Jorengarenar/miniSnip'
 
 Plug 'haya14busa/incsearch.vim'
 "Plug 'haya14busa/incsearch-fuzzy.vim'

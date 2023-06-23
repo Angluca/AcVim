@@ -44,6 +44,10 @@ au FileType nim setl tags+=$VIMDICT/nimtags,nimtags
 au FileType c,cpp setl tags +=$VIMDICT/cpptags
 au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType zig setl tags +=$VIMDICT/zigtags
+
+"nmap \- :Ftags '$ZIGLIB'<cr> 
+nmap \- :Ftags '$NIMLIB'<cr> 
+
 "}}}
 """"""""""""""
 " easycomplete {{{
@@ -90,8 +94,8 @@ let g:acp_ignorecaseOption = 1
 "let g:acp_mappingDriven = 1
 "let g:acp_completeoptPreview = 1
 "let g:acp_completeOption='.,k,b,w,u,t,i,d'
-let g:acp_completeOption='.,k,b,w,u,t'
-"let g:acp_completeOption='.,k,b,w'
+"let g:acp_completeOption='.,k,b,w,u,t'
+let g:acp_completeOption='.,k,b,w'
 exe 'set cpt=' . g:acp_completeOption
 "set cpt=.,w,b,u,t,k "单,k'可扫描所有dict的文件, 可以k+文件但没有必要
 ".. 当前缓冲区
@@ -131,7 +135,7 @@ SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict')
 "-------------------
 "nico
 au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
-"au FileType nim setl tags+=$VIMDICT/nicotags
+au FileType nim setl tags+=$VIMDICT/nicotags
 SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
 "SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','nico.dict')
 "-------------------
@@ -140,3 +144,5 @@ SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
 "let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
 "au FileType nim setl tags+=$VIMDICT/naytags
 "SetAcpDict('nim','nimtags','nim.dict','nim_enums.dict',$NAYLIB.'raylib.nim')
+" zig --
+au FileType zig let g:zig_fmt_autosave = 0

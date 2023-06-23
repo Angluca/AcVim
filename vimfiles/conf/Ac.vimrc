@@ -88,8 +88,6 @@ fu! s:formatTags(rd='')
 	endif
 endf
 nmap \0 :Ftags<cr> 
-nmap \- :Ftags '$NIMLIB'<cr> 
-"nmap \- :Ftags '$NIM'<cr> 
 "}}}
 
 com! -nargs=+ Mtags call s:makeTags(<f-args>) "{{{

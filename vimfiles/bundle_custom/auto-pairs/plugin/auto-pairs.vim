@@ -13,7 +13,7 @@ end
 let g:AutoPairsLoaded = 1
 
 if !exists('g:AutoPairs')
-  let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''", "`":"`", "{.":".}"}
+  let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '```':'```', '"""':'"""', "'''":"'''",}
 end
 
 " default pairs base on filetype
@@ -25,7 +25,9 @@ func! AutoPairsDefaultPairs()
   let allPairs = {
         \ 'vim': {'\v^\s*\zs"': ''},
         \ 'rust': {'\w\zs<': '>', '&\zs''': ''},
-        \ 'php': {'<?': '?>//k]', '<?php': '?>//k]'}
+        \ 'php': {'<?': '?>//k]', '<?php': '?>//k]'},
+        \ 'nim': { "{\.":"\.}",'`':'`'},
+        \ 'zig': { "|":"|",},
         \ }
   for [filetype, pairs] in items(allPairs)
     if &filetype == filetype
@@ -370,12 +372,12 @@ endf
 
 func! AutoPairsJump()
   "call search('["\]'')}]','W')
-  call search('["\]''(){}[]','W')
+  call search('["\]`|''(){}[]','W')
 endf
 
 func! AutoPairsBackJump()
   "call search('["\]'')}]','bW')
-  call search('["\]''(){}[]','bW')
+  call search('["\]`|''(){}[]','bW')
 endf
 
 func! AutoPairsMoveCharacter(key)
@@ -553,6 +555,7 @@ func! AutoPairsInit()
   if g:AutoPairsMapBS
     " Use <C-R> instead of <expr> for issue #14 sometimes press BS output strange words
     execute 'inoremap <buffer> <silent> <BS> <C-R>=AutoPairsDelete()<CR>'
+    execute 'inoremap <buffer> <silent> <S-BS> <C-R>=AutoPairsDelete()<CR>'
   end
 
   if g:AutoPairsMapCh
@@ -674,6 +677,7 @@ func! AutoPairsTryInit()
       end
       " Always silent mapping
       execute 'inoremap <script> <buffer> <silent> <CR> '.old_cr.'<SID>AutoPairsReturn'
+      execute 'inoremap <script> <buffer> <silent> <S-CR> '.old_cr.'<SID>AutoPairsReturn'
     end
   endif
   call AutoPairsInit()
