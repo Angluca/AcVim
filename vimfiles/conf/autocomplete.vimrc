@@ -35,7 +35,7 @@ SetFiletype('*.nim*,*.c2nim,*.snip', 'nim')
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
 "SetFtCmd('*.nim,*.nims,*.zig','DelTWS','BufWrite')
-au BufWrite *.nim,*.nims,*.zig :DelTWS
+au BufWrite *.nim**,*.zig :DelTWS
 
 "for language
 au FileType nim nmap \= :Mtags nimtags $VIMDICT/nim.ctags<cr>
@@ -134,10 +134,14 @@ SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict')
 "}}}
 "-------------------
 "nico
-au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
-au FileType nim setl tags+=$VIMDICT/nicotags
-SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
+"au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
+"au FileType nim setl tags+=$VIMDICT/nicotags
+"SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
 "SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','nico.dict')
+
+"au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'
+"au FileType nim setl tags+=$VIMDICT/sokoltags
+"SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','sokoltags','sokol.dict')
 "-------------------
 "naylib
 "au FileType nim let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
@@ -145,4 +149,4 @@ SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
 "au FileType nim setl tags+=$VIMDICT/naytags
 "SetAcpDict('nim','nimtags','nim.dict','nim_enums.dict',$NAYLIB.'raylib.nim')
 " zig --
-au FileType zig let g:zig_fmt_autosave = 0
+"au FileType zig let g:zig_fmt_autosave = 0
