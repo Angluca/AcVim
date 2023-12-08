@@ -8,17 +8,16 @@
 SetFiletype('*.vim*', 'vim')
 SetFiletype('COPYING', 'txt')
 SetFiletype('*.txt,*.log', 'txt')
-SetFiletype('*.asm', 'masm')
-SetFiletype('*.inc', 'masm')
+SetFiletype('*.asm,*.inc', 'masm')
 SetFtCmd('masm', 'setl mp=fasm\ %:p')
 
-SetFiletype('*.mxml', 'mxml')
-SetFiletype('*.as', 'actionscript')
+SetFiletype('*.glsl,*.vsh,*.fsh,*.vert,*.frag,*.shd,*.flecs', 'd')
+SetFiletype('*.md,*.markdown,README*', 'markdown')
 SetFiletype('CMakeLists.txt', 'cmake')
+SetFiletype('*.as', 'actionscript')
+SetFiletype('*.mxml', 'mxml')
 SetFiletype('*.make', 'make')
 SetFiletype('*.p', 'pawn')
-SetFiletype('*.md,*.markdown,README*', 'markdown')
-SetFiletype('*.shd,*.sc', 'glsl')
 SetFiletype('*.mm', 'objc')
 "squirrel script
 SetFiletype('*.nut', 'squirrel')
@@ -138,7 +137,7 @@ SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict')
 "au FileType nim setl tags+=$VIMDICT/nicotags
 "SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
 "SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','nico.dict')
-
+"sokol
 "au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'
 "au FileType nim setl tags+=$VIMDICT/sokoltags
 "SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','sokoltags','sokol.dict')
@@ -149,4 +148,4 @@ SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict')
 "au FileType nim setl tags+=$VIMDICT/naytags
 "SetAcpDict('nim','nimtags','nim.dict','nim_enums.dict',$NAYLIB.'raylib.nim')
 " zig --
-"au FileType zig let g:zig_fmt_autosave = 0
+au FileType zig let g:zig_fmt_autosave = 0
