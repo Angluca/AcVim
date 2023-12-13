@@ -1,47 +1,3 @@
-; C/C++ syntax file
-; This file is required for EditPlus to run correctly
-
-; Writen by Purewell
-
-; Updated by Timofei Ivaschenko
-; © IT Step Computer Academy
-; Dnepropetrovsk, Ukraine
-; January 18, 2005
-
-; This file supports:
-; • Reserved words
-; • Compiler directives
-; • Library names
-; • Predefinitions
-; • Windows data types
-
-#TITLE=C/C++
-#DELIMITER=,(){}[]-+*%/="'~!&|<>?:;.#
-#QUOTATION1='
-#QUOTATION2="
-#CONTINUE_QUOTE=n
-#LINECOMMENT=//
-#LINECOMMENT2=
-#COMMENTON=/*
-#COMMENTOFF=*/
-#COMMENTON2=
-#COMMENTOFF2=
-#ESCAPE=\
-#CASE=y
-#PREFIX1=
-#PREFIX2=
-#PREFIX3=
-#PREFIX4=
-#PREFIX5=
-#SUFFIX1=
-#SUFFIX2=
-#SUFFIX3=
-#SUFFIX4=
-#SUFFIX5=
-#SPECIAL_STX=cpp
-
-#KEYWORD=Reserved words
-
 asm
 auto
 bool
@@ -116,9 +72,6 @@ or
 or_eq
 xor
 xor_eq
-
-#KEYWORD=Compiler directives
-
 define
 elif
 else
@@ -131,9 +84,6 @@ include
 line
 pragma
 undef
-
-#KEYWORD=Library names
-
 a64l
 abort
 abs
@@ -978,9 +928,6 @@ wstreampos
 wstring
 wstringbuf
 wstringstream
-
-#KEYWORD=Predefinitions
-
 AF_APPLETALK
 AF_ASH
 AF_ATMPVC
@@ -1397,9 +1344,6 @@ __LINE__
 __STDC__
 __TIME__
 __cplusplus__
-
-#KEYWORD=Windows data types
-
 ATOM
 BOOL
 BOOLEAN

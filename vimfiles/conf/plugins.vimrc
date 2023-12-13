@@ -11,12 +11,23 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle_custom
 "Plug 'eikenb/acp'
-"Plug 'skywind3000/vim-auto-popmenu'
 "==================
 "bundle
 "-----------------------
-Plug 'Jorengarenar/miniSnip'
-Plug 'haya14busa/incsearch.vim'
+"Plug 'girishji/vimcomplete'
+"Plug 'girishji/omnifunc-complete.vim'
+Plug 'girishji/lsp-complete.vim'
+Plug 'girishji/autosuggest.vim'
+"Plug 'girishji/ngram-complete.vim'
+Plug 'girishji/vimscript-complete.vim'
+Plug 'girishji/vsnip-complete.vim'
+Plug 'yegappan/lsp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
+
+"Plug 'Jorengarenar/miniSnip'
+"Plug 'haya14busa/incsearch.vim'
 "Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
@@ -35,12 +46,12 @@ Plug 'junegunn/vim-easy-align'
 "Plug 'Eliot00/auto-pairs' "v9s
 "Plug 'vim-scripts/Mark--Karkat'
 
-Plug 'preservim/vim-markdown'
+"Plug 'preservim/vim-markdown'
 "Plug 'tpope/vim-markdown'
 Plug 'jeetsukumaran/vim-buffersaurus'
 "Plug 'jlanzarotta/bufexplorer'
 
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/VisIncr'
 "Plug 'tpope/vim-fugitive'
 "Plug 'AndrewRadev/linediff.vim'

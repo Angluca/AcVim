@@ -64,7 +64,7 @@ let g:bufExplorerSplitVertSize=30
 "fliplr {{{
 """"""""""""""""""""
 nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
-vmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
+xmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "}}}
 "-------------------
 "}}}
@@ -216,29 +216,29 @@ AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
 """"""""""""""""""""
 "incsearch {{{
 """"""""""""""""""""
-set hlsearch
-"let g:incsearch#auto_nohlsearch = 1
-nmap n  <Plug>(incsearch-nohl-n)
-nmap N  <Plug>(incsearch-nohl-N)
-nmap *  <Plug>(incsearch-nohl-*)
-nmap #  <Plug>(incsearch-nohl-#)
-nmap g* <Plug>(incsearch-nohl-g*)
-nmap g# <Plug>(incsearch-nohl-g#)
+""let g:incsearch#auto_nohlsearch = 1
+"set hlsearch
+"nmap n  <Plug>(incsearch-nohl-n)
+"nmap N  <Plug>(incsearch-nohl-N)
+"nmap *  <Plug>(incsearch-nohl-*)
+"nmap #  <Plug>(incsearch-nohl-#)
+"nmap g* <Plug>(incsearch-nohl-g*)
+"nmap g# <Plug>(incsearch-nohl-g#)
 
-nmap /  <Plug>(incsearch-forward)
-nmap ?  <Plug>(incsearch-backward)
-"map ? <Plug>(incsearch-stay)
+"nmap /  <Plug>(incsearch-forward)
+"nmap ?  <Plug>(incsearch-backward)
+""map ? <Plug>(incsearch-stay)
 
-nmap g/ <Plug>(incsearch-fuzzy-/)
-nmap g? <Plug>(incsearch-fuzzy-/)
-"nmap g? <Plug>(incsearch-fuzzy-stay)
+"nmap g/ <Plug>(incsearch-fuzzy-/)
+"nmap g? <Plug>(incsearch-fuzzy-/)
+""nmap g? <Plug>(incsearch-fuzzy-stay)
 
-"nmap <space>/ <Plug>(incsearch-fuzzyword-/)
-"nmap <space>? <Plug>(incsearch-fuzzyword-?)
-"nmap <space>g/ <Plug>(incsearch-fuzzyword-stay)
+""nmap <space>/ <Plug>(incsearch-fuzzyword-/)
+""nmap <space>? <Plug>(incsearch-fuzzyword-?)
+""nmap <space>g/ <Plug>(incsearch-fuzzyword-stay)
 
 "--select *find--
-vnoremap * y/<c-r>"<cr>
+"vnoremap * y/<c-r>"<cr>
 
 "}}}
 """"""""""""""""""""
@@ -337,30 +337,115 @@ let g:miniSnip_extends = {
 """"""""""""""""""""
 "AsyncRun {{{
 """"""""""""""""""""
-"--Run-------------------------"
-com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
-com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
-"com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
 let g:asyncrun_open = 12
 "let g:asyncrun_auto = 'make'
 "let g:asyncrun_last = 3
 "let g:asyncrun_mode = 'term'
 "let asyncrun_term_hidden = 1
 "let g:asyncrun_term_wipe = 1
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks']
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks', 'project.json']
 let g:asyncrun_capture_file = $VIMDATA.'cache/capture.tmp'
+"--Run-------------------------"
+com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
+com! -bang -nargs=* -range=% -complete=shellcmd AcRootRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 -cwd=<root> <args>
+"com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
 nmap <space>l :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
 "nmap <space>q :AsyncStop<cr>
 "nmap <space>Q :AsyncStop!<cr>
-
-"nmap <space>R :AcRun!
 nmap <space>r :AcRun 
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
+
+com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
+com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focus=0 -rows=10 -raw=1 -cwd=<root> -mode=term -once=1 bake <args> "$(VIM_ROOT)" 
 "nmap <space>u :AcUiRun
 "nmap <space>U :AcUiRun -close=1 zsh<cr>
 ""let g:asyncrun_wrapper = ''
 ""let g:asyncrun_shell = '/usr/bin/zsh'
 ""let g:asyncrun_shellflag = '-c'
+"}}}
+""""""""""""""""""""
+"lsp {{{
+""""""""""""""""""""
+au filetype c,cpp call LspAddServer([#{
+            \    name: 'clangd',
+            \    filetype: ['c', 'cpp'],
+            \    path: '/Users/Angluca/SDK/llvms/clangd/bin/clangd',
+            \    args: ['--background-index']
+            \  }])
+
+au filetype c,cpp call LspOptionsSet(#{
+        \   aleSupport: v:false,
+        \   autoComplete: v:false,
+        \   autoHighlightDiags: v:false,
+        \   autoPopulateDiags: v:false,
+        \   bufferCompletionTimeout: 10,
+        \   snippetSupport: v:true,
+        \   semanticHighlight: v:false,
+        \   showDiagInBalloon: v:false,
+        \   showDiagInPopup: v:false,
+        \   showDiagWithSign: v:false,
+        \   showSignature: v:false,
+        \ })
+        "\   vsnipSupport: v:true,
+"au filetype c,cpp call LspOptionsSet(#{
+        "\   aleSupport: v:false,
+        "\   autoComplete: v:true,
+        "\   autoHighlight: v:false,
+        "\   autoHighlightDiags: v:true,
+        "\   autoPopulateDiags: v:false,
+        "\   completionMatcher: 'case',
+        "\   completionMatcherValue: 1,
+        "\   diagSignErrorText: 'E>',
+        "\   diagSignHintText: 'H>',
+        "\   diagSignInfoText: 'I>',
+        "\   diagSignWarningText: 'W>',
+        "\   echoSignature: v:false,
+        "\   hideDisabledCodeActions: v:false,
+        "\   highlightDiagInline: v:true,
+        "\   hoverInPreview: v:false,
+        "\   ignoreMissingServer: v:false,
+        "\   keepFocusInDiags: v:true,
+        "\   keepFocusInReferences: v:true,
+        "\   completionTextEdit: v:true,
+        "\   diagVirtualTextAlign: 'above',
+        "\   noNewlineInCompletion: v:false,
+        "\   omniComplete: v:null,
+        "\   outlineOnRight: v:false,
+        "\   outlineWinSize: 20,
+        "\   semanticHighlight: v:true,
+        "\   showDiagInBalloon: v:true,
+        "\   showDiagInPopup: v:true,
+        "\   showDiagOnStatusLine: v:false,
+        "\   showDiagWithSign: v:true,
+        "\   showDiagWithVirtualText: v:false,
+        "\   showInlayHints: v:false,
+        "\   showSignature: v:true,
+        "\   snippetSupport: v:false,
+        "\   ultisnipsSupport: v:false,
+        "\   useBufferCompletion: v:false,
+        "\   usePopupInCodeAction: v:false,
+        "\   useQuickfixForLocations: v:false,
+        "\   vsnipSupport: v:false,
+        "\   bufferCompletionTimeout: 100,
+        "\   customCompletionKinds: v:false,
+        "\   completionKinds: {}
+	"\ })
+"}}}
+""""""""""""""""""""
+"vsnip {{{
+""""""""""""""""""""
+"imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
+"smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+imap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+smap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+imap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 "}}}
 """"""""""""""""""""
 "another {{{

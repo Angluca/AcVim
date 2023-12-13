@@ -1,5 +1,6 @@
 "=================================
 " General: \ee \pp \aa \uu 
+" vim --startuptime ~/vimstart.log
 "=================================
 "---------------------------------
 "load plugins conf {{{
@@ -26,7 +27,7 @@ fu! AcCreateMaps(target, combo)
 		exec 'nmap ' . a:combo . ' ' . a:target
 	endif
 	if !hasmapto(a:target, 'v')
-		exec 'vmap ' . a:combo . ' ' . a:target
+		exec 'xmap ' . a:combo . ' ' . a:target
 	endif
 endf "}}}
 
@@ -74,20 +75,26 @@ fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
 	return l:ret
 endf "}}}
 
+com! Fdict call s:formatDict() "{{{
+fu! s:formatDict()
+    " tag2dict
+    exe '%s/^\(\k\+\).*/\1/ge'
+	exe 'g/^\(\k\+\).*$\n\1$/d'
+endf "}}}
 com! -nargs=? Ftags call s:formatTags(<args>) "{{{
 fu! s:formatTags(rd='')
-	"exe ':g/^\(\k\+\t\).*$\n\1.*/d'
 	"exe ':g/^\(\k\+\t\).*=\scint(\d*).*$\n\1.*/d'
-	exe ':g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
-	exe ':%s/^\k\t.*\n//ge'
-	exe ':%s/^!_.*\n//ge'
-	if a:rd !=''
-		exe ':%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
-	else
-		exe ':g/^\(\k\+\t\).*$\n\1.*/d'
-	endif
+    if a:rd !=''
+    exe ':g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
+    exe ':%s/^\k\t.*\n//ge'
+    exe ':%s/^\W\+.*\n//ge'
+    exe ':%s/^\s*\n//ge'
+    exe ':%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
+    endif
+    exe ':g/^\(\k\+\t\).*$\n\1.*/d'
 endf
-nmap \0 :Ftags<cr> 
+nmap \-- :Ftags<cr>
+nmap \-0 :Fdict<cr> 
 "}}}
 
 com! -nargs=+ Mtags call s:makeTags(<f-args>) "{{{
@@ -371,6 +378,7 @@ set backspace=eol,start,indent
 "set whichwrap+=<,>,h,l
 set whichwrap+=<,>
 "Ignore case when searching
+"setlocal infercase "all same case
 set ignorecase
 set smartcase
 "Include search
@@ -390,6 +398,7 @@ set showmatch
 "set shortmess+=c    " Shut off completion messages
 set shortmess=aoOtTcCS
 set cot=menu,menuone,noselect
+"set cot=menu,menuone
 "set cot-=preview
 "set cot+=menuone,noselect
 "No sound on errors and clear jumplist.
@@ -451,9 +460,9 @@ endif
 """"""""""""""""""""
 "Text options {{{
 """"""""""""""""""""
-set cindent shiftwidth=2 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
-set softtabstop=2
-set tabstop=2 " Set tabstop to 4 characters
+set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
+set softtabstop=4
+set tabstop=4 " Set tabstop to 4 characters
 "au FileType c,cpp,h,hpp,cc,cxx set expandtab
 set expandtab " Set expandtab on, the tab will be change to space automaticaly
 "}}}
@@ -574,11 +583,11 @@ nmap <silent> ;ds :DelTWS(1)<cr>
 "vmap <a-c> <c-insert>
 "imap <a-v> <s-insert>
 nmap ;yy "+Y
-vmap ;yy "+y
+xmap ;yy "+y
 nmap ;yx V"+x
-vmap ;yx "+x
+xmap ;yx "+x
 nmap ;pp "*gP
-vmap ;pp "*gP
+xmap ;pp "*gP
 nmap <m-c> "+y
 vmap <m-c> "+y
 nmap <m-v> "*gP
@@ -619,6 +628,7 @@ nmap <silent> ; <esc>
 nmap <silent> , <esc>
 "nmap <space><space> \<esc>
 nmap <space><space> \<space>
+"smap ;; ;
 
 "not use
 map ZZ <esc>
@@ -630,11 +640,13 @@ map ZQ <esc>
 so $VIMCONF/user.vimrc
 "load filetype and complete conf {{{
 so $VIMCONF/autocomplete.vimrc
+so $VIMCONF/vim9script.vimrc
 
 nmap <silent> \ee :SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
 nmap <silent> \pp :SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 nmap <silent> \aa :SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 nmap <silent> \uu :SwitchToBuf("$VIMCONF/user.vimrc")<cr>
+nmap <silent> \vv :SwitchToBuf("$VIMCONF/vim9script.vimrc")<cr>
 "}}}
 "---------------------------------
 " %s/u+\(.*\)/\=nr2char("0x"..submatch(1))/ge " u+n2unicode
