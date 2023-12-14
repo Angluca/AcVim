@@ -14,7 +14,7 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
-"Plug 'girishji/vimcomplete'
+Plug 'girishji/vimcomplete'
 "Plug 'girishji/omnifunc-complete.vim'
 Plug 'girishji/lsp-complete.vim'
 Plug 'girishji/autosuggest.vim'
