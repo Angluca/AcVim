@@ -238,7 +238,7 @@ AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
 ""nmap <space>g/ <Plug>(incsearch-fuzzyword-stay)
 
 "--select *find--
-"vnoremap * y/<c-r>"<cr>
+vno * y/<c-r>"<cr>
 
 "}}}
 """"""""""""""""""""
@@ -378,13 +378,12 @@ au filetype c,cpp call LspOptionsSet(#{
         \   autoComplete: v:false,
         \   autoHighlightDiags: v:false,
         \   autoPopulateDiags: v:false,
-        \   bufferCompletionTimeout: 10,
-        \   snippetSupport: v:true,
         \   semanticHighlight: v:false,
         \   showDiagInBalloon: v:false,
         \   showDiagInPopup: v:false,
         \   showDiagWithSign: v:false,
         \   showSignature: v:false,
+        \   snippetSupport: v:true,
         \ })
         "\   vsnipSupport: v:true,
 "au filetype c,cpp call LspOptionsSet(#{

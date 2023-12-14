@@ -23,73 +23,73 @@ set wildignore+=*.sw? " Vim swap files
 """"""""""""""""""""
 com! -nargs=+ AcCreateMaps call AcCreateMaps<args> "{{{
 fu! AcCreateMaps(target, combo)
-	if !hasmapto(a:target, 'n')
-		exec 'nmap ' . a:combo . ' ' . a:target
-	endif
-	if !hasmapto(a:target, 'v')
-		exec 'xmap ' . a:combo . ' ' . a:target
-	endif
+    if !hasmapto(a:target, 'n')
+        exec 'nmap ' . a:combo . ' ' . a:target
+    endif
+    if !hasmapto(a:target, 'v')
+        exec 'xmap ' . a:combo . ' ' . a:target
+    endif
 endf "}}}
 
 
 fu! AcCreateDir(ds) "{{{
-	if finddir(a:ds) == ''
-		silent call mkdir(a:ds)
-	endif
+    if finddir(a:ds) == ''
+        silent call mkdir(a:ds)
+    endif
 endf "}}}
 
 com! AcClearUndo call AcClearUndo() "{{{
 fu! AcClearUndo()
-	if AcIsOK(-1, "Do you want clear all undo? [Y]: ", 0, "Cancel") != 0
-		let ul_bak = &undolevels
-		let md_bak = &modified
-		let &undolevels=-1
-		exe "normal I \<BS>\<Esc>"
-		let &undolevels = ul_bak
-		let &modified = md_bak
-		"exe ":cle"
-		call AcIsOK(1, 0, "Clear finish", 0 )
-	endif
+    if AcIsOK(-1, "Do you want clear all undo? [Y]: ", 0, "Cancel") != 0
+        let ul_bak = &undolevels
+        let md_bak = &modified
+        let &undolevels=-1
+        exe "normal I \<BS>\<Esc>"
+        let &undolevels = ul_bak
+        let &modified = md_bak
+        "exe ":cle"
+        call AcIsOK(1, 0, "Clear finish", 0 )
+    endif
 endf "}}}
 
 com! -nargs=+ AcIsOK call AcIsOK<args> "{{{
 fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
-	echoh WarningMsg
-	if len(a:emsg) > 1
-		echo a:emsg 
-	endif
-	let l:ret = a:yn
-	let l:rmsg = a:nmsg
-	if a:yn == -1
-		let l:ret = getchar() == 89 ? 1:0 "Y89y121
-	endif
-	if l:ret > 0
-		let l:rmsg = a:ymsg
-		echoh Question
-	endif
-	if len(l:rmsg) > 1
-		redraw
-		echo l:rmsg
-	endif
-	echoh None
-	return l:ret
+    echoh WarningMsg
+    if len(a:emsg) > 1
+        echo a:emsg 
+    endif
+    let l:ret = a:yn
+    let l:rmsg = a:nmsg
+    if a:yn == -1
+        let l:ret = getchar() == 89 ? 1:0 "Y89y121
+    endif
+    if l:ret > 0
+        let l:rmsg = a:ymsg
+        echoh Question
+    endif
+    if len(l:rmsg) > 1
+        redraw
+        echo l:rmsg
+    endif
+    echoh None
+    return l:ret
 endf "}}}
 
 com! Fdict call s:formatDict() "{{{
 fu! s:formatDict()
     " tag2dict
     exe '%s/^\(\k\+\).*/\1/ge'
-	exe 'g/^\(\k\+\).*$\n\1$/d'
+    exe 'g/^\(\k\+\).*$\n\1$/d'
 endf "}}}
 com! -nargs=? Ftags call s:formatTags(<args>) "{{{
 fu! s:formatTags(rd='')
-	"exe ':g/^\(\k\+\t\).*=\scint(\d*).*$\n\1.*/d'
+    "exe ':g/^\(\k\+\t\).*=\scint(\d*).*$\n\1.*/d'
     if a:rd !=''
-    exe ':g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
-    exe ':%s/^\k\t.*\n//ge'
-    exe ':%s/^\W\+.*\n//ge'
-    exe ':%s/^\s*\n//ge'
-    exe ':%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
+        exe ':g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
+        exe ':%s/^\k\t.*\n//ge'
+        exe ':%s/^\W\+.*\n//ge'
+        exe ':%s/^\s*\n//ge'
+        exe ':%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
     endif
     exe ':g/^\(\k\+\t\).*$\n\1.*/d'
 endf
@@ -99,144 +99,144 @@ nmap \-0 :Fdict<cr>
 
 com! -nargs=+ Mtags call s:makeTags(<f-args>) "{{{
 fu! s:makeTags(f, opt='')
-  let l:opt = a:opt==''?'':'--options='.a:opt
-  exe ':silent !ctags '.l:opt.' -R -f '.a:f
+    let l:opt = a:opt==''?'':'--options='.a:opt
+    exe ':silent !ctags '.l:opt.' -R -f '.a:f
 endf
 "}}}
 
 com -nargs=+ SetFiletype call s:setFiletype<args> "{{{
 fu! s:setFiletype(fn, ft, bop=0,bc='BufEnter')
-	let l:opt = a:bop == v:false ? ('setl ft='.a:ft) : (a:ft)
-	exe $"au {a:bc} {a:fn} {l:opt}"
+    let l:opt = a:bop == v:false ? ('setl ft='.a:ft) : (a:ft)
+    exe $"au {a:bc} {a:fn} {l:opt}"
 endf "}}}
 
 com -nargs=+ SetFtCmd call s:setFtCmd<args> "{{{
 fu! s:setFtCmd(ft, cmd, bc='FileType')
-	exe $"au {a:bc} {a:ft} {a:cmd}"
+    exe $"au {a:bc} {a:ft} {a:cmd}"
 endf "}}}
 
 com! -nargs=+ SetAcpDict call s:setAcpDict<args> "{{{
 fu! s:setAcpDict(ft, ...)
-  let l:opt = ''
-  for l:file in a:000
-    let l:opt = l:opt.','.$VIMDICT.l:file
-  endfor
-  exe 'au FileType '.a:ft.' setl dict='.l:opt
+    let l:opt = ''
+    for l:file in a:000
+        let l:opt = l:opt.','.$VIMDICT.l:file
+    endfor
+    exe 'au FileType '.a:ft.' setl dict='.l:opt
 endf
 
 com! ToggleVE call ToggleVirtualEditMode() "{{{
 fu! ToggleVirtualEditMode()
-	if !exists('s:vem')
-		let		s:vem = 1
-		set		ve=all
-		echo	'virtual edit on'
-	else
-		unlet	s:vem
-		set		ve=
-		echo	'virtual edit off'
-	endif
+    if !exists('s:vem')
+        let		s:vem = 1
+        set		ve=all
+        echo	'virtual edit on'
+    else
+        unlet	s:vem
+        set		ve=
+        echo	'virtual edit off'
+    endif
 endf "}}}
 
 com! ToggleQuickfix call ToggleQuickfix() "{{{
 fu! ToggleQuickfix()
-	redir => ls_output
-	execute ':silent! ls'
-	redir END
-	let exists = match(ls_output, "Quickfix")
-	if exists == -1
-		execute ':copen'
-	else
-		execute ':cclose'
-	endif
+    redir => ls_output
+    execute ':silent! ls'
+    redir END
+    let exists = match(ls_output, "Quickfix")
+    if exists == -1
+        execute ':copen'
+    else
+        execute ':cclose'
+    endif
 endf "}}}
 
 fu! QfMakeConv() "{{{
-	let l:qflist = getqflist()
-	for i in l:qflist
-		let l:i.text = iconv(l:i.text, "cp936", "utf-8")
-	endfor
-	call setqflist(l:qflist)
+    let l:qflist = getqflist()
+    for i in l:qflist
+        let l:i.text = iconv(l:i.text, "cp936", "utf-8")
+    endfor
+    call setqflist(l:qflist)
 endf "}}}
 
 com! -nargs=1 SwitchToBuf call SwitchToBuf(<args>) "{{{
 fu! SwitchToBuf(filename)
-	" find in current tab
-	let l:bufwinnr = bufwinnr(a:filename)
-	if l:bufwinnr != -1
-		exec l:bufwinnr . "wincmd w"
-		return
-	else
-		" find in each tab
-		tabfirst
-		let l:tab = 1
-		while l:tab <= tabpagenr("$")
-			let l:bufwinnr = bufwinnr(a:filename)
-			if l:bufwinnr != -1
-				exec "normal " . l:tab . "gt"
-				exec l:bufwinnr . "wincmd w"
-				return
-			endif
-			tabnext
-			let l:tab = tab + 1
-		endwhile
-		" not exist, new tab
-		exec "e " . a:filename
-	endif
+    " find in current tab
+    let l:bufwinnr = bufwinnr(a:filename)
+    if l:bufwinnr != -1
+        exec l:bufwinnr . "wincmd w"
+        return
+    else
+        " find in each tab
+        tabfirst
+        let l:tab = 1
+        while l:tab <= tabpagenr("$")
+            let l:bufwinnr = bufwinnr(a:filename)
+            if l:bufwinnr != -1
+                exec "normal " . l:tab . "gt"
+                exec l:bufwinnr . "wincmd w"
+                return
+            endif
+            tabnext
+            let l:tab = tab + 1
+        endwhile
+        " not exist, new tab
+        exec "e " . a:filename
+    endif
 endf "}}}
 
 com! FmtOpt call FileFormatOption() "{{{
 fu! FileFormatOption()
-	if !exists("g:menutrans_fileformat_dialog")
-		let g:menutrans_fileformat_dialog = "Select format for writing the file"
-	endif
-	if !exists("g:menutrans_fileformat_choices")
-		let g:menutrans_fileformat_choices = "&Unix\n&Dos\n&Mac\n&Cancel"
-	endif
-	if &ff == "dos"
-		let l:def = 2
-	elseif &ff == "mac"
-		let l:def = 3
-	else
-		let l:def = 1
-	endif
-	let l:n = confirm(g:menutrans_fileformat_dialog, g:menutrans_fileformat_choices, l:def, "Question")
-	if l:n == 1
-		set ff=unix
-	elseif l:n == 2
-		set ff=dos
-	elseif l:n == 3
-		set ff=mac
-	endif
+    if !exists("g:menutrans_fileformat_dialog")
+        let g:menutrans_fileformat_dialog = "Select format for writing the file"
+    endif
+    if !exists("g:menutrans_fileformat_choices")
+        let g:menutrans_fileformat_choices = "&Unix\n&Dos\n&Mac\n&Cancel"
+    endif
+    if &ff == "dos"
+        let l:def = 2
+    elseif &ff == "mac"
+        let l:def = 3
+    else
+        let l:def = 1
+    endif
+    let l:n = confirm(g:menutrans_fileformat_dialog, g:menutrans_fileformat_choices, l:def, "Question")
+    if l:n == 1
+        set ff=unix
+    elseif l:n == 2
+        set ff=dos
+    elseif l:n == 3
+        set ff=mac
+    endif
 endfun "}}}
 
 com! Bclose call <SID>BufCloseIt() "{{{
 fu! <SID>BufCloseIt()
-	let l:currentBufNum = bufnr("%")
-	let l:alternateBufNum = bufnr("#")
-	if buflisted(l:alternateBufNum)
-		buffer #
-	else
-		bnext
-	endif
-	if bufnr("%") == l:currentBufNum
-		new
-	endif
-	if buflisted(l:currentBufNum)
-		execute("bdelete! ".l:currentBufNum)
-	endif
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
+    endif
 endf "}}}
 
 com! -nargs=? DelTWS call DeleteTrailingWS(<args>) "{{{
 fu! DeleteTrailingWS(bb=0)
-	if a:bb != 0 
-		if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
-			return
-		endif
-	endif
-	exe "normal mz"
-	%s/\s\+\r\?$//ge
-	nohl
-	exe "normal `z"
+    if a:bb != 0 
+        if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
+            return
+        endif
+    endif
+    exe "normal mz"
+    %s/\s\+\r\?$//ge
+    nohl
+    exe "normal `z"
 endf "}}}
 "-------------------
 "}}}
@@ -260,24 +260,24 @@ set history=20
 "utf-8 , ANSI, UNICODE
 set encoding=utf-8
 if has("win32")
-	set termencoding=utf-8
-	set fileencoding=utf-8
+    set termencoding=utf-8
+    set fileencoding=utf-8
 else
-	set termencoding=utf-8
-	set fileencoding=utf-8
+    set termencoding=utf-8
+    set fileencoding=utf-8
 endif
 
 set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
 
 "chinese=zh_CN.UTF-8 english=en_US.UTF-8
 if v:lang == "zh_CN"
-	set langmenu=zh_CN.UTF-8
-  set helplang=cn
-	if has("gui_running")
-		language messages zh_CN.utf-8
-	else
-		language messages en_US.UTF-8
-	endif
+    set langmenu=zh_CN.UTF-8
+    set helplang=cn
+    if has("gui_running")
+        language messages zh_CN.utf-8
+    else
+        language messages en_US.UTF-8
+    endif
 endif
 
 "Remove menu garbled
@@ -293,22 +293,22 @@ set autoread
 set mouse=a
 
 if	has("win32")
-	au QuickfixCmdPost make call QfMakeConv()
+    au QuickfixCmdPost make call QfMakeConv()
 endif
 
 "set path in current dir
 if has("unix")
-	if has("gui_running")
-		"au	BufEnter	*	cd	%:h
-		au	BufEnter	*	set	autochdir
-	endif
+    if has("gui_running")
+        "au	BufEnter	*	cd	%:h
+        au	BufEnter	*	set	autochdir
+    endif
 endif
 
 if has("mac")
-	if has("gui_running")
-		set macmeta
-	endif
-	set guifont=Menlo:h14
+    if has("gui_running")
+        set macmeta
+    endif
+    set guifont=Menlo:h14
 endif
 
 "Set mapleader
@@ -322,26 +322,26 @@ let g:mapleader = ","
 """"""""""""""""""""
 " Avoid clearing hilight definition in plugins
 if !exists("g:vimrc_loaded")
-	"Set font
-	"if has("unix")
-	"set gfn=Monospace\ 11
-	"endif
-	"Enable syntax hl
-	syntax enable
-	" color scheme
-	if has("gui_running")
-		"start gvim maximized
-		"if has("au")
-		"au GUIEnter * simalt ~x
-		"endif
-		set guioptions-=T
-		set guioptions-=m
-		set guioptions-=L
-		"set guioptions-=r
-		"hi normal guibg=#294d4a
-	else
-		set t_Co=256
-	endif " has
+    "Set font
+    "if has("unix")
+    "set gfn=Monospace\ 11
+    "endif
+    "Enable syntax hl
+    syntax enable
+    " color scheme
+    if has("gui_running")
+        "start gvim maximized
+        "if has("au")
+        "au GUIEnter * simalt ~x
+        "endif
+        set guioptions-=T
+        set guioptions-=m
+        set guioptions-=L
+        "set guioptions-=r
+        "hi normal guibg=#294d4a
+    else
+        set t_Co=256
+    endif " has
 endif " exists(...)
 colorscheme maroloccio
 "}}}
@@ -415,8 +415,8 @@ au vimEnter * :clearjumps
 "set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 "Actually, the tab does not switch buffers, but my arrows
 try
-	set switchbuf=useopen
-	set stal=1
+    set switchbuf=useopen
+    set stal=1
 catch
 endtry
 "}}}
@@ -451,10 +451,10 @@ set nowb
 """"""""""""""""""""
 "Enable folding, I find it very useful
 if exists("&foldenable")
-	set fen
+    set fen
 endif
 if exists("&foldlevel")
-	set fdl=0
+    set fdl=0
 endif
 "}}}
 """"""""""""""""""""
@@ -482,8 +482,8 @@ set wrap
 "cscope setting {{{
 """"""""""""""""""""
 if has("cscope")
-	set csto=1
-	set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set csto=1
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
 endif
 "}}}
 """"""""""""""""""""
@@ -636,9 +636,8 @@ map ZQ <esc>
 "set nomore
 "}}}
 "---------------------------------
-"load user conf
+"load conf {{{
 so $VIMCONF/user.vimrc
-"load filetype and complete conf {{{
 so $VIMCONF/autocomplete.vimrc
 so $VIMCONF/vim9script.vimrc
 
