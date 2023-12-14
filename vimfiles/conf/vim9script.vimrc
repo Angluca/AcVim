@@ -2,17 +2,15 @@ vim9script
 
 #---lsp/omnifunc/vimcomplete
 #g:vimcomplete_tab_enable = 1
-export var options: dict<any>
-options = {
-#export var options = {
+export var options: dict<any> = {
     completor: { shuffleEqualPriority: true },
-    buffer: { enable: true, priority: 11, timeout: 6, urlComplete: true, envComplete: true },
+    buffer: { enable: true, priority: 10, timeout: 6, urlComplete: true, envComplete: true },
     abbrev: { enable: false, priority: 10 },
-    dictionary: { enable: true, maxCount: 6000, timeout: 6, maxPop: 66, priority: 6, icase: true },
-    lsp: { enable: true, priority: 12, maxCount: 10 },
+    dictionary: { enable: false, maxCount: 6000, timeout: 6, maxPop: 22, priority: 6, icase: false },
+    lsp: { enable: true, priority: 11, maxCount: 10 },
     omnifunc: { enable: false, priority: 8, filetypes: ['python', 'javascript'] },
     vsnip: { enable: true, priority: 11 },
-    #vimscript: { enable: true, priority: 11 },
+    vimscript: { enable: true, priority: 11 },
     #ngram: {
         #enable: true,
         #priority: 10,
