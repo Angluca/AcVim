@@ -14,19 +14,21 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
-Plug 'girishji/vimcomplete'
+"Plug 'Angluca/vimcomplete'
+"Plug 'girishji/vimcomplete'
 "Plug 'girishji/omnifunc-complete.vim'
-Plug 'girishji/lsp-complete.vim'
-Plug 'girishji/autosuggest.vim'
+"Plug 'girishji/lsp-complete.vim'
+"Plug 'girishji/autosuggest.vim'
 "Plug 'girishji/ngram-complete.vim'
-Plug 'girishji/vimscript-complete.vim'
-Plug 'girishji/vsnip-complete.vim'
+"Plug 'girishji/vimscript-complete.vim'
+"Plug 'girishji/vsnip-complete.vim'
+
 Plug 'yegappan/lsp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
-
 Plug 'haya14busa/is.vim'
+
 "Plug 'Jorengarenar/miniSnip'
 "Plug 'haya14busa/incsearch.vim'
 "Plug 'haya14busa/incsearch-fuzzy.vim'

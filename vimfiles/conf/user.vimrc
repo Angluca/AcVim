@@ -314,24 +314,18 @@ let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
 nmap ;ut :UndotreeToggle<cr>
 "}}}
-""""""""""""""""""""
-"elm {{{
-""""""""""""""""""""
-let g:elm_detailed_complete = 1
-let g:elm_format_autosave = 1
-let g:elm_syntastic_show_warnings = 1
 "}}}
 """"""""""""""""""""
 "minisnip {{{
 """"""""""""""""""""
-let g:miniSnip_dirs = [ $VIM.'miniSnips' ]
-let g:miniSnip_local = 'miniSnips'
+"let g:miniSnip_dirs = [ $VIM.'miniSnips' ]
+"let g:miniSnip_local = 'miniSnips'
 "let g:miniSnip_trigger = '<C-j>'
 "let g:miniSnip_complkey ='<C-x><C-u>'
 "let g:miniSnip_ext = 'snip'
-let g:miniSnip_extends = {
-			\ 'cpp' : [ 'c' ],
-			\ }
+"let g:miniSnip_extends = {
+			"\ 'cpp' : [ 'c' ],
+			"\ }
 "let g:miniSnip_extends['nim'] = [ 'nico' ]
 "}}}
 """"""""""""""""""""
@@ -364,28 +358,44 @@ com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focu
 ""let g:asyncrun_shellflag = '-c'
 "}}}
 """"""""""""""""""""
+"vsnip {{{
+""""""""""""""""""""
+"imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
+"smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+imap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+smap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+imap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+"}}}
+""""""""""""""""""""
 "lsp {{{
 """"""""""""""""""""
 au filetype c,cpp call LspAddServer([#{
             \    name: 'clangd',
             \    filetype: ['c', 'cpp'],
-            \    path: '/Users/Angluca/SDK/llvms/clangd/bin/clangd',
+            \    path: 'clangd',
             \    args: ['--background-index']
             \  }])
 
-au filetype c,cpp call LspOptionsSet(#{
+au filetype nim call LspAddServer([#{
+            \    name: 'nimlsp',
+            \    filetype: ['nim'],
+            \    path: 'nimlsp',
+            \    args: []
+            \  }])
+
+au filetype c,cpp,nim call LspOptionsSet(#{
         \   aleSupport: v:false,
-        \   autoComplete: v:false,
-        \   autoHighlightDiags: v:false,
-        \   autoPopulateDiags: v:false,
-        \   semanticHighlight: v:false,
-        \   showDiagInBalloon: v:false,
-        \   showDiagInPopup: v:false,
-        \   showDiagWithSign: v:false,
-        \   showSignature: v:false,
+        \   autoComplete: v:true,
         \   snippetSupport: v:true,
+        \   vsnipSupport: v:true,
         \ })
-        "\   vsnipSupport: v:true,
 "au filetype c,cpp call LspOptionsSet(#{
         "\   aleSupport: v:false,
         "\   autoComplete: v:true,
@@ -429,22 +439,6 @@ au filetype c,cpp call LspOptionsSet(#{
         "\   customCompletionKinds: v:false,
         "\   completionKinds: {}
 	"\ })
-"}}}
-""""""""""""""""""""
-"vsnip {{{
-""""""""""""""""""""
-"imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
-"smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-imap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-smap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-imap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 "}}}
 """"""""""""""""""""
 "another {{{

@@ -1,5 +1,5 @@
 "=================================
-" General: \ee \pp \aa \uu 
+" General: \ee \pp \aa \uu
 " vim --startuptime ~/vimstart.log
 "=================================
 "---------------------------------
@@ -56,7 +56,7 @@ com! -nargs=+ AcIsOK call AcIsOK<args> "{{{
 fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
     echoh WarningMsg
     if len(a:emsg) > 1
-        echo a:emsg 
+        echo a:emsg
     endif
     let l:ret = a:yn
     let l:rmsg = a:nmsg
@@ -94,7 +94,7 @@ fu! s:formatTags(rd='')
     exe ':g/^\(\k\+\t\).*$\n\1.*/d'
 endf
 nmap \-- :Ftags<cr>
-nmap \-0 :Fdict<cr> 
+nmap \-0 :Fdict<cr>
 "}}}
 
 com! -nargs=+ Mtags call s:makeTags(<f-args>) "{{{
@@ -228,7 +228,7 @@ endf "}}}
 
 com! -nargs=? DelTWS call DeleteTrailingWS(<args>) "{{{
 fu! DeleteTrailingWS(bb=0)
-    if a:bb != 0 
+    if a:bb != 0
         if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
             return
         endif
@@ -397,7 +397,10 @@ set showmatch
 "set mat=1
 "set shortmess+=c    " Shut off completion messages
 set shortmess=aoOtTcCS
+set ph = 30 " complete popup window hight
+"set cot=menu,menuone,noinsert,preview
 set cot=menu,menuone,noselect
+"set cot=menuone,noinsert,noselect,preview
 "set cot=menu,menuone
 "set cot-=preview
 "set cot+=menuone,noselect

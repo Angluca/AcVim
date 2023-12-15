@@ -29,7 +29,7 @@ SetFiletype('*.gd', 'gdscript')
 SetFiletype('*.wxml', 'html')
 SetFiletype('*.wxss', 'css')
 "nim
-SetFiletype('*.nim*,*.c2nim,*.snip', 'nim')
+SetFiletype('*.nim,*.nims,*.c2nim', 'nim')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -56,9 +56,9 @@ nmap \-f :Ftags '$FLECS'<cr>
 """"""""""""""
 " easycomplete {{{
 """"""""""""""
-let g:easycomplete_diagnostics_enable = 0
-let g:easycomplete_lsp_checking = 0
-"let g:easycomplete_maxlength = 16
+"let g:easycomplete_diagnostics_enable = 0
+"let g:easycomplete_lsp_checking = 0
+""let g:easycomplete_maxlength = 16
 
 "noremap <m-i> :EasyCompleteReference<CR>
 "noremap <m-o> :BackToOriginalBuffer<CR>
@@ -66,7 +66,7 @@ let g:easycomplete_lsp_checking = 0
 "noremap ,en :EasyCompleteRename<CR>
 "nnoremap <silent> <C-k> :EasyCompleteNextDiagnostic<CR>
 "nnoremap <silent> <C-j> :EasyCompletePreviousDiagnostic<CR>
-"let g:easycomplete_tab_trigger="<m-tab>"
+"let g:easycomplete_mtab_trigger="<m-tab>"
 "let g:easycomplete_shift_tab_trigger="<m-s-tab>"
 "let g:easycomplete_tabnine_enable = 0
 "let g:easycomplete_tabnine_config = {
@@ -77,11 +77,13 @@ let g:easycomplete_lsp_checking = 0
 """"""""""""""
 " acp option {{{
 """"""""""""""
+set ph = 30 " complete popup window hight
+"set cot=menu,menuone,noselect
+set cot=menu,menuone,noselect,preview
 "-- vim-auto-popmenu ---
 let g:apc_enable_tab = 0
-let g:apc_min_length = 2
+let g:apc_min_length = 1
 let g:apc_enable_ft = {'*':1}
-set cot=menu,menuone,noselect
 
 "---------------
 let g:acp_behaviorKeywordLength=2
@@ -137,7 +139,6 @@ SetAcpDict('sh', 'bash.dict')
 SetAcpDict('squirrel', 'squirrel.dict')
 SetAcpDict('lua', 'lua.dict')
 SetAcpDict('zig', 'zigtags')
-"SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict')
 SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
 "}}}
 "-------------------
