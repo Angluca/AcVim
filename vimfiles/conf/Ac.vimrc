@@ -78,20 +78,27 @@ endf "}}}
 com! Fdict call s:formatDict() "{{{
 fu! s:formatDict()
     " tag2dict
-    exe '%s/^\(\k\+\).*/\1/ge'
-    exe 'g/^\(\k\+\).*$\n\1$/d'
+    exe 'g/^\(\k\+\)\s.*$\n\1$/d'
+    exe '%s/^\(\k\+\)\s.*/\1/ge'
+    exe 'g/^\W\+.*$/d'
+    exe '%sort u'
+    exe 'g/^.\{,1}\s*$/d'
 endf "}}}
 com! -nargs=? Ftags call s:formatTags(<args>) "{{{
 fu! s:formatTags(rd='')
-    "exe ':g/^\(\k\+\t\).*=\scint(\d*).*$\n\1.*/d'
     if a:rd !=''
-        exe ':g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
-        exe ':%s/^\k\t.*\n//ge'
-        exe ':%s/^\W\+.*\n//ge'
-        exe ':%s/^\s*\n//ge'
-        exe ':%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
+        exe '%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
+    else
+        let l:s = input("path: ")
+        if l:s > 0
+            exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
+        endif
     endif
-    exe ':g/^\(\k\+\t\).*$\n\1.*/d'
+    exe 'g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
+    "exe 'g/^\W\+.*$/d'
+    exe 'g/^\~\k*$/d'
+    exe 'g/^.\?\s*$/d'
+    "exe 'g/^\(\k\+\)\t.*$\n\1\t.*/d'
 endf
 nmap \-- :Ftags<cr>
 nmap \-0 :Fdict<cr>
@@ -249,6 +256,17 @@ call AcCreateDir($VIMDATA.'swap')
 call AcCreateDir($VIMDATA.'cache')
 set backupdir=$VIMDATA/backup " where to put backup file
 set directory=$VIMDATA/swap " where to put swap file
+"---------------------------------
+"load conf {{{
+so $VIMCONF/user.vimrc
+so $VIMCONF/autocomplete.vimrc
+so $VIMCONF/vim9script.vimrc
+
+nmap <silent> \ee :SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
+nmap <silent> \pp :SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
+nmap <silent> \aa :SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
+nmap <silent> \uu :SwitchToBuf("$VIMCONF/user.vimrc")<cr>
+nmap <silent> \vv :SwitchToBuf("$VIMCONF/vim9script.vimrc")<cr>
 "}}}
 """"""""""""""""""""
 "Base settings {{{
@@ -397,11 +415,11 @@ set showmatch
 "set mat=1
 "set shortmess+=c    " Shut off completion messages
 set shortmess=aoOtTcCS
-set ph = 30 " complete popup window hight
-"set cot=menu,menuone,noinsert,preview
-set cot=menu,menuone,noselect
-"set cot=menuone,noinsert,noselect,preview
+set ph=10 " complete popup window hight
+set cot=menu,menuone,noinsert,preview
+"set cot=menu,menuone,noselect
 "set cot=menu,menuone
+"set cot=menuone,noinsert,noselect,preview
 "set cot-=preview
 "set cot+=menuone,noselect
 "No sound on errors and clear jumplist.
@@ -637,18 +655,6 @@ nmap <space><space> \<space>
 map ZZ <esc>
 map ZQ <esc>
 "set nomore
-"}}}
-"---------------------------------
-"load conf {{{
-so $VIMCONF/user.vimrc
-so $VIMCONF/autocomplete.vimrc
-so $VIMCONF/vim9script.vimrc
-
-nmap <silent> \ee :SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
-nmap <silent> \pp :SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
-nmap <silent> \aa :SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
-nmap <silent> \uu :SwitchToBuf("$VIMCONF/user.vimrc")<cr>
-nmap <silent> \vv :SwitchToBuf("$VIMCONF/vim9script.vimrc")<cr>
 "}}}
 "---------------------------------
 " %s/u+\(.*\)/\=nr2char("0x"..submatch(1))/ge " u+n2unicode

@@ -396,6 +396,7 @@ au filetype c,cpp,nim call LspOptionsSet(#{
         \   snippetSupport: v:true,
         \   vsnipSupport: v:true,
         \ })
+
 "au filetype c,cpp call LspOptionsSet(#{
         "\   aleSupport: v:false,
         "\   autoComplete: v:true,

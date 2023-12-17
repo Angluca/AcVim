@@ -686,10 +686,13 @@ update	$NICO/gui.nim	/^proc update*(G: Gui, onGui: proc(), dt: float32) =$/;"	t
 updateConfigValue	$NICO/backends/sdl2.nim	/^proc updateConfigValue*(section, key, value: string) =$/;"	t
 useRelativeMouse	$NICO/backends/sdl2.nim	/^proc useRelativeMouse*(on: bool) =$/;"	t
 useRelativeMouse	$NICO/../nico.nim	/^proc useRelativeMouse*(on: bool) =$/;"	t
+vec2	$NICO/vec.nim	/^proc vec2f*(x,y: Pfloat | Pint): Vec2f =$/;"	t
 vec2f	$NICO/vec.nim	/^proc vec2f*(x,y: Pfloat | Pint): Vec2f =$/;"	t
 vec2i	$NICO/vec.nim	/^proc vec2i*(x,y: int): Vec2i =$/;"	t
+vec3	$NICO/vec.nim	/^proc vec3f*(xy: Vec2f,z: float32 = 0): Vec3f =$/;"	t
 vec3f	$NICO/vec.nim	/^proc vec3f*(xy: Vec2f,z: float32 = 0): Vec3f =$/;"	t
 vec3i	$NICO/vec.nim	/^proc vec3i*(x,y,z: PInt): Vec3i =$/;"	t
+vec4	$NICO/vec.nim	/^proc vec4f*(x,y,z,w:float32): Vec4f =$/;"	t
 vec4f	$NICO/vec.nim	/^proc vec4f*(x,y,z,w:float32): Vec4f =$/;"	t
 vec4i	$NICO/vec.nim	/^proc vec4i*(x,y,z,w: int): Vec4i =$/;"	t
 vibrato	$NICO/backends/sdl2.nim	/^proc vibrato*(channel: AudioChannelId, speed: range[1..15], amount: range[0..15]) =$/;"	t

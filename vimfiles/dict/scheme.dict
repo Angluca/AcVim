@@ -94,8 +94,6 @@ $*
 &message
 &read-error
 &serious
-*
-*.
 *argv*
 *base-table-implementations*
 *catalog*
@@ -113,12 +111,6 @@ $*
 *slib-version*
 *test-error*
 *test-report-error*
-+
--
-/
-/.
-<
-<=
 <abandoned-mutex-exception-meta>
 <abandoned-mutex-exception>
 <accessor-method>
@@ -346,9 +338,6 @@ $*
 <weak-hash-table>
 <weak-vector-meta>
 <weak-vector>
-=
->
->=
 AF_INET
 AF_INET6
 AF_UNIX

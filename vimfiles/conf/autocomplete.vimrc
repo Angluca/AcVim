@@ -75,16 +75,12 @@ nmap \-f :Ftags '$FLECS'<cr>
 		"\ }
 "}}}
 """"""""""""""
-" acp option {{{
+" complete opt {{{
 """"""""""""""
-set ph = 30 " complete popup window hight
-"set cot=menu,menuone,noselect
-set cot=menu,menuone,noselect,preview
 "-- vim-auto-popmenu ---
 let g:apc_enable_tab = 0
 let g:apc_min_length = 1
 let g:apc_enable_ft = {'*':1}
-
 "---------------
 let g:acp_behaviorKeywordLength=2
 "let g:acp_behaviorSnipmateLength = 1
@@ -120,13 +116,9 @@ exe 'set cpt=' . g:acp_completeOption
 " Use nimlsp don't set dict, Will slow !!!
 if has("win32")
 	SetAcpDict('asm', 'win32.dict')
-	"SetAcpDict('c,cpp','win32.dict','c.dict','cpp.dict')
-	SetAcpDict('cpp', 'c.dict', 'cpp.dict', 'win32.dict')
-	SetAcpDict('c', 'c.dict', 'win32.dict')
+    SetAcpDict('c,cpp','win32.dict','cpp.dict')
 else
-	"SetAcpDict('c,cpp','c.dict','cpp.dict','flecs.dict')
-    SetAcpDict('cpp', 'c.dict', 'cpp.dict')
-    SetAcpDict('c', 'c.dict', 'flecs.dict')
+    SetAcpDict('c,cpp', 'cpp.dict', 'flecs.dict')
 endif
 SetAcpDict('java', 'java.dict')
 SetAcpDict('js', 'javascript.dict')

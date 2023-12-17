@@ -81,7 +81,6 @@ getChar
 getContents
 getLine
 head
-id
 init
 interact
 isDenormalized
@@ -112,9 +111,7 @@ minimumBy
 mod
 notElem
 odd
-or
 otherwise
-pi
 pred
 print
 product
@@ -178,4 +175,3 @@ zip
 zip3
 zipWith
 zipWith3
-
