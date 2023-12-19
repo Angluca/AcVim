@@ -343,7 +343,7 @@ let g:asyncrun_capture_file = $VIMDATA.'cache/capture.tmp'
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRootRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 -cwd=<root> <args>
 "com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
-nmap <space>l :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
+"nmap <space>l :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
 "nmap <space>q :AsyncStop<cr>
 "nmap <space>Q :AsyncStop!<cr>
 nmap <space>r :AcRun 
@@ -392,7 +392,7 @@ au filetype nim call LspAddServer([#{
 
 au filetype c,cpp,nim call LspOptionsSet(#{
         \   aleSupport: v:false,
-        \   autoComplete: v:true,
+        \   autoComplete: v:false,
         \   snippetSupport: v:true,
         \   vsnipSupport: v:true,
         \ })

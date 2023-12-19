@@ -16,11 +16,11 @@ call plug#begin(s:bundle_dir)
 "-----------------------
 Plug 'Angluca/vimcomplete'
 "Plug 'girishji/vimcomplete'
-"Plug 'girishji/omnifunc-complete.vim'
 Plug 'girishji/lsp-complete.vim'
 Plug 'girishji/autosuggest.vim'
-"Plug 'girishji/ngram-complete.vim'
 "Plug 'girishji/vimscript-complete.vim'
+"Plug 'girishji/omnifunc-complete.vim'
+"Plug 'girishji/ngram-complete.vim'
 "Plug 'girishji/vsnip-complete.vim'
 
 Plug 'yegappan/lsp'

@@ -120,9 +120,9 @@ if has("win32")
 else
     SetAcpDict('c,cpp', 'cpp.dict', 'flecs.dict')
 endif
+SetAcpDict('vim', 'vim.dict')
 SetAcpDict('java', 'java.dict')
 SetAcpDict('js', 'javascript.dict')
-SetAcpDict('vim', 'vim.dict')
 SetAcpDict('perl', 'perl.dict')
 SetAcpDict('php', 'php.dict','html.dict')
 SetAcpDict('html', 'javascript.dict','html.dict','html5.dict')

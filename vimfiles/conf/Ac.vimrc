@@ -31,11 +31,8 @@ fu! AcCreateMaps(target, combo)
     endif
 endf "}}}
 
-
 fu! AcCreateDir(ds) "{{{
-    if finddir(a:ds) == ''
-        silent call mkdir(a:ds)
-    endif
+    if finddir(a:ds) == '' | silent call mkdir(a:ds) | endif
 endf "}}}
 
 com! AcClearUndo call AcClearUndo() "{{{
@@ -55,9 +52,7 @@ endf "}}}
 com! -nargs=+ AcIsOK call AcIsOK<args> "{{{
 fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
     echoh WarningMsg
-    if len(a:emsg) > 1
-        echo a:emsg
-    endif
+    if len(a:emsg) > 1 | echo a:emsg | endif
     let l:ret = a:yn
     let l:rmsg = a:nmsg
     if a:yn == -1
@@ -96,7 +91,8 @@ fu! s:formatTags(rd='')
     endif
     exe 'g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
     "exe 'g/^\W\+.*$/d'
-    exe 'g/^\~\k*$/d'
+    exe 'g/^\~.*$/d'
+    exe 'g/^!_.*$/d'
     exe 'g/^.\?\s*$/d'
     "exe 'g/^\(\k\+\)\t.*$\n\1\t.*/d'
 endf
@@ -144,19 +140,6 @@ fu! ToggleVirtualEditMode()
     endif
 endf "}}}
 
-com! ToggleQuickfix call ToggleQuickfix() "{{{
-fu! ToggleQuickfix()
-    redir => ls_output
-    execute ':silent! ls'
-    redir END
-    let exists = match(ls_output, "Quickfix")
-    if exists == -1
-        execute ':copen'
-    else
-        execute ':cclose'
-    endif
-endf "}}}
-
 fu! QfMakeConv() "{{{
     let l:qflist = getqflist()
     for i in l:qflist
@@ -193,26 +176,16 @@ endf "}}}
 
 com! FmtOpt call FileFormatOption() "{{{
 fu! FileFormatOption()
-    if !exists("g:menutrans_fileformat_dialog")
-        let g:menutrans_fileformat_dialog = "Select format for writing the file"
+    let l:text = "Select format for writing the file"
+    let l:choices = "&Unix\n&Dos\n&Mac\n&Cancel"
+    if &ff == "dos" | let l:def = 2
+    elseif &ff == "mac" | let l:def = 3
+    else | let l:def = 1
     endif
-    if !exists("g:menutrans_fileformat_choices")
-        let g:menutrans_fileformat_choices = "&Unix\n&Dos\n&Mac\n&Cancel"
-    endif
-    if &ff == "dos"
-        let l:def = 2
-    elseif &ff == "mac"
-        let l:def = 3
-    else
-        let l:def = 1
-    endif
-    let l:n = confirm(g:menutrans_fileformat_dialog, g:menutrans_fileformat_choices, l:def, "Question")
-    if l:n == 1
-        set ff=unix
-    elseif l:n == 2
-        set ff=dos
-    elseif l:n == 3
-        set ff=mac
+    let l:n = confirm(l:text, l:choices, l:def, "Question")
+    if l:n == 1 | set ff=unix
+    elseif l:n == 2 | set ff=dos
+    elseif l:n == 3 | set ff=mac
     endif
 endfun "}}}
 
@@ -263,7 +236,7 @@ so $VIMCONF/autocomplete.vimrc
 so $VIMCONF/vim9script.vimrc
 
 nmap <silent> \ee :SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
-nmap <silent> \pp :SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
+nmap <silent> \bb :SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
 nmap <silent> \aa :SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
 nmap <silent> \uu :SwitchToBuf("$VIMCONF/user.vimrc")<cr>
 nmap <silent> \vv :SwitchToBuf("$VIMCONF/vim9script.vimrc")<cr>
@@ -530,6 +503,12 @@ let g:netrw_nogx = 1
 """"""""""""""""""""
 "User options {{{
 """"""""""""""""""""
+"not use
+map ZZ <esc>
+map ZQ <esc>
+map Q <esc>
+map q <esc>
+
 "time
 "iab xt <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 "edit vimrc enable fold
@@ -621,11 +600,12 @@ nmap \fg :se fenc=GBK<cr>
 "quickfix
 au Filetype qf set syntax=sh
 set syntax=markdown.nim
-"nmap ,cc :ToggleQuickfix<cr>
-"nmap ,cn :cn <cr>
-"nmap ,cp :cp <cr>
-"nmap ,co :cold <cr>
-"nmap ,ce :cnew <cr>
+nmap <space>l  :cw 12<cr>
+nmap <space>cj :cn<cr>
+nmap <space>ck :cp<cr>
+nmap <space>co :cold<cr>
+nmap <space>ce :cnew<cr>
+nmap q :ccl<esc>
 "virtual edit mode
 AcCreateMaps(':ToggleVE<cr>', ';ve')
 "select find
@@ -650,10 +630,6 @@ nmap <silent> , <esc>
 "nmap <space><space> \<esc>
 nmap <space><space> \<space>
 "smap ;; ;
-
-"not use
-map ZZ <esc>
-map ZQ <esc>
 "set nomore
 "}}}
 "---------------------------------
