@@ -146,6 +146,17 @@ let g:tagbar_type_nim = {
 			\ 'sort'    : 0,
 			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/nim.ctags'
 			\ }
+let g:tagbar_type_zig = {
+			\ 'ctagstype' : 'c',
+            \ 'kinds'     : [
+            \ 'f:func:0:1',
+            \ 't:type:1:0',
+            \ 'i:iterator:1:0',
+            \ 'o:operator:1:0',
+            \ 'm:macro:1:0'
+            \ ],
+            \ 'sort'    : 0,
+			\ }
 nmap <silent> ;tl :TagbarToggle<cr>
 "}}}
 """"""""""""""""""""
@@ -337,20 +348,25 @@ let g:asyncrun_open = 12
 "let g:asyncrun_mode = 'term'
 "let asyncrun_term_hidden = 1
 "let g:asyncrun_term_wipe = 1
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks', 'project.json']
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks', 'project.json', 'build.zig']
 let g:asyncrun_capture_file = $VIMDATA.'cache/capture.tmp'
 "--Run-------------------------"
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRootRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 -cwd=<root> <args>
 "com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
-"nmap <space>l :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
+"nmap <space>L :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
 "nmap <space>q :AsyncStop<cr>
 "nmap <space>Q :AsyncStop!<cr>
 nmap <space>r :AcRun 
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
-
-com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
 com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focus=0 -rows=10 -raw=1 -cwd=<root> -mode=term -once=1 bake <args> "$(VIM_ROOT)" 
+"com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
+com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 nim <args> %
+"com! -bang -nargs=* -complete=file Nimble AsyncRun<bang> -raw=1 -focus=0 -rows=8 nimble <args> 
+com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
+com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
+"com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
+"com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .
 "nmap <space>u :AcUiRun
 "nmap <space>U :AcUiRun -close=1 zsh<cr>
 ""let g:asyncrun_wrapper = ''
@@ -360,6 +376,7 @@ com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focu
 """"""""""""""""""""
 "vsnip {{{
 """"""""""""""""""""
+let g:vsnip_snippet_dir = $VIM.'snippets/c/'
 "imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
 "smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
 imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
@@ -387,15 +404,37 @@ au filetype nim call LspAddServer([#{
             \    name: 'nimlsp',
             \    filetype: ['nim'],
             \    path: 'nimlsp',
-            \    args: []
             \  }])
 
-au filetype c,cpp,nim call LspOptionsSet(#{
+au filetype zig call LspAddServer([#{
+            \    name: 'zls',
+            \    filetype: ['zig'],
+            \    path: 'zls',
+            \  }])
+
+au filetype v call LspAddServer([#{
+            \    name: 'vls',
+            \    filetype: ['vlang', 'v'],
+            \    path: 'vls',
+            \  }])
+
+au filetype * call LspOptionsSet(#{
         \   aleSupport: v:false,
         \   autoComplete: v:false,
         \   snippetSupport: v:true,
-        \   vsnipSupport: v:true,
+        \   vsnipSupport: v:false,
+        \   keepFocusInDiags: v:false,
+        \   keepFocusInReferences: v:false,
+        \   autoHighlightDiags: v:false,
         \ })
+        "\   highlightDiagInline: v:false,
+        "\   completionTextEdit: v:false,
+        "\   semanticHighlight: v:false,
+        "\   autoHighlightDiags: v:true,
+        "\   showDiagWithSign: v:true,
+        "\   showDiagInBalloon: v:false,
+        "\   showDiagInPopup: v:false,
+        "\   showSignature: v:false,
 
 "au filetype c,cpp call LspOptionsSet(#{
         "\   aleSupport: v:false,

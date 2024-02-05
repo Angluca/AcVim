@@ -17,17 +17,19 @@ setup.bat
 Let's open the vim.** 
 >:PlugUpdate :PlugInstall :PlugUpgrade  
 \ee: edit vimrc  
-\pp: edit edit update plugins list  
+\bb: edit edit update plugins list  
 \aa: edit filetype acp option  
 \uu: edit custom option  
+\vv: edit vim9script custom option  
 
 >;yy ;pp or \<alt-c\> \<alt-v\> : system copy paste  
-:E \<a-1~9,0,(,)\> gt gT: tabnew, switch tab page, a-HL move tab pos  
+:E \<a-0~9/H/L/(/)\> gt gT: tabnew, switch tab page and move pos  
 
 >;bb : very easy and practice to operate buffer  
  --> j/k J/K g/G: move, f/e: open/quicksee win, s/v: split win  
  -> d/D: del/!del buf, w/W: wipe out buf, l: see deleted buf  
- 
+
+>;bs ;bv ;bt ;be : another buffer manage  
 >;tt : file manage  
 ;ut ;uc: open undo tree and clear all undo  
 ;xx ...: code comment  
@@ -36,8 +38,8 @@ Let's open the vim.**
 
 >\<space\>r/R:async  
 \<alt+shift/shift\>\<up>/\<down>/\<left>/\<right>: move resize win  
-g/ g? / ?: fuzzy search for coder  
-\\= : generate tags  
+\\== : generate tags  
+>\<space\>l/L, q: open/close quickfix  
 
 >ysiwb ysawB ysib" : add symbol for words  
 csb" cs\[\( ... : revise symbol  

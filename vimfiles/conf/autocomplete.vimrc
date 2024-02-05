@@ -5,31 +5,34 @@
 """"""""""""""
 " filetypes {{{
 """"""""""""""
-SetFiletype('*.vim*', 'vim')
-SetFiletype('COPYING', 'txt')
-SetFiletype('*.txt,*.log', 'txt')
-SetFiletype('*.asm,*.inc', 'masm')
-SetFtCmd('masm', 'setl mp=fasm\ %:p')
+SetFiletype('*.zshrc,*.zprofile','zsh')
+SetFiletype('*.vim*','vim')
+SetFiletype('COPYING','txt')
+SetFiletype('*.txt,*.log','txt')
+SetFiletype('*.asm,*.inc','masm')
+SetFtCmd('masm','setl mp=fasm\ %:p')
 
-SetFiletype('*.glsl,*.vsh,*.fsh,*.vert,*.frag,*.shd,*.flecs', 'd')
-SetFiletype('*.md,*.markdown,README*', 'markdown')
-SetFiletype('CMakeLists.txt', 'cmake')
-SetFiletype('*.as', 'actionscript')
-SetFiletype('*.mxml', 'mxml')
-SetFiletype('*.make', 'make')
-SetFiletype('*.p', 'pawn')
-SetFiletype('*.mm', 'objc')
+SetFiletype('*.glsl,*.vsh,*.fsh,*.vert,*.frag,*.shd,*.flecs','d')
+SetFiletype('*.md,*.markdown,README*','markdown')
+SetFiletype('CMakeLists.txt','cmake')
+SetFiletype('*.as','actionscript')
+SetFiletype('*.mxml','mxml')
+SetFiletype('*.make','make')
+SetFiletype('*.p','pawn')
+SetFiletype('*.mm','objc')
 "squirrel script
-SetFiletype('*.nut', 'squirrel')
-SetFtCmd('squirrel', 'setl mp=sq\ %:p')
-SetFtCmd('squirrel', 'setl efm=%f:%l:%m')
+SetFiletype('*.nut','squirrel')
+SetFtCmd('squirrel','setl mp=sq\ %:p')
+SetFtCmd('squirrel','setl efm=%f:%l:%m')
 "godot script
-SetFiletype('*.gd', 'gdscript')
+SetFiletype('*.gd','gdscript')
 "weixin
-SetFiletype('*.wxml', 'html')
-SetFiletype('*.wxss', 'css')
+SetFiletype('*.wxml','html')
+SetFiletype('*.wxss','css')
 "nim
-SetFiletype('*.nim,*.nims,*.c2nim', 'nim')
+SetFiletype('*.nim,*.nims,*.c2nim','nim')
+"zig
+"SetFiletype('*.zig','zig')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -45,12 +48,12 @@ au FileType nim setl tags+=$VIMDICT/nimtags,nimtags
 au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
 au FileType zig setl tags +=$VIMDICT/zigtags
 
-au FileType c,cpp let $FLECS = $HOME.'/Github/flecs'
-au FileType c,cpp setl tags +=$VIMDICT/flecstags
+"au FileType c,cpp let $FLECS = $HOME.'/Github/flecs'
+"au FileType c,cpp setl tags +=$VIMDICT/flecstags
 
-"nmap \-z :Ftags '$ZIGLIB'<cr> 
+nmap \-z :Ftags '$ZIGLIB'<cr> 
 nmap \-n :Ftags '$NIMLIB'<cr> 
-nmap \-f :Ftags '$FLECS'<cr> 
+"nmap \-f :Ftags '$FLECS'<cr> 
 
 "}}}
 """"""""""""""
@@ -99,7 +102,7 @@ let g:acp_ignorecaseOption = 1
 "let g:acp_completeOption='.,k,b,w,u,t'
 let g:acp_completeOption='.,k,b,w'
 exe 'set cpt=' . g:acp_completeOption
-"set cpt=.,w,b,u,t,k "单,k'可扫描所有dict的文件, 可以k+文件但没有必要
+"set cpt=.,w,b,u,t,k "单,k'可扫描所有dict的文件,可以k+文件但没有必要
 ".. 当前缓冲区
 "w. 其它窗口的缓冲区
 "b. 其它载入的缓冲区
@@ -108,42 +111,44 @@ exe 'set cpt=' . g:acp_completeOption
 "i. 头文件
 "d. 头文件里定义或宏
 "k. 扫描dict包含的所有文件
-"k. 只扫单,多个文件: k./file, k./*
+"k. 只扫单,多个文件: k./file,k./*
 "}}}
 """"""""""""""""""""
 " acp dictags {{{
 """"""""""""""""""""
-" Use nimlsp don't set dict, Will slow !!!
+" Use nimlsp don't set dict,Will slow !!!
 if has("win32")
-	SetAcpDict('asm', 'win32.dict')
+	SetAcpDict('asm','win32.dict')
     SetAcpDict('c,cpp','win32.dict','cpp.dict')
 else
-    SetAcpDict('c,cpp', 'cpp.dict', 'flecs.dict')
+    SetAcpDict('c,cpp','cpp.dict','flecs.dict')
 endif
-SetAcpDict('vim', 'vim.dict')
-SetAcpDict('java', 'java.dict')
-SetAcpDict('js', 'javascript.dict')
-SetAcpDict('perl', 'perl.dict')
-SetAcpDict('php', 'php.dict','html.dict')
-SetAcpDict('html', 'javascript.dict','html.dict','html5.dict')
-SetAcpDict('actionscript', 'as3.dict')
-SetAcpDict('sh', 'bash.dict')
-SetAcpDict('squirrel', 'squirrel.dict')
-SetAcpDict('lua', 'lua.dict')
-SetAcpDict('zig', 'zigtags')
+SetAcpDict('vim','vim.dict')
+SetAcpDict('java','java.dict')
+SetAcpDict('js','javascript.dict')
+SetAcpDict('perl','perl.dict')
+SetAcpDict('php','php.dict','html.dict')
+SetAcpDict('html','javascript.dict','html.dict','html5.dict')
+SetAcpDict('actionscript','as3.dict')
+SetAcpDict('sh','bash.dict')
+SetAcpDict('squirrel','squirrel.dict')
+SetAcpDict('lua','lua.dict')
 SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
+SetAcpDict('zig','zig.dict','zig_builtin.dict')
 "}}}
 "-------------------
 "--temp {{{
-"nico
-"au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
-"au FileType nim setl tags+=$VIMDICT/nicotags
-"SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','nico.dict')
-"SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','nico.dict')
 "sokol
+au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
+au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
+SetAcpDict('zig','zig.dict','zig_builtin.dict','sokol.dict')
 "au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'
 "au FileType nim setl tags+=$VIMDICT/sokoltags
-"SetAcpDict('nim', 'nimtags','nim.dict','nim_enums.dict','sokoltags','sokol.dict')
+"SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','sokol.dict')
+""nico
+"au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
+"au FileType nim setl tags+=$VIMDICT/nicotags
+"SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','nico.dict')
 "-------------------
 "--naylib
 "au FileType nim let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
@@ -151,5 +156,5 @@ SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
 "au FileType nim setl tags+=$VIMDICT/naytags
 "SetAcpDict('nim','nimtags','nim.dict','nim_enums.dict',$NAYLIB.'raylib.nim')
 "--zig
-"au FileType zig let g:zig_fmt_autosave = 0
+au FileType zig let g:zig_fmt_autosave = 0
 "}}}

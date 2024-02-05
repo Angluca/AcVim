@@ -44,6 +44,7 @@ Counter
 CounterId
 CounterIncrement
 CustomType
+DATA
 Data
 DataRate
 Date
@@ -386,6 +387,7 @@ EcsFilter
 EcsFilterHasCondSet
 EcsFilterHasPred
 EcsFilterHasScopes
+EcsFilterHasWildcards
 EcsFilterIsInstanced
 EcsFilterIsTrivial
 EcsFilterMatchAnything
@@ -396,6 +398,8 @@ EcsFilterMatchOnlyThis
 EcsFilterMatchPrefab
 EcsFilterMatchThis
 EcsFilterNoData
+EcsFilterOwnsStorage
+EcsFilterOwnsTermsStorage
 EcsFilterPopulate
 EcsFilterUnresolvedByName
 EcsFinal
@@ -471,6 +475,7 @@ EcsIterProfile
 EcsIterTableOnly
 EcsIterTrivialSearch
 EcsIterTrivialSearchNoData
+EcsIterTrivialSearchWildcard
 EcsIterTrivialTest
 EcsIterYield
 EcsIterable
@@ -626,6 +631,8 @@ EcsRuleNothing
 EcsRuleOptional
 EcsRuleOr
 EcsRulePairEq
+EcsRulePopulate
+EcsRulePopulateSelf
 EcsRulePredEq
 EcsRulePredEqMatch
 EcsRulePredEqName
@@ -636,6 +643,7 @@ EcsRuleReset
 EcsRuleSecond
 EcsRuleSelectAny
 EcsRuleSelfUp
+EcsRuleSelfUpId
 EcsRuleSetFixed
 EcsRuleSetId
 EcsRuleSetIds
@@ -644,7 +652,11 @@ EcsRuleSetVars
 EcsRuleSrc
 EcsRuleStore
 EcsRuleTrav
+EcsRuleTriv
+EcsRuleTrivData
+EcsRuleTrivWildcard
 EcsRuleUp
+EcsRuleUpId
 EcsRuleWith
 EcsRuleYield
 EcsScopeClose
@@ -697,10 +709,12 @@ EcsTableTriggersForId
 EcsTag
 EcsTarget
 EcsTermIdInherited
+EcsTermIsTrivial
 EcsTermMatchAny
 EcsTermMatchAnySrc
 EcsTermMatchDisabled
 EcsTermMatchPrefab
+EcsTermNoData
 EcsTermReflexive
 EcsTermSrcFirstEq
 EcsTermSrcSecondEq
@@ -1505,6 +1519,7 @@ current
 cursor
 cursor_count
 data
+data_fields
 data_size
 datarate
 dbg
@@ -3748,6 +3763,8 @@ flecs_rule_insert_each
 flecs_rule_insert_inheritance
 flecs_rule_insert_lookup
 flecs_rule_insert_pair_eq
+flecs_rule_insert_populate
+flecs_rule_insert_trivial_search
 flecs_rule_insert_unconstrained_transitive
 flecs_rule_is_builtin_pred
 flecs_rule_is_written
@@ -3770,6 +3787,8 @@ flecs_rule_op_str
 flecs_rule_optional
 flecs_rule_or
 flecs_rule_pair_eq
+flecs_rule_populate
+flecs_rule_populate_self
 flecs_rule_pred_eq
 flecs_rule_pred_eq_match
 flecs_rule_pred_eq_name
@@ -3791,6 +3810,7 @@ flecs_rule_select_id
 flecs_rule_select_or
 flecs_rule_select_w_id
 flecs_rule_self_up
+flecs_rule_self_up_id
 flecs_rule_self_up_with
 flecs_rule_set_match
 flecs_rule_set_trav_match
@@ -3803,6 +3823,9 @@ flecs_rule_setvars
 flecs_rule_store
 flecs_rule_table_filter
 flecs_rule_term_fixed_id
+flecs_rule_term_is_or
+flecs_rule_term_is_unknown
+flecs_rule_term_next_known
 flecs_rule_trav
 flecs_rule_trav_cache_fini
 flecs_rule_trav_fixed_src_reflexive
@@ -3811,19 +3834,26 @@ flecs_rule_trav_fixed_src_up_unknown_second
 flecs_rule_trav_unknown_src_reflexive
 flecs_rule_trav_unknown_src_up_fixed_second
 flecs_rule_trav_yield_reflexive_src
+flecs_rule_triv
+flecs_rule_triv_data
+flecs_rule_triv_wildcard
 flecs_rule_trivial_init
 flecs_rule_trivial_search
 flecs_rule_trivial_search_init
 flecs_rule_trivial_search_nodata
+flecs_rule_trivial_search_w_wildcards
 flecs_rule_trivial_test
+flecs_rule_trivial_test_w_wildcards
 flecs_rule_up
 flecs_rule_up_cache_fini
+flecs_rule_up_id
 flecs_rule_up_select
 flecs_rule_up_with
 flecs_rule_var_get_entity
 flecs_rule_var_get_range
 flecs_rule_var_get_table
 flecs_rule_var_is_anonymous
+flecs_rule_var_is_unknown
 flecs_rule_var_reset
 flecs_rule_var_set_entity
 flecs_rule_var_set_table
@@ -5209,7 +5239,6 @@ term_ptrs
 terms
 terms_buffer
 terms_buffer_count
-terms_owned
 thread
 thread_ctx
 thread_join_
@@ -5375,4 +5404,3 @@ wyr4_
 wyr8_
 yield_existing
 yield_reflexive
-

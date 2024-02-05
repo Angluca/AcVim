@@ -1113,6 +1113,7 @@ JsonNodeMode
 JsonNodeObj
 JsonParser
 JsonParsingError
+KEY_EVENT_RECORD
 Key
 KeyError
 KeyboardEvent
@@ -1375,6 +1376,7 @@ NanosecondRange
 Natural
 Navigator
 NegInf
+NewLines
 Newlines
 NilAccessDefect
 NilAccessError
@@ -1698,6 +1700,7 @@ ReadLineResult
 ReadSocketStream
 ReadSocketStreamObj
 ReadyKey
+RegExp
 Regex
 RegexError
 RegexFlag
@@ -3068,6 +3071,7 @@ compareExchangeWeak
 compile
 compile2
 compileOption
+compileString
 compiles
 complement
 complete
@@ -3152,6 +3156,7 @@ createEvent
 createFileA
 createFileMappingW
 createFileW
+createHardLinkW
 createHardlink
 createIoCompletionPort
 createNamedPipe
@@ -4386,6 +4391,7 @@ minutes
 missingOrExcl
 mitems
 mix
+mkDir
 mkdir
 mkdtemp
 mkfifo
@@ -4685,6 +4691,7 @@ parallel
 parallelReplace
 param
 paramCount
+paramStr
 params
 parentDir
 parentDirs
@@ -5031,6 +5038,7 @@ readInt64
 readInt8
 readLine
 readLineFromStdin
+readLineStatus
 readLines
 readPasswordFromStdin
 readRow
@@ -5632,6 +5640,7 @@ toDecimal64AsymmetricInterval
 toDeque
 toDll
 toDoublyLinkedList
+toDoublyLinkedRing
 toExe
 toFILETIME
 toFloat
@@ -5641,6 +5650,7 @@ toHex
 toISOString
 toInt
 toIntSet
+toJSON
 toJs
 toJsKey
 toJson
@@ -5670,6 +5680,7 @@ toSeq
 toSet
 toSigned
 toSinglyLinkedList
+toSinglyLinkedRing
 toSockAddr
 toSockType
 toStrLit

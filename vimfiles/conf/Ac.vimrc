@@ -94,6 +94,7 @@ fu! s:formatTags(rd='')
     exe 'g/^\~.*$/d'
     exe 'g/^!_.*$/d'
     exe 'g/^.\?\s*$/d'
+    exe '%s/^\w\{,2}\s\+.*$\n//ge'
     "exe 'g/^\(\k\+\)\t.*$\n\1\t.*/d'
 endf
 nmap \-- :Ftags<cr>
@@ -270,6 +271,7 @@ if v:lang == "zh_CN"
         language messages en_US.UTF-8
     endif
 endif
+"inoremap <ESC> <ESC>:set iminsert=0<CR>
 
 "Remove menu garbled
 so $VIMRUNTIME/delmenu.vim
@@ -348,7 +350,7 @@ set ffs=unix,dos
 "Set 7 lines to the curors - when moving vertical..
 "set so=7
 "set autochdir "auto set dir
-set tags=./tags,./../tags
+set tags=./tags,tags
 au BufNewFile,BufRead *tags setlocal ft=tags
 "set guifont=Consolas:h11
 "Turn on WiLd menu
@@ -600,12 +602,15 @@ nmap \fg :se fenc=GBK<cr>
 "quickfix
 au Filetype qf set syntax=sh
 set syntax=markdown.nim
-nmap <space>l  :cw 12<cr>
-nmap <space>cj :cn<cr>
-nmap <space>ck :cp<cr>
-nmap <space>co :cold<cr>
-nmap <space>ce :cnew<cr>
+nmap <space>l  :cw<cr>
+nmap <space>L  :copen<cr>
+nmap <s-space>L  :copen<cr>
+"nmap <s-space>J :cn<cr>
+"nmap <s-space>K :cp<cr>
+"nmap <s-space>O :cold<cr>
+"nmap <s-space>I :cnew<cr>
 nmap q :ccl<esc>
+nmap Q :ccl<esc>
 "virtual edit mode
 AcCreateMaps(':ToggleVE<cr>', ';ve')
 "select find

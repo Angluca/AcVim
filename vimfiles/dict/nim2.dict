@@ -1,7 +1,12 @@
-/*VARSECTION*/
-/*TYPESECTION*/
-/*INCLUDESECTION*/
-compiler/wordrecg.nim
+INCLUDESECTION
+SomeFloat
+SomeInteger
+SomeNumber
+SomeOrdinalcompiler
+SomeSignedInt
+SomeUnsignedInt
+TYPESECTION
+VARSECTION
 acyclic
 addr
 align
@@ -72,6 +77,7 @@ discardable
 distinct
 div
 do
+doAssert
 doctype
 double
 dynamic_cast
@@ -115,9 +121,9 @@ global
 goto
 guard
 header
+hins
 hint
 hintAsError
-hints
 if
 immediate
 implicitStatic
@@ -190,6 +196,7 @@ of
 off
 on
 oneway
+openArray
 operator
 optimization
 or
@@ -202,6 +209,7 @@ partial
 passc
 passl
 patterns
+pointer
 pop
 pragma
 private
@@ -237,6 +245,7 @@ signed
 sinkInference
 size
 sizeof
+speed
 stackTrace
 static
 staticBoundChecks
@@ -266,6 +275,8 @@ true
 try
 tuple
 type
+typeOfIter
+typeOfProc
 typedef
 typeid
 typename
@@ -289,6 +300,7 @@ warnings
 wchar_t
 when
 while
+wordrecg
 write
 writes
 xor
