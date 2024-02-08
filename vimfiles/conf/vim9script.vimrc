@@ -13,6 +13,7 @@ export var options = {
     dictionary: { 
         enable: true,
         matcher: 'case',
+        #matcher: 'ignorecase',
         onlyWords: false,
         sortedDict: true,
         maxCount: 10,
@@ -47,7 +48,7 @@ export var asopt = {
         enable: true,   # 'false' will disable command completion
         pum: true,      # 'false' for flat menu, 'true' for stacked menu
         fuzzy: false,   # fuzzy completion
-        exclude: [],    # keywords excluded from completion (use \c for ignorecase)
+        exclude: ["[pP]"],    # keywords excluded from completion (use \c for ignorecase)
         onspace: [],    # show popup menu after keyword+space (ex. :buffer<space>, etc.)
     }
 }

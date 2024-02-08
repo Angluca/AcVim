@@ -20,11 +20,9 @@ SetFiletype('*.mxml','mxml')
 SetFiletype('*.make','make')
 SetFiletype('*.p','pawn')
 SetFiletype('*.mm','objc')
-"squirrel script
 SetFiletype('*.nut','squirrel')
 SetFtCmd('squirrel','setl mp=sq\ %:p')
 SetFtCmd('squirrel','setl efm=%f:%l:%m')
-"godot script
 SetFiletype('*.gd','gdscript')
 "weixin
 SetFiletype('*.wxml','html')
@@ -32,7 +30,7 @@ SetFiletype('*.wxss','css')
 "nim
 SetFiletype('*.nim,*.nims,*.c2nim','nim')
 "zig
-"SetFiletype('*.zig','zig')
+SetFiletype('*.zig','zig')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
