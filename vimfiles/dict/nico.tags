@@ -1,0 +1,713 @@
+AudioChannelId	$NICO/backends/common.nim	/^type AudioChannelId* = range[-1..(nAudioChannels-1)]$/;"	t
+ChannelKind	$NICO/backends/common.nim	/^  ChannelKind* = enum$/;"	t
+ColorId	$NICO/backends/common.nim	/^  ColorId* = int$/;"	t
+ConsoleCommandCallback	$NICO/console.nim	/^type ConsoleCommandCallback* = proc(args: seq[string]): seq[string]$/;"	t
+DEG2RAD	$NICO/../nico.nim	/^const DEG2RAD* = PI \/ 180.0$/;"	t
+DitherMode	$NICO/backends/common.nim	/^type DitherMode* = enum$/;"	t
+Event	$NICO/backends/common.nim	/^  Event* = object$/;"	t
+EventKind	$NICO/backends/common.nim	/^  EventKind* = enum$/;"	t
+EventListener	$NICO/backends/common.nim	/^  EventListener* = proc(e: Event): bool # takes a single event and returns true if it's handled /;"	t
+Font	$NICO/backends/common.nim	/^  Font* = ref object$/;"	t
+FontId	$NICO/backends/common.nim	/^  FontId* = range[0..15]$/;"	t
+Grid	$NICO/grids.nim	/^type Grid*[T] = object$/;"	t
+Gui	$NICO/gui.nim	/^  Gui* = ref object$/;"	t
+GuiArea	$NICO/gui.nim	/^  GuiArea* = ref object$/;"	t
+GuiBoxDrawFunc	$NICO/gui2.nim	/^type GuiBoxDrawFunc* = proc(x,y,w,h: int, style: RenderStyle, status: RenderStatus, focus: bool)$/;"	t
+GuiColorSet	$NICO/gui.nim	/^  GuiColorSet* = tuple$/;"	t
+GuiDirection	$NICO/gui.nim	/^  GuiDirection* = enum$/;"	t
+GuiOutcome	$NICO/gui.nim	/^  GuiOutcome* = enum$/;"	t
+GuiSkin	$NICO/gui2.nim	/^type GuiSkin* = object$/;"	t
+GuiStyle	$NICO/gui.nim	/^  GuiStyle* = enum$/;"	t
+GuiTextDrawFunc	$NICO/gui2.nim	/^type GuiTextDrawFunc* = proc(text: string, x,y,w,h: int, style: RenderStyle, status: RenderStatu/;"	t
+KMOD_ALT	$NICO/keycodes.nim	/^const KMOD_ALT*   = KMOD_LALT.uint16 or KMOD_RALT.uint16$/;"	t
+KMOD_CAPS	$NICO/keycodes.nim	/^const KMOD_CAPS* = 0x00002000.uint16$/;"	t
+KMOD_CTRL	$NICO/keycodes.nim	/^const KMOD_CTRL*  = KMOD_LCTRL.uint16 or KMOD_RCTRL.uint16$/;"	t
+KMOD_GUI	$NICO/keycodes.nim	/^const KMOD_GUI*   = KMOD_LGUI.uint16 or KMOD_RGUI.uint16$/;"	t
+KMOD_LALT	$NICO/keycodes.nim	/^const KMOD_LALT* = 0x00000100.uint16$/;"	t
+KMOD_LCTRL	$NICO/keycodes.nim	/^const KMOD_LCTRL* = 0x00000040.uint16$/;"	t
+KMOD_LGUI	$NICO/keycodes.nim	/^const KMOD_LGUI* = 0x00000400.uint16$/;"	t
+KMOD_LSHIFT	$NICO/keycodes.nim	/^const KMOD_LSHIFT* = 0x00000001.uint16$/;"	t
+KMOD_MODE	$NICO/keycodes.nim	/^const KMOD_MODE* = 0x00004000.uint16$/;"	t
+KMOD_NONE	$NICO/keycodes.nim	/^const KMOD_NONE* = 0x00000000.uint16$/;"	t
+KMOD_NUM	$NICO/keycodes.nim	/^const KMOD_NUM* = 0x00001000.uint16$/;"	t
+KMOD_RALT	$NICO/keycodes.nim	/^const KMOD_RALT* = 0x00000200.uint16$/;"	t
+KMOD_RCTRL	$NICO/keycodes.nim	/^const KMOD_RCTRL* = 0x00000080.uint16$/;"	t
+KMOD_RESERVED	$NICO/keycodes.nim	/^const KMOD_RESERVED* = 0x00008000.uint16$/;"	t
+KMOD_RGUI	$NICO/keycodes.nim	/^const KMOD_RGUI* = 0x00000800.uint16$/;"	t
+KMOD_RSHIFT	$NICO/keycodes.nim	/^const KMOD_RSHIFT* = 0x00000002.uint16$/;"	t
+KMOD_SHIFT	$NICO/keycodes.nim	/^const KMOD_SHIFT* = KMOD_LSHIFT.uint16 or KMOD_RSHIFT.uint16$/;"	t
+K_SCANCODE_MASK	$NICO/keycodes.nim	/^  K_SCANCODE_MASK* = (1 shl 30)$/;"	t
+KeyListener	$NICO/backends/common.nim	/^type KeyListener* = proc(sym: int, mods: uint16, scancode: int, down: bool): bool$/;"	t
+Keycode	$NICO/keycodes.nim	/^  Keycode* {.size: sizeof(cint).} = enum ##  \\$/;"	t
+Mat	$NICO/matrix.nim	/^  Mat*[N: static int,T] = object$/;"	t
+Mat2x2f	$NICO/matrix.nim	/^  Mat2x2f* = Mat[2,float32]$/;"	t
+Mat3x3f	$NICO/matrix.nim	/^  Mat3x3f* = Mat[3,float32]$/;"	t
+Mat4x4f	$NICO/matrix.nim	/^  Mat4x4f* = Mat[4,float32]$/;"	t
+MusicId	$NICO/backends/common.nim	/^  MusicId* = range[-1..63]$/;"	t
+NicoAxis	$NICO/controller.nim	/^type NicoAxis* = enum$/;"	t
+NicoButton	$NICO/controller.nim	/^type NicoButton* = enum$/;"	t
+NicoController	$NICO/controller.nim	/^type NicoController* = ref object$/;"	t
+NicoControllerKind	$NICO/controller.nim	/^type NicoControllerKind* = enum$/;"	t
+Palette	$NICO/backends/common.nim	/^type Palette* = tuple$/;"	t
+Pfloat	$NICO/backends/common.nim	/^  Pfloat* = float32$/;"	t
+Pint	$NICO/backends/common.nim	/^  Pint* = int32$/;"	t
+ProfilerNode	$NICO/backends/common.nim	/^type ProfilerNode* = object$/;"	t
+Quat	$NICO/quat.nim	/^type Quat* = array[4,float32]$/;"	t
+RAD2DEG	$NICO/../nico.nim	/^const RAD2DEG* = 180.0 \/ PI$/;"	t
+RGB	$NICO/backends/common.nim	/^proc RGB*(r,g,b: Pint): tuple[r,g,b: uint8] =$/;"	t
+Rect	$NICO/backends/common.nim	/^  Rect* = tuple$/;"	t
+RenderStatus	$NICO/gui2.nim	/^type RenderStatus* = enum$/;"	t
+RenderStyle	$NICO/gui2.nim	/^type RenderStyle* = enum$/;"	t
+ResizeFunc	$NICO/backends/common.nim	/^type ResizeFunc* = proc(x,y: int)$/;"	t
+RingBuffer	$NICO/ringbuffer.nim	/^  RingBuffer*[T] = object$/;"	t
+Scancode	$NICO/keycodes.nim	/^  Scancode* {.size: sizeof(cint).} = enum ##  \\$/;"	t
+SfxId	$NICO/backends/common.nim	/^  SfxId* = range[-1..63]$/;"	t
+SpriteDraw	$NICO/spritedraw.nim	/^type SpriteDraw* = object$/;"	t
+StencilBlend	$NICO/backends/common.nim	/^type StencilBlend* = enum$/;"	t
+StencilMode	$NICO/backends/common.nim	/^type StencilMode* = enum$/;"	t
+Surface	$NICO/backends/common.nim	/^  Surface* = ref object$/;"	t
+SynthData	$NICO/backends/common.nim	/^  SynthData* = tuple$/;"	t
+SynthDataStep	$NICO/backends/common.nim	/^  SynthDataStep* = tuple$/;"	t
+SynthShape	$NICO/backends/common.nim	/^  SynthShape* = enum$/;"	t
+TextAlign	$NICO/utils.nim	/^type TextAlign* = enum$/;"	t
+Tilemap	$NICO/backends/common.nim	/^  Tilemap* = object$/;"	t
+Touch	$NICO/backends/common.nim	/^type Touch* = object$/;"	t
+TouchState	$NICO/backends/common.nim	/^type TouchState* = enum$/;"	t
+Vec	$NICO/vec.nim	/^  Vec*[N: static int, T: float32 | int] = array[N,T]$/;"	t
+Vec2	$NICO/vec.nim	/^  Vec2*[T] = Vec[2,T]$/;"	t
+Vec2f	$NICO/vec.nim	/^  Vec2f* = Vec2[float32]$/;"	t
+Vec2i	$NICO/vec.nim	/^  Vec2i* = Vec2[int]$/;"	t
+Vec3	$NICO/vec.nim	/^  Vec3*[T] = Vec[3,T]$/;"	t
+Vec3f	$NICO/vec.nim	/^  Vec3f* = Vec3[float32]$/;"	t
+Vec3i	$NICO/vec.nim	/^  Vec3i* = Vec3[int]$/;"	t
+Vec4	$NICO/vec.nim	/^  Vec4*[T] = Vec[4,T]$/;"	t
+Vec4f	$NICO/vec.nim	/^  Vec4f* = Vec4[float32]$/;"	t
+Vec4i	$NICO/vec.nim	/^  Vec4i* = Vec4[int]$/;"	t
+Vorbis	$NICO/stb_vorbis.nim	/^    Vorbis* = ptr VorbisObj$/;"	t
+VorbisInfo	$NICO/stb_vorbis.nim	/^    VorbisInfo* = object$/;"	t
+add	$NICO/backends/common.nim	/^proc add*(s: Surface, x,y: int, v: uint8) =$/;"	t
+add	$NICO/ringbuffer.nim	/^proc add*[T](b: var RingBuffer[T], data: openArray[T]) =$/;"	t
+addEventListener	$NICO/../nico.nim	/^proc addEventListener*(f: EventListener): EventListener {.discardable.} =$/;"	t
+addKeyForBtn	$NICO/../nico.nim	/^proc addKeyForBtn*(btn: NicoButton, scancode: Scancode) =$/;"	t
+addKeyListener	$NICO/../nico.nim	/^proc addKeyListener*(p: KeyListener) =$/;"	t
+addResizeFunc	$NICO/../nico.nim	/^proc addResizeFunc*(newResizeFunc: ResizeFunc) =$/;"	t
+addTweak	$NICO/tweaks.nim	/^proc addTweak*[T: int or float32 or bool](name: string, v: var T, rng: Slice[T] = T.low .. T.hig/;"	t
+adjacent	$NICO/grids.nim	/^iterator adjacent*[T](g: Grid[T], v: Vec2i, diagonal = false): Vec2i =$/;"	t
+all	$NICO/../nico.nim	/^iterator all*[T](a: var openarray[T]): T {.inline.} =$/;"	t
+angle	$NICO/vec.nim	/^proc angle*(v: Vec2f): Pfloat =$/;"	t
+angleDiff	$NICO/../nico.nim	/^proc angleDiff*(a,b: Pfloat): Pfloat =$/;"	t
+angleToVec	$NICO/vec.nim	/^proc angleToVec*(angle: Pfloat, mag: Pfloat = 1.0): Vec2f =$/;"	t
+anybtnp	$NICO/controller.nim	/^proc anybtnp*(self: NicoController): bool =$/;"	t
+anybtnp	$NICO/../nico.nim	/^proc anybtnp*(player: range[0..maxPlayers]): bool =$/;"	t
+anykeyp	$NICO/../nico.nim	/^proc anykeyp*(): bool =$/;"	t
+approach	$NICO/../nico.nim	/^proc approach*[T](a: var T, b: T, speed: T) =$/;"	t
+approachAngle	$NICO/../nico.nim	/^proc approachAngle*(a: var float32, b: float32, speed: float32) =$/;"	t
+approxZero	$NICO/vec.nim	/^proc approxZero*[N,T](v: Vec[N,T]): bool =$/;"	t
+arc	$NICO/../nico.nim	/^  proc arc*(cx,cy: Pint, r: Pfloat, startAngle, endAngle: Pfloat) =$/;"	t
+audioChannelAuto	$NICO/backends/common.nim	/^const audioChannelAuto* = -1.AudioChannelId$/;"	t
+audioOut	$NICO/backends/sdl2.nim	/^proc audioOut*(channel: AudioChannelId, index: int): float32 =$/;"	t
+audioTickCallback	$NICO/backends/common.nim	/^var audioTickCallback*: proc() = nil$/;"	t
+axis	$NICO/controller.nim	/^proc axis*(self: NicoController, axis: NicoAxis): float =$/;"	t
+axis	$NICO/../nico.nim	/^proc axis*(axis: NicoAxis, player: range[0..maxPlayers]): Pfloat =$/;"	t
+axisp	$NICO/controller.nim	/^proc axisp*(self: NicoController, axis: NicoAxis, value: float): bool =$/;"	t
+back	$NICO/matrix.nim	/^proc back*(m: Mat4x4f): Vec3f =$/;"	t
+beginArea	$NICO/gui.nim	/^proc beginArea*(G: Gui, x,y,w,h: Pint, direction: GuiDirection = gTopToBottom, box: bool = false/;"	t
+beginDrawer	$NICO/gui.nim	/^proc beginDrawer*(G: Gui, text: string): bool =$/;"	t
+beginHorizontal	$NICO/gui.nim	/^proc beginHorizontal*(G: Gui, height: int, box: bool = false) =$/;"	t
+beginVertical	$NICO/gui.nim	/^proc beginVertical*(G: Gui, width: int = -1, box: bool = false) =$/;"	t
+beginWindow	$NICO/gui.nim	/^proc beginWindow*(G: Gui, title: string, x,y,w,h: var Pint, show: var bool, direction: GuiDirect/;"	t
+blendMax	$NICO/backends/common.nim	/^proc blendMax*(s: Surface, x,y: int, v: uint8) =$/;"	t
+blendMin	$NICO/backends/common.nim	/^proc blendMin*(s: Surface, x,y: int, v: uint8) =$/;"	t
+blitFastRaw	$NICO/../nico.nim	/^proc blitFastRaw*(sx,sy, dx,dy, w,h: Pint) =$/;"	t
+box	$NICO/../nico.nim	/^proc box*(x,y,w,h: Pint)$/;"	f
+boxfill	$NICO/../nico.nim	/^proc boxfill*(x,y,w,h: Pint)$/;"	f
+bpm	$NICO/../nico.nim	/^proc bpm*(newBpm: Natural) =$/;"	t
+btn	$NICO/controller.nim	/^proc btn*(self: NicoController, button: NicoButton): bool =$/;"	t
+btn	$NICO/../nico.nim	/^proc btn*(b: NicoButton, player: range[0..maxPlayers]): bool$/;"	f
+btnRaw	$NICO/../nico.nim	/^proc btnRaw*(b: NicoButton, player: range[0..maxPlayers]): int$/;"	f
+btnp	$NICO/controller.nim	/^proc btnp*(self: NicoController, button: NicoButton): bool =$/;"	t
+btnp	$NICO/../nico.nim	/^proc btnp*(b: NicoButton, player: range[0..maxPlayers]): bool$/;"	f
+btnpr	$NICO/controller.nim	/^proc btnpr*(self: NicoController, button: NicoButton, repeat = 48): bool =$/;"	t
+btnpr	$NICO/../nico.nim	/^proc btnpr*(b: NicoButton, repeat = 48): bool$/;"	t
+btnup	$NICO/controller.nim	/^proc btnup*(self: NicoController, button: NicoButton): bool =$/;"	t
+btnup	$NICO/../nico.nim	/^proc btnup*(b: NicoButton, player: range[0..maxPlayers]): bool$/;"	f
+button	$NICO/gui.nim	/^proc button*(G: Gui, x,y,w,h: int, enabled: bool = true, hotkey = K_UNKNOWN, draw: GuiDrawProc):/;"	t
+cameraX	$NICO/backends/common.nim	/^var cameraX*: Pint = 0$/;"	t
+cameraY	$NICO/backends/common.nim	/^var cameraY*: Pint = 0$/;"	t
+ceil	$NICO/../nico.nim	/^proc ceil*(x: Pfloat): Pfloat =$/;"	t
+circ	$NICO/../nico.nim	/^proc circ*(cx,cy: Pint, r: Pint)$/;"	f
+circfill	$NICO/../nico.nim	/^proc circfill*(cx,cy: Pint, r: Pint)$/;"	f
+clamp	$NICO/../nico.nim	/^proc clamp*[T](a: T): T =$/;"	t
+clamp	$NICO/vec.nim	/^proc clamp*[V](a: V, maxLength: float32): V =$/;"	t
+clamp01	$NICO/../nico.nim	/^proc clamp01*[T](a: T): T =$/;"	t
+clampPerAxis	$NICO/vec.nim	/^proc clampPerAxis*[T](a: Vec3[T], maxLength: T): Vec3[T] =$/;"	t
+clearDebug	$NICO/debug.nim	/^proc clearDebug*(filter: string = "") =$/;"	t
+clearKeysForBtn	$NICO/../nico.nim	/^proc clearKeysForBtn*(btn: NicoButton) =$/;"	t
+clip	$NICO/../nico.nim	/^proc clip*(x,y,w,h: Pint)$/;"	f
+cls	$NICO/../nico.nim	/^proc cls*(c: ColorId = 0) =$/;"	t
+col	$NICO/matrix.nim	/^proc col*(m: Mat4x4f, i: range[0..3]): Vec4f =$/;"	t
+conjugate	$NICO/quat.nim	/^proc conjugate*(self: Quat): Quat =$/;"	t
+consoleLog	$NICO/console.nim	/^proc consoleLog*(args: varargs[string, `$`]) =$/;"	t
+convertToABGR	$NICO/backends/common.nim	/^proc convertToABGR*(src: Surface, rgbaPixels: pointer, dpitch, w,h: cint) =$/;"	t
+convertToIndexed	$NICO/backends/common.nim	/^proc convertToIndexed*(surface: Surface): Surface =$/;"	t
+convertToRGBA	$NICO/backends/common.nim	/^proc convertToRGBA*(src: Surface, abgrPixels: pointer, dpitch, w,h: cint) =$/;"	t
+copy	$NICO/../nico.nim	/^proc copy*(sx,sy,dx,dy,w,h: Pint) =$/;"	t
+copyMemToScreen	$NICO/../nico.nim	/^proc copyMemToScreen*(dx,dy: Pint, buffer: var openarray[uint8], count = -1) =$/;"	t
+copyPixelsToMem	$NICO/../nico.nim	/^proc copyPixelsToMem*(sx,sy: Pint, buffer: var openarray[uint8], count = -1) =$/;"	t
+createWindow	$NICO/backends/sdl2.nim	/^proc createWindow*(title: string, w,h: int, scale: int = 2, fullscreen: bool = false) =$/;"	t
+createWindow	$NICO/../nico.nim	/^proc createWindow*(title: string, w,h: int, scale: int = 2, fullscreen: bool = false) =$/;"	t
+cross	$NICO/vec.nim	/^proc cross*(a,b: Vec3f): Vec3f =$/;"	t
+currentBpm	$NICO/backends/common.nim	/^var currentBpm*: Natural = 128$/;"	t
+currentColor	$NICO/backends/common.nim	/^var currentColor*: ColorId = 0$/;"	t
+currentMusicId	$NICO/backends/common.nim	/^var currentMusicId*: int = -1$/;"	t
+currentTpb	$NICO/backends/common.nim	/^var currentTpb*: Natural = 4$/;"	t
+cursor	$NICO/../nico.nim	/^proc cursor*(x,y: Pint) =$/;"	t
+cursorX	$NICO/backends/common.nim	/^var cursorX* = 0$/;"	t
+cursorY	$NICO/backends/common.nim	/^var cursorY* = 0$/;"	t
+deadzone	$NICO/backends/common.nim	/^const deadzone* = int16.high div 2$/;"	t
+debug	$NICO/backends/sdl2.nim	/^    template debug*(args: varargs[string, `$`]) =$/;"	t
+debugBox	$NICO/debug.nim	/^proc debugBox*(x,y,w,h: int, color: int = debugColor, ttl = debugDrawTime) =$/;"	t
+debugCategory	$NICO/debug.nim	/^proc debugCategory*(s: string) =$/;"	t
+debugCircle	$NICO/debug.nim	/^proc debugCircle*(a: Vec2f, r: float32, color: int = debugColor, ttl = debugDrawTime) =$/;"	t
+debugLine	$NICO/debug.nim	/^proc debugLine*(a,b: Vec2f, color: int = debugColor, ttl = debugDrawTime) =$/;"	t
+debugPoint	$NICO/debug.nim	/^proc debugPoint*(a: Vec2f, color: int = debugColor, ttl = debugDrawTime) =$/;"	t
+debugPoly	$NICO/debug.nim	/^proc debugPoly*(poly: seq[Vec2f], pos: Vec2f, angle: float32, color: int = debugColor, ttl = deb/;"	t
+debugRay	$NICO/debug.nim	/^proc debugRay*(a,b: Vec2f, color: int = debugColor, ttl = debugDrawTime) =$/;"	t
+debugText	$NICO/debug.nim	/^proc debugText*(str: string, a: Vec2f, color: int = debugColor, ttl = debugDrawTime) =$/;"	t
+debugVar	$NICO/debug.nim	/^macro debugVar*(n: varargs[typed]): untyped =$/;"	t
+decWrap	$NICO/../nico.nim	/^template decWrap*[T](x: var T) =$/;"	t
+defaultFontChars	$NICO/fontdata.nim	/^const defaultFontChars* = " !\\"#$%&'()*+,-.\/0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\\\]^/;"	t
+defaultFontSurface	$NICO/fontdata.nim	/^let defaultFontSurface* = Surface(w: 381, h: 8, channels: 1, tw: 4, th: 4, filename: "", data: @/;"	t
+deg2rad	$NICO/../nico.nim	/^template deg2rad*(x: typed): untyped =$/;"	t
+determinant	$NICO/matrix.nim	/^proc determinant*(m: Mat4x4f): float32 =$/;"	t
+dist	$NICO/vec.nim	/^proc dist*[V](a,b: V): float32 {.inline.} =$/;"	t
+dist2	$NICO/vec.nim	/^proc dist2*[V](a,b: V): float32 {.inline.} =$/;"	t
+ditherADitherAdd	$NICO/../nico.nim	/^proc ditherADitherAdd*(v: float32, a = 237,b = 119, c = 255) =$/;"	t
+ditherADitherXor	$NICO/../nico.nim	/^proc ditherADitherXor*(v: float32, a = 149,b = 1234, c = 511) =$/;"	t
+ditherNone	$NICO/../nico.nim	/^proc ditherNone*() =$/;"	t
+ditherOffset	$NICO/../nico.nim	/^proc ditherOffset*(x,y: Pint) =$/;"	t
+ditherPattern	$NICO/../nico.nim	/^proc ditherPattern*(pattern: uint16 = 0b1111_1111_1111_1111) =$/;"	t
+ditherPatternBayer	$NICO/../nico.nim	/^proc ditherPatternBayer*(a: float32) =$/;"	t
+ditherPatternBigCheckerboard	$NICO/../nico.nim	/^proc ditherPatternBigCheckerboard*() =$/;"	t
+ditherPatternBigCheckerboard2	$NICO/../nico.nim	/^proc ditherPatternBigCheckerboard2*() =$/;"	t
+ditherPatternCheckerboard	$NICO/../nico.nim	/^proc ditherPatternCheckerboard*() =$/;"	t
+ditherPatternCheckerboard2	$NICO/../nico.nim	/^proc ditherPatternCheckerboard2*() =$/;"	t
+ditherPatternScanlines	$NICO/../nico.nim	/^proc ditherPatternScanlines*() =$/;"	t
+ditherPatternScanlines2	$NICO/../nico.nim	/^proc ditherPatternScanlines2*() =$/;"	t
+div	$NICO/vec.nim	/^proc `div`*[N,T](v: Vec[N,T], s: T): Vec[N,T] =$/;"	o
+doWhile	$NICO/../nico.nim	/^template doWhile*(a, b: untyped): untyped =$/;"	t
+dot	$NICO/vec.nim	/^proc dot*[T](a,b: Vec4[T]): T =$/;"	t
+down	$NICO/matrix.nim	/^proc down*(m: Mat4x4f): Vec3f =$/;"	t
+drag	$NICO/gui.nim	/^proc drag*[T](G: Gui, text: string, value: var T, min: T, max: T,sensitivity: float32, x,y,w,h: /;"	t
+draw	$NICO/gui.nim	/^proc draw*(G: Gui, onGui: proc()) =$/;"	t
+drawBox	$NICO/gui.nim	/^proc drawBox*(G: Gui, x,y,w,h: int, style: GuiStyle = gFlat, hovered: bool = false)$/;"	t
+drawBoxFunc	$NICO/gui.nim	/^    drawBoxFunc*: proc(G: Gui, x,y,w,h: int, style: GuiStyle = gFlat, hovered: bool = false)$/;"	t
+drawConsole	$NICO/console.nim	/^proc drawConsole*() =$/;"	t
+drawDebug	$NICO/debug.nim	/^proc drawDebug*(filter: string = "") =$/;"	t
+dropDown	$NICO/gui.nim	/^proc dropDown*(G: Gui, strings: openarray[string], value: int, x,y,w,h: int, enabled: bool = tru/;"	t
+editRange	$NICO/tweaks.nim	/^template editRange*(bounds: untyped) {.pragma.}$/;"	m
+ellipsefill	$NICO/../nico.nim	/^proc ellipsefill*(cx,cy: Pint, rx,ry: Pint)$/;"	f
+em_callback_func	$NICO/backends/sdl2.nim	/^  type em_callback_func* = proc() {.cdecl.}$/;"	t
+empty	$NICO/gui.nim	/^proc empty*(G: Gui, w, h: int) =$/;"	t
+emscripten_cancel_main_loop	$NICO/backends/sdl2.nim	/^  proc emscripten_cancel_main_loop*()$/;"	f
+emscripten_set_main_loop	$NICO/backends/sdl2.nim	/^  proc emscripten_set_main_loop*(f: em_callback_func, fps, simulate_infinite_loop: cint)$/;"	f
+emulateMouse	$NICO/../nico.nim	/^proc emulateMouse*(on: bool)$/;"	f
+endArea	$NICO/gui.nim	/^proc endArea*(G: Gui)$/;"	f
+endDrawer	$NICO/gui.nim	/^proc endDrawer*(G: Gui) =$/;"	t
+errorPopup	$NICO/backends/sdl2.nim	/^proc errorPopup*(title: string, message: string)$/;"	f
+eventListeners	$NICO/backends/common.nim	/^var eventListeners*: seq[EventListener] = @[]$/;"	t
+fget	$NICO/../nico.nim	/^proc fget*(s: Pint, f: uint8): bool =$/;"	t
+fixedScreenSize	$NICO/backends/common.nim	/^var fixedScreenSize* = true$/;"	t
+fixedSize	$NICO/../nico.nim	/^proc fixedSize*(enabled: bool) =$/;"	t
+flip	$NICO/backends/sdl2.nim	/^proc flip*() =$/;"	t
+flip	$NICO/../nico.nim	/^proc flip*() {.inline.} =$/;"	t
+flr	$NICO/../nico.nim	/^proc flr*(x: Pfloat): Pfloat$/;"	f
+flr	$NICO/vec.nim	/^proc flr*[N,T](v: Vec[N,T]): Vec[N,T] =$/;"	t
+focused	$NICO/backends/common.nim	/^var focused* = true$/;"	t
+fontHeight	$NICO/../nico.nim	/^proc fontHeight*(): Pint =$/;"	t
+forward	$NICO/matrix.nim	/^proc forward*(m: Mat4x4f): Vec3f =$/;"	t
+fps	$NICO/../nico.nim	/^proc fps*(fps: int) =$/;"	t
+frame	$NICO/backends/common.nim	/^var frame* = 0$/;"	t
+frameMult	$NICO/backends/common.nim	/^var frameMult* = 1$/;"	t
+frameRate	$NICO/backends/common.nim	/^var frameRate* = 60$/;"	t
+frustum	$NICO/matrix.nim	/^proc frustum*(left, right, bottom, top, near, far: float32): Mat4x4f =$/;"	t
+fset	$NICO/../nico.nim	/^proc fset*(s: Pint, f: uint8, v: bool) =$/;"	t
+fullSpeedGif	$NICO/backends/common.nim	/^var fullSpeedGif* = true$/;"	t
+further	$NICO/vec.nim	/^proc further*[V](a: V, compDist: float32): bool =$/;"	t
+gDitherADitherA	$NICO/backends/common.nim	/^var gDitherADitherA* = 149$/;"	t
+gDitherADitherB	$NICO/backends/common.nim	/^var gDitherADitherB* = 1234$/;"	t
+gDitherADitherC	$NICO/backends/common.nim	/^var gDitherADitherC* = 511$/;"	t
+gDitherADitherInput	$NICO/backends/common.nim	/^var gDitherADitherInput* = 1f$/;"	t
+gDitherOffsetX	$NICO/backends/common.nim	/^var gDitherOffsetX* = 0$/;"	t
+gDitherOffsetY	$NICO/backends/common.nim	/^var gDitherOffsetY* = 0$/;"	t
+gDitherPattern	$NICO/backends/common.nim	/^var gDitherPattern*: uint16 = 0b1111_1111_1111_1111$/;"	t
+get	$NICO/backends/common.nim	/^proc get*(s: Surface, x,y: int): uint8 =$/;"	t
+get	$NICO/grids.nim	/^proc get*[T](g: Grid[T], x,y: int): T =$/;"	t
+getBoxRect	$NICO/gui2.nim	/^proc getBoxRect*(padding = false): Rect =$/;"	t
+getCamera	$NICO/../nico.nim	/^proc getCamera*(): (Pint,Pint)$/;"	f
+getClip	$NICO/../nico.nim	/^proc getClip*(): (int,int,int,int)$/;"	f
+getColor	$NICO/../nico.nim	/^proc getColor*(): ColorId$/;"	f
+getConfigValue	$NICO/backends/sdl2.nim	/^proc getConfigValue*(section, key: string, default: string = ""): string =$/;"	t
+getControllers	$NICO/../nico.nim	/^proc getControllers*(): seq[NicoController] =$/;"	t
+getFont	$NICO/../nico.nim	/^proc getFont*(): FontId$/;"	f
+getFullSpeedGif	$NICO/backends/sdl2.nim	/^proc getFullSpeedGif*(): bool =$/;"	t
+getFullscreen	$NICO/backends/sdl2.nim	/^proc getFullscreen*(): bool =$/;"	t
+getFullscreen	$NICO/../nico.nim	/^proc getFullscreen*(): bool =$/;"	t
+getKeyMap	$NICO/backends/sdl2.nim	/^proc getKeyMap*(): string =$/;"	t
+getKeyNamesForBtn	$NICO/backends/sdl2.nim	/^proc getKeyNamesForBtn*(btn: NicoButton): seq[string] =$/;"	t
+getMusic	$NICO/backends/sdl2.nim	/^proc getMusic*(channel: AudioChannelId): int =$/;"	t
+getPalette	$NICO/../nico.nim	/^proc getPalette*(): Palette =$/;"	t
+getPerformanceCounter	$NICO/backends/sdl2.nim	/^proc getPerformanceCounter*(): uint64 {.inline.} =$/;"	t
+getPerformanceFrequency	$NICO/backends/sdl2.nim	/^proc getPerformanceFrequency*(): uint64 {.inline.} =$/;"	t
+getRealDt	$NICO/backends/sdl2.nim	/^proc getRealDt*(): float32 =$/;"	t
+getRecordSeconds	$NICO/backends/sdl2.nim	/^proc getRecordSeconds*(): int =$/;"	t
+getScreenScale	$NICO/../nico.nim	/^proc getScreenScale*(): float32 =$/;"	t
+getTextRect	$NICO/gui2.nim	/^proc getTextRect*(text: string, padding = false): Rect =$/;"	t
+getTouchCount	$NICO/../nico.nim	/^proc getTouchCount*(): int =$/;"	t
+getTouches	$NICO/../nico.nim	/^proc getTouches*(): seq[Touch] =$/;"	t
+getTweakPresets	$NICO/tweaks.nim	/^proc getTweakPresets*(): seq[string] =$/;"	t
+getUnmappedJoysticks	$NICO/backends/sdl2.nim	/^proc getUnmappedJoysticks*(): seq[Joystick] =$/;"	t
+getVSync	$NICO/backends/sdl2.nim	/^proc getVSync*(): bool =$/;"	t
+gifScale	$NICO/backends/common.nim	/^var gifScale* = 2$/;"	t
+glide	$NICO/backends/sdl2.nim	/^proc glide*(channel: AudioChannelId, glide: range[0..15]) =$/;"	t
+glyph	$NICO/../nico.nim	/^proc glyph*(c: char, x,y: Pint, scale: Pint = 1): Pint {.discardable, inline.}$/;"	t
+glyphWidth	$NICO/../nico.nim	/^proc glyphWidth*(c: char, scale: Pint = 1): Pint$/;"	t
+guiActiveElement	$NICO/gui2.nim	/^proc guiActiveElement*(): int =$/;"	t
+guiBasicBox	$NICO/gui2.nim	/^proc guiBasicBox*(w = -1, h = -1, style: RenderStyle = rsFlat): Rect {.discardable} =$/;"	t
+guiBasicText	$NICO/gui2.nim	/^proc guiBasicText*(text: string, style: RenderStyle = rsFlat, align = alignDefault): Rect {.disc/;"	t
+guiBasicTextBox	$NICO/gui2.nim	/^proc guiBasicTextBox*(text: string, style: RenderStyle = rsFlat, align = alignDefault, focus = f/;"	t
+guiBegin	$NICO/gui2.nim	/^proc guiBegin*(name: string = "", titleBar = true, resizable = true, movable = true, scrollable /;"	t
+guiButton	$NICO/gui2.nim	/^proc guiButton*(label: string, box = true): bool =$/;"	t
+guiDrag	$NICO/gui2.nim	/^proc guiDrag*[T](name: string, val: var T, min: T = T.low, max: T = T.high, speed = 0.1f): bool /;"	t
+guiDraw	$NICO/gui2.nim	/^proc guiDraw*() =$/;"	t
+guiEnd	$NICO/gui2.nim	/^proc guiEnd*()$/;"	f
+guiEndFoldout	$NICO/gui2.nim	/^proc guiEndFoldout*() =$/;"	t
+guiFoldout	$NICO/gui2.nim	/^template guiFoldout*(name: string, body: untyped): untyped =$/;"	t
+guiGetCursor	$NICO/gui2.nim	/^proc guiGetCursor*(): (int,int) =$/;"	t
+guiHorizontal	$NICO/gui2.nim	/^template guiHorizontal*(height: int = -1, body: untyped): untyped =$/;"	t
+guiHoveredElement	$NICO/gui2.nim	/^proc guiHoveredElement*(): int =$/;"	t
+guiLabel	$NICO/gui2.nim	/^proc guiLabel*(label: string) =$/;"	t
+guiMultiSlider	$NICO/gui2.nim	/^proc guiMultiSlider*[T](vals: var openArray[T], min: T, max: T): bool {.discardable.} =$/;"	t
+guiMultiSliderLastIndex	$NICO/gui2.nim	/^proc guiMultiSliderLastIndex*(): int =$/;"	t
+guiMultiSliderV	$NICO/gui2.nim	/^proc guiMultiSliderV*[T](vals: var openArray[T], min: T, max: T): bool {.discardable.} =$/;"	t
+guiNewLine	$NICO/gui2.nim	/^proc guiNewLine*() =$/;"	t
+guiNoAdvance	$NICO/gui2.nim	/^template guiNoAdvance*(body: untyped): untyped =$/;"	t
+guiOption	$NICO/gui2.nim	/^proc guiOption*[T](name: string, val: var T, options: seq[T]): bool {.discardable.} =$/;"	t
+guiPos	$NICO/gui2.nim	/^proc guiPos*(x,y: int) = # next widget will be at x,y$/;"	t
+guiResetOverrides	$NICO/gui2.nim	/^proc guiResetOverrides*() =$/;"	t
+guiSetBoxDrawFunc	$NICO/gui2.nim	/^proc guiSetBoxDrawFunc*(f: GuiBoxDrawFunc) =$/;"	t
+guiSetCursor	$NICO/gui2.nim	/^proc guiSetCursor*(x,y: int = int.low) = # next widget will be offset by x,y, -1 = default$/;"	t
+guiSetLineHeight	$NICO/gui2.nim	/^proc guiSetLineHeight*(height: int) =$/;"	t
+guiSetSameLine	$NICO/gui2.nim	/^proc guiSetSameLine*(on: bool) = # next widget will be on the same line$/;"	t
+guiSetStatus	$NICO/gui2.nim	/^proc guiSetStatus*(status: RenderStatus) =$/;"	t
+guiSize	$NICO/gui2.nim	/^proc guiSize*(w,h: int = -1) = # next widget will have specified size, -1 = auto size on axis$/;"	t
+guiSlider	$NICO/gui2.nim	/^proc guiSlider*[T](name: string, val: var T, default: T = default(T), min: T, max: T, showDefaul/;"	t
+guiSlider2D	$NICO/gui2.nim	/^proc guiSlider2D*[T](name: string, x,y: var T, minx,miny: T = T.low, maxx,maxy: T = T.high): boo/;"	t
+guiStartFoldout	$NICO/gui2.nim	/^proc guiStartFoldout*(name: string = ""): bool =$/;"	t
+guiStartFrame	$NICO/gui2.nim	/^proc guiStartFrame*() =$/;"	t
+guiTextField	$NICO/gui2.nim	/^proc guiTextField*(name: string, val: var string, default: string = ""): bool {.discardable.} =$/;"	t
+guiToggle	$NICO/gui2.nim	/^proc guiToggle*(label: string, val: var bool): bool {.discardable} =$/;"	t
+guiUpdate	$NICO/gui2.nim	/^proc guiUpdate*(dt: float32) =$/;"	t
+guiWindowOpen	$NICO/gui2.nim	/^proc guiWindowOpen*(name: string): bool =$/;"	t
+hasMouse	$NICO/../nico.nim	/^proc hasMouse*(): bool =$/;"	t
+hasWindow	$NICO/backends/sdl2.nim	/^proc hasWindow*(): bool =$/;"	t
+hasWindow	$NICO/../nico.nim	/^proc hasWindow*(): bool =$/;"	t
+hash	$NICO/backends/common.nim	/^proc hash*(a: Keycode): Hash =$/;"	t
+hash	$NICO/vec.nim	/^proc hash*(x: Vec2i): Hash =$/;"	t
+hideMouse	$NICO/backends/sdl2.nim	/^proc hideMouse*() =$/;"	t
+hline	$NICO/../nico.nim	/^proc hline*(x0,y,x1: Pint)$/;"	f
+hlineFast	$NICO/../nico.nim	/^proc hlineFast*(x0,y,x1: Pint)$/;"	f
+idx	$NICO/ringbuffer.nim	/^func idx*[T](b: RingBuffer[T], i: int): int =$/;"	t
+incWrap	$NICO/../nico.nim	/^template incWrap*[T](x: var T) =$/;"	t
+init	$NICO/backends/sdl2.nim	/^proc init*(org: string, app: string) =$/;"	t
+init	$NICO/../nico.nim	/^proc init*(org: string, app: string)$/;"	f
+initConfigDone	$NICO/backends/sdl2.nim	/^  proc initConfigDone*() {.exportc,cdecl.} =$/;"	t
+initFuncCalled	$NICO/backends/common.nim	/^var initFuncCalled* = false$/;"	t
+initGrid	$NICO/grids.nim	/^proc initGrid*[T](w,h: int, default: T = default(T)): Grid[T] =$/;"	t
+initMixer	$NICO/backends/sdl2.nim	/^proc initMixer*(wantsAudioIn = false) =$/;"	t
+initRingBuffer	$NICO/ringbuffer.nim	/^proc initRingBuffer*[T](length: int): RingBuffer[T] =$/;"	t
+initSpriteDraw	$NICO/spritedraw.nim	/^proc initSpriteDraw*(spriteSheet, spriteIndex, x, y  : int, w = 1 ,h = 1, flipX = false, flipY =/;"	t
+insideRect	$NICO/vec.nim	/^proc insideRect*(p: Vec2f, a: Vec2f, b: Vec2f): bool =$/;"	t
+integerScale	$NICO/../nico.nim	/^proc integerScale*(enabled: bool) =$/;"	t
+integerScreenScale	$NICO/backends/common.nim	/^var integerScreenScale* = false$/;"	t
+interpolatedLookup	$NICO/backends/common.nim	/^proc interpolatedLookup*[T](a: openarray[T], s: Pfloat): T =$/;"	t
+invLerp	$NICO/../nico.nim	/^proc invLerp*(a,b,v: Pfloat): Pfloat =$/;"	t
+invSampleRate	$NICO/backends/common.nim	/^var invSampleRate* = 1.0'f \/ sampleRate$/;"	t
+inverse	$NICO/matrix.nim	/^proc inverse*(m: Mat4x4f): Mat4x4f =$/;"	t
+isGamepad	$NICO/../nico.nim	/^proc isGamepad*(player: range[0..maxPlayers]): bool =$/;"	t
+isKeyboard	$NICO/../nico.nim	/^proc isKeyboard*(player: range[0..maxPlayers]): bool =$/;"	t
+isNaN	$NICO/vec.nim	/^proc isNaN*(v: Vec4f): bool =$/;"	t
+isTextInput	$NICO/backends/sdl2.nim	/^proc isTextInput*(): bool =$/;"	t
+items	$NICO/grids.nim	/^iterator items*[T](g: Grid[T]): Vec2i =$/;"	t
+items	$NICO/ringbuffer.nim	/^iterator items*[T](b: RingBuffer[T]): T =$/;"	t
+jaxis	$NICO/../nico.nim	/^proc jaxis*(axis: NicoAxis, player: range[0..maxPlayers]): Pfloat$/;"	f
+keepRunning	$NICO/backends/common.nim	/^var keepRunning* = true$/;"	t
+key	$NICO/../nico.nim	/^proc key*(k: Keycode): bool =$/;"	t
+keyListeners	$NICO/backends/common.nim	/^var keyListeners*: seq[KeyListener] = @[]$/;"	t
+keymap	$NICO/backends/common.nim	/^var keymap*: array[NicoButton, seq[Scancode]] = [$/;"	t
+keyp	$NICO/../nico.nim	/^proc keyp*(k: Keycode): bool =$/;"	t
+keypr	$NICO/../nico.nim	/^proc keypr*(k: Keycode, repeat: int = 48): bool =$/;"	t
+keysDown	$NICO/backends/common.nim	/^var keysDown* = initTable[Keycode, uint32]() # keysDown[keycode] = numbersOfFramesHeldDown, 1 ==/;"	t
+label	$NICO/gui.nim	/^proc label*(G: Gui, text: string, x,y,w,h: int, box: bool = false) =$/;"	t
+labelStep	$NICO/gui.nim	/^proc labelStep*(G: Gui, text: string, x,y,w,h: int, step: int, box: bool = false) =$/;"	t
+left	$NICO/matrix.nim	/^proc left*(m: Mat4x4f): Vec3f =$/;"	t
+len	$NICO/ringbuffer.nim	/^proc len*[T](b: RingBuffer[T]): int =$/;"	t
+length	$NICO/quat.nim	/^proc length*(self: Quat): float32 =$/;"	t
+length	$NICO/vec.nim	/^proc length*[N,T](a: Vec[N,T]): T =$/;"	t
+length2	$NICO/quat.nim	/^proc length2*(self: Quat): float32 =$/;"	t
+length2	$NICO/vec.nim	/^proc length2*[N,T](a: Vec[N,T]): T =$/;"	t
+lerp	$NICO/backends/common.nim	/^proc lerp*[T](a,b: T, t: Pfloat): T =$/;"	t
+lerp	$NICO/../nico.nim	/^proc lerp*[T](a,b: T, t: Pfloat): T$/;"	f
+lerpSnap	$NICO/../nico.nim	/^proc lerpSnap*[T](a,b: T, t: Pfloat, threshold = 0.1f): T$/;"	t
+line	$NICO/../nico.nim	/^proc line*(x0,y0,x1,y1: Pint)$/;"	f
+line	$NICO/vec.nim	/^proc line*[T](a,b: Vec2[T]) =$/;"	t
+lineDashed	$NICO/../nico.nim	/^proc lineDashed*(x0,y0,x1,y1: Pint, pattern: uint8 = 0b10101010) =$/;"	t
+lineDashed	$NICO/vec.nim	/^proc lineDashed*[T](a,b: Vec2[T], pattern: uint8 = 0b10101010) =$/;"	t
+loadConfig	$NICO/backends/sdl2.nim	/^proc loadConfig*()$/;"	f
+loadDefaultFont	$NICO/../nico.nim	/^proc loadDefaultFont*(index: int) =$/;"	t
+loadFont	$NICO/../nico.nim	/^proc loadFont*(index: int, filename: string, chars: string) =$/;"	t
+loadMap	$NICO/../nico.nim	/^proc loadMap*(index: int, filename: string, layer = 0)$/;"	t
+loadMapObjects	$NICO/../nico.nim	/^proc loadMapObjects*(index: int, filename: string, layer = 0): seq[(float32,float32,string,strin/;"	t
+loadMusic	$NICO/backends/sdl2.nim	/^proc loadMusic*(index: int, filename: string) =$/;"	t
+loadPaletteCGA	$NICO/../nico.nim	/^proc loadPaletteCGA*(mode: range[0..2] = 0, highIntensity: bool = true): Palette$/;"	t
+loadPaletteFromGPL	$NICO/../nico.nim	/^proc loadPaletteFromGPL*(filename: string): Palette$/;"	f
+loadPaletteFromHexString	$NICO/../nico.nim	/^proc loadPaletteFromHexString*(s: string): Palette$/;"	f
+loadPaletteFromImage	$NICO/../nico.nim	/^proc loadPaletteFromImage*(filename: string): Palette$/;"	f
+loadPaletteGrayscale	$NICO/../nico.nim	/^proc loadPaletteGrayscale*(steps: range[1..256] = 256): Palette$/;"	t
+loadPalettePico8	$NICO/../nico.nim	/^proc loadPalettePico8*(): Palette$/;"	f
+loadPalettePico8Extra	$NICO/../nico.nim	/^proc loadPalettePico8Extra*(): Palette =$/;"	t
+loadSfx	$NICO/backends/sdl2.nim	/^proc loadSfx*(index: SfxId, filename: string) =$/;"	t
+loadSpriteSheet	$NICO/../nico.nim	/^proc loadSpriteSheet*(index: int, filename: string, tileWidth,tileHeight: Pint = 8) =$/;"	t
+loadSurfaceFromPNG	$NICO/backends/sdl2.nim	/^proc loadSurfaceFromPNG*(filename: string, callback: proc(surface: common.Surface)) =$/;"	t
+loadSurfaceFromPNGNoConvert	$NICO/backends/sdl2.nim	/^proc loadSurfaceFromPNGNoConvert*(filename: string, callback: proc(surface: common.Surface)) =$/;"	t
+lookAt	$NICO/matrix.nim	/^proc lookAt*(eye, at: Vec3f, up: Vec3f = vec3f(0,0,1)): Mat4x4f =$/;"	t
+mainLoop	$NICO/backends/sdl2.nim	/^  template mainLoop*(statement, actions: untyped): untyped =$/;"	t
+mapAdjacent	$NICO/../nico.nim	/^iterator mapAdjacent*(tx,ty: Pint): (Pint,Pint) =$/;"	t
+mapDraw	$NICO/../nico.nim	/^proc mapDraw*(startTX,startTY, tw,th, dx,dy: Pint, dw,dh: Pint = -1, loop: bool = false, ox,oy: /;"	t
+mapFilter	$NICO/../nico.nim	/^proc mapFilter*(flags: uint8 = 0'u8) =$/;"	t
+mapHeight	$NICO/../nico.nim	/^proc mapHeight*(): Pint =$/;"	t
+mapRGB	$NICO/backends/common.nim	/^proc mapRGB*(r,g,b: uint8): ColorId =$/;"	t
+mapRGBA	$NICO/backends/common.nim	/^proc mapRGBA*(r,g,b,a: uint8): ColorId =$/;"	t
+mapToPixel	$NICO/../nico.nim	/^proc mapToPixel*(tx,ty: Pint): (Pint,Pint) = # returns the pixel coordinates at map coord$/;"	t
+mapWidth	$NICO/../nico.nim	/^proc mapWidth*(): Pint =$/;"	t
+masterVol	$NICO/../nico.nim	/^proc masterVol*(newVol: range[0..255]) =$/;"	t
+masterVolume	$NICO/backends/common.nim	/^var masterVolume* = 1.0'f$/;"	t
+mat2x2f	$NICO/matrix.nim	/^proc mat2x2f*(m: float32 = 1.0'f): Mat2x2f =$/;"	t
+mat3x3f	$NICO/matrix.nim	/^proc mat3x3f*(v00,v01,v02,v10,v11,v12,v20,v21,v22: float32): Mat3x3f =$/;"	t
+mat4x4f	$NICO/matrix.nim	/^proc mat4x4f*(m: float32 = 1.0'f): Mat4x4f =$/;"	t
+maxPaletteSize	$NICO/backends/common.nim	/^const maxPaletteSize* = 256$/;"	t
+maxPlayers	$NICO/backends/common.nim	/^const maxPlayers* = 4$/;"	t
+mget	$NICO/../nico.nim	/^proc mget*(tx,ty: Pint): int$/;"	f
+mid	$NICO/../nico.nim	/^proc mid*[T](a,b,c: T): T =$/;"	t
+mixerChannels	$NICO/backends/common.nim	/^var mixerChannels* = 0$/;"	t
+modSign	$NICO/../nico.nim	/^proc modSign*[T](a,n: T): T =$/;"	t
+mouse	$NICO/../nico.nim	/^proc mouse*(): (int,int)$/;"	f
+mousebtn	$NICO/../nico.nim	/^proc mousebtn*(b: range[0..2]): bool$/;"	f
+mousebtnp	$NICO/../nico.nim	/^proc mousebtnp*(b: range[0..2]): bool$/;"	f
+mousebtnpr	$NICO/../nico.nim	/^proc mousebtnpr*(b: range[0..2], r: Pint): bool =$/;"	t
+mousebtnup	$NICO/../nico.nim	/^proc mousebtnup*(b: range[0..2]): bool$/;"	f
+mouserel	$NICO/../nico.nim	/^proc mouserel*(): (float32,float32)$/;"	f
+mousewheel	$NICO/../nico.nim	/^proc mousewheel*(): int$/;"	f
+mset	$NICO/../nico.nim	/^proc mset*(tx,ty: Pint, t: int)$/;"	f
+music	$NICO/backends/sdl2.nim	/^proc music*(channel: AudioChannelId, index: int, loop: int = -1) =$/;"	t
+musicBufferSize	$NICO/backends/common.nim	/^const musicBufferSize* = 4096$/;"	t
+musicGetPos	$NICO/backends/sdl2.nim	/^proc musicGetPos*(channel: AudioChannelId): int =$/;"	t
+musicSeek	$NICO/backends/sdl2.nim	/^proc musicSeek*(channel: AudioChannelId, pos: int) =$/;"	t
+musicVol	$NICO/../nico.nim	/^proc musicVol*(newVol: range[0..255]) =$/;"	t
+musicVolume	$NICO/backends/common.nim	/^var musicVolume* = 1.0'f$/;"	t
+muteAudio	$NICO/backends/common.nim	/^var muteAudio* = false$/;"	t
+nAudioChannels	$NICO/backends/common.nim	/^const nAudioChannels* = 16$/;"	t
+nearer	$NICO/vec.nim	/^proc nearer*[V](a: V, compDist: float32): bool =$/;"	t
+newMap	$NICO/../nico.nim	/^proc newMap*(index: int, w,h: Pint, tw,th: Pint = 8)$/;"	t
+newNicoController	$NICO/controller.nim	/^proc newNicoController*(id: cint): NicoController =$/;"	t
+newSpritesheet	$NICO/../nico.nim	/^proc newSpritesheet*(index: int, w, h: int, tw,th = 8) =$/;"	t
+newSurface	$NICO/backends/common.nim	/^proc newSurface*(w,h: int): Surface =$/;"	t
+newSurfaceRGBA	$NICO/backends/common.nim	/^proc newSurfaceRGBA*(w,h: int): Surface =$/;"	t
+normal	$NICO/vec.nim	/^proc normal*[N,T](v: Vec[N,T]): Vec[N,T] =$/;"	t
+normalize	$NICO/quat.nim	/^proc normalize*(self: var Quat) =$/;"	t
+normalize	$NICO/vec.nim	/^proc normalize*[N,T](v: var Vec[N,T]) =$/;"	t
+normalized	$NICO/quat.nim	/^proc normalized*(self: Quat): Quat =$/;"	t
+normalized	$NICO/vec.nim	/^proc normalized*[N,T](v: Vec[N,T]): Vec[N,T] =$/;"	t
+normalizedAndLength	$NICO/vec.nim	/^proc normalizedAndLength*[N,T](v: Vec[N,T]): (Vec[N,T], T) =$/;"	t
+note	$NICO/backends/common.nim	/^proc note*(n: string): Pfloat =$/;"	t
+noteStrToNote	$NICO/backends/common.nim	/^proc noteStrToNote*(s: string): int =$/;"	t
+noteToNoteStr	$NICO/backends/common.nim	/^proc noteToNoteStr*(value: int): string =$/;"	t
+or	$NICO/vec.nim	/^proc `or`*(a,b: Vec4i): Vec4i =$/;"	o
+paddedWidth	$NICO/gui2.nim	/^proc paddedWidth*(window: WindowData): int =$/;"	t
+pairs	$NICO/ringbuffer.nim	/^iterator pairs*[T](b: RingBuffer[T]): (int,T) =$/;"	t
+pal	$NICO/../nico.nim	/^proc pal*(a: ColorId): ColorId =$/;"	t
+palCol	$NICO/../nico.nim	/^proc palCol*(c: Pint, r,g,b: uint8) =$/;"	t
+palIndex	$NICO/../nico.nim	/^proc palIndex*(r,g,b: uint8): int =$/;"	t
+palSize	$NICO/../nico.nim	/^proc palSize*(): Pint$/;"	f
+pald	$NICO/../nico.nim	/^proc pald*(a: ColorId): ColorId =$/;"	t
+palt	$NICO/../nico.nim	/^proc palt*(a: ColorId, trans: bool) =$/;"	t
+perpendicular	$NICO/vec.nim	/^proc perpendicular*[T](a: Vec2[T]): Vec2[T] =$/;"	t
+perspectiveLH	$NICO/matrix.nim	/^proc perspectiveLH*(fovy: float32, aspect: float32, near, far: float32): Mat4x4f =$/;"	t
+perspectiveRH	$NICO/matrix.nim	/^proc perspectiveRH*(fovy: float32, aspect: float32, near, far: float32): Mat4x4f =$/;"	t
+perspectiveRightDown	$NICO/matrix.nim	/^proc perspectiveRightDown*(fovy: float32, aspect: float32, near, far: float32): Mat4x4f =$/;"	t
+pget	$NICO/../nico.nim	/^proc pget*(x,y: Pint): ColorId$/;"	f
+pgetRGB	$NICO/../nico.nim	/^proc pgetRGB*(x,y: Pint): (uint8,uint8,uint8)$/;"	f
+pgetRaw	$NICO/../nico.nim	/^proc pgetRaw*(x,y: Pint): ColorId =$/;"	t
+pitch	$NICO/backends/sdl2.nim	/^proc pitch*(channel: AudioChannelId, freq: Pfloat) =$/;"	t
+pitchbend	$NICO/backends/sdl2.nim	/^proc pitchbend*(channel: AudioChannelId, changeSpeed: range[-128..128]) =$/;"	t
+pixelToMap	$NICO/../nico.nim	/^proc pixelToMap*(px,py: Pint): (Pint,Pint) = # returns the tile coordinates at pixel position$/;"	t
+postUpdate	$NICO/controller.nim	/^proc postUpdate*(self: NicoController) =$/;"	t
+predWrap	$NICO/../nico.nim	/^template predWrap*[T](x: T): T =$/;"	t
+present	$NICO/backends/sdl2.nim	/^proc present*() =$/;"	t
+print	$NICO/../nico.nim	/^proc print*(text: string, x,y: Pint, scale: Pint = 1)$/;"	t
+printOutline	$NICO/utils.nim	/^proc printOutline*(text: string, x, y: cint, scale: cint = 1) =$/;"	t
+printOutlineC	$NICO/utils.nim	/^proc printOutlineC*(text: string, x, y: cint, scale: cint = 1) =$/;"	t
+printOutlineR	$NICO/utils.nim	/^proc printOutlineR*(text: string, x, y: cint, scale: cint = 1) =$/;"	t
+printShadow	$NICO/utils.nim	/^proc printShadow*(text: string, x, y: cint, scale: cint = 1) =$/;"	t
+printc	$NICO/../nico.nim	/^proc printc*(text: string, x,y: Pint, scale: Pint = 1) =$/;"	t
+printr	$NICO/../nico.nim	/^proc printr*(text: string, x,y: Pint, scale: Pint = 1) =$/;"	t
+profileBegin	$NICO/backends/common.nim	/^  template profileBegin*(name: untyped): untyped =$/;"	t
+profileCollect	$NICO/backends/common.nim	/^var profileCollect* = true$/;"	t
+profileData	$NICO/backends/common.nim	/^  var profileData* = initTable[string,int64](64)$/;"	t
+profileDataHistory	$NICO/backends/common.nim	/^  var profileDataHistory* = initTable[(string,uint8),int64](64)$/;"	t
+profileEnd	$NICO/backends/common.nim	/^  template profileEnd*(): untyped =$/;"	t
+profileEndFrame	$NICO/backends/common.nim	/^  template profileEndFrame*(): untyped =$/;"	t
+profileGetLastStats	$NICO/backends/common.nim	/^  proc profileGetLastStats*(): seq[tuple[name: string, time: int64]] =$/;"	t
+profileGetLastStatsPeak	$NICO/backends/common.nim	/^  proc profileGetLastStatsPeak*(): seq[tuple[name: string, time: int64]] =$/;"	t
+profileHistory	$NICO/backends/common.nim	/^var profileHistory* = initRingBuffer[ProfilerNode](256)$/;"	t
+profileStartFrame	$NICO/backends/common.nim	/^  template profileStartFrame*(): untyped =$/;"	t
+project	$NICO/vec.nim	/^proc project*(v,n: Vec2f): Vec2f =$/;"	t
+projectAbs	$NICO/vec.nim	/^proc projectAbs*(v,n: Vec2f): Vec2f =$/;"	t
+pset	$NICO/../nico.nim	/^proc pset*(x,y: Pint, c: ColorId) =$/;"	t
+psetRaw	$NICO/../nico.nim	/^proc psetRaw*(x,y: Pint, c: ColorId) {.inline.}$/;"	f
+quadfill	$NICO/../nico.nim	/^proc quadfill*(x1,y1,x2,y2,x3,y3,x4,y4: Pint)$/;"	f
+quat	$NICO/quat.nim	/^proc quat*(x,y,z,w: float32): Quat =$/;"	t
+queueAudio	$NICO/backends/sdl2.nim	/^proc queueAudio*(samples: var seq[float32]) =$/;"	t
+queueMixerAudio	$NICO/backends/sdl2.nim	/^proc queueMixerAudio*()$/;"	f
+queuedAudioSize	$NICO/backends/sdl2.nim	/^proc queuedAudioSize*(): int =$/;"	t
+rad2deg	$NICO/../nico.nim	/^template rad2deg*(x: typed): untyped =$/;"	t
+radio	$NICO/gui.nim	/^proc radio*[T: Ordinal](G: Gui, text: string, radioGroup: var T, index: T, enabled: bool = true)/;"	t
+rbox	$NICO/../nico.nim	/^proc rbox*(x,y,w,h: Pint, r: Pint = 1) =$/;"	t
+rboxfill	$NICO/../nico.nim	/^proc rboxfill*(x,y,w,h: Pint, r: Pint = 1) =$/;"	t
+readFile	$NICO/backends/sdl2.nim	/^proc readFile*(filename: string): string =$/;"	t
+readFile	$NICO/../nico.nim	/^proc readFile*(filename: string): string =$/;"	t
+readJsonFile	$NICO/backends/sdl2.nim	/^proc readJsonFile*(filename: string): JsonNode =$/;"	t
+readJsonFile	$NICO/../nico.nim	/^proc readJsonFile*(filename: string): JsonNode =$/;"	t
+recordSeconds	$NICO/backends/common.nim	/^var recordSeconds* = 30$/;"	t
+recordingEnabled	$NICO/backends/common.nim	/^const recordingEnabled* = true$/;"	t
+rect	$NICO/../nico.nim	/^proc rect*(x1,y1,x2,y2: Pint)$/;"	f
+rectCorner	$NICO/../nico.nim	/^proc rectCorner*(x1,y1,x2,y2: Pint)$/;"	f
+rectfill	$NICO/../nico.nim	/^proc rectfill*(x1,y1,x2,y2: Pint)$/;"	f
+reflect	$NICO/vec.nim	/^proc reflect*(v,n: Vec2f): Vec2f =$/;"	t
+refreshSpritesheets	$NICO/backends/sdl2.nim	/^proc refreshSpritesheets*() =$/;"	t
+registerConsoleCommand	$NICO/console.nim	/^proc registerConsoleCommand*(cmd: string, callback: ConsoleCommandCallback) =$/;"	t
+reloadTweaks	$NICO/tweaks.nim	/^proc reloadTweaks*(name: string = "tweaks") =$/;"	t
+remainder	$NICO/../nico.nim	/^proc remainder*(a: int, n: int): int =$/;"	t
+remove	$NICO/../nico.nim	/^proc remove*[T](a: var seq[T], v: T) =$/;"	t
+removeAllEventListeners	$NICO/../nico.nim	/^proc removeAllEventListeners*() =$/;"	t
+removeEventListener	$NICO/../nico.nim	/^proc removeEventListener*(f: EventListener) =$/;"	t
+removeKeyListener	$NICO/../nico.nim	/^proc removeKeyListener*(p: KeyListener) =$/;"	t
+removeResizeFunc	$NICO/../nico.nim	/^proc removeResizeFunc*(resizeFunc: ResizeFunc) =$/;"	t
+resetChannel	$NICO/backends/sdl2.nim	/^proc resetChannel*(channel: var Channel)$/;"	f
+resize	$NICO/backends/sdl2.nim	/^proc resize*(w,h: int) =$/;"	t
+richPrint	$NICO/utils.nim	/^proc richPrint*(text: string, x,y: int, align: TextAlign = taLeft, shadow = false, outline = fal/;"	t
+richPrintCount	$NICO/utils.nim	/^proc richPrintCount*(text: string): int =$/;"	t
+richPrintLastPrintedChar	$NICO/utils.nim	/^proc richPrintLastPrintedChar*(): char =$/;"	t
+richPrintOneLine	$NICO/utils.nim	/^proc richPrintOneLine*(text: string, x,y: int, align: TextAlign = taLeft, shadow = false, outlin/;"	t
+richPrintWidth	$NICO/utils.nim	/^proc richPrintWidth*(text: string, start = 0): int =$/;"	t
+richPrintWidthOneLine	$NICO/utils.nim	/^proc richPrintWidthOneLine*(text: string, startChar = 0, endChar = -1): int =$/;"	t
+richPrintWidthWrapped	$NICO/utils.nim	/^proc richPrintWidthWrapped*(text: string, maxWidth: int): int =$/;"	t
+richPrintWrap	$NICO/utils.nim	/^proc richPrintWrap*(text: string, x,y,w: int, align: TextAlign = taLeft, shadow = false, outline/;"	t
+richWrapLines	$NICO/utils.nim	/^proc richWrapLines*(text: string, width: int): seq[string] =$/;"	t
+right	$NICO/matrix.nim	/^proc right*(m: Mat4x4f): Vec3f =$/;"	t
+rnd	$NICO/../nico.nim	/^proc rnd*[T](x: HSlice[T,T]): T$/;"	f
+rndDir	$NICO/vec.nim	/^proc rndDir*(mag: float32 = 1'f): Vec2f =$/;"	t
+rndVec2f	$NICO/vec.nim	/^proc rndVec2f*(mag: float32): Vec2f =$/;"	t
+rndVec2i	$NICO/vec.nim	/^proc rndVec2i*(mag: int): Vec2i =$/;"	t
+rndVec3f	$NICO/vec.nim	/^proc rndVec3f*(mag: float32): Vec3f =$/;"	t
+rndbi	$NICO/../nico.nim	/^proc rndbi*[T](x: T): T =$/;"	t
+rotate	$NICO/matrix.nim	/^proc rotate*(m: var Mat4x4f, angle: float32, axis: Vec3f) =$/;"	t
+rotate	$NICO/vec.nim	/^proc rotate*(v: Vec2f, angle: float32): Vec2f =$/;"	t
+round	$NICO/vec.nim	/^proc round*[N,T](v: Vec[N,T]): Vec[N,T] =$/;"	t
+roundTo	$NICO/../nico.nim	/^proc roundTo*[T](a: T, n: T): T =$/;"	t
+row	$NICO/matrix.nim	/^proc row*(m: Mat4x4f, i: range[0..3]): Vec4f =$/;"	t
+rrect	$NICO/../nico.nim	/^proc rrect*(x1,y1,x2,y2: Pint, r: Pint = 1)$/;"	t
+rrectCorner	$NICO/../nico.nim	/^proc rrectCorner*(x1,y1,x2,y2: Pint)$/;"	f
+rrectfill	$NICO/../nico.nim	/^proc rrectfill*(x1,y1,x2,y2: Pint, r: Pint = 1)$/;"	t
+run	$NICO/backends/sdl2.nim	/^proc run*() =$/;"	t
+run	$NICO/../nico.nim	/^proc run*(init: (proc()), update: (proc(dt:float32)), draw: (proc())) =$/;"	t
+sampleRate	$NICO/backends/common.nim	/^var sampleRate* = 44100.0'f$/;"	t
+saveConfig	$NICO/backends/sdl2.nim	/^proc saveConfig*() =$/;"	t
+saveJsonFile	$NICO/backends/sdl2.nim	/^proc saveJsonFile*(filename: string, data: JsonNode) =$/;"	t
+saveJsonFile	$NICO/../nico.nim	/^proc saveJsonFile*(filename: string, data: JsonNode) =$/;"	t
+saveMap	$NICO/../nico.nim	/^proc saveMap*(index: int, filename: string)$/;"	f
+saveRecording	$NICO/backends/sdl2.nim	/^proc saveRecording*() =$/;"	t
+saveScreenshot	$NICO/backends/sdl2.nim	/^proc saveScreenshot*() =$/;"	t
+saveTweaks	$NICO/tweaks.nim	/^proc saveTweaks*(name = "tweaks") =$/;"	t
+scalarTripleProduct	$NICO/vec.nim	/^proc scalarTripleProduct*(a,b,c: Vec3f): float32 =$/;"	t
+scale	$NICO/matrix.nim	/^proc scale*(m: var Mat4x4f, s: float32) =$/;"	t
+scaleOnTwoAxes	$NICO/vec.nim	/^proc scaleOnTwoAxes*(v: var Vec2f, axis: Vec2f, s1,s2: float32) =$/;"	t
+scancodeToKeycode	$NICO/keycodes.nim	/^template scancodeToKeycode*(x: untyped): cint =$/;"	t
+screenHeight	$NICO/backends/common.nim	/^var screenHeight* = 128$/;"	t
+screenPaddingX	$NICO/backends/common.nim	/^var screenPaddingX* = 0$/;"	t
+screenPaddingY	$NICO/backends/common.nim	/^var screenPaddingY* = 0$/;"	t
+screenScale	$NICO/backends/common.nim	/^var screenScale* = 4.0$/;"	t
+screenWidth	$NICO/backends/common.nim	/^var screenWidth* = 128$/;"	t
+set	$NICO/backends/common.nim	/^proc set*(s: Surface, x,y: int, v: uint8) =$/;"	t
+set	$NICO/grids.nim	/^proc set*[T](g: var Grid[T], x,y: int, t: T) =$/;"	t
+setAssetPath	$NICO/../nico.nim	/^proc setAssetPath*(path: string) =$/;"	t
+setAudioBufferSize	$NICO/backends/sdl2.nim	/^proc setAudioBufferSize*(samples: int) =$/;"	t
+setAudioCallback	$NICO/backends/sdl2.nim	/^proc setAudioCallback*(channel: AudioChannelId, callback: proc(input: float32): float32, stereo:/;"	t
+setAudioTickCallback	$NICO/../nico.nim	/^proc setAudioTickCallback*(callback: proc()) =$/;"	t
+setAxisValue	$NICO/controller.nim	/^proc setAxisValue*(self: NicoController, axis: NicoAxis, value: float) =$/;"	t
+setButtonState	$NICO/controller.nim	/^proc setButtonState*(self: NicoController, button: NicoButton, down: bool) =$/;"	t
+setCamera	$NICO/../nico.nim	/^proc setCamera*(x,y: Pint = 0)$/;"	t
+setClipboardText	$NICO/backends/sdl2.nim	/^proc setClipboardText*(text: string) =$/;"	t
+setColor	$NICO/../nico.nim	/^proc setColor*(colId: ColorId)$/;"	f
+setConsoleBG	$NICO/console.nim	/^proc setConsoleBG*(bg: ColorId) =$/;"	t
+setConsoleFG	$NICO/console.nim	/^proc setConsoleFG*(fg: ColorId) =$/;"	t
+setConsoleRows	$NICO/console.nim	/^proc setConsoleRows*(rows: int) =$/;"	t
+setControllerAdded	$NICO/../nico.nim	/^proc setControllerAdded*(cadded: proc(controller: NicoController)) =$/;"	t
+setControllerRemoved	$NICO/../nico.nim	/^proc setControllerRemoved*(cremoved: proc(controller: NicoController)) =$/;"	t
+setDitherColor	$NICO/../nico.nim	/^proc setDitherColor*(c: Pint = -1) =$/;"	t
+setDrawFunc	$NICO/../nico.nim	/^proc setDrawFunc*(draw: (proc())) =$/;"	t
+setFont	$NICO/../nico.nim	/^proc setFont*(fontId: FontId)$/;"	f
+setFullSpeedGif	$NICO/backends/sdl2.nim	/^proc setFullSpeedGif*(enabled: bool) =$/;"	t
+setFullscreen	$NICO/backends/sdl2.nim	/^proc setFullscreen*(fullscreen: bool) =$/;"	t
+setFullscreen	$NICO/../nico.nim	/^proc setFullscreen*(fullscreen: bool) =$/;"	t
+setGifScale	$NICO/../nico.nim	/^proc setGifScale*(gs: int = 2) =$/;"	t
+setInitFunc	$NICO/../nico.nim	/^proc setInitFunc*(init: (proc())) =$/;"	t
+setKeyMap	$NICO/backends/sdl2.nim	/^proc setKeyMap*(mapstr: string) =$/;"	t
+setLinearFilter	$NICO/backends/sdl2.nim	/^proc setLinearFilter*(on: bool) =$/;"	t
+setMap	$NICO/../nico.nim	/^proc setMap*(index: int)$/;"	f
+setOutlineColor	$NICO/utils.nim	/^proc setOutlineColor*(oc: int) =$/;"	t
+setPalette	$NICO/../nico.nim	/^proc setPalette*(p: Palette) =$/;"	t
+setRecordSeconds	$NICO/backends/sdl2.nim	/^proc setRecordSeconds*(seconds: int) =$/;"	t
+setScreenSize	$NICO/backends/sdl2.nim	/^proc setScreenSize*(w,h: int) =$/;"	t
+setScreenSize	$NICO/../nico.nim	/^proc setScreenSize*(w,h: int) =$/;"	t
+setShaderBool	$NICO/backends/sdl2.nim	/^proc setShaderBool*(uniformName: string, value: bool) =$/;"	t
+setShaderFloat	$NICO/backends/sdl2.nim	/^proc setShaderFloat*(uniformName: string, value: float32) =$/;"	t
+setSpritesheet	$NICO/../nico.nim	/^proc setSpritesheet*(index: int) =$/;"	t
+setStencilBlend	$NICO/../nico.nim	/^proc setStencilBlend*(blend: StencilBlend = stencilReplace) =$/;"	t
+setStencilOnly	$NICO/../nico.nim	/^proc setStencilOnly*(on: bool) =$/;"	t
+setStencilRef	$NICO/../nico.nim	/^proc setStencilRef*(v: Pint) =$/;"	t
+setStencilWrite	$NICO/../nico.nim	/^proc setStencilWrite*(on: bool) =$/;"	t
+setStencilWriteFail	$NICO/../nico.nim	/^proc setStencilWriteFail*(on: bool) =$/;"	t
+setTargetSize	$NICO/../nico.nim	/^proc setTargetSize*(w,h: int) =$/;"	t
+setUpdateFunc	$NICO/../nico.nim	/^proc setUpdateFunc*(update: (proc(dt:float32))) =$/;"	t
+setVSync	$NICO/backends/sdl2.nim	/^proc setVSync*(on: bool) =$/;"	t
+setWindowTitle	$NICO/backends/sdl2.nim	/^proc setWindowTitle*(title: string) =$/;"	t
+setWindowTitle	$NICO/../nico.nim	/^proc setWindowTitle*(title: string) =$/;"	t
+setWritePath	$NICO/../nico.nim	/^proc setWritePath*(path: string) =$/;"	t
+sfx	$NICO/backends/sdl2.nim	/^proc sfx*(channel: AudioChannelId = -1, index: SfxId, loop: int = 1, gain: Pfloat = 1.0, pitch: /;"	t
+sfxVol	$NICO/../nico.nim	/^proc sfxVol*(newVol: range[0..255]) =$/;"	t
+sfxVolume	$NICO/backends/common.nim	/^var sfxVolume* = 1.0'f$/;"	t
+sget	$NICO/../nico.nim	/^proc sget*(x,y: Pint): ColorId$/;"	f
+sgn	$NICO/../nico.nim	/^proc sgn*(x: Pint): Pint =$/;"	t
+showMouse	$NICO/backends/sdl2.nim	/^proc showMouse*() =$/;"	t
+shutdown	$NICO/../nico.nim	/^proc shutdown*()$/;"	f
+slide	$NICO/vec.nim	/^proc slide*(v,n: Vec2f): Vec2f =$/;"	t
+slider	$NICO/gui.nim	/^proc slider*[T](G: Gui, text: string, value: var T, min: T, max: T, x,y,w,h: Pint, enabled, show/;"	t
+speed	$NICO/../nico.nim	/^proc speed*(speed: int) =$/;"	t
+spr	$NICO/../nico.nim	/^proc spr*(spr: Pint, x,y: Pint, w,h: Pint = 1, hflip, vflip: bool = false)$/;"	t
+sprBlitFast	$NICO/../nico.nim	/^proc sprBlitFast*(spr: Pint, x,y: Pint, w,h: Pint = 1) =$/;"	t
+sprBlitFastRaw	$NICO/../nico.nim	/^proc sprBlitFastRaw*(spr: Pint, x,y: Pint, w,h: Pint = 1) =$/;"	t
+sprBlitStretch	$NICO/../nico.nim	/^proc sprBlitStretch*(spr: Pint, x,y: Pint, w,h: Pint = 1) =$/;"	t
+sprOverlap	$NICO/../nico.nim	/^proc sprOverlap*(a,b : SpriteDraw): bool=$/;"	t
+sprRot	$NICO/../nico.nim	/^proc sprRot*(spr: Pint, x,y: Pint, radians: float32, w,h: Pint = 1)$/;"	t
+sprRot90	$NICO/../nico.nim	/^proc sprRot90*(spr: Pint, x,y: Pint, rotations: int, w,h: Pint = 1)$/;"	t
+sprite	$NICO/gui.nim	/^proc sprite*(G: Gui, spr: int, x,y,w,h: int) =$/;"	t
+spriteSize	$NICO/../nico.nim	/^proc spriteSize*(): (int,int) =$/;"	t
+sprs	$NICO/../nico.nim	/^proc sprs*(spr: Pint, x,y: Pint, w,h: Pint = 1, dw,dh: Pint = 1, hflip, vflip: bool = false)$/;"	t
+sprshift	$NICO/../nico.nim	/^proc sprshift*(spr: Pint, x,y: Pint, w,h: Pint = 1, ox,oy: Pint = 0, hflip, vflip: bool = false)/;"	t
+sprss	$NICO/../nico.nim	/^proc sprss*(spr: Pint, x,y: Pint, w,h: Pint = 1, dw,dh: Pint, hflip, vflip: bool = false) =$/;"	t
+srand	$NICO/../nico.nim	/^proc srand*(seed: int) =$/;"	t
+sset	$NICO/../nico.nim	/^proc sset*(x,y: Pint, c: int = -1)$/;"	t
+ssetSafe	$NICO/../nico.nim	/^proc ssetSafe*(x,y: Pint, c: int = -1) =$/;"	t
+sspr	$NICO/../nico.nim	/^proc sspr*(sx,sy, sw,sh, dx,dy: Pint, dw,dh: Pint = -1, hflip, vflip: bool = false)$/;"	t
+ssprite	$NICO/gui.nim	/^proc ssprite*(G: Gui, spr: int, x,y,w,h: int, sw,sh: int) =$/;"	t
+startTextInput	$NICO/backends/sdl2.nim	/^proc startTextInput*() =$/;"	t
+stb_vorbis_close	$NICO/stb_vorbis.nim	/^proc stb_vorbis_close*(f: Vorbis) {.importc, noconv.}$/;"	f
+stb_vorbis_get_file_offset	$NICO/stb_vorbis.nim	/^proc stb_vorbis_get_file_offset*(f: Vorbis): cuint {.importc, noconv.}$/;"	f
+stb_vorbis_get_info	$NICO/stb_vorbis.nim	/^proc stb_vorbis_get_info*(f: Vorbis): VorbisInfo {.importc, noconv.}$/;"	f
+stb_vorbis_get_sample_offset	$NICO/stb_vorbis.nim	/^proc stb_vorbis_get_sample_offset*(f: Vorbis): cint {.importc, noconv.}$/;"	f
+stb_vorbis_get_samples_float_interleaved	$NICO/stb_vorbis.nim	/^proc stb_vorbis_get_samples_float_interleaved*(f: Vorbis, channels: cint, buffer: ptr float32, n/;"	f
+stb_vorbis_get_samples_short_interleaved	$NICO/stb_vorbis.nim	/^proc stb_vorbis_get_samples_short_interleaved*(f: Vorbis, channels: cint, buffer: ptr uint16, nu/;"	f
+stb_vorbis_open_file	$NICO/stb_vorbis.nim	/^proc stb_vorbis_open_file*(fp: FILE, close_handle_on_close: cint, error: ptr cint, alloc_buffer:/;"	f
+stb_vorbis_open_filename	$NICO/stb_vorbis.nim	/^proc stb_vorbis_open_filename*(filename: cstring, error: ptr cint, alloc_buffer: pointer): Vorbi/;"	f
+stb_vorbis_open_memory	$NICO/stb_vorbis.nim	/^proc stb_vorbis_open_memory*(data: pointer, len: cint, error: ptr cint, alloc_buffer: pointer): /;"	f
+stb_vorbis_seek	$NICO/stb_vorbis.nim	/^proc stb_vorbis_seek*(f: Vorbis, sample: cuint): cint {.importc, noconv.}$/;"	f
+stb_vorbis_seek_frame	$NICO/stb_vorbis.nim	/^proc stb_vorbis_seek_frame*(f: Vorbis, frame: cuint): cint {.importc, noconv.}$/;"	f
+stb_vorbis_stream_length_in_samples	$NICO/stb_vorbis.nim	/^proc stb_vorbis_stream_length_in_samples*(f: Vorbis): cuint {.importc, noconv.}$/;"	f
+stencilBlend	$NICO/backends/common.nim	/^var stencilBlend*: StencilBlend = stencilReplace$/;"	t
+stencilClear	$NICO/../nico.nim	/^proc stencilClear*(v: Pint) =$/;"	t
+stencilGet	$NICO/../nico.nim	/^proc stencilGet*(x,y: Pint): uint8 =$/;"	t
+stencilMode	$NICO/backends/common.nim	/^var stencilMode*: StencilMode = stencilEqual$/;"	t
+stencilMode	$NICO/../nico.nim	/^proc stencilMode*(mode: StencilMode) =$/;"	t
+stencilOnly	$NICO/backends/common.nim	/^var stencilOnly*: bool = false # if true, only writes to stencil buffer, not screen$/;"	t
+stencilRef	$NICO/backends/common.nim	/^var stencilRef*: uint8 = 0$/;"	t
+stencilSet	$NICO/../nico.nim	/^proc stencilSet*(x,y,v: Pint) =$/;"	t
+stencilWrite	$NICO/backends/common.nim	/^var stencilWrite*: bool = false$/;"	t
+stencilWriteFail	$NICO/backends/common.nim	/^var stencilWriteFail*: bool = false # if true, writes to stencil buffer when fails to write$/;"	t
+step	$NICO/backends/sdl2.nim	/^proc step*() {.cdecl.} =$/;"	t
+stopLastRun	$NICO/backends/sdl2.nim	/^proc stopLastRun*() =$/;"	t
+stopTextInput	$NICO/backends/sdl2.nim	/^proc stopTextInput*() =$/;"	t
+subtract	$NICO/backends/common.nim	/^proc subtract*(s: Surface, x,y: int, v: uint8) =$/;"	t
+succWrap	$NICO/../nico.nim	/^template succWrap*[T](x: T): T =$/;"	t
+synth	$NICO/backends/sdl2.nim	/^proc synth*(channel: AudioChannelId, synthString: string) =$/;"	t
+synthDataFromString	$NICO/backends/common.nim	/^proc synthDataFromString*(sdstr: string): SynthData =$/;"	t
+synthDataToString	$NICO/backends/common.nim	/^proc synthDataToString*(sd: SynthData): string =$/;"	t
+synthIndex	$NICO/backends/sdl2.nim	/^proc synthIndex*(channel: AudioChannelId): int =$/;"	t
+synthShape	$NICO/backends/sdl2.nim	/^proc synthShape*(channel: AudioChannelId, newShape: SynthShape) =$/;"	t
+synthUpdate	$NICO/backends/sdl2.nim	/^proc synthUpdate*(channel: AudioChannelId, shape: SynthShape, freq: Pfloat) =$/;"	t
+targetScreenHeight	$NICO/backends/common.nim	/^var targetScreenHeight* = 128$/;"	t
+targetScreenWidth	$NICO/backends/common.nim	/^var targetScreenWidth* = 128$/;"	t
+textWidth	$NICO/../nico.nim	/^proc textWidth*(text: string, scale: Pint = 1): Pint$/;"	t
+time	$NICO/../nico.nim	/^proc time*(): float =$/;"	t
+timeStep	$NICO/backends/common.nim	/^var timeStep* = 1\/frameRate$/;"	t
+timer	$NICO/../nico.nim	/^template timer*(a: typed, body: untyped): untyped =$/;"	t
+tline	$NICO/../nico.nim	/^proc tline*(x0,y0,x1,y1: Pint, tx,ty: Pfloat, tdx: Pfloat = 1f, tdy: Pfloat = 0f)$/;"	t
+toFloat32	$NICO/backends/common.nim	/^converter toFloat32*(x: float): float32 {.inline.} =$/;"	t
+toPfloat	$NICO/backends/common.nim	/^converter toPfloat*(x: float): Pfloat {.inline.} =$/;"	t
+toPfloat	$NICO/../nico.nim	/^converter toPfloat*(x: int): Pfloat {.inline.} =$/;"	t
+toPint	$NICO/backends/common.nim	/^converter toPint*(x: float32): Pint {.inline.} =$/;"	t
+toPint	$NICO/../nico.nim	/^converter toPint*(x: uint8): Pint =$/;"	t
+toggle	$NICO/gui.nim	/^proc toggle*(G: Gui, val: var bool, drawCheckbox = true, x,y,w,h: int, enabled: bool = true, hot/;"	t
+touchMouseEmulation	$NICO/backends/common.nim	/^var touchMouseEmulation* = false$/;"	t
+tpb	$NICO/../nico.nim	/^proc tpb*(newTpb: Natural) =$/;"	t
+tquadfill	$NICO/../nico.nim	/^proc tquadfill*(x1,y1,u1,v1, x2,y2,u2,v2, x3,y3,u3,v3, x4,y4,u4,v4: Pfloat) =$/;"	t
+translate	$NICO/matrix.nim	/^proc translate*(m: var Mat4x4f, x,y,z: float32) =$/;"	t
+transpose	$NICO/matrix.nim	/^proc transpose*(m: Mat4x4f): Mat4x4f =$/;"	t
+trifill	$NICO/../nico.nim	/^proc trifill*(ax,ay,bx,by,cx,cy: Pint)$/;"	f
+tripleProduct	$NICO/vec.nim	/^proc tripleProduct*(a,b,c: Vec3f): Vec3f =$/;"	t
+ttrifill	$NICO/../nico.nim	/^proc ttrifill*(ax,ay,au,av,bx,by,bu,bv,cx,cy,cu,cv: Pfloat) =$/;"	t
+tweak	$NICO/tweaks.nim	/^template tweak*(x: untyped, v: int, rng = int.low .. int.high): untyped =$/;"	t
+tweaks	$NICO/tweaks.nim	/^template tweaks*(category: string, body: typed): untyped =$/;"	t
+tweaksGUI2	$NICO/tweaks.nim	/^proc tweaksGUI2*() =$/;"	t
+unregisterConsoleCommand	$NICO/console.nim	/^proc unregisterConsoleCommand*(cmd: string) =$/;"	t
+up	$NICO/matrix.nim	/^proc up*(m: Mat4x4f): Vec3f =$/;"	t
+update	$NICO/controller.nim	/^proc update*(self: NicoController) =$/;"	t
+update	$NICO/gui.nim	/^proc update*(G: Gui, onGui: proc(), dt: float32) =$/;"	t
+updateConfigValue	$NICO/backends/sdl2.nim	/^proc updateConfigValue*(section, key, value: string) =$/;"	t
+useRelativeMouse	$NICO/backends/sdl2.nim	/^proc useRelativeMouse*(on: bool) =$/;"	t
+useRelativeMouse	$NICO/../nico.nim	/^proc useRelativeMouse*(on: bool) =$/;"	t
+vec2	$NICO/vec.nim	/^proc vec2f*(x,y: Pfloat | Pint): Vec2f =$/;"	t
+vec2f	$NICO/vec.nim	/^proc vec2f*(x,y: Pfloat | Pint): Vec2f =$/;"	t
+vec2i	$NICO/vec.nim	/^proc vec2i*(x,y: int): Vec2i =$/;"	t
+vec3	$NICO/vec.nim	/^proc vec3f*(xy: Vec2f,z: float32 = 0): Vec3f =$/;"	t
+vec3f	$NICO/vec.nim	/^proc vec3f*(xy: Vec2f,z: float32 = 0): Vec3f =$/;"	t
+vec3i	$NICO/vec.nim	/^proc vec3i*(x,y,z: PInt): Vec3i =$/;"	t
+vec4	$NICO/vec.nim	/^proc vec4f*(x,y,z,w:float32): Vec4f =$/;"	t
+vec4f	$NICO/vec.nim	/^proc vec4f*(x,y,z,w:float32): Vec4f =$/;"	t
+vec4i	$NICO/vec.nim	/^proc vec4i*(x,y,z,w: int): Vec4i =$/;"	t
+vibrato	$NICO/backends/sdl2.nim	/^proc vibrato*(channel: AudioChannelId, speed: range[1..15], amount: range[0..15]) =$/;"	t
+vline	$NICO/../nico.nim	/^proc vline*(x,y0,y1: Pint)$/;"	f
+volume	$NICO/backends/sdl2.nim	/^proc volume*(channel: AudioChannelId, volume: int) =$/;"	t
+waitUntilReady	$NICO/backends/sdl2.nim	/^proc waitUntilReady*() =$/;"	t
+wavData	$NICO/backends/sdl2.nim	/^proc wavData*(channel: AudioChannelId, data: array[32, uint8]) =$/;"	t
+wrap	$NICO/../nico.nim	/^proc wrap*[T](x,m: T): T$/;"	f
+xaxis	$NICO/matrix.nim	/^template xaxis*(m: Mat4x4f): Vec3f = right(m)$/;"	t
+xy	$NICO/vec.nim	/^proc xy*[V](v: V): Vec2f =$/;"	t
+xyarea	$NICO/gui.nim	/^proc xyarea*[T](G: Gui, xval,yval: var T, x,y,w,h: int, draw: GuiDrawProc): bool =$/;"	t
+xyf	$NICO/vec.nim	/^proc xyf*[V](v: V): Vec2f =$/;"	t
+xyi	$NICO/vec.nim	/^proc xyi*[V](v: V): Vec2i =$/;"	t
+xyz	$NICO/vec.nim	/^proc xyz*[V](v: V): Vec3f =$/;"	t
+xz	$NICO/vec.nim	/^proc xz*[V](v: V): Vec2f =$/;"	t
+yaxis	$NICO/matrix.nim	/^template yaxis*(m: Mat4x4f): Vec3f = up(m)$/;"	t
+zaxis	$NICO/matrix.nim	/^template zaxis*(m: Mat4x4f): Vec3f = forward(m)$/;"	t
+zero	$NICO/vec.nim	/^proc zero*[N,T](v: Vec[N,T]): bool =$/;"	t

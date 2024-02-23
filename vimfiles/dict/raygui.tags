@@ -1,0 +1,580 @@
+ARROWS_SIZE	$RAYGUI/raygui.h	/^    ARROWS_SIZE = 16,           \/\/ ScrollBar arrows size$/;"	e	enum:__anonfd9f18ac0c03
+ARROWS_VISIBLE	$RAYGUI/raygui.h	/^    ARROWS_VISIBLE,             \/\/ ScrollBar arrows visible$/;"	e	enum:__anonfd9f18ac0c03
+ARROW_PADDING	$RAYGUI/raygui.h	/^    ARROW_PADDING = 16,         \/\/ DropdownBox arrow separation from border and items$/;"	e	enum:__anonfd9f18ac0f03
+BACKGROUND_COLOR	$RAYGUI/raygui.h	/^    BACKGROUND_COLOR,           \/\/ Background color$/;"	e	enum:__anonfd9f18ac0803
+BASE	$RAYGUI/raygui.h	/^typedef enum { BORDER = 0, BASE, TEXT, OTHER } GuiPropertyElement;$/;"	e	enum:__anonfd9f18ac1503
+BASE_COLOR_DISABLED	$RAYGUI/raygui.h	/^    BASE_COLOR_DISABLED,        \/\/ Control base color in STATE_DISABLED$/;"	e	enum:__anonfd9f18ac0703
+BASE_COLOR_FOCUSED	$RAYGUI/raygui.h	/^    BASE_COLOR_FOCUSED,         \/\/ Control base color in STATE_FOCUSED$/;"	e	enum:__anonfd9f18ac0703
+BASE_COLOR_NORMAL	$RAYGUI/raygui.h	/^    BASE_COLOR_NORMAL,          \/\/ Control base color in STATE_NORMAL$/;"	e	enum:__anonfd9f18ac0703
+BASE_COLOR_PRESSED	$RAYGUI/raygui.h	/^    BASE_COLOR_PRESSED,         \/\/ Control base color in STATE_PRESSED$/;"	e	enum:__anonfd9f18ac0703
+BIT_CHECK	$RAYGUI/raygui.h	/^    #define BIT_CHECK(/;"	d	signature:(a,b)
+BORDER	$RAYGUI/raygui.h	/^typedef enum { BORDER = 0, BASE, TEXT, OTHER } GuiPropertyElement;$/;"	e	enum:__anonfd9f18ac1503
+BORDER_COLOR_DISABLED	$RAYGUI/raygui.h	/^    BORDER_COLOR_DISABLED,      \/\/ Control border color in STATE_DISABLED$/;"	e	enum:__anonfd9f18ac0703
+BORDER_COLOR_FOCUSED	$RAYGUI/raygui.h	/^    BORDER_COLOR_FOCUSED,       \/\/ Control border color in STATE_FOCUSED$/;"	e	enum:__anonfd9f18ac0703
+BORDER_COLOR_NORMAL	$RAYGUI/raygui.h	/^    BORDER_COLOR_NORMAL = 0,    \/\/ Control border color in STATE_NORMAL$/;"	e	enum:__anonfd9f18ac0703
+BORDER_COLOR_PRESSED	$RAYGUI/raygui.h	/^    BORDER_COLOR_PRESSED,       \/\/ Control border color in STATE_PRESSED$/;"	e	enum:__anonfd9f18ac0703
+BORDER_WIDTH	$RAYGUI/raygui.h	/^    BORDER_WIDTH,               \/\/ Control border size, 0 for no border$/;"	e	enum:__anonfd9f18ac0703
+BUTTON	$RAYGUI/raygui.h	/^    BUTTON,$/;"	e	enum:__anonfd9f18ac0603
+CHECKBOX	$RAYGUI/raygui.h	/^    CHECKBOX,$/;"	e	enum:__anonfd9f18ac0603
+CHECK_BOUNDS_ID	$RAYGUI/raygui.h	/^    #define CHECK_BOUNDS_ID(/;"	d	signature:(src,dst)
+CHECK_PADDING	$RAYGUI/raygui.h	/^    CHECK_PADDING = 16          \/\/ CheckBox internal check padding$/;"	e	enum:__anonfd9f18ac0d03
+COLORPICKER	$RAYGUI/raygui.h	/^    COLORPICKER,$/;"	e	enum:__anonfd9f18ac0603
+COLOR_SELECTOR_SIZE	$RAYGUI/raygui.h	/^    COLOR_SELECTOR_SIZE = 16,$/;"	e	enum:__anonfd9f18ac1303
+COMBOBOX	$RAYGUI/raygui.h	/^    COMBOBOX,$/;"	e	enum:__anonfd9f18ac0603
+COMBO_BUTTON_SPACING	$RAYGUI/raygui.h	/^    COMBO_BUTTON_SPACING        \/\/ ComboBox button separation$/;"	e	enum:__anonfd9f18ac0e03
+COMBO_BUTTON_WIDTH	$RAYGUI/raygui.h	/^    COMBO_BUTTON_WIDTH = 16,    \/\/ ComboBox right button width$/;"	e	enum:__anonfd9f18ac0e03
+CheckCollisionPointRec	$RAYGUI/raygui.h	/^static bool CheckCollisionPointRec(Vector2 point, Rectangle rec);   \/\/ Check if point is insid/;"	p	typeref:typename:bool	signature:(Vector2 point,Rectangle rec)
+CodepointToUTF8	$RAYGUI/raygui.h	/^static const char *CodepointToUTF8(int codepoint, int *byteSize);   \/\/ Encode codepoint into U/;"	p	typeref:typename:const char *	signature:(int codepoint,int * byteSize)
+Color	$RAYGUI/raygui.h	/^    } Color;$/;"	t	typeref:struct:Color
+ColorToInt	$RAYGUI/raygui.h	/^static int ColorToInt(Color color);                 \/\/ Returns hexadecimal value for a Color$/;"	p	typeref:typename:int	signature:(Color color)
+ConvertHSVtoRGB	$RAYGUI/raygui.h	/^static Vector3 ConvertHSVtoRGB(Vector3 hsv);                    \/\/ Convert color data from HSV/;"	p	typeref:typename:Vector3	signature:(Vector3 hsv)
+ConvertRGBtoHSV	$RAYGUI/raygui.h	/^static Vector3 ConvertRGBtoHSV(Vector3 rgb);                    \/\/ Convert color data from RGB/;"	p	typeref:typename:Vector3	signature:(Vector3 rgb)
+DEFAULT	$RAYGUI/raygui.h	/^    DEFAULT = 0,$/;"	e	enum:__anonfd9f18ac0603
+DROPDOWNBOX	$RAYGUI/raygui.h	/^    DROPDOWNBOX,$/;"	e	enum:__anonfd9f18ac0603
+DROPDOWN_ITEMS_SPACING	$RAYGUI/raygui.h	/^    DROPDOWN_ITEMS_SPACING      \/\/ DropdownBox items separation$/;"	e	enum:__anonfd9f18ac0f03
+DecompressData	$RAYGUI/raygui.h	/^static unsigned char *DecompressData(const unsigned char *compData, int compDataSize, int *dataS/;"	p	typeref:typename:unsigned char *	signature:(const unsigned char * compData,int compDataSize,int * dataSize)
+DrawRectangle	$RAYGUI/raygui.h	/^static void DrawRectangle(int x, int y, int width, int height, Color color);        \/\/ -- GuiD/;"	p	typeref:typename:void	signature:(int x,int y,int width,int height,Color color)
+DrawRectangleGradientEx	$RAYGUI/raygui.h	/^static void DrawRectangleGradientEx(Rectangle rec, Color col1, Color col2, Color col3, Color col/;"	p	typeref:typename:void	signature:(Rectangle rec,Color col1,Color col2,Color col3,Color col4)
+DrawRectangleGradientV	$RAYGUI/raygui.h	/^static void DrawRectangleGradientV(int posX, int posY, int width, int height, Color color1, Colo/;"	p	typeref:typename:void	signature:(int posX,int posY,int width,int height,Color color1,Color color2)
+Font	$RAYGUI/raygui.h	/^    } Font;$/;"	t	typeref:struct:Font
+GROUP_PADDING	$RAYGUI/raygui.h	/^    GROUP_PADDING = 16,         \/\/ ToggleGroup separation between toggles$/;"	e	enum:__anonfd9f18ac0903
+GetCharPressed	$RAYGUI/raygui.h	/^static int GetCharPressed(void);         \/\/ -- GuiTextBox(), GuiValueBox()$/;"	p	typeref:typename:int	signature:(void)
+GetCodepointNext	$RAYGUI/raygui.h	/^static int GetCodepointNext(const char *text, int *codepointSize);  \/\/ Get next codepoint in a/;"	p	typeref:typename:int	signature:(const char * text,int * codepointSize)
+GetColor	$RAYGUI/raygui.h	/^static Color GetColor(int hexValue);                \/\/ Returns a Color struct from hexadecimal/;"	p	typeref:typename:Color	signature:(int hexValue)
+GetDirectoryPath	$RAYGUI/raygui.h	/^static const char *GetDirectoryPath(const char *filePath);   \/\/ -- GuiLoadStyle(), required to/;"	p	typeref:typename:const char *	signature:(const char * filePath)
+GetFontDefault	$RAYGUI/raygui.h	/^static Font GetFontDefault(void);                            \/\/ -- GuiLoadStyleDefault()$/;"	p	typeref:typename:Font	signature:(void)
+GetMousePosition	$RAYGUI/raygui.h	/^static Vector2 GetMousePosition(void);$/;"	p	typeref:typename:Vector2	signature:(void)
+GetMouseWheelMove	$RAYGUI/raygui.h	/^static float GetMouseWheelMove(void);$/;"	p	typeref:typename:float	signature:(void)
+GetNextSpaceWidth	$RAYGUI/raygui.h	/^static float GetNextSpaceWidth(const char *text, int *nextSpaceIndex)$/;"	f	typeref:typename:float	signature:(const char * text,int * nextSpaceIndex)
+GetTextBounds	$RAYGUI/raygui.h	/^static Rectangle GetTextBounds(int control, Rectangle bounds);  \/\/ Get text bounds considering/;"	p	typeref:typename:Rectangle	signature:(int control,Rectangle bounds)
+GetTextIcon	$RAYGUI/raygui.h	/^static const char *GetTextIcon(const char *text, int *iconId);  \/\/ Get text icon if provided a/;"	p	typeref:typename:const char *	signature:(const char * text,int * iconId)
+GetTextLines	$RAYGUI/raygui.h	/^const char **GetTextLines(const char *text, int *count)$/;"	f	typeref:typename:const char **	signature:(const char * text,int * count)
+GetTextWidth	$RAYGUI/raygui.h	/^static int GetTextWidth(const char *text);                      \/\/ Gui get text width using gu/;"	p	typeref:typename:int	signature:(const char * text)
+GlyphInfo	$RAYGUI/raygui.h	/^    } GlyphInfo;$/;"	t	typeref:struct:GlyphInfo
+GuiButton	$RAYGUI/raygui.h	/^int GuiButton(Rectangle bounds, const char *text)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text)
+GuiCheckBox	$RAYGUI/raygui.h	/^int GuiCheckBox(Rectangle bounds, const char *text, bool *checked)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,bool * checked)
+GuiCheckBoxProperty	$RAYGUI/raygui.h	/^} GuiCheckBoxProperty;$/;"	t	typeref:enum:__anonfd9f18ac0d03
+GuiColorBarAlpha	$RAYGUI/raygui.h	/^int GuiColorBarAlpha(Rectangle bounds, const char *text, float *alpha)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,float * alpha)
+GuiColorBarHue	$RAYGUI/raygui.h	/^int GuiColorBarHue(Rectangle bounds, const char *text, float *hue)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,float * hue)
+GuiColorPanel	$RAYGUI/raygui.h	/^int GuiColorPanel(Rectangle bounds, const char *text, Color *color)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,Color * color)
+GuiColorPanelHSV	$RAYGUI/raygui.h	/^int GuiColorPanelHSV(Rectangle bounds, const char *text, Vector3 *colorHsv)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,Vector3 * colorHsv)
+GuiColorPicker	$RAYGUI/raygui.h	/^int GuiColorPicker(Rectangle bounds, const char *text, Color *color)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,Color * color)
+GuiColorPickerHSV	$RAYGUI/raygui.h	/^int GuiColorPickerHSV(Rectangle bounds, const char *text, Vector3 *colorHsv)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,Vector3 * colorHsv)
+GuiColorPickerProperty	$RAYGUI/raygui.h	/^} GuiColorPickerProperty;$/;"	t	typeref:enum:__anonfd9f18ac1303
+GuiComboBox	$RAYGUI/raygui.h	/^int GuiComboBox(Rectangle bounds, const char *text, int *active)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,int * active)
+GuiComboBoxProperty	$RAYGUI/raygui.h	/^} GuiComboBoxProperty;$/;"	t	typeref:enum:__anonfd9f18ac0e03
+GuiControl	$RAYGUI/raygui.h	/^} GuiControl;$/;"	t	typeref:enum:__anonfd9f18ac0603
+GuiControlProperty	$RAYGUI/raygui.h	/^} GuiControlProperty;$/;"	t	typeref:enum:__anonfd9f18ac0703
+GuiDefaultProperty	$RAYGUI/raygui.h	/^} GuiDefaultProperty;$/;"	t	typeref:enum:__anonfd9f18ac0803
+GuiDisable	$RAYGUI/raygui.h	/^void GuiDisable(void) { if (guiState == STATE_NORMAL) guiState = STATE_DISABLED; }$/;"	f	typeref:typename:void	signature:(void)
+GuiDisableTooltip	$RAYGUI/raygui.h	/^void GuiDisableTooltip(void) { guiTooltip = false; }$/;"	f	typeref:typename:void	signature:(void)
+GuiDrawIcon	$RAYGUI/raygui.h	/^void GuiDrawIcon(int iconId, int posX, int posY, int pixelSize, Color color)$/;"	f	typeref:typename:void	signature:(int iconId,int posX,int posY,int pixelSize,Color color)
+GuiDrawRectangle	$RAYGUI/raygui.h	/^static void GuiDrawRectangle(Rectangle rec, int borderWidth, Color borderColor, Color color);   /;"	p	typeref:typename:void	signature:(Rectangle rec,int borderWidth,Color borderColor,Color color)
+GuiDrawText	$RAYGUI/raygui.h	/^static void GuiDrawText(const char *text, Rectangle textBounds, int alignment, Color tint);     /;"	p	typeref:typename:void	signature:(const char * text,Rectangle textBounds,int alignment,Color tint)
+GuiDropdownBox	$RAYGUI/raygui.h	/^int GuiDropdownBox(Rectangle bounds, const char *text, int *active, bool editMode)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,int * active,bool editMode)
+GuiDropdownBoxProperty	$RAYGUI/raygui.h	/^} GuiDropdownBoxProperty;$/;"	t	typeref:enum:__anonfd9f18ac0f03
+GuiDummyRec	$RAYGUI/raygui.h	/^int GuiDummyRec(Rectangle bounds, const char *text)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text)
+GuiEnable	$RAYGUI/raygui.h	/^void GuiEnable(void) { if (guiState == STATE_DISABLED) guiState = STATE_NORMAL; }$/;"	f	typeref:typename:void	signature:(void)
+GuiEnableTooltip	$RAYGUI/raygui.h	/^void GuiEnableTooltip(void) { guiTooltip = true; }$/;"	f	typeref:typename:void	signature:(void)
+GuiFade	$RAYGUI/raygui.h	/^static Color GuiFade(Color color, float alpha);         \/\/ Fade color by an alpha factor$/;"	p	typeref:typename:Color	signature:(Color color,float alpha)
+GuiGetFont	$RAYGUI/raygui.h	/^RAYGUIAPI Font GuiGetFont(void);                                \/\/ Get gui custom font (global/;"	p	typeref:typename:RAYGUIAPI Font	signature:(void)
+GuiGetIcons	$RAYGUI/raygui.h	/^unsigned int *GuiGetIcons(void) { return guiIconsPtr; }$/;"	f	typeref:typename:unsigned int *	signature:(void)
+GuiGetState	$RAYGUI/raygui.h	/^int GuiGetState(void) { return guiState; }$/;"	f	typeref:typename:int	signature:(void)
+GuiGetStyle	$RAYGUI/raygui.h	/^int GuiGetStyle(int control, int property)$/;"	f	typeref:typename:int	signature:(int control,int property)
+GuiGrid	$RAYGUI/raygui.h	/^int GuiGrid(Rectangle bounds, const char *text, float spacing, int subdivs, Vector2 *mouseCell)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,float spacing,int subdivs,Vector2 * mouseCell)
+GuiGroupBox	$RAYGUI/raygui.h	/^int GuiGroupBox(Rectangle bounds, const char *text)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text)
+GuiIconName	$RAYGUI/raygui.h	/^} GuiIconName;$/;"	t	typeref:enum:__anonfd9f18ac1403
+GuiIconText	$RAYGUI/raygui.h	/^const char *GuiIconText(int iconId, const char *text)$/;"	f	typeref:typename:const char *	signature:(int iconId,const char * text)
+GuiIsLocked	$RAYGUI/raygui.h	/^bool GuiIsLocked(void) { return guiLocked; }$/;"	f	typeref:typename:bool	signature:(void)
+GuiLabel	$RAYGUI/raygui.h	/^int GuiLabel(Rectangle bounds, const char *text)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text)
+GuiLabelButton	$RAYGUI/raygui.h	/^int GuiLabelButton(Rectangle bounds, const char *text)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text)
+GuiLine	$RAYGUI/raygui.h	/^int GuiLine(Rectangle bounds, const char *text)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text)
+GuiListView	$RAYGUI/raygui.h	/^int GuiListView(Rectangle bounds, const char *text, int *scrollIndex, int *active)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,int * scrollIndex,int * active)
+GuiListViewEx	$RAYGUI/raygui.h	/^int GuiListViewEx(Rectangle bounds, const char **text, int count, int *scrollIndex, int *active,/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char ** text,int count,int * scrollIndex,int * active,int * focus)
+GuiListViewProperty	$RAYGUI/raygui.h	/^} GuiListViewProperty;$/;"	t	typeref:enum:__anonfd9f18ac1203
+GuiLoadIcons	$RAYGUI/raygui.h	/^char **GuiLoadIcons(const char *fileName, bool loadIconsName)$/;"	f	typeref:typename:char **	signature:(const char * fileName,bool loadIconsName)
+GuiLoadStyle	$RAYGUI/raygui.h	/^void GuiLoadStyle(const char *fileName)$/;"	f	typeref:typename:void	signature:(const char * fileName)
+GuiLoadStyleDefault	$RAYGUI/raygui.h	/^void GuiLoadStyleDefault(void)$/;"	f	typeref:typename:void	signature:(void)
+GuiLoadStyleFromMemory	$RAYGUI/raygui.h	/^static void GuiLoadStyleFromMemory(const unsigned char *fileData, int dataSize);    \/\/ Load st/;"	p	typeref:typename:void	signature:(const unsigned char * fileData,int dataSize)
+GuiLock	$RAYGUI/raygui.h	/^void GuiLock(void) { guiLocked = true; }$/;"	f	typeref:typename:void	signature:(void)
+GuiMessageBox	$RAYGUI/raygui.h	/^int GuiMessageBox(Rectangle bounds, const char *title, const char *message, const char *buttons)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * title,const char * message,const char * buttons)
+GuiPanel	$RAYGUI/raygui.h	/^int GuiPanel(Rectangle bounds, const char *text)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text)
+GuiProgressBar	$RAYGUI/raygui.h	/^int GuiProgressBar(Rectangle bounds, const char *textLeft, const char *textRight, float *value, /;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * textLeft,const char * textRight,float * value,float minValue,float maxValue)
+GuiProgressBarProperty	$RAYGUI/raygui.h	/^} GuiProgressBarProperty;$/;"	t	typeref:enum:__anonfd9f18ac0b03
+GuiPropertyElement	$RAYGUI/raygui.h	/^typedef enum { BORDER = 0, BASE, TEXT, OTHER } GuiPropertyElement;$/;"	t	typeref:enum:__anonfd9f18ac1503
+GuiScrollBar	$RAYGUI/raygui.h	/^static int GuiScrollBar(Rectangle bounds, int value, int minValue, int maxValue);   \/\/ Scroll /;"	p	typeref:typename:int	signature:(Rectangle bounds,int value,int minValue,int maxValue)
+GuiScrollBarProperty	$RAYGUI/raygui.h	/^} GuiScrollBarProperty;$/;"	t	typeref:enum:__anonfd9f18ac0c03
+GuiScrollPanel	$RAYGUI/raygui.h	/^int GuiScrollPanel(Rectangle bounds, const char *text, Rectangle content, Vector2 *scroll, Recta/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,Rectangle content,Vector2 * scroll,Rectangle * view)
+GuiSetAlpha	$RAYGUI/raygui.h	/^void GuiSetAlpha(float alpha)$/;"	f	typeref:typename:void	signature:(float alpha)
+GuiSetFont	$RAYGUI/raygui.h	/^void GuiSetFont(Font font)$/;"	f	typeref:typename:void	signature:(Font font)
+GuiSetIconScale	$RAYGUI/raygui.h	/^void GuiSetIconScale(int scale)$/;"	f	typeref:typename:void	signature:(int scale)
+GuiSetState	$RAYGUI/raygui.h	/^void GuiSetState(int state) { guiState = (GuiState)state; }$/;"	f	typeref:typename:void	signature:(int state)
+GuiSetStyle	$RAYGUI/raygui.h	/^void GuiSetStyle(int control, int property, int value)$/;"	f	typeref:typename:void	signature:(int control,int property,int value)
+GuiSetTooltip	$RAYGUI/raygui.h	/^void GuiSetTooltip(const char *tooltip) { guiTooltipPtr = tooltip; }$/;"	f	typeref:typename:void	signature:(const char * tooltip)
+GuiSlider	$RAYGUI/raygui.h	/^int GuiSlider(Rectangle bounds, const char *textLeft, const char *textRight, float *value, float/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * textLeft,const char * textRight,float * value,float minValue,float maxValue)
+GuiSliderBar	$RAYGUI/raygui.h	/^int GuiSliderBar(Rectangle bounds, const char *textLeft, const char *textRight, float *value, fl/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * textLeft,const char * textRight,float * value,float minValue,float maxValue)
+GuiSliderPro	$RAYGUI/raygui.h	/^int GuiSliderPro(Rectangle bounds, const char *textLeft, const char *textRight, float *value, fl/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * textLeft,const char * textRight,float * value,float minValue,float maxValue,int sliderWidth)
+GuiSliderProperty	$RAYGUI/raygui.h	/^} GuiSliderProperty;$/;"	t	typeref:enum:__anonfd9f18ac0a03
+GuiSpinner	$RAYGUI/raygui.h	/^int GuiSpinner(Rectangle bounds, const char *text, int *value, int minValue, int maxValue, bool /;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,int * value,int minValue,int maxValue,bool editMode)
+GuiSpinnerProperty	$RAYGUI/raygui.h	/^} GuiSpinnerProperty;$/;"	t	typeref:enum:__anonfd9f18ac1103
+GuiState	$RAYGUI/raygui.h	/^} GuiState;$/;"	t	typeref:enum:__anonfd9f18ac0203
+GuiStatusBar	$RAYGUI/raygui.h	/^int GuiStatusBar(Rectangle bounds, const char *text)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text)
+GuiStyleProp	$RAYGUI/raygui.h	/^} GuiStyleProp;$/;"	t	typeref:struct:GuiStyleProp
+GuiTabBar	$RAYGUI/raygui.h	/^int GuiTabBar(Rectangle bounds, const char **text, int count, int *active)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char ** text,int count,int * active)
+GuiTextAlignment	$RAYGUI/raygui.h	/^} GuiTextAlignment;$/;"	t	typeref:enum:__anonfd9f18ac0303
+GuiTextAlignmentVertical	$RAYGUI/raygui.h	/^} GuiTextAlignmentVertical;$/;"	t	typeref:enum:__anonfd9f18ac0403
+GuiTextBox	$RAYGUI/raygui.h	/^int GuiTextBox(Rectangle bounds, char *text, int bufferSize, bool editMode)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,char * text,int bufferSize,bool editMode)
+GuiTextBoxProperty	$RAYGUI/raygui.h	/^} GuiTextBoxProperty;$/;"	t	typeref:enum:__anonfd9f18ac1003
+GuiTextInputBox	$RAYGUI/raygui.h	/^int GuiTextInputBox(Rectangle bounds, const char *title, const char *message, const char *button/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * title,const char * message,const char * buttons,char * text,int textMaxSize,bool * secretViewActive)
+GuiTextSplit	$RAYGUI/raygui.h	/^static const char **GuiTextSplit(const char *text, char delimiter, int *count, int *textRow);   /;"	p	typeref:typename:const char **	signature:(const char * text,char delimiter,int * count,int * textRow)
+GuiTextWrapMode	$RAYGUI/raygui.h	/^} GuiTextWrapMode;$/;"	t	typeref:enum:__anonfd9f18ac0503
+GuiToggle	$RAYGUI/raygui.h	/^int GuiToggle(Rectangle bounds, const char *text, bool *active)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,bool * active)
+GuiToggleGroup	$RAYGUI/raygui.h	/^int GuiToggleGroup(Rectangle bounds, const char *text, int *active)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,int * active)
+GuiToggleProperty	$RAYGUI/raygui.h	/^} GuiToggleProperty;$/;"	t	typeref:enum:__anonfd9f18ac0903
+GuiToggleSlider	$RAYGUI/raygui.h	/^int GuiToggleSlider(Rectangle bounds, const char *text, int *active)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,int * active)
+GuiTooltip	$RAYGUI/raygui.h	/^static void GuiTooltip(Rectangle controlRec);                   \/\/ Draw tooltip using control /;"	p	typeref:typename:void	signature:(Rectangle controlRec)
+GuiUnlock	$RAYGUI/raygui.h	/^void GuiUnlock(void) { guiLocked = false; }$/;"	f	typeref:typename:void	signature:(void)
+GuiValueBox	$RAYGUI/raygui.h	/^int GuiValueBox(Rectangle bounds, const char *text, int *value, int minValue, int maxValue, bool/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * text,int * value,int minValue,int maxValue,bool editMode)
+GuiWindowBox	$RAYGUI/raygui.h	/^int GuiWindowBox(Rectangle bounds, const char *title)$/;"	f	typeref:typename:int	signature:(Rectangle bounds,const char * title)
+HUEBAR_PADDING	$RAYGUI/raygui.h	/^    HUEBAR_PADDING,             \/\/ ColorPicker right hue bar separation from panel$/;"	e	enum:__anonfd9f18ac1303
+HUEBAR_SELECTOR_HEIGHT	$RAYGUI/raygui.h	/^    HUEBAR_SELECTOR_HEIGHT,     \/\/ ColorPicker right hue bar selector height$/;"	e	enum:__anonfd9f18ac1303
+HUEBAR_SELECTOR_OVERFLOW	$RAYGUI/raygui.h	/^    HUEBAR_SELECTOR_OVERFLOW    \/\/ ColorPicker right hue bar selector overflow$/;"	e	enum:__anonfd9f18ac1303
+HUEBAR_WIDTH	$RAYGUI/raygui.h	/^    HUEBAR_WIDTH,               \/\/ ColorPicker right hue bar width$/;"	e	enum:__anonfd9f18ac1303
+ICON_1UP	$RAYGUI/raygui.h	/^    ICON_1UP                      = 148,$/;"	e	enum:__anonfd9f18ac1403
+ICON_220	$RAYGUI/raygui.h	/^    ICON_220                      = 220,$/;"	e	enum:__anonfd9f18ac1403
+ICON_221	$RAYGUI/raygui.h	/^    ICON_221                      = 221,$/;"	e	enum:__anonfd9f18ac1403
+ICON_222	$RAYGUI/raygui.h	/^    ICON_222                      = 222,$/;"	e	enum:__anonfd9f18ac1403
+ICON_223	$RAYGUI/raygui.h	/^    ICON_223                      = 223,$/;"	e	enum:__anonfd9f18ac1403
+ICON_224	$RAYGUI/raygui.h	/^    ICON_224                      = 224,$/;"	e	enum:__anonfd9f18ac1403
+ICON_225	$RAYGUI/raygui.h	/^    ICON_225                      = 225,$/;"	e	enum:__anonfd9f18ac1403
+ICON_226	$RAYGUI/raygui.h	/^    ICON_226                      = 226,$/;"	e	enum:__anonfd9f18ac1403
+ICON_227	$RAYGUI/raygui.h	/^    ICON_227                      = 227,$/;"	e	enum:__anonfd9f18ac1403
+ICON_228	$RAYGUI/raygui.h	/^    ICON_228                      = 228,$/;"	e	enum:__anonfd9f18ac1403
+ICON_229	$RAYGUI/raygui.h	/^    ICON_229                      = 229,$/;"	e	enum:__anonfd9f18ac1403
+ICON_230	$RAYGUI/raygui.h	/^    ICON_230                      = 230,$/;"	e	enum:__anonfd9f18ac1403
+ICON_231	$RAYGUI/raygui.h	/^    ICON_231                      = 231,$/;"	e	enum:__anonfd9f18ac1403
+ICON_232	$RAYGUI/raygui.h	/^    ICON_232                      = 232,$/;"	e	enum:__anonfd9f18ac1403
+ICON_233	$RAYGUI/raygui.h	/^    ICON_233                      = 233,$/;"	e	enum:__anonfd9f18ac1403
+ICON_234	$RAYGUI/raygui.h	/^    ICON_234                      = 234,$/;"	e	enum:__anonfd9f18ac1403
+ICON_235	$RAYGUI/raygui.h	/^    ICON_235                      = 235,$/;"	e	enum:__anonfd9f18ac1403
+ICON_236	$RAYGUI/raygui.h	/^    ICON_236                      = 236,$/;"	e	enum:__anonfd9f18ac1403
+ICON_237	$RAYGUI/raygui.h	/^    ICON_237                      = 237,$/;"	e	enum:__anonfd9f18ac1403
+ICON_238	$RAYGUI/raygui.h	/^    ICON_238                      = 238,$/;"	e	enum:__anonfd9f18ac1403
+ICON_239	$RAYGUI/raygui.h	/^    ICON_239                      = 239,$/;"	e	enum:__anonfd9f18ac1403
+ICON_240	$RAYGUI/raygui.h	/^    ICON_240                      = 240,$/;"	e	enum:__anonfd9f18ac1403
+ICON_241	$RAYGUI/raygui.h	/^    ICON_241                      = 241,$/;"	e	enum:__anonfd9f18ac1403
+ICON_242	$RAYGUI/raygui.h	/^    ICON_242                      = 242,$/;"	e	enum:__anonfd9f18ac1403
+ICON_243	$RAYGUI/raygui.h	/^    ICON_243                      = 243,$/;"	e	enum:__anonfd9f18ac1403
+ICON_244	$RAYGUI/raygui.h	/^    ICON_244                      = 244,$/;"	e	enum:__anonfd9f18ac1403
+ICON_245	$RAYGUI/raygui.h	/^    ICON_245                      = 245,$/;"	e	enum:__anonfd9f18ac1403
+ICON_246	$RAYGUI/raygui.h	/^    ICON_246                      = 246,$/;"	e	enum:__anonfd9f18ac1403
+ICON_247	$RAYGUI/raygui.h	/^    ICON_247                      = 247,$/;"	e	enum:__anonfd9f18ac1403
+ICON_248	$RAYGUI/raygui.h	/^    ICON_248                      = 248,$/;"	e	enum:__anonfd9f18ac1403
+ICON_249	$RAYGUI/raygui.h	/^    ICON_249                      = 249,$/;"	e	enum:__anonfd9f18ac1403
+ICON_250	$RAYGUI/raygui.h	/^    ICON_250                      = 250,$/;"	e	enum:__anonfd9f18ac1403
+ICON_251	$RAYGUI/raygui.h	/^    ICON_251                      = 251,$/;"	e	enum:__anonfd9f18ac1403
+ICON_252	$RAYGUI/raygui.h	/^    ICON_252                      = 252,$/;"	e	enum:__anonfd9f18ac1403
+ICON_253	$RAYGUI/raygui.h	/^    ICON_253                      = 253,$/;"	e	enum:__anonfd9f18ac1403
+ICON_254	$RAYGUI/raygui.h	/^    ICON_254                      = 254,$/;"	e	enum:__anonfd9f18ac1403
+ICON_255	$RAYGUI/raygui.h	/^    ICON_255                      = 255,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ALARM	$RAYGUI/raygui.h	/^    ICON_ALARM                    = 205,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ALPHA_CLEAR	$RAYGUI/raygui.h	/^    ICON_ALPHA_CLEAR              = 93,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ALPHA_MULTIPLY	$RAYGUI/raygui.h	/^    ICON_ALPHA_MULTIPLY           = 92,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ARROW_DOWN	$RAYGUI/raygui.h	/^    ICON_ARROW_DOWN               = 116,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ARROW_DOWN_FILL	$RAYGUI/raygui.h	/^    ICON_ARROW_DOWN_FILL          = 120,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ARROW_LEFT	$RAYGUI/raygui.h	/^    ICON_ARROW_LEFT               = 114,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ARROW_LEFT_FILL	$RAYGUI/raygui.h	/^    ICON_ARROW_LEFT_FILL          = 118,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ARROW_RIGHT	$RAYGUI/raygui.h	/^    ICON_ARROW_RIGHT              = 115,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ARROW_RIGHT_FILL	$RAYGUI/raygui.h	/^    ICON_ARROW_RIGHT_FILL         = 119,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ARROW_UP	$RAYGUI/raygui.h	/^    ICON_ARROW_UP                 = 117,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ARROW_UP_FILL	$RAYGUI/raygui.h	/^    ICON_ARROW_UP_FILL            = 121,$/;"	e	enum:__anonfd9f18ac1403
+ICON_AUDIO	$RAYGUI/raygui.h	/^    ICON_AUDIO                    = 122,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BIN	$RAYGUI/raygui.h	/^    ICON_BIN                      = 143,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX	$RAYGUI/raygui.h	/^    ICON_BOX                      = 80,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_BOTTOM	$RAYGUI/raygui.h	/^    ICON_BOX_BOTTOM               = 85,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_BOTTOM_LEFT	$RAYGUI/raygui.h	/^    ICON_BOX_BOTTOM_LEFT          = 86,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_BOTTOM_RIGHT	$RAYGUI/raygui.h	/^    ICON_BOX_BOTTOM_RIGHT         = 84,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_CENTER	$RAYGUI/raygui.h	/^    ICON_BOX_CENTER               = 89,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_CIRCLE_MASK	$RAYGUI/raygui.h	/^    ICON_BOX_CIRCLE_MASK          = 90,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_CONCENTRIC	$RAYGUI/raygui.h	/^    ICON_BOX_CONCENTRIC           = 110,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_CORNERS_BIG	$RAYGUI/raygui.h	/^    ICON_BOX_CORNERS_BIG          = 99,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_CORNERS_SMALL	$RAYGUI/raygui.h	/^    ICON_BOX_CORNERS_SMALL        = 98,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_DOTS_BIG	$RAYGUI/raygui.h	/^    ICON_BOX_DOTS_BIG             = 109,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_DOTS_SMALL	$RAYGUI/raygui.h	/^    ICON_BOX_DOTS_SMALL           = 108,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_GRID	$RAYGUI/raygui.h	/^    ICON_BOX_GRID                 = 96,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_GRID_BIG	$RAYGUI/raygui.h	/^    ICON_BOX_GRID_BIG             = 111,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_LEFT	$RAYGUI/raygui.h	/^    ICON_BOX_LEFT                 = 87,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_MULTISIZE	$RAYGUI/raygui.h	/^    ICON_BOX_MULTISIZE            = 102,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_RIGHT	$RAYGUI/raygui.h	/^    ICON_BOX_RIGHT                = 83,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_TOP	$RAYGUI/raygui.h	/^    ICON_BOX_TOP                  = 81,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_TOP_LEFT	$RAYGUI/raygui.h	/^    ICON_BOX_TOP_LEFT             = 88,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BOX_TOP_RIGHT	$RAYGUI/raygui.h	/^    ICON_BOX_TOP_RIGHT            = 82,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BREAKPOINT_OFF	$RAYGUI/raygui.h	/^    ICON_BREAKPOINT_OFF           = 213,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BREAKPOINT_ON	$RAYGUI/raygui.h	/^    ICON_BREAKPOINT_ON            = 212,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BRUSH_CLASSIC	$RAYGUI/raygui.h	/^    ICON_BRUSH_CLASSIC            = 24,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BRUSH_PAINTER	$RAYGUI/raygui.h	/^    ICON_BRUSH_PAINTER            = 25,$/;"	e	enum:__anonfd9f18ac1403
+ICON_BURGER_MENU	$RAYGUI/raygui.h	/^    ICON_BURGER_MENU              = 214,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CAMERA	$RAYGUI/raygui.h	/^    ICON_CAMERA                   = 169,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CASE_SENSITIVE	$RAYGUI/raygui.h	/^    ICON_CASE_SENSITIVE           = 215,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CLOCK	$RAYGUI/raygui.h	/^    ICON_CLOCK                    = 139,$/;"	e	enum:__anonfd9f18ac1403
+ICON_COIN	$RAYGUI/raygui.h	/^    ICON_COIN                     = 146,$/;"	e	enum:__anonfd9f18ac1403
+ICON_COLOR_BUCKET	$RAYGUI/raygui.h	/^    ICON_COLOR_BUCKET             = 29,$/;"	e	enum:__anonfd9f18ac1403
+ICON_COLOR_PICKER	$RAYGUI/raygui.h	/^    ICON_COLOR_PICKER             = 27,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CORNER	$RAYGUI/raygui.h	/^    ICON_CORNER                   = 187,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CPU	$RAYGUI/raygui.h	/^    ICON_CPU                      = 206,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CRACK	$RAYGUI/raygui.h	/^    ICON_CRACK                    = 155,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CRACK_POINTS	$RAYGUI/raygui.h	/^    ICON_CRACK_POINTS             = 156,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CROP	$RAYGUI/raygui.h	/^    ICON_CROP                     = 36,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CROP_ALPHA	$RAYGUI/raygui.h	/^    ICON_CROP_ALPHA               = 37,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CROSS	$RAYGUI/raygui.h	/^    ICON_CROSS                    = 113,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CROSSLINE	$RAYGUI/raygui.h	/^    ICON_CROSSLINE                = 192,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CROSS_SMALL	$RAYGUI/raygui.h	/^    ICON_CROSS_SMALL              = 128,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CUBE	$RAYGUI/raygui.h	/^    ICON_CUBE                     = 162,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CUBE_FACE_BACK	$RAYGUI/raygui.h	/^    ICON_CUBE_FACE_BACK           = 168,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CUBE_FACE_BOTTOM	$RAYGUI/raygui.h	/^    ICON_CUBE_FACE_BOTTOM         = 166,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CUBE_FACE_FRONT	$RAYGUI/raygui.h	/^    ICON_CUBE_FACE_FRONT          = 165,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CUBE_FACE_LEFT	$RAYGUI/raygui.h	/^    ICON_CUBE_FACE_LEFT           = 164,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CUBE_FACE_RIGHT	$RAYGUI/raygui.h	/^    ICON_CUBE_FACE_RIGHT          = 167,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CUBE_FACE_TOP	$RAYGUI/raygui.h	/^    ICON_CUBE_FACE_TOP            = 163,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_CLASSIC	$RAYGUI/raygui.h	/^    ICON_CURSOR_CLASSIC           = 21,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_HAND	$RAYGUI/raygui.h	/^    ICON_CURSOR_HAND              = 19,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_MOVE	$RAYGUI/raygui.h	/^    ICON_CURSOR_MOVE              = 52,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_MOVE_FILL	$RAYGUI/raygui.h	/^    ICON_CURSOR_MOVE_FILL         = 68,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_POINTER	$RAYGUI/raygui.h	/^    ICON_CURSOR_POINTER           = 20,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_SCALE	$RAYGUI/raygui.h	/^    ICON_CURSOR_SCALE             = 53,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_SCALE_FILL	$RAYGUI/raygui.h	/^    ICON_CURSOR_SCALE_FILL        = 69,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_SCALE_LEFT	$RAYGUI/raygui.h	/^    ICON_CURSOR_SCALE_LEFT        = 55,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_SCALE_LEFT_FILL	$RAYGUI/raygui.h	/^    ICON_CURSOR_SCALE_LEFT_FILL   = 71,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_SCALE_RIGHT	$RAYGUI/raygui.h	/^    ICON_CURSOR_SCALE_RIGHT       = 54,$/;"	e	enum:__anonfd9f18ac1403
+ICON_CURSOR_SCALE_RIGHT_FILL	$RAYGUI/raygui.h	/^    ICON_CURSOR_SCALE_RIGHT_FILL  = 70,$/;"	e	enum:__anonfd9f18ac1403
+ICON_DEMON	$RAYGUI/raygui.h	/^    ICON_DEMON                    = 152,$/;"	e	enum:__anonfd9f18ac1403
+ICON_DITHERING	$RAYGUI/raygui.h	/^    ICON_DITHERING                = 94,$/;"	e	enum:__anonfd9f18ac1403
+ICON_DOOR	$RAYGUI/raygui.h	/^    ICON_DOOR                     = 158,$/;"	e	enum:__anonfd9f18ac1403
+ICON_EMPTYBOX	$RAYGUI/raygui.h	/^    ICON_EMPTYBOX                 = 63,$/;"	e	enum:__anonfd9f18ac1403
+ICON_EMPTYBOX_SMALL	$RAYGUI/raygui.h	/^    ICON_EMPTYBOX_SMALL           = 79,$/;"	e	enum:__anonfd9f18ac1403
+ICON_EXIT	$RAYGUI/raygui.h	/^    ICON_EXIT                     = 159,$/;"	e	enum:__anonfd9f18ac1403
+ICON_EXPLOSION	$RAYGUI/raygui.h	/^    ICON_EXPLOSION                = 147,$/;"	e	enum:__anonfd9f18ac1403
+ICON_EYE_OFF	$RAYGUI/raygui.h	/^    ICON_EYE_OFF                  = 45,$/;"	e	enum:__anonfd9f18ac1403
+ICON_EYE_ON	$RAYGUI/raygui.h	/^    ICON_EYE_ON                   = 44,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE	$RAYGUI/raygui.h	/^    ICON_FILE                     = 218,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_ALPHA	$RAYGUI/raygui.h	/^    ICON_FILETYPE_ALPHA           = 194,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_AUDIO	$RAYGUI/raygui.h	/^    ICON_FILETYPE_AUDIO           = 11,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_BINARY	$RAYGUI/raygui.h	/^    ICON_FILETYPE_BINARY          = 200,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_HOME	$RAYGUI/raygui.h	/^    ICON_FILETYPE_HOME            = 195,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_IMAGE	$RAYGUI/raygui.h	/^    ICON_FILETYPE_IMAGE           = 12,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_INFO	$RAYGUI/raygui.h	/^    ICON_FILETYPE_INFO            = 15,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_PLAY	$RAYGUI/raygui.h	/^    ICON_FILETYPE_PLAY            = 13,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_TEXT	$RAYGUI/raygui.h	/^    ICON_FILETYPE_TEXT            = 10,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILETYPE_VIDEO	$RAYGUI/raygui.h	/^    ICON_FILETYPE_VIDEO           = 14,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_ADD	$RAYGUI/raygui.h	/^    ICON_FILE_ADD                 = 8,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_COPY	$RAYGUI/raygui.h	/^    ICON_FILE_COPY                = 16,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_CUT	$RAYGUI/raygui.h	/^    ICON_FILE_CUT                 = 17,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_DELETE	$RAYGUI/raygui.h	/^    ICON_FILE_DELETE              = 9,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_EXPORT	$RAYGUI/raygui.h	/^    ICON_FILE_EXPORT              = 7,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_NEW	$RAYGUI/raygui.h	/^    ICON_FILE_NEW                 = 203,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_OPEN	$RAYGUI/raygui.h	/^    ICON_FILE_OPEN                = 5,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_PASTE	$RAYGUI/raygui.h	/^    ICON_FILE_PASTE               = 18,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_SAVE	$RAYGUI/raygui.h	/^    ICON_FILE_SAVE                = 6,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILE_SAVE_CLASSIC	$RAYGUI/raygui.h	/^    ICON_FILE_SAVE_CLASSIC        = 2,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILTER	$RAYGUI/raygui.h	/^    ICON_FILTER                   = 47,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILTER_BILINEAR	$RAYGUI/raygui.h	/^    ICON_FILTER_BILINEAR          = 35,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILTER_POINT	$RAYGUI/raygui.h	/^    ICON_FILTER_POINT             = 34,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FILTER_TOP	$RAYGUI/raygui.h	/^    ICON_FILTER_TOP               = 46,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FOLDER	$RAYGUI/raygui.h	/^    ICON_FOLDER                   = 217,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FOLDER_ADD	$RAYGUI/raygui.h	/^    ICON_FOLDER_ADD               = 204,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FOLDER_FILE_OPEN	$RAYGUI/raygui.h	/^    ICON_FOLDER_FILE_OPEN         = 1,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FOLDER_OPEN	$RAYGUI/raygui.h	/^    ICON_FOLDER_OPEN              = 3,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FOLDER_SAVE	$RAYGUI/raygui.h	/^    ICON_FOLDER_SAVE              = 4,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FOUR_BOXES	$RAYGUI/raygui.h	/^    ICON_FOUR_BOXES               = 100,$/;"	e	enum:__anonfd9f18ac1403
+ICON_FX	$RAYGUI/raygui.h	/^    ICON_FX                       = 123,$/;"	e	enum:__anonfd9f18ac1403
+ICON_GEAR	$RAYGUI/raygui.h	/^    ICON_GEAR                     = 141,$/;"	e	enum:__anonfd9f18ac1403
+ICON_GEAR_BIG	$RAYGUI/raygui.h	/^    ICON_GEAR_BIG                 = 142,$/;"	e	enum:__anonfd9f18ac1403
+ICON_GEAR_EX	$RAYGUI/raygui.h	/^    ICON_GEAR_EX                  = 154,$/;"	e	enum:__anonfd9f18ac1403
+ICON_GRID	$RAYGUI/raygui.h	/^    ICON_GRID                     = 97,$/;"	e	enum:__anonfd9f18ac1403
+ICON_GRID_FILL	$RAYGUI/raygui.h	/^    ICON_GRID_FILL                = 101,$/;"	e	enum:__anonfd9f18ac1403
+ICON_HAND_POINTER	$RAYGUI/raygui.h	/^    ICON_HAND_POINTER             = 144,$/;"	e	enum:__anonfd9f18ac1403
+ICON_HEART	$RAYGUI/raygui.h	/^    ICON_HEART                    = 186,$/;"	e	enum:__anonfd9f18ac1403
+ICON_HELP	$RAYGUI/raygui.h	/^    ICON_HELP                     = 193,$/;"	e	enum:__anonfd9f18ac1403
+ICON_HEX	$RAYGUI/raygui.h	/^    ICON_HEX                      = 201,$/;"	e	enum:__anonfd9f18ac1403
+ICON_HIDPI	$RAYGUI/raygui.h	/^    ICON_HIDPI                    = 199,$/;"	e	enum:__anonfd9f18ac1403
+ICON_HOUSE	$RAYGUI/raygui.h	/^    ICON_HOUSE                    = 185,$/;"	e	enum:__anonfd9f18ac1403
+ICON_INFO	$RAYGUI/raygui.h	/^    ICON_INFO                     = 191,$/;"	e	enum:__anonfd9f18ac1403
+ICON_KEY	$RAYGUI/raygui.h	/^    ICON_KEY                      = 151,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LASER	$RAYGUI/raygui.h	/^    ICON_LASER                    = 145,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LAYERS	$RAYGUI/raygui.h	/^    ICON_LAYERS                   = 197,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LAYERS_VISIBLE	$RAYGUI/raygui.h	/^    ICON_LAYERS_VISIBLE           = 196,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LENS	$RAYGUI/raygui.h	/^    ICON_LENS                     = 42,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LENS_BIG	$RAYGUI/raygui.h	/^    ICON_LENS_BIG                 = 43,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LIFE_BARS	$RAYGUI/raygui.h	/^    ICON_LIFE_BARS                = 190,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LINK	$RAYGUI/raygui.h	/^    ICON_LINK                     = 174,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LINK_BOXES	$RAYGUI/raygui.h	/^    ICON_LINK_BOXES               = 172,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LINK_BROKE	$RAYGUI/raygui.h	/^    ICON_LINK_BROKE               = 175,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LINK_MULTI	$RAYGUI/raygui.h	/^    ICON_LINK_MULTI               = 173,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LINK_NET	$RAYGUI/raygui.h	/^    ICON_LINK_NET                 = 171,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LOCK_CLOSE	$RAYGUI/raygui.h	/^    ICON_LOCK_CLOSE               = 137,$/;"	e	enum:__anonfd9f18ac1403
+ICON_LOCK_OPEN	$RAYGUI/raygui.h	/^    ICON_LOCK_OPEN                = 138,$/;"	e	enum:__anonfd9f18ac1403
+ICON_MAGNET	$RAYGUI/raygui.h	/^    ICON_MAGNET                   = 136,$/;"	e	enum:__anonfd9f18ac1403
+ICON_MAILBOX	$RAYGUI/raygui.h	/^    ICON_MAILBOX                  = 180,$/;"	e	enum:__anonfd9f18ac1403
+ICON_MIPMAPS	$RAYGUI/raygui.h	/^    ICON_MIPMAPS                  = 95,$/;"	e	enum:__anonfd9f18ac1403
+ICON_MODE_2D	$RAYGUI/raygui.h	/^    ICON_MODE_2D                  = 160,$/;"	e	enum:__anonfd9f18ac1403
+ICON_MODE_3D	$RAYGUI/raygui.h	/^    ICON_MODE_3D                  = 161,$/;"	e	enum:__anonfd9f18ac1403
+ICON_MONITOR	$RAYGUI/raygui.h	/^    ICON_MONITOR                  = 181,$/;"	e	enum:__anonfd9f18ac1403
+ICON_MUTATE	$RAYGUI/raygui.h	/^    ICON_MUTATE                   = 59,$/;"	e	enum:__anonfd9f18ac1403
+ICON_MUTATE_FILL	$RAYGUI/raygui.h	/^    ICON_MUTATE_FILL              = 75,$/;"	e	enum:__anonfd9f18ac1403
+ICON_NONE	$RAYGUI/raygui.h	/^    ICON_NONE                     = 0,$/;"	e	enum:__anonfd9f18ac1403
+ICON_NOTEBOOK	$RAYGUI/raygui.h	/^    ICON_NOTEBOOK                 = 177,$/;"	e	enum:__anonfd9f18ac1403
+ICON_OK_TICK	$RAYGUI/raygui.h	/^    ICON_OK_TICK                  = 112,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PENCIL	$RAYGUI/raygui.h	/^    ICON_PENCIL                   = 22,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PENCIL_BIG	$RAYGUI/raygui.h	/^    ICON_PENCIL_BIG               = 23,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PHOTO_CAMERA	$RAYGUI/raygui.h	/^    ICON_PHOTO_CAMERA             = 183,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PHOTO_CAMERA_FLASH	$RAYGUI/raygui.h	/^    ICON_PHOTO_CAMERA_FLASH       = 184,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER	$RAYGUI/raygui.h	/^    ICON_PLAYER                   = 149,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER_JUMP	$RAYGUI/raygui.h	/^    ICON_PLAYER_JUMP              = 150,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER_NEXT	$RAYGUI/raygui.h	/^    ICON_PLAYER_NEXT              = 134,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER_PAUSE	$RAYGUI/raygui.h	/^    ICON_PLAYER_PAUSE             = 132,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER_PLAY	$RAYGUI/raygui.h	/^    ICON_PLAYER_PLAY              = 131,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER_PLAY_BACK	$RAYGUI/raygui.h	/^    ICON_PLAYER_PLAY_BACK         = 130,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER_PREVIOUS	$RAYGUI/raygui.h	/^    ICON_PLAYER_PREVIOUS          = 129,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER_RECORD	$RAYGUI/raygui.h	/^    ICON_PLAYER_RECORD            = 135,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PLAYER_STOP	$RAYGUI/raygui.h	/^    ICON_PLAYER_STOP              = 133,$/;"	e	enum:__anonfd9f18ac1403
+ICON_POT	$RAYGUI/raygui.h	/^    ICON_POT                      = 91,$/;"	e	enum:__anonfd9f18ac1403
+ICON_PRINTER	$RAYGUI/raygui.h	/^    ICON_PRINTER                  = 182,$/;"	e	enum:__anonfd9f18ac1403
+ICON_REDO	$RAYGUI/raygui.h	/^    ICON_REDO                     = 57,$/;"	e	enum:__anonfd9f18ac1403
+ICON_REDO_FILL	$RAYGUI/raygui.h	/^    ICON_REDO_FILL                = 73,$/;"	e	enum:__anonfd9f18ac1403
+ICON_REG_EXP	$RAYGUI/raygui.h	/^    ICON_REG_EXP                  = 216,$/;"	e	enum:__anonfd9f18ac1403
+ICON_REPEAT	$RAYGUI/raygui.h	/^    ICON_REPEAT                   = 61,$/;"	e	enum:__anonfd9f18ac1403
+ICON_REPEAT_FILL	$RAYGUI/raygui.h	/^    ICON_REPEAT_FILL              = 77,$/;"	e	enum:__anonfd9f18ac1403
+ICON_REREDO	$RAYGUI/raygui.h	/^    ICON_REREDO                   = 58,$/;"	e	enum:__anonfd9f18ac1403
+ICON_REREDO_FILL	$RAYGUI/raygui.h	/^    ICON_REREDO_FILL              = 74,$/;"	e	enum:__anonfd9f18ac1403
+ICON_RESIZE	$RAYGUI/raygui.h	/^    ICON_RESIZE                   = 33,$/;"	e	enum:__anonfd9f18ac1403
+ICON_RESTART	$RAYGUI/raygui.h	/^    ICON_RESTART                  = 211,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ROM	$RAYGUI/raygui.h	/^    ICON_ROM                      = 207,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ROTATE	$RAYGUI/raygui.h	/^    ICON_ROTATE                   = 60,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ROTATE_FILL	$RAYGUI/raygui.h	/^    ICON_ROTATE_FILL              = 76,$/;"	e	enum:__anonfd9f18ac1403
+ICON_RUBBER	$RAYGUI/raygui.h	/^    ICON_RUBBER                   = 28,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SAND_TIMER	$RAYGUI/raygui.h	/^    ICON_SAND_TIMER               = 219,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SCALE	$RAYGUI/raygui.h	/^    ICON_SCALE                    = 32,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SHIELD	$RAYGUI/raygui.h	/^    ICON_SHIELD                   = 202,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SHUFFLE	$RAYGUI/raygui.h	/^    ICON_SHUFFLE                  = 62,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SHUFFLE_FILL	$RAYGUI/raygui.h	/^    ICON_SHUFFLE_FILL             = 78,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SPECIAL	$RAYGUI/raygui.h	/^    ICON_SPECIAL                  = 170,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SQUARE_TOGGLE	$RAYGUI/raygui.h	/^    ICON_SQUARE_TOGGLE            = 38,$/;"	e	enum:__anonfd9f18ac1403
+ICON_STAR	$RAYGUI/raygui.h	/^    ICON_STAR                     = 157,$/;"	e	enum:__anonfd9f18ac1403
+ICON_STEP_INTO	$RAYGUI/raygui.h	/^    ICON_STEP_INTO                = 209,$/;"	e	enum:__anonfd9f18ac1403
+ICON_STEP_OUT	$RAYGUI/raygui.h	/^    ICON_STEP_OUT                 = 210,$/;"	e	enum:__anonfd9f18ac1403
+ICON_STEP_OVER	$RAYGUI/raygui.h	/^    ICON_STEP_OVER                = 208,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SUITCASE	$RAYGUI/raygui.h	/^    ICON_SUITCASE                 = 178,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SUITCASE_ZIP	$RAYGUI/raygui.h	/^    ICON_SUITCASE_ZIP             = 179,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SYMMETRY	$RAYGUI/raygui.h	/^    ICON_SYMMETRY                 = 39,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SYMMETRY_HORIZONTAL	$RAYGUI/raygui.h	/^    ICON_SYMMETRY_HORIZONTAL      = 40,$/;"	e	enum:__anonfd9f18ac1403
+ICON_SYMMETRY_VERTICAL	$RAYGUI/raygui.h	/^    ICON_SYMMETRY_VERTICAL        = 41,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TARGET	$RAYGUI/raygui.h	/^    ICON_TARGET                   = 64,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TARGET_BIG	$RAYGUI/raygui.h	/^    ICON_TARGET_BIG               = 50,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TARGET_BIG_FILL	$RAYGUI/raygui.h	/^    ICON_TARGET_BIG_FILL          = 66,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TARGET_MOVE	$RAYGUI/raygui.h	/^    ICON_TARGET_MOVE              = 51,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TARGET_MOVE_FILL	$RAYGUI/raygui.h	/^    ICON_TARGET_MOVE_FILL         = 67,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TARGET_POINT	$RAYGUI/raygui.h	/^    ICON_TARGET_POINT             = 48,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TARGET_SMALL	$RAYGUI/raygui.h	/^    ICON_TARGET_SMALL             = 49,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TARGET_SMALL_FILL	$RAYGUI/raygui.h	/^    ICON_TARGET_SMALL_FILL        = 65,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TEXT_A	$RAYGUI/raygui.h	/^    ICON_TEXT_A                   = 31,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TEXT_NOTES	$RAYGUI/raygui.h	/^    ICON_TEXT_NOTES               = 176,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TEXT_PADDING	$RAYGUI/raygui.h	/^        #define ICON_TEXT_PADDING /;"	d
+ICON_TEXT_POPUP	$RAYGUI/raygui.h	/^    ICON_TEXT_POPUP               = 153,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TEXT_T	$RAYGUI/raygui.h	/^    ICON_TEXT_T                   = 30,$/;"	e	enum:__anonfd9f18ac1403
+ICON_TOOLS	$RAYGUI/raygui.h	/^    ICON_TOOLS                    = 140,$/;"	e	enum:__anonfd9f18ac1403
+ICON_UNDO	$RAYGUI/raygui.h	/^    ICON_UNDO                     = 56,$/;"	e	enum:__anonfd9f18ac1403
+ICON_UNDO_FILL	$RAYGUI/raygui.h	/^    ICON_UNDO_FILL                = 72,$/;"	e	enum:__anonfd9f18ac1403
+ICON_VERTICAL_BARS	$RAYGUI/raygui.h	/^    ICON_VERTICAL_BARS            = 188,$/;"	e	enum:__anonfd9f18ac1403
+ICON_VERTICAL_BARS_FILL	$RAYGUI/raygui.h	/^    ICON_VERTICAL_BARS_FILL       = 189,$/;"	e	enum:__anonfd9f18ac1403
+ICON_WATER_DROP	$RAYGUI/raygui.h	/^    ICON_WATER_DROP               = 26,$/;"	e	enum:__anonfd9f18ac1403
+ICON_WAVE	$RAYGUI/raygui.h	/^    ICON_WAVE                     = 124,$/;"	e	enum:__anonfd9f18ac1403
+ICON_WAVE_SINUS	$RAYGUI/raygui.h	/^    ICON_WAVE_SINUS               = 125,$/;"	e	enum:__anonfd9f18ac1403
+ICON_WAVE_SQUARE	$RAYGUI/raygui.h	/^    ICON_WAVE_SQUARE              = 126,$/;"	e	enum:__anonfd9f18ac1403
+ICON_WAVE_TRIANGULAR	$RAYGUI/raygui.h	/^    ICON_WAVE_TRIANGULAR          = 127,$/;"	e	enum:__anonfd9f18ac1403
+ICON_WINDOW	$RAYGUI/raygui.h	/^    ICON_WINDOW                   = 198,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ZOOM_ALL	$RAYGUI/raygui.h	/^    ICON_ZOOM_ALL                 = 106,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ZOOM_BIG	$RAYGUI/raygui.h	/^    ICON_ZOOM_BIG                 = 105,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ZOOM_CENTER	$RAYGUI/raygui.h	/^    ICON_ZOOM_CENTER              = 107,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ZOOM_MEDIUM	$RAYGUI/raygui.h	/^    ICON_ZOOM_MEDIUM              = 104,$/;"	e	enum:__anonfd9f18ac1403
+ICON_ZOOM_SMALL	$RAYGUI/raygui.h	/^    ICON_ZOOM_SMALL               = 103,$/;"	e	enum:__anonfd9f18ac1403
+Image	$RAYGUI/raygui.h	/^    } Image;$/;"	t	typeref:struct:Image
+IsKeyDown	$RAYGUI/raygui.h	/^static bool IsKeyDown(int key);$/;"	p	typeref:typename:bool	signature:(int key)
+IsKeyPressed	$RAYGUI/raygui.h	/^static bool IsKeyPressed(int key);$/;"	p	typeref:typename:bool	signature:(int key)
+IsMouseButtonDown	$RAYGUI/raygui.h	/^static bool IsMouseButtonDown(int button);$/;"	p	typeref:typename:bool	signature:(int button)
+IsMouseButtonPressed	$RAYGUI/raygui.h	/^static bool IsMouseButtonPressed(int button);$/;"	p	typeref:typename:bool	signature:(int button)
+IsMouseButtonReleased	$RAYGUI/raygui.h	/^static bool IsMouseButtonReleased(int button);$/;"	p	typeref:typename:bool	signature:(int button)
+KEY_BACKSPACE	$RAYGUI/raygui.h	/^#define KEY_BACKSPACE /;"	d
+KEY_DOWN	$RAYGUI/raygui.h	/^#define KEY_DOWN /;"	d
+KEY_ENTER	$RAYGUI/raygui.h	/^#define KEY_ENTER /;"	d
+KEY_LEFT	$RAYGUI/raygui.h	/^#define KEY_LEFT /;"	d
+KEY_RIGHT	$RAYGUI/raygui.h	/^#define KEY_RIGHT /;"	d
+KEY_UP	$RAYGUI/raygui.h	/^#define KEY_UP /;"	d
+LABEL	$RAYGUI/raygui.h	/^    LABEL,          \/\/ Used also for: LABELBUTTON$/;"	e	enum:__anonfd9f18ac0603
+LINE_COLOR	$RAYGUI/raygui.h	/^    LINE_COLOR,                 \/\/ Line control color$/;"	e	enum:__anonfd9f18ac0803
+LISTVIEW	$RAYGUI/raygui.h	/^    LISTVIEW,$/;"	e	enum:__anonfd9f18ac0603
+LIST_ITEMS_HEIGHT	$RAYGUI/raygui.h	/^    LIST_ITEMS_HEIGHT = 16,     \/\/ ListView items height$/;"	e	enum:__anonfd9f18ac1203
+LIST_ITEMS_SPACING	$RAYGUI/raygui.h	/^    LIST_ITEMS_SPACING,         \/\/ ListView items separation$/;"	e	enum:__anonfd9f18ac1203
+LoadCodepoints	$RAYGUI/raygui.h	/^static int *LoadCodepoints(const char *text, int *count);    \/\/ -- GuiLoadStyle(), required to/;"	p	typeref:typename:int *	signature:(const char * text,int * count)
+LoadFileText	$RAYGUI/raygui.h	/^static char *LoadFileText(const char *fileName);             \/\/ -- GuiLoadStyle(), required to/;"	p	typeref:typename:char *	signature:(const char * fileName)
+LoadFontEx	$RAYGUI/raygui.h	/^static Font LoadFontEx(const char *fileName, int fontSize, int *codepoints, int codepointCount);/;"	p	typeref:typename:Font	signature:(const char * fileName,int fontSize,int * codepoints,int codepointCount)
+LoadTextureFromImage	$RAYGUI/raygui.h	/^static Texture2D LoadTextureFromImage(Image image);          \/\/ -- GuiLoadStyle(), required to/;"	p	typeref:typename:Texture2D	signature:(Image image)
+MAX_LINE_BUFFER_SIZE	$RAYGUI/raygui.h	/^    #define MAX_LINE_BUFFER_SIZE /;"	d
+MOUSE_LEFT_BUTTON	$RAYGUI/raygui.h	/^#define MOUSE_LEFT_BUTTON /;"	d
+OTHER	$RAYGUI/raygui.h	/^typedef enum { BORDER = 0, BASE, TEXT, OTHER } GuiPropertyElement;$/;"	e	enum:__anonfd9f18ac1503
+PROGRESSBAR	$RAYGUI/raygui.h	/^    PROGRESSBAR,$/;"	e	enum:__anonfd9f18ac0603
+PROGRESS_PADDING	$RAYGUI/raygui.h	/^    PROGRESS_PADDING = 16,      \/\/ ProgressBar internal padding$/;"	e	enum:__anonfd9f18ac0b03
+RAYGUIAPI	$RAYGUI/raygui.h	/^    #define RAYGUIAPI /;"	d
+RAYGUI_CALLOC	$RAYGUI/raygui.h	/^    #define RAYGUI_CALLOC(/;"	d	signature:(n,sz)
+RAYGUI_CLITERAL	$RAYGUI/raygui.h	/^    #define RAYGUI_CLITERAL(/;"	d	signature:(name)
+RAYGUI_COLORBARALPHA_CHECKED_SIZE	$RAYGUI/raygui.h	/^        #define RAYGUI_COLORBARALPHA_CHECKED_SIZE /;"	d
+RAYGUI_FREE	$RAYGUI/raygui.h	/^    #define RAYGUI_FREE(/;"	d	signature:(p)
+RAYGUI_GRID_ALPHA	$RAYGUI/raygui.h	/^        #define RAYGUI_GRID_ALPHA /;"	d
+RAYGUI_GROUPBOX_LINE_THICK	$RAYGUI/raygui.h	/^        #define RAYGUI_GROUPBOX_LINE_THICK /;"	d
+RAYGUI_H	$RAYGUI/raygui.h	/^#define RAYGUI_H$/;"	d
+RAYGUI_ICON_DATA_ELEMENTS	$RAYGUI/raygui.h	/^#define RAYGUI_ICON_DATA_ELEMENTS /;"	d
+RAYGUI_ICON_MAX_ICONS	$RAYGUI/raygui.h	/^#define RAYGUI_ICON_MAX_ICONS /;"	d
+RAYGUI_ICON_MAX_NAME_LENGTH	$RAYGUI/raygui.h	/^#define RAYGUI_ICON_MAX_NAME_LENGTH /;"	d
+RAYGUI_ICON_SIZE	$RAYGUI/raygui.h	/^#define RAYGUI_ICON_SIZE /;"	d
+RAYGUI_LINE_MARGIN_TEXT	$RAYGUI/raygui.h	/^        #define RAYGUI_LINE_MARGIN_TEXT /;"	d
+RAYGUI_LINE_TEXT_PADDING	$RAYGUI/raygui.h	/^        #define RAYGUI_LINE_TEXT_PADDING /;"	d
+RAYGUI_LOG	$RAYGUI/raygui.h	/^  #define RAYGUI_LOG(/;"	d	signature:(...)
+RAYGUI_MALLOC	$RAYGUI/raygui.h	/^    #define RAYGUI_MALLOC(/;"	d	signature:(sz)
+RAYGUI_MAX_CONTROLS	$RAYGUI/raygui.h	/^#define RAYGUI_MAX_CONTROLS /;"	d
+RAYGUI_MAX_PROPS_BASE	$RAYGUI/raygui.h	/^#define RAYGUI_MAX_PROPS_BASE /;"	d
+RAYGUI_MAX_PROPS_EXTENDED	$RAYGUI/raygui.h	/^#define RAYGUI_MAX_PROPS_EXTENDED /;"	d
+RAYGUI_MAX_TEXT_LINES	$RAYGUI/raygui.h	/^    #define RAYGUI_MAX_TEXT_LINES /;"	d
+RAYGUI_MESSAGEBOX_BUTTON_HEIGHT	$RAYGUI/raygui.h	/^        #define RAYGUI_MESSAGEBOX_BUTTON_HEIGHT /;"	d
+RAYGUI_MESSAGEBOX_BUTTON_PADDING	$RAYGUI/raygui.h	/^        #define RAYGUI_MESSAGEBOX_BUTTON_PADDING /;"	d
+RAYGUI_MIN_SCROLLBAR_HEIGHT	$RAYGUI/raygui.h	/^    #define RAYGUI_MIN_SCROLLBAR_HEIGHT /;"	d
+RAYGUI_MIN_SCROLLBAR_WIDTH	$RAYGUI/raygui.h	/^    #define RAYGUI_MIN_SCROLLBAR_WIDTH /;"	d
+RAYGUI_PANEL_BORDER_WIDTH	$RAYGUI/raygui.h	/^        #define RAYGUI_PANEL_BORDER_WIDTH /;"	d
+RAYGUI_SUPPORT_LOG_INFO	$RAYGUI/raygui.h	/^#define RAYGUI_SUPPORT_LOG_INFO$/;"	d
+RAYGUI_TABBAR_ITEM_WIDTH	$RAYGUI/raygui.h	/^    #define RAYGUI_TABBAR_ITEM_WIDTH /;"	d
+RAYGUI_TEXTBOX_AUTO_CURSOR_COOLDOWN	$RAYGUI/raygui.h	/^        #define RAYGUI_TEXTBOX_AUTO_CURSOR_COOLDOWN /;"	d
+RAYGUI_TEXTBOX_AUTO_CURSOR_DELAY	$RAYGUI/raygui.h	/^        #define RAYGUI_TEXTBOX_AUTO_CURSOR_DELAY /;"	d
+RAYGUI_TEXTFORMAT_MAX_SIZE	$RAYGUI/raygui.h	/^        #define RAYGUI_TEXTFORMAT_MAX_SIZE /;"	d
+RAYGUI_TEXTINPUTBOX_BUTTON_HEIGHT	$RAYGUI/raygui.h	/^        #define RAYGUI_TEXTINPUTBOX_BUTTON_HEIGHT /;"	d
+RAYGUI_TEXTINPUTBOX_BUTTON_PADDING	$RAYGUI/raygui.h	/^        #define RAYGUI_TEXTINPUTBOX_BUTTON_PADDING /;"	d
+RAYGUI_TEXTINPUTBOX_HEIGHT	$RAYGUI/raygui.h	/^        #define RAYGUI_TEXTINPUTBOX_HEIGHT /;"	d
+RAYGUI_TEXTSPLIT_MAX_ITEMS	$RAYGUI/raygui.h	/^        #define RAYGUI_TEXTSPLIT_MAX_ITEMS /;"	d
+RAYGUI_TEXTSPLIT_MAX_TEXT_SIZE	$RAYGUI/raygui.h	/^        #define RAYGUI_TEXTSPLIT_MAX_TEXT_SIZE /;"	d
+RAYGUI_TOGGLEGROUP_MAX_ITEMS	$RAYGUI/raygui.h	/^        #define RAYGUI_TOGGLEGROUP_MAX_ITEMS /;"	d
+RAYGUI_VALUEBOX_MAX_CHARS	$RAYGUI/raygui.h	/^        #define RAYGUI_VALUEBOX_MAX_CHARS /;"	d
+RAYGUI_VERSION	$RAYGUI/raygui.h	/^#define RAYGUI_VERSION /;"	d
+RAYGUI_VERSION_MAJOR	$RAYGUI/raygui.h	/^#define RAYGUI_VERSION_MAJOR /;"	d
+RAYGUI_VERSION_MINOR	$RAYGUI/raygui.h	/^#define RAYGUI_VERSION_MINOR /;"	d
+RAYGUI_VERSION_PATCH	$RAYGUI/raygui.h	/^#define RAYGUI_VERSION_PATCH /;"	d
+RAYGUI_WINDOWBOX_STATUSBAR_HEIGHT	$RAYGUI/raygui.h	/^        #define RAYGUI_WINDOWBOX_STATUSBAR_HEIGHT /;"	d
+Rectangle	$RAYGUI/raygui.h	/^    } Rectangle;$/;"	t	typeref:struct:Rectangle
+SCROLLBAR	$RAYGUI/raygui.h	/^    SCROLLBAR,$/;"	e	enum:__anonfd9f18ac0603
+SCROLLBAR_LEFT_SIDE	$RAYGUI/raygui.h	/^#define SCROLLBAR_LEFT_SIDE /;"	d
+SCROLLBAR_RIGHT_SIDE	$RAYGUI/raygui.h	/^#define SCROLLBAR_RIGHT_SIDE /;"	d
+SCROLLBAR_SIDE	$RAYGUI/raygui.h	/^    SCROLLBAR_SIDE,             \/\/ ListView scrollbar side (0-SCROLLBAR_LEFT_SIDE, 1-SCROLLBAR/;"	e	enum:__anonfd9f18ac1203
+SCROLLBAR_WIDTH	$RAYGUI/raygui.h	/^    SCROLLBAR_WIDTH,            \/\/ ListView scrollbar size (usually width)$/;"	e	enum:__anonfd9f18ac1203
+SCROLL_PADDING	$RAYGUI/raygui.h	/^    SCROLL_PADDING,             \/\/ ScrollBar scroll padding from arrows$/;"	e	enum:__anonfd9f18ac0c03
+SCROLL_SLIDER_PADDING	$RAYGUI/raygui.h	/^    SCROLL_SLIDER_PADDING,      \/\/ ScrollBar slider internal padding$/;"	e	enum:__anonfd9f18ac0c03
+SCROLL_SLIDER_SIZE	$RAYGUI/raygui.h	/^    SCROLL_SLIDER_SIZE,         \/\/ ScrollBar slider size$/;"	e	enum:__anonfd9f18ac0c03
+SCROLL_SPEED	$RAYGUI/raygui.h	/^    SCROLL_SPEED,               \/\/ ScrollBar scrolling speed$/;"	e	enum:__anonfd9f18ac0c03
+SLIDER	$RAYGUI/raygui.h	/^    SLIDER,         \/\/ Used also for: SLIDERBAR, TOGGLESLIDER$/;"	e	enum:__anonfd9f18ac0603
+SLIDER_PADDING	$RAYGUI/raygui.h	/^    SLIDER_PADDING              \/\/ Slider\/SliderBar internal bar padding$/;"	e	enum:__anonfd9f18ac0a03
+SLIDER_WIDTH	$RAYGUI/raygui.h	/^    SLIDER_WIDTH = 16,          \/\/ Slider size of internal bar$/;"	e	enum:__anonfd9f18ac0a03
+SPINNER	$RAYGUI/raygui.h	/^    SPINNER,        \/\/ Uses: BUTTON, VALUEBOX$/;"	e	enum:__anonfd9f18ac0603
+SPIN_BUTTON_SPACING	$RAYGUI/raygui.h	/^    SPIN_BUTTON_SPACING,        \/\/ Spinner buttons separation$/;"	e	enum:__anonfd9f18ac1103
+SPIN_BUTTON_WIDTH	$RAYGUI/raygui.h	/^    SPIN_BUTTON_WIDTH = 16,     \/\/ Spinner left\/right buttons width$/;"	e	enum:__anonfd9f18ac1103
+STATE_DISABLED	$RAYGUI/raygui.h	/^    STATE_DISABLED$/;"	e	enum:__anonfd9f18ac0203
+STATE_FOCUSED	$RAYGUI/raygui.h	/^    STATE_FOCUSED,$/;"	e	enum:__anonfd9f18ac0203
+STATE_NORMAL	$RAYGUI/raygui.h	/^    STATE_NORMAL = 0,$/;"	e	enum:__anonfd9f18ac0203
+STATE_PRESSED	$RAYGUI/raygui.h	/^    STATE_PRESSED,$/;"	e	enum:__anonfd9f18ac0203
+STATUSBAR	$RAYGUI/raygui.h	/^    STATUSBAR$/;"	e	enum:__anonfd9f18ac0603
+SetShapesTexture	$RAYGUI/raygui.h	/^static void SetShapesTexture(Texture2D tex, Rectangle rec);  \/\/ -- GuiLoadStyle(), required to/;"	p	typeref:typename:void	signature:(Texture2D tex,Rectangle rec)
+TEXT	$RAYGUI/raygui.h	/^typedef enum { BORDER = 0, BASE, TEXT, OTHER } GuiPropertyElement;$/;"	e	enum:__anonfd9f18ac1503
+TEXTBOX	$RAYGUI/raygui.h	/^    TEXTBOX,        \/\/ Used also for: TEXTBOXMULTI$/;"	e	enum:__anonfd9f18ac0603
+TEXT_ALIGNMENT	$RAYGUI/raygui.h	/^    TEXT_ALIGNMENT,             \/\/ Control text horizontal alignment inside control text bound/;"	e	enum:__anonfd9f18ac0703
+TEXT_ALIGNMENT_VERTICAL	$RAYGUI/raygui.h	/^    TEXT_ALIGNMENT_VERTICAL,    \/\/ Text vertical alignment inside text bounds (after border an/;"	e	enum:__anonfd9f18ac0803
+TEXT_ALIGN_BOTTOM	$RAYGUI/raygui.h	/^    TEXT_ALIGN_BOTTOM$/;"	e	enum:__anonfd9f18ac0403
+TEXT_ALIGN_CENTER	$RAYGUI/raygui.h	/^    TEXT_ALIGN_CENTER,$/;"	e	enum:__anonfd9f18ac0303
+TEXT_ALIGN_LEFT	$RAYGUI/raygui.h	/^    TEXT_ALIGN_LEFT = 0,$/;"	e	enum:__anonfd9f18ac0303
+TEXT_ALIGN_MIDDLE	$RAYGUI/raygui.h	/^    TEXT_ALIGN_MIDDLE,$/;"	e	enum:__anonfd9f18ac0403
+TEXT_ALIGN_RIGHT	$RAYGUI/raygui.h	/^    TEXT_ALIGN_RIGHT$/;"	e	enum:__anonfd9f18ac0303
+TEXT_ALIGN_TOP	$RAYGUI/raygui.h	/^    TEXT_ALIGN_TOP = 0,$/;"	e	enum:__anonfd9f18ac0403
+TEXT_COLOR_DISABLED	$RAYGUI/raygui.h	/^    TEXT_COLOR_DISABLED,        \/\/ Control text color in STATE_DISABLED$/;"	e	enum:__anonfd9f18ac0703
+TEXT_COLOR_FOCUSED	$RAYGUI/raygui.h	/^    TEXT_COLOR_FOCUSED,         \/\/ Control text color in STATE_FOCUSED$/;"	e	enum:__anonfd9f18ac0703
+TEXT_COLOR_NORMAL	$RAYGUI/raygui.h	/^    TEXT_COLOR_NORMAL,          \/\/ Control text color in STATE_NORMAL$/;"	e	enum:__anonfd9f18ac0703
+TEXT_COLOR_PRESSED	$RAYGUI/raygui.h	/^    TEXT_COLOR_PRESSED,         \/\/ Control text color in STATE_PRESSED$/;"	e	enum:__anonfd9f18ac0703
+TEXT_LINE_SPACING	$RAYGUI/raygui.h	/^    TEXT_LINE_SPACING,          \/\/ Text spacing between lines$/;"	e	enum:__anonfd9f18ac0803
+TEXT_PADDING	$RAYGUI/raygui.h	/^    TEXT_PADDING,               \/\/ Control text padding, not considering border$/;"	e	enum:__anonfd9f18ac0703
+TEXT_READONLY	$RAYGUI/raygui.h	/^    TEXT_READONLY = 16,         \/\/ TextBox in read-only mode: 0-text editable, 1-text no-edita/;"	e	enum:__anonfd9f18ac1003
+TEXT_SIZE	$RAYGUI/raygui.h	/^    TEXT_SIZE = 16,             \/\/ Text size (glyphs max height)$/;"	e	enum:__anonfd9f18ac0803
+TEXT_SPACING	$RAYGUI/raygui.h	/^    TEXT_SPACING,               \/\/ Text spacing between glyphs$/;"	e	enum:__anonfd9f18ac0803
+TEXT_VALIGN_PIXEL_OFFSET	$RAYGUI/raygui.h	/^    #define TEXT_VALIGN_PIXEL_OFFSET(/;"	d	signature:(h)
+TEXT_WRAP_CHAR	$RAYGUI/raygui.h	/^    TEXT_WRAP_CHAR,$/;"	e	enum:__anonfd9f18ac0503
+TEXT_WRAP_MODE	$RAYGUI/raygui.h	/^    TEXT_WRAP_MODE              \/\/ Text wrap-mode inside text bounds$/;"	e	enum:__anonfd9f18ac0803
+TEXT_WRAP_NONE	$RAYGUI/raygui.h	/^    TEXT_WRAP_NONE = 0,$/;"	e	enum:__anonfd9f18ac0503
+TEXT_WRAP_WORD	$RAYGUI/raygui.h	/^    TEXT_WRAP_WORD$/;"	e	enum:__anonfd9f18ac0503
+TOGGLE	$RAYGUI/raygui.h	/^    TOGGLE,         \/\/ Used also for: TOGGLEGROUP$/;"	e	enum:__anonfd9f18ac0603
+TextFormat	$RAYGUI/raygui.h	/^static const char *TextFormat(const char *text, ...);               \/\/ Formatting of text with/;"	p	typeref:typename:const char *	signature:(const char * text,...)
+TextSplit	$RAYGUI/raygui.h	/^static const char **TextSplit(const char *text, char delimiter, int *count);    \/\/ Split text /;"	p	typeref:typename:const char **	signature:(const char * text,char delimiter,int * count)
+TextToInteger	$RAYGUI/raygui.h	/^static int TextToInteger(const char *text);         \/\/ Get integer value from text$/;"	p	typeref:typename:int	signature:(const char * text)
+Texture2D	$RAYGUI/raygui.h	/^    } Texture2D;$/;"	t	typeref:struct:Texture2D
+UnloadCodepoints	$RAYGUI/raygui.h	/^static void UnloadCodepoints(int *codepoints);               \/\/ -- GuiLoadStyle(), required to/;"	p	typeref:typename:void	signature:(int * codepoints)
+UnloadFileText	$RAYGUI/raygui.h	/^static void UnloadFileText(char *text);                      \/\/ -- GuiLoadStyle(), required to/;"	p	typeref:typename:void	signature:(char * text)
+VALUEBOX	$RAYGUI/raygui.h	/^    VALUEBOX,$/;"	e	enum:__anonfd9f18ac0603
+Vector2	$RAYGUI/raygui.h	/^    } Vector2;$/;"	t	typeref:struct:Vector2
+Vector3	$RAYGUI/raygui.h	/^    } Vector3;$/;"	t	typeref:struct:Vector3
+__anonfd9f18ac0103	$RAYGUI/raygui.h	/^            typedef enum { false, true } bool;$/;"	t	typeref:enum:bool
+__anonfd9f18ac0203	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0303	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0403	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0503	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0603	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0703	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0803	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0903	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0a03	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0b03	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0c03	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0d03	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0e03	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac0f03	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac1003	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac1103	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac1203	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac1303	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac1403	$RAYGUI/raygui.h	/^typedef enum {$/;"	g
+__anonfd9f18ac1503	$RAYGUI/raygui.h	/^typedef enum { BORDER = 0, BASE, TEXT, OTHER } GuiPropertyElement;$/;"	g
+advanceX	$RAYGUI/raygui.h	/^        int advanceX;           \/\/ Character advance position X$/;"	m	struct:GlyphInfo	typeref:typename:int
+autoCursorCooldownCounter	$RAYGUI/raygui.h	/^static int autoCursorCooldownCounter = 0;       \/\/ Cooldown frame counter for automatic cursor/;"	v	typeref:typename:int
+autoCursorDelayCounter	$RAYGUI/raygui.h	/^static int autoCursorDelayCounter = 0;          \/\/ Delay frame counter for automatic cursor mo/;"	v	typeref:typename:int
+baseSize	$RAYGUI/raygui.h	/^        int baseSize;           \/\/ Base size (default chars height)$/;"	m	struct:Font	typeref:typename:int
+controlId	$RAYGUI/raygui.h	/^    unsigned short controlId;   \/\/ Control identifier$/;"	m	struct:GuiStyleProp	typeref:typename:unsigned short
+data	$RAYGUI/raygui.h	/^        void *data;             \/\/ Image raw data$/;"	m	struct:Image	typeref:typename:void *
+format	$RAYGUI/raygui.h	/^        int format;             \/\/ Data format (PixelFormat type)$/;"	m	struct:Texture2D	typeref:typename:int
+glyphCount	$RAYGUI/raygui.h	/^        int glyphCount;         \/\/ Number of glyph characters$/;"	m	struct:Font	typeref:typename:int
+glyphPadding	$RAYGUI/raygui.h	/^        int glyphPadding;       \/\/ Padding around the glyph characters$/;"	m	struct:Font	typeref:typename:int
+glyphs	$RAYGUI/raygui.h	/^        GlyphInfo *glyphs;      \/\/ Glyphs info data$/;"	m	struct:Font	typeref:typename:GlyphInfo *
+guiAlpha	$RAYGUI/raygui.h	/^static float guiAlpha = 1.0f;                   \/\/ Gui controls transparency$/;"	v	typeref:typename:float
+guiFont	$RAYGUI/raygui.h	/^static Font guiFont = { 0 };                    \/\/ Gui current font (WARNING: highly coupled t/;"	v	typeref:typename:Font
+guiIconScale	$RAYGUI/raygui.h	/^static unsigned int guiIconScale = 1;           \/\/ Gui icon default scale (if icons enabled)$/;"	v	typeref:typename:unsigned int
+guiIcons	$RAYGUI/raygui.h	/^static unsigned int guiIcons[RAYGUI_ICON_MAX_ICONS*RAYGUI_ICON_DATA_ELEMENTS] = {$/;"	v	typeref:typename:unsigned int[]
+guiIconsPtr	$RAYGUI/raygui.h	/^static unsigned int *guiIconsPtr = guiIcons;$/;"	v	typeref:typename:unsigned int *
+guiLocked	$RAYGUI/raygui.h	/^static bool guiLocked = false;                  \/\/ Gui lock state (no inputs processed)$/;"	v	typeref:typename:bool
+guiSliderActive	$RAYGUI/raygui.h	/^static Rectangle guiSliderActive = { 0 };       \/\/ Gui slider active bounds rectangle, used as/;"	v	typeref:typename:Rectangle
+guiSliderDragging	$RAYGUI/raygui.h	/^static bool guiSliderDragging = false;          \/\/ Gui slider drag state (no inputs processed /;"	v	typeref:typename:bool
+guiState	$RAYGUI/raygui.h	/^static GuiState guiState = STATE_NORMAL;        \/\/ Gui global state, if !STATE_NORMAL, forces /;"	v	typeref:typename:GuiState
+guiStyle	$RAYGUI/raygui.h	/^static unsigned int guiStyle[RAYGUI_MAX_CONTROLS*(RAYGUI_MAX_PROPS_BASE + RAYGUI_MAX_PROPS_EXTEN/;"	v	typeref:typename:unsigned int[]
+guiStyleLoaded	$RAYGUI/raygui.h	/^static bool guiStyleLoaded = false;         \/\/ Style loaded flag for lazy style initialization$/;"	v	typeref:typename:bool
+guiTooltip	$RAYGUI/raygui.h	/^static bool guiTooltip = false;                 \/\/ Tooltip enabled\/disabled$/;"	v	typeref:typename:bool
+guiTooltipPtr	$RAYGUI/raygui.h	/^static const char *guiTooltipPtr = NULL;        \/\/ Tooltip string pointer (string provided by /;"	v	typeref:typename:const char *
+height	$RAYGUI/raygui.h	/^        int height;             \/\/ Texture base height$/;"	m	struct:Texture2D	typeref:typename:int
+image	$RAYGUI/raygui.h	/^        Image image;            \/\/ Character image data$/;"	m	struct:GlyphInfo	typeref:typename:Image
+mipmaps	$RAYGUI/raygui.h	/^        int mipmaps;            \/\/ Mipmap levels, 1 by default$/;"	m	struct:Texture2D	typeref:typename:int
+offsetX	$RAYGUI/raygui.h	/^        int offsetX;            \/\/ Character offset X when drawing$/;"	m	struct:GlyphInfo	typeref:typename:int
+offsetY	$RAYGUI/raygui.h	/^        int offsetY;            \/\/ Character offset Y when drawing$/;"	m	struct:GlyphInfo	typeref:typename:int
+propertyId	$RAYGUI/raygui.h	/^    unsigned short propertyId;  \/\/ Property identifier$/;"	m	struct:GuiStyleProp	typeref:typename:unsigned short
+propertyValue	$RAYGUI/raygui.h	/^    int propertyValue;          \/\/ Property value$/;"	m	struct:GuiStyleProp	typeref:typename:int
+recs	$RAYGUI/raygui.h	/^        Rectangle *recs;        \/\/ Rectangles in texture for the glyphs$/;"	m	struct:Font	typeref:typename:Rectangle *
+textBoxCursorIndex	$RAYGUI/raygui.h	/^static int textBoxCursorIndex = 0;              \/\/ Cursor index, shared by all GuiTextBox*()$/;"	v	typeref:typename:int
+texture	$RAYGUI/raygui.h	/^        Texture2D texture;      \/\/ Texture atlas containing the glyphs$/;"	m	struct:Font	typeref:typename:Texture2D
+value	$RAYGUI/raygui.h	/^        int value;              \/\/ Character value (Unicode)$/;"	m	struct:GlyphInfo	typeref:typename:int
+width	$RAYGUI/raygui.h	/^        int width;              \/\/ Texture base width$/;"	m	struct:Texture2D	typeref:typename:int
+

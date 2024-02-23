@@ -7,7 +7,15 @@ var dictproperties = {
     }
 export var options = {
     completor: { shuffleEqualPriority: true },
-    buffer: { enable: true, priority: 10, urlComplete: true, envComplete: true },
+    buffer: { 
+        enable: true,
+        priority: 10,
+        searchOtherBuffers: false,
+        urlComplete: true,
+        envComplete: true,
+        #timeout: 100,
+        completionMatcher: 'fuzzy',
+    },
     abbrev: { enable: true, priority: 10 },
     lsp: { enable: true, priority: 11, maxCount: 16 },
     dictionary: { 
@@ -30,7 +38,8 @@ export var options = {
         priority: 10,
         bigram: false,
         filetypes: ['txt', 'markdown'],
-        filetypesComments: ['c', 'cpp', 'python', 'nim', 'zig'],
+        #filetypesComments: ['c', 'cpp', 'python', 'nim', 'zig', 'rust'],
+        filetypesComments: ['*'],
     },
 }
 autocmd VimEnter * g:VimCompleteOptionsSet(options)

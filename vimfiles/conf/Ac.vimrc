@@ -85,7 +85,7 @@ fu! s:formatTags(rd='')
         exe '%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
     else
         let l:s = input("path: ")
-        if l:s > 0
+        if l:s != ''
             exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
         endif
     endif
@@ -96,6 +96,10 @@ fu! s:formatTags(rd='')
     exe 'g/^.\?\s*$/d'
     exe '%s/^\w\{,2}\s\+.*$\n//ge'
     "exe 'g/^\(\k\+\)\t.*$\n\1\t.*/d'
+    exe '%s/^.*.md\t.*$\n//ge'
+    exe '%s/^.*.json\t.*$\n//ge'
+    exe '%s/^.*.txt\t.*$\n//ge'
+    exe '%s/^.*\/tests\/.*$\n//ge'
 endf
 nmap \-- :Ftags<cr>
 nmap \-0 :Fdict<cr>
