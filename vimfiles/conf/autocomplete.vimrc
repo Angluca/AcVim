@@ -143,8 +143,8 @@ SetAcpDict('zig','zig.dict','zig_builtin.dict')
 "sokol
 "au FileType zig let $SOKOLC = $HOME.'/Zigs/Sokols/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokolc.tags
-"au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
-"au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
+au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
+au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
 SetAcpDict('zig','zig.dict','zig_builtin.dict','sokol.dict')
 "
 "au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'

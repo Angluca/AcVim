@@ -548,6 +548,14 @@ imap <m-j> <down>
 imap <m-k> <up>
 cmap <m-j> <c-n>
 cmap <m-k> <c-p>
+map! Ó <Home>
+map! Ò <End>
+map! ˙ <Left>
+map! ¬ <Right>
+imap ∆ <down>
+imap ˚ <up>
+cmap ∆ <c-n>
+cmap ˚ <c-p>
 
 "Smart way to move btw. windows
 map <m-j> <C-W>j
@@ -558,6 +566,14 @@ tmap <m-j> <C-W>j
 tmap <m-k> <C-W>k
 tmap <m-h> <C-W>h
 tmap <m-l> <C-W>l
+map ∆ <C-W>j
+map ˚ <C-W>k
+map ˙ <C-W>h
+map ¬ <C-W>l
+tmap ∆ <C-W>j
+tmap ˚ <C-W>k
+tmap ˙ <C-W>h
+tmap ¬ <C-W>l
 
 map <m-tab> <c-w>gt
 map <m-s-tab> <c-w>gT
@@ -599,6 +615,12 @@ vmap <m-c> "+y
 nmap <m-v> "*gP
 vmap <m-v> "*gP
 imap <m-v> <c-r>+
+nmap ç "+y
+vmap ç "+y
+nmap √ "*gP
+vmap √ "*gP
+imap √ <c-r>+
+
 "file format
 nmap \ff :FmtOpt<cr>
 nmap \fu :se fenc=utf-8<cr>
