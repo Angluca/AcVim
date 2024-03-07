@@ -365,6 +365,7 @@ com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 n
 "com! -bang -nargs=* -complete=file Nimble AsyncRun<bang> -raw=1 -focus=0 -rows=8 nimble <args> 
 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
 com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
+com! -bang -nargs=* -complete=file Hare AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args>
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .
 "nmap <space>u :AcUiRun
@@ -393,6 +394,30 @@ smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 """"""""""""""""""""
 "lsp {{{
 """"""""""""""""""""
+"set keywordprg=:LspHover
+"AcCreateMaps('<Cmd>LspHover<cr>', 'K')
+nmap <buffer> ;tL <Cmd>LspOutline<cr>
+"nmap <buffer> K <Cmd>LspHover<cr>
+nmap <silent> <space>k <Cmd>LspHover<cr>
+"nmap <c-]> <Cmd>LspGotoDefinition<CR>
+"nmap <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
+nmap ge <Cmd>LspGotoDefinition<CR>
+nmap gE <Cmd>LspGotoDeclaration<CR>
+"nmap ge <Cmd>LspPeekDeclaration<CR>
+"nmap gE <Cmd>LspPeekDefinition<CR>
+"nmap <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
+nmap gi <Cmd>LspGotoImpl<CR>
+nmap gt <Cmd>LspGotoTypeDef<CR>
+"nmap gi <Cmd>LspPeekImpl<CR>
+"nmap gt <Cmd>LspPeekTypeDef<CR>
+nmap g[ <Cmd>LspDiagPrev<CR>
+nmap g] <Cmd>LspDiagNext<CR>
+nmap gs <Cmd>LspSymbolSearch<CR>
+"nmap gS <Cmd>LspDocumentSymbol<CR>
+"nmap gr <Cmd>LspPeekReferences<CR>
+nmap gR <Cmd>LspShowReferences<CR>
+nmap g\ <Cmd>LspServer restart<CR>
+
 au filetype c,cpp call LspAddServer([#{
             \    name: 'clangd',
             \    filetype: ['c', 'cpp'],
@@ -419,14 +444,16 @@ au filetype v call LspAddServer([#{
             \  }])
 
 au filetype * call LspOptionsSet(#{
+        \   outlineOnRight: v:true,
+        \   outlineWinSize: 30,
         \   aleSupport: v:false,
         \   autoComplete: v:false,
         \   snippetSupport: v:true,
         \   vsnipSupport: v:false,
-        \   keepFocusInDiags: v:false,
-        \   keepFocusInReferences: v:false,
         \   autoHighlightDiags: v:false,
         \ })
+        "\   keepFocusInDiags: v:false,
+        "\   keepFocusInReferences: v:false,
         "\   highlightDiagInline: v:false,
         "\   completionTextEdit: v:false,
         "\   semanticHighlight: v:false,

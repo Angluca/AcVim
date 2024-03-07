@@ -25,13 +25,11 @@ SetFtCmd('squirrel','setl mp=sq\ %:p')
 SetFtCmd('squirrel','setl efm=%f:%l:%m')
 SetFiletype('*.gd','gdscript')
 SetFiletype('*.tic','lua')
-"weixin
-SetFiletype('*.wxml','html')
-SetFiletype('*.wxss','css')
-"nim
-SetFiletype('*.nim,*.nims,*.c2nim','nim')
-"zig
-SetFiletype('*.zig','zig')
+SetFiletype('*.wxml','html') "weixin
+SetFiletype('*.wxss','css')  "wx
+SetFiletype('*.nim,*.nims,*.c2nim','nim') "nim
+SetFiletype('*.zig','zig') "zig
+SetFiletype('*.oc','rust') "ocen
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -40,17 +38,16 @@ au BufWrite *.nim**,*.zig :DelTWS
 
 "for language
 au FileType * nmap \== :!ctags --c-kinds=+p --fields=+S -R .
-au FileType c,cpp setl tags +=$VIMDICT/cpp.tags
-au FileType nim nmap \=n :Mtags nimtags $VIMDICT/nim.ctags<cr>
-au FileType nim let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
-au FileType nim setl tags+=$VIMDICT/nim.tags,nim.tags
-au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
-au FileType zig setl tags +=$VIMDICT/zig.tags,zig.tags
+"au FileType c,cpp setl tags +=$VIMDICT/cpp.tags
+"au FileType nim nmap \=n :Mtags nimtags $VIMDICT/nim.ctags<cr>
+"au FileType nim let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
+"au FileType nim setl tags+=$VIMDICT/nim.tags,nim.tags
+"au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
+"au FileType zig setl tags +=$VIMDICT/zig.tags,zig.tags
 
-nmap \-z :Ftags '$ZIGLIB'<cr> 
-nmap \-n :Ftags '$NIMLIB'<cr> 
-
-nmap \-r :Ftags '$RAYLIB'<cr> 
+"nmap \-z :Ftags '$ZIGLIB'<cr> 
+"nmap \-n :Ftags '$NIMLIB'<cr> 
+"nmap \-r :Ftags '$RAYLIB'<cr> 
 
 "}}}
 """"""""""""""
@@ -143,8 +140,8 @@ SetAcpDict('zig','zig.dict','zig_builtin.dict')
 "sokol
 "au FileType zig let $SOKOLC = $HOME.'/Zigs/Sokols/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokolc.tags
-au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
-au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
+"au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
+"au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
 SetAcpDict('zig','zig.dict','zig_builtin.dict','sokol.dict')
 "
 "au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'
