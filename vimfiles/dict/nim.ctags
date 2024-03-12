@@ -1,7 +1,7 @@
 --langdef=nim
 --langmap=nim:.nim
 --language-force=nim
---exclude=nimtags
+--exclude=nim.tags
 --regex-nim=/^[^\#]*\s+(\w+)\*\s*\{.*\}/\1/t,type/
 --regex-nim=/^[^\#]*\s+(\w+)\*.*=/\1/t,type/
 --regex-nim=/^[^\#]*proc\s+(\w+)\*/\1/f,func/

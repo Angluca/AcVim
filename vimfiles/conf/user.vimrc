@@ -24,11 +24,11 @@ let errormarker_disablemappings = 1
 "EchoFunc {{{
 """"""""""""""""""""
 "let mouse dont show func = 0
-let g:EchoFuncAutoStartBalloonDeclaration = 0
+"let g:EchoFuncAutoStartBalloonDeclaration = 0
 "let g:EchoFuncBallonOnly = 1
 "let g:EchoFuncShowOnStatus = 1
-let g:EchoFuncKeyNext='<m-=>'
-let g:EchoFuncKeyPrev='<m-->'
+"let g:EchoFuncKeyNext='<m-=>'
+"let g:EchoFuncKeyPrev='<m-->'
 "use EchoFunc on all file if no set
 "let g:EchoFuncLangsUsed = ["java","cpp"]
 "let g:EchoFuncPathMappingEnabled = 1
@@ -116,7 +116,7 @@ nmap <silent> ;cr :CtrlPRTS<cr>
 nmap <silent> ;cu :CtrlPUndo<cr>
 nmap <silent> ;cl :CtrlPQuickfix<cr>
 nmap <silent> ;ca :CtrlPMixed<cr>
-nmap <silent> ;cf :CtrlPLine<cr>
+"nmap <silent> ;cf :CtrlPLine<cr>
 nmap <silent> ;cd :CtrlPClearCache<cr>
 nmap <silent> ;cD :CtrlPClearAllCaches<cr>
 "}}}
@@ -147,7 +147,18 @@ let g:tagbar_type_nim = {
 			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/nim.ctags'
 			\ }
 let g:tagbar_type_zig = {
-			\ 'ctagstype' : 'c',
+			\ 'ctagstype' : 'rust',
+            \ 'kinds'     : [
+            \ 'f:func:0:1',
+            \ 't:type:1:0',
+            \ 'i:iterator:1:0',
+            \ 'o:operator:1:0',
+            \ 'm:macro:1:0'
+            \ ],
+            \ 'sort'    : 0,
+			\ }
+let g:tagbar_type_hare = {
+			\ 'ctagstype' : 'rust',
             \ 'kinds'     : [
             \ 'f:func:0:1',
             \ 't:type:1:0',
@@ -348,8 +359,8 @@ let g:asyncrun_open = 12
 "let g:asyncrun_mode = 'term'
 "let asyncrun_term_hidden = 1
 "let g:asyncrun_term_wipe = 1
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks', 'project.json', 'build.zig']
-let g:asyncrun_capture_file = $VIMDATA.'cache/capture.tmp'
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks', 'project.json', 'build.zig', 'Cargo.toml']
+let g:asyncrun_capture_file = $VIMDATA.'cache/asyncrun_capture.tmp'
 "--Run-------------------------"
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRootRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 -cwd=<root> <args>
@@ -361,11 +372,14 @@ nmap <space>r :AcRun
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
 com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focus=0 -rows=10 -raw=1 -cwd=<root> -mode=term -once=1 bake <args> "$(VIM_ROOT)" 
 "com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
+com! -bang -nargs=* -complete=file Rs AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args>
+com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
+
 com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 nim <args> %
 "com! -bang -nargs=* -complete=file Nimble AsyncRun<bang> -raw=1 -focus=0 -rows=8 nimble <args> 
 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
 com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
-com! -bang -nargs=* -complete=file Hare AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args>
+com! -bang -nargs=* -complete=file Ha AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args>
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .
 "nmap <space>u :AcUiRun
@@ -412,7 +426,7 @@ nmap gt <Cmd>LspGotoTypeDef<CR>
 "nmap gt <Cmd>LspPeekTypeDef<CR>
 nmap g[ <Cmd>LspDiagPrev<CR>
 nmap g] <Cmd>LspDiagNext<CR>
-nmap gs <Cmd>LspSymbolSearch<CR>
+"nmap gs <Cmd>LspSymbolSearch<CR>
 "nmap gS <Cmd>LspDocumentSymbol<CR>
 "nmap gr <Cmd>LspPeekReferences<CR>
 nmap gR <Cmd>LspShowReferences<CR>
@@ -423,6 +437,13 @@ au filetype c,cpp call LspAddServer([#{
             \    filetype: ['c', 'cpp'],
             \    path: 'clangd',
             \    args: ['--background-index']
+            \  }])
+
+au filetype d call LspAddServer([#{
+            \    name: 'd',
+            \    filetype: ['d'],
+            \    path: 'dls',
+            \    args: [],
             \  }])
 
 au filetype nim call LspAddServer([#{
@@ -437,11 +458,19 @@ au filetype zig call LspAddServer([#{
             \    path: 'zls',
             \  }])
 
-au filetype v call LspAddServer([#{
-            \    name: 'vls',
-            \    filetype: ['vlang', 'v'],
-            \    path: 'vls',
-            \  }])
+"au filetype v call LspAddServer([#{
+            "\    name: 'vls',
+            "\    filetype: ['vlang', 'v'],
+            "\    path: 'vls',
+            "\  }])
+
+"au filetype rust call LspAddServer([#{
+    "\    name: 'rustlang',
+    "\    filetype: ['rust'],
+    "\    path: exepath('rust-analyzer'),
+    "\    args: [],
+    "\    syncInit: v:true,
+    "\  }])
 
 au filetype * call LspOptionsSet(#{
         \   outlineOnRight: v:true,
@@ -452,6 +481,7 @@ au filetype * call LspOptionsSet(#{
         \   vsnipSupport: v:false,
         \   autoHighlightDiags: v:false,
         \ })
+
         "\   keepFocusInDiags: v:false,
         "\   keepFocusInReferences: v:false,
         "\   highlightDiagInline: v:false,

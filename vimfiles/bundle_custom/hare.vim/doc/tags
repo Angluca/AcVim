@@ -1,0 +1,5 @@
+g:hare_recommended_style	hare.txt	/*g:hare_recommended_style*
+g:hare_space_error	hare.txt	/*g:hare_space_error*
+hare-intro	hare.txt	/*hare-intro*
+hare-settings	hare.txt	/*hare-settings*
+hare.vim	hare.txt	/*hare.vim*

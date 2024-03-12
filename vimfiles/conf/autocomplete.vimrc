@@ -34,16 +34,18 @@ SetFiletype('*.oc','rust') "ocen
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
 "SetFtCmd('*.nim,*.nims,*.zig','DelTWS','BufWrite')
-au BufWrite *.nim**,*.zig :DelTWS
+au BufWrite *.nim**,*.zig,*.d,*.rs,*.ha :DelTWS
 
 "for language
 au FileType * nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType c,cpp setl tags +=$VIMDICT/cpp.tags
-"au FileType nim nmap \=n :Mtags nimtags $VIMDICT/nim.ctags<cr>
-"au FileType nim let $NIMLIB = $HOME.'/SDK/nims/nim/lib'
+"au FileType nim nmap \=g :Mtags nim.tags $VIMDICT/nim.ctags<cr>
+"au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
 "au FileType nim setl tags+=$VIMDICT/nim.tags,nim.tags
-"au FileType zig let $ZIGLIB = $HOME.'/SDK/zigs/zig/lib'
+"au FileType zig let $ZIGLIB = $HOME.'/SDK/Zigs/zig/lib'
 "au FileType zig setl tags +=$VIMDICT/zig.tags,zig.tags
+au FileType hare nmap \=g :Mtags hare.tags $VIMDICT/hare.ctags<cr>
+"au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
 
 "nmap \-z :Ftags '$ZIGLIB'<cr> 
 "nmap \-n :Ftags '$NIMLIB'<cr> 
@@ -129,9 +131,11 @@ SetAcpDict('squirrel','squirrel.dict')
 SetAcpDict('lua','lua.dict')
 SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
 SetAcpDict('zig','zig.dict','zig_builtin.dict')
+SetAcpDict('hare','hare.base.dict', 'hare.dict')
 "}}}
 "-------------------
 "--temp {{{
+au FileType zig let g:zig_fmt_autosave = 0
 "raylib
 "au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/src'
 "au FileType zig let $RAYGUI = $HOME.'/SDK/Raylibs/raygui/src'
@@ -142,7 +146,7 @@ SetAcpDict('zig','zig.dict','zig_builtin.dict')
 "au FileType zig setl tags+=$VIMDICT/sokolc.tags
 "au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
-SetAcpDict('zig','zig.dict','zig_builtin.dict','sokol.dict')
+"SetAcpDict('zig','zig.dict','zig_builtin.dict','sokol.dict')
 "
 "au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'
 "au FileType nim setl tags+=$VIMDICT/sokoltags
@@ -157,6 +161,4 @@ SetAcpDict('zig','zig.dict','zig_builtin.dict','sokol.dict')
 "let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
 "au FileType nim setl tags+=$VIMDICT/naytags
 "SetAcpDict('nim','nimtags','nim.dict','nim_enums.dict',$NAYLIB.'raylib.nim')
-"--zig
-au FileType zig let g:zig_fmt_autosave = 0
 "}}}

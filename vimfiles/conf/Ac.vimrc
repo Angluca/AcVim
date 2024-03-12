@@ -73,8 +73,10 @@ endf "}}}
 com! Fdict call s:formatDict() "{{{
 fu! s:formatDict()
     " tag2dict
-    exe 'g/^\(\k\+\)\s.*$\n\1$/d'
-    exe '%s/^\(\k\+\)\s.*/\1/ge'
+    "exe 'g/^\(\k\+\)\s.*$\n\1$/d'
+    "exe '%s/^\(\k\+\)\s.*/\1/ge'
+    exe 'g/^\([0-9A-Za-z_.:]\+\)\s.*$\n\1$/d'
+    exe '%s/^\([0-9A-Za-z_.:]\+\)\s.*/\1/ge'
     exe 'g/^\W\+.*$/d'
     exe '%sort u'
     exe 'g/^.\{,1}\s*$/d'
