@@ -112,6 +112,12 @@ syn match hareSpaceError '\v\zs +\ze\t' display
 " Use statement
 syn region hareUse start='\v^\s*\zsuse>' end=';' contains=hareComment display
 
+syn match Constant       '[{}\[\]()]'
+syn match SpecialComment '[`:]'
+syn match Operator       '[,]'
+syn match Exception      '[\&\*|]\|>>\|<<'
+syn match PreProc        '&&\|||'
+
 " DEFAULT HIGHLIGHTING {{{1
 hi def link hareAttribute PreProc
 hi def link hareBoolean Boolean
