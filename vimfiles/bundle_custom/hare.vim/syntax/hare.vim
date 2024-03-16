@@ -13,6 +13,13 @@ let b:current_syntax = 'hare'
 " SYNTAX {{{1
 syn case match
 
+syn match Exception      '[\&|\^]\|>>\|<<\|*'
+syn match Repeat         '[\+\-\%]\|\^\^\|\/\|*\s\|='
+syn match Operator       '[,]'
+syn match SpecialComment '[`:]'
+syn match Constant       '[{}\[\]()]'
+syn match PreProc        '&&\|||\|!=\|==\|!'
+
 " KEYWORDS {{{2
 syn keyword hareCast as is
 syn keyword hareConditional if else match switch
@@ -112,11 +119,11 @@ syn match hareSpaceError '\v\zs +\ze\t' display
 " Use statement
 syn region hareUse start='\v^\s*\zsuse>' end=';' contains=hareComment display
 
-syn match Constant       '[{}\[\]()]'
-syn match SpecialComment '[`:]'
-syn match Operator       '[,]'
-syn match Exception      '[\&\*|]\|>>\|<<'
-syn match PreProc        '&&\|||'
+"syn match Constant       '[{}\[\]()]'
+"syn match SpecialComment '[`:]'
+"syn match Operator       '[,]'
+"syn match Exception      '[\&\*|]\|>>\|<<'
+"syn match PreProc        '&&\|||'
 
 " DEFAULT HIGHLIGHTING {{{1
 hi def link hareAttribute PreProc
