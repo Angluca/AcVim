@@ -63,3 +63,43 @@ export var asopt = {
 }
 autocmd VimEnter * g:AutoSuggestSetup(asopt)
 
+import autoload 'scope/fuzzy.vim'
+fuzzy.OptionsSet({
+        #grep_echo_cmd: false,
+        # ...
+})
+nnoremap <c-l> <scriptcmd>fuzzy.Quickfix()<CR>
+nnoremap <c-L> <scriptcmd>fuzzy.Quickfix()<CR>
+nnoremap g/ <scriptcmd>fuzzy.BufSearch()<CR>
+vnoremap g/ <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+nnoremap g? <scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+vnoremap g? <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+#nnoremap gD <scriptcmd>fuzzy.BufSearch('<cword>')<CR>
+nnoremap ;ff <scriptcmd>fuzzy.File()<CR>
+vnoremap ;ff <esc><scriptcmd>fuzzy.File()<CR><c-r><c-w>
+nnoremap ;fF <scriptcmd>fuzzy.File()<CR><c-r><c-w>
+nnoremap ;g/ <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR>
+vnoremap ;g/ <esc><scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR><c-r><c-w>
+nnoremap ;g? <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case', false, '<cword>')<CR>
+nnoremap ;fg <scriptcmd>fuzzy.GitFile()<CR>
+#nnoremap ;fb <scriptcmd>fuzzy.Buffer(true)<CR>
+nnoremap ;fb <scriptcmd>fuzzy.Buffer()<CR>
+nnoremap ;fk <scriptcmd>fuzzy.Keymap()<CR>
+nnoremap ;fh <scriptcmd>fuzzy.Help()<CR>
+nnoremap ;fH <scriptcmd>fuzzy.Highlight()<CR>
+nnoremap ;fc <scriptcmd>fuzzy.Command()<CR>
+nnoremap ;fC <scriptcmd>fuzzy.CmdHistory()<CR>
+nnoremap ;fu <scriptcmd>fuzzy.MRU()<CR>
+nnoremap ;fm <scriptcmd>fuzzy.Mark()<CR>
+nnoremap ;fo <scriptcmd>fuzzy.Option()<CR>
+nnoremap ;fr <scriptcmd>fuzzy.Register()<CR>
+nnoremap ;ft <scriptcmd>fuzzy.Tag()<CR>
+nnoremap ;fw <scriptcmd>fuzzy.Window()<CR>
+nnoremap ;fA <scriptcmd>fuzzy.Autocmd()<CR>
+nnoremap ;fy <scriptcmd>fuzzy.Filetype()<CR>
+nnoremap ;fY <scriptcmd>fuzzy.Colorscheme()<CR>
+#nnoremap ;ff <scriptcmd>fuzzy.Autocmd()<CR>
+#nnoremap ;fc <scriptcmd>fuzzy.Command()<CR>
+#nnoremap ;ff <scriptcmd>fuzzy.QuickfixHistory()<CR>
+#nnoremap ;fF <scriptcmd>fuzzy.LoclistHistory()<CR>
+

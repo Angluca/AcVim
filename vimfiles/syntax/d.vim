@@ -40,12 +40,13 @@ set cpo&vim
 " Set the current syntax to be known as d
 let b:current_syntax = "d"
 
+"syn match Repeat 
+syn match Operator       '[><]'
 syn match Exception      '[\&|\^]\|>>\|<<\|*'
-syn match Repeat         '[\+\-\%]\|\^\^\|\/\|*\s\|='
-syn match Operator       '[,]'
-syn match SpecialComment '[`:]'
+syn match Operator       '[\+\-\%;=\/]\|\^\^\|*\s\|*='
+syn match SpecialComment '[`:\.]'
 syn match Constant       '[{}\[\]()]'
-syn match PreProc        '&&\|||\|!=\|==\|!'
+syn match PreProc        '&&\|||\|!=\|==\|!\|>=\|<='
 
 " Keyword definitions
 "

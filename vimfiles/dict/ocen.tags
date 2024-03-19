@@ -1,0 +1,664 @@
+Buffer	$OCENLIB/buffer.oc	/^struct Buffer {$/;"	f
+BufferIO	$OCENLIB/bufferio.oc	/^struct BufferIO {$/;"	f
+CharIterator	$OCENLIB/mod.oc	/^struct CharIterator {$/;"	f
+Color	$OCENLIB/image/mod.oc	/^struct Color {$/;"	f
+Color	$OCENLIB/sdl/mod.oc	/^struct Color  {$/;"	f
+Context	$OCENLIB/hash/sha256.oc	/^struct Context {$/;"	f
+DirectoryEntry	$OCENLIB/fs.oc	/^struct DirectoryEntry {$/;"	f
+DirectoryIterator	$OCENLIB/fs.oc	/^struct DirectoryIterator {$/;"	f
+Endian	$OCENLIB/mod.oc	/^enum Endian {$/;"	f
+EntryType	$OCENLIB/fs.oc	/^enum EntryType {$/;"	f
+Event	$OCENLIB/sdl/mod.oc	/^struct Event {$/;"	f
+FFMPEGContext	$OCENLIB/video_renderer/ffmpeg.oc	/^struct FFMPEGContext {$/;"	f
+FileMetadata	$OCENLIB/fs.oc	/^struct FileMetadata {$/;"	f
+FileStat	$OCENLIB/fs.oc	/^    [extern "struct stat"] struct FileStat {$/;"	f
+HostEnt	$OCENLIB/socket.oc	/^struct HostEnt {$/;"	f
+Image	$OCENLIB/image/mod.oc	/^struct Image {$/;"	f
+KeyboardEvent	$OCENLIB/sdl/mod.oc	/^struct KeyboardEvent {$/;"	f
+Keysym	$OCENLIB/sdl/mod.oc	/^struct Keysym {$/;"	f
+Location	$OCENLIB/span.oc	/^struct Location {$/;"	f
+Mode	$OCENLIB/heap.oc	/^enum Mode {$/;"	f
+MouseButtonEvent	$OCENLIB/sdl/mod.oc	/^struct MouseButtonEvent {$/;"	f
+MouseWheelEvent	$OCENLIB/sdl/mod.oc	/^struct MouseWheelEvent {$/;"	f
+Parser	$OCENLIB/json.oc	/^struct Parser {$/;"	f
+QOIDecoder	$OCENLIB/image/qoi.oc	/^struct QOIDecoder {$/;"	f
+QOIEncoder	$OCENLIB/image/qoi.oc	/^struct QOIEncoder {$/;"	f
+RGBA	$OCENLIB/image/qoi.oc	/^struct RGBA {$/;"	f
+RandomState	$OCENLIB/random.oc	/^struct RandomState {$/;"	f
+Rect	$OCENLIB/sdl/mod.oc	/^struct Rect  {$/;"	f
+RotationDirection	$OCENLIB/image/mod.oc	/^enum RotationDirection {$/;"	f
+SDLContext	$OCENLIB/video_renderer/sdl.oc	/^struct SDLContext {$/;"	f
+SHA1Hash	$OCENLIB/hash/sha1.oc	/^struct SHA1Hash {$/;"	f
+SHA256Hash	$OCENLIB/hash/sha256.oc	/^struct SHA256Hash {$/;"	f
+SVLineIterator	$OCENLIB/sv.oc	/^struct SVLineIterator {$/;"	f
+SVPredicateIterator	$OCENLIB/sv.oc	/^struct SVPredicateIterator {$/;"	f
+SVSplitIterator	$OCENLIB/sv.oc	/^struct SVSplitIterator {$/;"	f
+SVWordIterator	$OCENLIB/sv.oc	/^struct SVWordIterator {$/;"	f
+SinAddr	$OCENLIB/socket.oc	/^struct SinAddr {$/;"	f
+SockAddrIn	$OCENLIB/socket.oc	/^struct SockAddrIn {$/;"	f
+Socket	$OCENLIB/socket.oc	/^struct Socket {$/;"	f
+SocketMode	$OCENLIB/socket.oc	/^enum SocketMode {$/;"	f
+Span	$OCENLIB/span.oc	/^struct Span {$/;"	f
+Stream	$OCENLIB/zlib.oc	/^    [extern "z_stream"] struct Stream {$/;"	f
+Thread	$OCENLIB/thread.oc	/^struct Thread {$/;"	f
+Time	$OCENLIB/time.oc	/^[extern "time_t"] struct Time {}$/;"	f
+Value	$OCENLIB/value.oc	/^struct Value {$/;"	f
+ValueType	$OCENLIB/value.oc	/^enum ValueType {$/;"	f
+VideoRenderer	$OCENLIB/video_renderer/mod.oc	/^struct VideoRenderer {$/;"	f
+VideoRendererType	$OCENLIB/video_renderer/mod.oc	/^enum VideoRendererType {$/;"	f
+WEXITSTATUS	$OCENLIB/libc.oc	/^[extern] def WEXITSTATUS(a: i32): i32$/;"	f
+WIFEXITED	$OCENLIB/libc.oc	/^[extern] def WIFEXITED(a: i32): bool$/;"	f
+WIFSIGNALED	$OCENLIB/libc.oc	/^[extern] def WIFSIGNALED(a: i32): bool$/;"	f
+WTERMSIG	$OCENLIB/libc.oc	/^[extern] def WTERMSIG(a: i32): i32$/;"	f
+abs	$OCENLIB/complex.oc	/^[extern "cabsf"] def Complex::abs(this): f32$/;"	f
+abs	$OCENLIB/math.oc	/^def i8::abs(this): i8 => if this < 0 then -this else this$/;"	f
+accept	$OCENLIB/socket.oc	/^[extern] def accept(sockfd: i32, addr: &SockAddr, addrlen: &i32): i32$/;"	f
+acos	$OCENLIB/complex.oc	/^[extern "cacosf"] def Complex::acos(this): Complex$/;"	f
+add	$OCENLIB/complex.oc	/^def Complex::add(this, other: Complex): Complex {$/;"	f
+add	$OCENLIB/set.oc	/^def Set::add(&this, key: T) {$/;"	f
+add	$OCENLIB/vec.oc	/^def Vec3::add(this, other: Vec3<T>): Vec3<T> => Vec3<T>(.x + other.x, .y + other.y, .z + other.z/;"	f
+adds	$OCENLIB/vec.oc	/^def Vec3::adds(this, val: T): Vec3<T> => Vec3<T>(.x + val, .y + val, .z + val)$/;"	f
+allocate_channels	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_AllocateChannels"] def allocate_channels(num: i32): i32$/;"	f
+arg	$OCENLIB/complex.oc	/^[extern "cargf"] def Complex::arg(this): f32$/;"	f
+as_bool	$OCENLIB/value.oc	/^def Value::as_bool(&this): bool {$/;"	f
+as_dict	$OCENLIB/value.oc	/^def Value::as_dict(&this): &Map<str, &Value> {$/;"	f
+as_float	$OCENLIB/value.oc	/^def Value::as_float(&this): f64 {$/;"	f
+as_int	$OCENLIB/value.oc	/^def Value::as_int(&this): i64 {$/;"	f
+as_list	$OCENLIB/value.oc	/^def Value::as_list(&this): &Vector<&Value> {$/;"	f
+as_str	$OCENLIB/value.oc	/^def Value::as_str(&this): Buffer {$/;"	f
+asin	$OCENLIB/complex.oc	/^[extern "casinf"] def Complex::asin(this): Complex$/;"	f
+atan	$OCENLIB/complex.oc	/^[extern "catanf"] def Complex::atan(this): Complex$/;"	f
+atan2	$OCENLIB/complex.oc	/^[extern "catan2f"] def Complex::atan2(this, other: Complex): Complex$/;"	f
+atan2	$OCENLIB/math.oc	/^[extern "atan2f"] def f32::atan2(this, y: f32): f32$/;"	f
+back	$OCENLIB/deque.oc	/^def Deque::back(&this): T {$/;"	f
+back	$OCENLIB/vector.oc	/^def Vector::back(&this, i: u32 = 0): T {$/;"	f
+bilinear_interp	$OCENLIB/image/mod.oc	/^def bilinear_interp(t0: f32, t1: f32, a: f32, b: f32, c: f32, d: f32):f32 {$/;"	f
+bind	$OCENLIB/socket.oc	/^[extern] def bind(sockfd: i32, addr: &SockAddr, addrlen: i32): i32$/;"	f
+calloc	$OCENLIB/libc.oc	/^[extern] def calloc(size: u32, elem_size: u32): untyped_ptr$/;"	f
+ceil	$OCENLIB/math.oc	/^[extern "ceilf"] def f32::ceil(this): f32$/;"	f
+chars	$OCENLIB/mod.oc	/^def str::chars(this, start: u32 = 0): CharIterator => CharIterator(this, this.len(), start)$/;"	f
+chars	$OCENLIB/sv.oc	/^def SV::chars(this, start: u32 = 0): std::CharIterator => std::CharIterator(.data, .len, start)$/;"	f
+chop_by_delim	$OCENLIB/sv.oc	/^def SV::chop_by_delim(&this, delim: char): SV {$/;"	f
+chop_by_str	$OCENLIB/sv.oc	/^def SV::chop_by_str(&this, delim: str): SV => .chop_by_sv(SV::from_str(delim))$/;"	f
+chop_by_sv	$OCENLIB/sv.oc	/^def SV::chop_by_sv(&this, delim: SV): SV {$/;"	f
+chop_i16	$OCENLIB/sv.oc	/^def SV::chop_i16(&this): i16 => .chop_signed("SV::chop_i16") as i16$/;"	f
+chop_i32	$OCENLIB/sv.oc	/^def SV::chop_i32(&this): i32 => .chop_signed("SV::chop_i32") as i32$/;"	f
+chop_i64	$OCENLIB/sv.oc	/^def SV::chop_i64(&this): i64 => .chop_signed("SV::chop_i64") as i64$/;"	f
+chop_i8	$OCENLIB/sv.oc	/^def SV::chop_i8(&this): i8 => .chop_signed("SV::chop_i8") as i8$/;"	f
+chop_left	$OCENLIB/sv.oc	/^def SV::chop_left(&this, n: u32 = 1): SV {$/;"	f
+chop_line	$OCENLIB/sv.oc	/^def SV::chop_line(&this): SV => .chop_by_delim('\\n')$/;"	f
+chop_right	$OCENLIB/sv.oc	/^def SV::chop_right(&this, n: u32 = 1): SV {$/;"	f
+chop_signed	$OCENLIB/sv.oc	/^def SV::chop_signed(&this, fn_name: str): i64 {$/;"	f
+chop_u16	$OCENLIB/sv.oc	/^def SV::chop_u16(&this): u16 => .chop_unsigned("SV::chop_u16") as u16$/;"	f
+chop_u32	$OCENLIB/sv.oc	/^def SV::chop_u32(&this): u32 => .chop_unsigned("SV::chop_u32") as u32$/;"	f
+chop_u64	$OCENLIB/sv.oc	/^def SV::chop_u64(&this): u64 => .chop_unsigned("SV::chop_u64") as u64$/;"	f
+chop_u8	$OCENLIB/sv.oc	/^def SV::chop_u8(&this): u8 => .chop_unsigned("SV::chop_u8") as u8$/;"	f
+chop_unsigned	$OCENLIB/sv.oc	/^def SV::chop_unsigned(&this, fn_name: str): u64 {$/;"	f
+chop_word	$OCENLIB/sv.oc	/^def SV::chop_word(&this): SV {$/;"	f
+circle	$OCENLIB/image/draw.oc	/^def circle(img: &Image, x: i32, y: i32, radius: i32, color: Color, segments: u32 = 100) {$/;"	f
+circle_f	$OCENLIB/image/draw.oc	/^def circle_f(img: &Image, x: f32, y: f32, radius: f32, color: Color, segments: u32 = 100) {$/;"	f
+clamp	$OCENLIB/math.oc	/^def f32::clamp(this, min: f32, max: f32): f32 => f32::max(f32::min(this, max), min)$/;"	f
+clamp01	$OCENLIB/math.oc	/^def f32::clamp01(this): f32 => this.clamp(0.0, 1.0)$/;"	f
+clear	$OCENLIB/buffer.oc	/^def Buffer::clear(&this) {$/;"	f
+clear	$OCENLIB/compact_map.oc	/^def Map::clear(&this) {$/;"	f
+clear	$OCENLIB/heap.oc	/^def Heap::clear(&this) {$/;"	f
+clear	$OCENLIB/image/mod.oc	/^def Image::clear(&this) {$/;"	f
+clear	$OCENLIB/map.oc	/^def Map::clear(&this) {$/;"	f
+clear	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderClear"]     def Renderer::clear(&this)$/;"	f
+clear	$OCENLIB/set.oc	/^def Set::clear(&this) {$/;"	f
+clear	$OCENLIB/vector.oc	/^def Vector::clear(&this) {$/;"	f
+close	$OCENLIB/fs.oc	/^[extern "fclose"] def File::close(&this)$/;"	f
+close	$OCENLIB/libc.oc	/^[extern] def close(a: i32): i32$/;"	f
+close	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_CloseFont"]        def Font::close(&this)$/;"	f
+close	$OCENLIB/socket.oc	/^[extern] def close(fd: i32): i32/;"	f
+closedir	$OCENLIB/fs.oc	/^    [extern] def closedir(dir: &Dir)$/;"	f
+compare	$OCENLIB/complex.oc	/^def Complex::compare(this, other: Complex): i8 {$/;"	f
+compare	$OCENLIB/traits/compare.oc	/^def u8::compare(this, b: u8): i8 => (this > b) as i8 - (this < b) as i8$/;"	f
+compress	$OCENLIB/zlib.oc	/^def compress(data: Buffer): Buffer {$/;"	f
+compress_str	$OCENLIB/zlib.oc	/^def compress_str(s: str): Buffer => compress(Buffer::from_str(s))$/;"	f
+concat	$OCENLIB/mod.oc	/^[extern "strcat"] def str::concat(this, src: str)$/;"	f
+conj	$OCENLIB/complex.oc	/^[extern "conjf"] def Complex::conj(this): Complex$/;"	f
+connect	$OCENLIB/socket.oc	/^def Socket::connect(host: str, port: i32, mode: SocketMode): Socket {$/;"	f
+consume	$OCENLIB/json.oc	/^def Parser::consume(&this, type: TokenType): &Token {$/;"	f
+contains	$OCENLIB/compact_map.oc	/^def Map::contains(&this, key: K): bool {$/;"	f
+contains	$OCENLIB/map.oc	/^def Map::contains(&this, key: K): bool {$/;"	f
+contains	$OCENLIB/set.oc	/^def Set::contains(&this, key: T): bool => .map.contains(key)$/;"	f
+contains	$OCENLIB/sv.oc	/^def SV::contains(this, c: char): bool => .count(c) > 0$/;"	f
+contains_loc	$OCENLIB/span.oc	/^def Span::contains_loc(this, loc: Location): bool {$/;"	f
+copy	$OCENLIB/image/mod.oc	/^def Image::copy(&this): &Image {$/;"	f
+copy	$OCENLIB/mod.oc	/^[extern "strdup"] def str::copy(this): str$/;"	f
+copy	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderCopy"]      def Renderer::copy(&this, texture: &Texture, src: &Rect, dst: &Re/;"	f
+copy_ex	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderCopyEx"]    def Renderer::copy_ex(&this, texture: &Texture, src: &Rect, dst: /;"	f
+cos	$OCENLIB/complex.oc	/^[extern "ccosf"] def Complex::cos(this): Complex$/;"	f
+cos	$OCENLIB/math.oc	/^[extern "cosf"] def f32::cos(this): f32$/;"	f
+count	$OCENLIB/sv.oc	/^def SV::count(this, c: char): u64 {$/;"	f
+create	$OCENLIB/video_renderer/ffmpeg.oc	/^def FFMPEGContext::create(width: u32, height: u32, fps: u32, out_name: str, verbose: bool = fals/;"	f
+create	$OCENLIB/video_renderer/mod.oc	/^def VideoRenderer::create(type: VideoRendererType, width: u32, height: u32, fps: u32, out_name: /;"	f
+create	$OCENLIB/video_renderer/sdl.oc	/^def SDLContext::create(width: u32, height: u32, fps: u32): &SDLContext {$/;"	f
+create_directory	$OCENLIB/fs.oc	/^def create_directory(path: str, exists_ok: bool = false) {$/;"	f
+create_renderer	$OCENLIB/sdl/mod.oc	/^[extern "SDL_CreateRenderer"]           def Window::create_renderer(&this, index: i32, flags: i3/;"	f
+create_system_cursor	$OCENLIB/sdl/mod.oc	/^[extern "SDL_CreateSystemCursor"] def create_system_cursor(cursor: CursorType): &Cursor$/;"	f
+create_texture	$OCENLIB/sdl/mod.oc	/^[extern "SDL_CreateTexture"]   def Renderer::create_texture(&this, format: i32, access: i32, w: /;"	f
+create_texture_from_surface	$OCENLIB/sdl/mod.oc	/^[extern "SDL_CreateTextureFromSurface"] def Renderer::create_texture_from_surface(&this, surface/;"	f
+create_window	$OCENLIB/sdl/mod.oc	/^[extern "SDL_CreateWindow"]            def create_window(title: str, x: i32, y: i32, w: i32, h: /;"	f
+create_window_renderer	$OCENLIB/sdl/mod.oc	/^[extern "SDL_CreateWindowAndRenderer"]  def create_window_renderer(width: i32, height: i32, flag/;"	f
+cross	$OCENLIB/vec.oc	/^def Vec3::cross(this, other: Vec3<T>): Vec3<T> {$/;"	f
+cur	$OCENLIB/compact_map.oc	/^def ValueIterator::cur(&this): V => .iter.cur().value/;"	f
+cur	$OCENLIB/fs.oc	/^def DirectoryIterator::cur(&this): DirectoryEntry {$/;"	f
+cur	$OCENLIB/linkedlist.oc	/^def Iterator::cur(&this): T => .node.value/;"	f
+cur	$OCENLIB/map.oc	/^def ValueIterator::cur(&this): V => .map_iter.cur().value$/;"	f
+cur	$OCENLIB/mod.oc	/^def CharIterator::cur(&this): char => .data[.pos]$/;"	f
+cur	$OCENLIB/set.oc	/^def Iterator::cur(&this): T => .map_iter.cur().key$/;"	f
+cur	$OCENLIB/sv.oc	/^def SVWordIterator::cur(&this): SV => .sv.chop_word()$/;"	f
+cur	$OCENLIB/vector.oc	/^def Iterator::cur(&this): T {$/;"	f
+dbg	$OCENLIB/value.oc	/^def Value::dbg(&this): str {$/;"	f
+decode	$OCENLIB/image/ppm.oc	/^def decode(data: &Buffer): &Image {$/;"	f
+decode	$OCENLIB/image/qoi.oc	/^def decode(data: &Buffer): &Image {$/;"	f
+decode_op_diff	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_diff(&this, first: u8) {$/;"	f
+decode_op_index	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_index(&this, first: u8) {$/;"	f
+decode_op_luma	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_luma(&this, first: u8) {$/;"	f
+decode_op_rgb	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_rgb(&this) {$/;"	f
+decode_op_rgba	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_rgba(&this) {$/;"	f
+decode_op_run	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_run(&this, first: u8) {$/;"	f
+decode_pixels	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_pixels(&this) {$/;"	f
+decompress	$OCENLIB/zlib.oc	/^def decompress(data: Buffer): Buffer {$/;"	f
+default	$OCENLIB/span.oc	/^def Span::default(): Span {$/;"	f
+degrees	$OCENLIB/math.oc	/^def degrees(radians: f32): f32 { return radians * 180.0 \/ PI; }$/;"	f
+delay	$OCENLIB/sdl/mod.oc	/^[extern "SDL_Delay"]                   def delay(ms: i32)$/;"	f
+destroy	$OCENLIB/sdl/mod.oc	/^[extern "SDL_FreeSurface"] def Surface::destroy(&this)$/;"	f
+directory_exists	$OCENLIB/fs.oc	/^def directory_exists(path: str): bool {$/;"	f
+dirent	$OCENLIB/fs.oc	/^    [extern "struct dirent"] struct dirent {$/;"	f
+div	$OCENLIB/complex.oc	/^def Complex::div(this, other: Complex): Complex {$/;"	f
+div	$OCENLIB/vec.oc	/^def Vec3::div(this, other: Vec3<T>): Vec3<T> => Vec3<T>(.x \/ other.x, .y \/ other.y, .z \/ othe/;"	f
+divs	$OCENLIB/vec.oc	/^def Vec3::divs(this, val: T): Vec3<T> => Vec3<T>(.x \/ val, .y \/ val, .z \/ val)$/;"	f
+dot	$OCENLIB/vec.oc	/^def Vec3::dot(this, other: Vec3<T>): T => .x * other.x + .y * other.y + .z * other.z$/;"	f
+drand48	$OCENLIB/random.oc	/^[extern] def drand48(): f64/;"	f
+draw_bezier	$OCENLIB/sdl/gfx.oc	/^[extern "bezierColor"]        def Renderer::draw_bezier(&this, vx: &i16, vy: &i16, n: i32, s: i3/;"	f
+draw_circle_color	$OCENLIB/sdl/gfx.oc	/^[extern "aacircleColor"]      def Renderer::draw_circle_color(&this, x: i32, y: i32, r: i32, col/;"	f
+draw_line	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderDrawLine"]  def Renderer::draw_line(&this, x1: i32, y1: i32, x2: i32, y2: i32/;"	f
+draw_point	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderDrawPoint"] def Renderer::draw_point(&this, x: i32, y: i32)$/;"	f
+draw_poly_color	$OCENLIB/sdl/gfx.oc	/^[extern "polygonColor"]       def Renderer::draw_poly_color(&this, vx: &i16, vy: &i16, n: i32, c/;"	f
+draw_rect	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderDrawRect"]  def Renderer::draw_rect(&this, rect: &Rect)$/;"	f
+draw_tri_color	$OCENLIB/sdl/gfx.oc	/^[extern "trigonColor"]        def Renderer::draw_tri_color(&this, x1: i32, y1: i32, x2: i32, y2:/;"	f
+dup2	$OCENLIB/libc.oc	/^[extern] def dup2(a: i32, b: i32): i32$/;"	f
+encode	$OCENLIB/image/ppm.oc	/^def encode(img: &Image, data: &Buffer) {$/;"	f
+encode	$OCENLIB/image/qoi.oc	/^def encode(img: &Image, data: &Buffer) {$/;"	f
+encode_end	$OCENLIB/image/qoi.oc	/^def QOIEncoder::encode_end(&this) {$/;"	f
+encode_header	$OCENLIB/image/qoi.oc	/^def QOIEncoder::encode_header(&this) {$/;"	f
+encode_pixel	$OCENLIB/image/qoi.oc	/^def QOIEncoder::encode_pixel(&this, pix: RGBA) {$/;"	f
+encode_pixels	$OCENLIB/image/qoi.oc	/^def QOIEncoder::encode_pixels(&this) {$/;"	f
+end	$OCENLIB/zlib.oc	/^    [extern "inflateEnd"] def Stream::end(&this): i32$/;"	f
+ends_with	$OCENLIB/mod.oc	/^def str::ends_with(this, suffix: str): bool {$/;"	f
+ends_with_str	$OCENLIB/sv.oc	/^def SV::ends_with_str(this, other: str): bool => .ends_with_sv(SV::from_str(other))$/;"	f
+ends_with_sv	$OCENLIB/sv.oc	/^def SV::ends_with_sv(this, other: SV): bool {$/;"	f
+ensure	$OCENLIB/value.oc	/^def Value::ensure(&this, type: ValueType) {$/;"	f
+ep0	$OCENLIB/hash/sha256.oc	/^    def ep0(x: u32): u32 => rotate_right(x, 2) ^ rotate_right(x, 13) ^ rotate_right(x, 22)$/;"	f
+ep1	$OCENLIB/hash/sha256.oc	/^    def ep1(x: u32): u32 => rotate_right(x, 6) ^ rotate_right(x, 11) ^ rotate_right(x, 25)$/;"	f
+eq_str	$OCENLIB/sv.oc	/^def SV::eq_str(this, other: str): bool => .eq(SV::from_str(other))$/;"	f
+execvp	$OCENLIB/libc.oc	/^[extern] def execvp(a: str, b: &str): i32$/;"	f
+exit	$OCENLIB/libc.oc	/^[extern] [exits] def exit(code: i32)$/;"	f
+exit	$OCENLIB/mod.oc	/^[extern] [exits] def exit(code: i32 = 0)$/;"	f
+exp	$OCENLIB/complex.oc	/^[extern "cexpf"] def Complex::exp(this): Complex$/;"	f
+extend	$OCENLIB/compact_map.oc	/^def Map::extend(&this, other: &Map<K, V>) {$/;"	f
+extend	$OCENLIB/map.oc	/^def Map::extend(&this, other: &Map<K, V>) {$/;"	f
+extend	$OCENLIB/set.oc	/^def Set::extend(&this, other: &Set<T>) {$/;"	f
+extend	$OCENLIB/vector.oc	/^def Vector::extend(&this, other: &Vector<T>) {$/;"	f
+fclose	$OCENLIB/fs.oc	/^    [extern] def fclose(file: &File): i32$/;"	f
+fclose	$OCENLIB/libc.oc	/^\/\/ [extern] def fclose(file: &File): i32$/;"	f
+fft	$OCENLIB/fft.oc	/^def fft(data: &Complex, N: u32, out: &Complex) {$/;"	f
+fft2	$OCENLIB/fft.oc	/^def fft2(in: &Complex, R: u32, C: u32, out: &Complex) {$/;"	f
+fft2_impl	$OCENLIB/fft.oc	/^def fft2_impl(in: &Complex, R: u32, C: u32, out: &Complex, inv: bool) {$/;"	f
+fft_impl	$OCENLIB/fft.oc	/^def fft_impl(data: &Complex, N: u32, out: &Complex, step: u32, factor: f32) {$/;"	f
+file_exists	$OCENLIB/fs.oc	/^def file_exists(path: str): bool {$/;"	f
+file_info	$OCENLIB/fs.oc	/^def file_info(path: str): FileMetadata {$/;"	f
+fill_circle_color	$OCENLIB/sdl/gfx.oc	/^[extern "filledCircleColor"]  def Renderer::fill_circle_color(&this, x: i32, y: i32, r: i32, col/;"	f
+fill_poly_color	$OCENLIB/sdl/gfx.oc	/^[extern "filledPolygonColor"] def Renderer::fill_poly_color(&this, vx: &i16, vy: &i16, n: i32, c/;"	f
+fill_rect	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderFillRect"]  def Renderer::fill_rect(&this, rect: &Rect)$/;"	f
+fill_tri_color	$OCENLIB/sdl/gfx.oc	/^[extern "filledTrigonColor"]  def Renderer::fill_tri_color(&this, x1: i32, y1: i32, x2: i32, y2:/;"	f
+final	$OCENLIB/hash/sha256.oc	/^def Context::final(&this, hash: &u8) {$/;"	f
+find_str	$OCENLIB/sv.oc	/^def SV::find_str(&this, s: str): i32 {$/;"	f
+finish	$OCENLIB/video_renderer/ffmpeg.oc	/^def FFMPEGContext::finish(&this): bool {$/;"	f
+finish	$OCENLIB/video_renderer/mod.oc	/^def VideoRenderer::finish(&this) {$/;"	f
+finish	$OCENLIB/video_renderer/sdl.oc	/^def SDLContext::finish(&this) {$/;"	f
+floor	$OCENLIB/math.oc	/^[extern "floorf"] def f32::floor(this): f32$/;"	f
+fopen	$OCENLIB/fs.oc	/^    [extern] def fopen(path: str, mode: str = "r"): &File$/;"	f
+fopen	$OCENLIB/libc.oc	/^\/\/ [extern] def fopen(name: str, mode: str): &File$/;"	f
+fork	$OCENLIB/libc.oc	/^[extern] def fork(): i32$/;"	f
+fread	$OCENLIB/fs.oc	/^    [extern] def fread(ptr: untyped_ptr, size: u32, nmemb: u32, file: &File): i32$/;"	f
+fread	$OCENLIB/libc.oc	/^\/\/ [extern] def fread(ptr: untyped_ptr, size: u32, count: u32, file: &File): i32$/;"	f
+free	$OCENLIB/buffer.oc	/^def Buffer::free(&this) {$/;"	f
+free	$OCENLIB/compact_map.oc	/^def Map::free(&this) {$/;"	f
+free	$OCENLIB/deque.oc	/^def Deque::free(&this) {$/;"	f
+free	$OCENLIB/heap.oc	/^def Heap::free(&this) {$/;"	f
+free	$OCENLIB/image/mod.oc	/^def Image::free(&this) {$/;"	f
+free	$OCENLIB/libc.oc	/^[extern] def free(ptr: untyped_ptr)$/;"	f
+free	$OCENLIB/linkedlist.oc	/^def LinkedList::free(&this) {$/;"	f
+free	$OCENLIB/map.oc	/^def Map::free(&this) {$/;"	f
+free	$OCENLIB/mod.oc	/^def str::free(&this) {$/;"	f
+free	$OCENLIB/set.oc	/^def Set::free(&this) {$/;"	f
+free	$OCENLIB/value.oc	/^def Value::free(&this) {$/;"	f
+free	$OCENLIB/vector.oc	/^def Vector::free(&this) {$/;"	f
+free_chunk	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_FreeChunk"] def free_chunk(chunk: &Sound)$/;"	f
+free_list	$OCENLIB/map.oc	/^def Item::free_list(&this) {$/;"	f
+from	$OCENLIB/hash/sha1.oc	/^def SHA1Hash::from(data: Buffer): SHA1Hash {$/;"	f
+from	$OCENLIB/hash/sha256.oc	/^def SHA256Hash::from(data: Buffer): SHA256Hash {$/;"	f
+from_buf	$OCENLIB/sv.oc	/^def SV::from_buf(buf: Buffer): SV => SV(buf.data as str, buf.size)$/;"	f
+from_sized_str	$OCENLIB/buffer.oc	/^def Buffer::from_sized_str(s: str, size: u32): Buffer {$/;"	f
+from_str	$OCENLIB/buffer.oc	/^def Buffer::from_str(s: str): Buffer {$/;"	f
+from_str	$OCENLIB/sv.oc	/^def SV::from_str(s: str): SV => SV(s, s.len())$/;"	f
+from_sv	$OCENLIB/buffer.oc	/^def Buffer::from_sv(sv: SV): Buffer {$/;"	f
+from_vec	$OCENLIB/heap.oc	/^def Heap::from_vec(mode: Mode, data: &Vector<T>): &Heap<T> {$/;"	f
+front	$OCENLIB/deque.oc	/^def Deque::front(&this): T {$/;"	f
+fseek	$OCENLIB/fs.oc	/^    [extern] def fseek(file: &File, offset: i64, whence: i32): i32$/;"	f
+fseek	$OCENLIB/libc.oc	/^\/\/ [extern] def fseek(file: &File, offset: i32, whence: i32): i32$/;"	f
+ftell	$OCENLIB/fs.oc	/^    [extern] def ftell(file: &File): i64$/;"	f
+ftell	$OCENLIB/libc.oc	/^\/\/ [extern] def ftell(file: &File): i32$/;"	f
+fwrite	$OCENLIB/fs.oc	/^    [extern] def fwrite(ptr: untyped_ptr, size: u32, nmemb: u32, file: &File): i32$/;"	f
+fwrite	$OCENLIB/libc.oc	/^\/\/ [extern] def fwrite(ptr: untyped_ptr, size: u32, count: u32, file: &File): i32$/;"	f
+get	$OCENLIB/compact_map.oc	/^def Map::get(&this, key: K, defolt: V): V {$/;"	f
+get	$OCENLIB/image/mod.oc	/^def Image::get(&this, x: u32, y: u32): Color => .data[y * .width + x]$/;"	f
+get	$OCENLIB/map.oc	/^def Map::get(&this, key: K, defolt: V): V {$/;"	f
+get	$OCENLIB/sv.oc	/^def SV::get(this, n: u32): SV => SV(this.data, n)$/;"	f
+get	$OCENLIB/value.oc	/^def Value::get(&this, key: str, defolt: &Value = null): &Value {$/;"	f
+get_compress_bound	$OCENLIB/zlib.oc	/^    [extern "compressBound"] def get_compress_bound(size: u64): uLongf$/;"	f
+get_digit	$OCENLIB/mod.oc	/^def char::get_digit(this): u32 => this as u32 - '0' as u32$/;"	f
+get_err	$OCENLIB/libc.oc	/^def get_err(): str => strerror(errno) as str/;"	f
+get_error	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_GetError"] def get_error(): str$/;"	f
+get_error	$OCENLIB/sdl/mod.oc	/^[extern "SDL_GetError"]                def get_error(): str$/;"	f
+get_error	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_GetError"] def get_error(): str/;"	f
+get_flags	$OCENLIB/sdl/mod.oc	/^[extern "SDL_GetWindowFlags"] def Window::get_flags(&this): i32$/;"	f
+get_hex_digit	$OCENLIB/mod.oc	/^def char::get_hex_digit(this): u8 {$/;"	f
+get_index	$OCENLIB/compact_map.oc	/^def Map::get_index(&this, key: K, hash: u32): u32 {$/;"	f
+get_interpolated	$OCENLIB/image/mod.oc	/^def Image::get_interpolated(&this, xf: f32, yf: f32): Color {$/;"	f
+get_item	$OCENLIB/compact_map.oc	/^def Map::get_item(&this, key: K): &Item<K, V> {$/;"	f
+get_item	$OCENLIB/map.oc	/^def Map::get_item(&this, key: K): &Item<K, V> {$/;"	f
+get_mouse_state	$OCENLIB/sdl/mod.oc	/^[extern "SDL_GetMouseState"]           def get_mouse_state(x: &i32, y: &i32): i32$/;"	f
+get_relative_mouse_state	$OCENLIB/sdl/mod.oc	/^[extern "SDL_GetRelativeMouseState"]   def get_relative_mouse_state(x: &i32, y: &i32): i32$/;"	f
+get_size	$OCENLIB/sdl/mod.oc	/^[extern "SDL_GetWindowSize"]  def Window::get_size(&this, w: &i32, h: &i32)$/;"	f
+get_text_size	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_SizeText"]         def Font::get_text_size(&this, text: str, w: &i32, h: &i32)$/;"	f
+get_ticks	$OCENLIB/sdl/mod.oc	/^[extern "SDL_GetTicks"]                def get_ticks(): i32$/;"	f
+getenv	$OCENLIB/libc.oc	/^[extern] def getenv(name: str): str$/;"	f
+gethostbyname	$OCENLIB/socket.oc	/^[extern] def gethostbyname(name: str): &HostEnt$/;"	f
+glBegin	$OCENLIB/glut.oc	/^[extern] def glBegin(mode: i32)$/;"	f
+glClear	$OCENLIB/glut.oc	/^[extern] def glClear(mask: i32)$/;"	f
+glColor3f	$OCENLIB/glut.oc	/^[extern] def glColor3f(r: f32, g: f32, b: f32)$/;"	f
+glEnable	$OCENLIB/glut.oc	/^[extern] def glEnable(cap: i32)$/;"	f
+glEnd	$OCENLIB/glut.oc	/^[extern] def glEnd()$/;"	f
+glFlush	$OCENLIB/glut.oc	/^[extern] def glFlush()$/;"	f
+glLoadIdentity	$OCENLIB/glut.oc	/^[extern] def glLoadIdentity()$/;"	f
+glMatrixMode	$OCENLIB/glut.oc	/^[extern] def glMatrixMode(mode: i32)$/;"	f
+glPopMatrix	$OCENLIB/glut.oc	/^[extern] def glPopMatrix()$/;"	f
+glPushMatrix	$OCENLIB/glut.oc	/^[extern] def glPushMatrix()$/;"	f
+glRotatef	$OCENLIB/glut.oc	/^[extern] def glRotatef(angle: f32, x: f32, y: f32, z: f32)$/;"	f
+glTranslatef	$OCENLIB/glut.oc	/^[extern] def glTranslatef(x: f32, y: f32, z: f32)$/;"	f
+glVertex3f	$OCENLIB/glut.oc	/^[extern] def glVertex3f(x: f32, y: f32, z: f32)$/;"	f
+glViewport	$OCENLIB/glut.oc	/^[extern] def glViewport(x: i32, y: i32, width: i32, height: i32)$/;"	f
+gluLookAt	$OCENLIB/glut.oc	/^[extern] def gluLookAt($/;"	f
+gluPerspective	$OCENLIB/glut.oc	/^[extern] def gluPerspective(fovy: f32, aspect: f32, zNear: f32, zFar: f32)$/;"	f
+glutCreateWindow	$OCENLIB/glut.oc	/^[extern] def glutCreateWindow(title: str)$/;"	f
+glutDisplayFunc	$OCENLIB/glut.oc	/^[extern] def glutDisplayFunc(func: fn())$/;"	f
+glutInit	$OCENLIB/glut.oc	/^[extern] def glutInit(argc: &i32, argv: &str)$/;"	f
+glutInitDisplayMode	$OCENLIB/glut.oc	/^[extern] def glutInitDisplayMode(mode: i32)$/;"	f
+glutInitWindowPosition	$OCENLIB/glut.oc	/^[extern] def glutInitWindowPosition(x: i32, y: i32)$/;"	f
+glutInitWindowSize	$OCENLIB/glut.oc	/^[extern] def glutInitWindowSize(width: i32, height: i32)$/;"	f
+glutMainLoop	$OCENLIB/glut.oc	/^[extern] def glutMainLoop()$/;"	f
+glutPostRedisplay	$OCENLIB/glut.oc	/^[extern] def glutPostRedisplay()$/;"	f
+glutReshapeFunc	$OCENLIB/glut.oc	/^[extern] def glutReshapeFunc(func: fn(i32, i32))$/;"	f
+glutSwapBuffers	$OCENLIB/glut.oc	/^[extern] def glutSwapBuffers()$/;"	f
+glutTimerFunc	$OCENLIB/glut.oc	/^[extern] def glutTimerFunc(time: i32, func: fn(i32), value: i32)$/;"	f
+glutWireSphere	$OCENLIB/glut.oc	/^[extern] def glutWireSphere(radius: f32, slices: i32, stacks: i32)/;"	f
+handle_pixel	$OCENLIB/image/qoi.oc	/^def QOIEncoder::handle_pixel(&this, pix: RGBA, num: u32 = 1) {$/;"	f
+has_value	$OCENLIB/compact_map.oc	/^def ValueIterator::has_value(&this): bool => .iter.has_value()$/;"	f
+has_value	$OCENLIB/fs.oc	/^def DirectoryIterator::has_value(&this): bool => .dp?$/;"	f
+has_value	$OCENLIB/linkedlist.oc	/^def Iterator::has_value(&this): bool => .node?$/;"	f
+has_value	$OCENLIB/map.oc	/^def ValueIterator::has_value(&this): bool => .map_iter.has_value()$/;"	f
+has_value	$OCENLIB/mod.oc	/^def CharIterator::has_value(&this): bool => .pos < .len$/;"	f
+has_value	$OCENLIB/set.oc	/^def Iterator::has_value(&this): bool => .map_iter.has_value()$/;"	f
+has_value	$OCENLIB/sv.oc	/^def SVWordIterator::has_value(&this): bool => not .sv.is_empty()$/;"	f
+has_value	$OCENLIB/vector.oc	/^def Iterator::has_value(&this): bool => .index < .vec.size$/;"	f
+hash	$OCENLIB/hash/sha1.oc	/^def hash(input: Buffer): Buffer {$/;"	f
+hash	$OCENLIB/hash/sha256.oc	/^def hash(input: Buffer): Buffer {$/;"	f
+hash	$OCENLIB/image/qoi.oc	/^def RGBA::hash(this): u32 {$/;"	f
+hash	$OCENLIB/map.oc	/^def Map::hash(&this, key: K): u32 {$/;"	f
+hash	$OCENLIB/sv.oc	/^def SV::hash(this): u32 {$/;"	f
+hash	$OCENLIB/traits/hash.oc	/^def u8::hash(this): u32 => this as u32 * 7817 \/\/ Some random prime number$/;"	f
+hash	$OCENLIB/vec.oc	/^def Vec3::hash(this): u32 => pair_hash(.x.hash(), pair_hash(.y.hash(), .z.hash()))$/;"	f
+hash_into	$OCENLIB/hash/sha1.oc	/^def hash_into(input: Buffer, output: &u8) {$/;"	f
+hash_into	$OCENLIB/hash/sha256.oc	/^def hash_into(input: Buffer, output: &u8) {$/;"	f
+hash_str	$OCENLIB/hash/sha1.oc	/^def hash_str(data: str): Buffer => hash(Buffer::from_str(data))$/;"	f
+hash_str	$OCENLIB/hash/sha256.oc	/^def hash_str(data: str): Buffer => hash(Buffer::from_str(data))$/;"	f
+hex_dump	$OCENLIB/buffer.oc	/^def hex_dump(data: &u8, size: u32) {$/;"	f
+hex_dump	$OCENLIB/hash/sha1.oc	/^def SHA1Hash::hex_dump(this) => hex_dump(.data, 20)$/;"	f
+hex_dump	$OCENLIB/hash/sha256.oc	/^def SHA256Hash::hex_dump(this) => hex_dump(.data, 32)$/;"	f
+htonl	$OCENLIB/socket.oc	/^[extern] def htonl(val: i32): i32$/;"	f
+htons	$OCENLIB/socket.oc	/^[extern] def htons(val: i32): i32$/;"	f
+ifft	$OCENLIB/fft.oc	/^def ifft(data: &Complex, N: u32, out: &Complex) {$/;"	f
+ifft2	$OCENLIB/fft.oc	/^def ifft2(in: &Complex, R: u32, C: u32, out: &Complex) {$/;"	f
+imag	$OCENLIB/complex.oc	/^[extern "cimagf"] def Complex::imag(this): f32$/;"	f
+img_pix	$OCENLIB/image/qoi.oc	/^def QOIEncoder::img_pix(&this, idx: u32): RGBA {$/;"	f
+inet_pton	$OCENLIB/socket.oc	/^[extern] def inet_pton(af: i32, src: str, dst: untyped_ptr): i32$/;"	f
+inflate	$OCENLIB/zlib.oc	/^    [extern "inflate"] def Stream::inflate(&this, flush: i32): i32$/;"	f
+init	$OCENLIB/sdl/mod.oc	/^[extern "SDL_Init"]                    def init(flags: i32): i32$/;"	f
+init	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_Init"]     def init(): i32$/;"	f
+init	$OCENLIB/zlib.oc	/^    [extern "inflateInit"] def Stream::init(&this): i32$/;"	f
+insert	$OCENLIB/compact_map.oc	/^def Map::insert(&this, key: K, value: V) {$/;"	f
+insert	$OCENLIB/map.oc	/^def Map::insert(&this, key: K, value: V) {$/;"	f
+insert	$OCENLIB/value.oc	/^def Value::insert(&this, key: str, value: &Value) {$/;"	f
+interp	$OCENLIB/image/mod.oc	/^def interp(t: f32, a: f32, b: f32): f32 {$/;"	f
+is_alnum	$OCENLIB/mod.oc	/^def char::is_alnum(this): bool => libc::isalnum(this)$/;"	f
+is_alpha	$OCENLIB/mod.oc	/^def char::is_alpha(this): bool => libc::isalpha(this)$/;"	f
+is_before	$OCENLIB/span.oc	/^def Location::is_before(&this, other: Location): bool {$/;"	f
+is_digit	$OCENLIB/mod.oc	/^def char::is_digit(this): bool => libc::isdigit(this)$/;"	f
+is_empty	$OCENLIB/bufferio.oc	/^def BufferIO::is_empty(&this): bool => .index >= .data.size/;"	f
+is_empty	$OCENLIB/compact_map.oc	/^def Map::is_empty(&this): bool => .items.size == 0$/;"	f
+is_empty	$OCENLIB/deque.oc	/^def Deque::is_empty(&this): bool => .size == 0/;"	f
+is_empty	$OCENLIB/heap.oc	/^def Heap::is_empty(&this): bool => .vec.is_empty()$/;"	f
+is_empty	$OCENLIB/linkedlist.oc	/^def LinkedList::is_empty(&this): bool => .head == null$/;"	f
+is_empty	$OCENLIB/map.oc	/^def Map::is_empty(&this): bool => .size == 0$/;"	f
+is_empty	$OCENLIB/set.oc	/^def Set::is_empty(&this): bool => .map.size == 0$/;"	f
+is_empty	$OCENLIB/sv.oc	/^def SV::is_empty(&this): bool => .len == 0$/;"	f
+is_empty	$OCENLIB/vector.oc	/^def Vector::is_empty(&this): bool => .size == 0$/;"	f
+is_hex_digit	$OCENLIB/mod.oc	/^def char::is_hex_digit(this): bool => libc::isxdigit(this)$/;"	f
+is_power_of_2	$OCENLIB/fft.oc	/^def is_power_of_2(x: u32): bool => x & (x - 1) == 0$/;"	f
+is_print	$OCENLIB/mod.oc	/^def char::is_print(this): bool => libc::isprint(this)$/;"	f
+is_space	$OCENLIB/mod.oc	/^def char::is_space(this): bool => libc::isspace(this)$/;"	f
+is_valid	$OCENLIB/span.oc	/^def Span::is_valid(this): bool {$/;"	f
+isalnum	$OCENLIB/libc.oc	/^[extern] def isalnum(c: char): bool$/;"	f
+isalpha	$OCENLIB/libc.oc	/^[extern] def isalpha(c: char): bool$/;"	f
+isdigit	$OCENLIB/libc.oc	/^[extern] def isdigit(c: char): bool$/;"	f
+isprint	$OCENLIB/libc.oc	/^[extern] def isprint(c: char): bool$/;"	f
+isspace	$OCENLIB/libc.oc	/^[extern] def isspace(c: char): bool$/;"	f
+isxdigit	$OCENLIB/libc.oc	/^[extern] def isxdigit(c: char): bool$/;"	f
+iter	$OCENLIB/compact_map.oc	/^def Map::iter(&this): Iterator<K, V> => Iterator<K, V>(.items.iter())$/;"	f
+iter	$OCENLIB/linkedlist.oc	/^def LinkedList::iter(&this): Iterator<T> => Iterator<T>(.head, forward: true)$/;"	f
+iter	$OCENLIB/map.oc	/^def Map::iter(&this): Iterator<K, V> {$/;"	f
+iter	$OCENLIB/set.oc	/^def Set::iter(&this): Iterator<T> => Iterator<T>::make(this)$/;"	f
+iter	$OCENLIB/vector.oc	/^def Vector::iter(&this): Iterator<T> => Iterator<T>::make(this)$/;"	f
+iter_i64	$OCENLIB/sv.oc	/^def SV::iter_i64(this): SVNumberIterator<i64> => SVNumberIterator<i64>::make(this)$/;"	f
+iter_keys	$OCENLIB/compact_map.oc	/^def Map::iter_keys(&this): KeyIterator<K, V> => KeyIterator<K, V>(.items.iter())$/;"	f
+iter_keys	$OCENLIB/map.oc	/^def Map::iter_keys(&this): KeyIterator<K, V> => KeyIterator<K, V>(.iter())$/;"	f
+iter_nums	$OCENLIB/sv.oc	/^def SV::iter_nums(this): SVNumberIterator<u64> => SVNumberIterator<u64>::make(this)$/;"	f
+iter_pred	$OCENLIB/sv.oc	/^def SV::iter_pred(this, pred: fn(SV): u32): SVPredicateIterator => SVPredicateIterator::make(thi/;"	f
+iter_rev	$OCENLIB/linkedlist.oc	/^def LinkedList::iter_rev(&this): Iterator<T> => Iterator<T>(.head, forward: false)$/;"	f
+iter_u64	$OCENLIB/sv.oc	/^def SV::iter_u64(this): SVNumberIterator<u64> => SVNumberIterator<u64>::make(this)$/;"	f
+iter_values	$OCENLIB/compact_map.oc	/^def Map::iter_values(&this): ValueIterator<K, V> => ValueIterator<K, V>(.items.iter())$/;"	f
+iter_values	$OCENLIB/map.oc	/^def Map::iter_values(&this): ValueIterator<K, V> => ValueIterator<K, V>(.iter())$/;"	f
+iterate_directory	$OCENLIB/fs.oc	/^def iterate_directory(path: str, skip_self_and_parent: bool = true): DirectoryIterator {$/;"	f
+join	$OCENLIB/span.oc	/^def Span::join(this, other: Span): Span {$/;"	f
+join	$OCENLIB/thread.oc	/^def Thread::join(&this) {$/;"	f
+key	$OCENLIB/map.oc	/^def Iterator::key(&this): K {$/;"	f
+len	$OCENLIB/mod.oc	/^[extern "strlen"] def str::len(this): u32$/;"	f
+length	$OCENLIB/vec.oc	/^def Vec3::length(this): f32 => ((.x * .x + .y * .y + .z * .z) as f32).sqrt()$/;"	f
+length_sq	$OCENLIB/vec.oc	/^def Vec3::length_sq(this): T => .x * .x + .y * .y + .z * .z$/;"	f
+line	$OCENLIB/image/draw.oc	/^def line(img: &Image, x1: i32, y1: i32, x2: i32, y2: i32, color: Color) {$/;"	f
+line_f	$OCENLIB/image/draw.oc	/^def line_f(img: &Image, x1: f32, y1: f32, x2: f32, y2: f32, color: Color) {$/;"	f
+lines	$OCENLIB/sv.oc	/^def SV::lines(this): SVLineIterator => SVLineIterator(this)$/;"	f
+listen	$OCENLIB/socket.oc	/^[extern] def listen(sockfd: i32, backlog: i32): i32$/;"	f
+load	$OCENLIB/image/mod.oc	/^def Image::load(filename: str): &Image {$/;"	f
+load	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_OpenFont"]         def Font::load(path: str, size: i32): &Font$/;"	f
+load_image	$OCENLIB/sdl/image.oc	/^[extern "IMG_LoadTexture"] def Renderer::load_image(&this, path: str): &Texture$/;"	f
+load_wav	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_LoadWAV"] def load_wav(path: str): &Sound$/;"	f
+localtime	$OCENLIB/time.oc	/^[extern] def localtime(t: &Time): &TM$/;"	f
+lock	$OCENLIB/sdl/mod.oc	/^[extern "SDL_LockTexture"]    def Texture::lock(&this, rect: &Rect, pixels: &untyped_ptr, pitch:/;"	f
+log	$OCENLIB/complex.oc	/^[extern "clogf"] def Complex::log(this): Complex$/;"	f
+log	$OCENLIB/math.oc	/^[extern "logf"] def f32::log(this): f32$/;"	f
+log2	$OCENLIB/math.oc	/^[extern "log2f"] def f32::log2(this): f32$/;"	f
+maj	$OCENLIB/hash/sha256.oc	/^    def maj(x: u32, y: u32, z: u32): u32 => (x & y) ^ (x & z) ^ (y & z)$/;"	f
+make	$OCENLIB/buffer.oc	/^def Buffer::make(capacity: u32 = 16): Buffer {$/;"	f
+make	$OCENLIB/bufferio.oc	/^def BufferIO::make(data: &Buffer): BufferIO {$/;"	f
+make	$OCENLIB/hash/sha256.oc	/^def Context::make(): Context {$/;"	f
+make	$OCENLIB/image/qoi.oc	/^def QOIEncoder::make(img: &Image, buffer: &Buffer): QOIEncoder {$/;"	f
+make	$OCENLIB/json.oc	/^def Parser::make(tokens: &Vector<&Token>): Parser {$/;"	f
+make	$OCENLIB/map.oc	/^def Iterator::make(map: &Map<K, V>): Iterator<K, V> {$/;"	f
+make	$OCENLIB/random.oc	/^def RandomState::make(s: u32 = 0): RandomState {$/;"	f
+make	$OCENLIB/set.oc	/^def Iterator::make(set: &Set<T>): Iterator<T> => Iterator<T>(set.map.iter())$/;"	f
+make	$OCENLIB/sv.oc	/^def SVPredicateIterator::make(sv: SV, pred: fn(SV): u32): SVPredicateIterator {$/;"	f
+make	$OCENLIB/thread.oc	/^def Thread::make(callback: fn(untyped_ptr): untyped_ptr, arg: untyped_ptr = null): Thread {$/;"	f
+make	$OCENLIB/vector.oc	/^def Iterator::make(vec: &Vector<T>): Iterator<T> => Iterator<T>(vec, 0)$/;"	f
+malloc	$OCENLIB/libc.oc	/^[extern] def malloc(size: u32): untyped_ptr$/;"	f
+max	$OCENLIB/math.oc	/^def f32::max(this, b: f32): f32 => if this > b then this else b$/;"	f
+max	$OCENLIB/mod.oc	/^def u8::max(this, other: u8): u8 => if this > other then this else other$/;"	f
+maximize	$OCENLIB/sdl/mod.oc	/^[extern "SDL_MaximizeWindow"] def Window::maximize(&this)$/;"	f
+memcmp	$OCENLIB/libc.oc	/^[extern] def memcmp(s: untyped_ptr, other: untyped_ptr, n: u32): i32$/;"	f
+memcpy	$OCENLIB/libc.oc	/^[extern] def memcpy(dest: untyped_ptr, src: untyped_ptr, size: u32)$/;"	f
+memset	$OCENLIB/libc.oc	/^[extern] def memset(dest: untyped_ptr, c: u8, size: u32)$/;"	f
+min	$OCENLIB/math.oc	/^def f32::min(this, b: f32): f32 => if this < b then this else b$/;"	f
+min	$OCENLIB/mod.oc	/^def u8::min(this, other: u8): u8 => if this < other then this else other$/;"	f
+mkdir	$OCENLIB/fs.oc	/^    [extern] def mkdir(path: str, mode: i32 = 0777): i32$/;"	f
+mul	$OCENLIB/complex.oc	/^def Complex::mul(this, other: Complex): Complex {$/;"	f
+mult	$OCENLIB/vec.oc	/^def Vec3::mult(this, other: Vec3<T>): Vec3<T> => Vec3<T>(.x * other.x, .y * other.y, .z * other./;"	f
+mults	$OCENLIB/vec.oc	/^def Vec3::mults(this, val: T): Vec3<T> => Vec3<T>(.x * val, .y * val, .z * val)$/;"	f
+new	$OCENLIB/compact_map.oc	/^def Map::new(capacity: u32 = 16): &Map<K, V> {$/;"	f
+new	$OCENLIB/complex.oc	/^[extern "CMPLXF"] def Complex::new(real: f32, imag: f32): Complex$/;"	f
+new	$OCENLIB/deque.oc	/^def Deque::new(capacity: u32 = 16): &Deque<T> {$/;"	f
+new	$OCENLIB/heap.oc	/^def Heap::new(mode: Mode, capacity: u32 = 32): &Heap<T> {$/;"	f
+new	$OCENLIB/image/mod.oc	/^def Image::new(width: u32, height: u32): &Image {$/;"	f
+new	$OCENLIB/linkedlist.oc	/^def Node::new(val: T, next: &Node<T> = null, prev: &Node<T> = null): &Node<T> {$/;"	f
+new	$OCENLIB/map.oc	/^def Map::new(capacity: u32 = 32): &Map<K, V> {$/;"	f
+new	$OCENLIB/set.oc	/^def Set::new(): &Set<T> {$/;"	f
+new	$OCENLIB/value.oc	/^def Value::new(type: ValueType): &Value {$/;"	f
+new	$OCENLIB/vector.oc	/^def Vector::new(capacity: u32 = 16): &Vector<T> {$/;"	f
+new_bool	$OCENLIB/value.oc	/^def Value::new_bool(bul: bool): &Value {$/;"	f
+new_dict	$OCENLIB/value.oc	/^def Value::new_dict(map: &Map<str, &Value>): &Value {$/;"	f
+new_float	$OCENLIB/value.oc	/^def Value::new_float(num: f64): &Value {$/;"	f
+new_int	$OCENLIB/value.oc	/^def Value::new_int(num: i64): &Value {$/;"	f
+new_list	$OCENLIB/value.oc	/^def Value::new_list(vec: &Vector<&Value>): &Value {$/;"	f
+new_str	$OCENLIB/buffer.oc	/^def Buffer::new_str(this): str => (.data as str).copy()$/;"	f
+new_str	$OCENLIB/value.oc	/^def Value::new_str(s: str): &Value {$/;"	f
+new_str_buf	$OCENLIB/value.oc	/^def Value::new_str_buf(buf: Buffer): &Value {$/;"	f
+next	$OCENLIB/compact_map.oc	/^def ValueIterator::next(&this) { .iter.next() }$/;"	f
+next	$OCENLIB/fs.oc	/^def DirectoryIterator::next(&this) {$/;"	f
+next	$OCENLIB/linkedlist.oc	/^def Iterator::next(&this) {$/;"	f
+next	$OCENLIB/map.oc	/^def ValueIterator::next(&this) {$/;"	f
+next	$OCENLIB/mod.oc	/^def CharIterator::next(&this): u32 => .pos++$/;"	f
+next	$OCENLIB/set.oc	/^def Iterator::next(&this) {$/;"	f
+next	$OCENLIB/sv.oc	/^def SVWordIterator::next(&this) {}$/;"	f
+next	$OCENLIB/vector.oc	/^def Iterator::next(&this) {$/;"	f
+next_power_of_2	$OCENLIB/fft.oc	/^def next_power_of_2(x: u32): u32 {$/;"	f
+normalized	$OCENLIB/vec.oc	/^def Vec3::normalized(this): Vec3f {$/;"	f
+only_chop_left	$OCENLIB/sv.oc	/^def SV::only_chop_left(&this, n: u32 = 1) {$/;"	f
+open	$OCENLIB/fs.oc	/^def File::open(path: str, mode: str = "r"): &File {$/;"	f
+open_audio	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_OpenAudio"] def open_audio(frequency: i32, format: u16, channels: i32, chunksize: i/;"	f
+opendir	$OCENLIB/fs.oc	/^    [extern] def opendir(path: str): &Dir$/;"	f
+pair_hash	$OCENLIB/traits/hash.oc	/^def pair_hash(a: u32, b: u32): u32 => a * 33 ^ b$/;"	f
+panic	$OCENLIB/mod.oc	/^def panic(msg: str = "<panic>") {$/;"	f
+parse	$OCENLIB/json.oc	/^def parse(source: str, filename: str = "<anonymous>"): &Value {$/;"	f
+parse_array	$OCENLIB/json.oc	/^def Parser::parse_array(&this): &Value {$/;"	f
+parse_from_file	$OCENLIB/json.oc	/^def parse_from_file(filename: str): &Value {$/;"	f
+parse_object	$OCENLIB/json.oc	/^def Parser::parse_object(&this): &Value {$/;"	f
+parse_value	$OCENLIB/json.oc	/^def Parser::parse_value(&this): &Value => match .token().type {$/;"	f
+pause	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Pause"] def pause(channel: i32)$/;"	f
+peek	$OCENLIB/heap.oc	/^def Heap::peek(&this): T {$/;"	f
+pipe	$OCENLIB/libc.oc	/^[extern] def pipe(fds: &i32): i32$/;"	f
+play_channel	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_PlayChannel"] def play_channel(channel: i32, chunk: &Sound, loops: i32): i32$/;"	f
+poll_event	$OCENLIB/sdl/mod.oc	/^[extern "SDL_PollEvent"]        def poll_event(event: &Event): bool$/;"	f
+pop	$OCENLIB/heap.oc	/^def Heap::pop(&this): T {$/;"	f
+pop	$OCENLIB/linkedlist.oc	/^def LinkedList::pop(&this): T {$/;"	f
+pop	$OCENLIB/vector.oc	/^def Vector::pop(&this): T {$/;"	f
+pop_at	$OCENLIB/vector.oc	/^def Vector::pop_at(&this, i: u32): T {$/;"	f
+pop_back	$OCENLIB/deque.oc	/^def Deque::pop_back(&this): T {$/;"	f
+pop_front	$OCENLIB/deque.oc	/^def Deque::pop_front(&this): T {$/;"	f
+pop_front	$OCENLIB/linkedlist.oc	/^def LinkedList::pop_front(&this): T {$/;"	f
+present	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderPresent"]   def Renderer::present(&this)$/;"	f
+print	$OCENLIB/sv.oc	/^def SV::print(&this, msg: str=null) {$/;"	f
+print	$OCENLIB/vec.oc	/^def Vec3::print(this) {$/;"	f
+pthread_create	$OCENLIB/thread.oc	/^    def pthread_create(thread: &pthread_t, attr: &pthread_attr_t, start_routine: fn(untyped_ptr)/;"	f
+pthread_join	$OCENLIB/thread.oc	/^    def pthread_join(thread: pthread_t, retval: &untyped_ptr): i32 extern$/;"	f
+push	$OCENLIB/heap.oc	/^def Heap::push(&this, value: T) {$/;"	f
+push	$OCENLIB/linkedlist.oc	/^def LinkedList::push(&this, val: T): &Node<T> {$/;"	f
+push	$OCENLIB/value.oc	/^def Value::push(&this, value: &Value) {$/;"	f
+push	$OCENLIB/vector.oc	/^def Vector::push(&this, value: T) {$/;"	f
+push_back	$OCENLIB/deque.oc	/^def Deque::push_back(&this, value: T) {$/;"	f
+push_front	$OCENLIB/deque.oc	/^def Deque::push_front(&this, value: T) {$/;"	f
+push_front	$OCENLIB/linkedlist.oc	/^def LinkedList::push_front(&this, val: T): &Node<T> {$/;"	f
+push_front	$OCENLIB/vector.oc	/^def Vector::push_front(&this, value: T) {$/;"	f
+push_keys	$OCENLIB/map.oc	/^def Map::push_keys(&this, vec: &Vector<K>) {$/;"	f
+put_bytes	$OCENLIB/buffer.oc	/^def Buffer::put_bytes(&this, bytes: &u8, size: u32) {$/;"	f
+putb	$OCENLIB/buffer.oc	/^def Buffer::putb(&this, buf: &Buffer) {$/;"	f
+putbf	$OCENLIB/buffer.oc	/^def Buffer::putbf(&this, buf: &Buffer) {$/;"	f
+putc	$OCENLIB/buffer.oc	/^def Buffer::putc(&this, c: char) {$/;"	f
+puts	$OCENLIB/buffer.oc	/^def Buffer::puts(&this, s: str) {$/;"	f
+puts	$OCENLIB/fs.oc	/^def File::puts(&this, s: str) {$/;"	f
+putsf	$OCENLIB/buffer.oc	/^def Buffer::putsf(&this, s: str) {$/;"	f
+putsv	$OCENLIB/buffer.oc	/^def Buffer::putsv(&this, sv: SV) => .put_bytes(sv.data as &u8, sv.len)$/;"	f
+query	$OCENLIB/sdl/mod.oc	/^[extern "SDL_QueryTexture"]   def Texture::query(&this, a: untyped_ptr, b: untyped_ptr, w: &i32,/;"	f
+quit	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Quit"] def quit()$/;"	f
+quit	$OCENLIB/sdl/mod.oc	/^[extern "SDL_Quit"]                    def quit()$/;"	f
+quit	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_Quit"]     def quit(): i32$/;"	f
+radians	$OCENLIB/math.oc	/^def radians(degrees: f32): f32 { return degrees * PI \/ 180.0; }$/;"	f
+rand01	$OCENLIB/math.oc	/^[extern "drand48"] def rand01(): f32$/;"	f
+randf32	$OCENLIB/random.oc	/^def randf32(state: &RandomState=null): f32 => (randint(state) as f32) \/ 4294967296.0$/;"	f
+randf64	$OCENLIB/random.oc	/^def randf64(state: &RandomState=null): f64 => (randint(state) as f64) \/ 4294967296.0$/;"	f
+randi32	$OCENLIB/random.oc	/^def randi32(state: &RandomState=null): i32 => (randint(state) as i32)$/;"	f
+randint	$OCENLIB/math.oc	/^[extern "rand"] def randint(): i32$/;"	f
+randint	$OCENLIB/random.oc	/^def randint(state: &RandomState=null): u32 {$/;"	f
+randu32	$OCENLIB/random.oc	/^def randu32(state: &RandomState=null): u32 => randint(state)$/;"	f
+randu64	$OCENLIB/random.oc	/^def randu64(state: &RandomState=null): u64 => (randint(state) as u64) << 32 | randint(state) as /;"	f
+read	$OCENLIB/fs.oc	/^def File::read(&this, buf: untyped_ptr, size: u32): i32 {$/;"	f
+read	$OCENLIB/socket.oc	/^def Socket::read(&this, buf: &Buffer, max_size: u32): u32 {$/;"	f
+read_bytes	$OCENLIB/bufferio.oc	/^def BufferIO::read_bytes(&this, _dst: untyped_ptr, count: u32) {$/;"	f
+read_exactly	$OCENLIB/socket.oc	/^def Socket::read_exactly(&this, buf: &Buffer, size: u32): u32 {$/;"	f
+read_file	$OCENLIB/fs.oc	/^def read_file(path: str): Buffer {$/;"	f
+read_i16	$OCENLIB/bufferio.oc	/^def BufferIO::read_i16(&this, endian: Endian = Little): i16 { return .read_u16(endian) as i16 }$/;"	f
+read_i32	$OCENLIB/bufferio.oc	/^def BufferIO::read_i32(&this, endian: Endian = Little): i32 { return .read_u32(endian) as i32 }$/;"	f
+read_i64	$OCENLIB/bufferio.oc	/^def BufferIO::read_i64(&this, endian: Endian = Little): i64 { return .read_u64(endian) as i64 }$/;"	f
+read_i8	$OCENLIB/bufferio.oc	/^def BufferIO::read_i8(&this): i8 { return .read_u8() as i8 }$/;"	f
+read_u16	$OCENLIB/bufferio.oc	/^def BufferIO::read_u16(&this, endian: Endian = Little): u16 {$/;"	f
+read_u32	$OCENLIB/bufferio.oc	/^def BufferIO::read_u32(&this, endian: Endian = Little): u32 {$/;"	f
+read_u64	$OCENLIB/bufferio.oc	/^def BufferIO::read_u64(&this, endian: Endian = Little): u64 {$/;"	f
+read_u8	$OCENLIB/bufferio.oc	/^def BufferIO::read_u8(&this): u8 {$/;"	f
+readdir	$OCENLIB/fs.oc	/^    [extern] def readdir(dir: &Dir): &dirent$/;"	f
+real	$OCENLIB/complex.oc	/^[extern "crealf"] def Complex::real(this): f32$/;"	f
+realloc	$OCENLIB/libc.oc	/^[extern] def realloc(old: untyped_ptr, size: u32): untyped_ptr$/;"	f
+reflect	$OCENLIB/vec.oc	/^def Vec3::reflect(this, normal: Vec3<T>): Vec3<T> => .sub(normal.mults(2 as T * .dot(normal)))$/;"	f
+remove	$OCENLIB/compact_map.oc	/^def Map::remove(&this, key: K) {$/;"	f
+remove	$OCENLIB/map.oc	/^def Map::remove(&this, key: K) {$/;"	f
+remove	$OCENLIB/set.oc	/^def Set::remove(&this, key: T) {$/;"	f
+remove_last_n	$OCENLIB/mod.oc	/^def str::remove_last_n(this, n: u32) {$/;"	f
+remove_node	$OCENLIB/linkedlist.oc	/^def LinkedList::remove_node(&this, node: &Node<T>) {$/;"	f
+render_solid	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_RenderText_Solid"] def Font::render_solid(&this, text: str, color: Color): &Surface$/;"	f
+replace_with	$OCENLIB/mod.oc	/^def str::replace_with(&this, other: str) {$/;"	f
+resize	$OCENLIB/compact_map.oc	/^def Map::resize(&this, new_capacity: u32) {$/;"	f
+resize	$OCENLIB/deque.oc	/^def Deque::resize(&this, new_capacity: u32) {$/;"	f
+resize	$OCENLIB/image/mod.oc	/^def Image::resize(&this, new_width: u32, new_height: u32): &Image {$/;"	f
+resize	$OCENLIB/map.oc	/^def Map::resize(&this) {$/;"	f
+resize	$OCENLIB/vector.oc	/^def Vector::resize(&this, new_capacity: u32) {$/;"	f
+resize_if_necessary	$OCENLIB/buffer.oc	/^def Buffer::resize_if_necessary(&this, new_size: u32) {$/;"	f
+restore	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RestoreWindow"]  def Window::restore(&this)$/;"	f
+resume	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Resume"] def resume(channel: i32)$/;"	f
+rotate	$OCENLIB/image/mod.oc	/^def Image::rotate(&this, dir: RotationDirection = RotationDirection::Clockwise): &Image {$/;"	f
+rotate	$OCENLIB/vec.oc	/^def Vec2::rotate(&this, angle: f32): Vec2f {$/;"	f
+rotateX	$OCENLIB/vec.oc	/^def Vec3::rotateX(&this, angle: f32): Vec3f {$/;"	f
+rotateY	$OCENLIB/vec.oc	/^def Vec3::rotateY(&this, angle: f32): Vec3f {$/;"	f
+rotateZ	$OCENLIB/vec.oc	/^def Vec3::rotateZ(&this, angle: f32): Vec3f {$/;"	f
+rotate_left	$OCENLIB/hash/utils.oc	/^def rotate_left(value: u32, bits: u32): u32 {$/;"	f
+rotate_right	$OCENLIB/hash/utils.oc	/^def rotate_right(value: u32, bits: u32): u32 {$/;"	f
+save	$OCENLIB/image/mod.oc	/^def Image::save(&this, filename: str) {$/;"	f
+seed	$OCENLIB/random.oc	/^def RandomState::seed(&this, s: u32) {$/;"	f
+send_frame	$OCENLIB/video_renderer/ffmpeg.oc	/^def FFMPEGContext::send_frame(&this, img: &Image): bool {$/;"	f
+send_frame	$OCENLIB/video_renderer/mod.oc	/^def VideoRenderer::send_frame(&this, img: &Image) {$/;"	f
+send_frame	$OCENLIB/video_renderer/sdl.oc	/^def SDLContext::send_frame(&this, img: &Image) {$/;"	f
+serialize	$OCENLIB/json.oc	/^def serialize(val: &Value): Buffer {$/;"	f
+serialize_into	$OCENLIB/json.oc	/^def serialize_into(val: &Value, sb: &Buffer) {$/;"	f
+set	$OCENLIB/image/mod.oc	/^def Image::set(&this, x: u32, y: u32, col: Color) { .data[y * .width + x] = col }$/;"	f
+set	$OCENLIB/value.oc	/^def Value::set(&this, idx: u32, value: &Value) {$/;"	f
+set_blend_mode	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetRenderDrawBlendMode"]   def Renderer::set_blend_mode(&this, blend: BlendMode)$/;"	f
+set_cursor	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetCursor"]          def set_cursor(cursor: &Cursor)$/;"	f
+set_draw_color	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetRenderDrawColor"]       def Renderer::set_draw_color(&this, r: i32, g: i32, b: i/;"	f
+set_mode	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowFullscreen"] def Window::set_mode(&this, mode: WindowMode)$/;"	f
+set_resizable	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowResizable"]  def Window::set_resizable(&this, resizable: bool)$/;"	f
+set_size	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowSize"]  def Window::set_size(&this, w: i32, h: i32)$/;"	f
+set_title	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowTitle"]           def Window::set_title(&this, title: str)$/;"	f
+should_swap	$OCENLIB/heap.oc	/^def Heap::should_swap(&this, a: u32, b: u32): bool {$/;"	f
+show_cursor	$OCENLIB/sdl/mod.oc	/^[extern "SDL_ShowCursor"]              def show_cursor(toggle: bool)$/;"	f
+sift_down	$OCENLIB/heap.oc	/^def Heap::sift_down(&this, i: u32 = 0) {$/;"	f
+sift_up	$OCENLIB/heap.oc	/^def Heap::sift_up(&this, i: u32) {$/;"	f
+sig0	$OCENLIB/hash/sha256.oc	/^    def sig0(x: u32): u32 => rotate_right(x, 7) ^ rotate_right(x, 18) ^ (x >> 3)$/;"	f
+sig1	$OCENLIB/hash/sha256.oc	/^    def sig1(x: u32): u32 => rotate_right(x, 17) ^ rotate_right(x, 19) ^ (x >> 10)$/;"	f
+sin	$OCENLIB/complex.oc	/^[extern "csinf"] def Complex::sin(this): Complex$/;"	f
+sin	$OCENLIB/math.oc	/^[extern "sinf"] def f32::sin(this): f32$/;"	f
+size	$OCENLIB/compact_map.oc	/^def Map::size(&this): u32 => .items.size$/;"	f
+size	$OCENLIB/fs.oc	/^def File::size(&this): u32 {$/;"	f
+size	$OCENLIB/heap.oc	/^def Heap::size(&this): u32 => .vec.size$/;"	f
+sleep	$OCENLIB/thread.oc	/^[extern] def sleep(seconds: u32)$/;"	f
+slice	$OCENLIB/sv.oc	/^def SV::slice(this, off: u32, end: u32 = 0): SV {$/;"	f
+socket	$OCENLIB/socket.oc	/^[extern] def socket(domain: i32, type: i32, protocol: i32): i32$/;"	f
+sort	$OCENLIB/heap.oc	/^def Heap::sort(&this) {$/;"	f
+split_str	$OCENLIB/sv.oc	/^def SV::split_str(this, delim: str): SVSplitIterator => SVSplitIterator(this, SV::from_str(delim/;"	f
+split_sv	$OCENLIB/sv.oc	/^def SV::split_sv(this, delim: SV): SVSplitIterator => SVSplitIterator(this, delim)$/;"	f
+split_words	$OCENLIB/sv.oc	/^def SV::split_words(this): SVWordIterator => SVWordIterator(this)$/;"	f
+sqrt	$OCENLIB/math.oc	/^[extern "sqrtf"] def f32::sqrt(this): f32$/;"	f
+starts_right_after	$OCENLIB/span.oc	/^def Span::starts_right_after(this, other: Span): bool {$/;"	f
+starts_with	$OCENLIB/mod.oc	/^def str::starts_with(this, prefix: str): bool {$/;"	f
+starts_with_str	$OCENLIB/sv.oc	/^def SV::starts_with_str(this, other: str): bool => .starts_with_sv(SV::from_str(other))$/;"	f
+starts_with_sv	$OCENLIB/sv.oc	/^def SV::starts_with_sv(this, other: SV): bool {$/;"	f
+stat	$OCENLIB/fs.oc	/^    [extern] def stat(path: str, buf: &FileStat): i32$/;"	f
+str	$OCENLIB/buffer.oc	/^def Buffer::str(this): str => .data as str$/;"	f
+str	$OCENLIB/span.oc	/^def Span::str(this): str => `{.start.str()} => {.end.str()}`$/;"	f
+str	$OCENLIB/value.oc	/^def ValueType::str(this): str => .dbg()$/;"	f
+strcat	$OCENLIB/libc.oc	/^[extern] def strcat(dst: str, src: str): str$/;"	f
+strchr	$OCENLIB/libc.oc	/^[extern] def strchr(s: str, c: i32): str$/;"	f
+strcmp	$OCENLIB/libc.oc	/^[extern] def strcmp(a: str, b: str): i32$/;"	f
+strcpy	$OCENLIB/libc.oc	/^[extern] def strcpy(dst: str, src: str): str$/;"	f
+strerror	$OCENLIB/libc.oc	/^[extern] def strerror(errnum: i32): str$/;"	f
+strftime	$OCENLIB/time.oc	/^[extern] def strftime(s: untyped_ptr, maxsize: u32, format: str, timeptr: &TM): u32/;"	f
+strip_trailing_whitespace	$OCENLIB/mod.oc	/^def str::strip_trailing_whitespace(this) {$/;"	f
+strlen	$OCENLIB/libc.oc	/^[extern] def strlen(s: str): u32$/;"	f
+strsep	$OCENLIB/libc.oc	/^[extern] def strsep(str: &str, delim: str): str$/;"	f
+strstr	$OCENLIB/libc.oc	/^[extern] def strstr(haystack: str, needle: str): str$/;"	f
+strtod	$OCENLIB/libc.oc	/^[extern] def strtod(s: str, endptr: &str): f64$/;"	f
+strtof	$OCENLIB/libc.oc	/^[extern] def strtof(s: str, endptr: &str): f32$/;"	f
+strtoll	$OCENLIB/libc.oc	/^[extern] def strtoll(s: str, endptr: &str, base: i32 = 10): i64$/;"	f
+strtoul	$OCENLIB/libc.oc	/^[extern] def strtoul(s: str, endptr: &str, base: i32 = 10): u64$/;"	f
+sub	$OCENLIB/complex.oc	/^def Complex::sub(this, other: Complex): Complex {$/;"	f
+sub	$OCENLIB/vec.oc	/^def Vec3::sub(this, other: Vec3<T>): Vec3<T> => Vec3<T>(.x - other.x, .y - other.y, .z - other.z/;"	f
+subs	$OCENLIB/vec.oc	/^def Vec3::subs(this, val: T): Vec3<T> => Vec3<T>(.x - val, .y - val, .z - val)$/;"	f
+substring	$OCENLIB/mod.oc	/^def str::substring(this, start: u32, len: u32): str {$/;"	f
+subtract	$OCENLIB/set.oc	/^def Set::subtract(&this, other: &Set<T>) {$/;"	f
+swap	$OCENLIB/heap.oc	/^def Heap::swap(&this, a: u32, b: u32) {$/;"	f
+system	$OCENLIB/libc.oc	/^[extern] def system(cmd: str): i32$/;"	f
+tan	$OCENLIB/complex.oc	/^[extern "ctanf"] def Complex::tan(this): Complex$/;"	f
+tan	$OCENLIB/math.oc	/^[extern "tanf"] def f32::tan(this): f32$/;"	f
+time	$OCENLIB/time.oc	/^[extern] def time(t: &Time): Time$/;"	f
+to_f32	$OCENLIB/mod.oc	/^[extern "atof"] def str::to_f32(this): f32$/;"	f
+to_f32	$OCENLIB/vec.oc	/^def Vec3::to_f32(this): Vec3f => Vec3f(.x as f32, .y as f32, .z as f32)$/;"	f
+to_f64	$OCENLIB/vec.oc	/^def Vec3::to_f64(this): Vec3f64 => Vec3f64(.x as f64, .y as f64, .z as f64)$/;"	f
+to_i32	$OCENLIB/mod.oc	/^[extern "atoi"] def str::to_i32(this): i32$/;"	f
+to_i32	$OCENLIB/vec.oc	/^def Vec3::to_i32(this): Vec3i => Vec3i(.x as i32, .y as i32, .z as i32)$/;"	f
+to_i64	$OCENLIB/vec.oc	/^def Vec3::to_i64(this): Vec3i64 => Vec3i64(.x as i64, .y as i64, .z as i64)$/;"	f
+to_u32	$OCENLIB/mod.oc	/^def str::to_u32(this): u32 => this.to_i32() as u32 \/\/ FIXME: this doesn't always work$/;"	f
+to_u32	$OCENLIB/vec.oc	/^def Vec3::to_u32(this): Vec3u => Vec3u(.x as u32, .y as u32, .z as u32)$/;"	f
+to_u64	$OCENLIB/vec.oc	/^def Vec3::to_u64(this): Vec3u64 => Vec3u64(.x as u64, .y as u64, .z as u64)$/;"	f
+token	$OCENLIB/json.oc	/^def Parser::token(&this): &Token => .tokens.at(.curr)$/;"	f
+transform	$OCENLIB/hash/sha256.oc	/^def Context::transform(&this, data: &u8) {$/;"	f
+trim	$OCENLIB/sv.oc	/^def SV::trim(&this) {$/;"	f
+trim_left	$OCENLIB/sv.oc	/^def SV::trim_left(&this) {$/;"	f
+trim_right	$OCENLIB/sv.oc	/^def SV::trim_right(&this) {$/;"	f
+uLongf	$OCENLIB/zlib.oc	/^    [extern] struct uLongf {}$/;"	f
+unchecked_at	$OCENLIB/vector.oc	/^def Vector::unchecked_at(&this, i: u32): T => .data[i]$/;"	f
+unchecked_pop	$OCENLIB/heap.oc	/^def Heap::unchecked_pop(&this): T {$/;"	f
+unchecked_pop	$OCENLIB/vector.oc	/^def Vector::unchecked_pop(&this): T {$/;"	f
+unlock	$OCENLIB/sdl/mod.oc	/^[extern "SDL_UnlockTexture"]  def Texture::unlock(&this)$/;"	f
+update	$OCENLIB/hash/sha256.oc	/^def Context::update(&this, data: &u8, len: u64) {$/;"	f
+value	$OCENLIB/map.oc	/^def Iterator::value(&this): V {$/;"	f
+volume	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Volume"] def volume(channel: i32, volume: i32)/;"	f
+wait_and_finish	$OCENLIB/video_renderer/mod.oc	/^def VideoRenderer::wait_and_finish(&this) {$/;"	f
+wait_event_timeout	$OCENLIB/sdl/mod.oc	/^[extern "SDL_WaitEventTimeout"] def wait_event_timeout(event: &Event, timeout: i32): bool$/;"	f
+wait_for_quit	$OCENLIB/video_renderer/sdl.oc	/^def SDLContext::wait_for_quit(&this) {$/;"	f
+waitpid	$OCENLIB/libc.oc	/^[extern] def waitpid(a: i32, b: &i32, c: i32): i32$/;"	f
+write	$OCENLIB/fs.oc	/^def File::write(&this, buf: untyped_ptr, size: u32): i32 {$/;"	f
+write	$OCENLIB/libc.oc	/^[extern] def write(a: i32, b: &u32, c: u32): i32$/;"	f
+write	$OCENLIB/socket.oc	/^def Socket::write(&this, buf: &Buffer): u32 => write(this.fd, buf.data, buf.size)$/;"	f
+write_bytes	$OCENLIB/bufferio.oc	/^def BufferIO::write_bytes(&this, _src: untyped_ptr, count: u32) {$/;"	f
+write_file	$OCENLIB/fs.oc	/^def write_file(path: str, data: Buffer) {$/;"	f
+write_file_bytes	$OCENLIB/fs.oc	/^def write_file_bytes(path: str, data: untyped_ptr, size: u32) {$/;"	f
+write_file_str	$OCENLIB/fs.oc	/^def write_file_str(path: str, data: str) {$/;"	f
+write_i16	$OCENLIB/bufferio.oc	/^def BufferIO::write_i16(&this, value: i16, endian: Endian = Little) { .write_u16(value as u16, e/;"	f
+write_i32	$OCENLIB/bufferio.oc	/^def BufferIO::write_i32(&this, value: i32, endian: Endian = Little) { .write_u32(value as u32, e/;"	f
+write_i64	$OCENLIB/bufferio.oc	/^def BufferIO::write_i64(&this, value: i64, endian: Endian = Little) { .write_u64(value as u64, e/;"	f
+write_i8	$OCENLIB/bufferio.oc	/^def BufferIO::write_i8(&this, value: i8) { .write_u8(value as u8) }$/;"	f
+write_to_file	$OCENLIB/json.oc	/^def write_to_file(val: &Value, filename: str) {$/;"	f
+write_u16	$OCENLIB/bufferio.oc	/^def BufferIO::write_u16(&this, value: u16, endian: Endian = Little) {$/;"	f
+write_u32	$OCENLIB/bufferio.oc	/^def BufferIO::write_u32(&this, value: u32, endian: Endian = Little) {$/;"	f
+write_u64	$OCENLIB/bufferio.oc	/^def BufferIO::write_u64(&this, value: u64, endian: Endian = Little) {$/;"	f
+write_u8	$OCENLIB/bufferio.oc	/^def BufferIO::write_u8(&this, value: u8) {$/;"	f

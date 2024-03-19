@@ -29,7 +29,7 @@ SetFiletype('*.wxml','html') "weixin
 SetFiletype('*.wxss','css')  "wx
 SetFiletype('*.nim,*.nims,*.c2nim','nim') "nim
 SetFiletype('*.zig','zig') "zig
-SetFiletype('*.oc','rust') "ocen
+SetFiletype('*.oc','ocen') "ocen
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -37,19 +37,25 @@ au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
 au BufWrite *.nim**,*.zig,*.d,*.rs,*.ha :DelTWS
 
 "for language
-au FileType * nmap \== :!ctags --c-kinds=+p --fields=+S -R .
+au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType c,cpp setl tags +=$VIMDICT/cpp.tags
-"au FileType nim nmap \=g :Mtags nim.tags $VIMDICT/nim.ctags<cr>
+"au FileType nim nmap \== :Mtags nim.tags $VIMDICT/nim.ctags<cr>
 "au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
-"au FileType nim setl tags+=$VIMDICT/nim.tags,nim.tags
 "au FileType zig let $ZIGLIB = $HOME.'/SDK/Zigs/zig/lib'
-"au FileType zig setl tags +=$VIMDICT/zig.tags,zig.tags
-au FileType hare nmap \=g :Mtags hare.tags $VIMDICT/hare.ctags<cr>
-"au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
+au FileType hare nmap \== :Mtags hare.tags $VIMDICT/hare.ctags<cr>
+au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
+au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
+au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
+au FileType ocen nmap \== :Mtags ocen.tags $VIMDICT/ocen.ctags<cr>
+au FileType ocen let $OCENLIB = $HOME.'/SDK/Ocens/ocen/std'
+au FileType ocen setl tags +=$VIMDICT/ocen.tags
+
+nmap \=- :Ftags ''<left>
 "nmap \-z :Ftags '$ZIGLIB'<cr> 
 "nmap \-n :Ftags '$NIMLIB'<cr> 
 "nmap \-r :Ftags '$RAYLIB'<cr> 
+"nmap \-h :Ftags '$HAELIB'<cr> 
 
 "}}}
 """"""""""""""
@@ -129,9 +135,9 @@ SetAcpDict('actionscript','as3.dict')
 SetAcpDict('sh','bash.dict')
 SetAcpDict('squirrel','squirrel.dict')
 SetAcpDict('lua','lua.dict')
-SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict')
-SetAcpDict('zig','zig.dict','zig_builtin.dict')
-SetAcpDict('hare','hare.base.dict', 'hare.dict')
+SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict')
+SetAcpDict('zig','zig.dict','zig.base.dict')
+SetAcpDict('hare','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
 "}}}
 "-------------------
 "--temp {{{
@@ -140,25 +146,25 @@ au FileType zig let g:zig_fmt_autosave = 0
 "au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/src'
 "au FileType zig let $RAYGUI = $HOME.'/SDK/Raylibs/raygui/src'
 "au FileType zig setl tags +=$VIMDICT/raylib.tags,$VIMDICT/raygui.tags
-"SetAcpDict('zig','zig.dict','zig_builtin.dict','raylib.dict','raygui.dict')
+"SetAcpDict('zig','zig.dict','zig.base.dict','raylib.dict','raygui.dict')
 "sokol
 "au FileType zig let $SOKOLC = $HOME.'/Zigs/Sokols/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokolc.tags
 "au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
-"SetAcpDict('zig','zig.dict','zig_builtin.dict','sokol.dict')
+"SetAcpDict('zig','zig.dict','zig.base.dict','sokol.dict')
 "
 "au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'
 "au FileType nim setl tags+=$VIMDICT/sokoltags
-"SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','sokol.dict')
+"SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict','sokol.dict')
 ""nico
 "au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
 "au FileType nim setl tags+=$VIMDICT/nicotags
-"SetAcpDict('nim','nim.dict','nim2.dict','nim_enums.dict','nico.dict')
+"SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict','nico.dict')
 "-------------------
 "--naylib
 "au FileType nim let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
 "let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
 "au FileType nim setl tags+=$VIMDICT/naytags
-"SetAcpDict('nim','nimtags','nim.dict','nim_enums.dict',$NAYLIB.'raylib.nim')
+"SetAcpDict('nim','nimtags','nim.dict','nim.enums.dict',$NAYLIB.'raylib.nim')
 "}}}

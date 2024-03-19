@@ -630,9 +630,9 @@ nmap \fg :se fenc=GBK<cr>
 "quickfix
 au Filetype qf set syntax=sh
 set syntax=markdown.nim
-nmap <space>l  :cw<cr>
-nmap <space>L  :copen<cr>
-nmap <s-space>L  :copen<cr>
+"nmap <space>L  :cw<cr>
+nmap <space>l  :copen<cr>
+nmap <s-space>l  :copen<cr>
 "nmap <s-space>J :cn<cr>
 "nmap <s-space>K :cp<cr>
 "nmap <s-space>O :cold<cr>
@@ -660,8 +660,8 @@ nmap <silent> ;qa :qa<cr>
 nmap <silent> ;<cr> :noh<cr>
 nmap <silent> ; <esc>
 nmap <silent> , <esc>
-"nmap <space><space> \<esc>
 nmap <space><space> \<space>
+vno * y/<c-r>"<cr>
 "smap ;; ;
 "set nomore
 "}}}

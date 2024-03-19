@@ -2,6 +2,7 @@
 --langmap=hare:.ha
 --language-force=hare
 --exclude=hare.tags
+--regex-hare=/^[^\#]*export\s+fn\s+(\w+)\s*\(/\1/f,func/
 --regex-hare=/^[^\#]*export\s+fn\s+(\w+).*=/\1/f,func/
 --regex-hare=/^[^\#]*export\s+fn\s+(\w+).*\s+=/\1/f,func/
 --regex-hare=/^[^\#]*export\s+fn\s+\w+::(\w+).*\s+=/\1/f,func/

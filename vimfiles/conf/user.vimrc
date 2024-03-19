@@ -63,8 +63,8 @@ let g:bufExplorerSplitVertSize=30
 """"""""""""""""""""
 "fliplr {{{
 """"""""""""""""""""
-nmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
-xmap ;fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
+nmap ,fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
+xmap ,fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "}}}
 "-------------------
 "}}}
@@ -103,22 +103,22 @@ let g:ctrlp_clear_cache_on_exit = 1
 "\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 "\ }
 
-let g:ctrlp_map = ';cc'
-nmap <silent> ;cg :CtrlPChangeAll<cr>
-nmap <silent> ;cb :CtrlPBuffer<cr>
-nmap <silent> ;cm :CtrlPMRUFiles<cr>
-nmap <silent> ;cT :CtrlPTag<cr>
-nmap <silent> ;ct :CtrlPBufTagAll<cr>
-nmap <silent> ;ci :CtrlPDir<cr>
-"nmap <silent> ;cm :CtrlPBookmarkDir<cr>
-"nmap <silent> ;cM :CtrlPBookmarkDirAdd<cr>
-nmap <silent> ;cr :CtrlPRTS<cr>
-nmap <silent> ;cu :CtrlPUndo<cr>
-nmap <silent> ;cl :CtrlPQuickfix<cr>
-nmap <silent> ;ca :CtrlPMixed<cr>
-"nmap <silent> ;cf :CtrlPLine<cr>
-nmap <silent> ;cd :CtrlPClearCache<cr>
-nmap <silent> ;cD :CtrlPClearAllCaches<cr>
+"let g:ctrlp_map = ';cc'
+"nmap <silent> ;cg :CtrlPChangeAll<cr>
+"nmap <silent> ;cb :CtrlPBuffer<cr>
+"nmap <silent> ;cm :CtrlPMRUFiles<cr>
+"nmap <silent> ;cT :CtrlPTag<cr>
+"nmap <silent> ;ct :CtrlPBufTagAll<cr>
+"nmap <silent> ;ci :CtrlPDir<cr>
+""nmap <silent> ;cm :CtrlPBookmarkDir<cr>
+""nmap <silent> ;cM :CtrlPBookmarkDirAdd<cr>
+"nmap <silent> ;cr :CtrlPRTS<cr>
+"nmap <silent> ;cu :CtrlPUndo<cr>
+"nmap <silent> ;cl :CtrlPQuickfix<cr>
+"nmap <silent> ;ca :CtrlPMixed<cr>
+""nmap <silent> ;cf :CtrlPLine<cr>
+"nmap <silent> ;cd :CtrlPClearCache<cr>
+"nmap <silent> ;cD :CtrlPClearAllCaches<cr>
 "}}}
 """"""""""""""""""""
 "Tagbar (similar taglist) {{{
@@ -167,6 +167,7 @@ let g:tagbar_type_hare = {
             \ 'm:macro:1:0'
             \ ],
             \ 'sort'    : 0,
+			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/hare.ctags'
 			\ }
 nmap <silent> ;tl :TagbarToggle<cr>
 "}}}
@@ -260,7 +261,7 @@ AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
 ""nmap <space>g/ <Plug>(incsearch-fuzzyword-stay)
 
 "--select *find--
-vno * y/<c-r>"<cr>
+"vno * y/<c-r>"<cr>
 
 "}}}
 """"""""""""""""""""
@@ -359,8 +360,8 @@ let g:asyncrun_open = 12
 "let g:asyncrun_mode = 'term'
 "let asyncrun_term_hidden = 1
 "let g:asyncrun_term_wipe = 1
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks', 'project.json', 'build.zig', 'Cargo.toml']
-let g:asyncrun_capture_file = $VIMDATA.'cache/asyncrun_capture.tmp'
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks', 'project.json', 'build.zig', 'Cargo.toml', 'dub.sdl', 'dub.json']
+let g:asyncrun_capture_file = $VIMDATA.'/cache/asyncrun_capture.tmp'
 "--Run-------------------------"
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRootRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 -cwd=<root> <args>
@@ -372,14 +373,16 @@ nmap <space>r :AcRun
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
 com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focus=0 -rows=10 -raw=1 -cwd=<root> -mode=term -once=1 bake <args> "$(VIM_ROOT)" 
 "com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
-com! -bang -nargs=* -complete=file Rs AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args>
-com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
-
 com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 nim <args> %
 "com! -bang -nargs=* -complete=file Nimble AsyncRun<bang> -raw=1 -focus=0 -rows=8 nimble <args> 
+com! -bang -nargs=* -complete=file Rs AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args>
+com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
 com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
-com! -bang -nargs=* -complete=file Ha AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args>
+com! -bang -nargs=* -complete=file Ha AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args> %
+com! -bang -nargs=* -complete=file D AsyncRun<bang> -raw=1 -focus=0 -rows=8 dmd <args> %
+com! -bang -nargs=* -complete=file Dub AsyncRun<bang> -raw=1 -focus=0 -rows=8 dub <args>
+"com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .
 "nmap <space>u :AcUiRun
@@ -442,7 +445,7 @@ au filetype c,cpp call LspAddServer([#{
 au filetype d call LspAddServer([#{
             \    name: 'd',
             \    filetype: ['d'],
-            \    path: 'dls',
+            \    path: 'serve-d',
             \    args: [],
             \  }])
 

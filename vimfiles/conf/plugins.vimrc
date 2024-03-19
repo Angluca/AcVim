@@ -14,13 +14,15 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
+"Plug 'angluca/nim.vim'
+Plug 'angluca/hare.vim'
+Plug 'angluca/ocen.vim'
+
 "Plug 'vim-jp/vim-cpp'
-"Plug 'Angluca/vimcomplete'
+"Plug 'angluca/scope.vim'
+Plug 'girishji/scope.vim'
 Plug 'girishji/vimcomplete'
-"Plug 'girishji/lsp-complete.vim'
 Plug 'girishji/autosuggest.vim'
-"Plug 'girishji/vimscript-complete.vim'
-"Plug 'girishji/omnifunc-complete.vim'
 Plug 'girishji/ngram-complete.vim'
 "Plug 'girishji/vsnip-complete.vim'
 
@@ -41,7 +43,7 @@ Plug 'drmikehenry/vim-fixkey'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'mbbill/undotree'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'preservim/tagbar'
 "Plug 'easymotion/vim-easymotion'
