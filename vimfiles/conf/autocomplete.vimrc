@@ -5,6 +5,7 @@
 """"""""""""""
 " filetypes {{{
 """"""""""""""
+SetFiletype('*.ctags','zsh')
 SetFiletype('*.zshrc,*.zprofile','zsh')
 SetFiletype('*.vim*','vim')
 SetFiletype('COPYING','txt')

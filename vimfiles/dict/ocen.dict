@@ -8,6 +8,7 @@ Context
 Cursor
 CursorType
 Deque
+Dir
 DirectoryEntry
 DirectoryIterator
 Endian
@@ -53,11 +54,14 @@ SVNumberIterator
 SVPredicateIterator
 SVSplitIterator
 SVWordIterator
+Scancode
 Set
 SinAddr
+SockAddr
 SockAddrIn
 Socket
 SocketMode
+Sound
 Span
 Stream
 Surface
@@ -69,7 +73,19 @@ Value
 ValueIterator
 ValueType
 Vec2
+Vec2f
+Vec2f64
+Vec2i
+Vec2i64
+Vec2u
+Vec2u64
 Vec3
+Vec3f
+Vec3f64
+Vec3i
+Vec3i64
+Vec3u
+Vec3u64
 Vector
 VideoRenderer
 VideoRendererType
@@ -171,6 +187,7 @@ dirent
 div
 divs
 dot
+double
 drand48
 draw_bezier
 draw_circle_color
@@ -214,6 +231,7 @@ fill_tri_color
 final
 find_str
 finish
+float
 floor
 fopen
 fork
@@ -282,6 +300,7 @@ hash
 hash_into
 hash_str
 hex_dump
+hostent
 htonl
 htons
 i16
@@ -292,6 +311,7 @@ ifft
 ifft2
 imag
 img_pix
+in_addr
 inet_pton
 inflate
 init
@@ -385,8 +405,10 @@ pop_back
 pop_front
 present
 print
+pthread_attr_t
 pthread_create
 pthread_join
+pthread_t
 push
 push_back
 push_front
@@ -462,6 +484,7 @@ sin
 size
 sleep
 slice
+sockaddr_in
 socket
 sort
 split_str

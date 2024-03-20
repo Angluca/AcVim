@@ -1,55 +1,109 @@
+BlendMode	$OCENLIB/sdl/mod.oc	/^enum BlendMode extern("SDL_BlendMode") {$/;"	f
 Buffer	$OCENLIB/buffer.oc	/^struct Buffer {$/;"	f
 BufferIO	$OCENLIB/bufferio.oc	/^struct BufferIO {$/;"	f
 CharIterator	$OCENLIB/mod.oc	/^struct CharIterator {$/;"	f
 Color	$OCENLIB/image/mod.oc	/^struct Color {$/;"	f
 Color	$OCENLIB/sdl/mod.oc	/^struct Color  {$/;"	f
+Complex	$OCENLIB/complex.oc	/^def Complex::sub(this, other: Complex): Complex {$/;"	f
 Context	$OCENLIB/hash/sha256.oc	/^struct Context {$/;"	f
+Cursor	$OCENLIB/sdl/mod.oc	/^struct Cursor$/;"	f
+CursorType	$OCENLIB/sdl/mod.oc	/^enum CursorType extern("SDL_SystemCursor") {$/;"	f
+Deque	$OCENLIB/deque.oc	/^struct Deque<T> {$/;"	f
+Dir	$OCENLIB/fs.oc	/^    [extern "DIR"] struct Dir$/;"	f
 DirectoryEntry	$OCENLIB/fs.oc	/^struct DirectoryEntry {$/;"	f
 DirectoryIterator	$OCENLIB/fs.oc	/^struct DirectoryIterator {$/;"	f
 Endian	$OCENLIB/mod.oc	/^enum Endian {$/;"	f
 EntryType	$OCENLIB/fs.oc	/^enum EntryType {$/;"	f
 Event	$OCENLIB/sdl/mod.oc	/^struct Event {$/;"	f
+EventType	$OCENLIB/sdl/mod.oc	/^enum EventType extern("SDL_EventType") {$/;"	f
 FFMPEGContext	$OCENLIB/video_renderer/ffmpeg.oc	/^struct FFMPEGContext {$/;"	f
+File	$OCENLIB/fs.oc	/^def File::write(&this, buf: untyped_ptr, size: u32): i32 {$/;"	f
 FileMetadata	$OCENLIB/fs.oc	/^struct FileMetadata {$/;"	f
 FileStat	$OCENLIB/fs.oc	/^    [extern "struct stat"] struct FileStat {$/;"	f
+Font	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_SizeText"]         def Font::get_text_size(&this, text: str, w: &i32, h: &i32)$/;"	f
+Heap	$OCENLIB/heap.oc	/^struct Heap<T> {$/;"	f
 HostEnt	$OCENLIB/socket.oc	/^struct HostEnt {$/;"	f
 Image	$OCENLIB/image/mod.oc	/^struct Image {$/;"	f
+Item	$OCENLIB/compact_map.oc	/^struct Item<K, V> {$/;"	f
+Item	$OCENLIB/map.oc	/^struct Item<K, V> {$/;"	f
+Iterator	$OCENLIB/compact_map.oc	/^struct Iterator<K, V> {$/;"	f
+Iterator	$OCENLIB/linkedlist.oc	/^struct Iterator<T> {$/;"	f
+Iterator	$OCENLIB/map.oc	/^struct Iterator<K, V> {$/;"	f
+Iterator	$OCENLIB/set.oc	/^struct Iterator<T> {$/;"	f
+Iterator	$OCENLIB/vector.oc	/^struct Iterator<T> {$/;"	f
+Key	$OCENLIB/sdl/mod.oc	/^enum Key extern("SDL_Scancode") {$/;"	f
+KeyIterator	$OCENLIB/compact_map.oc	/^struct KeyIterator<K, V> {$/;"	f
+KeyIterator	$OCENLIB/map.oc	/^struct KeyIterator<K, V> {$/;"	f
 KeyboardEvent	$OCENLIB/sdl/mod.oc	/^struct KeyboardEvent {$/;"	f
 Keysym	$OCENLIB/sdl/mod.oc	/^struct Keysym {$/;"	f
+LinkedList	$OCENLIB/linkedlist.oc	/^struct LinkedList<T> {$/;"	f
 Location	$OCENLIB/span.oc	/^struct Location {$/;"	f
+Map	$OCENLIB/compact_map.oc	/^struct Map<K, V> {$/;"	f
+Map	$OCENLIB/map.oc	/^struct Map<K, V> {$/;"	f
 Mode	$OCENLIB/heap.oc	/^enum Mode {$/;"	f
+MouseButton	$OCENLIB/sdl/mod.oc	/^enum MouseButton extern("u8") {$/;"	f
 MouseButtonEvent	$OCENLIB/sdl/mod.oc	/^struct MouseButtonEvent {$/;"	f
 MouseWheelEvent	$OCENLIB/sdl/mod.oc	/^struct MouseWheelEvent {$/;"	f
+Node	$OCENLIB/linkedlist.oc	/^struct Node<T> {$/;"	f
 Parser	$OCENLIB/json.oc	/^struct Parser {$/;"	f
 QOIDecoder	$OCENLIB/image/qoi.oc	/^struct QOIDecoder {$/;"	f
 QOIEncoder	$OCENLIB/image/qoi.oc	/^struct QOIEncoder {$/;"	f
 RGBA	$OCENLIB/image/qoi.oc	/^struct RGBA {$/;"	f
 RandomState	$OCENLIB/random.oc	/^struct RandomState {$/;"	f
 Rect	$OCENLIB/sdl/mod.oc	/^struct Rect  {$/;"	f
+Renderer	$OCENLIB/sdl/gfx.oc	/^[extern "trigonColor"]        def Renderer::draw_tri_color(&this, x1: i32, y1: i32, x2: i32, y2:/;"	f
+Renderer	$OCENLIB/sdl/image.oc	/^[extern "IMG_LoadTexture"] def Renderer::load_image(&this, path: str): &Texture$/;"	f
+Renderer	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetRenderDrawColor"]       def Renderer::set_draw_color(&this, r: i32, g: i32, b: i/;"	f
 RotationDirection	$OCENLIB/image/mod.oc	/^enum RotationDirection {$/;"	f
 SDLContext	$OCENLIB/video_renderer/sdl.oc	/^struct SDLContext {$/;"	f
 SHA1Hash	$OCENLIB/hash/sha1.oc	/^struct SHA1Hash {$/;"	f
 SHA256Hash	$OCENLIB/hash/sha256.oc	/^struct SHA256Hash {$/;"	f
 SVLineIterator	$OCENLIB/sv.oc	/^struct SVLineIterator {$/;"	f
+SVNumberIterator	$OCENLIB/sv.oc	/^struct SVNumberIterator<T> {$/;"	f
 SVPredicateIterator	$OCENLIB/sv.oc	/^struct SVPredicateIterator {$/;"	f
 SVSplitIterator	$OCENLIB/sv.oc	/^struct SVSplitIterator {$/;"	f
 SVWordIterator	$OCENLIB/sv.oc	/^struct SVWordIterator {$/;"	f
+Scancode	$OCENLIB/sdl/mod.oc	/^struct Scancode$/;"	f
+Set	$OCENLIB/set.oc	/^struct Set<T> {$/;"	f
 SinAddr	$OCENLIB/socket.oc	/^struct SinAddr {$/;"	f
+SockAddr	$OCENLIB/socket.oc	/^[extern "struct sockaddr"] struct SockAddr$/;"	f
 SockAddrIn	$OCENLIB/socket.oc	/^struct SockAddrIn {$/;"	f
 Socket	$OCENLIB/socket.oc	/^struct Socket {$/;"	f
 SocketMode	$OCENLIB/socket.oc	/^enum SocketMode {$/;"	f
+Sound	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Chunk"] struct Sound$/;"	f
 Span	$OCENLIB/span.oc	/^struct Span {$/;"	f
 Stream	$OCENLIB/zlib.oc	/^    [extern "z_stream"] struct Stream {$/;"	f
+Surface	$OCENLIB/sdl/mod.oc	/^struct Surface$/;"	f
+Texture	$OCENLIB/sdl/mod.oc	/^[extern "SDL_UnlockTexture"]  def Texture::unlock(&this)$/;"	f
 Thread	$OCENLIB/thread.oc	/^struct Thread {$/;"	f
 Time	$OCENLIB/time.oc	/^[extern "time_t"] struct Time {}$/;"	f
 Value	$OCENLIB/value.oc	/^struct Value {$/;"	f
+ValueIterator	$OCENLIB/compact_map.oc	/^struct ValueIterator<K, V> {$/;"	f
+ValueIterator	$OCENLIB/map.oc	/^struct ValueIterator<K, V> {$/;"	f
 ValueType	$OCENLIB/value.oc	/^enum ValueType {$/;"	f
+Vec2	$OCENLIB/vec.oc	/^struct Vec2<T> {$/;"	f
+Vec2f	$OCENLIB/vec.oc	/^typedef Vec2f = Vec2<f32>$/;"	f
+Vec2f64	$OCENLIB/vec.oc	/^typedef Vec2f64 = Vec2<f64>$/;"	f
+Vec2i	$OCENLIB/vec.oc	/^typedef Vec2i = Vec2<i32>$/;"	f
+Vec2i64	$OCENLIB/vec.oc	/^typedef Vec2i64 = Vec2<i64>$/;"	f
+Vec2u	$OCENLIB/vec.oc	/^typedef Vec2u = Vec2<u32>$/;"	f
+Vec2u64	$OCENLIB/vec.oc	/^typedef Vec2u64 = Vec2<u64>$/;"	f
+Vec3	$OCENLIB/vec.oc	/^struct Vec3<T> {$/;"	f
+Vec3f	$OCENLIB/vec.oc	/^typedef Vec3f = Vec3<f32>$/;"	f
+Vec3f64	$OCENLIB/vec.oc	/^typedef Vec3f64 = Vec3<f64>$/;"	f
+Vec3i	$OCENLIB/vec.oc	/^typedef Vec3i = Vec3<i32>$/;"	f
+Vec3i64	$OCENLIB/vec.oc	/^typedef Vec3i64 = Vec3<i64>$/;"	f
+Vec3u	$OCENLIB/vec.oc	/^typedef Vec3u = Vec3<u32>$/;"	f
+Vec3u64	$OCENLIB/vec.oc	/^typedef Vec3u64 = Vec3<u64>$/;"	f
+Vector	$OCENLIB/vector.oc	/^struct Vector<T> {$/;"	f
 VideoRenderer	$OCENLIB/video_renderer/mod.oc	/^struct VideoRenderer {$/;"	f
 VideoRendererType	$OCENLIB/video_renderer/mod.oc	/^enum VideoRendererType {$/;"	f
 WEXITSTATUS	$OCENLIB/libc.oc	/^[extern] def WEXITSTATUS(a: i32): i32$/;"	f
 WIFEXITED	$OCENLIB/libc.oc	/^[extern] def WIFEXITED(a: i32): bool$/;"	f
 WIFSIGNALED	$OCENLIB/libc.oc	/^[extern] def WIFSIGNALED(a: i32): bool$/;"	f
 WTERMSIG	$OCENLIB/libc.oc	/^[extern] def WTERMSIG(a: i32): i32$/;"	f
+Window	$OCENLIB/sdl/mod.oc	/^[extern "SDL_Window"] struct Window$/;"	f
+WindowMode	$OCENLIB/sdl/mod.oc	/^enum WindowMode extern("int") {$/;"	f
 abs	$OCENLIB/complex.oc	/^[extern "cabsf"] def Complex::abs(this): f32$/;"	f
 abs	$OCENLIB/math.oc	/^def i8::abs(this): i8 => if this < 0 then -this else this$/;"	f
 accept	$OCENLIB/socket.oc	/^[extern] def accept(sockfd: i32, addr: &SockAddr, addrlen: &i32): i32$/;"	f
@@ -330,12 +384,14 @@ hash_str	$OCENLIB/hash/sha256.oc	/^def hash_str(data: str): Buffer => hash(Buffe
 hex_dump	$OCENLIB/buffer.oc	/^def hex_dump(data: &u8, size: u32) {$/;"	f
 hex_dump	$OCENLIB/hash/sha1.oc	/^def SHA1Hash::hex_dump(this) => hex_dump(.data, 20)$/;"	f
 hex_dump	$OCENLIB/hash/sha256.oc	/^def SHA256Hash::hex_dump(this) => hex_dump(.data, 32)$/;"	f
+hostent	$OCENLIB/socket.oc	/^[extern "struct hostent"]$/;"	f
 htonl	$OCENLIB/socket.oc	/^[extern] def htonl(val: i32): i32$/;"	f
 htons	$OCENLIB/socket.oc	/^[extern] def htons(val: i32): i32$/;"	f
 ifft	$OCENLIB/fft.oc	/^def ifft(data: &Complex, N: u32, out: &Complex) {$/;"	f
 ifft2	$OCENLIB/fft.oc	/^def ifft2(in: &Complex, R: u32, C: u32, out: &Complex) {$/;"	f
 imag	$OCENLIB/complex.oc	/^[extern "cimagf"] def Complex::imag(this): f32$/;"	f
 img_pix	$OCENLIB/image/qoi.oc	/^def QOIEncoder::img_pix(&this, idx: u32): RGBA {$/;"	f
+in_addr	$OCENLIB/socket.oc	/^[extern "struct in_addr"]$/;"	f
 inet_pton	$OCENLIB/socket.oc	/^[extern] def inet_pton(af: i32, src: str, dst: untyped_ptr): i32$/;"	f
 inflate	$OCENLIB/zlib.oc	/^    [extern "inflate"] def Stream::inflate(&this, flush: i32): i32$/;"	f
 init	$OCENLIB/sdl/mod.oc	/^[extern "SDL_Init"]                    def init(flags: i32): i32$/;"	f
@@ -435,6 +491,7 @@ new	$OCENLIB/heap.oc	/^def Heap::new(mode: Mode, capacity: u32 = 32): &Heap<T> {
 new	$OCENLIB/image/mod.oc	/^def Image::new(width: u32, height: u32): &Image {$/;"	f
 new	$OCENLIB/linkedlist.oc	/^def Node::new(val: T, next: &Node<T> = null, prev: &Node<T> = null): &Node<T> {$/;"	f
 new	$OCENLIB/map.oc	/^def Map::new(capacity: u32 = 32): &Map<K, V> {$/;"	f
+new	$OCENLIB/mod.oc	/^def new<T>(count: u32 = 1): &T => libc::calloc(count, sizeof(T)) as &T$/;"	f
 new	$OCENLIB/set.oc	/^def Set::new(): &Set<T> {$/;"	f
 new	$OCENLIB/value.oc	/^def Value::new(type: ValueType): &Value {$/;"	f
 new	$OCENLIB/vector.oc	/^def Vector::new(capacity: u32 = 16): &Vector<T> {$/;"	f
@@ -482,8 +539,10 @@ pop_front	$OCENLIB/linkedlist.oc	/^def LinkedList::pop_front(&this): T {$/;"	f
 present	$OCENLIB/sdl/mod.oc	/^[extern "SDL_RenderPresent"]   def Renderer::present(&this)$/;"	f
 print	$OCENLIB/sv.oc	/^def SV::print(&this, msg: str=null) {$/;"	f
 print	$OCENLIB/vec.oc	/^def Vec3::print(this) {$/;"	f
+pthread_attr_t	$OCENLIB/thread.oc	/^    struct pthread_attr_t extern$/;"	f
 pthread_create	$OCENLIB/thread.oc	/^    def pthread_create(thread: &pthread_t, attr: &pthread_attr_t, start_routine: fn(untyped_ptr)/;"	f
 pthread_join	$OCENLIB/thread.oc	/^    def pthread_join(thread: pthread_t, retval: &untyped_ptr): i32 extern$/;"	f
+pthread_t	$OCENLIB/thread.oc	/^    struct pthread_t extern$/;"	f
 push	$OCENLIB/heap.oc	/^def Heap::push(&this, value: T) {$/;"	f
 push	$OCENLIB/linkedlist.oc	/^def LinkedList::push(&this, val: T): &Node<T> {$/;"	f
 push	$OCENLIB/value.oc	/^def Value::push(&this, value: &Value) {$/;"	f
@@ -582,8 +641,10 @@ size	$OCENLIB/fs.oc	/^def File::size(&this): u32 {$/;"	f
 size	$OCENLIB/heap.oc	/^def Heap::size(&this): u32 => .vec.size$/;"	f
 sleep	$OCENLIB/thread.oc	/^[extern] def sleep(seconds: u32)$/;"	f
 slice	$OCENLIB/sv.oc	/^def SV::slice(this, off: u32, end: u32 = 0): SV {$/;"	f
+sockaddr_in	$OCENLIB/socket.oc	/^[extern "struct sockaddr_in"]$/;"	f
 socket	$OCENLIB/socket.oc	/^[extern] def socket(domain: i32, type: i32, protocol: i32): i32$/;"	f
 sort	$OCENLIB/heap.oc	/^def Heap::sort(&this) {$/;"	f
+sort	$OCENLIB/sort.oc	/^def sort<T>(data: &T, size: u32, cmp: fn(T,T): i8 = T::compare) {$/;"	f
 split_str	$OCENLIB/sv.oc	/^def SV::split_str(this, delim: str): SVSplitIterator => SVSplitIterator(this, SV::from_str(delim/;"	f
 split_sv	$OCENLIB/sv.oc	/^def SV::split_sv(this, delim: SV): SVSplitIterator => SVSplitIterator(this, delim)$/;"	f
 split_words	$OCENLIB/sv.oc	/^def SV::split_words(this): SVWordIterator => SVWordIterator(this)$/;"	f

@@ -155,19 +155,23 @@ let g:tagbar_type_zig = {
             \ 'o:operator:1:0',
             \ 'm:macro:1:0'
             \ ],
-            \ 'sort'    : 0,
 			\ }
 let g:tagbar_type_hare = {
 			\ 'ctagstype' : 'rust',
             \ 'kinds'     : [
             \ 'f:func:0:1',
             \ 't:type:1:0',
-            \ 'i:iterator:1:0',
-            \ 'o:operator:1:0',
             \ 'm:macro:1:0'
             \ ],
-            \ 'sort'    : 0,
 			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/hare.ctags'
+			\ }
+let g:tagbar_type_ocen = {
+			\ 'ctagstype' : 'rust',
+            \ 'kinds'     : [
+            \ 'f:func:0:1',
+            \ 't:type:1:0',
+            \ ],
+            \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/ocen.ctags'
 			\ }
 nmap <silent> ;tl :TagbarToggle<cr>
 "}}}
@@ -371,17 +375,19 @@ com! -bang -nargs=* -range=% -complete=shellcmd AcRootRun <range>AsyncRun<bang> 
 "nmap <space>Q :AsyncStop!<cr>
 nmap <space>r :AcRun 
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
-com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focus=0 -rows=10 -raw=1 -cwd=<root> -mode=term -once=1 bake <args> "$(VIM_ROOT)" 
+"au filetype c,cpp com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focus=0 -rows=10 -raw=1 -cwd=<root> -mode=term -once=1 bake <args> "$(VIM_ROOT)" 
 "com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
-com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 nim <args> %
-"com! -bang -nargs=* -complete=file Nimble AsyncRun<bang> -raw=1 -focus=0 -rows=8 nimble <args> 
-com! -bang -nargs=* -complete=file Rs AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args>
-com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
-com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
-com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
-com! -bang -nargs=* -complete=file Ha AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args> %
-com! -bang -nargs=* -complete=file D AsyncRun<bang> -raw=1 -focus=0 -rows=8 dmd <args> %
-com! -bang -nargs=* -complete=file Dub AsyncRun<bang> -raw=1 -focus=0 -rows=8 dub <args>
+au filetype nim com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 nim <args> %
+au filetype nim com! -bang -nargs=* -complete=file Nim AsyncRun<bang> -raw=1 -focus=0 -rows=8 nimble <args> 
+au filetype rust com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args> %
+au filetype rust com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
+au filetype zig com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
+au filetype zig com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
+au filetype d com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 dmd <args> %
+au filetype d com! -bang -nargs=* -complete=file Db AsyncRun<bang> -raw=1 -focus=0 -rows=8 dub <args>
+au filetype hare com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args> %
+au filetype Ocen com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r
+au filetype Ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r && ./%:t:r
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .

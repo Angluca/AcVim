@@ -28,6 +28,7 @@ func! AutoPairsDefaultPairs()
         \ 'php': {'<?': '?>//k]', '<?php': '?>//k]'},
         \ 'nim': { "{\.":"\.}",'`':'`'},
         \ 'zig': { "|":"|",},
+        \ 'ocen': { '`':'`',},
         \ }
   for [filetype, pairs] in items(allPairs)
     if &filetype == filetype
