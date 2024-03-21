@@ -58,6 +58,7 @@ RotationDirection	$OCENLIB/image/mod.oc	/^enum RotationDirection {$/;"	f
 SDLContext	$OCENLIB/video_renderer/sdl.oc	/^struct SDLContext {$/;"	f
 SHA1Hash	$OCENLIB/hash/sha1.oc	/^struct SHA1Hash {$/;"	f
 SHA256Hash	$OCENLIB/hash/sha256.oc	/^struct SHA256Hash {$/;"	f
+SV	$OCENLIB/sv.oc	/^struct SV {$/;"	f
 SVLineIterator	$OCENLIB/sv.oc	/^struct SVLineIterator {$/;"	f
 SVNumberIterator	$OCENLIB/sv.oc	/^struct SVNumberIterator<T> {$/;"	f
 SVPredicateIterator	$OCENLIB/sv.oc	/^struct SVPredicateIterator {$/;"	f
@@ -74,6 +75,7 @@ Sound	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Chunk"] struct Sound$/;"	f
 Span	$OCENLIB/span.oc	/^struct Span {$/;"	f
 Stream	$OCENLIB/zlib.oc	/^    [extern "z_stream"] struct Stream {$/;"	f
 Surface	$OCENLIB/sdl/mod.oc	/^struct Surface$/;"	f
+TM	$OCENLIB/time.oc	/^[extern "struct tm"] struct TM {}$/;"	f
 Texture	$OCENLIB/sdl/mod.oc	/^[extern "SDL_UnlockTexture"]  def Texture::unlock(&this)$/;"	f
 Thread	$OCENLIB/thread.oc	/^struct Thread {$/;"	f
 Time	$OCENLIB/time.oc	/^[extern "time_t"] struct Time {}$/;"	f
@@ -121,6 +123,12 @@ as_int	$OCENLIB/value.oc	/^def Value::as_int(&this): i64 {$/;"	f
 as_list	$OCENLIB/value.oc	/^def Value::as_list(&this): &Vector<&Value> {$/;"	f
 as_str	$OCENLIB/value.oc	/^def Value::as_str(&this): Buffer {$/;"	f
 asin	$OCENLIB/complex.oc	/^[extern "casinf"] def Complex::asin(this): Complex$/;"	f
+at	$OCENLIB/compact_map.oc	/^def Map::at(&this, key: K): V {$/;"	f
+at	$OCENLIB/deque.oc	/^def Deque::at(&this, index: u32): T {$/;"	f
+at	$OCENLIB/map.oc	/^def Map::at(&this, key: K): V {$/;"	f
+at	$OCENLIB/sv.oc	/^def SV::at(this, n: u32): char {$/;"	f
+at	$OCENLIB/value.oc	/^def Value::at(&this, idx: u32): &Value {$/;"	f
+at	$OCENLIB/vector.oc	/^def Vector::at(&this, i: u32): T {$/;"	f
 atan	$OCENLIB/complex.oc	/^[extern "catanf"] def Complex::atan(this): Complex$/;"	f
 atan2	$OCENLIB/complex.oc	/^[extern "catan2f"] def Complex::atan2(this, other: Complex): Complex$/;"	f
 atan2	$OCENLIB/math.oc	/^[extern "atan2f"] def f32::atan2(this, y: f32): f32$/;"	f
@@ -130,6 +138,7 @@ bilinear_interp	$OCENLIB/image/mod.oc	/^def bilinear_interp(t0: f32, t1: f32, a:
 bind	$OCENLIB/socket.oc	/^[extern] def bind(sockfd: i32, addr: &SockAddr, addrlen: i32): i32$/;"	f
 calloc	$OCENLIB/libc.oc	/^[extern] def calloc(size: u32, elem_size: u32): untyped_ptr$/;"	f
 ceil	$OCENLIB/math.oc	/^[extern "ceilf"] def f32::ceil(this): f32$/;"	f
+ch	$OCENLIB/hash/sha256.oc	/^    def ch(x: u32, y: u32, z: u32): u32 => (x & y) ^ (~x & z)$/;"	f
 chars	$OCENLIB/mod.oc	/^def str::chars(this, start: u32 = 0): CharIterator => CharIterator(this, this.len(), start)$/;"	f
 chars	$OCENLIB/sv.oc	/^def SV::chars(this, start: u32 = 0): std::CharIterator => std::CharIterator(.data, .len, start)$/;"	f
 chop_by_delim	$OCENLIB/sv.oc	/^def SV::chop_by_delim(&this, delim: char): SV {$/;"	f
@@ -248,6 +257,14 @@ ends_with_sv	$OCENLIB/sv.oc	/^def SV::ends_with_sv(this, other: SV): bool {$/;"	
 ensure	$OCENLIB/value.oc	/^def Value::ensure(&this, type: ValueType) {$/;"	f
 ep0	$OCENLIB/hash/sha256.oc	/^    def ep0(x: u32): u32 => rotate_right(x, 2) ^ rotate_right(x, 13) ^ rotate_right(x, 22)$/;"	f
 ep1	$OCENLIB/hash/sha256.oc	/^    def ep1(x: u32): u32 => rotate_right(x, 6) ^ rotate_right(x, 11) ^ rotate_right(x, 25)$/;"	f
+eq	$OCENLIB/complex.oc	/^def Complex::eq(this, other: Complex): bool {$/;"	f
+eq	$OCENLIB/hash/sha1.oc	/^def SHA1Hash::eq(this, other: SHA1Hash): bool => memcmp(.data, other.data, 20) == 0/;"	f
+eq	$OCENLIB/hash/sha256.oc	/^def SHA256Hash::eq(this, other: SHA256Hash): bool => memcmp(.data, other.data, 32) == 0/;"	f
+eq	$OCENLIB/image/qoi.oc	/^def RGBA::eq(this, other: RGBA): bool {$/;"	f
+eq	$OCENLIB/mod.oc	/^def str::eq(this, other: str): bool => libc::strcmp(this, other) == 0$/;"	f
+eq	$OCENLIB/sv.oc	/^def SV::eq(this, other: SV): bool => .len == other.len and memcmp(.data, other.data, .len) == 0$/;"	f
+eq	$OCENLIB/traits/eq.oc	/^def u8::eq(this, other: u8): bool => this == other$/;"	f
+eq	$OCENLIB/vec.oc	/^def Vec3::eq(this, other: Vec3<T>): bool => .x == other.x and .y == other.y and .z == other.z$/;"	f
 eq_str	$OCENLIB/sv.oc	/^def SV::eq_str(this, other: str): bool => .eq(SV::from_str(other))$/;"	f
 execvp	$OCENLIB/libc.oc	/^[extern] def execvp(a: str, b: &str): i32$/;"	f
 exit	$OCENLIB/libc.oc	/^[extern] [exits] def exit(code: i32)$/;"	f
@@ -401,6 +418,7 @@ insert	$OCENLIB/compact_map.oc	/^def Map::insert(&this, key: K, value: V) {$/;"	
 insert	$OCENLIB/map.oc	/^def Map::insert(&this, key: K, value: V) {$/;"	f
 insert	$OCENLIB/value.oc	/^def Value::insert(&this, key: str, value: &Value) {$/;"	f
 interp	$OCENLIB/image/mod.oc	/^def interp(t: f32, a: f32, b: f32): f32 {$/;"	f
+is	$OCENLIB/value.oc	/^def Value::is(this, type: ValueType): bool => .type == type$/;"	f
 is_alnum	$OCENLIB/mod.oc	/^def char::is_alnum(this): bool => libc::isalnum(this)$/;"	f
 is_alpha	$OCENLIB/mod.oc	/^def char::is_alpha(this): bool => libc::isalpha(this)$/;"	f
 is_before	$OCENLIB/span.oc	/^def Location::is_before(&this, other: Location): bool {$/;"	f
@@ -676,6 +694,7 @@ sub	$OCENLIB/vec.oc	/^def Vec3::sub(this, other: Vec3<T>): Vec3<T> => Vec3<T>(.x
 subs	$OCENLIB/vec.oc	/^def Vec3::subs(this, val: T): Vec3<T> => Vec3<T>(.x - val, .y - val, .z - val)$/;"	f
 substring	$OCENLIB/mod.oc	/^def str::substring(this, start: u32, len: u32): str {$/;"	f
 subtract	$OCENLIB/set.oc	/^def Set::subtract(&this, other: &Set<T>) {$/;"	f
+sv	$OCENLIB/buffer.oc	/^def Buffer::sv(this): SV => SV(.data as str, .size)$/;"	f
 swap	$OCENLIB/heap.oc	/^def Heap::swap(&this, a: u32, b: u32) {$/;"	f
 system	$OCENLIB/libc.oc	/^[extern] def system(cmd: str): i32$/;"	f
 tan	$OCENLIB/complex.oc	/^[extern "ctanf"] def Complex::tan(this): Complex$/;"	f

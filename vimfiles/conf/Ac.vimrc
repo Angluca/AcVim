@@ -96,7 +96,7 @@ fu! s:formatTags(rd='')
     exe 'g/^\~.*$/d'
     exe 'g/^!_.*$/d'
     exe 'g/^.\?\s*$/d'
-    exe '%s/^\w\{,2}\s\+.*$\n//ge'
+    exe '%s/^\w\{,1}\s\+.*$\n//ge'
     "exe 'g/^\(\k\+\)\t.*$\n\1\t.*/d'
     exe '%s/^.*.md\t.*$\n//ge'
     exe '%s/^.*.json\t.*$\n//ge'

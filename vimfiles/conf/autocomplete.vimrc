@@ -139,6 +139,7 @@ SetAcpDict('lua','lua.dict')
 SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict')
 SetAcpDict('zig','zig.dict','zig.base.dict')
 SetAcpDict('hare','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
+SetAcpDict('ocen','ocen.base.dict','ocen.dict')
 "}}}
 "-------------------
 "--temp {{{
