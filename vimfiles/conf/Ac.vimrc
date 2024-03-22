@@ -75,6 +75,7 @@ fu! s:formatDict()
     " tag2dict
     "exe 'g/^\(\k\+\)\s.*$\n\1$/d'
     "exe '%s/^\(\k\+\)\s.*/\1/ge'
+    exe '%s/.*\/^\s*\\\/\\\/.*$\n//ge'
     exe 'g/^\([0-9A-Za-z_.:]\+\)\s.*$\n\1$/d'
     exe '%s/^\([0-9A-Za-z_.:]\+\)\s.*/\1/ge'
     exe 'g/^\W\+.*$/d'
@@ -102,6 +103,7 @@ fu! s:formatTags(rd='')
     exe '%s/^.*.json\t.*$\n//ge'
     exe '%s/^.*.txt\t.*$\n//ge'
     exe '%s/^.*\/tests\/.*$\n//ge'
+    exe '%s/.*\/^\s*\\\/\\\/.*$\n//ge'
 endf
 nmap \-- :Ftags<cr>
 nmap \-0 :Fdict<cr>
@@ -356,7 +358,7 @@ set ffs=unix,dos
 "Set 7 lines to the curors - when moving vertical..
 "set so=7
 "set autochdir "auto set dir
-set tags=./tags,tags
+"setl tags=./tags,tags
 au BufNewFile,BufRead *tags setlocal ft=tags
 "set guifont=Consolas:h11
 "Turn on WiLd menu

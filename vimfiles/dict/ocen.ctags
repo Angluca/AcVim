@@ -2,7 +2,7 @@
 --langmap=ocen:.oc
 --language-force=ocen
 --exclude=ocen.tags
---regex-ocen=/[^\#]*typedef\s+(\w+)\s*/\1/f,func/
+--regex-ocen=/[^\#]*typedef\s+(\w+)\s*/\1/f,type/
 --regex-ocen=/[^\#]*def\s+(\w+)\s*/\1/f,func/
 --regex-ocen=/[^\#]*def\s+(\w+)\s*\<.*\(/\1/f,func/
 --regex-ocen=/[^\#]*def\s+[^\(]*\w+::(\w+).*\(/\1/f,func/

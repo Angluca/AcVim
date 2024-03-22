@@ -1,0 +1,385 @@
+AST	$OCENLIB/../compiler/ast/nodes.oc	/^struct AST {$/;"	f
+ASTType	$OCENLIB/../compiler/ast/nodes.oc	/^enum ASTType {$/;"	f
+Argument	$OCENLIB/../compiler/ast/nodes.oc	/^struct Argument {$/;"	f
+ArrayLiteral	$OCENLIB/../compiler/ast/nodes.oc	/^struct ArrayLiteral {$/;"	f
+ArrayType	$OCENLIB/../compiler/types.oc	/^struct ArrayType {$/;"	f
+Assertion	$OCENLIB/../compiler/ast/nodes.oc	/^struct Assertion {$/;"	f
+Attribute	$OCENLIB/../compiler/attributes.oc	/^struct Attribute {$/;"	f
+AttributeType	$OCENLIB/../compiler/attributes.oc	/^enum AttributeType {$/;"	f
+BaseType	$OCENLIB/../compiler/types.oc	/^enum BaseType {$/;"	f
+Binary	$OCENLIB/../compiler/ast/nodes.oc	/^struct Binary {$/;"	f
+Block	$OCENLIB/../compiler/ast/nodes.oc	/^struct Block {$/;"	f
+CachedTypes	$OCENLIB/../compiler/ast/program.oc	/^struct CachedTypes {$/;"	f
+Cast	$OCENLIB/../compiler/ast/nodes.oc	/^struct Cast {$/;"	f
+CodeGenerator	$OCENLIB/../compiler/passes/code_generator.oc	/^struct CodeGenerator {$/;"	f
+DIR	$OCENLIB/../compiler/utils.oc	/^[extern] struct DIR$/;"	f
+DocGenerator	$OCENLIB/../compiler/docgen.oc	/^struct DocGenerator {$/;"	f
+Enum	$OCENLIB/../compiler/ast/nodes.oc	/^struct Enum {$/;"	f
+Error	$OCENLIB/../compiler/errors.oc	/^struct Error {$/;"	f
+ErrorType	$OCENLIB/../compiler/errors.oc	/^enum ErrorType {$/;"	f
+Finder	$OCENLIB/../compiler/passes/register_types.oc	/^struct Finder {$/;"	f
+FormatString	$OCENLIB/../compiler/ast/nodes.oc	/^struct FormatString {$/;"	f
+FuncCall	$OCENLIB/../compiler/ast/nodes.oc	/^struct FuncCall {$/;"	f
+Function	$OCENLIB/../compiler/ast/nodes.oc	/^struct Function {$/;"	f
+FunctionType	$OCENLIB/../compiler/types.oc	/^struct FunctionType {$/;"	f
+GenericPass	$OCENLIB/../compiler/passes/generic_pass.oc	/^struct GenericPass {$/;"	f
+Identifier	$OCENLIB/../compiler/ast/nodes.oc	/^struct Identifier {$/;"	f
+IfStatement	$OCENLIB/../compiler/ast/nodes.oc	/^struct IfStatement {$/;"	f
+Import	$OCENLIB/../compiler/ast/nodes.oc	/^struct Import {$/;"	f
+ImportPart	$OCENLIB/../compiler/ast/nodes.oc	/^struct ImportPart {$/;"	f
+ImportPartSingle	$OCENLIB/../compiler/ast/nodes.oc	/^struct ImportPartSingle {$/;"	f
+ImportPartType	$OCENLIB/../compiler/ast/nodes.oc	/^enum ImportPartType {$/;"	f
+ImportType	$OCENLIB/../compiler/ast/nodes.oc	/^enum ImportType {$/;"	f
+Lexer	$OCENLIB/../compiler/lexer.oc	/^struct Lexer {$/;"	f
+Loop	$OCENLIB/../compiler/ast/nodes.oc	/^struct Loop {$/;"	f
+MarkDeadCode	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^struct MarkDeadCode {$/;"	f
+Match	$OCENLIB/../compiler/ast/nodes.oc	/^struct Match {$/;"	f
+MatchCase	$OCENLIB/../compiler/ast/nodes.oc	/^struct MatchCase {$/;"	f
+Member	$OCENLIB/../compiler/ast/nodes.oc	/^struct Member {$/;"	f
+MessageType	$OCENLIB/../compiler/errors.oc	/^enum MessageType {$/;"	f
+NSIterator	$OCENLIB/../compiler/ast/program.oc	/^struct NSIterator {$/;"	f
+NSLookup	$OCENLIB/../compiler/ast/nodes.oc	/^struct NSLookup {$/;"	f
+Namespace	$OCENLIB/../compiler/ast/program.oc	/^struct Namespace {$/;"	f
+NamespaceDump	$OCENLIB/../compiler/passes/namespace_dump.oc	/^struct NamespaceDump {$/;"	f
+NumLiteral	$OCENLIB/../compiler/ast/nodes.oc	/^struct NumLiteral {$/;"	f
+Parser	$OCENLIB/../compiler/parser.oc	/^struct Parser {$/;"	f
+Program	$OCENLIB/../compiler/ast/program.oc	/^struct Program {$/;"	f
+RegisterTypes	$OCENLIB/../compiler/passes/register_types.oc	/^struct RegisterTypes {$/;"	f
+ReorderStructs	$OCENLIB/../compiler/passes/reorder_structs.oc	/^struct ReorderStructs {$/;"	f
+Scope	$OCENLIB/../compiler/ast/scopes.oc	/^struct Scope {$/;"	f
+Specialization	$OCENLIB/../compiler/ast/nodes.oc	/^struct Specialization {$/;"	f
+Structure	$OCENLIB/../compiler/ast/nodes.oc	/^struct Structure {$/;"	f
+Symbol	$OCENLIB/../compiler/ast/scopes.oc	/^struct Symbol {$/;"	f
+SymbolType	$OCENLIB/../compiler/ast/scopes.oc	/^enum SymbolType {$/;"	f
+Template	$OCENLIB/../compiler/ast/scopes.oc	/^struct Template {$/;"	f
+TemplateInstance	$OCENLIB/../compiler/ast/scopes.oc	/^struct TemplateInstance {$/;"	f
+Token	$OCENLIB/../compiler/tokens.oc	/^struct Token {$/;"	f
+TokenType	$OCENLIB/../compiler/tokens.oc	/^enum TokenType {$/;"	f
+Type	$OCENLIB/../compiler/types.oc	/^struct Type {$/;"	f
+TypeChecker	$OCENLIB/../compiler/passes/typechecker.oc	/^struct TypeChecker {$/;"	f
+TypeUnion	$OCENLIB/../compiler/types.oc	/^struct TypeUnion {$/;"	f
+UnresolvedTemplate	$OCENLIB/../compiler/types.oc	/^struct UnresolvedTemplate {$/;"	f
+VarDeclaration	$OCENLIB/../compiler/ast/nodes.oc	/^struct VarDeclaration {$/;"	f
+Variable	$OCENLIB/../compiler/ast/nodes.oc	/^struct Variable {$/;"	f
+add_dbg_method_for_enum	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::add_dbg_method_for_enum(&this, enum_: &Enum) {$/;"	f
+add_doc_comment	$OCENLIB/../compiler/parser.oc	/^def Parser::add_doc_comment(&this, sym: &Symbol, token: &Token) {$/;"	f
+and	$OCENLIB/../compiler/passes/code_generator.oc	/^            if is_func_def and cur == top {$/;"	f
+basename	$OCENLIB/../compiler/parser.oc	/^[extern] def basename(path: str): str$/;"	f
+call_dbg_on_enum_value	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::call_dbg_on_enum_value(&this, node_ptr: &&AST): &Type {$/;"	f
+can_have_methods	$OCENLIB/../compiler/types.oc	/^def Type::can_have_methods(&this): bool => match .base {$/;"	f
+check_binary_op	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_binary_op(&this, node: &AST, lhs: &Type, rhs: &Type): &Type {$/;"	f
+check_block	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_block(&this, node: &AST, is_expr: bool, hint: &Type = null) {$/;"	f
+check_call	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_call(&this, node: &AST): &Type {$/;"	f
+check_call_args	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_call_args(&this, node: &AST, params: &Vector<&Variable>) {$/;"	f
+check_const_expression	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_const_expression(&this, node: &AST, hint: &Type = null): &Type {$/;"	f
+check_constructor	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_constructor(&this, node: &AST): &Type {$/;"	f
+check_expression	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_expression(&this, node: &AST, hint: &Type = null): &Type {$/;"	f
+check_expression_helper	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_expression_helper(&this, node: &AST, hint: &Type): &Type {$/;"	f
+check_expression_statement	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_expression_statement(&this, node: &AST, body: &AST, is_expr: bool, hint: /;"	f
+check_for	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_for(&this, node: &AST) {$/;"	f
+check_format_string	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_format_string(&this, node: &AST): &Type {$/;"	f
+check_function	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_function(&this, func: &Function) {$/;"	f
+check_function_declaration	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_function_declaration(&this, func: &Function) {$/;"	f
+check_globals	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_globals(&this, node: &AST, is_const: bool) {$/;"	f
+check_if	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_if(&this, node: &AST, is_expr: bool, hint: &Type = null) {$/;"	f
+check_internal_print	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_internal_print(&this, node: &AST): &Type {$/;"	f
+check_match	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_match(&this, node: &AST, is_expr: bool, hint: &Type = null) {$/;"	f
+check_match_for_enum	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_match_for_enum(&this, enum_: &Enum, node: &AST, is_expr: bool, hint: &Typ/;"	f
+check_member	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_member(&this, node: &AST, is_being_called: bool): &Type {$/;"	f
+check_method_call	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_method_call(&this, method: &Function, node: &AST) {$/;"	f
+check_namespace	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_namespace(&this, ns: &Namespace) {$/;"	f
+check_pointer_arith	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_pointer_arith(&this, node: &AST, _lhs: &Type, _rhs: &Type): &Type {$/;"	f
+check_post_import	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_post_import(&this, ns: &Namespace) {$/;"	f
+check_pre_import	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_pre_import(&this, ns: &Namespace) {$/;"	f
+check_statement	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_statement(&this, node: &AST) {$/;"	f
+check_while	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::check_while(&this, node: &AST) {$/;"	f
+clear_attributes	$OCENLIB/../compiler/parser.oc	/^def Parser::clear_attributes(&this) {$/;"	f
+closedir	$OCENLIB/../compiler/utils.oc	/^[extern] def closedir(dir: &DIR)$/;"	f
+collect_all_structs	$OCENLIB/../compiler/passes/reorder_structs.oc	/^def ReorderStructs::collect_all_structs(&this, ns: &Namespace) {$/;"	f
+consume	$OCENLIB/../compiler/parser.oc	/^def Parser::consume(&this, type: TokenType): &Token {$/;"	f
+consume_end_of_statement	$OCENLIB/../compiler/parser.oc	/^def Parser::consume_end_of_statement(&this) {$/;"	f
+consume_if	$OCENLIB/../compiler/parser.oc	/^def Parser::consume_if(&this, type: TokenType): bool {$/;"	f
+consume_newline_or	$OCENLIB/../compiler/parser.oc	/^def Parser::consume_newline_or(&this, type: TokenType) {$/;"	f
+couldnt_find_stdlib	$OCENLIB/../compiler/parser.oc	/^def couldnt_find_stdlib() {$/;"	f
+cur	$OCENLIB/../compiler/ast/program.oc	/^def NSIterator::cur(&this): &Namespace => .curr/;"	f
+cur	$OCENLIB/../compiler/lexer.oc	/^def Lexer::cur(&this): char => .source[.i]$/;"	f
+decay_array	$OCENLIB/../compiler/types.oc	/^def Type::decay_array(&this): &Type {$/;"	f
+dfs	$OCENLIB/../compiler/passes/reorder_structs.oc	/^def ReorderStructs::dfs(&this, struc: &Structure) {$/;"	f
+directory_exists	$OCENLIB/../compiler/utils.oc	/^def directory_exists(path: str): bool {$/;"	f
+dirname	$OCENLIB/../compiler/parser.oc	/^[extern] def dirname(path: str): str$/;"	f
+display	$OCENLIB/../compiler/errors.oc	/^def Error::display(&this) {$/;"	f
+display_error_messages	$OCENLIB/../compiler/errors.oc	/^def display_error_messages(errors: &Vector<&Error>, detail_level: u32) {$/;"	f
+display_line	$OCENLIB/../compiler/errors.oc	/^def display_line() {$/;"	f
+display_message	$OCENLIB/../compiler/errors.oc	/^def display_message(type: MessageType, span: Span, msg: str) {$/;"	f
+display_message_span	$OCENLIB/../compiler/errors.oc	/^def display_message_span(type: MessageType, span: Span, msg: str) {$/;"	f
+edit_distance	$OCENLIB/../compiler/utils.oc	/^def edit_distance(str1: str, str2: str): u32 {$/;"	f
+enum	$OCENLIB/../compiler/passes/code_generator.oc	/^        .out.putsf(`typedef enum {enum_name} \\{\\n`)$/;"	f
+eq	$OCENLIB/../compiler/attributes.oc	/^def AttributeType::eq(this, other: AttributeType): bool => this == other$/;"	f
+eq	$OCENLIB/../compiler/types.oc	/^def Type::eq(&this, other: &Type, strict: bool = false): bool {$/;"	f
+error	$OCENLIB/../compiler/ast/program.oc	/^def Program::error(&this, err: &Error): &Error {$/;"	f
+error	$OCENLIB/../compiler/parser.oc	/^def Parser::error(&this, err: &Error): &Error {$/;"	f
+error	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::error(&this, err: &Error): &Error => .o.error(err)$/;"	f
+error	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::error(&this, err: &Error): &Error {$/;"	f
+error	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::error(&this, err: &Error): &Error => .o.error(err)$/;"	f
+error_msg	$OCENLIB/../compiler/parser.oc	/^def Parser::error_msg(&this, msg: str): &Error {$/;"	f
+exit_with_errors	$OCENLIB/../compiler/ast/program.oc	/^def Program::exit_with_errors(&this) {$/;"	f
+field	$OCENLIB/../compiler/parser.oc	/^        .error(Error::new(.token().span, "Expected ':' after struct field names for type"))$/;"	f
+find_and_import_stdlib	$OCENLIB/../compiler/parser.oc	/^def Parser::find_and_import_stdlib(&this) {$/;"	f
+find_external_library	$OCENLIB/../compiler/parser.oc	/^def Parser::find_external_library(&this, name: str): &Namespace {$/;"	f
+find_external_library_path	$OCENLIB/../compiler/parser.oc	/^def Parser::find_external_library_path(&this, name: str): str {$/;"	f
+find_importable_symbol	$OCENLIB/../compiler/ast/program.oc	/^def Namespace::find_importable_symbol(&this, name: str): &Symbol {$/;"	f
+find_main_function	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::find_main_function(&this, program: &Program): &Function {$/;"	f
+find_template_instance	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::find_template_instance(&this, template_instances: &Vector<&TemplateInstance>, a/;"	f
+find_word_suggestion	$OCENLIB/../compiler/utils.oc	/^def find_word_suggestion(s: str, options: &Vector<str>): str {$/;"	f
+for	$OCENLIB/../compiler/passes/typechecker.oc	/^                    "Cannot use a typedef for a type when defining any of it's members.\\nUse fu/;"	f
+format_string_custom_argument	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::format_string_custom_argument(&this, type: &Type, expr: &AST) {$/;"	f
+format_string_custom_specifier	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::format_string_custom_specifier(&this, type: &Type, expr: &AST) {$/;"	f
+free	$OCENLIB/../compiler/attributes.oc	/^def Attribute::free(&this) {$/;"	f
+free	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::free(&this) {$/;"	f
+free	$OCENLIB/../compiler/passes/reorder_structs.oc	/^def ReorderStructs::free(&this) {$/;"	f
+from_ident	$OCENLIB/../compiler/tokens.oc	/^def Token::from_ident(text: str, span: Span): &Token {$/;"	f
+from_local_variable	$OCENLIB/../compiler/ast/scopes.oc	/^def Symbol::from_local_variable(name: str, var: &Variable, span: Span): &Symbol {$/;"	f
+from_str	$OCENLIB/../compiler/attributes.oc	/^def AttributeType::from_str(s: str): AttributeType => match s {$/;"	f
+from_text	$OCENLIB/../compiler/tokens.oc	/^def TokenType::from_text(text: str): TokenType => match text {$/;"	f
+from_token	$OCENLIB/../compiler/ast/nodes.oc	/^def ASTType::from_token(type: TokenType): ASTType => match type {$/;"	f
+from_type	$OCENLIB/../compiler/tokens.oc	/^def Token::from_type(type: TokenType, span: Span): &Token => Token::new(type, span, "")$/;"	f
+gen_block	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_block(&this, node: &AST, with_braces: bool = true) {$/;"	f
+gen_builtin	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_builtin(&this, type: &Type): &Value {$/;"	f
+gen_builtins	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_builtins(&this, program: &Program): &Value {$/;"	f
+gen_constant	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_constant(&this, node: &AST) {$/;"	f
+gen_constants	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_constants(&this, ns: &Namespace) {$/;"	f
+gen_constructor	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_constructor(&this, node: &AST, struc: &Structure) {$/;"	f
+gen_control_body	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_control_body(&this, node: &AST, body: &AST) {$/;"	f
+gen_debug_info	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_debug_info(&this, span: Span, force: bool = false) {$/;"	f
+gen_defers_upto	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_defers_upto(&this, end_scope: &Scope) {$/;"	f
+gen_enum	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_enum(&this, enum_: &Enum): &Value {$/;"	f
+gen_enum	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_enum(&this, enum_: &Enum) {$/;"	f
+gen_enum_dbg_method	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_enum_dbg_method(&this, enum_: &Enum) {$/;"	f
+gen_enum_types	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_enum_types(&this, ns: &Namespace) {$/;"	f
+gen_expression	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_expression(&this, node: &AST) {$/;"	f
+gen_format_string	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_format_string(&this, node: &AST) {$/;"	f
+gen_format_string_part	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_format_string_part(&this, part: str) {$/;"	f
+gen_format_string_variadic	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_format_string_variadic(&this, node: &AST, newline_after: bool) {$/;"	f
+gen_function	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_function(&this, func: &Function): &Value {$/;"	f
+gen_function	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_function(&this, func: &Function) {$/;"	f
+gen_function_decl	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_function_decl(&this, func: &Function) {$/;"	f
+gen_function_decls	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_function_decls(&this, ns: &Namespace) {$/;"	f
+gen_functions	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_functions(&this, ns: &Namespace) {$/;"	f
+gen_global_variables	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_global_variables(&this, ns: &Namespace) {$/;"	f
+gen_in_yield_context	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_in_yield_context(&this, node: &AST) {$/;"	f
+gen_indent	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_indent(&this) {$/;"	f
+gen_internal_print	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_internal_print(&this, node: &AST) {$/;"	f
+gen_location	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_location(&this, obj: &Value, span: Span) {$/;"	f
+gen_match	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_match(&this, node: &AST) {$/;"	f
+gen_match_case_body	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_match_case_body(&this, node: &AST, body: &AST) {$/;"	f
+gen_match_string	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_match_string(&this, node: &AST) {$/;"	f
+gen_methods	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_methods(&this, type: &Type): &Value {$/;"	f
+gen_ns	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_ns(&this, ns: &Namespace): &Value {$/;"	f
+gen_statement	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_statement(&this, node: &AST) {$/;"	f
+gen_struct	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_struct(&this, struc: &Structure): &Value {$/;"	f
+gen_struct	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_struct(&this, struc: &Structure) {$/;"	f
+gen_structs_and_typedefs	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_structs_and_typedefs(&this) {$/;"	f
+gen_templated_type	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_templated_type(&this, base: &Type, args: &Vector<&Type>): str {$/;"	f
+gen_type	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_type(&this, type: &Type) {$/;"	f
+gen_type_and_name	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_type_and_name(&this, type: &Type, name: str) {$/;"	f
+gen_typename	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_typename(&this, type: &Type): &Value {$/;"	f
+gen_typename_str	$OCENLIB/../compiler/docgen.oc	/^def DocGenerator::gen_typename_str(&this, type: &Type): str {$/;"	f
+gen_var_declaration	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_var_declaration(&this, node: &AST) {$/;"	f
+gen_yield_expression	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::gen_yield_expression(&this, expr: &AST) {$/;"	f
+generate	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::generate(&this): str {$/;"	f
+get_base_type	$OCENLIB/../compiler/ast/program.oc	/^def Program::get_base_type(&this, base: BaseType, span: Span): &Type {$/;"	f
+get_base_type	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::get_base_type(&this, base: BaseType, span: Span): &Type => .o.program.get_base_/;"	f
+get_extern_from_attr	$OCENLIB/../compiler/parser.oc	/^def Parser::get_extern_from_attr(&this, sym: &Symbol, attr: &Attribute) {$/;"	f
+get_field	$OCENLIB/../compiler/ast/nodes.oc	/^def Structure::get_field(&this, name: str): &Variable {$/;"	f
+get_function_deep_copy	$OCENLIB/../compiler/ast/program.oc	/^def Program::get_function_deep_copy(&this, old: &Function, ns: &Namespace): &Function {$/;"	f
+get_op	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::get_op(&this, type: ASTType): str => match type {$/;"	f
+get_source_text	$OCENLIB/../compiler/ast/program.oc	/^def Program::get_source_text(&this, span: Span): str {$/;"	f
+get_struct_deep_copy	$OCENLIB/../compiler/ast/program.oc	/^def Program::get_struct_deep_copy(&this, old: &Structure, ns: &Namespace): &Structure {$/;"	f
+get_type_by_name	$OCENLIB/../compiler/ast/program.oc	/^def Program::get_type_by_name(&this, name: str, span: Span): &Type {$/;"	f
+get_type_by_name	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::get_type_by_name(&this, name: str, span: Span): &Type => .o.program.get_type_by/;"	f
+get_type_name_string	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::get_type_name_string(&this, type: &Type, name: str, is_func_def: bool): str {$/;"	f
+handle_import_path_base	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::handle_import_path_base(&this, parts: &Vector<&ImportPart>, base: &Symbol, alia/;"	f
+handle_import_statement	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::handle_import_statement(&this, node: &AST) {$/;"	f
+handle_imports	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::handle_imports(&this, ns: &Namespace, is_global: bool = false) {$/;"	f
+has_value	$OCENLIB/../compiler/ast/program.oc	/^def NSIterator::has_value(&this): bool => .curr?$/;"	f
+hash	$OCENLIB/../compiler/attributes.oc	/^def AttributeType::hash(this): u32 => this as u32$/;"	f
+helper_gen_type	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::helper_gen_type(&this, top: &Type, cur: &Type, acc: str, is_func_def: bool): /;"	f
+import_all_from_namespace	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::import_all_from_namespace(&this, ns: &Namespace) {$/;"	f
+import_all_from_symbol	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::import_all_from_symbol(&this, sym: &Symbol) {$/;"	f
+inc	$OCENLIB/../compiler/lexer.oc	/^def Lexer::inc(&this) {$/;"	f
+include_prelude_only	$OCENLIB/../compiler/parser.oc	/^def Parser::include_prelude_only(&this) {$/;"	f
+insert	$OCENLIB/../compiler/ast/scopes.oc	/^def Scope::insert(&this, name: str, symbol: &Symbol) {$/;"	f
+insert_into_scope_checked	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::insert_into_scope_checked(&this, item: &Symbol, name: str = null) {$/;"	f
+is_end_of_statement	$OCENLIB/../compiler/parser.oc	/^def Parser::is_end_of_statement(&this): bool {$/;"	f
+is_float	$OCENLIB/../compiler/types.oc	/^def Type::is_float(&this): bool => .base == BaseType::F32 or .base == BaseType::F64$/;"	f
+is_hex_digit	$OCENLIB/../compiler/lexer.oc	/^def is_hex_digit(c: char): bool {$/;"	f
+is_identifier	$OCENLIB/../compiler/ast/nodes.oc	/^def AST::is_identifier(&this): bool => match .type {$/;"	f
+is_integer	$OCENLIB/../compiler/types.oc	/^def Type::is_integer(&this): bool => match .base {$/;"	f
+is_lvalue	$OCENLIB/../compiler/ast/nodes.oc	/^def AST::is_lvalue(&this): bool => match .type {$/;"	f
+is_numeric	$OCENLIB/../compiler/types.oc	/^def Type::is_numeric(&this): bool => match .base {$/;"	f
+is_numeric_or_char	$OCENLIB/../compiler/types.oc	/^def Type::is_numeric_or_char(&this): bool => .is_numeric() or .base == BaseType::Char$/;"	f
+is_resolved	$OCENLIB/../compiler/types.oc	/^def Type::is_resolved(&this): bool => .base != BaseType::Unresolved$/;"	f
+is_str	$OCENLIB/../compiler/types.oc	/^def Type::is_str(&this): bool {$/;"	f
+is_templated	$OCENLIB/../compiler/ast/scopes.oc	/^def Symbol::is_templated(&this): bool => .template?$/;"	f
+is_word	$OCENLIB/../compiler/tokens.oc	/^def Token::is_word(this): bool => match .type {$/;"	f
+iter_namespaces	$OCENLIB/../compiler/ast/program.oc	/^def Program::iter_namespaces(&this): NSIterator {$/;"	f
+join_display	$OCENLIB/../compiler/ast/scopes.oc	/^def Symbol::join_display(a: str, b: str): str => if a.len() == 0 then b else `{a}::{b}`$/;"	f
+join_full_name	$OCENLIB/../compiler/ast/scopes.oc	/^def Symbol::join_full_name(a: str, b: str): str => if a.len() == 0 then b else `{a}_{b}`$/;"	f
+lex	$OCENLIB/../compiler/lexer.oc	/^def Lexer::lex(&this): &Vector<&Token> {$/;"	f
+lex_char_literal	$OCENLIB/../compiler/lexer.oc	/^def Lexer::lex_char_literal(&this) {$/;"	f
+lex_comment	$OCENLIB/../compiler/lexer.oc	/^def Lexer::lex_comment(&this) {$/;"	f
+lex_int_literal_different_base	$OCENLIB/../compiler/lexer.oc	/^def Lexer::lex_int_literal_different_base(&this): &Token {$/;"	f
+lex_numeric_literal	$OCENLIB/../compiler/lexer.oc	/^def Lexer::lex_numeric_literal(&this) {$/;"	f
+lex_numeric_literal_helper	$OCENLIB/../compiler/lexer.oc	/^def Lexer::lex_numeric_literal_helper(&this): &Token {$/;"	f
+lex_string_literal	$OCENLIB/../compiler/lexer.oc	/^def Lexer::lex_string_literal(&this, has_seen_f: bool) {$/;"	f
+load_file	$OCENLIB/../compiler/parser.oc	/^def Parser::load_file(&this, filename: str) {$/;"	f
+load_import_path	$OCENLIB/../compiler/parser.oc	/^def Parser::load_import_path(&this, import_stmt: &AST): bool {$/;"	f
+load_import_path_from_base	$OCENLIB/../compiler/parser.oc	/^def Parser::load_import_path_from_base(&this, parts: &Vector<&ImportPart>, base: &Namespace): bo/;"	f
+load_single_import_part	$OCENLIB/../compiler/parser.oc	/^def Parser::load_single_import_part(&this, base: &Namespace, name: str, span: Span): &Namespace /;"	f
+lookup_in_symbol	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::lookup_in_symbol(&this, sym: &Symbol, name: str, span: Span, error: bool): &Sym/;"	f
+lookup_local	$OCENLIB/../compiler/ast/scopes.oc	/^def Scope::lookup_local(&this, name: str): &Symbol {$/;"	f
+lookup_recursive	$OCENLIB/../compiler/ast/scopes.oc	/^def Scope::lookup_recursive(&this, name: str): &Symbol {$/;"	f
+loosely_resolve_templated_struct	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::loosely_resolve_templated_struct(&this, struc: &Structure) {$/;"	f
+main	$OCENLIB/../compiler/main.oc	/^def main(argc: i32, argv: &str) {$/;"	f
+make	$OCENLIB/../compiler/lexer.oc	/^def Lexer::make(source: str, filename: str): Lexer {$/;"	f
+make	$OCENLIB/../compiler/parser.oc	/^def Parser::make(program: &Program, ns: &Namespace): Parser {$/;"	f
+make	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::make(program: &Program): CodeGenerator {$/;"	f
+mark	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::mark(&this, node: &AST) {$/;"	f
+mark_function	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::mark_function(&this, f: &Function) {$/;"	f
+mark_struct	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::mark_struct(&this, s: &Structure) {$/;"	f
+mark_sym	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::mark_sym(&this, sym: &Symbol) {$/;"	f
+mark_sym_as_dead_by_default	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::mark_sym_as_dead_by_default(&this, sym: &Symbol) {$/;"	f
+mark_type	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::mark_type(&this, typ: &Type) {$/;"	f
+matches	$OCENLIB/../compiler/ast/scopes.oc	/^def TemplateInstance::matches(&this, other: &Vector<&Type>): bool {$/;"	f
+name	$OCENLIB/../compiler/passes/typechecker.oc	/^                    .error(Error::new(node.span, "Cannot use an enum name as an expression"))$/;"	f
+new	$OCENLIB/../compiler/ast/nodes.oc	/^def Variable::new(type: &Type): &Variable {$/;"	f
+new	$OCENLIB/../compiler/ast/program.oc	/^def Program::new(): &Program {$/;"	f
+new	$OCENLIB/../compiler/ast/scopes.oc	/^def TemplateInstance::new(args: &Vector<&Type>, parent: &Symbol, resolved: &Symbol): &TemplateIn/;"	f
+new	$OCENLIB/../compiler/attributes.oc	/^def Attribute::new(type: AttributeType, span: Span): &Attribute {$/;"	f
+new	$OCENLIB/../compiler/errors.oc	/^def Error::new(span: Span, msg: str): &Error {$/;"	f
+new	$OCENLIB/../compiler/parser.oc	/^    let enum_def = Enum::new()$/;"	f
+new	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::new(program: &Program): &GenericPass {$/;"	f
+new	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::new(program: &Program): &MarkDeadCode {$/;"	f
+new	$OCENLIB/../compiler/passes/reorder_structs.oc	/^def ReorderStructs::new(program: &Program): &ReorderStructs {$/;"	f
+new	$OCENLIB/../compiler/tokens.oc	/^def Token::new(type: TokenType, span: Span, text: str): &Token {$/;"	f
+new_binop	$OCENLIB/../compiler/ast/nodes.oc	/^def AST::new_binop(type: ASTType, lhs: &AST, rhs: &AST): &AST {$/;"	f
+new_hint	$OCENLIB/../compiler/errors.oc	/^def Error::new_hint(span: Span, msg: str, span2: Span, hint: str): &Error {$/;"	f
+new_note	$OCENLIB/../compiler/errors.oc	/^def Error::new_note(span: Span, msg: str, note: str): &Error {$/;"	f
+new_resolved	$OCENLIB/../compiler/types.oc	/^def Type::new_resolved(base: BaseType, span: Span): &Type {$/;"	f
+new_unop	$OCENLIB/../compiler/ast/nodes.oc	/^def AST::new_unop(type: ASTType, span: Span, expr: &AST): &AST {$/;"	f
+new_unresolved	$OCENLIB/../compiler/types.oc	/^def Type::new_unresolved(name: str, span: Span): &Type {$/;"	f
+new_unresolved_base	$OCENLIB/../compiler/types.oc	/^def Type::new_unresolved_base(base: BaseType, span: Span): &Type {$/;"	f
+new_with_parent	$OCENLIB/../compiler/ast/scopes.oc	/^def Symbol::new_with_parent(type: SymbolType, ns: &Namespace, parent: &Symbol, name: str, span: /;"	f
+next	$OCENLIB/../compiler/ast/program.oc	/^def NSIterator::next(&this) {$/;"	f
+ns	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::ns(&this): &Namespace {$/;"	f
+opendir	$OCENLIB/../compiler/utils.oc	/^[extern] def opendir(path: str): &DIR$/;"	f
+out_name	$OCENLIB/../compiler/ast/scopes.oc	/^def Symbol::out_name(&this): str {$/;"	f
+panic	$OCENLIB/../compiler/errors.oc	/^def Error::panic(&this) {$/;"	f
+parse_additive	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_additive(&this, end_type: TokenType): &AST {$/;"	f
+parse_args	$OCENLIB/../compiler/main.oc	/^def parse_args(argc: i32, argv: &str, program: &Program) {$/;"	f
+parse_atom	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_atom(&this, end_type: TokenType): &AST {$/;"	f
+parse_attribute	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_attribute(&this) {$/;"	f
+parse_block	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_block(&this): &AST {$/;"	f
+parse_bw_and	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_bw_and(&this, end_type: TokenType): &AST {$/;"	f
+parse_bw_or	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_bw_or(&this, end_type: TokenType): &AST {$/;"	f
+parse_bw_xor	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_bw_xor(&this, end_type: TokenType): &AST {$/;"	f
+parse_call	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_call(&this, callee: &AST): &AST {$/;"	f
+parse_cast	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_cast(&this, end_type: TokenType): &AST {$/;"	f
+parse_compiler_option	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_compiler_option(&this) {$/;"	f
+parse_enum	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_enum(&this): &Enum {$/;"	f
+parse_expression	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_expression(&this, end_type: TokenType): &AST {$/;"	f
+parse_extern_into_symbol	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_extern_into_symbol(&this, sym: &Symbol) {$/;"	f
+parse_for	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_for(&this): &AST {$/;"	f
+parse_for_each	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_for_each(&this, start_span: Span): &AST {$/;"	f
+parse_format_string	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_format_string(&this): &AST {$/;"	f
+parse_function	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_function(&this): &Function {$/;"	f
+parse_global_value	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_global_value(&this, is_const: bool): &AST {$/;"	f
+parse_if	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_if(&this): &AST {$/;"	f
+parse_import	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_import(&this): &AST {$/;"	f
+parse_import_path	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_import_path(&this): &Vector<&ImportPart> {$/;"	f
+parse_literal_suffix_type	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_literal_suffix_type(&this, suffix: &Token): &Type {$/;"	f
+parse_logical_and	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_logical_and(&this, end_type: TokenType): &AST {$/;"	f
+parse_logical_or	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_logical_or(&this, end_type: TokenType): &AST {$/;"	f
+parse_match	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_match(&this): &AST {$/;"	f
+parse_namespace_until	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_namespace_until(&this, end_type: TokenType) {$/;"	f
+parse_postfix	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_postfix(&this, end_type: TokenType): &AST {$/;"	f
+parse_prefix	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_prefix(&this, end_type: TokenType): &AST {$/;"	f
+parse_relational	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_relational(&this, end_type: TokenType): &AST {$/;"	f
+parse_scoped_identifier	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_scoped_identifier(&this, consume_template: bool = true): &AST {$/;"	f
+parse_shift	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_shift(&this, end_type: TokenType): &AST {$/;"	f
+parse_statement	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_statement(&this): &AST {$/;"	f
+parse_struct	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_struct(&this): &Structure {$/;"	f
+parse_struct_field	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_struct_field(&this, struc: &Structure) {$/;"	f
+parse_template_params	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_template_params(&this, sym: &Symbol, out_span: &Span = null) {$/;"	f
+parse_term	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_term(&this, end_type: TokenType): &AST {$/;"	f
+parse_toplevel	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_toplevel(program: &Program, filename: str, include_stdlib: bool) {$/;"	f
+parse_type	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_type(&this): &Type => match .token().type {$/;"	f
+parse_var_declaration	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_var_declaration(&this): &AST {$/;"	f
+parse_var_initializer	$OCENLIB/../compiler/parser.oc	/^def Parser::parse_var_initializer(&this): &AST {$/;"	f
+peek	$OCENLIB/../compiler/lexer.oc	/^def Lexer::peek(&this, offset: i32): char {$/;"	f
+peek	$OCENLIB/../compiler/parser.oc	/^def Parser::peek(&this, off: i32 = 1): &Token {$/;"	f
+pop_namespace	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::pop_namespace(&this): &Namespace {$/;"	f
+pop_scope	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::pop_scope(&this): &Scope {$/;"	f
+pre_check_function	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::pre_check_function(&this, ns: &Namespace, func: &Function) {$/;"	f
+pre_check_globals	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::pre_check_globals(&this, node: &AST, is_const: bool) {$/;"	f
+print_indent	$OCENLIB/../compiler/passes/namespace_dump.oc	/^def NamespaceDump::print_indent(&this) {$/;"	f
+print_namespace	$OCENLIB/../compiler/passes/namespace_dump.oc	/^def NamespaceDump::print_namespace(&this, ns: &Namespace) {$/;"	f
+push	$OCENLIB/../compiler/lexer.oc	/^def Lexer::push(&this, token: &Token) {$/;"	f
+push_namespace	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::push_namespace(&this, ns: &Namespace) {$/;"	f
+push_scope	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::push_scope(&this, scope: &Scope) {$/;"	f
+push_type	$OCENLIB/../compiler/lexer.oc	/^def Lexer::push_type(&this, type: TokenType, len: u32) {$/;"	f
+register_alias	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::register_alias(&this, name: str, orig: &Type) {$/;"	f
+register_base_type	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::register_base_type(&this, base: BaseType) {$/;"	f
+register_builtin_types	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::register_builtin_types(&this) {$/;"	f
+register_cached_types	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::register_cached_types(&this) {$/;"	f
+register_enum	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::register_enum(&this, ns: &Namespace, enum_: &Enum) {$/;"	f
+register_globals	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::register_globals(&this, node: &AST) {$/;"	f
+register_namespace	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::register_namespace(&this, ns: &Namespace) {$/;"	f
+register_struct	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::register_struct(&this, ns: &Namespace, struc: &Structure) {$/;"	f
+remove_alias	$OCENLIB/../compiler/ast/scopes.oc	/^def Symbol::remove_alias(&this): &Symbol => match .type {$/;"	f
+reorder_structs	$OCENLIB/../compiler/passes/reorder_structs.oc	/^def ReorderStructs::reorder_structs(&this) {$/;"	f
+replace	$OCENLIB/../compiler/passes/code_generator.oc	/^def str::replace(&this, other: str) {$/;"	f
+resolve_doc_links	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::resolve_doc_links(&this, sym: &Symbol) {$/;"	f
+resolve_scoped_identifier	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::resolve_scoped_identifier(&this, node: &AST, error: bool = true, hint: &Type = /;"	f
+resolve_struct	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::resolve_struct(&this, struc: &Structure) {$/;"	f
+resolve_templated_function	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::resolve_templated_function(&this, func: &Function, instance: &TemplateInstance)/;"	f
+resolve_templated_struct	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::resolve_templated_struct(&this, struc: &Structure, instance: &TemplateInstance)/;"	f
+resolve_templated_struct_methods	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::resolve_templated_struct_methods(&this, old: &Structure, cur: &Structure) {$/;"	f
+resolve_templated_symbol	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::resolve_templated_symbol(&this, sym: &Symbol, node: &AST): &Symbol {$/;"	f
+resolve_type	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::resolve_type($/;"	f
+run	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::run(program: &Program): str {$/;"	f
+run	$OCENLIB/../compiler/passes/mark_dead_code.oc	/^def MarkDeadCode::run(program: &Program) {$/;"	f
+run	$OCENLIB/../compiler/passes/namespace_dump.oc	/^def NamespaceDump::run(program: &Program) {$/;"	f
+run	$OCENLIB/../compiler/passes/register_types.oc	/^def RegisterTypes::run(program: &Program) {$/;"	f
+run	$OCENLIB/../compiler/passes/reorder_structs.oc	/^def ReorderStructs::run(program: &Program) {$/;"	f
+run	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::run(program: &Program) {$/;"	f
+run_codegen_passes	$OCENLIB/../compiler/passes/mod.oc	/^def run_codegen_passes(program: &Program): str {$/;"	f
+run_typecheck_passes	$OCENLIB/../compiler/passes/mod.oc	/^def run_typecheck_passes(program: &Program) {$/;"	f
+save_and_compile_code	$OCENLIB/../compiler/main.oc	/^def save_and_compile_code(program: &Program, code: str) {$/;"	f
+scope	$OCENLIB/../compiler/passes/code_generator.oc	/^def CodeGenerator::scope(&this): &Scope => .o.scope()$/;"	f
+scope	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::scope(&this): &Scope {$/;"	f
+scope	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::scope(&this): &Scope => .o.scope()$/;"	f
+shallow_copy	$OCENLIB/../compiler/types.oc	/^def Type::shallow_copy(old: &Type): &Type {$/;"	f
+str	$OCENLIB/../compiler/errors.oc	/^def MessageType::str(this): str => match this {$/;"	f
+str	$OCENLIB/../compiler/passes/code_generator.oc	/^def str::replace(&this, other: str) {$/;"	f
+str	$OCENLIB/../compiler/tokens.oc	/^def TokenType::str(this): str => match this {$/;"	f
+str	$OCENLIB/../compiler/types.oc	/^def Type::str(&this): str => match .base {$/;"	f
+strsep	$OCENLIB/../compiler/utils.oc	/^[extern] def strsep(s: &str, delim: str): str$/;"	f
+struct	$OCENLIB/../compiler/passes/code_generator.oc	/^            .out.putsf(`typedef struct {strufull_name} {strufull_name};\\n`)$/;"	f
+symbol	$OCENLIB/../compiler/ast/nodes.oc	/^def AST::symbol(&this): &Symbol => .resolved_symbol$/;"	f
+to	$OCENLIB/../compiler/passes/register_types.oc	/^def Finder::to(this, name: str): Finder {$/;"	f
+to_color	$OCENLIB/../compiler/errors.oc	/^def MessageType::to_color(this): str => match this {$/;"	f
+token	$OCENLIB/../compiler/parser.oc	/^def Parser::token(&this): &Token {$/;"	f
+token_is	$OCENLIB/../compiler/parser.oc	/^def Parser::token_is(&this, type: TokenType): bool {$/;"	f
+try_infer_array_size	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::try_infer_array_size(&this, arr_typ: &ArrayType) {$/;"	f
+try_load_mod_for_namespace	$OCENLIB/../compiler/parser.oc	/^def Parser::try_load_mod_for_namespace(&this, ns: &Namespace) {$/;"	f
+try_resolve_typedefs_in_namespace	$OCENLIB/../compiler/passes/typechecker.oc	/^def TypeChecker::try_resolve_typedefs_in_namespace(&this, ns: &Namespace, pre_import: bool) {$/;"	f
+type	$OCENLIB/../compiler/passes/typechecker.oc	/^    assert type_sym.type == Structure, `Got non-struct type in check_constructor: {type_sym.type/;"	f
+unaliased	$OCENLIB/../compiler/types.oc	/^def Type::unaliased(&this): &Type {$/;"	f
+unhandled_type	$OCENLIB/../compiler/parser.oc	/^def Parser::unhandled_type(&this, func: str) {$/;"	f
+union	$OCENLIB/../compiler/passes/code_generator.oc	/^            .out.putsf(`typedef union {strufull_name} {strufull_name};\\n`)$/;"	f
+update_parent	$OCENLIB/../compiler/ast/scopes.oc	/^def Symbol::update_parent(&this, parent: &Symbol) {$/;"	f
+usage	$OCENLIB/../compiler/main.oc	/^def usage(code: i32) {$/;"	f
+validate	$OCENLIB/../compiler/attributes.oc	/^def Attribute::validate(&this, parser_for_errors: &Parser): bool {$/;"	f
+value	$OCENLIB/../compiler/passes/typechecker.oc	/^            .error(Error::new(cond.span, "Expected an enum value"))$/;"	f
+verify_structure_has_field	$OCENLIB/../compiler/passes/generic_pass.oc	/^def GenericPass::verify_structure_has_field(&this, type: &Type, field_name: str, span: Span): &T/;"	f

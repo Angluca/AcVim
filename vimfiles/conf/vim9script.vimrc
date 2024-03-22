@@ -6,7 +6,9 @@ var dictproperties = {
         zig: {sortedDict: true }
     }
 export var options = {
-    completor: { shuffleEqualPriority: true },
+    completor: { 
+        shuffleEqualPriority: true,
+    },
     buffer: { 
         enable: true,
         priority: 10,
