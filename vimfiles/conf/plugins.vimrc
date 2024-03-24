@@ -14,6 +14,7 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
+Plug 'angluca/zig.vim'
 Plug 'angluca/nim.vim'
 Plug 'angluca/hare.vim'
 Plug 'angluca/ocen.vim'
@@ -25,6 +26,7 @@ Plug 'girishji/vimcomplete'
 Plug 'girishji/autosuggest.vim'
 Plug 'girishji/ngram-complete.vim'
 "Plug 'girishji/vsnip-complete.vim'
+"Plug 'LunarWatcher/auto-pairs'
 
 Plug 'yegappan/lsp'
 Plug 'hrsh7th/vim-vsnip'

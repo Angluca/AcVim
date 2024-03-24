@@ -66,10 +66,6 @@ export var asopt = {
 autocmd VimEnter * g:AutoSuggestSetup(asopt)
 
 import autoload 'scope/fuzzy.vim'
-fuzzy.OptionsSet({
-        #grep_echo_cmd: false,
-        # ...
-})
 nnoremap <c-l> <scriptcmd>fuzzy.Quickfix()<CR>
 nnoremap <c-L> <scriptcmd>fuzzy.Quickfix()<CR>
 nnoremap g/ <scriptcmd>fuzzy.BufSearch()<CR>

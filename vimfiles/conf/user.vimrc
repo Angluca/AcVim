@@ -386,8 +386,9 @@ au filetype zig com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -fo
 au filetype d com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 dmd <args> %
 au filetype d com! -bang -nargs=* -complete=file Db AsyncRun<bang> -raw=1 -focus=0 -rows=8 dub <args>
 au filetype hare com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args> %
-au filetype Ocen com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r
-au filetype Ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r && ./%:t:r
+au filetype ocen com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r
+au filetype ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r && ./%:t:r
+au filetype ocen com! -bang -nargs=* -complete=file Clean AsyncRun<bang> -raw=1 -focus=0 -rows=8 rm %:t:r %:t:r.c
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .

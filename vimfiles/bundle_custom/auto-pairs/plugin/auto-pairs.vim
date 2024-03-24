@@ -677,8 +677,8 @@ func! AutoPairsTryInit()
         let old_cr = wrapper_name
       end
       " Always silent mapping
-      execute 'inoremap <script> <buffer> <silent> <CR> '.old_cr.'<SID>AutoPairsReturn'
-      execute 'inoremap <script> <buffer> <silent> <S-CR> '.old_cr.'<SID>AutoPairsReturn'
+      execute 'inoremap <script> <buffer> <silent> <c-CR> '.old_cr.'<SID>AutoPairsReturn'
+      execute 'inoremap <script> <buffer> <silent> <c-S-CR> '.old_cr.'<SID>AutoPairsReturn'
     end
   endif
   call AutoPairsInit()
