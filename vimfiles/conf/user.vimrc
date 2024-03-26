@@ -468,6 +468,13 @@ au filetype zig call LspAddServer([#{
             \    path: 'zls',
             \  }])
 
+"au filetype ocen call LspAddServer([#{
+            "\    name: 'ocen',
+            "\    filetype: ['ocen'],
+            "\    path: 'ocen',
+            "\    args: ['lsp']
+            "\  }])
+
 "au filetype v call LspAddServer([#{
             "\    name: 'vls',
             "\    filetype: ['vlang', 'v'],
