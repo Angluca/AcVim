@@ -44,13 +44,13 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
 "au FileType zig let $ZIGLIB = $HOME.'/SDK/Zigs/zig/lib'
 au FileType hare nmap \== :Mtags hare.tags $VIMDICT/hare.ctags<cr>
-au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
-au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
-au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
+"au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
+"au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
+"au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
 au FileType ocen nmap \== :Mtags ocen.tags $VIMDICT/ocen.ctags<cr>
 au FileType ocen let $OCENLIB = $HOME.'/SDK/Ocens/ocen/std'
-au FileType ocen setl tags +=$VIMDICT/ocen.tags,$VIMDICT/ocen.compiler.tags
+au FileType ocen setl tags +=$VIMDICT/ocen.tags
 
 "nmap \-z :Ftags '$ZIGLIB'<cr> 
 "nmap \-n :Ftags '$NIMLIB'<cr> 
@@ -138,7 +138,7 @@ SetAcpDict('lua','lua.dict')
 SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict')
 SetAcpDict('zig','zig.dict','zig.base.dict')
 SetAcpDict('hare','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
-SetAcpDict('ocen','ocen.base.dict','ocen.dict','ocen.compiler.dict')
+SetAcpDict('ocen','ocen.base.dict','ocen.dict')
 "}}}
 "-------------------
 "--temp {{{
@@ -147,7 +147,7 @@ au FileType zig let g:zig_fmt_autosave = 0
 "au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/src'
 "au FileType zig let $RAYGUI = $HOME.'/SDK/Raylibs/raygui/src'
 "au FileType zig setl tags +=$VIMDICT/raylib.tags,$VIMDICT/raygui.tags
-"SetAcpDict('zig','zig.dict','zig.base.dict','raylib.dict','raygui.dict')
+SetAcpDict('zig','zig.dict','zig.base.dict','raylib.dict','raygui.dict')
 "sokol
 "au FileType zig let $SOKOLC = $HOME.'/Zigs/Sokols/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokolc.tags

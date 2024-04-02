@@ -114,4 +114,4 @@
 @wasmMemorySize
 @workGroupId
 @workGroupSize
-@workItemI
+@workItemId

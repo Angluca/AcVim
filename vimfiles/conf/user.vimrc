@@ -384,7 +384,7 @@ au filetype rust com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -fo
 au filetype zig com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
 au filetype zig com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
 au filetype d com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 dmd <args> %
-au filetype d com! -bang -nargs=* -complete=file Db AsyncRun<bang> -raw=1 -focus=0 -rows=8 dub <args>
+au filetype d com! -bang -nargs=* -complete=file Dub AsyncRun<bang> -raw=1 -focus=0 -rows=8 dub <args>
 au filetype hare com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args> %
 au filetype ocen com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r
 au filetype ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r && ./%:t:r
@@ -467,6 +467,13 @@ au filetype zig call LspAddServer([#{
             \    filetype: ['zig'],
             \    path: 'zls',
             \  }])
+
+"au filetype ocen call LspAddServer([#{
+            "\    name: 'ocen',
+            "\    filetype: ['ocen'],
+            "\    path: 'ocen',
+            "\    args: ['lsp']
+            "\  }])
 
 "au filetype v call LspAddServer([#{
             "\    name: 'vls',

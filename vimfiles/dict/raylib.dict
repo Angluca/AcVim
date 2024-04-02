@@ -4,6 +4,12 @@ ADDEND
 ADD_ATTRIB
 ALIGN
 ALIGN_PTR
+ANDROID_API_VERSION
+ANDROID_ARCH
+ANDROID_COMPILER_ARCH
+ANDROID_NDK
+ANDROID_SYSROOT
+ANDROID_TOOLCHAIN
 ANGLE_platform_angle
 ANGLE_platform_angle_d3d
 ANGLE_platform_angle_metal
@@ -11,6 +17,7 @@ ANGLE_platform_angle_opengl
 ANGLE_platform_angle_vulkan
 APIENTRY
 API_VERSION
+AR
 ARB_context_flush_control
 ARB_create_context
 ARB_create_context_no_error
@@ -109,12 +116,8 @@ CAMERA_CULL_DISTANCE_FAR
 CAMERA_CULL_DISTANCE_NEAR
 CAMERA_CUSTOM
 CAMERA_FIRST_PERSON
-CAMERA_FIRST_PERSON_STEP_DIVIDER
-CAMERA_FIRST_PERSON_STEP_TRIGONOMETRIC_DIVIDER
-CAMERA_FIRST_PERSON_WAVING_DIVIDER
 CAMERA_FREE
 CAMERA_MOUSE_MOVE_SENSITIVITY
-CAMERA_MOUSE_SCROLL_SENSITIVITY
 CAMERA_MOVE_SPEED
 CAMERA_ORBITAL
 CAMERA_ORBITAL_SPEED
@@ -123,6 +126,7 @@ CAMERA_PAN_SPEED
 CAMERA_PERSPECTIVE
 CAMERA_ROTATION_SPEED
 CAMERA_THIRD_PERSON
+CC
 CFBundleDevelopmentRegion
 CFBundleExecutable
 CFBundleGetInfoString
@@ -135,6 +139,7 @@ CFBundlePackageType
 CFBundleShortVersionString
 CFBundleSignature
 CFBundleVersion
+CFLAGS
 CFStringRef
 CGLTF_ASSERT_IF
 CGLTF_ATOF
@@ -161,6 +166,7 @@ CHECK
 CHUNKSIZE
 CHUNKSIZE_OPSHIFT
 CHUNK_FLATTENOFFSET_OPSHIFT
+CLANG_PATH
 CLIPBOARD
 CLIPBOARD_MANAGER
 CLITERAL
@@ -172,7 +178,6 @@ CMAKE_FIND_ROOT_PATH
 CMAKE_FIND_ROOT_PATH_MODE_INCLUDE
 CMAKE_FIND_ROOT_PATH_MODE_LIBRARY
 CMAKE_FIND_ROOT_PATH_MODE_PROGRAM
-CMAKE_LEGACY_CYGWIN_WIN32
 CMAKE_MSVC_RUNTIME_LIBRARY
 CMAKE_RANLIB
 CMAKE_RC_COMPILER
@@ -208,6 +213,7 @@ CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR
 CUBEMAP_LAYOUT_LINE_HORIZONTAL
 CUBEMAP_LAYOUT_LINE_VERTICAL
 CUBEMAP_LAYOUT_PANORAMA
+CURSOR_FD
 CUSTOM_MESH_GEN_CUBE
 CUSTOM_MESH_GEN_PLANE
 Camera
@@ -227,7 +233,6 @@ ChangeProperty
 ChangeWindowAttributes
 ChangeWindowMessageFilterEx
 ChangeWindowMessageFilterEx_
-Changelog
 Channels
 CharCallback
 CheckCollisionBoxSphere
@@ -263,18 +268,16 @@ ColorBrightness
 ColorContrast
 ColorFromHSV
 ColorFromNormalized
+ColorIsEqual
 ColorNormalize
 ColorTint
 ColorToHSV
 ColorToInt
 Command
 CommandType
-Compiling
 CompressData
 ConfigFlags
 ConfigureEvdevDevice
-Contact
-Contributing
 ConvertScancodeToKey
 ConvertSelection
 CopyCurrentKeyboardLayoutInputSource
@@ -311,10 +314,10 @@ DECODE
 DECODE_RAW
 DECODE_VQ
 DEFAULT_EVDEV_PATH
-DEFAULT_GAMEPAD_DEV
 DEFAULT_SAMPLE_RATE
 DEFAULT_SEED
 DEG2RAD
+DESTDIR
 DI8DEVCLASS_ALL
 DI8DEVCLASS_DEVICE
 DI8DEVCLASS_GAMECTRL
@@ -924,6 +927,7 @@ DISFFC_SETACTUATORSOFF
 DISFFC_SETACTUATORSON
 DISFFC_STOPALL
 DISPLAY_DEVICE_ACTIVE
+DISPLAY_FD
 DIVTAB_DENOM
 DIVTAB_NUMER
 DI_BUFFEROVERFLOW
@@ -942,7 +946,6 @@ DI_TRUNCATED
 DI_TRUNCATEDANDRESTARTED
 DI_WRITEPROTECT
 DOUBLETAP_RANGE
-DOXYGEN_SKIP_DOT
 DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2
 DRAG_TIMEOUT
 DRFLAC_64BIT
@@ -1393,7 +1396,6 @@ DecompressData
 DefineCursor
 DeleteContext
 DeleteProperty
-Dependencies
 DestroyContext
 DestroyDatabase
 DestroyIC
@@ -1535,7 +1537,6 @@ EFFECT_VOLSLIDE_TONEPORTA
 EFFECT_VOLSLIDE_TREMOLO
 EFFECT_VOLSLIDE_VIBRATO
 EFFECT_VOLUME_SLIDE
-EGLAPIENTRY
 EGLBoolean
 EGLConfig
 EGLContext
@@ -1591,6 +1592,7 @@ EGL_NO_SURFACE
 EGL_OPENGL_API
 EGL_OPENGL_BIT
 EGL_OPENGL_ES2_BIT
+EGL_OPENGL_ES3_BIT
 EGL_OPENGL_ES_API
 EGL_OPENGL_ES_BIT
 EGL_PLATFORM_ANGLE_ANGLE
@@ -1617,6 +1619,8 @@ EGL_SURFACE_TYPE
 EGL_WINDOW_BIT
 EGLenum
 EGLint
+EMSCRIPTEN_PATH
+EMSDK_PATH
 EOP
 EPOLLSHIM_FOUND
 EPSILON
@@ -1665,10 +1669,8 @@ EndShaderMode
 EndTextureMode
 EndVrStereoMode
 ErrorCallback
-EventThread
 EventType
 EventsQueued
-EvkeyToUnicodeLUT
 ExportAutomationEventList
 ExportDataAsCode
 ExportFontAsCode
@@ -1729,6 +1731,7 @@ FPS_AVERAGE_TIME_SECONDS
 FPS_CAPTURE_FRAMES_COUNT
 FPS_STEP
 FULL_PERIOD_TABLE_LENGTH
+FacesPerSideNormal
 Fade
 FileExists
 FilePathList
@@ -2178,13 +2181,19 @@ GLFW_AUTO_ICONIFY
 GLFW_AUX_BUFFERS
 GLFW_BLUE_BITS
 GLFW_BORDER_SIZE
-GLFW_BUILD_COCOA_MAPPINGS
+GLFW_BUILD_COCOA_TIMER
 GLFW_BUILD_DOCS
 GLFW_BUILD_EXAMPLES
-GLFW_BUILD_LINUX_MAPPINGS
+GLFW_BUILD_LINUX_JOYSTICK
+GLFW_BUILD_POSIX_MODULE
+GLFW_BUILD_POSIX_POLL
+GLFW_BUILD_POSIX_THREAD
+GLFW_BUILD_POSIX_TIMER
 GLFW_BUILD_SHARED_LIBRARY
 GLFW_BUILD_TESTS
-GLFW_BUILD_WIN32_MAPPINGS
+GLFW_BUILD_WIN32_MODULE
+GLFW_BUILD_WIN32_THREAD
+GLFW_BUILD_WIN32_TIMER
 GLFW_CALLBACK_DEFINED
 GLFW_CAPTION_HEIGHT
 GLFW_CENTER_CURSOR
@@ -2224,7 +2233,15 @@ GLFW_DISCONNECTED
 GLFW_DONT_CARE
 GLFW_DOUBLEBUFFER
 GLFW_EGL_CONTEXT_API
+GLFW_EXPOSE_NATIVE_COCOA
+GLFW_EXPOSE_NATIVE_EGL
+GLFW_EXPOSE_NATIVE_GLX
+GLFW_EXPOSE_NATIVE_NSGL
+GLFW_EXPOSE_NATIVE_OSMESA
+GLFW_EXPOSE_NATIVE_WAYLAND
+GLFW_EXPOSE_NATIVE_WGL
 GLFW_EXPOSE_NATIVE_WIN32
+GLFW_EXPOSE_NATIVE_X11
 GLFW_FALSE
 GLFW_FEATURE_UNAVAILABLE
 GLFW_FEATURE_UNIMPLEMENTED
@@ -2425,6 +2442,9 @@ GLFW_KEY_Y
 GLFW_KEY_Z
 GLFW_LIBRARY_TYPE
 GLFW_LIB_NAME
+GLFW_LIB_NAME_SUFFIX
+GLFW_LINUX_ENABLE_WAYLAND
+GLFW_LINUX_ENABLE_X11
 GLFW_LINUX_JOYSTICK_STATE
 GLFW_LINUX_LIBRARY_JOYSTICK_STATE
 GLFW_LOCK_KEY_MODS
@@ -2467,6 +2487,128 @@ GLFW_NULL_CURSOR_STATE
 GLFW_NULL_LIBRARY_CONTEXT_STATE
 GLFW_NULL_LIBRARY_WINDOW_STATE
 GLFW_NULL_MONITOR_STATE
+GLFW_NULL_SC_0
+GLFW_NULL_SC_1
+GLFW_NULL_SC_2
+GLFW_NULL_SC_3
+GLFW_NULL_SC_4
+GLFW_NULL_SC_5
+GLFW_NULL_SC_6
+GLFW_NULL_SC_7
+GLFW_NULL_SC_8
+GLFW_NULL_SC_9
+GLFW_NULL_SC_A
+GLFW_NULL_SC_APOSTROPHE
+GLFW_NULL_SC_B
+GLFW_NULL_SC_BACKSLASH
+GLFW_NULL_SC_BACKSPACE
+GLFW_NULL_SC_C
+GLFW_NULL_SC_CAPS_LOCK
+GLFW_NULL_SC_COMMA
+GLFW_NULL_SC_D
+GLFW_NULL_SC_DELETE
+GLFW_NULL_SC_DOWN
+GLFW_NULL_SC_E
+GLFW_NULL_SC_END
+GLFW_NULL_SC_ENTER
+GLFW_NULL_SC_EQUAL
+GLFW_NULL_SC_ESCAPE
+GLFW_NULL_SC_F
+GLFW_NULL_SC_F1
+GLFW_NULL_SC_F10
+GLFW_NULL_SC_F11
+GLFW_NULL_SC_F12
+GLFW_NULL_SC_F13
+GLFW_NULL_SC_F14
+GLFW_NULL_SC_F15
+GLFW_NULL_SC_F16
+GLFW_NULL_SC_F17
+GLFW_NULL_SC_F18
+GLFW_NULL_SC_F19
+GLFW_NULL_SC_F2
+GLFW_NULL_SC_F20
+GLFW_NULL_SC_F21
+GLFW_NULL_SC_F22
+GLFW_NULL_SC_F23
+GLFW_NULL_SC_F24
+GLFW_NULL_SC_F25
+GLFW_NULL_SC_F3
+GLFW_NULL_SC_F4
+GLFW_NULL_SC_F5
+GLFW_NULL_SC_F6
+GLFW_NULL_SC_F7
+GLFW_NULL_SC_F8
+GLFW_NULL_SC_F9
+GLFW_NULL_SC_FIRST
+GLFW_NULL_SC_G
+GLFW_NULL_SC_GRAVE_ACCENT
+GLFW_NULL_SC_H
+GLFW_NULL_SC_HOME
+GLFW_NULL_SC_I
+GLFW_NULL_SC_INSERT
+GLFW_NULL_SC_J
+GLFW_NULL_SC_K
+GLFW_NULL_SC_KP_0
+GLFW_NULL_SC_KP_1
+GLFW_NULL_SC_KP_2
+GLFW_NULL_SC_KP_3
+GLFW_NULL_SC_KP_4
+GLFW_NULL_SC_KP_5
+GLFW_NULL_SC_KP_6
+GLFW_NULL_SC_KP_7
+GLFW_NULL_SC_KP_8
+GLFW_NULL_SC_KP_9
+GLFW_NULL_SC_KP_ADD
+GLFW_NULL_SC_KP_DECIMAL
+GLFW_NULL_SC_KP_DIVIDE
+GLFW_NULL_SC_KP_ENTER
+GLFW_NULL_SC_KP_EQUAL
+GLFW_NULL_SC_KP_MULTIPLY
+GLFW_NULL_SC_KP_SUBTRACT
+GLFW_NULL_SC_L
+GLFW_NULL_SC_LAST
+GLFW_NULL_SC_LEFT
+GLFW_NULL_SC_LEFT_ALT
+GLFW_NULL_SC_LEFT_BRACKET
+GLFW_NULL_SC_LEFT_CONTROL
+GLFW_NULL_SC_LEFT_SHIFT
+GLFW_NULL_SC_LEFT_SUPER
+GLFW_NULL_SC_M
+GLFW_NULL_SC_MENU
+GLFW_NULL_SC_MINUS
+GLFW_NULL_SC_N
+GLFW_NULL_SC_NUM_LOCK
+GLFW_NULL_SC_O
+GLFW_NULL_SC_P
+GLFW_NULL_SC_PAGE_DOWN
+GLFW_NULL_SC_PAGE_UP
+GLFW_NULL_SC_PAUSE
+GLFW_NULL_SC_PERIOD
+GLFW_NULL_SC_PRINT_SCREEN
+GLFW_NULL_SC_Q
+GLFW_NULL_SC_R
+GLFW_NULL_SC_RIGHT
+GLFW_NULL_SC_RIGHT_ALT
+GLFW_NULL_SC_RIGHT_BRACKET
+GLFW_NULL_SC_RIGHT_CONTROL
+GLFW_NULL_SC_RIGHT_SHIFT
+GLFW_NULL_SC_RIGHT_SUPER
+GLFW_NULL_SC_S
+GLFW_NULL_SC_SCROLL_LOCK
+GLFW_NULL_SC_SEMICOLON
+GLFW_NULL_SC_SLASH
+GLFW_NULL_SC_SPACE
+GLFW_NULL_SC_T
+GLFW_NULL_SC_TAB
+GLFW_NULL_SC_U
+GLFW_NULL_SC_UP
+GLFW_NULL_SC_V
+GLFW_NULL_SC_W
+GLFW_NULL_SC_WORLD_1
+GLFW_NULL_SC_WORLD_2
+GLFW_NULL_SC_X
+GLFW_NULL_SC_Y
+GLFW_NULL_SC_Z
 GLFW_NULL_WINDOW_STATE
 GLFW_OPENGL_ANY_PROFILE
 GLFW_OPENGL_API
@@ -2477,6 +2619,7 @@ GLFW_OPENGL_ES_API
 GLFW_OPENGL_FORWARD_COMPAT
 GLFW_OPENGL_PROFILE
 GLFW_OSMESA_CONTEXT_API
+GLFW_OSX
 GLFW_OUT_OF_MEMORY
 GLFW_PKG_CONFIG_LIBS_PRIVATE
 GLFW_PKG_CONFIG_REQUIRES_PRIVATE
@@ -2520,10 +2663,10 @@ GLFW_RESIZE_NESW_CURSOR
 GLFW_RESIZE_NS_CURSOR
 GLFW_RESIZE_NWSE_CURSOR
 GLFW_SAMPLES
+GLFW_SCALE_FRAMEBUFFER
 GLFW_SCALE_TO_MONITOR
 GLFW_SELECTION
 GLFW_SRGB_CAPABLE
-GLFW_STANDALONE
 GLFW_STENCIL_BITS
 GLFW_STEREO
 GLFW_STICKY_KEYS
@@ -2538,8 +2681,11 @@ GLFW_VISIBLE
 GLFW_VRESIZE_CURSOR
 GLFW_WAYLAND_APP_ID
 GLFW_WAYLAND_CURSOR_STATE
+GLFW_WAYLAND_DISABLE_LIBDECOR
+GLFW_WAYLAND_LIBDECOR
 GLFW_WAYLAND_LIBRARY_WINDOW_STATE
 GLFW_WAYLAND_MONITOR_STATE
+GLFW_WAYLAND_PREFER_LIBDECOR
 GLFW_WAYLAND_WINDOW_STATE
 GLFW_WGL_CONTEXT_STATE
 GLFW_WGL_LIBRARY_CONTEXT_STATE
@@ -2551,6 +2697,7 @@ GLFW_WIN32_LIBRARY_TIMER_STATE
 GLFW_WIN32_LIBRARY_WINDOW_STATE
 GLFW_WIN32_MONITOR_STATE
 GLFW_WIN32_MUTEX_STATE
+GLFW_WIN32_SHOWDEFAULT
 GLFW_WIN32_TLS_STATE
 GLFW_WIN32_WINDOW_STATE
 GLFW_WINGDIAPI_DEFINED
@@ -5948,6 +6095,7 @@ GLushort
 GLvdpauSurfaceNV
 GLvoid
 GOLD
+GRAPHICS
 GRAPHICS_API_OPENGL_33
 GRAPHICS_API_OPENGL_ES2
 GRAY
@@ -6117,6 +6265,8 @@ GetScreenHeight
 GetScreenResourcesCurrent
 GetScreenSaver
 GetScreenToWorld2D
+GetScreenToWorldRay
+GetScreenToWorldRayEx
 GetScreenWidth
 GetSelectionOwner
 GetShaderLocation
@@ -6170,12 +6320,15 @@ HASH_TABLE_SUCCESS
 HAS_ARPEGGIO
 HAS_TONE_PORTAMENTO
 HAS_VIBRATO
+HOST_PLATFORM_OS
 HRESULT
 HWND
 HalfToFloat
+HexToInt
 HidCode
 HideCursor
 Hold
+ID
 IDirectInput
 IDirectInput2
 IDirectInput2_AddRef
@@ -6353,8 +6506,10 @@ IID_IDirectInputDevice8
 INCLUDED_GETOPT_PORT_H
 INCLUDE_JAR_MOD_H
 INCLUDE_JAR_XM_H
+INCLUDE_PATHS
 INCLUDE_STB_IMAGE_WRITE_H
 INCR
+INOTIFY_FD
 INPUT_GAMEPAD_AXIS_MOTION
 INPUT_GAMEPAD_BUTTON_DOWN
 INPUT_GAMEPAD_BUTTON_UP
@@ -6373,40 +6528,7 @@ INPUT_TOUCH_DOWN
 INPUT_TOUCH_POSITION
 INPUT_TOUCH_UP
 INSTRUMENT_NAME_LENGTH
-INT16_C
-INT16_MAX
-INT16_MIN
-INT32_C
-INT32_MAX
-INT32_MIN
-INT64_C
-INT64_MAX
-INT64_MIN
-INT8_C
-INT8_MAX
-INT8_MIN
 INTERFACE
-INTMAX_C
-INTMAX_MAX
-INTMAX_MIN
-INTPTR_MAX
-INTPTR_MIN
-INT_FAST16_MAX
-INT_FAST16_MIN
-INT_FAST32_MAX
-INT_FAST32_MIN
-INT_FAST64_MAX
-INT_FAST64_MIN
-INT_FAST8_MAX
-INT_FAST8_MIN
-INT_LEAST16_MAX
-INT_LEAST16_MIN
-INT_LEAST32_MAX
-INT_LEAST32_MIN
-INT_LEAST64_MAX
-INT_LEAST64_MIN
-INT_LEAST8_MAX
-INT_LEAST8_MIN
 INVALID_BITS
 IQMAnim
 IQMHeader
@@ -6483,7 +6605,6 @@ ImageToPOT
 InitAssetManager
 InitAudioDevice
 InitEvdevInput
-InitGamepad
 InitGraphicsDevice
 InitKeyboard
 InitPlatform
@@ -6491,9 +6612,7 @@ InitTimer
 InitWindow
 Initialize
 Input
-InputEventWorker
 InternAtom
-Introduction
 IsActive
 IsAudioBufferPlaying
 IsAudioDeviceReady
@@ -6564,11 +6683,10 @@ JSMN_PRIMITIVE
 JSMN_STRICT
 JSMN_STRING
 JSMN_UNDEFINED
-JS_EVENT_AXIS
-JS_EVENT_BUTTON
-JS_EVENT_INIT
 JoystickCallback
 KEYCODE_MAP_SIZE
+KEYMAP_SIZE
+KEYREPEAT_FD
 KEY_A
 KEY_APOSTROPHE
 KEY_B
@@ -6705,6 +6823,24 @@ Keyboard
 KeyboardKey
 KeycodeMap
 KeycodeToKeysym
+LDFLAGS
+LDLIBS
+LIBDECOR_ACTION_CLOSE
+LIBDECOR_ACTION_FULLSCREEN
+LIBDECOR_ACTION_MINIMIZE
+LIBDECOR_ACTION_MOVE
+LIBDECOR_ACTION_RESIZE
+LIBDECOR_ERROR_COMPOSITOR_INCOMPATIBLE
+LIBDECOR_ERROR_INVALID_FRAME_CONFIGURATION
+LIBDECOR_FD
+LIBDECOR_WINDOW_STATE_ACTIVE
+LIBDECOR_WINDOW_STATE_FULLSCREEN
+LIBDECOR_WINDOW_STATE_MAXIMIZED
+LIBDECOR_WINDOW_STATE_NONE
+LIBDECOR_WINDOW_STATE_TILED_BOTTOM
+LIBDECOR_WINDOW_STATE_TILED_LEFT
+LIBDECOR_WINDOW_STATE_TILED_RIGHT
+LIBDECOR_WINDOW_STATE_TILED_TOP
 LIBVORBIS_MDCT
 LIGHTGRAY
 LIME
@@ -6864,6 +7000,7 @@ LoadFileText
 LoadFileTextCallback
 LoadFont
 LoadFontData
+LoadFontDataBDF
 LoadFontDefault
 LoadFontEx
 LoadFontFromImage
@@ -6911,6 +7048,8 @@ LoadWave
 LoadWaveFromMemory
 LoadWaveSamples
 LookupString
+M1
+M2
 M3D
 M3D_ANIMDELAY
 M3D_APIVERSION
@@ -7006,14 +7145,16 @@ MAX_BUFFER_SIZE
 MAX_CHAR_PRESSED_QUEUE
 MAX_DECOMPRESSION_SIZE
 MAX_FILENAMEWITHOUTEXT_LENGTH
+MAX_FILENAME_LENGTH
 MAX_FILEPATH_CAPACITY
 MAX_FILEPATH_LENGTH
-MAX_FILE_EXTENSION_SIZE
+MAX_FILE_EXTENSION_LENGTH
 MAX_FONT_DATA_SIZE
 MAX_FONT_IMAGE_PAGES
 MAX_GAMEPADS
 MAX_GAMEPAD_AXIS
 MAX_GAMEPAD_BUTTONS
+MAX_GAMEPAD_VIBRATION_TIME
 MAX_GLYPHS_FROM_IMAGE
 MAX_KEYBOARD_KEYS
 MAX_KEYBUFFER_SIZE
@@ -7663,6 +7804,7 @@ NANOSVGRAST_H
 NANOSVGRAST_IMPLEMENTATION
 NANOSVG_H
 NANOSVG_IMPLEMENTATION
+NATIVE_APP_GLUE
 NBITS
 NET_ACTIVE_WINDOW
 NET_CURRENT_DESKTOP
@@ -7694,6 +7836,7 @@ NOCOLOR
 NOCOMM
 NOCTLMGR
 NODEFERWINDOWPOS
+NODE_PATH
 NODRAWTEXT
 NOGDI
 NOGDICAPMASKS
@@ -7849,6 +7992,7 @@ NameGuid
 NextEvent
 Normalize
 NvOptimusEnablement
+OBJS
 OCR_HAND
 OEMRESOURCE
 OFF
@@ -7894,6 +8038,7 @@ PAR_SHAPES_IMPLEMENTATION
 PAR_SHAPES_T
 PAR_SQR
 PAR_SWAP
+PATH
 PATTERN_ORDER_TABLE_LENGTH
 PBITMAPINFOHEADER
 PCPOINT
@@ -9757,6 +9902,31 @@ PFN_eglQueryString
 PFN_eglSwapBuffers
 PFN_eglSwapInterval
 PFN_eglTerminate
+PFN_libdecor_configuration_get_content_size
+PFN_libdecor_configuration_get_window_state
+PFN_libdecor_decorate
+PFN_libdecor_dispatch
+PFN_libdecor_frame_commit
+PFN_libdecor_frame_get_xdg_toplevel
+PFN_libdecor_frame_map
+PFN_libdecor_frame_set_app_id
+PFN_libdecor_frame_set_capabilities
+PFN_libdecor_frame_set_fullscreen
+PFN_libdecor_frame_set_max_content_size
+PFN_libdecor_frame_set_maximized
+PFN_libdecor_frame_set_min_content_size
+PFN_libdecor_frame_set_minimized
+PFN_libdecor_frame_set_title
+PFN_libdecor_frame_set_visibility
+PFN_libdecor_frame_unref
+PFN_libdecor_frame_unset_capabilities
+PFN_libdecor_frame_unset_fullscreen
+PFN_libdecor_frame_unset_maximized
+PFN_libdecor_get_fd
+PFN_libdecor_new
+PFN_libdecor_state_free
+PFN_libdecor_state_new
+PFN_libdecor_unref
 PFN_vkAcquireNextImage2KHR
 PFN_vkAcquireNextImageKHR
 PFN_vkAllocateCommandBuffers
@@ -10029,12 +10199,14 @@ PFN_wl_egl_window_destroy
 PFN_wl_egl_window_resize
 PFN_wl_proxy_add_listener
 PFN_wl_proxy_destroy
+PFN_wl_proxy_get_tag
 PFN_wl_proxy_get_user_data
 PFN_wl_proxy_get_version
 PFN_wl_proxy_marshal
 PFN_wl_proxy_marshal_constructor
 PFN_wl_proxy_marshal_constructor_versioned
 PFN_wl_proxy_marshal_flags
+PFN_wl_proxy_set_tag
 PFN_wl_proxy_set_user_data
 PFN_xkb_compose_state_feed
 PFN_xkb_compose_state_get_one_sym
@@ -10056,8 +10228,10 @@ PFN_xkb_state_mod_index_is_active
 PFN_xkb_state_new
 PFN_xkb_state_unref
 PFN_xkb_state_update_mask
+PI
 PINCH_TIMEOUT
 PINK
+PIPE_FD
 PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA
 PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA
 PIXELFORMAT_COMPRESSED_DXT1_RGB
@@ -10083,10 +10257,12 @@ PIXELFORMAT_UNCOMPRESSED_R5G5B5A1_ALPHA_THRESHOLD
 PIXELFORMAT_UNCOMPRESSED_R5G6B5
 PIXELFORMAT_UNCOMPRESSED_R8G8B8
 PIXELFORMAT_UNCOMPRESSED_R8G8B8A8
+PLATFORM
+PLATFORM_OS
+PLATFORM_SHELL
 PLAYBACK_LEFT
 PLAYBACK_MONO
 PLAYBACK_RIGHT
-PLAYER_MOVEMENT_SENSITIVITY
 PRIMARY
 PROCESS_DPI_AWARENESS
 PROCESS_DPI_UNAWARE
@@ -10095,8 +10271,6 @@ PROCESS_SYSTEM_DPI_AWARE
 PROJECT_VERSION
 PROPERTYKEY
 PROPERTYKEY_DEFINED
-PTRDIFF_MAX
-PTRDIFF_MIN
 PURPLE
 PVOID
 PXINPUT_BATTERY_INFORMATION
@@ -10105,6 +10279,7 @@ PXINPUT_GAMEPAD
 PXINPUT_KEYSTROKE
 PXINPUT_STATE
 PXINPUT_VIBRATION
+PYTHON_PATH
 PauseAudioBuffer
 PauseAudioStream
 PauseMusicStream
@@ -10123,6 +10298,7 @@ Point
 PollGamepadEvents
 PollInputEvents
 PollKeyboardEvents
+PollMouseEvents
 ProbedPage
 ProcessGestureEvent
 ProcessKeyboard
@@ -10192,7 +10368,21 @@ QueryScreens
 QueryString
 QueryVersion
 RAD2DEG
+RAYLIB_API_VERSION
+RAYLIB_BUILD_MODE
+RAYLIB_CONFIG_FLAGS
 RAYLIB_H
+RAYLIB_H_INSTALL_PATH
+RAYLIB_INSTALL_PATH
+RAYLIB_LIBTYPE
+RAYLIB_LIB_NAME
+RAYLIB_MODULE_AUDIO
+RAYLIB_MODULE_MODELS
+RAYLIB_MODULE_RAYGUI
+RAYLIB_MODULE_RAYGUI_PATH
+RAYLIB_RELEASE_PATH
+RAYLIB_RES_FILE
+RAYLIB_SRC_PATH
 RAYLIB_VERSION
 RAYLIB_VERSION_MAJOR
 RAYLIB_VERSION_MINOR
@@ -10438,6 +10628,7 @@ RL_VECTOR4_TYPE
 RL_VERTEX_SHADER
 RL_ZERO
 RMAPI
+ROOT
 RPRAND
 RPRANDAPI
 RPRAND_CALLOC
@@ -10460,7 +10651,6 @@ ReleaseFileGLTFCallback
 Remap
 RenderTexture
 RenderTexture2D
-Reporting
 Residue
 ResizeWindow
 ResourceManagerString
@@ -10507,6 +10697,8 @@ SDEFL_SYM_MAX
 SDEFL_SYM_MSK
 SDEFL_WIN_MSK
 SDEFL_WIN_SIZ
+SDL_INCLUDE_PATH
+SDL_LIBRARY_PATH
 SET_ATTRIB
 SGI_swap_control
 SHADER_ATTRIB_FLOAT
@@ -10550,15 +10742,13 @@ SHADER_UNIFORM_SAMPLER2D
 SHADER_UNIFORM_VEC2
 SHADER_UNIFORM_VEC3
 SHADER_UNIFORM_VEC4
-SIG_ATOMIC_MAX
-SIG_ATOMIC_MIN
+SHELL
 SINFL_H_INCLUDED
 SINFL_IMPLEMENTATION
 SINFL_LIT_TBL_SIZE
 SINFL_NO_SIMD
 SINFL_OFF_TBL_SIZE
 SINFL_PRE_TBL_SIZE
-SIZE_MAX
 SKYBLUE
 SMOOTH_CIRCLE_ERROR_RATE
 SPEAKER_BACK_CENTER
@@ -10922,6 +11112,7 @@ SUPPORT_CAMERA_SYSTEM
 SUPPORT_COMPRESSED_FONT_ATLAS
 SUPPORT_COMPRESSION_API
 SUPPORT_DEFAULT_FONT
+SUPPORT_FILEFORMAT_BDF
 SUPPORT_FILEFORMAT_DDS
 SUPPORT_FILEFORMAT_FNT
 SUPPORT_FILEFORMAT_GIF
@@ -10999,6 +11190,7 @@ SetDetectableAutoRepeat
 SetErrorHandler
 SetExitKey
 SetGamepadMappings
+SetGamepadVibration
 SetGammaRamp
 SetGesturesEnabled
 SetICFocus
@@ -11165,29 +11357,12 @@ TrackAudioBuffer
 Transform
 TranslateCoordinates
 Type
-UINT16_C
-UINT16_MAX
-UINT32_C
-UINT32_MAX
-UINT64_C
-UINT64_MAX
-UINT8_C
-UINT8_MAX
-UINTMAX_C
-UINTMAX_MAX
-UINTPTR_MAX
-UINT_FAST16_MAX
-UINT_FAST32_MAX
-UINT_FAST64_MAX
-UINT_FAST8_MAX
-UINT_LEAST16_MAX
-UINT_LEAST32_MAX
-UINT_LEAST64_MAX
-UINT_LEAST8_MAX
 ULONG
+UNAMEOS
 UNICODE
 UNICODE_NOCHAR
 USER_DEFAULT_SCREEN_DPI
+USE_EXTERNAL_GLFW
 USE_LAST_TOUCH_DEVICE
 USE_MEMORY
 UTF8_STRING
@@ -11241,9 +11416,9 @@ UpdateMusicStream
 UpdateSound
 UpdateTexture
 UpdateTextureRec
+UpdateTouchPointsSDL
 UploadMesh
 UserIndex
-Using
 VC_EXTRALEAN
 VIOLET
 VKAPI_ATTR
@@ -12761,12 +12936,15 @@ Vector2Length
 Vector2LengthSqr
 Vector2Lerp
 Vector2LineAngle
+Vector2Max
+Vector2Min
 Vector2MoveTowards
 Vector2Multiply
 Vector2Negate
 Vector2Normalize
 Vector2One
 Vector2Reflect
+Vector2Refract
 Vector2Rotate
 Vector2Scale
 Vector2Subtract
@@ -12792,6 +12970,7 @@ Vector3LengthSqr
 Vector3Lerp
 Vector3Max
 Vector3Min
+Vector3MoveTowards
 Vector3Multiply
 Vector3Negate
 Vector3Normalize
@@ -12813,6 +12992,28 @@ Vector3Transform
 Vector3Unproject
 Vector3Zero
 Vector4
+Vector4Add
+Vector4AddValue
+Vector4Distance
+Vector4DistanceSqr
+Vector4Divide
+Vector4DotProduct
+Vector4Equals
+Vector4Invert
+Vector4Length
+Vector4LengthSqr
+Vector4Lerp
+Vector4Max
+Vector4Min
+Vector4MoveTowards
+Vector4Multiply
+Vector4Negate
+Vector4Normalize
+Vector4One
+Vector4Scale
+Vector4Subtract
+Vector4SubtractValue
+Vector4Zero
 Vibration
 VirtualKey
 VisualIDFromVisual
@@ -13371,8 +13572,6 @@ WAVE_FORMAT_96S16
 WAVE_FORMAT_EXTENSIBLE
 WAVE_FORMAT_IEEE_FLOAT
 WAVE_FORMAT_PCM
-WCHAR_MAX
-WCHAR_MIN
 WGL_ACCELERATION_ARB
 WGL_ACCUM_ALPHA_BITS_ARB
 WGL_ACCUM_BITS_ARB
@@ -13427,9 +13626,8 @@ WINDOW_MINIMIZE
 WINDOW_RESIZE
 WINELIB_NAME_AW
 WINGDIAPI
-WINT_MAX
-WINT_MIN
 WINVER
+WL_PROTOCOLS_DIR
 WM_COPYGLOBALDATA
 WM_DELETE_WINDOW
 WM_DPICHANGED
@@ -13554,6 +13752,7 @@ XInputGetKeystroke
 XInputGetState
 XInputSetState
 XInternAtom
+XLIB_FD
 XLookupString
 XMapRaised
 XMapWindow
@@ -13702,7 +13901,6 @@ _GLFW_TYPE_POV
 _GLFW_TYPE_SLIDER
 _GLFW_USE_MENUBAR
 _GLFW_USE_RETINA
-_GLFW_VERSION_NUMBER
 _GLFW_WIN32
 _GLFW_X11
 _GLFW_XDND_VERSION
@@ -13715,9 +13913,8 @@ _GLFWcursor
 _GLFWcursorWayland
 _GLFWcursorWin32
 _GLFWcursorX11
-_GLFWdecorationSideWayland
-_GLFWdecorationWayland
 _GLFWerror
+_GLFWfallbackEdgeWayland
 _GLFWfbconfig
 _GLFWinitconfig
 _GLFWjoyelementNS
@@ -13748,6 +13945,7 @@ _GLFWmutexWin32
 _GLFWobjenumWin32
 _GLFWofferWayland
 _GLFWplatform
+_GLFWscaleWayland
 _GLFWtimerNS
 _GLFWtimerPOSIX
 _GLFWtimerWin32
@@ -13763,14 +13961,12 @@ _GLFWwindowX11
 _GLFWwndconfig
 _GNU_SOURCE
 _M3D_H_
-_MSC_STDINT_H_
 _NET_WM_STATE_ADD
 _NET_WM_STATE_REMOVE
 _NET_WM_STATE_TOGGLE
 _POSIX_C_SOURCE
 _STRUCT_NAME
 _UNION_NAME
-_W64
 _WIN32
 _WIN32_WINNT
 _WIN32_WINNT_WIN8
@@ -13817,6 +14013,7 @@ __anon04de60600d08
 __anon04de60600e08
 __anon04de60600f08
 __anon04de60601008
+__anon04de60601108
 __anon07937a980103
 __anon07937a980208
 __anon07937a980308
@@ -13878,9 +14075,11 @@ __anon3a3638b10808
 __anon3a3638b10908
 __anon3a3638b10a08
 __anon3a3638b10b03
-__anon3d7fe1b80108
-__anon3dc0ce6f0108
+__anon3d7fe1b80103
+__anon3d7fe1b80208
+__anon3dc0ce6f0103
 __anon3dc0ce6f0208
+__anon3dc0ce6f0308
 __anon4ddb9ff30108
 __anon5e0c4f380108
 __anon5e0c4f380203
@@ -13964,6 +14163,8 @@ __anon990cd06a0508
 __anon990cd06a0608
 __anon990cd06a0708
 __anon990cd06a0808
+__anon990cd06a0908
+__anon990cd06a0a08
 __anona97a9d200108
 __anona97a9d200208
 __anona97a9d200308
@@ -14616,7 +14817,7 @@ _glfwTerminateWayland
 _glfwTerminateWin32
 _glfwTerminateX11
 _glfwTransformYCocoa
-_glfwUpdateContentScaleWayland
+_glfwUpdateBufferScaleFromOutputsWayland
 _glfwUpdateGamepadGUIDCocoa
 _glfwUpdateGamepadGUIDLinux
 _glfwUpdateGamepadGUIDNull
@@ -14668,8 +14869,6 @@ _glfw_GUID_YAxis
 _glfw_GUID_ZAxis
 _glfw_IID_IDirectInput8W
 _glfw_calloc
-_glfw_fmaxf
-_glfw_fminf
 _glfw_free
 _glfw_max
 _glfw_min
@@ -14819,6 +15018,9 @@ _unused
 _watcom_bswap16
 _watcom_bswap32
 _watcom_bswap64
+a0
+a1
+a2
 a_bit_mask
 aaudio
 absInfo
@@ -14826,7 +15028,7 @@ absMap
 absRange
 absoluteCursor
 acc
-acceptsFirstMouse:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+acceptsFirstMouse:
 acceptsFirstResponder
 accessors
 accessors_count
@@ -14835,11 +15037,17 @@ accumBlueBits
 accumGreenBits
 accumRedBits
 acid
-acquireMonitor
+acquireMonitorCocoa
+acquireMonitorNull
+acquireMonitorWayland
+acquireMonitorWin32
+acquireMonitorX11
 acquiredMonitorCount
 action
 activated
+activationManager
 activationOperation
+activationToken
 active
 activeTextureId
 active_head
@@ -14859,6 +15067,7 @@ alignType
 alignX
 alignY
 alignment
+all
 all_a
 alloc
 allocSize
@@ -14900,6 +15109,7 @@ amplitude_offset
 android_close
 android_fopen
 android_main
+android_native_app_glue.o
 android_read
 android_seek
 android_write
@@ -14921,12 +15131,12 @@ app14_color_transform
 appEnabled
 appId
 application
-applicationDidChangeScreenParameters:	$RAYLIB/external/glfw/src/cocoa_init.m	/^{$/;"	m	implementation:GLFWApplicationDelegate	signature:(NSNotification*)
-applicationDidFinishLaunching:	$RAYLIB/external/glfw/src/cocoa_init.m	/^{$/;"	m	implementation:GLFWApplicationDelegate	signature:(NSNotification*)
-applicationDidHide:	$RAYLIB/external/glfw/src/cocoa_init.m	/^{$/;"	m	implementation:GLFWApplicationDelegate	signature:(NSNotification*)
-applicationShouldTerminate:	$RAYLIB/external/glfw/src/cocoa_init.m	/^{$/;"	m	implementation:GLFWApplicationDelegate	signature:(NSApplication*)
+applicationDidChangeScreenParameters:
+applicationDidFinishLaunching:
+applicationDidHide:
+applicationShouldTerminate:
 applicationVersion
-applicationWillFinishLaunching:	$RAYLIB/external/glfw/src/cocoa_init.m	/^{$/;"	m	implementation:GLFWApplicationDelegate	signature:(NSNotification*)
+applicationWillFinishLaunching:
 applyAspectRatio
 applySizeLimits
 arg
@@ -14955,7 +15165,7 @@ attenuation_color
 attenuation_distance
 attr
 attrHead
-attributedSubstringForProposedRange:actualRange:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSRange,NSRangePointer)
+attributedSubstringForProposedRange:actualRange:
 attributes
 attributes_count
 author
@@ -14972,6 +15182,9 @@ axisCount
 axisOffset
 axisScale
 axisState
+b0
+b1
+b2
 bIsOffload
 bLeftTrigger
 bRightTrigger
@@ -15032,6 +15245,7 @@ bitrev
 bits
 bitsPerSample
 bits_per_channel
+blankCursor
 blanking
 blendConstants
 blendEnable
@@ -15059,14 +15273,15 @@ book_list
 borderColor
 bosPageHeader
 bottom
-bottomDecoration
 bottom_y
 bounds
 bpf
 bpf2Count
 bpm
 bpp
-btn-audio	$RAYLIB/shell.html	/^          <span><input type="button" id="btn-audio" value="🔇 MUTE" onclick="toggleAudio()"><\//;"	I
+bq
+bs
+btn-audio	shell.html	/^          <span><input type="button" id="btn-audio" value="🔇 MUTE" onclick="toggleAudio()"><\//;"	I
 buf
 buf_index
 buf_used
@@ -15082,6 +15297,7 @@ bufferImageHeight
 bufferMemoryBarrierCount
 bufferOffset
 bufferRowLength
+bufferScale
 bufferSizeInFrames
 buffer_len
 buffer_start
@@ -15148,6 +15364,7 @@ capturePattern
 capture_pattern
 capturedCursorWindow
 catalog
+cb
 cbInBuffer
 cbOutBuffer
 cbSize
@@ -15470,7 +15687,7 @@ channelscale
 charPressedQueue
 charPressedQueueCount
 character
-characterIndexForPoint:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSPoint)
+characterIndexForPoint:
 chardata_for_range
 charmods
 charstrings
@@ -15500,6 +15717,9 @@ class_subclasses
 classbook
 classdata
 classifications
+clean
+clean_shell_cmd
+clean_shell_sh
 cleanup
 clearOnWriteAcquire
 clearValue
@@ -15575,6 +15795,7 @@ commands
 commentCount
 comment_list
 comment_list_length
+commit
 compareElements
 compareEnable
 compareJoystickObjects
@@ -15596,7 +15817,6 @@ compose_table_new_from_locale
 compose_table_unref
 compositeAlpha
 compositor
-compositorVersion
 computeFullSubgroups
 computeShader
 compute_accelerated_huffman
@@ -15612,6 +15832,7 @@ coneInnerAngleInRadians
 coneOuterAngleInRadians
 coneOuterGain
 config
+configure
 confinePointer
 confinedPointer
 confinedPointerHandleConfined
@@ -15658,6 +15879,7 @@ countRemaining
 counter
 country
 coupling_steps
+cp
 cpoints
 cpoints2
 cpts
@@ -15672,13 +15894,17 @@ crc_table
 createAnonymousFile
 createCursor
 createEmptyEventPipe
-createFallbackDecoration
 createFallbackDecorations
+createFallbackEdge
 createHelperWindow
 createHiddenCursor
 createIcon
-createKeyTables
+createKeyTablesCocoa
+createKeyTablesWayland
+createKeyTablesWin32
+createKeyTablesX11
 createLegacyContextGLX
+createLibdecorFrame
 createMenuBar
 createMonitor
 createNativeSurface
@@ -15689,6 +15915,7 @@ createStandardCursor
 createTmpfileCloexec
 createWindow
 createWindowSurface
+createXdgShellObjects
 create_hash_table
 crtc
 cscanline
@@ -15769,7 +15996,7 @@ cursorTheme
 cursorThemeHiDPI
 cursorTimerfd
 cursorTracked
-cursorUpdate:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+cursorUpdate:
 cursorWarpDeltaY
 custom
 customAllocatorContext
@@ -15777,7 +16004,9 @@ customBackendCount
 customDecodingBackendCount
 cut_param
 cutoffFrequency
+cx
 cx1
+cy
 cy1
 d_name
 data
@@ -15809,6 +16038,7 @@ dataSourceListener
 data_extensions
 data_extensions_count
 data_free_method
+dc
 dc_pred
 dct_bfly32o
 dct_const
@@ -15928,8 +16158,8 @@ destroyContextNSGL
 destroyContextOSMesa
 destroyContextWGL
 destroyCursor
-destroyFallbackDecoration
 destroyFallbackDecorations
+destroyFallbackEdge
 destroyShellObjects
 destroyWindow
 destroy_hash_table
@@ -15968,6 +16198,7 @@ disableRawMouseMotion
 disabledCursorWindow
 discard_samples_deferred
 discreteQueuePriorities
+dismiss_popup
 displacement_texname
 display
 displayID
@@ -15986,8 +16217,8 @@ distance
 ditherMode
 dmx
 dmy
-doCommandBySelector:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(SEL)
-doNothing:	$RAYLIB/external/glfw/src/cocoa_init.m	/^{$/;"	m	implementation:GLFWHelper	signature:(id)
+doCommandBySelector:
+doNothing:
 do_floor
 domainOrigin
 done
@@ -16010,13 +16241,13 @@ draco_mesh_compression
 dragFocus
 dragOffer
 dragSerial
-draggingEntered:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(id id NSDraggingInfo NSDraggingInfo)
+draggingEntered:
 drainEmptyEvents
 draw
 drawCounter
 drawIndirectCount
 drawIndirectFirstInstance
-drawRect:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSRect)
+drawRect:
 draw_line
 draws
 drflac
@@ -16762,6 +16993,7 @@ drwav_write_pcm_frames_le
 drwav_write_proc
 drwav_write_raw
 dry
+ds
 dstAccessMask
 dstAlphaBlendFactor
 dstArrayElement
@@ -16890,6 +17122,8 @@ dwcValidPts
 dwcViews
 dwlConditionMask
 dwmapi
+dx
+dy
 dyn
 dynamicRendering
 dynamicStateCount
@@ -16969,17 +17203,17 @@ errorLock
 errorSlot
 eventBase
 eventKeyboardMode
-eventNum
 eventSource
 eventTime
 eventWaiting
 eventWheelMove
-eventWorker
 events
+evkeyToUnicodeLUT
 exec_prefix
 executionCounter
 executionPath
 executionPointer
+exist
 exitKey
 expanded
 exportFromImportedHandleTypes
@@ -17012,6 +17246,7 @@ extra_read
 extra_ticks
 extrapolate2
 extras
+ey
 eyeToScreenDistance
 f32
 fEnable
@@ -17022,10 +17257,12 @@ face
 face_num_verts
 face_offset
 faces
+factor
 fadeSettings
 fadeout_volume
 fader
 failOp
+fallback
 fallbackRefreshRate
 fast
 fastFloor
@@ -17033,8 +17270,10 @@ fast_ac
 fast_alpha
 fast_huffman
 fbHeight
+fbWidth
 fbsize
 fc_s
+fd
 fdselect
 fdwOpen
 fdx
@@ -17069,7 +17308,6 @@ finalY
 findMapping
 findPixelFormatAttribValueWGL
 findValidMapping
-findWindowFromDecorationSurface
 fineTuneCents
 fine_portamento_down_param
 fine_portamento_up_param
@@ -17083,7 +17321,7 @@ firstId
 firstIndex
 firstInstance
 firstPCMFrame
-firstRectForCharacterRange:actualRange:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSRange,NSRangePointer)
+firstRectForCharacterRange:actualRange:
 firstSampleByteOffset
 firstVertex
 first_audio_page_offset
@@ -17106,7 +17344,7 @@ flacFrameNumber
 flacFrameOffset
 flag
 flags
-flagsChanged:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+flagsChanged:
 float16
 float3
 float32
@@ -17146,6 +17384,10 @@ found
 fourcc
 fovy
 fp32_to_srgb8_tab4
+fractionalScale
+fractionalScaleHandlePreferredScale
+fractionalScaleListener
+fractionalScaleManager
 fragmentStoresAndAtomics
 frame
 frameAction
@@ -17191,6 +17433,9 @@ fullscreen
 func
 functions
 funopen
+fv
+fx
+fy
 g_bit_mask
 g_drmp3_pow43
 g_drwavAlawTable
@@ -17201,6 +17446,9 @@ gainSmoothTimeInFrames
 gainSmoothTimeInMilliseconds
 gainer
 gamepad
+gamepadAbsAxisMap
+gamepadAbsAxisRange
+gamepadCount
 gamepadStreamFd
 gammaBroken
 gather_prescatter_coefficient_width
@@ -17212,6 +17460,7 @@ gather_prescatter_num_contributors
 gbits
 gbmDevice
 gbmSurface
+generate_wayland_protocol
 generated_samples
 generator
 geometryShader
@@ -17249,7 +17498,6 @@ getExtras
 getFace
 getFallbackRefreshRate
 getFramebufferSize
-getFullWindowSize
 getGLXFBConfigAttrib
 getGammaRamp
 getInlinedAssets
@@ -21071,6 +21319,7 @@ glfwExtensionSupported
 glfwFocusWindow
 glfwGetClipboardString
 glfwGetCocoaMonitor
+glfwGetCocoaView
 glfwGetCocoaWindow
 glfwGetCurrentContext
 glfwGetCursorPos
@@ -21133,6 +21382,7 @@ glfwGetWindowMonitor
 glfwGetWindowOpacity
 glfwGetWindowPos
 glfwGetWindowSize
+glfwGetWindowTitle
 glfwGetWindowUserPointer
 glfwGetX11Adapter
 glfwGetX11Display
@@ -21247,6 +21497,7 @@ guidFFDriver
 guidInstance
 guidProduct
 guidType
+h2
 hEvent
 hEventNotify
 hInstString
@@ -21256,6 +21507,7 @@ hRgnBlur
 hScreenSize
 h_cost
 h_oversample
+ha
 handedness
 handle
 handleAbsEvent
@@ -21317,6 +21569,7 @@ hashes
 hatButtons
 hatCount
 hats
+hd
 hdr
 head
 header
@@ -21358,22 +21611,27 @@ hovered
 hpf
 hpf1Count
 hpf2Count
+hs
 hsz
 huff_ac
 huff_dc
 hwi
 hwnd
 hwo
+hz
+ic
 icon
 iconified
 iconify
 iconifyWindow
+id
 idata
 idct_block_kernel
 idleInhibitManager
 idleInhibitor
 illum
 ilog
+im
 ima
 image
 imageArrayLayers
@@ -21454,10 +21712,7 @@ initExtensions
 initJoysticks
 initMaterial
 initNotifications
-initWithGlfwWindow:	$RAYLIB/external/glfw/src/cocoa_window.m	/^- (instancetype)initWithGlfwWindow:(_GLFWwindow *)initWindow;$/;"	m	interface:GLFWContentView	signature:(_GLFWwindow*)
-initWithGlfwWindow:	$RAYLIB/external/glfw/src/cocoa_window.m	/^- (instancetype)initWithGlfwWindow:(_GLFWwindow *)initWindow;$/;"	m	interface:GLFWWindowDelegate	signature:(_GLFWwindow*)
-initWithGlfwWindow:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(_GLFWwindow*)
-initWithGlfwWindow:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(_GLFWwindow*)
+initWithGlfwWindow:
 init_blocksize
 init_mode
 initialAttachmentInputBusIndex
@@ -21505,8 +21760,9 @@ input_w
 insertArrayColor
 insertArrayUShort
 insertArrayVector3
-insertText:replacementRange:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(id,NSRange)
+insertText:replacementRange:
 inst
+install
 instance
 instanceCount
 instanceName
@@ -21521,14 +21777,6 @@ int32_t
 int64_t
 int8
 int8_t
-int_fast16_t
-int_fast32_t
-int_fast64_t
-int_fast8_t
-int_least16_t
-int_least32_t
-int_least64_t
-int_least8_t
 integerDotProduct16BitMixedSignednessAccelerated
 integerDotProduct16BitSignedAccelerated
 integerDotProduct16BitUnsignedAccelerated
@@ -21565,14 +21813,13 @@ internalDataPath
 interpolation
 interpupillaryDistance
 interval
-intmax_t
-intptr_t
 inv_scale
 inverse_bind_matrices
 inverse_db_table
 inverse_mdct
 inverse_mdct_slow
 invert
+io
 io_user_data
 ior
 iridescence
@@ -21592,12 +21839,8 @@ isDecoderInitialized
 isDefault
 isEnabled
 isFrameExtentsEvent
-isGamepad
-isKeyboard
 isLE
 isLooping
-isMouse
-isMultitouch
 isOpaque
 isOwnerOfContext
 isPageValid
@@ -21609,7 +21852,6 @@ isSelectionEvent
 isSequentialWrite
 isSpatializationDisabled
 isSubBufferProcessed
-isTouch
 isUnsigned
 isValidElementForJoystick
 is_gather
@@ -21755,7 +21997,6 @@ joints_count
 joystick
 joysticks
 joysticksInitialized
-js_event
 jsmn_alloc_token
 jsmn_fill_token
 jsmn_init
@@ -21776,7 +22017,7 @@ kPropertyUnicodeKeyLayoutData
 kTISPropertyUnicodeKeyLayoutData
 kern
 key
-keyDown:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+keyDown:
 keyMap
 keyPressTimes
 keyPressedQueue
@@ -21786,7 +22027,7 @@ keyRepeatInFrame
 keyRepeatRate
 keyRepeatScancode
 keyRepeatTimerfd
-keyUp:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+keyUp:
 key_value_data_size
 keyboard
 keyboardFd
@@ -21800,7 +22041,6 @@ keyboardHandleRepeatInfo
 keyboardListener
 keycodes
 keymap
-keymapUS
 keymap_key_get_syms_by_level
 keymap_key_repeats
 keymap_mod_get_index
@@ -21851,6 +22091,7 @@ lMax
 lMin
 lNegativeCoefficient
 lOffset
+lP
 lPositiveCoefficient
 lRx
 lRy
@@ -21862,6 +22103,9 @@ lVRz
 lVX
 lVY
 lVZ
+lX
+lY
+lZ
 label
 labelOrNote
 labelledCueRegion
@@ -21885,10 +22129,10 @@ layerCount
 layerName
 layers
 layout
+lc
 lcg
 leadInSampleCount
 left
-leftDecoration
 leftLensCenter
 leftScreenCenter
 len
@@ -21901,6 +22145,72 @@ lensSeparationDistance
 level
 levelCount
 lflags
+libdecor
+libdecorFrameHandleClose
+libdecorFrameHandleCommit
+libdecorFrameHandleConfigure
+libdecorFrameHandleDismissPopup
+libdecorFrameInterface
+libdecorHandleError
+libdecorInterface
+libdecorMode
+libdecorReadyCallback
+libdecorReadyListener
+libdecor_capabilities
+libdecor_configuration_get_content_size
+libdecor_configuration_get_content_size_
+libdecor_configuration_get_window_state
+libdecor_configuration_get_window_state_
+libdecor_decorate
+libdecor_decorate_
+libdecor_dispatch
+libdecor_dispatch_
+libdecor_error
+libdecor_frame_commit
+libdecor_frame_commit_
+libdecor_frame_get_xdg_toplevel
+libdecor_frame_get_xdg_toplevel_
+libdecor_frame_interface
+libdecor_frame_map
+libdecor_frame_map_
+libdecor_frame_set_app_id
+libdecor_frame_set_app_id_
+libdecor_frame_set_capabilities
+libdecor_frame_set_capabilities_
+libdecor_frame_set_fullscreen
+libdecor_frame_set_fullscreen_
+libdecor_frame_set_max_content_size
+libdecor_frame_set_max_content_size_
+libdecor_frame_set_maximized
+libdecor_frame_set_maximized_
+libdecor_frame_set_min_content_size
+libdecor_frame_set_min_content_size_
+libdecor_frame_set_minimized
+libdecor_frame_set_minimized_
+libdecor_frame_set_title
+libdecor_frame_set_title_
+libdecor_frame_set_visibility
+libdecor_frame_set_visibility_
+libdecor_frame_unref
+libdecor_frame_unref_
+libdecor_frame_unset_capabilities
+libdecor_frame_unset_capabilities_
+libdecor_frame_unset_fullscreen
+libdecor_frame_unset_fullscreen_
+libdecor_frame_unset_maximized
+libdecor_frame_unset_maximized_
+libdecor_get_fd
+libdecor_get_fd_
+libdecor_interface
+libdecor_new
+libdecor_new_
+libdecor_state_free
+libdecor_state_free_
+libdecor_state_new
+libdecor_state_new_
+libdecor_unref
+libdecor_unref_
+libdecor_window_state
 libdir
 license
 light
@@ -21918,6 +22228,7 @@ linear
 linearTilingFeatures
 linear_interpolation
 linebuf
+linuxToRaylibMap
 listHead
 listTail
 listenerCount
@@ -21994,8 +22305,12 @@ lpvInBuffer
 lpvOutBuffer
 lpvTypeSpecificParams
 lpwfxFormat
+ls
+lt
 lzwAllocSize
 lzwMem
+m0
+m1
 m10
 m11
 m12
@@ -22005,6 +22320,8 @@ m128i_u32
 m13
 m14
 m15
+m2
+m3
 m3d_action_t
 m3d_bone_t
 m3d_commandtypes
@@ -22153,8 +22470,15 @@ m3dvsave_t
 m3dvt_t
 m3dvx_t
 m3dw_t
+m4
+m5
+m6
+m7
+m8
+m9
 m_array
 m_arrayChunks
+ma
 ma_AudioClientProperties
 ma_CoCreateInstance
 ma_CoInitializeEx
@@ -24313,7 +24637,6 @@ mag_filter
 magic
 magnitude
 main
-mainWindow
 mainWindowClass
 maindata
 maintenance4
@@ -24488,6 +24811,7 @@ maximized
 maximum
 maxwidth
 maybe_start_packet
+mb
 md5
 mdct_backward
 mdct_clear
@@ -24528,6 +24852,7 @@ metallic_factor
 metallic_roughness_texture
 meterDenominator
 meterNumerator
+mg
 midiPitchFraction
 midiUnityNote
 mime
@@ -24603,25 +24928,24 @@ monitorBroken
 monitorCallback
 monitorCount
 monitors
-monitorsCount
-monitorsSize
 monoExpansionMode
 mouseButton
 mouseButtons
-mouseDown:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
-mouseDragged:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
-mouseEntered:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
-mouseExited:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+mouseDown:
+mouseDragged:
+mouseEntered:
+mouseExited:
 mouseFd
-mouseMoved:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+mouseMoved:
 mousePassthrough
 mouseTrailSize
-mouseUp:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+mouseUp:
 moveDownPositionA
 moveDownPositionB
 mp3FrameChannels
 mp3FrameSampleRate
 mp3FramesToDiscard
+mr
 msadpcm
 msec
 msf_bit_log
@@ -24662,6 +24986,8 @@ my_atoi
 my_strdup
 my_strndup
 my_strnlen
+n0
+n1
 nAvgBytesPerSec
 nBlockAlign
 nChannels
@@ -24721,6 +25047,7 @@ notificationCallback
 npoints
 npoints2
 npts
+ns
 nsgl
 nstops
 nsvgCreateRasterizer
@@ -24916,7 +25243,6 @@ num_vertexarrays
 num_vertexes
 num_vertices
 numaction
-number
 number_of_books
 number_of_channels
 number_of_tracks
@@ -24943,6 +25269,9 @@ numvertex
 numvoxel
 numvoxtype
 numweight
+nx
+ny
+nz
 object
 objectCount
 object_name
@@ -25029,9 +25358,9 @@ originalRamp
 orthographic
 osmesa
 osn_context
-otherMouseDown:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
-otherMouseDragged:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
-otherMouseUp:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+otherMouseDown:
+otherMouseDragged:
+otherMouseUp:
 ourFullscreen
 out
 out_pixels_cb
@@ -25048,6 +25377,9 @@ outputHandleName
 outputHandleScale
 outputListener
 outputSampleRate
+outputScaleCount
+outputScaleSize
+outputScales
 output_cb
 output_data
 output_data_type
@@ -25411,6 +25743,7 @@ patterntickse
 paused
 pbr_metallic_roughness
 pbr_specular_glossiness
+pc
 pcmBuffer
 pcmBufferSize
 pcmFrameCount
@@ -25424,7 +25757,7 @@ pcmFramesToDiscard
 peak
 peek_decode_initial
 pending
-performDragOperation:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(id id NSDraggingInfo NSDraggingInfo)
+performDragOperation:
 performanceProfile
 period
 periodCount
@@ -25573,15 +25906,18 @@ propertyFlags
 protectedMemory
 protectedNoFault
 protectedSubmit
+protocol_path
 protracker
 proxy_add_listener
 proxy_destroy
+proxy_get_tag
 proxy_get_user_data
 proxy_get_version
 proxy_marshal
 proxy_marshal_constructor
 proxy_marshal_constructor_versioned
 proxy_marshal_flags
+proxy_set_tag
 proxy_set_user_data
 prv
 pts
@@ -25592,10 +25928,13 @@ purposeId
 purposes
 pushConstantRangeCount
 push_mode
+pv
 pvReserved
 pvar
 pvertices
 pvr_header
+px
+py
 qmf_state
 qoa_clamp
 qoa_clamp_s16
@@ -25669,6 +26008,7 @@ rasterizationSamples
 rasterizerDiscardEnable
 rate
 ratio
+raudio.o
 raw
 rawDataSize
 rawInput
@@ -25677,14 +26017,18 @@ rawMouseMotion
 rawMouseMotionSupported
 raw_coeff
 raw_data
+raygui.c
+raygui.o
 raylib
 raylib_public_headers
 raylib_sources
 raylib_static
 raylib_version
+rb
 rbits
 rcCalloutRect
 rcOverlay
+rcore.o
 read
 readCursorInPCMFrames
 readDataOfferAsString
@@ -25708,6 +26052,7 @@ refresh
 refreshRate
 refreshVideoModes
 regex
+regexCompiled
 regionCount
 region_count
 registry
@@ -25722,7 +26067,11 @@ relativePointerManager
 relative_note
 release
 releaseCursor
-releaseMonitor
+releaseMonitorCocoa
+releaseMonitorNull
+releaseMonitorWayland
+releaseMonitorWin32
+releaseMonitorX11
 remaining_samples_in_tick
 removeCallback
 render
@@ -25745,8 +26094,16 @@ resampling
 reserv
 reserv_buf
 reserved
+reserved0
 reserved1
 reserved2
+reserved3
+reserved4
+reserved5
+reserved6
+reserved7
+reserved8
+reserved9
 resetRequired
 residencyAlignedMipSize
 residencyNonResidentStrict
@@ -25759,6 +26116,7 @@ residue_count
 residue_decode
 residue_types
 resizable
+resizeFramebuffer
 resizeWindow
 resizedLastFrame
 resolveImageLayout
@@ -25772,7 +26130,6 @@ restoreCursorPosX
 restoreCursorPosY
 restoreWindow
 result
-retina
 revision
 rewinddir
 rgGetCurrentTime
@@ -25790,15 +26147,15 @@ rglFSlider
 rglForceData
 rglSlider
 rglVSlider
+rglfw.o
 rgoAction
 rgodf
 rgptCalloutLine
 right
-rightDecoration
 rightLensCenter
-rightMouseDown:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
-rightMouseDragged:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
-rightMouseUp:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+rightMouseDown:
+rightMouseDragged:
+rightMouseUp:
 rightScreenCenter
 ring_buffer
 ring_buffer_begin_index
@@ -25878,6 +26235,7 @@ rlFramebufferAttachType
 rlFramebufferComplete
 rlFrustum
 rlGenTextureMipmaps
+rlGetActiveFramebuffer
 rlGetCompressedFormatName
 rlGetFramebufferHeight
 rlGetFramebufferWidth
@@ -25988,6 +26346,7 @@ rlglClose
 rlglData
 rlglInit
 rlglLoadProc
+rmodels.o
 robustBufferAccess
 robustBufferAccessUpdateAfterBind
 robustImageAccess
@@ -26009,9 +26368,14 @@ rprand_splitmix64
 rprand_state
 rprand_unload_sequence
 rprand_xoshiro
+rshapes.o
+rtext.o
+rtextures.o
 rule
 runningFilePos
 runtimeDescriptorArray
+s0
+s1
 sRGB
 sThumbLX
 sThumbLY
@@ -26067,6 +26431,7 @@ saveFileText
 saver
 scalarBlockLayout
 scale
+scaleFramebuffer
 scaleIn
 scaleToMonitor
 scale_denominator
@@ -26075,6 +26440,8 @@ scale_is_rational
 scale_numerator
 scalefac_compress
 scalefac_scale
+scalingNumerator
+scalingViewport
 scan
 scan_n
 scancodes
@@ -26093,7 +26460,7 @@ screenMin
 screenScale
 screenshotCounter
 scroll
-scrollWheel:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(NSEvent*)
+scrollWheel:
 sdefl
 sdefl_adler32
 sdefl_blk_type
@@ -26134,7 +26501,6 @@ seat
 seatHandleCapabilities
 seatHandleName
 seatListener
-seatVersion
 section
 seed
 seekCounter
@@ -26148,7 +26514,7 @@ segmentCount
 segmentTable
 segment_count
 segments
-selectedKeyboardInputSourceChanged:	$RAYLIB/external/glfw/src/cocoa_init.m	/^{$/;"	m	implementation:GLFWHelper	signature:(NSObject*)
+selectedKeyboardInputSourceChanged:
 selectedRange
 selectionOffer
 selectionSource
@@ -26177,7 +26543,7 @@ setGammaRamp
 setIdleInhibitor
 setLayoutCount
 setLicense
-setMarkedText:selectedRange:replacementRange:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWContentView	signature:(id,NSRange,NSRange)
+setMarkedText:selectedRange:replacementRange:
 setName
 setRawMouseMotion
 setScale
@@ -26280,6 +26646,7 @@ shininess
 shm
 shouldClose
 showCursor
+showDefault
 showWindow
 si_s
 signalSemaphoreCount
@@ -27496,14 +27863,18 @@ swapIntervalOSMesa
 swapIntervalWGL
 swapchain
 swapchainCount
+sy
 syn
 synchronization2
 szCSDVersion
 szFriendlyName
 szPname
+t0
+t1
 tab_offset
 table_select
 tablepos
+tag
 tagBITMAPINFOHEADER
 tagWAVEHDR
 tail
@@ -27576,7 +27947,6 @@ theme_load
 thickness_factor
 thickness_texture
 thread
-threadId
 threadPriority
 threadStackSize
 ti_s
@@ -27614,7 +27984,6 @@ toksuper
 tone_portamento_param
 tone_portamento_target_period
 top
-topDecoration
 toplevel
 topology
 total
@@ -27625,6 +27994,7 @@ total_clocks
 total_samples
 touchAction
 touchSlot
+tq
 traceLog
 trackCount
 trackNumber
@@ -27643,9 +28013,11 @@ transformRequired
 transformtype
 translate
 translateFlags
-translateKey
+translateKeyCocoa
 translateKeySyms
 translateKeyToModifierFlag
+translateKeyWayland
+translateKeyX11
 translateState
 translatedFormatTag
 translation
@@ -27677,6 +28049,8 @@ ttLONG
 ttSHORT
 ttULONG
 ttUSHORT
+tx
+ty
 type
 types
 u32
@@ -27692,16 +28066,6 @@ uint32_t
 uint64_t
 uint8
 uint8_t
-uint_fast16_t
-uint_fast32_t
-uint_fast64_t
-uint_fast8_t
-uint_least16_t
-uint_least32_t
-uint_least64_t
-uint_least8_t
-uintmax_t
-uintptr_t
 unalignedByteCount
 unalignedCache
 unalpha
@@ -27723,6 +28087,7 @@ unmarkText
 unnormalizedCoordinates
 until_space
 unused
+up
 upPosition
 update
 updateCursorImage
@@ -27735,6 +28100,7 @@ updateTrackingAreas
 updateUnicodeData
 updateWindowMode
 updateWindowStyles
+updateXdgSizeLimits
 update_mappings
 uri
 usage
@@ -27750,6 +28116,7 @@ usingFbo
 utf8
 utf8LookupString
 utf8SetWMProperties
+utils.o
 vDriverVersion
 vResolution
 vScreenSize
@@ -27841,6 +28208,7 @@ viewporter
 virtualCursorPosX
 virtualCursorPosY
 visible
+vk
 vkAcquireNextImage2KHR
 vkAcquireNextImageKHR
 vkAllocateCommandBuffers
@@ -28105,12 +28473,18 @@ voxel
 voxshape
 voxtype
 vp_s
+vs
+vt
 vt_idx
 vtable
 vulkanLoader
 vulkanMemoryModel
 vulkanMemoryModelAvailabilityVisibilityChains
 vulkanMemoryModelDeviceScope
+vx
+vy
+vz
+w2
 wBitsPerSample
 wButtons
 wChannels
@@ -28150,7 +28524,6 @@ wasapi
 wastedBitsPerSample
 watch
 waveform
-wayland_generate
 wchar_t
 weight
 weights
@@ -28174,25 +28547,26 @@ width
 widthMM
 win32
 window
-windowDidBecomeKey:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(NSNotification*)
-windowDidChangeOcclusionState:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(NSNotification*)
-windowDidDeminiaturize:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(NSNotification*)
-windowDidMiniaturize:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(NSNotification*)
-windowDidMove:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(NSNotification*)
-windowDidResignKey:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(NSNotification*)
-windowDidResize:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(NSNotification*)
+windowDidBecomeKey:
+windowDidChangeOcclusionState:
+windowDidDeminiaturize:
+windowDidMiniaturize:
+windowDidMove:
+windowDidResignKey:
+windowDidResize:
 windowFocused
 windowHovered
 windowIconified
 windowListHead
 windowMaximized
 windowProc
-windowShouldClose:	$RAYLIB/external/glfw/src/cocoa_window.m	/^{$/;"	m	implementation:GLFWWindowDelegate	signature:(id)
+windowShouldClose:
 windowVisible
 window_create
 window_destroy
 window_resize
 windowtype
+wl
 wl_buffer_interface
 wl_callback_interface
 wl_compositor_interface
@@ -28218,17 +28592,20 @@ wl_display_roundtrip
 wl_egl_window_create
 wl_egl_window_destroy
 wl_egl_window_resize
+wl_generate
 wl_keyboard_interface
 wl_output_interface
 wl_pointer_interface
 wl_proxy_add_listener
 wl_proxy_destroy
+wl_proxy_get_tag
 wl_proxy_get_user_data
 wl_proxy_get_version
 wl_proxy_marshal
 wl_proxy_marshal_constructor
 wl_proxy_marshal_constructor_versioned
 wl_proxy_marshal_flags
+wl_proxy_set_tag
 wl_proxy_set_user_data
 wl_region_interface
 wl_registry_interface
@@ -28249,6 +28626,7 @@ workResult
 workeffect
 worknote
 worldUp
+wp_fractional_scale_v1_interface
 wp_viewport_interface
 wp_viewporter_interface
 wrap_s
@@ -28258,8 +28636,11 @@ writeMask
 writeTargetToProperty
 wsz
 wszPath
+x0
+x1
 x11
 x11xcb
+x2
 xChromaOffset
 xadvance
 xcbVulkanSurface
@@ -28268,6 +28649,8 @@ xcb_visualid_t
 xcb_window_t
 xcursor
 xdg
+xdgActivationHandleDone
+xdgActivationListener
 xdgDecorationHandleConfigure
 xdgDecorationListener
 xdgSurfaceHandleConfigure
@@ -28275,6 +28658,8 @@ xdgSurfaceListener
 xdgToplevelHandleClose
 xdgToplevelHandleConfigure
 xdgToplevelListener
+xdg_activation_token_v1_interface
+xdg_activation_v1_interface
 xdg_popup_interface
 xdg_positioner_interface
 xdg_surface_interface
@@ -28283,6 +28668,7 @@ xdg_wm_base_interface
 xdnd
 xform
 xhot
+xi
 xinerama
 xinput
 xkb
@@ -28317,6 +28703,9 @@ xpos
 xrender
 xrm
 xshape
+y0
+y1
+y2
 yChromaOffset
 ycbcrModel
 ycbcrRange

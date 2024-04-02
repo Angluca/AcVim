@@ -80,7 +80,7 @@ fu! s:formatDict()
     exe '%s/^\([0-9A-Za-z_.:]\+\)\s.*/\1/ge'
     exe 'g/^\W\+.*$/d'
     exe '%sort u'
-    exe 'g/^.\{,1}\s*$/d'
+    exe 'g/^.\{,2}\s*$/d'
 endf "}}}
 com! -nargs=? Ftags call s:formatTags(<args>) "{{{
 fu! s:formatTags(rd='')
@@ -624,6 +624,7 @@ vmap ç "+y
 nmap √ "*gP
 vmap √ "*gP
 imap √ <c-r>+
+"imap ö <c-r>+
 
 "file format
 nmap \ff :FmtOpt<cr>
@@ -664,6 +665,12 @@ nmap <silent> ; <esc>
 nmap <silent> , <esc>
 nmap <space><space> \<space>
 vno * y/<c-r>"<cr>
+"fix terminal vi <c-v> bug
+let &t_BE = ""
+let &t_BD = "\e[?2004l"
+set t_PS=\e[200~
+set t_PE=\e[201~
+
 "smap ;; ;
 "set nomore
 "}}}
