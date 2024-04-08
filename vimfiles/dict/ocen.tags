@@ -1,10 +1,12 @@
 BlendMode	$OCENLIB/sdl/mod.oc	/^enum BlendMode extern("SDL_BlendMode") {$/;"	f
 Buffer	$OCENLIB/buffer.oc	/^struct Buffer {$/;"	f
-BufferIO	$OCENLIB/bufferio.oc	/^struct BufferIO {$/;"	f
+BytesReader	$OCENLIB/buffer.oc	/^struct BytesReader {$/;"	f
 CURSOR_TYPE_COUNT	$OCENLIB/sdl/mod.oc	/^[extern "SDL_NUM_SYSTEM_CURSORS"] const CURSOR_TYPE_COUNT: i32$/;"	f
 CharIterator	$OCENLIB/mod.oc	/^struct CharIterator {$/;"	f
+Chunk	$OCENLIB/image/png.oc	/^struct Chunk {$/;"	f
 Color	$OCENLIB/image/mod.oc	/^struct Color {$/;"	f
 Color	$OCENLIB/sdl/mod.oc	/^struct Color  {$/;"	f
+ColorType	$OCENLIB/image/png.oc	/^enum ColorType {$/;"	f
 Complex	$OCENLIB/complex.oc	/^struct Complex$/;"	f
 Context	$OCENLIB/curl.oc	/^def Context::easy_setopt($/;"	f
 Context	$OCENLIB/hash/sha256.oc	/^struct Context {$/;"	f
@@ -44,8 +46,10 @@ Heap	$OCENLIB/heap.oc	/^struct Heap<T> {$/;"	f
 HostEnt	$OCENLIB/socket.oc	/^struct HostEnt {$/;"	f
 INDEX_DELETED	$OCENLIB/compact_map.oc	/^const INDEX_DELETED: i32 = -2$/;"	f
 INDEX_FREE	$OCENLIB/compact_map.oc	/^const INDEX_FREE: i32 = -1$/;"	f
+INFINITY	$OCENLIB/math.oc	/^[extern "INFINITY"] const INFINITY: f64$/;"	f
 INIT_EVERYTHING	$OCENLIB/sdl/mod.oc	/^[extern "SDL_INIT_EVERYTHING"]         const INIT_EVERYTHING: i32$/;"	f
 Image	$OCENLIB/image/mod.oc	/^struct Image {$/;"	f
+InterlaceMethod	$OCENLIB/image/png.oc	/^enum InterlaceMethod {$/;"	f
 Item	$OCENLIB/compact_map.oc	/^struct Item<K, V> {$/;"	f
 Item	$OCENLIB/map.oc	/^struct Item<K, V> {$/;"	f
 Iterator	$OCENLIB/compact_map.oc	/^struct Iterator<K, V> {$/;"	f
@@ -74,6 +78,7 @@ Node	$OCENLIB/linkedlist.oc	/^struct Node<T> {$/;"	f
 Option	$OCENLIB/curl.oc	/^enum Option {$/;"	f
 PI	$OCENLIB/math.oc	/^[extern "M_PI"] const PI: f32$/;"	f
 PIXELFORMAT_ABGR8888	$OCENLIB/sdl/mod.oc	/^[extern "SDL_PIXELFORMAT_ABGR8888"]    const PIXELFORMAT_ABGR8888: i32$/;"	f
+PNG	$OCENLIB/image/png.oc	/^struct PNG {$/;"	f
 Parser	$OCENLIB/bencode.oc	/^struct Parser {$/;"	f
 Parser	$OCENLIB/json.oc	/^struct Parser {$/;"	f
 QOIDecoder	$OCENLIB/image/qoi.oc	/^struct QOIDecoder {$/;"	f
@@ -162,6 +167,7 @@ abs	$OCENLIB/complex.oc	/^[extern "cabsf"] def Complex::abs(this): f32$/;"	f
 abs	$OCENLIB/math.oc	/^def i8::abs(this): i8 => if this < 0 then -this else this$/;"	f
 accept	$OCENLIB/socket.oc	/^[extern] def accept(sockfd: i32, addr: &SockAddr, addrlen: &i32): i32$/;"	f
 acos	$OCENLIB/complex.oc	/^[extern "cacosf"] def Complex::acos(this): Complex$/;"	f
+acos	$OCENLIB/math.oc	/^[extern "acos"] def f32::acos(this): f32$/;"	f
 add	$OCENLIB/complex.oc	/^def Complex::add(this, other: Complex): Complex {$/;"	f
 add	$OCENLIB/set.oc	/^def Set::add(&this, key: T) {$/;"	f
 add	$OCENLIB/vec.oc	/^[operator "+"] def Vec3::add(this, other: Vec3<T>): Vec3<T> => Vec3<T>(.x + other.x, .y + other./;"	f
@@ -177,6 +183,7 @@ as_int	$OCENLIB/value.oc	/^def Value::as_int(&this): i64 {$/;"	f
 as_list	$OCENLIB/value.oc	/^def Value::as_list(&this): &Vector<&Value> {$/;"	f
 as_str	$OCENLIB/value.oc	/^def Value::as_str(&this): Buffer {$/;"	f
 asin	$OCENLIB/complex.oc	/^[extern "casinf"] def Complex::asin(this): Complex$/;"	f
+asin	$OCENLIB/math.oc	/^[extern "asin"] def f32::asin(this): f32$/;"	f
 at	$OCENLIB/compact_map.oc	/^def Map::at(&this, key: K): V {$/;"	f
 at	$OCENLIB/deque.oc	/^def Deque::at(&this, index: u32): T {$/;"	f
 at	$OCENLIB/map.oc	/^def Map::at(&this, key: K): V {$/;"	f
@@ -196,7 +203,7 @@ c_FD_SET	$OCENLIB/fcntl.oc	/^[extern "FD_SET"] def c_FD_SET(fd: i32, set: &FdSet
 calloc	$OCENLIB/libc.oc	/^[extern] def calloc(size: u32, elem_size: u32): untyped_ptr$/;"	f
 ceil	$OCENLIB/math.oc	/^[extern "ceilf"] def f32::ceil(this): f32$/;"	f
 ch	$OCENLIB/hash/sha256.oc	/^    def ch(x: u32, y: u32, z: u32): u32 => (x & y) ^ (~x & z)$/;"	f
-char	$OCENLIB/mod.oc	/^def char::is_space(this): bool => libc::isspace(this)$/;"	f
+char	$OCENLIB/mod.oc	/^def char::is_upper(this): bool => libc::isupper(this)$/;"	f
 char	$OCENLIB/traits/eq.oc	/^def char::eq(this, other: char): bool => this == other$/;"	f
 char	$OCENLIB/traits/hash.oc	/^def char::hash(this): u32 => this as u32 * 7817$/;"	f
 chars	$OCENLIB/mod.oc	/^def str::chars(this, start: u32 = 0): CharIterator => CharIterator(this, this.len(), start)$/;"	f
@@ -204,6 +211,7 @@ chars	$OCENLIB/sv.oc	/^def SV::chars(this, start: u32 = 0): std::CharIterator =>
 chop_by_delim	$OCENLIB/sv.oc	/^def SV::chop_by_delim(&this, delim: char): SV {$/;"	f
 chop_by_str	$OCENLIB/sv.oc	/^def SV::chop_by_str(&this, delim: str): SV => .chop_by_sv(SV::from_str(delim))$/;"	f
 chop_by_sv	$OCENLIB/sv.oc	/^def SV::chop_by_sv(&this, delim: SV): SV {$/;"	f
+chop_f32	$OCENLIB/sv.oc	/^def SV::chop_f32(&this): f32 {$/;"	f
 chop_i16	$OCENLIB/sv.oc	/^def SV::chop_i16(&this): i16 => .chop_signed("SV::chop_i16") as i16$/;"	f
 chop_i32	$OCENLIB/sv.oc	/^def SV::chop_i32(&this): i32 => .chop_signed("SV::chop_i32") as i32$/;"	f
 chop_i64	$OCENLIB/sv.oc	/^def SV::chop_i64(&this): i64 => .chop_signed("SV::chop_i64") as i64$/;"	f
@@ -280,6 +288,7 @@ cur	$OCENLIB/set.oc	/^def Iterator::cur(&this): T => .map_iter.cur().key$/;"	f
 cur	$OCENLIB/sv.oc	/^def SVWordIterator::cur(&this): SV => .sv.chop_word()$/;"	f
 cur	$OCENLIB/vector.oc	/^def Iterator::cur(&this): T {$/;"	f
 dbg	$OCENLIB/value.oc	/^def Value::dbg(&this): str {$/;"	f
+decode	$OCENLIB/image/png.oc	/^def decode(data: &Buffer): &Image {$/;"	f
 decode	$OCENLIB/image/ppm.oc	/^def decode(data: &Buffer): &Image {$/;"	f
 decode	$OCENLIB/image/qoi.oc	/^def decode(data: &Buffer): &Image {$/;"	f
 decode_op_diff	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_diff(&this, first: u8) {$/;"	f
@@ -289,6 +298,7 @@ decode_op_rgb	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_rgb(&this) {$/;"
 decode_op_rgba	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_rgba(&this) {$/;"	f
 decode_op_run	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_op_run(&this, first: u8) {$/;"	f
 decode_pixels	$OCENLIB/image/qoi.oc	/^def QOIDecoder::decode_pixels(&this) {$/;"	f
+decode_scanline	$OCENLIB/image/png.oc	/^def PNG::decode_scanline(&this, out: &Buffer, scanline: u32, sv: SV) {$/;"	f
 decompress	$OCENLIB/zlib.oc	/^def decompress(data: Buffer, bytes_consumed: &u32 = null): Buffer {$/;"	f
 decompress_bytes	$OCENLIB/zlib.oc	/^def decompress_bytes(data: &u8, size: u32, bytes_consumed: &u32): Buffer {$/;"	f
 default	$OCENLIB/span.oc	/^def Span::default(): Span {$/;"	f
@@ -318,6 +328,7 @@ easy_cleanup	$OCENLIB/curl.oc	/^[extern "curl_easy_cleanup"] def Context::easy_c
 easy_init	$OCENLIB/curl.oc	/^[extern "curl_easy_init"] def Context::easy_init(): &Context$/;"	f
 easy_perform	$OCENLIB/curl.oc	/^[extern "curl_easy_perform"] def Context::easy_perform(&this): Status$/;"	f
 easy_setopt	$OCENLIB/curl.oc	/^def Context::easy_setopt($/;"	f
+encode	$OCENLIB/image/png.oc	/^def encode(img: &Image, data: &Buffer) {$/;"	f
 encode	$OCENLIB/image/ppm.oc	/^def encode(img: &Image, data: &Buffer) {$/;"	f
 encode	$OCENLIB/image/qoi.oc	/^def encode(img: &Image, data: &Buffer) {$/;"	f
 encode_end	$OCENLIB/image/qoi.oc	/^def QOIEncoder::encode_end(&this) {$/;"	f
@@ -340,7 +351,11 @@ eq	$OCENLIB/mod.oc	/^def str::eq(this, other: str): bool {$/;"	f
 eq	$OCENLIB/sv.oc	/^[operator "=="] def SV::eq(this, other: SV): bool => .len == other.len and memcmp(.data, other.d/;"	f
 eq	$OCENLIB/traits/eq.oc	/^def u8::eq(this, other: u8): bool => this == other$/;"	f
 eq	$OCENLIB/vec.oc	/^def Vec3::eq(this, other: Vec3<T>): bool => .x == other.x and .y == other.y and .z == other.z$/;"	f
+eq_bool	$OCENLIB/value.oc	/^def Value::eq_bool(&this, other: bool): bool {$/;"	f
+eq_i64	$OCENLIB/value.oc	/^def Value::eq_i64(&this, other: i64): bool {$/;"	f
 eq_str	$OCENLIB/sv.oc	/^[operator "=="] def SV::eq_str(this, other: str): bool => .eq(SV::from_str(other))$/;"	f
+eq_str	$OCENLIB/value.oc	/^def Value::eq_str(&this, other: str): bool {$/;"	f
+eq_u32	$OCENLIB/value.oc	/^def Value::eq_u32(&this, other: u32): bool {$/;"	f
 errno	$OCENLIB/libc.oc	/^[extern] const errno: i32$/;"	f
 execvp	$OCENLIB/libc.oc	/^[extern] def execvp(a: str, b: &str): i32$/;"	f
 exit	$OCENLIB/libc.oc	/^[extern] [exits] def exit(code: i32)$/;"	f
@@ -361,8 +376,8 @@ f64	$OCENLIB/traits/hash.oc	/^def f64::hash(this): u32 => (this as u64).hash()$/
 fclose	$OCENLIB/fs.oc	/^    [extern] def fclose(file: &File): i32$/;"	f
 fcntl	$OCENLIB/fcntl.oc	/^[extern "fcntl"] def fcntl(fd: i32, cmd: i32, arg: i32): i32$/;"	f
 fft	$OCENLIB/fft.oc	/^def fft(data: &Complex, N: u32, out: &Complex) {$/;"	f
-fft2	$OCENLIB/fft.oc	/^def fft2(in: &Complex, R: u32, C: u32, out: &Complex) {$/;"	f
-fft2_impl	$OCENLIB/fft.oc	/^def fft2_impl(in: &Complex, R: u32, C: u32, out: &Complex, inv: bool) {$/;"	f
+fft2	$OCENLIB/fft.oc	/^def fft2(inp: &Complex, R: u32, C: u32, out: &Complex) {$/;"	f
+fft2_impl	$OCENLIB/fft.oc	/^def fft2_impl(inp: &Complex, R: u32, C: u32, out: &Complex, inv: bool) {$/;"	f
 fft_impl	$OCENLIB/fft.oc	/^def fft_impl(data: &Complex, N: u32, out: &Complex, step: u32, factor: f32) {$/;"	f
 file_exists	$OCENLIB/fs.oc	/^def file_exists(path: str): bool {$/;"	f
 file_info	$OCENLIB/fs.oc	/^def file_info(path: str): FileMetadata {$/;"	f
@@ -417,7 +432,9 @@ get	$OCENLIB/og/state.oc	/^def KeyState::get(&this, k: sdl::Key): bool => .keys[
 get	$OCENLIB/sv.oc	/^def SV::get(this, n: u32): SV => SV(this.data, n)$/;"	f
 get	$OCENLIB/value.oc	/^def Value::get(&this, key: str, defolt: &Value = null): &Value {$/;"	f
 get_button	$OCENLIB/og/state.oc	/^def MouseState::get_button(&this, b: sdl::MouseButton): bool => .buttons[b as u32]$/;"	f
+get_byte_at	$OCENLIB/buffer.oc	/^def Buffer::get_byte_at(this, index: u32): u8 {$/;"	f
 get_compress_bound	$OCENLIB/zlib.oc	/^    [extern "compressBound"] def get_compress_bound(size: u64): uLongf$/;"	f
+get_crc	$OCENLIB/image/png.oc	/^def get_crc(buf: &u8, len: u32, init: u32 = 0xffffffff): u32 {$/;"	f
 get_digit	$OCENLIB/mod.oc	/^def char::get_digit(this): u32 => this as u32 - '0' as u32$/;"	f
 get_err	$OCENLIB/libc.oc	/^def get_err(): str => strerror(errno) as str/;"	f
 get_error	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_GetError"] def get_error(): str$/;"	f
@@ -522,12 +539,14 @@ i8	$OCENLIB/traits/compare.oc	/^def i8::compare(this, b: i8): i8 => (this > b) a
 i8	$OCENLIB/traits/eq.oc	/^def i8::eq(this, other: i8): bool => this == other$/;"	f
 i8	$OCENLIB/traits/hash.oc	/^def i8::hash(this): u32 => this as u32 * 7817$/;"	f
 ifft	$OCENLIB/fft.oc	/^def ifft(data: &Complex, N: u32, out: &Complex) {$/;"	f
-ifft2	$OCENLIB/fft.oc	/^def ifft2(in: &Complex, R: u32, C: u32, out: &Complex) {$/;"	f
+ifft2	$OCENLIB/fft.oc	/^def ifft2(inp: &Complex, R: u32, C: u32, out: &Complex) {$/;"	f
 imag	$OCENLIB/complex.oc	/^[extern "cimagf"] def Complex::imag(this): f32$/;"	f
 img_pix	$OCENLIB/image/qoi.oc	/^def QOIEncoder::img_pix(&this, idx: u32): RGBA {$/;"	f
 in_addr	$OCENLIB/socket.oc	/^[extern "struct in_addr"]$/;"	f
 inc	$OCENLIB/bencode.oc	/^def Parser::inc(&this) => .loc.index += 1$/;"	f
+index	$OCENLIB/vec.oc	/^def Vec3::index(this, idx: u32): T => (&this as &T)[idx]/;"	f
 inet_pton	$OCENLIB/socket.oc	/^[extern] def inet_pton(af: i32, src: str, dst: untyped_ptr): i32$/;"	f
+inf	$OCENLIB/math.oc	/^def f64::inf(): f64 => INFINITY$/;"	f
 inflate	$OCENLIB/zlib.oc	/^    [extern "inflate"] def Stream::inflate(&this, flush: i32): i32$/;"	f
 init	$OCENLIB/og/mod.oc	/^def init(width: u32, height: u32, title: str) {$/;"	f
 init	$OCENLIB/sdl/mod.oc	/^[extern "SDL_Init"]                    def init(flags: i32): i32$/;"	f
@@ -536,6 +555,14 @@ init	$OCENLIB/zlib.oc	/^    [extern "inflateInit"] def Stream::init(&this): i32$
 insert	$OCENLIB/compact_map.oc	/^def Map::insert(&this, key: K, value: V) {$/;"	f
 insert	$OCENLIB/map.oc	/^def Map::insert(&this, key: K, value: V) {$/;"	f
 insert	$OCENLIB/value.oc	/^def Value::insert(&this, key: str, value: &Value) {$/;"	f
+insert_bool	$OCENLIB/value.oc	/^[operator "[]="] def Value::insert_bool(&this, key: str, b: bool) => .insert(key, Value::new_boo/;"	f
+insert_f32	$OCENLIB/value.oc	/^[operator "[]="] def Value::insert_f32(&this, key: str, f: f32) => .insert(key, Value::new_float/;"	f
+insert_f64	$OCENLIB/value.oc	/^[operator "[]="] def Value::insert_f64(&this, key: str, f: f64) => .insert(key, Value::new_float/;"	f
+insert_i32	$OCENLIB/value.oc	/^[operator "[]="] def Value::insert_i32(&this, key: str, i: i32) => .insert(key, Value::new_int(i/;"	f
+insert_i64	$OCENLIB/value.oc	/^[operator "[]="] def Value::insert_i64(&this, key: str, i: i64) => .insert(key, Value::new_int(i/;"	f
+insert_str	$OCENLIB/value.oc	/^[operator "[]="] def Value::insert_str(&this, key: str, s: str) => .insert(key, Value::new_str(s/;"	f
+insert_u32	$OCENLIB/value.oc	/^[operator "[]="] def Value::insert_u32(&this, key: str, i: u32) => .insert(key, Value::new_int(i/;"	f
+insert_u64	$OCENLIB/value.oc	/^[operator "[]="] def Value::insert_u64(&this, key: str, i: u64) => .insert(key, Value::new_int(i/;"	f
 int16_t	$OCENLIB/prelude.h	/^typedef int16_t i16;$/;"	f
 int32_t	$OCENLIB/prelude.h	/^typedef int32_t i32;$/;"	f
 int64_t	$OCENLIB/prelude.h	/^typedef int64_t i64;$/;"	f
@@ -547,7 +574,7 @@ is_alpha	$OCENLIB/mod.oc	/^def char::is_alpha(this): bool => libc::isalpha(this)
 is_before	$OCENLIB/span.oc	/^def Location::is_before(&this, other: Location): bool {$/;"	f
 is_close	$OCENLIB/math.oc	/^def f64::is_close(this, other: f64, thresh: f64 = 0.0001): bool => (this - other).abs() < thresh$/;"	f
 is_digit	$OCENLIB/mod.oc	/^def char::is_digit(this): bool => libc::isdigit(this)$/;"	f
-is_empty	$OCENLIB/bufferio.oc	/^def BufferIO::is_empty(&this): bool => .index >= .data.size/;"	f
+is_empty	$OCENLIB/buffer.oc	/^def BytesReader::is_empty(&this): bool => .index >= .size/;"	f
 is_empty	$OCENLIB/compact_map.oc	/^def Map::is_empty(&this): bool => .items.size == 0$/;"	f
 is_empty	$OCENLIB/deque.oc	/^def Deque::is_empty(&this): bool => .size == 0/;"	f
 is_empty	$OCENLIB/heap.oc	/^def Heap::is_empty(&this): bool => .vec.is_empty()$/;"	f
@@ -561,6 +588,7 @@ is_key_down	$OCENLIB/og/mod.oc	/^def is_key_down(k: sdl::Key): bool => state::ke
 is_key_pressed	$OCENLIB/og/mod.oc	/^def is_key_pressed(k: sdl::Key): bool => state::prev_keys.get(k) == false and state::keys.get(k)/;"	f
 is_key_released	$OCENLIB/og/mod.oc	/^def is_key_released(k: sdl::Key): bool => state::prev_keys.get(k) == true and state::keys.get(k)/;"	f
 is_key_up	$OCENLIB/og/mod.oc	/^def is_key_up(k: sdl::Key): bool => state::keys.get(k) == false$/;"	f
+is_lower	$OCENLIB/mod.oc	/^def char::is_lower(this): bool => libc::islower(this)$/;"	f
 is_mouse_down	$OCENLIB/og/mod.oc	/^def is_mouse_down(b: sdl::MouseButton): bool$/;"	f
 is_mouse_pressed	$OCENLIB/og/mod.oc	/^def is_mouse_pressed(b: sdl::MouseButton): bool$/;"	f
 is_mouse_released	$OCENLIB/og/mod.oc	/^def is_mouse_released(b: sdl::MouseButton): bool$/;"	f
@@ -570,12 +598,15 @@ is_print	$OCENLIB/mod.oc	/^def char::is_print(this): bool => libc::isprint(this)
 is_running	$OCENLIB/og/mod.oc	/^def is_running(): bool {$/;"	f
 is_scroll	$OCENLIB/og/mod.oc	/^def is_scroll(w: state::MouseWheel): bool => state::mouse.get_wheel(w)$/;"	f
 is_space	$OCENLIB/mod.oc	/^def char::is_space(this): bool => libc::isspace(this)$/;"	f
+is_upper	$OCENLIB/mod.oc	/^def char::is_upper(this): bool => libc::isupper(this)$/;"	f
 is_valid	$OCENLIB/span.oc	/^def Span::is_valid(this): bool {$/;"	f
 isalnum	$OCENLIB/libc.oc	/^[extern] def isalnum(c: char): bool$/;"	f
 isalpha	$OCENLIB/libc.oc	/^[extern] def isalpha(c: char): bool$/;"	f
 isdigit	$OCENLIB/libc.oc	/^[extern] def isdigit(c: char): bool$/;"	f
+islower	$OCENLIB/libc.oc	/^[extern] def islower(c: char): bool$/;"	f
 isprint	$OCENLIB/libc.oc	/^[extern] def isprint(c: char): bool$/;"	f
 isspace	$OCENLIB/libc.oc	/^[extern] def isspace(c: char): bool$/;"	f
+isupper	$OCENLIB/libc.oc	/^[extern] def isupper(c: char): bool$/;"	f
 isxdigit	$OCENLIB/libc.oc	/^[extern] def isxdigit(c: char): bool$/;"	f
 iter	$OCENLIB/compact_map.oc	/^def Map::iter(&this): Iterator<K, V> => Iterator<K, V>(.items.iter())$/;"	f
 iter	$OCENLIB/linkedlist.oc	/^def LinkedList::iter(&this): Iterator<T> => Iterator<T>(.head, forward: true)$/;"	f
@@ -613,8 +644,7 @@ log	$OCENLIB/complex.oc	/^[extern "clogf"] def Complex::log(this): Complex$/;"	f
 log	$OCENLIB/math.oc	/^[extern "logf"] def f32::log(this): f32$/;"	f
 log2	$OCENLIB/math.oc	/^[extern "log2f"] def f32::log2(this): f32$/;"	f
 maj	$OCENLIB/hash/sha256.oc	/^    def maj(x: u32, y: u32, z: u32): u32 => (x & y) ^ (x & z) ^ (y & z)$/;"	f
-make	$OCENLIB/buffer.oc	/^def Buffer::make(capacity: u32 = 16): Buffer {$/;"	f
-make	$OCENLIB/bufferio.oc	/^def BufferIO::make(data: &Buffer): BufferIO {$/;"	f
+make	$OCENLIB/buffer.oc	/^def BytesReader::make(data: &u8, size: u32): BytesReader {$/;"	f
 make	$OCENLIB/hash/sha256.oc	/^def Context::make(): Context {$/;"	f
 make	$OCENLIB/image/qoi.oc	/^def QOIEncoder::make(img: &Image, buffer: &Buffer): QOIEncoder {$/;"	f
 make	$OCENLIB/json.oc	/^def Parser::make(tokens: &Vector<&Token>): Parser {$/;"	f
@@ -624,6 +654,7 @@ make	$OCENLIB/set.oc	/^def Iterator::make(set: &Set<T>): Iterator<T> => Iterator
 make	$OCENLIB/sv.oc	/^def SVPredicateIterator::make(sv: SV, pred: fn(SV): u32): SVPredicateIterator {$/;"	f
 make	$OCENLIB/thread.oc	/^def Thread::make(callback: fn(untyped_ptr): untyped_ptr, arg: untyped_ptr = null): Thread {$/;"	f
 make	$OCENLIB/vector.oc	/^def Iterator::make(vec: &Vector<T>): Iterator<T> => Iterator<T>(vec, 0)$/;"	f
+make_crc_table	$OCENLIB/image/png.oc	/^def make_crc_table() {$/;"	f
 malloc	$OCENLIB/libc.oc	/^[extern] def malloc(size: u32): untyped_ptr$/;"	f
 max	$OCENLIB/math.oc	/^def f32::max(this, b: f32): f32 => if this > b then this else b$/;"	f
 max	$OCENLIB/mod.oc	/^def u8::max(this, other: u8): u8 => if this > other then this else other$/;"	f
@@ -668,13 +699,17 @@ next	$OCENLIB/sv.oc	/^def SVWordIterator::next(&this) {}$/;"	f
 next	$OCENLIB/vector.oc	/^def Iterator::next(&this) {$/;"	f
 next_power_of_2	$OCENLIB/fft.oc	/^def next_power_of_2(x: u32): u32 {$/;"	f
 normalized	$OCENLIB/vec.oc	/^def Vec3::normalized(this): Vec3f {$/;"	f
+nth_element	$OCENLIB/sort.oc	/^def nth_element<T>(data: &T, size: u32, n: u32) => nth_element_by<T>(data, size, n, T::compare)$/;"	f
+nth_element_by	$OCENLIB/sort.oc	/^def nth_element_by<T>(data: &T, size: u32, n: u32, cmp: fn(T,T): i8): T {$/;"	f
 only_chop_left	$OCENLIB/sv.oc	/^def SV::only_chop_left(&this, n: u32 = 1) {$/;"	f
 open	$OCENLIB/fs.oc	/^def File::open(path: str, mode: str = "r"): &File {$/;"	f
 open_audio	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_OpenAudio"] def open_audio(frequency: i32, format: u16, channels: i32, chunksize: i/;"	f
 opendir	$OCENLIB/fs.oc	/^    [extern] def opendir(path: str): &Dir$/;"	f
+paeth_predictor	$OCENLIB/image/png.oc	/^def paeth_predictor(ua: u8, ub: u8, uc: u8): u8 {$/;"	f
 pair_hash	$OCENLIB/traits/hash.oc	/^def pair_hash(a: u32, b: u32): u32 => a * 33 ^ b$/;"	f
 panic	$OCENLIB/mod.oc	/^def panic(msg: str = "<panic>") {$/;"	f
 parse	$OCENLIB/bencode.oc	/^def parse(input: Buffer): &Value {$/;"	f
+parse	$OCENLIB/image/png.oc	/^def Chunk::parse(io: &BytesReader): Chunk {$/;"	f
 parse	$OCENLIB/json.oc	/^def parse(source: str, filename: str = "<anonymous>"): &Value {$/;"	f
 parse_array	$OCENLIB/json.oc	/^def Parser::parse_array(&this): &Value {$/;"	f
 parse_dict	$OCENLIB/bencode.oc	/^def Parser::parse_dict(&this): &Value {$/;"	f
@@ -686,6 +721,8 @@ parse_object	$OCENLIB/json.oc	/^def Parser::parse_object(&this): &Value {$/;"	f
 parse_string	$OCENLIB/bencode.oc	/^def Parser::parse_string(&this): &Value {$/;"	f
 parse_string_internal	$OCENLIB/bencode.oc	/^def Parser::parse_string_internal(&this): Buffer {$/;"	f
 parse_value	$OCENLIB/json.oc	/^def Parser::parse_value(&this): &Value => match .token().type {$/;"	f
+partition	$OCENLIB/sort.oc	/^def partition<T>(data: &T, size: u32) => partition_by<T>(data, size, T::compare)$/;"	f
+partition_by	$OCENLIB/sort.oc	/^def partition_by<T>(data: &T, size: u32, cmp: fn(T): bool): u32 {$/;"	f
 pause	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Pause"] def pause(channel: i32)$/;"	f
 peek	$OCENLIB/heap.oc	/^def Heap::peek(&this): T {$/;"	f
 pipe	$OCENLIB/libc.oc	/^[extern] def pipe(fds: &i32): i32$/;"	f
@@ -710,23 +747,25 @@ push	$OCENLIB/linkedlist.oc	/^def LinkedList::push(&this, val: T): &Node<T> {$/;
 push	$OCENLIB/value.oc	/^def Value::push(&this, value: &Value) {$/;"	f
 push	$OCENLIB/vector.oc	/^def Vector::push(&this, value: T) {$/;"	f
 push_back	$OCENLIB/deque.oc	/^def Deque::push_back(&this, value: T) {$/;"	f
+push_bool	$OCENLIB/value.oc	/^[operator "+="] def Value::push_bool(&this, b: bool) => .push(Value::new_bool(b))$/;"	f
+push_f32	$OCENLIB/value.oc	/^[operator "+="] def Value::push_f32(&this, f: f32) => .push(Value::new_float(f as f64))$/;"	f
+push_f64	$OCENLIB/value.oc	/^[operator "+="] def Value::push_f64(&this, f: f64) => .push(Value::new_float(f))$/;"	f
 push_front	$OCENLIB/deque.oc	/^def Deque::push_front(&this, value: T) {$/;"	f
 push_front	$OCENLIB/linkedlist.oc	/^def LinkedList::push_front(&this, val: T): &Node<T> {$/;"	f
 push_front	$OCENLIB/vector.oc	/^def Vector::push_front(&this, value: T) {$/;"	f
-put_bytes	$OCENLIB/buffer.oc	/^def Buffer::put_bytes(&this, bytes: &u8, size: u32) {$/;"	f
-putb	$OCENLIB/buffer.oc	/^def Buffer::putb(&this, buf: &Buffer) {$/;"	f
-putbf	$OCENLIB/buffer.oc	/^def Buffer::putbf(&this, buf: &Buffer) {$/;"	f
-putc	$OCENLIB/buffer.oc	/^def Buffer::putc(&this, c: char) {$/;"	f
-puts	$OCENLIB/buffer.oc	/^def Buffer::puts(&this, s: str) {$/;"	f
+push_i32	$OCENLIB/value.oc	/^[operator "+="] def Value::push_i32(&this, i: i32) => .push(Value::new_int(i as i64))$/;"	f
+push_i64	$OCENLIB/value.oc	/^[operator "+="] def Value::push_i64(&this, i: i64) => .push(Value::new_int(i))$/;"	f
+push_str	$OCENLIB/value.oc	/^[operator "+="] def Value::push_str(&this, s: str) => .push(Value::new_str(s))$/;"	f
+push_u32	$OCENLIB/value.oc	/^[operator "+="] def Value::push_u32(&this, i: u32) => .push(Value::new_int(i as i64))$/;"	f
+push_u64	$OCENLIB/value.oc	/^[operator "+="] def Value::push_u64(&this, i: u64) => .push(Value::new_int(i as i64))$/;"	f
 puts	$OCENLIB/fs.oc	/^def File::puts(&this, s: str) {$/;"	f
-putsf	$OCENLIB/buffer.oc	/^def Buffer::putsf(&this, s: str) {$/;"	f
-putsv	$OCENLIB/buffer.oc	/^def Buffer::putsv(&this, sv: SV) => .put_bytes(sv.data as &u8, sv.len)$/;"	f
 query	$OCENLIB/sdl/mod.oc	/^[extern "SDL_QueryTexture"]   def Texture::query(&this, a: untyped_ptr, b: untyped_ptr, w: &i32,/;"	f
 quit	$OCENLIB/og/mod.oc	/^def quit() {$/;"	f
 quit	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Quit"] def quit()$/;"	f
 quit	$OCENLIB/sdl/mod.oc	/^[extern "SDL_Quit"]                    def quit()$/;"	f
 quit	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_Quit"]     def quit(): i32$/;"	f
 radians	$OCENLIB/math.oc	/^def radians(degrees: f32): f32 { return degrees * PI \/ 180.0; }$/;"	f
+rand	$OCENLIB/random.oc	/^    [extern] def rand(): u32$/;"	f
 rand01	$OCENLIB/math.oc	/^[extern "drand48"] def rand01(): f32$/;"	f
 randf32	$OCENLIB/random.oc	/^def randf32(state: &RandomState=null): f32 => (randint(state) as f32) \/ 4294967296.0$/;"	f
 randf64	$OCENLIB/random.oc	/^def randf64(state: &RandomState=null): f64 => (randint(state) as f64) \/ 4294967296.0$/;"	f
@@ -737,19 +776,21 @@ randu32	$OCENLIB/random.oc	/^def randu32(state: &RandomState=null): u32 => randi
 randu64	$OCENLIB/random.oc	/^def randu64(state: &RandomState=null): u64 => (randint(state) as u64) << 32 | randint(state) as /;"	f
 read	$OCENLIB/fs.oc	/^def File::read(&this, buf: untyped_ptr, size: u32): i32 {$/;"	f
 read	$OCENLIB/socket.oc	/^def Socket::read(&this, buf: &Buffer, max_size: u32): u32 {$/;"	f
-read_bytes	$OCENLIB/bufferio.oc	/^def BufferIO::read_bytes(&this, _dst: untyped_ptr, count: u32) {$/;"	f
-read_bytes_sv	$OCENLIB/bufferio.oc	/^def BufferIO::read_bytes_sv(&this, count: u32): SV {$/;"	f
+read_bytes	$OCENLIB/buffer.oc	/^def BytesReader::read_bytes(&this, _dst: untyped_ptr, count: u32) {$/;"	f
+read_bytes_sv	$OCENLIB/buffer.oc	/^def BytesReader::read_bytes_sv(&this, count: u32): SV {$/;"	f
 read_exactly	$OCENLIB/socket.oc	/^def Socket::read_exactly(&this, buf: &Buffer, size: u32): u32 {$/;"	f
 read_file	$OCENLIB/fs.oc	/^def read_file(path: str): Buffer {$/;"	f
-read_i16	$OCENLIB/bufferio.oc	/^def BufferIO::read_i16(&this, endian: Endian = Little): i16 { return .read_u16(endian) as i16 }$/;"	f
-read_i32	$OCENLIB/bufferio.oc	/^def BufferIO::read_i32(&this, endian: Endian = Little): i32 { return .read_u32(endian) as i32 }$/;"	f
-read_i64	$OCENLIB/bufferio.oc	/^def BufferIO::read_i64(&this, endian: Endian = Little): i64 { return .read_u64(endian) as i64 }$/;"	f
-read_i8	$OCENLIB/bufferio.oc	/^def BufferIO::read_i8(&this): i8 { return .read_u8() as i8 }$/;"	f
-read_u16	$OCENLIB/bufferio.oc	/^def BufferIO::read_u16(&this, endian: Endian = Little): u16 {$/;"	f
-read_u32	$OCENLIB/bufferio.oc	/^def BufferIO::read_u32(&this, endian: Endian = Little): u32 {$/;"	f
-read_u64	$OCENLIB/bufferio.oc	/^def BufferIO::read_u64(&this, endian: Endian = Little): u64 {$/;"	f
-read_u8	$OCENLIB/bufferio.oc	/^def BufferIO::read_u8(&this): u8 {$/;"	f
+read_i16	$OCENLIB/buffer.oc	/^def BytesReader::read_i16(&this, endian: Endian = Big): i16 { return .read_u16(endian) as i16 }$/;"	f
+read_i32	$OCENLIB/buffer.oc	/^def BytesReader::read_i32(&this, endian: Endian = Big): i32 { return .read_u32(endian) as i32 }$/;"	f
+read_i64	$OCENLIB/buffer.oc	/^def BytesReader::read_i64(&this, endian: Endian = Big): i64 { return .read_u64(endian) as i64 }$/;"	f
+read_i8	$OCENLIB/buffer.oc	/^def BytesReader::read_i8(&this): i8 { return .read_u8() as i8 }$/;"	f
+read_u16	$OCENLIB/buffer.oc	/^def BytesReader::read_u16(&this, endian: Endian = Big): u16 {$/;"	f
+read_u32	$OCENLIB/buffer.oc	/^def BytesReader::read_u32(&this, endian: Endian = Big): u32 {$/;"	f
+read_u64	$OCENLIB/buffer.oc	/^def BytesReader::read_u64(&this, endian: Endian = Big): u64 {$/;"	f
+read_u8	$OCENLIB/buffer.oc	/^def BytesReader::read_u8(&this): u8 {$/;"	f
 readdir	$OCENLIB/fs.oc	/^    [extern] def readdir(dir: &Dir): &dirent$/;"	f
+reader	$OCENLIB/buffer.oc	/^def Buffer::reader(this): BytesReader => BytesReader::make(.data, .size)$/;"	f
+reader	$OCENLIB/sv.oc	/^def SV::reader(this): BytesReader => BytesReader::make(.data as &u8, .len)$/;"	f
 real	$OCENLIB/complex.oc	/^[extern "crealf"] def Complex::real(this): f32$/;"	f
 realloc	$OCENLIB/libc.oc	/^[extern] def realloc(old: untyped_ptr, size: u32): untyped_ptr$/;"	f
 realpath	$OCENLIB/fs.oc	/^def realpath(path: str): str => bindings::realpath(path, null)$/;"	f
@@ -792,16 +833,25 @@ set	$OCENLIB/image/mod.oc	/^def Image::set(&this, x: u32, y: u32, col: Color) { 
 set	$OCENLIB/value.oc	/^def Value::set(&this, idx: u32, value: &Value) {$/;"	f
 set	$OCENLIB/vector.oc	/^def Vector::set(&this, i: u32, val: T) {$/;"	f
 set_blend_mode	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetRenderDrawBlendMode"]   def Renderer::set_blend_mode(&this, blend: BlendMode)$/;"	f
+set_bool	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_bool(&this, idx: u32, b: bool) => .set(idx, Value::new_bool(b))$/;"	f
 set_cursor	$OCENLIB/og/mod.oc	/^def set_cursor(c: sdl::CursorType) {$/;"	f
 set_cursor	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetCursor"]          def set_cursor(cursor: &Cursor)$/;"	f
 set_draw_color	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetRenderDrawColor"]       def Renderer::set_draw_color(&this, r: i32, g: i32, b: i/;"	f
+set_f32	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_f32(&this, idx: u32, f: f32) => .set(idx, Value::new_float(f as /;"	f
+set_f64	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_f64(&this, idx: u32, f: f64) => .set(idx, Value::new_float(f))$/;"	f
 set_fullscreen	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowFullscreen"]     def Window::set_fullscreen(&this, fullscreen: i32): i32$/;"	f
+set_i32	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_i32(&this, idx: u32, i: i32) => .set(idx, Value::new_int(i as i6/;"	f
+set_i64	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_i64(&this, idx: u32, i: i64) => .set(idx, Value::new_int(i))$/;"	f
 set_jump_point	$OCENLIB/setjmp.oc	/^def ErrorContext::set_jump_point(this): i32$/;"	f
 set_mode	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowFullscreen"] def Window::set_mode(&this, mode: WindowMode)$/;"	f
 set_position	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowPosition"]       def Window::set_position(&this, x: i32, y: i32)$/;"	f
 set_resizable	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowResizable"]  def Window::set_resizable(&this, resizable: bool)$/;"	f
 set_size	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowSize"]  def Window::set_size(&this, w: i32, h: i32)$/;"	f
+set_str	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_str(&this, idx: u32, s: str) => .set(idx, Value::new_str(s))$/;"	f
 set_title	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetWindowTitle"]           def Window::set_title(&this, title: str)$/;"	f
+set_u32	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_u32(&this, idx: u32, i: u32) => .set(idx, Value::new_int(i as i6/;"	f
+set_u64	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_u64(&this, idx: u32, i: u64) => .set(idx, Value::new_int(i as i6/;"	f
+shift_args	$OCENLIB/mod.oc	/^def shift_args(argc: &i32, argv: &&str, where: str = "here"): str {$/;"	f
 should_swap	$OCENLIB/heap.oc	/^def Heap::should_swap(&this, a: u32, b: u32): bool {$/;"	f
 show_cursor	$OCENLIB/sdl/mod.oc	/^[extern "SDL_ShowCursor"]              def show_cursor(toggle: bool)$/;"	f
 sift_down	$OCENLIB/heap.oc	/^def Heap::sift_down(&this, i: u32 = 0) {$/;"	f
@@ -818,11 +868,13 @@ slice	$OCENLIB/sv.oc	/^def SV::slice(this, off: u32, end: u32 = 0): SV {$/;"	f
 sockaddr_in	$OCENLIB/socket.oc	/^[extern "struct sockaddr_in"]$/;"	f
 socket	$OCENLIB/socket.oc	/^[extern] def socket(domain: i32, type: i32, protocol: i32): i32$/;"	f
 sort	$OCENLIB/heap.oc	/^def Heap::sort(&this) {$/;"	f
-sort	$OCENLIB/sort.oc	/^def sort<T>(data: &T, size: u32, cmp: fn(T,T): i8 = T::compare) {$/;"	f
+sort	$OCENLIB/sort.oc	/^def sort<T>(data: &T, size: u32) => sort_by<T>(data, size, T::compare)$/;"	f
+sort_by	$OCENLIB/sort.oc	/^def sort_by<T>(data: &T, size: u32, cmp: fn(T,T): i8) {$/;"	f
 split_str	$OCENLIB/sv.oc	/^def SV::split_str(this, delim: str): SVSplitIterator => SVSplitIterator(this, SV::from_str(delim/;"	f
 split_sv	$OCENLIB/sv.oc	/^def SV::split_sv(this, delim: SV): SVSplitIterator => SVSplitIterator(this, delim)$/;"	f
 split_words	$OCENLIB/sv.oc	/^def SV::split_words(this): SVWordIterator => SVWordIterator(this)$/;"	f
 sqrt	$OCENLIB/math.oc	/^[extern "sqrtf"] def f32::sqrt(this): f32$/;"	f
+srand	$OCENLIB/random.oc	/^    [extern] def srand(seed: u32)$/;"	f
 start	$OCENLIB/variadic.oc	/^[extern "va_start"] def VarArgs::start(this, ...)$/;"	f
 starts_right_after	$OCENLIB/span.oc	/^def Span::starts_right_after(this, other: Span): bool {$/;"	f
 starts_with	$OCENLIB/mod.oc	/^def str::starts_with(this, prefix: str): bool {$/;"	f
@@ -873,6 +925,8 @@ to_u32	$OCENLIB/mod.oc	/^def str::to_u32(this): u32 => this.to_i32() as u32 \/\/
 to_u32	$OCENLIB/vec.oc	/^def Vec3::to_u32(this): Vec3u => Vec3u(.x as u32, .y as u32, .z as u32)$/;"	f
 to_u64	$OCENLIB/vec.oc	/^def Vec3::to_u64(this): Vec3u64 => Vec3u64(.x as u64, .y as u64, .z as u64)$/;"	f
 token	$OCENLIB/json.oc	/^def Parser::token(&this): &Token => .tokens.at(.curr)$/;"	f
+tolower	$OCENLIB/libc.oc	/^[extern] def tolower(c: char): char$/;"	f
+toupper	$OCENLIB/libc.oc	/^[extern] def toupper(c: char): char$/;"	f
 transform	$OCENLIB/hash/sha256.oc	/^def Context::transform(&this, data: &u8) {$/;"	f
 trim	$OCENLIB/sv.oc	/^def SV::trim(&this) {$/;"	f
 trim_left	$OCENLIB/sv.oc	/^def SV::trim_left(&this) {$/;"	f
@@ -915,18 +969,24 @@ waitpid	$OCENLIB/libc.oc	/^[extern] def waitpid(a: i32, b: &i32, c: i32): i32$/;
 write	$OCENLIB/fs.oc	/^def File::write(&this, buf: untyped_ptr, size: u32): i32 {$/;"	f
 write	$OCENLIB/libc.oc	/^[extern] def write(a: i32, b: &u32, c: u32): i32$/;"	f
 write	$OCENLIB/socket.oc	/^def Socket::write(&this, buf: &Buffer): u32 => write(this.fd, buf.data, buf.size)$/;"	f
-write_bytes	$OCENLIB/bufferio.oc	/^def BufferIO::write_bytes(&this, _src: untyped_ptr, count: u32) {$/;"	f
+write_buf	$OCENLIB/buffer.oc	/^def Buffer::write_buf(&this, buf: &Buffer) {$/;"	f
+write_buf_f	$OCENLIB/buffer.oc	/^def Buffer::write_buf_f(&this, buf: &Buffer) {$/;"	f
+write_bytes	$OCENLIB/buffer.oc	/^def Buffer::write_bytes(&this, bytes: untyped_ptr, size: u32) {$/;"	f
 write_callback	$OCENLIB/curl.oc	/^    def write_callback($/;"	f
+write_char	$OCENLIB/buffer.oc	/^def Buffer::write_char(&this, c: char) => .write_u8(c as u8)$/;"	f
 write_file	$OCENLIB/fs.oc	/^def write_file(path: str, data: Buffer) {$/;"	f
 write_file_bytes	$OCENLIB/fs.oc	/^def write_file_bytes(path: str, data: untyped_ptr, size: u32) {$/;"	f
 write_file_str	$OCENLIB/fs.oc	/^def write_file_str(path: str, data: str) {$/;"	f
-write_i16	$OCENLIB/bufferio.oc	/^def BufferIO::write_i16(&this, value: i16, endian: Endian = Little) { .write_u16(value as u16, e/;"	f
-write_i32	$OCENLIB/bufferio.oc	/^def BufferIO::write_i32(&this, value: i32, endian: Endian = Little) { .write_u32(value as u32, e/;"	f
-write_i64	$OCENLIB/bufferio.oc	/^def BufferIO::write_i64(&this, value: i64, endian: Endian = Little) { .write_u64(value as u64, e/;"	f
-write_i8	$OCENLIB/bufferio.oc	/^def BufferIO::write_i8(&this, value: i8) { .write_u8(value as u8) }$/;"	f
+write_i16	$OCENLIB/buffer.oc	/^def Buffer::write_i16(&this, value: i16, endian: Endian = Big) { .write_u16(value as u16, endian/;"	f
+write_i32	$OCENLIB/buffer.oc	/^def Buffer::write_i32(&this, value: i32, endian: Endian = Big) { .write_u32(value as u32, endian/;"	f
+write_i64	$OCENLIB/buffer.oc	/^def Buffer::write_i64(&this, value: i64, endian: Endian = Big) { .write_u64(value as u64, endian/;"	f
+write_i8	$OCENLIB/buffer.oc	/^def Buffer::write_i8(&this, value: i8) { .write_u8(value as u8) }$/;"	f
+write_str	$OCENLIB/buffer.oc	/^def Buffer::write_str(&this, s: str) {$/;"	f
+write_str_f	$OCENLIB/buffer.oc	/^def Buffer::write_str_f(&this, s: str) {$/;"	f
+write_sv	$OCENLIB/buffer.oc	/^def Buffer::write_sv(&this, sv: SV) => .write_bytes(sv.data as &u8, sv.len)$/;"	f
 write_to_file	$OCENLIB/json.oc	/^def write_to_file(val: &Value, filename: str) {$/;"	f
-write_u16	$OCENLIB/bufferio.oc	/^def BufferIO::write_u16(&this, value: u16, endian: Endian = Little) {$/;"	f
-write_u32	$OCENLIB/bufferio.oc	/^def BufferIO::write_u32(&this, value: u32, endian: Endian = Little) {$/;"	f
-write_u64	$OCENLIB/bufferio.oc	/^def BufferIO::write_u64(&this, value: u64, endian: Endian = Little) {$/;"	f
-write_u8	$OCENLIB/bufferio.oc	/^def BufferIO::write_u8(&this, value: u8) {$/;"	f
+write_u16	$OCENLIB/buffer.oc	/^def Buffer::write_u16(&this, value: u16, endian: Endian = Big) {$/;"	f
+write_u32	$OCENLIB/buffer.oc	/^def Buffer::write_u32(&this, value: u32, endian: Endian = Big) {$/;"	f
+write_u64	$OCENLIB/buffer.oc	/^def Buffer::write_u64(&this, value: u64, endian: Endian = Big) {$/;"	f
+write_u8	$OCENLIB/buffer.oc	/^def Buffer::write_u8(&this, value: u8) {$/;"	f
 zero	$OCENLIB/fcntl.oc	/^[extern "FD_ZERO"] def FdSet::zero(&this)$/;"	f

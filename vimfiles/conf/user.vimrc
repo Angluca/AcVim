@@ -387,7 +387,7 @@ au filetype d com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -foc
 au filetype d com! -bang -nargs=* -complete=file Dub AsyncRun<bang> -raw=1 -focus=0 -rows=8 dub <args>
 au filetype hare com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args> %
 au filetype ocen com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r
-au filetype ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r && ./%:t:r
+au filetype ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen %:p -o %:t:r && ./%:t:r <args> 
 au filetype ocen com! -bang -nargs=* -complete=file Clean AsyncRun<bang> -raw=1 -focus=0 -rows=8 rm %:t:r %:t:r.c
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
@@ -472,7 +472,7 @@ au filetype zig call LspAddServer([#{
             "\    name: 'ocen',
             "\    filetype: ['ocen'],
             "\    path: 'ocen',
-            "\    args: ['lsp']
+            "\    args: ['--doc-symbols']
             "\  }])
 
 "au filetype v call LspAddServer([#{

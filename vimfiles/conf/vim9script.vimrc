@@ -57,9 +57,10 @@ export var asopt = {
     },
     cmd: {
         enable: true,   # 'false' will disable command completion
+        #delay: 10,      # delay in ms before showing popup
         pum: true,      # 'false' for flat menu, 'true' for stacked menu
         fuzzy: false,   # fuzzy completion
-        exclude: ["[pP]"],    # keywords excluded from completion (use \c for ignorecase)
+        #exclude: ["[pP]"],    # keywords excluded from completion (use \c for ignorecase)
         onspace: [],    # show popup menu after keyword+space (ex. :buffer<space>, etc.)
     }
 }
@@ -83,9 +84,9 @@ nmap ;fg <scriptcmd>fuzzy.GitFile()<CR>
 nmap ;fb <scriptcmd>fuzzy.Buffer()<CR>
 nmap ;fk <scriptcmd>fuzzy.Keymap()<CR>
 nmap ;fh <scriptcmd>fuzzy.Help()<CR>
-nmap ;fH <scriptcmd>fuzzy.Highlight()<CR>
+nmap ;fl <scriptcmd>fuzzy.Highlight()<CR>
 nmap ;fc <scriptcmd>fuzzy.Command()<CR>
-nmap ;fC <scriptcmd>fuzzy.CmdHistory()<CR>
+nmap ;fH <scriptcmd>fuzzy.CmdHistory()<CR>
 nmap ;fu <scriptcmd>fuzzy.MRU()<CR>
 nmap ;fm <scriptcmd>fuzzy.Mark()<CR>
 nmap ;fo <scriptcmd>fuzzy.Option()<CR>

@@ -591,6 +591,10 @@ nmap $ g$
 xno < <gv
 xno > >gv
 
+"sel history
+cmap <c-k> <up>
+cmap <c-j> <down>
+
 "nmap <silent> <m-t> :tabnew<cr>
 "nmap 0 g0
 
