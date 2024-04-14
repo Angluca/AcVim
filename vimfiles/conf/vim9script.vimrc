@@ -3,7 +3,7 @@ vim9script
 #---lsp/omnifunc/vimcomplete
 #g:vimcomplete_tab_enable = 1
 var dictproperties = {
-        zig: {sortedDict: true }
+        #zig: {sortedDict: true }
     }
 export var options = {
     completor: { 
@@ -32,7 +32,7 @@ export var options = {
         priority: 6,
         properties: dictproperties,
     },
-    omnifunc: { enable: false, priority: 8, filetypes: ['python', 'javascript'] },
+    omnifunc: { enable: false, priority: 8, filetypes: ['python', 'javascript', 'ocen'], },
     vsnip: { enable: true, priority: 11, timeout: 100 },
     vimscript: { enable: true },
     ngram: {

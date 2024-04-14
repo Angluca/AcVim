@@ -199,6 +199,7 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 "\ 'vim': { 'left': '#' }
 "\ }
 let g:NERDCreateDefaultMappings=0
+AcCreateMaps('<plug>NERDCommenterToggle',     '<d-/>')
 AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
 AcCreateMaps('<plug>NERDCommenterToggle',     ';x<space>')
 AcCreateMaps('<plug>NERDCommenterMinimal',    ';xm')
@@ -379,8 +380,6 @@ nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
 "com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
 au filetype nim com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 nim <args> %
 au filetype nim com! -bang -nargs=* -complete=file Nim AsyncRun<bang> -raw=1 -focus=0 -rows=8 nimble <args> 
-au filetype rust com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args> %
-au filetype rust com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
 au filetype zig com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
 au filetype zig com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
 au filetype d com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 dmd <args> %
@@ -389,6 +388,11 @@ au filetype hare com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -
 au filetype ocen com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r
 au filetype ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen %:p -o %:t:r && ./%:t:r <args> 
 au filetype ocen com! -bang -nargs=* -complete=file Clean AsyncRun<bang> -raw=1 -focus=0 -rows=8 rm %:t:r %:t:r.c
+au filetype rust com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args> %
+au filetype rust com! -bang -nargs=* -complete=file Bd AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo build <args>
+au filetype rust com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
+au filetype rust com! -bang -nargs=* -complete=file Chk AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo check <args>
+au filetype rust com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo run <args>
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .
@@ -449,13 +453,6 @@ au filetype c,cpp call LspAddServer([#{
             \    args: ['--background-index']
             \  }])
 
-au filetype d call LspAddServer([#{
-            \    name: 'd',
-            \    filetype: ['d'],
-            \    path: 'serve-d',
-            \    args: [],
-            \  }])
-
 au filetype nim call LspAddServer([#{
             \    name: 'nimlsp',
             \    filetype: ['nim'],
@@ -468,19 +465,6 @@ au filetype zig call LspAddServer([#{
             \    path: 'zls',
             \  }])
 
-"au filetype ocen call LspAddServer([#{
-            "\    name: 'ocen',
-            "\    filetype: ['ocen'],
-            "\    path: 'ocen',
-            "\    args: ['--doc-symbols']
-            "\  }])
-
-"au filetype v call LspAddServer([#{
-            "\    name: 'vls',
-            "\    filetype: ['vlang', 'v'],
-            "\    path: 'vls',
-            "\  }])
-
 "au filetype rust call LspAddServer([#{
     "\    name: 'rustlang',
     "\    filetype: ['rust'],
@@ -488,6 +472,26 @@ au filetype zig call LspAddServer([#{
     "\    args: [],
     "\    syncInit: v:true,
     "\  }])
+
+"au filetype d call LspAddServer([#{
+            "\    name: 'd',
+            "\    filetype: ['d'],
+            "\    path: 'serve-d',
+            "\    args: [],
+            "\  }])
+
+"au filetype ocen call LspAddServer([#{
+            "\    name: 'ocen',
+            "\    filetype: ['ocen'],
+            "\    path: 'ocen',
+            "\    args: []
+            "\  }])
+
+"au filetype v call LspAddServer([#{
+            "\    name: 'vls',
+            "\    filetype: ['vlang', 'v'],
+            "\    path: 'vls',
+            "\  }])
 
 au filetype * call LspOptionsSet(#{
         \   outlineOnRight: v:true,

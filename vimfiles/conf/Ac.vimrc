@@ -674,6 +674,8 @@ let &t_BE = ""
 let &t_BD = "\e[?2004l"
 set t_PS=\e[200~
 set t_PE=\e[201~
+nmap <d-d> :vs<cr>
+nmap <d-D> :sp<cr>
 
 "smap ;; ;
 "set nomore
