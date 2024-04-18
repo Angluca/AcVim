@@ -32,7 +32,7 @@ export var options = {
         priority: 6,
         properties: dictproperties,
     },
-    omnifunc: { enable: false, priority: 8, filetypes: ['python', 'javascript', 'ocen'], },
+    omnifunc: { enable: false, priority: 8, filetypes: ['python', 'javascript'] },
     vsnip: { enable: true, priority: 11, timeout: 100 },
     vimscript: { enable: true },
     ngram: {

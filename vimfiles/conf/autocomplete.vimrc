@@ -31,6 +31,7 @@ SetFiletype('*.wxss','css')  "wx
 SetFiletype('*.nim,*.nims,*.c2nim','nim') "nim
 SetFiletype('*.zig','zig') "zig
 SetFiletype('*.oc','ocen') "ocen
+SetFiletype('*.c3','c3') "c3
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -50,7 +51,8 @@ au FileType hare nmap \== :Mtags hare.tags $VIMDICT/hare.ctags<cr>
 
 au FileType ocen nmap \== :Mtags ocen.tags $VIMDICT/ocen.ctags<cr>
 au FileType ocen let $OCENLIB = $HOME.'/SDK/Ocens/ocen/std'
-au FileType ocen setl tags +=$VIMDICT/ocen.tags
+au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylibs/oc'
+au FileType ocen setl tags +=$VIMDICT/ocen.tags,$VIMDICT/rayliboc.tags
 
 "nmap \-z :Ftags '$ZIGLIB'<cr> 
 "nmap \-n :Ftags '$NIMLIB'<cr> 
@@ -138,7 +140,7 @@ SetAcpDict('lua','lua.dict')
 SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict')
 SetAcpDict('zig','zig.dict','zig.base.dict')
 SetAcpDict('hare','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
-SetAcpDict('ocen','ocen.base.dict','ocen.dict')
+SetAcpDict('ocen','ocen.base.dict','ocen.dict','raylib.dict')
 "}}}
 "-------------------
 "--temp {{{
