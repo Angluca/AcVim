@@ -75,6 +75,9 @@ fu! s:formatDict()
     " tag2dict
     "exe 'g/^\(\k\+\)\s.*$\n\1$/d'
     "exe '%s/^\(\k\+\)\s.*/\1/ge'
+    "exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
+    exe '%s/^.\{,2}\s.*$\n//ge'
+    exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
     exe '%s/.*\/^\s*\\\/\\\/.*$\n//ge'
     exe 'g/^\([0-9A-Za-z_.:]\+\)\s.*$\n\1$/d'
     exe '%s/^\([0-9A-Za-z_.:]\+\)\s.*/\1/ge'
@@ -92,6 +95,8 @@ fu! s:formatTags(rd='')
             exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
         endif
     endif
+    exe '%s/^.\{,2}\s.*$\n//ge'
+    exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
     exe 'g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
     "exe 'g/^\W\+.*$/d'
     exe 'g/^\~.*$/d'

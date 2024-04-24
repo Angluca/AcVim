@@ -100,6 +100,7 @@ SocketMode
 SocketStatus
 Sound
 Span
+State
 Status
 Stream
 Surface
@@ -152,6 +153,7 @@ acos
 add
 addrs
 adds
+alloc
 allocate_channels
 append
 arg
@@ -302,6 +304,7 @@ float
 floor
 fopen
 fork
+format
 fread
 free
 free_all
@@ -488,6 +491,10 @@ mul
 mult
 multrs
 mults
+my_calloc
+my_free
+my_realloc
+negate
 new
 new_bool
 new_dict
@@ -584,6 +591,7 @@ remove_last_n
 remove_node
 render_solid
 replace_with
+reset_to_default_allocator
 resize
 resize_if_necessary
 restore
@@ -602,6 +610,7 @@ send_frame
 serialize
 serialize_into
 set
+set_allocator
 set_blend_mode
 set_bool
 set_cursor
@@ -701,6 +710,7 @@ update
 value
 volume
 vprintf
+vsnprintf
 vsprintf
 wait_and_finish
 wait_event_timeout

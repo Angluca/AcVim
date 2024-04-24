@@ -30,8 +30,9 @@ SetFiletype('*.wxml','html') "weixin
 SetFiletype('*.wxss','css')  "wx
 SetFiletype('*.nim,*.nims,*.c2nim','nim') "nim
 SetFiletype('*.zig','zig') "zig
-SetFiletype('*.oc','ocen') "ocen
-SetFiletype('*.c3','c3') "c3
+SetFiletype('*.oc,*.td','ocen') "ocen
+SetFiletype('*.c3,*.c3i','c3') "c3
+SetFiletype('*.c2,*.c2i','c3') "c2
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -51,13 +52,12 @@ au FileType hare nmap \== :Mtags hare.tags $VIMDICT/hare.ctags<cr>
 
 au FileType ocen nmap \== :Mtags ocen.tags $VIMDICT/ocen.ctags<cr>
 au FileType ocen let $OCENLIB = $HOME.'/SDK/Ocens/ocen/std'
-au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylibs/oc'
-au FileType ocen setl tags +=$VIMDICT/ocen.tags,$VIMDICT/rayliboc.tags
+au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
+au FileType ocen setl tags +=$VIMDICT/ocen.tags,$VIMDICT/raylib.tags
 
-"nmap \-z :Ftags '$ZIGLIB'<cr> 
-"nmap \-n :Ftags '$NIMLIB'<cr> 
-"nmap \-r :Ftags '$RAYLIB'<cr> 
-"nmap \-h :Ftags '$HAELIB'<cr> 
+"au FileType rust nmap \== :Mtags rust.tags $VIM/bundle/rust.vim/ctags/rust.ctags<cr>
+
+"nmap \-- $RAYLIB
 
 "}}}
 """"""""""""""
@@ -146,10 +146,10 @@ SetAcpDict('ocen','ocen.base.dict','ocen.dict','raylib.dict')
 "--temp {{{
 au FileType zig let g:zig_fmt_autosave = 0
 "raylib
-"au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/src'
+au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/zig-out/include'
 "au FileType zig let $RAYGUI = $HOME.'/SDK/Raylibs/raygui/src'
-"au FileType zig setl tags +=$VIMDICT/raylib.tags,$VIMDICT/raygui.tags
-SetAcpDict('zig','zig.dict','zig.base.dict','raylib.dict','raygui.dict')
+au FileType zig setl tags +=$VIMDICT/raylib.tags
+SetAcpDict('zig','zig.dict','zig.base.dict','raylib.dict')
 "sokol
 "au FileType zig let $SOKOLC = $HOME.'/Zigs/Sokols/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokolc.tags

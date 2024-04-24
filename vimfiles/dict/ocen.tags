@@ -115,6 +115,7 @@ SocketMode	$OCENLIB/socket.oc	/^enum SocketMode {$/;"	f
 SocketStatus	$OCENLIB/socket.oc	/^enum SocketStatus {$/;"	f
 Sound	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Chunk"] struct Sound$/;"	f
 Span	$OCENLIB/span.oc	/^struct Span {$/;"	f
+State	$OCENLIB/mem.oc	/^typedef State = untyped_ptr$/;"	f
 Status	$OCENLIB/curl.oc	/^[extern "curl_easy_strerror"] def Status::str(this): str$/;"	f
 Stream	$OCENLIB/zlib.oc	/^    [extern "z_stream"] struct Stream {$/;"	f
 Surface	$OCENLIB/sdl/mod.oc	/^struct Surface$/;"	f
@@ -173,6 +174,7 @@ add	$OCENLIB/set.oc	/^def Set::add(&this, key: T) {$/;"	f
 add	$OCENLIB/vec.oc	/^[operator "+"] def Vec3::add(this, other: Vec3<T>): Vec3<T> => Vec3<T>(.x + other.x, .y + other./;"	f
 addrs	$OCENLIB/vec.oc	/^[operator "+"] def Vec3::addrs(val: T, this: Vec3<T>): Vec3<T> => Vec3<T>(val + this.x, val + th/;"	f
 adds	$OCENLIB/vec.oc	/^[operator "+"] def Vec3::adds(this, val: T): Vec3<T> => Vec3<T>(.x + val, .y + val, .z + val)$/;"	f
+alloc	$OCENLIB/mem.oc	/^def alloc<T>(count: u32 = 1): &T {$/;"	f
 allocate_channels	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_AllocateChannels"] def allocate_channels(num: i32): i32$/;"	f
 append	$OCENLIB/curl.oc	/^[extern "curl_slist_append"] def SList::append(&this, string: str): &SList$/;"	f
 arg	$OCENLIB/complex.oc	/^[extern "cargf"] def Complex::arg(this): f32$/;"	f
@@ -200,7 +202,7 @@ bilinear_interp	$OCENLIB/image/mod.oc	/^def bilinear_interp(t0: f32, t1: f32, a:
 bind	$OCENLIB/socket.oc	/^[extern] def bind(sockfd: i32, addr: &SockAddr, addrlen: i32): i32$/;"	f
 bool	$OCENLIB/traits/eq.oc	/^def bool::eq(this, other: bool): bool => this == other$/;"	f
 c_FD_SET	$OCENLIB/fcntl.oc	/^[extern "FD_SET"] def c_FD_SET(fd: i32, set: &FdSet)$/;"	f
-calloc	$OCENLIB/libc.oc	/^[extern] def calloc(size: u32, elem_size: u32): untyped_ptr$/;"	f
+calloc	$OCENLIB/mem.oc	/^    [extern] def calloc(size: u32, elem_size: u32): untyped_ptr$/;"	f
 ceil	$OCENLIB/math.oc	/^[extern "ceilf"] def f32::ceil(this): f32$/;"	f
 ch	$OCENLIB/hash/sha256.oc	/^    def ch(x: u32, y: u32, z: u32): u32 => (x & y) ^ (~x & z)$/;"	f
 char	$OCENLIB/mod.oc	/^def char::is_upper(this): bool => libc::isupper(this)$/;"	f
@@ -348,6 +350,7 @@ eq	$OCENLIB/hash/sha1.oc	/^def SHA1Hash::eq(this, other: SHA1Hash): bool => memc
 eq	$OCENLIB/hash/sha256.oc	/^def SHA256Hash::eq(this, other: SHA256Hash): bool => memcmp(.data, other.data, 32) == 0/;"	f
 eq	$OCENLIB/image/qoi.oc	/^def RGBA::eq(this, other: RGBA): bool {$/;"	f
 eq	$OCENLIB/mod.oc	/^def str::eq(this, other: str): bool {$/;"	f
+eq	$OCENLIB/span.oc	/^def Span::eq(this, other: Span): bool => .start.eq(other.start) and .end.eq(other.end)$/;"	f
 eq	$OCENLIB/sv.oc	/^[operator "=="] def SV::eq(this, other: SV): bool => .len == other.len and memcmp(.data, other.d/;"	f
 eq	$OCENLIB/traits/eq.oc	/^def u8::eq(this, other: u8): bool => this == other$/;"	f
 eq	$OCENLIB/vec.oc	/^def Vec3::eq(this, other: Vec3<T>): bool => .x == other.x and .y == other.y and .z == other.z$/;"	f
@@ -395,6 +398,7 @@ float	$OCENLIB/prelude.h	/^typedef float f32;$/;"	f
 floor	$OCENLIB/math.oc	/^[extern "floorf"] def f32::floor(this): f32$/;"	f
 fopen	$OCENLIB/fs.oc	/^    [extern] def fopen(path: str, mode: str = "r"): &File$/;"	f
 fork	$OCENLIB/libc.oc	/^[extern] def fork(): i32$/;"	f
+format	$OCENLIB/mod.oc	/^def format(fmt: str, ...): str {$/;"	f
 fread	$OCENLIB/fs.oc	/^    [extern] def fread(ptr: untyped_ptr, size: u32, nmemb: u32, file: &File): i32$/;"	f
 free	$OCENLIB/buffer.oc	/^def Buffer::free(&this) {$/;"	f
 free	$OCENLIB/compact_map.oc	/^def Map::free(&this) {$/;"	f
@@ -404,6 +408,7 @@ free	$OCENLIB/image/mod.oc	/^def Image::free(&this) {$/;"	f
 free	$OCENLIB/libc.oc	/^[extern] def free(ptr: untyped_ptr)$/;"	f
 free	$OCENLIB/linkedlist.oc	/^def LinkedList::free(&this) {$/;"	f
 free	$OCENLIB/map.oc	/^def Map::free(&this) {$/;"	f
+free	$OCENLIB/mem.oc	/^def free(ptr: untyped_ptr) {$/;"	f
 free	$OCENLIB/mod.oc	/^def str::free(&this) {$/;"	f
 free	$OCENLIB/set.oc	/^def Set::free(&this) {$/;"	f
 free	$OCENLIB/value.oc	/^def Value::free(&this) {$/;"	f
@@ -504,6 +509,7 @@ hash	$OCENLIB/hash/sha1.oc	/^def hash(input: Buffer): Buffer {$/;"	f
 hash	$OCENLIB/hash/sha256.oc	/^def hash(input: Buffer): Buffer {$/;"	f
 hash	$OCENLIB/image/qoi.oc	/^def RGBA::hash(this): u32 {$/;"	f
 hash	$OCENLIB/map.oc	/^def Map::hash(&this, key: K): u32 {$/;"	f
+hash	$OCENLIB/span.oc	/^def Span::hash(this): u32 => pair_hash(.start.hash(), .end.index.hash())$/;"	f
 hash	$OCENLIB/sv.oc	/^def SV::hash(this): u32 {$/;"	f
 hash	$OCENLIB/traits/hash.oc	/^def u8::hash(this): u32 => this as u32 * 7817$/;"	f
 hash	$OCENLIB/vec.oc	/^def Vec3::hash(this): u32 => pair_hash(.x.hash(), pair_hash(.y.hash(), .z.hash()))$/;"	f
@@ -655,7 +661,7 @@ make	$OCENLIB/sv.oc	/^def SVPredicateIterator::make(sv: SV, pred: fn(SV): u32): 
 make	$OCENLIB/thread.oc	/^def Thread::make(callback: fn(untyped_ptr): untyped_ptr, arg: untyped_ptr = null): Thread {$/;"	f
 make	$OCENLIB/vector.oc	/^def Iterator::make(vec: &Vector<T>): Iterator<T> => Iterator<T>(vec, 0)$/;"	f
 make_crc_table	$OCENLIB/image/png.oc	/^def make_crc_table() {$/;"	f
-malloc	$OCENLIB/libc.oc	/^[extern] def malloc(size: u32): untyped_ptr$/;"	f
+malloc	$OCENLIB/mem.oc	/^    [extern] def malloc(size: u32): untyped_ptr$/;"	f
 max	$OCENLIB/math.oc	/^def f32::max(this, b: f32): f32 => if this > b then this else b$/;"	f
 max	$OCENLIB/mod.oc	/^def u8::max(this, other: u8): u8 => if this > other then this else other$/;"	f
 maximize	$OCENLIB/sdl/mod.oc	/^[extern "SDL_MaximizeWindow"] def Window::maximize(&this)$/;"	f
@@ -669,6 +675,10 @@ mul	$OCENLIB/complex.oc	/^def Complex::mul(this, other: Complex): Complex {$/;"	
 mult	$OCENLIB/vec.oc	/^[operator "*"] def Vec3::mult(this, other: Vec3<T>): Vec3<T> => Vec3<T>(.x * other.x, .y * other/;"	f
 multrs	$OCENLIB/vec.oc	/^[operator "*"] def Vec3::multrs(val: T, this: Vec3<T>): Vec3<T> => Vec3<T>(val * this.x, val * t/;"	f
 mults	$OCENLIB/vec.oc	/^[operator "*"] def Vec3::mults(this, val: T): Vec3<T> => Vec3<T>(.x * val, .y * val, .z * val)$/;"	f
+my_calloc	$OCENLIB/mem.oc	/^    def my_calloc(state: State, size: u32): untyped_ptr                                   => cal/;"	f
+my_free	$OCENLIB/mem.oc	/^    def my_free(state: State, ptr: untyped_ptr)                                           => fre/;"	f
+my_realloc	$OCENLIB/mem.oc	/^    def my_realloc(state: State, ptr: untyped_ptr, old_size: u32, size: u32): untyped_ptr => rea/;"	f
+negate	$OCENLIB/vec.oc	/^[operator "-"] def Vec3::negate(this): Vec3<T> => Vec3<T>(-.x, -.y, -.z)$/;"	f
 new	$OCENLIB/bencode.oc	/^def Parser::new(input: Buffer): Parser {$/;"	f
 new	$OCENLIB/compact_map.oc	/^def Map::new(capacity: u32 = 16): &Map<K, V> {$/;"	f
 new	$OCENLIB/complex.oc	/^[extern "CMPLXF"] def Complex::new(real: f32, imag: f32): Complex$/;"	f
@@ -677,7 +687,6 @@ new	$OCENLIB/heap.oc	/^def Heap::new(mode: Mode, capacity: u32 = 32): &Heap<T> {
 new	$OCENLIB/image/mod.oc	/^def Image::new(width: u32, height: u32): &Image {$/;"	f
 new	$OCENLIB/linkedlist.oc	/^def Node::new(val: T, next: &Node<T> = null, prev: &Node<T> = null): &Node<T> {$/;"	f
 new	$OCENLIB/map.oc	/^def Map::new(capacity: u32 = 32): &Map<K, V> {$/;"	f
-new	$OCENLIB/mod.oc	/^def new<T>(count: u32 = 1): &T => libc::calloc(count, sizeof(T)) as &T$/;"	f
 new	$OCENLIB/set.oc	/^def Set::new(): &Set<T> {$/;"	f
 new	$OCENLIB/value.oc	/^def Value::new(type: ValueType): &Value {$/;"	f
 new	$OCENLIB/vector.oc	/^def Vector::new(capacity: u32 = 16): &Vector<T> {$/;"	f
@@ -792,7 +801,7 @@ readdir	$OCENLIB/fs.oc	/^    [extern] def readdir(dir: &Dir): &dirent$/;"	f
 reader	$OCENLIB/buffer.oc	/^def Buffer::reader(this): BytesReader => BytesReader::make(.data, .size)$/;"	f
 reader	$OCENLIB/sv.oc	/^def SV::reader(this): BytesReader => BytesReader::make(.data as &u8, .len)$/;"	f
 real	$OCENLIB/complex.oc	/^[extern "crealf"] def Complex::real(this): f32$/;"	f
-realloc	$OCENLIB/libc.oc	/^[extern] def realloc(old: untyped_ptr, size: u32): untyped_ptr$/;"	f
+realloc	$OCENLIB/mem.oc	/^def realloc<T>(ptr: &T, old_count: u32, new_count: u32): &T {$/;"	f
 realpath	$OCENLIB/fs.oc	/^def realpath(path: str): str => bindings::realpath(path, null)$/;"	f
 reflect	$OCENLIB/vec.oc	/^def Vec3::reflect(this, normal: Vec3<T>): Vec3<T> => .sub(normal.mults(2 as T * .dot(normal)))$/;"	f
 remove	$OCENLIB/compact_map.oc	/^def Map::remove(&this, key: K) {$/;"	f
@@ -802,6 +811,7 @@ remove_last_n	$OCENLIB/mod.oc	/^def str::remove_last_n(this, n: u32) {$/;"	f
 remove_node	$OCENLIB/linkedlist.oc	/^def LinkedList::remove_node(&this, node: &Node<T>) {$/;"	f
 render_solid	$OCENLIB/sdl/ttf.oc	/^[extern "TTF_RenderText_Solid"] def Font::render_solid(&this, text: str, color: Color): &Surface$/;"	f
 replace_with	$OCENLIB/mod.oc	/^def str::replace_with(&this, other: str) {$/;"	f
+reset_to_default_allocator	$OCENLIB/mem.oc	/^def reset_to_default_allocator() {$/;"	f
 resize	$OCENLIB/compact_map.oc	/^def Map::resize(&this, new_capacity: u32) {$/;"	f
 resize	$OCENLIB/deque.oc	/^def Deque::resize(&this, new_capacity: u32) {$/;"	f
 resize	$OCENLIB/image/mod.oc	/^def Image::resize(&this, new_width: u32, new_height: u32): &Image {$/;"	f
@@ -832,6 +842,7 @@ set	$OCENLIB/fcntl.oc	/^def FdSet::set(&this, fd: i32) => c_FD_SET(fd, this)$/;"
 set	$OCENLIB/image/mod.oc	/^def Image::set(&this, x: u32, y: u32, col: Color) { .data[y * .width + x] = col }$/;"	f
 set	$OCENLIB/value.oc	/^def Value::set(&this, idx: u32, value: &Value) {$/;"	f
 set	$OCENLIB/vector.oc	/^def Vector::set(&this, i: u32, val: T) {$/;"	f
+set_allocator	$OCENLIB/mem.oc	/^def set_allocator($/;"	f
 set_blend_mode	$OCENLIB/sdl/mod.oc	/^[extern "SDL_SetRenderDrawBlendMode"]   def Renderer::set_blend_mode(&this, blend: BlendMode)$/;"	f
 set_bool	$OCENLIB/value.oc	/^[operator "[]="] def Value::set_bool(&this, idx: u32, b: bool) => .set(idx, Value::new_bool(b))$/;"	f
 set_cursor	$OCENLIB/og/mod.oc	/^def set_cursor(c: sdl::CursorType) {$/;"	f
@@ -960,8 +971,9 @@ unlock	$OCENLIB/sdl/mod.oc	/^[extern "SDL_UnlockTexture"]  def Texture::unlock(&
 update	$OCENLIB/hash/sha256.oc	/^def Context::update(&this, data: &u8, len: u64) {$/;"	f
 value	$OCENLIB/map.oc	/^def Iterator::value(&this): V {$/;"	f
 volume	$OCENLIB/sdl/mixer.oc	/^[extern "Mix_Volume"] def volume(channel: i32, volume: i32)/;"	f
-vprintf	$OCENLIB/variadic.oc	/^[extern] def vprintf(format: str, args: VarArgs)$/;"	f
-vsprintf	$OCENLIB/variadic.oc	/^[extern] def vsprintf(buffer: str, format: str, args: VarArgs)$/;"	f
+vprintf	$OCENLIB/variadic.oc	/^[extern] def vprintf(format: str, args: VarArgs): u32$/;"	f
+vsnprintf	$OCENLIB/variadic.oc	/^[extern] def vsnprintf(buffer: str, size: u32, format: str, args: VarArgs): u32$/;"	f
+vsprintf	$OCENLIB/variadic.oc	/^[extern] def vsprintf(buffer: str, format: str, args: VarArgs): u32$/;"	f
 wait_and_finish	$OCENLIB/video_renderer/mod.oc	/^def VideoRenderer::wait_and_finish(&this) {$/;"	f
 wait_event_timeout	$OCENLIB/sdl/mod.oc	/^[extern "SDL_WaitEventTimeout"] def wait_event_timeout(event: &Event, timeout: i32): bool$/;"	f
 wait_for_quit	$OCENLIB/video_renderer/sdl.oc	/^def SDLContext::wait_for_quit(&this) {$/;"	f
