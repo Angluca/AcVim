@@ -23,19 +23,18 @@
 # Update this to your actual emscripten path
 EMSDK_PATH := $(HOME)/Github/emsdk
 EM_SYSROOT := $(EMSDK_PATH)/upstream/emscripten/cache/sysroot
-#CFLAGS += -O2 --memory-init-file 0
-#CFLAGS += -DRAYGUI_IMPLEMENTATION
+
 LDFLAGS += -sUSE_GLFW=3 -sFORCE_FILESYSTEM=1 -sASYNCIFY 
 LDFLAGS += -DPLATFORM_WEB -sUSE_OFFSET_CONVERTER
 LDFLAGS += -s EXPORTED_RUNTIME_METHODS=ccall
-#LDFLAGS += -sTOTAL_MEMORY=16mb
-LDFLAGS += -sTOTAL_MEMORY=64mb
+LDFLAGS += -sTOTAL_MEMORY=16mb
+#LDFLAGS += -sTOTAL_MEMORY=64mb
 LDFLAGS += --shell-file raylib/src/minshell.html
-LDFLAGS += --preload-file assets
+#LDFLAGS += --preload-file assets
 
 dev: web
 
-release: release/mygame.zip
+release: release/game.zip
 
 release/game.zip: web
 	mkdir -p release
@@ -44,10 +43,11 @@ release/game.zip: web
 
 web: build/index.html
 
-build/index.html: build/libraylib.a src/main.zig raylib/src/minshell.html
-	zig build-obj libs/libs.c -target wasm32-emscripten -O ReleaseSmall -I. -Iraylib/src -Iraylib/src/external -I$(EM_SYSROOT)/include -Ilibs/raylib -lc -femit-bin=build/libs.o 
-	zig build-obj src/main.zig -target wasm32-emscripten -O ReleaseSmall -I. -Iraylib/src -Iraylib/src/external -I$(EM_SYSROOT)/include -Ilibs/raylib -lc -femit-bin=build/main.o 
-	zsh -c 'source $(EMSDK_PATH)/emsdk_env.sh && emcc -o build/index.html build/libs.o build/main.o -Lbuild -lraylib -Lraylib/src -Iraylib/src -lidbfs.js $(LDFLAGS)'
+build/index.html: build/libraylib.a src/main.oc raylib/src/minshell.html
+	ocen -n --cflags "-L../c/lib -I../c/include" -o build/main src/main.oc -l ..
+	#emcc -c build/main.c -o build/main.o -I$(EM_SYSROOT)/include -I../c/include -Lbuild -Iraylib/src -Lraylib/src -lc
+	#zsh -c 'source $(EMSDK_PATH)/emsdk_env.sh && emcc -o build/index.html build/main.c -Lbuild -lraylib -Lraylib/src -Iraylib/src -lidbfs.js $(LDFLAGS)'
+	zsh -c 'source $(EMSDK_PATH)/emsdk_env.sh && emcc -o build/index.html build/main.c -I../c/include -Lbuild -lraylib -Lraylib/src -Iraylib/src -lidbfs.js $(LDFLAGS)'
 
 # # Here's the sort of approach you'd want to take to make this generic
 #

@@ -45,7 +45,7 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType nim nmap \== :Mtags nim.tags $VIMDICT/nim.ctags<cr>
 "au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
 "au FileType zig let $ZIGLIB = $HOME.'/SDK/Zigs/zig/lib'
-au FileType hare nmap \== :Mtags hare.tags $VIMDICT/hare.ctags<cr>
+"au FileType hare nmap \== :Mtags hare.tags $VIMDICT/hare.ctags<cr>
 "au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
@@ -54,6 +54,11 @@ au FileType ocen nmap \== :Mtags ocen.tags $VIMDICT/ocen.ctags<cr>
 au FileType ocen let $OCENLIB = $HOME.'/SDK/Ocens/ocen/std'
 au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
 au FileType ocen setl tags +=$VIMDICT/ocen.tags,$VIMDICT/raylib.tags
+
+au FileType virgil nmap \== :!vctags rt/x86-64-darwin/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
+au FileType virgil let $VIRGIL = $HOME.'/SDK/virgils/virgil'
+au FileType virgil setl tags +=$VIMDICT/virgil.tags
+"%s/.*\/test\/.*$\n//ge
 
 "au FileType rust nmap \== :Mtags rust.tags $VIM/bundle/rust.vim/ctags/rust.ctags<cr>
 
@@ -141,6 +146,7 @@ SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict')
 SetAcpDict('zig','zig.dict','zig.base.dict')
 SetAcpDict('hare','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
 SetAcpDict('ocen','ocen.base.dict','ocen.dict','raylib.dict')
+SetAcpDict('virgil','virgil.dict','virgil.base.dict')
 "}}}
 "-------------------
 "--temp {{{

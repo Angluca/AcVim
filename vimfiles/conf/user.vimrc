@@ -393,6 +393,8 @@ au filetype rust com! -bang -nargs=* -complete=file Bd AsyncRun<bang> -raw=1 -fo
 au filetype rust com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
 au filetype rust com! -bang -nargs=* -complete=file Chk AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo check <args>
 au filetype rust com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo run <args>
+au filetype virgil com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-host `cat DEPS` <args> *.v3
+au filetype virgil com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-host `cat DEPS` *.v3 && ./%:t:r <args>
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .
