@@ -28,11 +28,12 @@ SetFiletype('*.gd','gdscript')
 SetFiletype('*.tic','lua')
 SetFiletype('*.wxml','html') "weixin
 SetFiletype('*.wxss','css')  "wx
-SetFiletype('*.nim,*.nims,*.c2nim','nim') "nim
-SetFiletype('*.zig','zig') "zig
-SetFiletype('*.oc,*.td','ocen') "ocen
-SetFiletype('*.c3,*.c3i','c3') "c3
-SetFiletype('*.c2,*.c2i','c3') "c2
+SetFiletype('*.nim,*.nims,*.c2nim','nim')
+SetFiletype('*.zig','zig')
+SetFiletype('*.oc,*.td','ocen')
+SetFiletype('*.c3,*.c3i','c3') 
+SetFiletype('*.c2,*.c2i','c3') 
+SetFiletype('*.adept','adept')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -58,8 +59,13 @@ au FileType ocen setl tags +=$VIMDICT/ocen.tags,$VIMDICT/raylib.tags
 au FileType virgil nmap \== :!vctags rt/x86-64-darwin/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
 au FileType virgil let $VIRGIL = $HOME.'/SDK/virgils/virgil'
 au FileType virgil setl tags +=$VIMDICT/virgil.tags
-"%s/.*\/test\/.*$\n//ge
 
+au FileType adept nmap \== :Mtags adept.tags $VIMDICT/adept.ctags<cr>
+au FileType adept let $ADEPT = $HOME.'/SDK/Adepts/_bin/import'
+au FileType adept setl tags+=$VIM/bundle/Adept.vim/tags/adept.tags
+au FileType adept setl dict+=$VIM/bundle/Adept.vim/tags/adept.dict
+
+"%s/.*\/test\/.*$\n//ge
 "au FileType rust nmap \== :Mtags rust.tags $VIM/bundle/rust.vim/ctags/rust.ctags<cr>
 
 "nmap \-- $RAYLIB

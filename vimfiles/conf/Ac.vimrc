@@ -76,14 +76,15 @@ fu! s:formatDict()
     "exe 'g/^\(\k\+\)\s.*$\n\1$/d'
     "exe '%s/^\(\k\+\)\s.*/\1/ge'
     "exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
-    exe '%s/^.\{,2}\s.*$\n//ge'
+    exe '%s/^.*LICENSE.*$\n//ge'
+    exe '%s/^.\{,1}\s.*$\n//ge'
     exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
     exe '%s/.*\/^\s*\\\/\\\/.*$\n//ge'
     exe 'g/^\([0-9A-Za-z_.:]\+\)\s.*$\n\1$/d'
     exe '%s/^\([0-9A-Za-z_.:]\+\)\s.*/\1/ge'
     exe 'g/^\W\+.*$/d'
     exe '%sort u'
-    exe 'g/^.\{,2}\s*$/d'
+    exe 'g/^.\{,1}\s*$/d'
 endf "}}}
 com! -nargs=? Ftags call s:formatTags(<args>) "{{{
 fu! s:formatTags(rd='')
@@ -95,6 +96,8 @@ fu! s:formatTags(rd='')
             exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
         endif
     endif
+    exe '%s/^.*LICENSE.*$\n//ge'
+
     exe '%s/^.\{,2}\s.*$\n//ge'
     exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
     exe 'g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'

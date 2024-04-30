@@ -14,12 +14,13 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
-Plug 'angluca/virgil.vim'
 Plug 'angluca/zig.vim'
 Plug 'angluca/nim.vim'
 Plug 'angluca/ocen.vim'
+Plug 'angluca/adept.vim'
 "Plug 'angluca/hare.vim'
-"Plug 'angluca/c3.vim'
+"Plug 'angluca/litac.vim'
+"Plug 'angluca/virgil.vim'
 
 "Plug 'vim-jp/vim-cpp'
 "Plug 'angluca/scope.vim'
