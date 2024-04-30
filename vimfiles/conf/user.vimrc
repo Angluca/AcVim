@@ -199,7 +199,11 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 "\ 'vim': { 'left': '#' }
 "\ }
 let g:NERDCreateDefaultMappings=0
-AcCreateMaps('<plug>NERDCommenterToggle',     '<d-/>')
+if has("gui_running")
+    AcCreateMaps('<plug>NERDCommenterToggle',     '<d-/>')
+else
+    AcCreateMaps('<plug>NERDCommenterToggle',     '<m-/>')
+endif
 AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
 AcCreateMaps('<plug>NERDCommenterToggle',     ';x<space>')
 AcCreateMaps('<plug>NERDCommenterMinimal',    ';xm')

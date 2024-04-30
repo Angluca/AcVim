@@ -1,5 +1,5 @@
 "=================================
-" General: \ee \pp \aa \uu
+" General: \ee \aa \uu \vv \bb
 " vim --startuptime ~/vimstart.log
 "=================================
 "---------------------------------
@@ -135,13 +135,24 @@ fu! s:setFtCmd(ft, cmd, bc='FileType')
     exe $"au {a:bc} {a:ft} {a:cmd}"
 endf "}}}
 
-com! -nargs=+ SetAcpDict call s:setAcpDict<args> "{{{
-fu! s:setAcpDict(ft, ...)
+com! -nargs=+ SetDict call s:setDict<args> "{{{
+fu! s:setDict(ft,dir,...)
     let l:opt = ''
+    let l:dir = a:dir!='' ? a:dir.'/' : $VIMDICT
     for l:file in a:000
-        let l:opt = l:opt.','.$VIMDICT.l:file
+        let l:opt = l:opt.l:dir.l:file.','
     endfor
     exe 'au FileType '.a:ft.' setl dict='.l:opt
+endf
+
+com! -nargs=+ SetTags call s:setTags<args> "{{{
+fu! s:setTags(ft,dir,...)
+    let l:opt = ''
+    let l:dir = a:dir!='' ? a:dir.'/' : $VIMDICT
+    for l:file in a:000
+        let l:opt = l:opt.l:dir.l:file.','
+    endfor
+    exe 'au FileType '.a:ft.' setl tags='.l:opt
 endf
 
 com! ToggleVE call ToggleVirtualEditMode() "{{{
@@ -682,8 +693,13 @@ let &t_BE = ""
 let &t_BD = "\e[?2004l"
 set t_PS=\e[200~
 set t_PE=\e[201~
-nmap <d-d> :vs<cr>
-nmap <d-D> :sp<cr>
+if has("gui_running")
+    nmap <d-d> :vs<cr>
+    nmap <d-D> :sp<cr>
+else
+    nmap <m-d> :vs<cr>
+    nmap <m-D> :sp<cr>
+endif " has
 
 "smap ;; ;
 "set nomore

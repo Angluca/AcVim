@@ -58,12 +58,13 @@ au FileType ocen setl tags +=$VIMDICT/ocen.tags,$VIMDICT/raylib.tags
 
 au FileType virgil nmap \== :!vctags rt/x86-64-darwin/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
 au FileType virgil let $VIRGIL = $HOME.'/SDK/virgils/virgil'
-au FileType virgil setl tags +=$VIMDICT/virgil.tags
+"au FileType virgil setl tags +=$VIMDICT/virgil.tags
+"SetTags('virgil','','virgil.tags')
 
 au FileType adept nmap \== :Mtags adept.tags $VIMDICT/adept.ctags<cr>
 au FileType adept let $ADEPT = $HOME.'/SDK/Adepts/_bin/import'
-au FileType adept setl tags+=$VIM/bundle/Adept.vim/tags/adept.tags
-au FileType adept setl dict+=$VIM/bundle/Adept.vim/tags/adept.dict
+SetTags('adept','$VIM/bundle/Adept.vim/tags/','adept.tags')
+SetDict('adept','$VIM/bundle/Adept.vim/tags/','adept.dict','adept.base.dict')
 
 "%s/.*\/test\/.*$\n//ge
 "au FileType rust nmap \== :Mtags rust.tags $VIM/bundle/rust.vim/ctags/rust.ctags<cr>
@@ -133,26 +134,26 @@ exe 'set cpt=' . g:acp_completeOption
 """"""""""""""""""""
 " Use nimlsp don't set dict,Will slow !!!
 if has("win32")
-	SetAcpDict('asm','win32.dict')
-    SetAcpDict('c,cpp','win32.dict','cpp.dict')
+	SetDict('asm','','win32.dict')
+    SetDict('c,cpp','','win32.dict','cpp.dict')
 else
-    SetAcpDict('c,cpp','cpp.dict','flecs.dict')
+    SetDict('c,cpp','','cpp.dict','flecs.dict')
 endif
-SetAcpDict('vim','vim.dict')
-SetAcpDict('java','java.dict')
-SetAcpDict('js','javascript.dict')
-SetAcpDict('perl','perl.dict')
-SetAcpDict('php','php.dict','html.dict')
-SetAcpDict('html','javascript.dict','html.dict','html5.dict')
-SetAcpDict('actionscript','as3.dict')
-SetAcpDict('sh','bash.dict')
-SetAcpDict('squirrel','squirrel.dict')
-SetAcpDict('lua','lua.dict')
-SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict')
-SetAcpDict('zig','zig.dict','zig.base.dict')
-SetAcpDict('hare','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
-SetAcpDict('ocen','ocen.base.dict','ocen.dict','raylib.dict')
-SetAcpDict('virgil','virgil.dict','virgil.base.dict')
+SetDict('vim','','vim.dict')
+SetDict('java','','java.dict')
+SetDict('js','','javascript.dict')
+SetDict('perl','','perl.dict')
+SetDict('php','','php.dict','html.dict')
+SetDict('html','','javascript.dict','html.dict','html5.dict')
+SetDict('actionscript','as3.dict')
+SetDict('sh','','bash.dict')
+SetDict('squirrel','','squirrel.dict')
+SetDict('lua','','lua.dict')
+SetDict('nim','','nim.dict','nim2.dict','nim.enums.dict')
+SetDict('zig','','zig.dict','zig.base.dict')
+SetDict('hare','','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
+SetDict('ocen','','ocen.base.dict','ocen.dict','raylib.dict')
+SetDict('virgil','','virgil.dict','virgil.base.dict')
 "}}}
 "-------------------
 "--temp {{{
@@ -161,25 +162,25 @@ au FileType zig let g:zig_fmt_autosave = 0
 au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/zig-out/include'
 "au FileType zig let $RAYGUI = $HOME.'/SDK/Raylibs/raygui/src'
 au FileType zig setl tags +=$VIMDICT/raylib.tags
-SetAcpDict('zig','zig.dict','zig.base.dict','raylib.dict')
+SetDict('zig','','zig.dict','zig.base.dict','raylib.dict')
 "sokol
 "au FileType zig let $SOKOLC = $HOME.'/Zigs/Sokols/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokolc.tags
 "au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
-"SetAcpDict('zig','zig.dict','zig.base.dict','sokol.dict')
+"SetDict('zig','','zig.dict','zig.base.dict','sokol.dict')
 "
 "au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'
 "au FileType nim setl tags+=$VIMDICT/sokoltags
-"SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict','sokol.dict')
+"SetDict('nim','','nim.dict','nim2.dict','nim.enums.dict','sokol.dict')
 ""nico
 "au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
 "au FileType nim setl tags+=$VIMDICT/nicotags
-"SetAcpDict('nim','nim.dict','nim2.dict','nim.enums.dict','nico.dict')
+"SetDict('nim','','nim.dict','nim2.dict','nim.enums.dict','nico.dict')
 "-------------------
 "--naylib
 "au FileType nim let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
 "let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
 "au FileType nim setl tags+=$VIMDICT/naytags
-"SetAcpDict('nim','nimtags','nim.dict','nim.enums.dict',$NAYLIB.'raylib.nim')
+"SetDict('nim','','nimtags','nim.dict','nim.enums.dict',$NAYLIB.'raylib.nim')
 "}}}
