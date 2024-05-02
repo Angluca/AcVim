@@ -119,9 +119,6 @@ endif
 let s:Left = s:Go."\<LEFT>"
 let s:Right = s:Go."\<RIGHT>"
 
-
-
-
 " unicode len
 func! s:ulen(s)
   return len(split(a:s, '\zs'))

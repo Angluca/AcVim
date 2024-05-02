@@ -392,8 +392,8 @@ au filetype hare com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -
 au filetype ocen com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r
 au filetype ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r && ./%:t:r
 au filetype ocen com! -bang -nargs=* -complete=file Clean AsyncRun<bang> -raw=1 -focus=0 -rows=8 rm %:t:r %:t:r.c
-au filetype rust com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args> %
-au filetype rust com! -bang -nargs=* -complete=file Bd AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo build <args>
+au filetype rust com! -bang -nargs=* -complete=file Rc AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args> %
+au filetype rust com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo build <args>
 au filetype rust com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
 au filetype rust com! -bang -nargs=* -complete=file Chk AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo check <args>
 au filetype rust com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo run <args>
@@ -474,6 +474,14 @@ au filetype zig call LspAddServer([#{
             \    path: 'zls',
             \  }])
 
+au filetype rust call LspAddServer([#{
+            \    name: 'rustlang',
+            \    filetype: ['rust'],
+            \    path: exepath('rust-analyzer'),
+            \    args: [],
+            \    syncInit: v:true,
+            \  }])
+
 au filetype adept call LspAddServer([#{
             \    name: 'adeptls',
             \    filetype: ['adept'],
@@ -488,14 +496,6 @@ au filetype adept call LspAddServer([#{
             "\    args: ['-languageServer']
             "\  }])
             ""\    args: ['-languageServer', $HOME..'/SDK/LitaCs/litac-lang']
-
-"au filetype rust call LspAddServer([#{
-    "\    name: 'rustlang',
-    "\    filetype: ['rust'],
-    "\    path: exepath('rust-analyzer'),
-    "\    args: [],
-    "\    syncInit: v:true,
-    "\  }])
 
 "au filetype d call LspAddServer([#{
             "\    name: 'd',

@@ -36,7 +36,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'haya14busa/is.vim'
-"Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 "Plug 'Jorengarenar/miniSnip'
 "Plug 'haya14busa/incsearch.vim'

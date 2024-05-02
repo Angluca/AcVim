@@ -9,6 +9,7 @@
 --regex-adept=/alias\s+(\w+)/\1/m,type/
 --regex-adept=/define\s+(\w+)/\1/m,type/
 --regex-adept=/struct\s+(\w+)/\1/t,type/
+--regex-adept=/class\s+(\w+)/\1/t,type/
 --regex-adept=/<\$\w*>\s+\**(\w+)/\1/t,type/
 --regex-adept=/\**\w+\.(\w+)/\1/t,type/
 --regex-adept=/,*\s*\**(\w+)\s+\**([0-9]+\s+)*\w+,$/\1/t,type/

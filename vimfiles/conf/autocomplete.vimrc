@@ -66,9 +66,12 @@ au FileType adept let $ADEPT = $HOME.'/SDK/Adepts/_bin/import'
 SetTags('adept','$VIM/bundle/Adept.vim/tags/','adept.tags')
 SetDict('adept','$VIM/bundle/Adept.vim/tags/','adept.dict','adept.base.dict')
 
-"%s/.*\/test\/.*$\n//ge
-"au FileType rust nmap \== :Mtags rust.tags $VIM/bundle/rust.vim/ctags/rust.ctags<cr>
+au FileType rust nmap \== :!ctags --rust-kinds=+ --fields=+S -R .
+au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/std'
+SetTags('rust','','rust.tags')
+SetDict('rust','','rust.dict','rust.base.dict')
 
+"%s/.*\/test\/.*$\n//ge
 "nmap \-- $RAYLIB
 
 "}}}

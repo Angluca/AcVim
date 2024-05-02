@@ -87,7 +87,7 @@ fu! s:formatDict()
     exe 'g/^.\{,1}\s*$/d'
 endf "}}}
 com! -nargs=? Ftags call s:formatTags(<args>) "{{{
-fu! s:formatTags(rd='')
+fu! s:formatTags(rd='',only_add_path=0)
     if a:rd !=''
         exe '%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
     else
@@ -96,8 +96,11 @@ fu! s:formatTags(rd='')
             exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
         endif
     endif
-    exe '%s/^.*LICENSE.*$\n//ge'
+    if a:only_add_path != 0
+        return
+    endif
 
+    exe '%s/^.*LICENSE.*$\n//ge'
     exe '%s/^.\{,2}\s.*$\n//ge'
     exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
     exe 'g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
