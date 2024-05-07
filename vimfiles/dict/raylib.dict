@@ -1165,6 +1165,7 @@ OpenURL
 PFNGLDRAWARRAYSINSTANCEDEXTPROC
 PFNGLDRAWELEMENTSINSTANCEDEXTPROC
 PFNGLVERTEXATTRIBDIVISOREXTPROC
+PI
 PINK
 PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA
 PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA
@@ -1332,6 +1333,12 @@ RL_DEFAULT_BATCH_BUFFERS
 RL_DEFAULT_BATCH_BUFFER_ELEMENTS
 RL_DEFAULT_BATCH_DRAWCALLS
 RL_DEFAULT_BATCH_MAX_TEXTURE_UNITS
+RL_DEFAULT_SHADER_ATTRIB_LOCATION_COLOR
+RL_DEFAULT_SHADER_ATTRIB_LOCATION_NORMAL
+RL_DEFAULT_SHADER_ATTRIB_LOCATION_POSITION
+RL_DEFAULT_SHADER_ATTRIB_LOCATION_TANGENT
+RL_DEFAULT_SHADER_ATTRIB_LOCATION_TEXCOORD
+RL_DEFAULT_SHADER_ATTRIB_LOCATION_TEXCOORD2
 RL_DEFAULT_SHADER_ATTRIB_NAME_COLOR
 RL_DEFAULT_SHADER_ATTRIB_NAME_NORMAL
 RL_DEFAULT_SHADER_ATTRIB_NAME_POSITION
@@ -2011,6 +2018,7 @@ hResolution
 hScreenSize
 height
 hit
+id
 image
 indices
 instancing
@@ -2023,12 +2031,22 @@ lensDistortionValues
 lensSeparationDistance
 locs
 looping
+m0
+m1
 m10
 m11
 m12
 m13
 m14
 m15
+m2
+m3
+m4
+m5
+m6
+m7
+m8
+m9
 maps
 materialCount
 materials
@@ -2087,6 +2105,8 @@ rlCompileShader
 rlComputeShaderDispatch
 rlCopyShaderBuffer
 rlCubemapParameters
+rlCullDistanceFar
+rlCullDistanceNear
 rlCullMode
 rlDebugMessageCallback
 rlDisableBackfaceCulling
@@ -2140,6 +2160,8 @@ rlFrustum
 rlGenTextureMipmaps
 rlGetActiveFramebuffer
 rlGetCompressedFormatName
+rlGetCullDistanceFar
+rlGetCullDistanceNear
 rlGetFramebufferHeight
 rlGetFramebufferWidth
 rlGetGlTextureFormats
@@ -2178,8 +2200,12 @@ rlLoadVertexArray
 rlLoadVertexBuffer
 rlLoadVertexBufferElement
 rlMatrixIdentity
+rlMatrixInvert
 rlMatrixMode
 rlMatrixMultiply
+rlMatrixToFloat
+rlMatrixToFloatV
+rlMatrixTranspose
 rlMultMatrixf
 rlNormal3f
 rlOrtho
@@ -2196,6 +2222,7 @@ rlScissor
 rlSetBlendFactors
 rlSetBlendFactorsSeparate
 rlSetBlendMode
+rlSetClipPlanes
 rlSetCullFace
 rlSetFramebufferHeight
 rlSetFramebufferWidth
@@ -2238,6 +2265,7 @@ rlVertex2i
 rlVertex3f
 rlVertexBuffer
 rlViewport
+rl_float16
 rlglClose
 rlglData
 rlglInit
@@ -2281,6 +2309,7 @@ transformRequired
 translation
 triangleCount
 type
+up
 vResolution
 vScreenSize
 value

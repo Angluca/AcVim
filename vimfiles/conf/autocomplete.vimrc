@@ -52,9 +52,10 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
 au FileType ocen nmap \== :Mtags ocen.tags $VIMDICT/ocen.ctags<cr>
-au FileType ocen let $OCENLIB = $HOME.'/SDK/Ocens/ocen/std'
+au FileType ocen let $OCEN = $HOME.'/SDK/Ocens/ocen/std'
 au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
-au FileType ocen setl tags +=$VIMDICT/ocen.tags,$VIMDICT/raylib.tags
+SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
+SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
 
 au FileType virgil nmap \== :!vctags rt/x86-64-darwin/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
 au FileType virgil let $VIRGIL = $HOME.'/SDK/virgils/virgil'
@@ -155,7 +156,7 @@ SetDict('lua','','lua.dict')
 SetDict('nim','','nim.dict','nim2.dict','nim.enums.dict')
 SetDict('zig','','zig.dict','zig.base.dict')
 SetDict('hare','','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
-SetDict('ocen','','ocen.base.dict','ocen.dict','raylib.dict')
+"SetDict('ocen','','ocen.base.dict','ocen.dict','raylib.dict')
 SetDict('virgil','','virgil.dict','virgil.base.dict')
 "}}}
 "-------------------
