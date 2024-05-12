@@ -64,8 +64,8 @@ au FileType virgil let $VIRGIL = $HOME.'/SDK/virgils/virgil'
 
 au FileType adept nmap \== :Mtags adept.tags $VIMDICT/adept.ctags<cr>
 au FileType adept let $ADEPT = $HOME.'/SDK/Adepts/_bin/import'
-SetTags('adept','$VIM/bundle/Adept.vim/tags/','adept.tags')
-SetDict('adept','$VIM/bundle/Adept.vim/tags/','adept.dict','adept.base.dict')
+SetTags('adept','$VIM/bundle/adept.vim/tags/','adept.tags')
+SetDict('adept','$VIM/bundle/adept.vim/tags/','adept.dict','adept.base.dict')
 
 au FileType rust nmap \== :!ctags --rust-kinds=+ --fields=+S -R .
 au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/std'

@@ -12,6 +12,11 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
+syn match Operator       '[\+\-\%=\^\&\*!?><\$|/]'
+syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
+syn match cFunction   "[0-9a-zA-Z_@]*\w\w*\(\(\[.*\]\)*\_s*(\)\@="
+"syn match cType       '(\=\_s*\(\[.*\]\_s*\)*\(const\_s*\)\=\zs\w\w*\ze\(\[.*\]\)*\_s*\(\[.*\]\)*\_s*{'
+
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 
 " check if this was included from cpp.vim
@@ -486,7 +491,8 @@ hi def link cWrongComTail	cError
 hi def link cSpecialError	cError
 hi def link cCurlyError		cError
 hi def link cOperator		Operator
-hi def link cStructure		Structure
+"hi def link cStructure		Structure
+hi def link cStructure		Keyword
 "hi def link cTypedef		Structure
 "hi def link cStorageClass	StorageClass
 hi def link cStorageClass	Statement
@@ -515,24 +521,14 @@ hi def link cCppInElse2		cCppOutIf2
 hi def link cCppOutIf2		cCppOut
 hi def link cCppOut		Comment
 
-syn match cSymbol      '[,;]'
-syn match SpecialComment '[`:\.]'
-syn match Operator       '[\+\-\%=\^\&\*!?><\$|]'
-syn match Constant       '[{}\[\]()]'
-
-hi def link cKeyword keyword
 hi def link cFunction Function
-hi def link cTypedef Identifier
+"hi def link cTypedef Identifier
+hi def link cTypedef Keyword
 hi def cSymbol ctermfg=DarkGray guifg=DarkGray
 hi def cType ctermfg=DarkCyan guifg=DarkCyan
-syn match cTypedef  contains=cTypedef "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
-syn match cFunction    "\%(r#\)\=\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
-syn keyword cKeyword union struct enum namespace nextgroup=cTypedef skipwhite skipempty
-syn keyword cKeyword enum nextgroup=cType skipwhite skipempty contained
-syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
-syn match cFunction   "[0-9a-zA-Z_@]*\w\w*\(\(\[.*\]\)*\_s*(\)\@="
-"syn match cType       '(\=\_s*\(\[.*\]\_s*\)*\(const\_s*\)\=\zs\w\w*\ze\(\[.*\]\)*\_s*\(\[.*\]\)*\_s*{'
-
+syn match cSymbol      '[,;]'
+syn match SpecialComment '[`:\.]'
+syn match cConstant       '[{}\[\]()]'
 
 let b:current_syntax = "c"
 
