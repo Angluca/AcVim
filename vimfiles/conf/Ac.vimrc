@@ -697,11 +697,11 @@ let &t_BD = "\e[?2004l"
 set t_PS=\e[200~
 set t_PE=\e[201~
 if has("gui_running")
-    nmap <d-d> :vs<cr>
-    nmap <d-D> :sp<cr>
+    nmap <d-d> :sp<cr>
+    nmap <d-D> :vs<cr>
 else
-    nmap <m-d> :vs<cr>
-    nmap <m-D> :sp<cr>
+    nmap <m-d> :sp<cr>
+    nmap <m-D> :vs<cr>
 endif " has
 
 "smap ;; ;

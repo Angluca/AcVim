@@ -31,9 +31,9 @@ SetFiletype('*.wxss','css')  "wx
 SetFiletype('*.nim,*.nims,*.c2nim','nim')
 SetFiletype('*.zig','zig')
 SetFiletype('*.oc,*.td','ocen')
-SetFiletype('*.c3,*.c3i','c3') 
-SetFiletype('*.c2,*.c2i','c3') 
+SetFiletype('*.lita,*.ape','litac') 
 SetFiletype('*.adept','adept')
+"SetFiletype('*.v3','cpp')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -57,7 +57,8 @@ au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
 SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
 SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
 
-au FileType virgil nmap \== :!vctags rt/x86-64-darwin/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
+"au FileType virgil nmap \== :!vctags rt/x86-64-darwin/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
+au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
 au FileType virgil let $VIRGIL = $HOME.'/SDK/virgils/virgil'
 "au FileType virgil setl tags +=$VIMDICT/virgil.tags
 "SetTags('virgil','','virgil.tags')
@@ -163,10 +164,10 @@ SetDict('virgil','','virgil.dict','virgil.base.dict')
 "--temp {{{
 au FileType zig let g:zig_fmt_autosave = 0
 "raylib
-au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/zig-out/include'
-"au FileType zig let $RAYGUI = $HOME.'/SDK/Raylibs/raygui/src'
-au FileType zig setl tags +=$VIMDICT/raylib.tags
-SetDict('zig','','zig.dict','zig.base.dict','raylib.dict')
+"au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/zig-out/include'
+""au FileType zig let $RAYGUI = $HOME.'/SDK/Raylibs/raygui/src'
+"au FileType zig setl tags +=$VIMDICT/raylib.tags
+"SetDict('zig','','zig.dict','zig.base.dict','raylib.dict')
 "sokol
 "au FileType zig let $SOKOLC = $HOME.'/Zigs/Sokols/sokol'
 "au FileType zig setl tags+=$VIMDICT/sokolc.tags

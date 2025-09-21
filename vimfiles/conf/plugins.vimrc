@@ -17,6 +17,7 @@ call plug#begin(s:bundle_dir)
 Plug 'angluca/zig.vim'
 Plug 'angluca/nim.vim'
 Plug 'angluca/ocen.vim'
+"Plug 'c2lang/c2.vim'
 "Plug 'angluca/adept.vim'
 "Plug 'angluca/rust.vim'
 "Plug 'angluca/hare.vim'

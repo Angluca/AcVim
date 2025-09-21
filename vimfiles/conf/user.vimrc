@@ -399,6 +399,11 @@ au filetype rust com! -bang -nargs=* -complete=file Chk AsyncRun<bang> -raw=1 -f
 au filetype rust com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo run <args>
 au filetype adept com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept -e <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> %:p
+au filetype c3 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c3c compile <args> %:p
+au filetype litac com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine <args> %:p -o %:t:r
+au filetype litac com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine -run <args> %:p -o %:t:r
+au filetype litac com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac <args> -testFile %:p
 "au filetype virgil com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-host `cat DEPS` <args> *.v3
 "au filetype virgil com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-host `cat DEPS` *.v3 && ./%:t:r <args>
 "au filetype virgil com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3i `cat DEPS` <args> %:p 
