@@ -14,7 +14,7 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
-Plug 'angluca/zig.vim'
+"Plug 'angluca/zig.vim'
 Plug 'angluca/nim.vim'
 Plug 'angluca/ocen.vim'
 "Plug 'c2lang/c2.vim'
@@ -33,7 +33,8 @@ Plug 'girishji/ngram-complete.vim'
 "Plug 'girishji/vsnip-complete.vim'
 "Plug 'LunarWatcher/auto-pairs'
 
-Plug 'yegappan/lsp'
+Plug 'pusewicz/lsp'
+"Plug 'yegappan/lsp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafamadriz/friendly-snippets'
@@ -68,7 +69,7 @@ Plug 'jeetsukumaran/vim-buffersaurus'
 Plug 'vim-scripts/VisIncr'
 "Plug 'tpope/vim-fugitive'
 "Plug 'AndrewRadev/linediff.vim'
-"Plug 'ziglang/zig.vim'
+Plug 'ziglang/zig.vim'
 "Plug 'elmcast/elm-vim'
 "Plug 'maralla/completor.vim'
 "Plug 'lifepillar/vim-mucomplete'
