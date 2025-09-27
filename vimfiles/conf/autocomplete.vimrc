@@ -5,35 +5,36 @@
 """"""""""""""
 " filetypes {{{
 """"""""""""""
-SetFiletype('*.ctags','zsh')
-SetFiletype('*.zshrc,*.zprofile','zsh')
-SetFiletype('*.vim*','vim')
-SetFiletype('COPYING','txt')
-SetFiletype('*.txt,*.log','txt')
-SetFiletype('*.asm,*.inc','masm')
+SetFt('*.ctags','zsh')
+SetFt('*.zshrc,*.zprofile','zsh')
+SetFt('*.vim*','vim')
+SetFt('COPYING','txt')
+SetFt('*.txt,*.log','txt')
+SetFt('*.asm,*.inc','masm')
 SetFtCmd('masm','setl mp=fasm\ %:p')
 
-SetFiletype('*.glsl,*.vsh,*.fsh,*.vert,*.frag,*.shd,*.flecs','d')
-SetFiletype('*.md,*.markdown,README*','markdown')
-SetFiletype('CMakeLists.txt','cmake')
-SetFiletype('*.as','actionscript')
-SetFiletype('*.mxml','mxml')
-SetFiletype('*.make','make')
-SetFiletype('*.p','pawn')
-SetFiletype('*.mm','objc')
-SetFiletype('*.nut','squirrel')
+SetFt('*.glsl,*.vsh,*.fsh,*.vert,*.frag,*.shd,*.flecs','d')
+SetFt('*.md,*.markdown,README*','markdown')
+SetFt('CMakeLists.txt','cmake')
+SetFt('*.as','actionscript')
+SetFt('*.mxml','mxml')
+SetFt('*.make','make')
+SetFt('*.p','pawn')
+SetFt('*.mm','objc')
+SetFt('*.nut','squirrel')
 SetFtCmd('squirrel','setl mp=sq\ %:p')
 SetFtCmd('squirrel','setl efm=%f:%l:%m')
-SetFiletype('*.gd','gdscript')
-SetFiletype('*.tic','lua')
-SetFiletype('*.wxml','html') "weixin
-SetFiletype('*.wxss','css')  "wx
-SetFiletype('*.nim,*.nims,*.c2nim','nim')
-SetFiletype('*.zig','zig')
-SetFiletype('*.oc,*.td','ocen')
-SetFiletype('*.lita,*.ape','litac') 
-SetFiletype('*.adept','adept')
-"SetFiletype('*.v3','cpp')
+SetFt('*.gd','gdscript')
+SetFt('*.tic','lua')
+SetFt('*.wxml','html') "weixin
+SetFt('*.wxss','css')  "wx
+SetFt('*.nim,*.nims,*.c2nim','nim')
+SetFt('*.zig','zig')
+SetFt('*.oc,*.td','ocen')
+SetFt('*.lita,*.ape','litac') 
+SetFt('*.adept','adept')
+SetFt('*.um','ocen')
+SetFt('*.wren','ocen')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS

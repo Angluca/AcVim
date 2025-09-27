@@ -86,8 +86,8 @@ fu! s:formatDict()
     exe '%sort u'
     exe 'g/^.\{,1}\s*$/d'
 endf "}}}
-com! -nargs=? Ftags call s:formatTags(<args>) "{{{
-fu! s:formatTags(rd='',only_add_path=0)
+com! -nargs=? Ftags call s:fmtTags(<args>) "{{{
+fu! s:fmtTags(rd='',only_add_path=0)
     if a:rd !=''
         exe '%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
     else
@@ -127,10 +127,9 @@ fu! s:makeTags(f, opt='')
 endf
 "}}}
 
-com -nargs=+ SetFiletype call s:setFiletype<args> "{{{
-fu! s:setFiletype(fn, ft, bop=0,bc='BufEnter')
-    let l:opt = a:bop == v:false ? ('setl ft='.a:ft) : (a:ft)
-    exe $"au {a:bc} {a:fn} {l:opt}"
+com -nargs=+ SetFt call s:setFiletype<args> "{{{
+fu! s:setFiletype(fn, ft, bc='BufEnter')
+    exe $"au {a:bc} setl ft={a:fn}"
 endf "}}}
 
 com -nargs=+ SetFtCmd call s:setFtCmd<args> "{{{
@@ -421,12 +420,10 @@ set showmatch
 "set shortmess+=c    " Shut off completion messages
 set shortmess=aoOtTcCS
 set ph=10 " complete popup window hight
-set cot=menu,menuone,noinsert,preview
-"set cot=menu,menuone,noselect
-"set cot=menu,menuone
 "set cot=menuone,noinsert,noselect,preview
-"set cot-=preview
-"set cot+=menuone,noselect
+"set cot=menuone,noinsert,preview
+"set cot=menuone,noselect
+set cot=menuone,noinsert
 "No sound on errors and clear jumplist.
 au vimEnter * set vb t_vb=
 au vimEnter * :clearjumps

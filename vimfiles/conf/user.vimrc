@@ -382,6 +382,8 @@ nmap <space>r :AcRun
 nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
 "au filetype c,cpp com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focus=0 -rows=10 -raw=1 -cwd=<root> -mode=term -once=1 bake <args> "$(VIM_ROOT)" 
 "com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 make <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 make -r <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file CC AsyncRun<bang> -raw=1 -focus=0 -rows=8 gcc <args> %:p -o %:t:r
 au filetype c,cpp com! -bang -nargs=* -complete=file CR AsyncRun<bang> -raw=1 -focus=0 -rows=8 gcc <args> %:p -o %:t:r && ./%:t:r
 au filetype nim com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 nim <args> %
