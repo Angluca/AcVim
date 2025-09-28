@@ -75,13 +75,13 @@ export var vimsuggestOpt = {
         fuzzy: false,         # Enable/disable fuzzy completion
         alwayson: true,       # Open popup menu on <tab> if 'false'
         popupattrs: {         # Attributes passed to the popup window
-            maxheight: 12,    # Maximum height for the stacked menu (when pum=true)
+            maxheight: 10,    # Maximum height for the stacked menu (when pum=true)
         },
         range: 100,           # Number of lines to search in each batch
-        timeout: 200,         # Timeout for non-async searches (milliseconds)
+        timeout: 100,         # Timeout for non-async searches (milliseconds)
         async: true,          # Use async for searching
-        async_timeout: 1000,  # Async timeout in milliseconds
-        async_minlines: 1000, # Minimum lines to enable async search
+        async_timeout: 200,  # Async timeout in milliseconds
+        async_minlines: 200, # Minimum lines to enable async search
         highlight: true,      # Disable menu highlighting (for performance)
         trigger: 't',         # 't' for tab/s-tab, 'n' for ctrl-n/p and up/down arrows
         reverse: false,       # Upside-down menu
@@ -105,16 +105,16 @@ export var vimsuggestOpt = {
     }
 }
 vimsuggestOpt.keymap = {
-        page_up: ["\<M-k>"],
-        page_down: ["\<M-j>"],
-        hide: "",     # Hide popup window
-        dismiss: "\<C-Z>",  # Dismiss auto-completion
-        send_to_qflist: "",    # Add to quickfix list
-        send_to_arglist: "",   # Add to arglist
-        send_to_clipboard: "", # Add to system clipboard ('+' register)
-        split_open: "",
-        vsplit_open: "",
-        tab_open: "",
+    page_up: ["\<M-k>"],
+    page_down: ["\<M-j>"],
+    hide: "\<C-l>",     # Hide popup window
+    dismiss: "",  # Dismiss auto-completion
+    send_to_qflist: "",    # Add to quickfix list
+    send_to_arglist: "",   # Add to arglist
+    send_to_clipboard: "", # Add to system clipboard ('+' register)
+    split_open: "",
+    vsplit_open: "",
+    tab_open: "",
 }
 autocmd VimEnter * g:VimSuggestSetOptions(vimsuggestOpt)
 

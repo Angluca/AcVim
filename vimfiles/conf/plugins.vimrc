@@ -14,6 +14,7 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
+Plug 'yianwillis/vimcdoc' " doc-zh
 "Plug 'angluca/zig.vim'
 Plug 'angluca/nim.vim'
 Plug 'angluca/ocen.vim'
@@ -24,12 +25,13 @@ Plug 'angluca/ocen.vim'
 "Plug 'angluca/litac.vim'
 "Plug 'angluca/virgil.vim'
 
+Plug 'tmsvg/pear-tree' " auto-pair
+"Plug 'LunarWatcher/auto-pairs'
 "Plug 'angluca/scope.vim'
 Plug 'girishji/scope.vim'
 Plug 'girishji/vimcomplete'
 Plug 'girishji/vimsuggest'
 "Plug 'girishji/ngram-complete.vim'
-"Plug 'LunarWatcher/auto-pairs'
 
 Plug 'pusewicz/lsp'
 "Plug 'yegappan/lsp'
@@ -67,36 +69,20 @@ Plug 'jeetsukumaran/vim-buffersaurus'
 Plug 'vim-scripts/VisIncr'
 "Plug 'tpope/vim-fugitive'
 "Plug 'AndrewRadev/linediff.vim'
-"Plug 'c2lang/c2.vim'
-Plug 'ziglang/zig.vim'
+"Plug 'ziglang/zig.vim'
 "Plug 'elmcast/elm-vim'
-"Plug 'maralla/completor.vim'
-"Plug 'lifepillar/vim-mucomplete'
-"Plug 'sheerun/vim-polyglot'
 
 Plug 'skywind3000/asyncrun.vim'
 "Plug 'hahdookin/miniterm.vim'
 "Plug 'skywind3000/asynctasks.vim'
 "Plug 'skywind3000/vim-quickui.vim'
-"Plug 'jayli/vim-easycomplete'
 "Plug 'mattn/emmet-vim'
 "Plug 'vim-scripts/VimIM'
 "Plug 'tikhomirov/vim-glsl'
-"Plug 'Rip-Rip/clang_complete'
-"Plug 'ycm-core/YouCompleteMe'
-"Plug 'tenfyzhong/CompleteParameter.vim'
-"Plug 'prabirshrestha/asyncomplete.vim'
 "Plug 'dkprice/vim-easygrep'
 "Plug 'godlygeek/tabular'
 "Plug 'preservim/vimux'
 "Plug 'SirVer/ultisnips'
-
-"Plug 'MarcWeber/vim-addon-mw-utils'
-"Plug 'tomtom/tlib_vim'
-"Plug 'garbas/vim-snipmate'
-"Plug 'honza/vim-snippets'
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'skywind3000/gutentags_plus'
 
 "-----------------
 call plug#end()

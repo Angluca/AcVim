@@ -1,6 +1,5 @@
 "=================================
-" General: \ee \aa \uu \vv \bb
-" vim --startuptime ~/vimstart.log
+" Option: \ee \aa \uu \vv \bb
 "=================================
 "---------------------------------
 "load plugins conf {{{
@@ -21,8 +20,8 @@ set wildignore+=*.sw? " Vim swap files
 """"""""""""""""""""
 "Functions {{{
 """"""""""""""""""""
-com! -nargs=+ AcCreateMaps call AcCreateMaps<args> "{{{
-fu! AcCreateMaps(target, combo)
+com! -nargs=+ AcSetMap call AcSetMap<args> "{{{
+fu! AcSetMap(target, combo)
     if !hasmapto(a:target, 'n')
         exec 'nmap ' . a:combo . ' ' . a:target
     endif
@@ -31,12 +30,13 @@ fu! AcCreateMaps(target, combo)
     endif
 endf "}}}
 
-fu! AcCreateDir(ds) "{{{
+com! -nargs=+ AcMakeDir call AcMakeDir<args> "{{{
+fu! AcMakeDir(ds)
     if finddir(a:ds) == '' | silent call mkdir(a:ds) | endif
 endf "}}}
 
-com! AcClearUndo call AcClearUndo() "{{{
-fu! AcClearUndo()
+com! AcClsUndo call AcClsUndo() "{{{
+fu! AcClsUndo()
     if AcIsOK(-1, "Do you want clear all undo? [Y]: ", 0, "Cancel") != 0
         let ul_bak = &undolevels
         let md_bak = &modified
@@ -70,8 +70,8 @@ fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
     return l:ret
 endf "}}}
 
-com! Fdict call s:formatDict() "{{{
-fu! s:formatDict()
+com! Fdict call s:fmtDict() "{{{
+fu! s:fmtDict()
     " tag2dict
     "exe 'g/^\(\k\+\)\s.*$\n\1$/d'
     "exe '%s/^\(\k\+\)\s.*/\1/ge'
@@ -124,12 +124,11 @@ com! -nargs=+ Mtags call s:makeTags(<f-args>) "{{{
 fu! s:makeTags(f, opt='')
     let l:opt = a:opt==''?'':'--options='.a:opt
     exe ':silent !ctags '.l:opt.' -R -f '.a:f
-endf
-"}}}
+endf "}}}
 
 com -nargs=+ SetFt call s:setFiletype<args> "{{{
 fu! s:setFiletype(fn, ft, bc='BufEnter')
-    exe $"au {a:bc} setl ft={a:fn}"
+    exe $"au {a:bc} {a:fn} setl ft={a:ft}"
 endf "}}}
 
 com -nargs=+ SetFtCmd call s:setFtCmd<args> "{{{
@@ -155,7 +154,7 @@ fu! s:setTags(ft,dir,...)
         let l:opt = l:opt.l:dir.l:file.','
     endfor
     exe 'au FileType '.a:ft.' setl tags='.l:opt
-endf
+endf "}}}
 
 com! ToggleVE call ToggleVirtualEditMode() "{{{
 fu! ToggleVirtualEditMode()
@@ -204,8 +203,8 @@ fu! SwitchToBuf(filename)
     endif
 endf "}}}
 
-com! FmtOpt call FileFormatOption() "{{{
-fu! FileFormatOption()
+com! FmtOpt call FileFmtOpt() "{{{
+fu! FileFmtOpt()
     let l:text = "Select format for writing the file"
     let l:choices = "&Unix\n&Dos\n&Mac\n&Cancel"
     if &ff == "dos" | let l:def = 2
@@ -219,8 +218,8 @@ fu! FileFormatOption()
     endif
 endfun "}}}
 
-com! Bclose call <SID>BufCloseIt() "{{{
-fu! <SID>BufCloseIt()
+com! Bclose call <SID>BufClose() "{{{
+fu! <SID>BufClose()
     let l:currentBufNum = bufnr("%")
     let l:alternateBufNum = bufnr("#")
     if buflisted(l:alternateBufNum)
@@ -236,8 +235,8 @@ fu! <SID>BufCloseIt()
     endif
 endf "}}}
 
-com! -nargs=? DelTWS call DeleteTrailingWS(<args>) "{{{
-fu! DeleteTrailingWS(bb=0)
+com! -nargs=? DelTWS call DelTrailingWS(<args>) "{{{
+fu! DelTrailingWS(bb=0)
     if a:bb != 0
         if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
             return
@@ -253,10 +252,10 @@ endf "}}}
 """"""""""""""""""""
 "Create directory {{{
 """"""""""""""""""""
-call AcCreateDir($VIMDATA)
-call AcCreateDir($VIMDATA.'backup')
-call AcCreateDir($VIMDATA.'swap')
-call AcCreateDir($VIMDATA.'cache')
+AcMakeDir($VIMDATA)
+AcMakeDir($VIMDATA.'backup')
+AcMakeDir($VIMDATA.'swap')
+AcMakeDir($VIMDATA.'cache')
 set backupdir=$VIMDATA/backup " where to put backup file
 set directory=$VIMDATA/swap " where to put swap file
 "---------------------------------
@@ -571,14 +570,14 @@ imap <m-j> <down>
 imap <m-k> <up>
 cmap <m-j> <c-n>
 cmap <m-k> <c-p>
-map! Ó <Home>
-map! Ò <End>
-map! ˙ <Left>
-map! ¬ <Right>
-imap ∆ <down>
-imap ˚ <up>
-cmap ∆ <c-n>
-cmap ˚ <c-p>
+"map! Ó <Home>
+"map! Ò <End>
+"map! ˙ <Left>
+"map! ¬ <Right>
+"imap ∆ <down>
+"imap ˚ <up>
+"cmap ∆ <c-n>
+"cmap ˚ <c-p>
 
 "Smart way to move btw. windows
 map <m-j> <C-W>j
@@ -589,14 +588,14 @@ tmap <m-j> <C-W>j
 tmap <m-k> <C-W>k
 tmap <m-h> <C-W>h
 tmap <m-l> <C-W>l
-map ∆ <C-W>j
-map ˚ <C-W>k
-map ˙ <C-W>h
-map ¬ <C-W>l
-tmap ∆ <C-W>j
-tmap ˚ <C-W>k
-tmap ˙ <C-W>h
-tmap ¬ <C-W>l
+"map ∆ <C-W>j
+"map ˚ <C-W>k
+"map ˙ <C-W>h
+"map ¬ <C-W>l
+"tmap ∆ <C-W>j
+"tmap ˚ <C-W>k
+"tmap ˙ <C-W>h
+"tmap ¬ <C-W>l
 
 map <m-tab> <c-w>gt
 map <m-s-tab> <c-w>gT
@@ -631,23 +630,22 @@ nmap <silent> ;ds :DelTWS(1)<cr>
 "cut, copy & paste
 "vmap <a-c> <c-insert>
 "imap <a-v> <s-insert>
-nmap ;yy "+Y
-xmap ;yy "+y
-nmap ;yx V"+x
-xmap ;yx "+x
-nmap ;pp "*gP
-xmap ;pp "*gP
+"nmap ;yy "+Y
+"xmap ;yy "+y
+"nmap ;yx V"+x
+"xmap ;yx "+x
+"nmap ;pp "*gP
+"xmap ;pp "*gP
 nmap <m-c> "+y
 vmap <m-c> "+y
 nmap <m-v> "*gP
 vmap <m-v> "*gP
 imap <m-v> <c-r>+
-nmap ç "+y
-vmap ç "+y
-nmap √ "*gP
-vmap √ "*gP
-imap √ <c-r>+
-"imap ö <c-r>+
+"nmap ç "+y
+"vmap ç "+y
+"nmap √ "*gP
+"vmap √ "*gP
+"imap √ <c-r>+
 
 "file format
 nmap \ff :FmtOpt<cr>
@@ -666,11 +664,11 @@ nmap <s-space>l  :copen<cr>
 nmap q :ccl<esc>
 nmap Q :ccl<esc>
 "virtual edit mode
-AcCreateMaps(':ToggleVE<cr>', ';ve')
+AcSetMap(':ToggleVE<cr>', ';ve')
 "select find
 vnoremap * y/<c-r>"<cr>
 "undo list
-nmap ;uc :AcClearUndo<cr>
+nmap ;uc :AcClsUndo<cr>
 
 "Fast saving
 nmap ;ww :update<cr>

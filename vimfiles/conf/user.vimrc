@@ -21,22 +21,6 @@ let g:showmarks_ignore_type = "hmpq"    "help,non-modify,preview,quick-fix buffe
 let errormarker_disablemappings = 1
 "}}}
 """"""""""""""""""""
-"EchoFunc {{{
-""""""""""""""""""""
-"let mouse dont show func = 0
-"let g:EchoFuncAutoStartBalloonDeclaration = 0
-"let g:EchoFuncBallonOnly = 1
-"let g:EchoFuncShowOnStatus = 1
-"let g:EchoFuncKeyNext='<m-=>'
-"let g:EchoFuncKeyPrev='<m-->'
-"use EchoFunc on all file if no set
-"let g:EchoFuncLangsUsed = ["java","cpp"]
-"let g:EchoFuncPathMappingEnabled = 1
-"let g:EchoFuncPathMapping = [
-"\ [expand("$VIMDICT") , '$VIMDICT']
-"\]
-"}}}
-""""""""""""""""""""
 "qbuf {{{
 """"""""""""""""""""
 let g:qb_hotkey = ';bb'
@@ -200,23 +184,23 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 "\ }
 let g:NERDCreateDefaultMappings=0
 if has("gui_running")
-    AcCreateMaps('<plug>NERDCommenterToggle',     '<d-/>')
+    AcSetMap('<plug>NERDCommenterToggle',     '<d-/>')
 else
-    AcCreateMaps('<plug>NERDCommenterToggle',     '<m-/>')
+    AcSetMap('<plug>NERDCommenterToggle',     '<m-/>')
 endif
-AcCreateMaps('<plug>NERDCommenterComment',    ';xx')
-AcCreateMaps('<plug>NERDCommenterToggle',     ';x<space>')
-AcCreateMaps('<plug>NERDCommenterMinimal',    ';xm')
-AcCreateMaps('<plug>NERDCommenterSexy',       ';xs')
-AcCreateMaps('<plug>NERDCommenterInvert',     ';xi')
-AcCreateMaps('<plug>NERDCommenterYank',       ';xy')
-AcCreateMaps('<plug>NERDCommenterAlignLeft',  ';xl')
-AcCreateMaps('<plug>NERDCommenterAlignBoth',  ';xb')
-AcCreateMaps('<plug>NERDCommenterNest',       ';xn')
-AcCreateMaps('<plug>NERDCommenterUncomment',  ';xu')
-AcCreateMaps('<plug>NERDCommenterToEOL',      ';x$')
-AcCreateMaps('<plug>NERDCommenterAltDelims',  ';xa')
-AcCreateMaps('<plug>NERDCommenterAppend',     ';xA')
+AcSetMap('<plug>NERDCommenterComment',    ';xx')
+AcSetMap('<plug>NERDCommenterToggle',     ';x<space>')
+AcSetMap('<plug>NERDCommenterMinimal',    ';xm')
+AcSetMap('<plug>NERDCommenterSexy',       ';xs')
+AcSetMap('<plug>NERDCommenterInvert',     ';xi')
+AcSetMap('<plug>NERDCommenterYank',       ';xy')
+AcSetMap('<plug>NERDCommenterAlignLeft',  ';xl')
+AcSetMap('<plug>NERDCommenterAlignBoth',  ';xb')
+AcSetMap('<plug>NERDCommenterNest',       ';xn')
+AcSetMap('<plug>NERDCommenterUncomment',  ';xu')
+AcSetMap('<plug>NERDCommenterToEOL',      ';x$')
+AcSetMap('<plug>NERDCommenterAltDelims',  ';xa')
+AcSetMap('<plug>NERDCommenterAppend',     ';xA')
 "}}}
 """"""""""""""""""""
 "easymotion {{{
@@ -348,17 +332,36 @@ nmap ;ut :UndotreeToggle<cr>
 "}}}
 "}}}
 """"""""""""""""""""
-"minisnip {{{
+"auto-pairs {{{
 """"""""""""""""""""
-"let g:miniSnip_dirs = [ $VIM.'miniSnips' ]
-"let g:miniSnip_local = 'miniSnips'
-"let g:miniSnip_trigger = '<C-j>'
-"let g:miniSnip_complkey ='<C-x><C-u>'
-"let g:miniSnip_ext = 'snip'
-"let g:miniSnip_extends = {
-			"\ 'cpp' : [ 'c' ],
-			"\ }
-"let g:miniSnip_extends['nim'] = [ 'nico' ]
+"let g:AutoPairsCompatibleMaps = 1
+"let g:AutoPairsLanguagePairs = {
+    "\ 'vim': {'\v^\s*\zs"': ''},
+    "\ 'rust': {'\w\zs<': '>', '&\zs''': ''},
+    "\ 'php': {'<?': '?>//k]', '<?php': '?>//k]'},
+    "\ 'nim': { "{\.":"\.}",'`':'`'},
+    "\ 'zig': { "|":"|",},
+    "\ 'ocen': { '`':{'closer':'`'},},
+    "\ }
+"let g:pear_tree_pairs = {
+            "\ '(': {'closer': ')'},
+            "\ '[': {'closer': ']'},
+            "\ '{': {'closer': '}'},
+            "\ "'": {'closer': "'"},
+            "\ '"': {'closer': '"'}
+            "\ }
+"let g:pear_tree_ft_disabled = ['txt', 'markdown']
+" Pair expansion is dot-repeatable by default 1:
+let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
+" Smart pairs are disabled by default 0:
+let g:pear_tree_smart_openers = 0
+let g:pear_tree_smart_closers = 0
+let g:pear_tree_smart_backspace = 0
+imap <M-n> <Plug>(PearTreeJump)
+imap <M-i> <Plug>(PearTreeExpandOne)
+imap <M-o> <Plug>(PearTreeJNR)
+imap <M-space> <Plug>(PearTreeSpace)
+
 "}}}
 """"""""""""""""""""
 "AsyncRun {{{
@@ -441,7 +444,7 @@ smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 "lsp {{{
 """"""""""""""""""""
 "set keywordprg=:LspHover
-"AcCreateMaps('<Cmd>LspHover<cr>', 'K')
+"AcSetMap('<Cmd>LspHover<cr>', 'K')
 nmap <buffer> ;tL <Cmd>LspOutline<cr>
 "nmap <buffer> K <Cmd>LspHover<cr>
 nmap <silent> <space>k <Cmd>LspHover<cr>
