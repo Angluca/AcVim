@@ -1,6 +1,8 @@
 vim9script
 
 #---lsp/omnifunc/vimcomplete
+#g:vimcomplete_tab_enable = 1
+#g:vimcomplete_cr_enable = 0
 export var vimcompleteOpt = {
     completor: { 
         noNewlineInCompletion: false,
