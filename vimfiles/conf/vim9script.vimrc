@@ -23,7 +23,7 @@ export var vimcompleteOpt = {
         kindDisplayType: 'symbol', # 'icon', 'icontext', 'text', 'symboltext', 'symbol', 'text'
         postfixClobber: false,  # remove yyy in xxx<cursor>yyy
         postfixHighlight: false, # highlight yyy in xxx<cursor>yyy
-        triggerWordLen: 2,
+        triggerWordLen: 1,
         throttleTimeout: 1,
     },
     buffer: { 
@@ -31,7 +31,7 @@ export var vimcompleteOpt = {
         timeout: 90,                # Match this with throttle timeout in completor
         maxCount: 10,
         otherBuffersCount: 3,       # Max count of other listed buffers to search
-        completionMatcher: 'fuzzy', # 'case', 'fuzzy', 'icase'
+        completionMatcher: 'icase', # 'case', 'fuzzy', 'icase'
         urlComplete: true,
         envComplete: true,
         maxWordLen: 60,            # Words beyond this length are ignored
@@ -40,7 +40,7 @@ export var vimcompleteOpt = {
     dictionary: { 
         priority: 6, 
         enable: false,
-        matcher: 'case', # 'case', 'ignorecase'. active for sortedDict or onlyWords is true,
+        matcher: 'icase', # 'case', 'ignorecase'. active for sortedDict or onlyWords is true,
         maxCount: 10,
         sortedDict: true,
         onlyWords: false, # [0-9z-zA-Z] if true, else any non-space char is allowed (sorted=false assumed)

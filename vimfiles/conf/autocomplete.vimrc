@@ -39,7 +39,7 @@ SetFt('*.wren','ocen')
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
 "SetFtCmd('*.nim,*.nims,*.zig','DelTWS','BufWrite')
-au BufWrite *.nim**,*.zig,*.d,*.rs,*.ha :DelTWS
+au BufWrite *.nim**,*.zig,*.d,*.rs,*.ha,*.c2 :DelTWS
 
 "for language
 au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
@@ -52,15 +52,18 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
+au FileType c2 nmap \== :Mtags c2.tags $VIMDICT/c2.ctags<cr>
+SetTags('c2','','c2.tags')
+SetDict('c2','','c2.base.dict')
+
 au FileType ocen nmap \== :Mtags ocen.tags $VIMDICT/ocen.ctags<cr>
 au FileType ocen let $OCEN = $HOME.'/SDK/Ocens/ocen/std'
 au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
 SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
 SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
 
-"au FileType virgil nmap \== :!vctags rt/x86-64-darwin/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
 au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
-au FileType virgil let $VIRGIL = $HOME.'/SDK/virgils/virgil'
+au FileType virgil let $VIRGIL = $HOME.'/SDK/Virgils/virgil'
 "au FileType virgil setl tags +=$VIMDICT/virgil.tags
 "SetTags('virgil','','virgil.tags')
 

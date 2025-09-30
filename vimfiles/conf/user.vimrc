@@ -157,6 +157,16 @@ let g:tagbar_type_ocen = {
             \ ],
             \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/ocen.ctags'
 			\ }
+let g:tagbar_type_c2 = {
+			\ 'ctagstype' : 'c2',
+            \ 'kinds'     : [
+            \ 'f:func:0:1',
+            \ 'v:var:0:0',
+            \ 't:type:0:1',
+            \ 'm:mod:0:0'
+            \ ],
+			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/c2.ctags'
+			\ }
 nmap <silent> ;tl :TagbarToggle<cr>
 "}}}
 """"""""""""""""""""
@@ -406,7 +416,9 @@ au filetype rust com! -bang -nargs=* -complete=file Chk AsyncRun<bang> -raw=1 -f
 au filetype rust com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo run <args>
 au filetype adept com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept -e <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file CC AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args>
+au filetype c2 com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c --test <args> %:p
 au filetype c3 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c3c compile <args> %:p
 au filetype litac com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine <args> %:p -o %:t:r
 au filetype litac com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine -run <args> %:p -o %:t:r
