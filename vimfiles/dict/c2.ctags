@@ -2,11 +2,12 @@
 --langmap=c2:.c2
 --language-force=c2
 --exclude=c2.tags
---regex-c2=/^\s*[^\/\#]?\s*fn\s+[^(]+\s+(\w+)\s*\(/\1/f,func/
---regex-c2=/^\s*[^\/\#]?\s*module\s+(\w+)/\1/m,mod/
+--regex-c2=/s*[^\/\#]?(public)?\s*fn\s+[^(]+\s+(\w+\.)*([A-Za-z_]\w*)\s*\(/\3/f,func/
+--regex-c2=/s*[^\/\#]?\s*module\s+(\w+)/\1/m,mod/
 #--regex-c2=/^\s*[^\/\#]*\s*type\s+(\w+)\s+enum/\1/e,enum/
 #--regex-c2=/^\s*[^\/\#]*\s*type\s+(\w+)\s+union/\1/u,union/
 #--regex-c2=/^\s*[^\/\#]*\s*type\s+(\w+)\s+struct/\1/s,struct/
---regex-c2=/^\s*[^\/\#]?\s*type\s+(\w+)\s+\w+/\1/t,type/
---regex-c2=/^\s*[^\/*\#A-Za-z0-9_=;\( ]*\s*(const |void |bool |isize|usize|[iu]8|[iu]16|[iuf]32|[iuf]64|reg8|reg16|reg32|reg64|char|[* ]|\[|\]|\[\])+\s+([A-Za-z_]\w*)\s*[@;=,]/\2/v,var/
+--regex-c2=/s*[^\/\#]?(public)?\s*type\s+(\w+\.)*([A-Za-z_]\w*)\s+\w+/\3/t,type/
+--regex-c2=/s*[^\/*\#A-Za-z0-9_=;\( ](public)?*\s*(const |void |bool |isize|usize|[iu]8|[iu]16|[iuf]32|[iuf]64|reg8|reg16|reg32|reg64|char|[* ]|\w+\.|\[|\]|\[\])+\s+([A-Za-z_]\w*)\s*[@;=,]/\3/v,var/
+--regex-c2=/^\s*[^\/*\#A-Za-z0-9_=;\( ]*\s*\[\s*([A-Za-z_]+\.)*([A-Za-z_]\w*)\s*\]\s*[;=,]/\2/v,var/
 

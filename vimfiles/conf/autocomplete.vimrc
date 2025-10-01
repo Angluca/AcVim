@@ -35,6 +35,7 @@ SetFt('*.lita,*.ape','litac')
 SetFt('*.adept','adept')
 SetFt('*.um','ocen')
 SetFt('*.wren','ocen')
+SetFt('*.v3','virgil')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -44,35 +45,41 @@ au BufWrite *.nim**,*.zig,*.d,*.rs,*.ha,*.c2 :DelTWS
 "for language
 au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType c,cpp setl tags +=$VIMDICT/cpp.tags
-"au FileType nim nmap \== :Mtags nim.tags $VIMDICT/nim.ctags<cr>
+"au FileType nim nmap \== :Mctags $VIMDICT/nim.ctags nim.tags<cr>
 "au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
 "au FileType zig let $ZIGLIB = $HOME.'/SDK/Zigs/zig/lib'
-"au FileType hare nmap \== :Mtags hare.tags $VIMDICT/hare.ctags<cr>
+"au FileType hare nmap \== :Mctags $VIMDICT/hare.ctags hare.tags<cr>
 "au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
-au FileType c2 nmap \== :Mtags c2.tags $VIMDICT/c2.ctags<cr>
-SetTags('c2','','c2.tags')
+au FileType c2 nmap \== :Mctags $VIMDICT/c2.ctags c2.tags<cr>
+au FileType c2 nmap \=- :Mctags $VIMDICT/c2.ctags c2.tags $C2_LIBDIR<cr>
+"au FileType c2 nmap \== :exe ':silent !ctags --options=$VIMDICT/c2.ctags  -R -f c2.tags' <cr>
+SetTags('c2','','c2.tags', 'c2.core.tags')
 SetDict('c2','','c2.base.dict')
 
-au FileType ocen nmap \== :Mtags ocen.tags $VIMDICT/ocen.ctags<cr>
+au FileType ocen nmap \== :Mctags $VIMDICT/ocen.ctags ocen.tags<cr>
+au FileType ocen nmap \=- :Mctags $VIMDICT/ocen.ctags ocen.tags $OCEN<cr>
 au FileType ocen let $OCEN = $HOME.'/SDK/Ocens/ocen/std'
 au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
 SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
 SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
 
+"au FileType virgil nmap \== :Maketags vctags rt/\*\*/\*.v3\ lib/\*\*/\*.v3\ aeneas/src/\*\*/\*.v3<cr>
 au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
 au FileType virgil let $VIRGIL = $HOME.'/SDK/Virgils/virgil'
 "au FileType virgil setl tags +=$VIMDICT/virgil.tags
 "SetTags('virgil','','virgil.tags')
 
-au FileType adept nmap \== :Mtags adept.tags $VIMDICT/adept.ctags<cr>
+au FileType adept nmap \== :Mctags $VIMDICT/adept.ctags adept.tags<cr>
+au FileType adept nmap \=- :Mctags $VIMDICT/adept.ctags adept.tags $ADEPT<cr>
 au FileType adept let $ADEPT = $HOME.'/SDK/Adepts/_bin/import'
 SetTags('adept','$VIM/bundle/adept.vim/tags/','adept.tags')
 SetDict('adept','$VIM/bundle/adept.vim/tags/','adept.dict','adept.base.dict')
 
-au FileType rust nmap \== :!ctags --rust-kinds=+ --fields=+S -R .
+"au FileType rust nmap \== :Maketags ctags --rust-kinds=+\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
+au FileType rust nmap \== :Maketags ctags --rust-kinds=+\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
 au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/std'
 SetTags('rust','','rust.tags')
 SetDict('rust','','rust.dict','rust.base.dict')

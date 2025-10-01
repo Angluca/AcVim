@@ -161,9 +161,9 @@ let g:tagbar_type_c2 = {
 			\ 'ctagstype' : 'c2',
             \ 'kinds'     : [
             \ 'f:func:0:1',
-            \ 'v:var:0:0',
+            \ 'v:var:1:0',
             \ 't:type:0:1',
-            \ 'm:mod:0:0'
+            \ 'm:mod:1:0'
             \ ],
 			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/c2.ctags'
 			\ }
@@ -482,6 +482,12 @@ nmap g\ <Cmd>LspServer restart<CR>
 au filetype c,cpp call LspAddServer([#{
             \    name: 'clangd',
             \    filetype: ['c', 'cpp'],
+            \    path: 'clangd',
+            \    args: ['--background-index']
+            \  }])
+au filetype c2 call LspAddServer([#{
+            \    name: 'clangd',
+            \    filetype: ['c', 'cpp', 'c2'],
             \    path: 'clangd',
             \    args: ['--background-index']
             \  }])

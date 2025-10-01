@@ -85,8 +85,9 @@ fu! s:fmtDict()
     exe 'g/^\W\+.*$/d'
     exe '%sort u'
     exe 'g/^.\{,1}\s*$/d'
+    exe 'silent w'
 endf "}}}
-com! -nargs=? Ftags call s:fmtTags(<args>) "{{{
+com! -nargs=? Ftags call s:fmtTags<args> "{{{
 fu! s:fmtTags(rd='',only_add_path=0)
     if a:rd !=''
         exe '%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
@@ -94,9 +95,12 @@ fu! s:fmtTags(rd='',only_add_path=0)
         let l:s = input("path: ")
         if l:s != ''
             exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
+        "else
+            "exe '%s/\t\(.*\.\w\+\)\t/\t|__PATH__|\/\1\t/ge'
         endif
     endif
     if a:only_add_path != 0
+        exe 'silent w'
         return
     endif
 
@@ -115,15 +119,24 @@ fu! s:fmtTags(rd='',only_add_path=0)
     exe '%s/^.*.txt\t.*$\n//ge'
     exe '%s/^.*\/tests\/.*$\n//ge'
     exe '%s/.*\/^\s*\\\/\\\/.*$\n//ge'
+    exe 'silent w'
 endf
-nmap \-- :Ftags<cr>
+nmap \-- :Ftags('',0)<cr>
 nmap \-0 :Fdict<cr>
 "}}}
 
-com! -nargs=+ Mtags call s:makeTags(<f-args>) "{{{
-fu! s:makeTags(f, opt='')
-    let l:opt = a:opt==''?'':'--options='.a:opt
-    exe ':silent !ctags '.l:opt.' -R -f '.a:f
+com! -nargs=+ Maketags call s:genTags(<f-args>) "{{{
+fu! s:genTags(app='ctags', opt='', f='', path='')
+    exe $':silent !'.a:app.' '.a:opt
+    if a:f == ''
+        return
+    endif
+    exec "e ./".a:f
+    call s:fmtTags(a:path,1)
+endf "}}}
+com! -nargs=+ Mctags call s:genCtags(<f-args>) "{{{
+fu! s:genCtags(opt='', f='', path='')
+    call s:genTags('ctags', '--options='.a:opt.' -R -f '.a:f, a:f, a:path)
 endf "}}}
 
 com -nargs=+ SetFt call s:setFiletype<args> "{{{

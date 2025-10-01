@@ -77,7 +77,7 @@ export var vimsuggestOpt = {
         fuzzy: false,         # Enable/disable fuzzy completion
         alwayson: true,       # Open popup menu on <tab> if 'false'
         popupattrs: {         # Attributes passed to the popup window
-            maxheight: 10,    # Maximum height for the stacked menu (when pum=true)
+            maxheight: 12,    # Maximum height for the stacked menu (when pum=true)
         },
         range: 100,           # Number of lines to search in each batch
         timeout: 100,         # Timeout for non-async searches (milliseconds)
