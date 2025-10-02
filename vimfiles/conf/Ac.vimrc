@@ -312,7 +312,6 @@ if v:lang == "zh_CN"
         language messages en_US.UTF-8
     endif
 endif
-"inoremap <ESC> <ESC>:set iminsert=0<CR>
 
 "Remove menu garbled
 so $VIMRUNTIME/delmenu.vim
@@ -377,6 +376,7 @@ if !exists("g:vimrc_loaded")
         set t_Co=256
     endif " has
 endif " exists(...)
+"inoremap <ESC> <ESC>:set iminsert=0<CR>
 colorscheme maroloccio
 "}}}
 """"""""""""""""""""

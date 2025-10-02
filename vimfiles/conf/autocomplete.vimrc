@@ -53,9 +53,9 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
+"au FileType c2 nmap \== :exe ':silent !ctags --options=$VIMDICT/c2.ctags  -R -f c2.tags' <cr>
 au FileType c2 nmap \== :Mctags $VIMDICT/c2.ctags c2.tags<cr>
 au FileType c2 nmap \=- :Mctags $VIMDICT/c2.ctags c2.tags $C2_LIBDIR<cr>
-"au FileType c2 nmap \== :exe ':silent !ctags --options=$VIMDICT/c2.ctags  -R -f c2.tags' <cr>
 SetTags('c2','','c2.tags', 'c2.core.tags')
 SetDict('c2','','c2.base.dict')
 
@@ -200,3 +200,4 @@ au FileType zig let g:zig_fmt_autosave = 0
 "au FileType nim setl tags+=$VIMDICT/naytags
 "SetDict('nim','','nimtags','nim.dict','nim.enums.dict',$NAYLIB.'raylib.nim')
 "}}}
+

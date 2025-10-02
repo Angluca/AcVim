@@ -34,6 +34,7 @@ Plug 'girishji/scope.vim'
 Plug 'girishji/vimcomplete'
 Plug 'girishji/vimsuggest'
 "Plug 'girishji/ngram-complete.vim'
+"Plug 'lifepillar/vim-mucomplete'
 
 Plug 'pusewicz/lsp'
 "Plug 'yegappan/lsp'

@@ -371,6 +371,8 @@ imap <M-n> <Plug>(PearTreeJump)
 imap <M-i> <Plug>(PearTreeExpandOne)
 imap <M-o> <Plug>(PearTreeJNR)
 imap <M-space> <Plug>(PearTreeSpace)
+"fix bug õ
+imap <esc>u <esc>u
 
 "}}}
 """"""""""""""""""""
@@ -485,12 +487,19 @@ au filetype c,cpp call LspAddServer([#{
             \    path: 'clangd',
             \    args: ['--background-index']
             \  }])
-au filetype c2 call LspAddServer([#{
-            \    name: 'clangd',
-            \    filetype: ['c', 'cpp', 'c2'],
-            \    path: 'clangd',
-            \    args: ['--background-index']
-            \  }])
+
+"au filetype c2 call LspAddServer([#{
+            "\    name: 'clangd',
+            "\    filetype: ['c', 'cpp', 'c2'],
+            "\    path: 'clangd',
+            "\    args: ['--background-index']
+            "\  }])
+
+"au filetype c2 call LspAddServer([#{
+            "\    name: 'c2lsp',
+            "\    filetype: ['c2'],
+            "\    path: 'c2lsp',
+            "\  }])
 
 au filetype nim call LspAddServer([#{
             \    name: 'nimlsp',
