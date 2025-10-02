@@ -2,6 +2,7 @@
 " auto complete
 "=================================
 " nim.vim must comment nim#init()
+"vimcomplete/plugin/addons.vim must Register('dictionary',['*'],8)
 """"""""""""""
 " filetypes {{{
 """"""""""""""
@@ -56,7 +57,8 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType c2 nmap \== :exe ':silent !ctags --options=$VIMDICT/c2.ctags  -R -f c2.tags' <cr>
 au FileType c2 nmap \== :Mctags $VIMDICT/c2.ctags c2.tags<cr>
 au FileType c2 nmap \=- :Mctags $VIMDICT/c2.ctags c2.tags $C2_LIBDIR<cr>
-SetTags('c2','','c2.tags', 'c2.core.tags')
+SetTags('c2','','c2.tags','c2.core.tags')
+"SetDict('c2','','c2.base.dict','c2.dict')
 SetDict('c2','','c2.base.dict')
 
 au FileType ocen nmap \== :Mctags $VIMDICT/ocen.ctags ocen.tags<cr>

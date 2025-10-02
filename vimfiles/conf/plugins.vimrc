@@ -27,11 +27,13 @@ Plug 'angluca/c2.vim'
 "Plug 'ziglang/zig.vim'
 "Plug 'elmcast/elm-vim'
 
-Plug 'tmsvg/pear-tree' " auto-pair
+Plug 'Daiki48/pairbc.vim' " auto-pair
+"Plug 'tmsvg/pear-tree' " auto-pair
 "Plug 'LunarWatcher/auto-pairs'
 "Plug 'angluca/scope.vim'
 Plug 'girishji/scope.vim'
-Plug 'girishji/vimcomplete'
+Plug 'angluca/vimcomplete'
+"Plug 'girishji/vimcomplete'
 Plug 'girishji/vimsuggest'
 "Plug 'girishji/ngram-complete.vim'
 "Plug 'lifepillar/vim-mucomplete'
@@ -40,7 +42,7 @@ Plug 'pusewicz/lsp'
 "Plug 'yegappan/lsp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'angluca/friendly-snippets'
+"Plug 'angluca/friendly-snippets'
 "Plug 'rafamadriz/friendly-snippets'
 Plug 'haya14busa/is.vim'
 

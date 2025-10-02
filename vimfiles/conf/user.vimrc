@@ -360,19 +360,17 @@ nmap ;ut :UndotreeToggle<cr>
             "\ "'": {'closer': "'"},
             "\ '"': {'closer': '"'}
             "\ }
-"let g:pear_tree_ft_disabled = ['txt', 'markdown']
-" Pair expansion is dot-repeatable by default 1:
-let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
-" Smart pairs are disabled by default 0:
-let g:pear_tree_smart_openers = 0
-let g:pear_tree_smart_closers = 0
-let g:pear_tree_smart_backspace = 0
-imap <M-n> <Plug>(PearTreeJump)
-imap <M-i> <Plug>(PearTreeExpandOne)
-imap <M-o> <Plug>(PearTreeJNR)
-imap <M-space> <Plug>(PearTreeSpace)
-"fix bug õ
-imap <esc>u <esc>u
+
+"let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
+"let g:pear_tree_smart_openers = 0
+"let g:pear_tree_smart_closers = 0
+"let g:pear_tree_smart_backspace = 0
+"imap <M-n> <Plug>(PearTreeJump)
+"imap <M-i> <Plug>(PearTreeExpandOne)
+"imap <M-o> <Plug>(PearTreeJNR)
+"imap <M-space> <Plug>(PearTreeSpace)
+""fix bug õ
+"imap <esc>u <esc>u
 
 "}}}
 """"""""""""""""""""
@@ -440,7 +438,7 @@ au filetype litac com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 
 """"""""""""""""""""
 "vsnip {{{
 """"""""""""""""""""
-let g:vsnip_snippet_dir = $VIM.'snippets/c/'
+let g:vsnip_snippet_dir = $VIM.'snippets/'
 "imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
 "smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
 imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'

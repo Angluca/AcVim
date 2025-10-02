@@ -1,0 +1,34 @@
+# main()
+snippet lo
+	signal ${1:name} : std_logic;${2}
+snippet vec
+	signal ${1:name} : std_logic_vector(${2:high} downto 0);${3}
+snippet if
+	if ${1:/* condition */} then
+		${2:/* code */}
+	else
+	end if;
+snippet ent
+	entity ${1:name} is
+		port(
+			${2}
+		);
+	end entity;
+snippet pr
+	${1:name} : process{clk) is
+	begin
+		if rising_edge(clk) then
+			if rst_n = '0' then
+				${2}
+			else
+			end if;
+		else
+			--code
+		end if;
+	end process;
+snippet inst
+	${1:name}_1: entity work.$1(rtl)
+		port map(
+			${2}
+		);
+

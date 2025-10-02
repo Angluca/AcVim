@@ -20,7 +20,7 @@ export var vimcompleteOpt = {
         showKind: true,
         customCompletionKinds: false,
         completionKinds: {},
-        kindDisplayType: 'symbol', # 'icon', 'icontext', 'text', 'symboltext', 'symbol', 'text'
+        kindDisplayType: '', # 'symbol', # 'icon', 'icontext', 'text', 'symboltext', 'symbol', 'text'
         postfixClobber: false,  # remove yyy in xxx<cursor>yyy
         postfixHighlight: false, # highlight yyy in xxx<cursor>yyy
         triggerWordLen: 1,
@@ -39,7 +39,7 @@ export var vimcompleteOpt = {
     },
     dictionary: { 
         priority: 6, 
-        enable: false,
+        enable: true,
         matcher: 'icase', # 'case', 'ignorecase'. active for sortedDict or onlyWords is true,
         maxCount: 10,
         sortedDict: true,
