@@ -417,8 +417,10 @@ au filetype rust com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -f
 au filetype adept com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept -e <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file CC AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file CT AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c --test <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args>
-au filetype c2 com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c --test <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> && ./run
+au filetype c2 com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c --test <args>
 au filetype c3 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c3c compile <args> %:p
 au filetype litac com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine <args> %:p -o %:t:r
 au filetype litac com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine -run <args> %:p -o %:t:r

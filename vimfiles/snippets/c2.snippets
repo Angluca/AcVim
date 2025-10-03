@@ -1,77 +1,86 @@
 # main()
 snippet main
 	public fn i32 main(i32 argc, const char** argv) {
-		${1}
+		$0
 		return 0;
 	}
 # main2()
 snippet main2
 	public fn i32 main() {
-		${1}
+		$0
 		return 0;
 	}
 # mod
 snippet mod
 	module ${1:/* module name */};
-	${2}
+	$0
 # import
 snippet im
 	import ${1:stdio}${2: local};
-	$3
+	$0
 # if/else
 snippet if
 	if (${1:/* condition */}) {
-		${2:/* code */}
+		${0:/* code */}
 	}
 snippet el
 	else {
-		${1}
+		${0:/* code */}
 	}
+snippet sw
+	switch(${1:/* condition */}) {
+		case ${2:0-n,10,100}:
+			${0:/* code */}
+		break;
+	}
+snippet ca
+	case ${1:/*0-4,6,8/*}:
+		${0:/* code */}
+	break;
+snippet de
+	default:
+		${0:/* code */}
+	break;
 # Do While Loop
 snippet do
 	do {
-		${2:/* code */}
+		${0:/* code */}
 	} while (${1:/* condition */});
 # While Loop
 snippet wh
 	while (${1:/* condition */}) {
-		${2:/* code */}
+		${0:/* code */}
 	}
 # For Loop
 snippet for
 	for (u32 i=0; i<${1:count}; ++i) {
-		${2:/* code */}
+		${0:/* code */}
 	}
-# Custom For Loop
 # Function
 snippet fn
-	fn ${1:void} ${2:function_name}(${3})
-	{
-		${4:/* code */}
+	fn ${1:void} ${2:/* funcname */}($3) {
+		${0:/* code */}
 	}
-
 # Struct
 snippet st
 	type ${1:/* typename */} struct {
-		${2:/* fields */}
+		${0:/* fields */}
 	}
 # Opaque Struct
 snippet os
 	public type ${1:/* typename */} struct @(opaque) {
-		${2:/* fields */}
+		${0:/* fields */}
 	}
 # Enum
 snippet en
 	type ${1:/* typename */} enum ${2:/* type */} {
-		${3:/* fields */}
+		${0:/* fields */}
 	}
 # printf
-# unfortunately version this isn't as nice as TextMates's, given the lack of a
-# dynamic `...`
 snippet pr
-	printf("${1:%s}\n"${2});${3}
+	printf("${1:%s}\n"$0);
 # fprintf (again, this isn't as nice as TextMate's version, but it works)
 snippet fpr
-	fprintf(${1:stderr}, "${2:%s}\n"${3});${4}
+	fprintf(${1:stderr}, "${2:%s}\n"$0);
 snippet ccp
-	const char* ${1}
+	const char* $0

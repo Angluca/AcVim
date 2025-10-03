@@ -20,10 +20,10 @@ export var vimcompleteOpt = {
         showKind: true,
         customCompletionKinds: false,
         completionKinds: {},
-        kindDisplayType: '', # 'symbol', # 'icon', 'icontext', 'text', 'symboltext', 'symbol', 'text'
+        kindDisplayType: '', # 'symbol', 'icon', 'icontext', 'text', 'symboltext', 'symbol', 'text'
         postfixClobber: false,  # remove yyy in xxx<cursor>yyy
         postfixHighlight: false, # highlight yyy in xxx<cursor>yyy
-        triggerWordLen: 1,
+        triggerWordLen: 0, # default 0 can popup path ./../..
         throttleTimeout: 1,
     },
     buffer: { 
@@ -34,7 +34,7 @@ export var vimcompleteOpt = {
         completionMatcher: 'icase', # 'case', 'fuzzy', 'icase'
         urlComplete: true,
         envComplete: true,
-        maxWordLen: 60,            # Words beyond this length are ignored
+        maxWordLen: 100,            # Words beyond this length are ignored
         dup: true,
     },
     dictionary: { 
@@ -45,7 +45,7 @@ export var vimcompleteOpt = {
         sortedDict: true,
         onlyWords: false, # [0-9z-zA-Z] if true, else any non-space char is allowed (sorted=false assumed)
         commentStr: '---',
-        triggerWordLen: 2,
+        triggerWordLen: 1,
         timeout: 0, # not implemented yet
         dup: false, # suppress duplicates
         matchStr: '\k\+$',
