@@ -19,6 +19,8 @@ let g:showmarks_ignore_type = "hmpq"    "help,non-modify,preview,quick-fix buffe
 "errormarker {{{
 """"""""""""""""""""
 let errormarker_disablemappings = 1
+nmap <silent> ,ee :ErrorAtCursor<CR>
+nmap <silent> ,er :ErrorMarkersRemove<CR>
 "}}}
 """"""""""""""""""""
 "qbuf {{{
@@ -353,24 +355,27 @@ nmap ;ut :UndotreeToggle<cr>
     "\ 'zig': { "|":"|",},
     "\ 'ocen': { '`':{'closer':'`'},},
     "\ }
-"let g:pear_tree_pairs = {
-            "\ '(': {'closer': ')'},
-            "\ '[': {'closer': ']'},
-            "\ '{': {'closer': '}'},
-            "\ "'": {'closer': "'"},
-            "\ '"': {'closer': '"'}
-            "\ }
+let g:pear_tree_pairs = {
+            \ '(': {'closer': ')'},
+            \ '[': {'closer': ']'},
+            \ '{': {'closer': '}'},
+            \ "'": {'closer': "'"},
+            \ '"': {'closer': '"'},
+            \ '`': {'closer': '`'}
+            \ }
 
-"let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
-"let g:pear_tree_smart_openers = 0
-"let g:pear_tree_smart_closers = 0
-"let g:pear_tree_smart_backspace = 0
-"imap <M-n> <Plug>(PearTreeJump)
-"imap <M-i> <Plug>(PearTreeExpandOne)
-"imap <M-o> <Plug>(PearTreeJNR)
-"imap <M-space> <Plug>(PearTreeSpace)
-""fix bug õ
-"imap <esc>u <esc>u
+let g:pear_tree_map_special_keys = 0 " imap <BS>, <CR>, and <Esc>
+let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
+let g:pear_tree_smart_openers = 0
+let g:pear_tree_smart_closers = 0
+let g:pear_tree_smart_backspace = 0
+imap <BS> <Plug>(PearTreeBackspace)
+imap <CR> <Plug>(PearTreeExpand)
+"imap <Esc> <Plug>(PearTreeFinishExpansion) " don't imap <esc> !!!
+imap <M-n> <Plug>(PearTreeJump)
+imap <M-i> <Plug>(PearTreeExpandOne)
+imap <M-o> <Plug>(PearTreeJNR)
+imap <M-space> <Plug>(PearTreeSpace)
 
 "}}}
 """"""""""""""""""""

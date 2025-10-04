@@ -30,10 +30,13 @@ default
 destructor
 do
 elemsof
+elif
+else
 else
 enum
 enum_max
 enum_min
+error
 export
 f32
 f64
@@ -47,6 +50,9 @@ i32
 i64
 i8
 if
+if
+ifdef
+ifndef
 import
 inline
 isize
@@ -104,5 +110,6 @@ unused_params
 usize
 void
 volatile
+warning
 weak
 while

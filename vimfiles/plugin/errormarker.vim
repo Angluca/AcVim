@@ -39,7 +39,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 command ErrorAtCursor call s:ShowErrorAtCursor()
-command RemoveErrorMarkers call s:RemoveErrorMarkers()
+command ErrorMarkersRemove call s:RemoveErrorMarkers()
 
 if !hasmapto(":ErrorAtCursor<cr>", "n") &&
             \ (!exists('g:errormarker_disablemappings') || !g:errormarker_disablemappings)

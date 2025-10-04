@@ -27,10 +27,10 @@ Plug 'angluca/c2.vim'
 "Plug 'ziglang/zig.vim'
 "Plug 'elmcast/elm-vim'
 
-Plug 'Daiki48/pairbc.vim' " auto-pair
-"Plug 'tmsvg/pear-tree' " auto-pair
+Plug 'tmsvg/pear-tree' " auto-pair
+"Plug 'angluca/pairbc.vim' " auto-pair
+"Plug 'Daiki48/pairbc.vim' " auto-pair
 "Plug 'LunarWatcher/auto-pairs'
-"Plug 'angluca/scope.vim'
 Plug 'girishji/scope.vim'
 Plug 'angluca/vimcomplete'
 "Plug 'girishji/vimcomplete'

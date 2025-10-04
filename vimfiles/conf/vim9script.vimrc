@@ -42,7 +42,7 @@ export var vimcompleteOpt = {
         enable: true,
         matcher: 'icase', # 'case', 'ignorecase'. active for sortedDict or onlyWords is true,
         maxCount: 10,
-        sortedDict: true,
+        sortedDict: false,
         onlyWords: false, # [0-9z-zA-Z] if true, else any non-space char is allowed (sorted=false assumed)
         commentStr: '---',
         triggerWordLen: 1,
