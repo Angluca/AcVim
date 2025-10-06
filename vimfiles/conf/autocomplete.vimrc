@@ -37,6 +37,7 @@ SetFt('*.adept','adept')
 SetFt('*.um','ocen')
 SetFt('*.wren','ocen')
 SetFt('*.v3','virgil')
+SetFt('*.c3','c2')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -62,11 +63,11 @@ SetTags('c2','','c2.tags','c2.core.tags')
 SetDict('c2','','c2.base.dict')
 
 au FileType ocen nmap \== :Mctags $VIMDICT/ocen.ctags ocen.tags<cr>
-au FileType ocen nmap \=- :Mctags $VIMDICT/ocen.ctags ocen.tags $OCEN<cr>
-au FileType ocen let $OCEN = $HOME.'/SDK/Ocens/ocen/std'
-au FileType ocen let $RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
+au FileType ocen nmap \=- :Mctags $VIMDICT/ocen.ctags ocen.tags $OCEN_ROOT<cr>
+au FileType ocen let $OCEN_RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
 SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
-SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
+"SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
+SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.base.dict')
 
 "au FileType virgil nmap \== :Maketags vctags rt/\*\*/\*.v3\ lib/\*\*/\*.v3\ aeneas/src/\*\*/\*.v3<cr>
 au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
