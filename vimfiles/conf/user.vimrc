@@ -1,9 +1,6 @@
 "=================================
 " Plugin configuration
 "=================================
-"-------------------------
-" plugins {{{
-"-------------------------
 """"""""""""""""""""
 "ShowMarks {{{
 """"""""""""""""""""
@@ -28,35 +25,11 @@ nmap <silent> ,er :ErrorMarkersRemove<CR>
 let g:qb_hotkey = ';bb'
 "}}}
 """"""""""""""""""""
-"bufexplorer {{{
-""""""""""""""""""""
-nmap <silent> ;be :BufExplorer<CR>
-nmap <silent> ;bt :ToggleBufExplorer<CR>
-nmap <silent> ;bs :BufExplorerHorizontalSplit<CR>
-nmap <silent> ;bv :BufExplorerVerticalSplit<CR>
-"let g:bufExplorerDefaultHelp=0
-"let g:bufExplorerReverseSort=1
-"let bufExplorerDetailedHelp=0
-"let g:bufExplorerSortBy='number'
-"let g:bufExplorerShowUnlisted=1
-"let g:bufExplorerShowTabBuffer=1
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerSplitRight=1
-let g:bufExplorerSplitBelow=1
-let g:bufExplorerSplitHorzSize=6
-let g:bufExplorerSplitVertSize=30
-"}}}
-""""""""""""""""""""
 "fliplr {{{
 """"""""""""""""""""
 nmap ,fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 xmap ,fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "}}}
-"-------------------
-"}}}
-"-------------------------
-"bundle plugins {{{
-"-------------------------
 """"""""""""""""""""
 "Ctrlp {{{
 """"""""""""""""""""
@@ -303,15 +276,6 @@ let g:vimim_toggle = 'wubi'
 "nnoremap <silent><m-l>  :call VimeInverseLookup()<CR>
 "}}}
 """"""""""""""""""""
-"clever-f {{{
-""""""""""""""""""""
-let g:clever_f_across_no_line = 1
-let g:clever_f_ignore_case = 0
-let g:clever_f_smart_case = 0
-let g:clever_f_fix_key_direction = 0
-let g:clever_f_show_prompt = 0
-"}}}
-""""""""""""""""""""
 "vim-markdown {{{
 """"""""""""""""""""
 let g:vim_markdown_fenced_languages = ['bash=sh', 'viml=vim', 'nims=nim', 'ini=dosini']
@@ -463,14 +427,13 @@ smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 "lsp {{{
 """"""""""""""""""""
 "set keywordprg=:LspHover
-"AcSetMap('<Cmd>LspHover<cr>', 'K')
 nmap <buffer> ;tL <Cmd>LspOutline<cr>
 "nmap <buffer> K <Cmd>LspHover<cr>
 nmap <silent> <space>k <Cmd>LspHover<cr>
 "nmap <c-]> <Cmd>LspGotoDefinition<CR>
 "nmap <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
 nmap ge <Cmd>LspGotoDefinition<CR>
-nmap gE <Cmd>LspGotoDeclaration<CR>
+nmap ga <Cmd>LspGotoDeclaration<CR>
 "nmap ge <Cmd>LspPeekDeclaration<CR>
 "nmap gE <Cmd>LspPeekDefinition<CR>
 "nmap <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
@@ -541,25 +504,26 @@ au filetype adept call LspAddServer([#{
             "\  }])
             ""\    args: ['-languageServer', $HOME..'/SDK/LitaCs/litac-lang']
 
-"au filetype d call LspAddServer([#{
-            "\    name: 'd',
-            "\    filetype: ['d'],
-            "\    path: 'serve-d',
-            "\    args: [],
-            "\  }])
+au filetype d call LspAddServer([#{
+            \    name: 'd',
+            \    filetype: ['d'],
+            \    path: 'serve-d',
+            \    args: [],
+            \  }])
 
-"au filetype ocen call LspAddServer([#{
-            "\    name: 'ocen',
-            "\    filetype: ['ocen'],
-            "\    path: 'ocen',
-            "\    args: []
-            "\  }])
+au filetype ocen call LspAddServer([#{
+            \    name: 'ocenlsp',
+            \    filetype: ['ocen'],
+            \    path: 'ocen',
+            \    args: ['lsp-server'],
+            \   rootSearch: '/Users/Angluca/SDK/Ocens/ocen/std'
+            \  }])
 
-"au filetype v call LspAddServer([#{
-            "\    name: 'vls',
-            "\    filetype: ['vlang', 'v'],
-            "\    path: 'vls',
-            "\  }])
+au filetype v call LspAddServer([#{
+            \    name: 'vls',
+            \    filetype: ['vlang', 'v'],
+            \    path: 'vls',
+            \  }])
 
 au filetype * call LspOptionsSet(#{
         \   outlineOnRight: v:true,
@@ -630,11 +594,10 @@ au filetype * call LspOptionsSet(#{
 "another {{{
 """"""""""""""""""""
 "}}}
-"-------------------
-"}}}
 "-------------------------
 "Custom settings
 "You can see maps
 ":verbose nmap ;
 ":verbose nmap ,
 "-------------------------
+

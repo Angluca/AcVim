@@ -668,14 +668,16 @@ nmap \fg :se fenc=GBK<cr>
 au Filetype qf set syntax=sh
 set syntax=markdown.nim
 "nmap <space>L  :cw<cr>
-nmap <space>l  :copen<cr>
-nmap <s-space>l  :copen<cr>
+"nmap <space>l  :copen<cr>
+"nmap <s-space>l  :copen<cr>
+nmap Q  :copen<cr>
+nmap Q  :copen<cr>
 "nmap <s-space>J :cn<cr>
 "nmap <s-space>K :cp<cr>
 "nmap <s-space>O :cold<cr>
 "nmap <s-space>I :cnew<cr>
 nmap q :ccl<esc>
-nmap Q :ccl<esc>
+"nmap Q :ccl<esc>
 "virtual edit mode
 AcSetMap(':ToggleVE<cr>', ';ve')
 "select find
@@ -695,8 +697,8 @@ nmap <silent> ;qq :q<cr>
 nmap <silent> ;qa :qa<cr>
 "Fast remove highlight search
 nmap <silent> ;<cr> :noh<cr>
-nmap <silent> ; <esc>
-nmap <silent> , <esc>
+nmap <silent> ;; ;<esc>
+nmap <silent> ,, ,<esc>
 nmap <space><space> \<space>
 vno * y/<c-r>"<cr>
 "fix terminal vi <c-v> bug

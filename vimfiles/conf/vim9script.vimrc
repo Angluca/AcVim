@@ -42,12 +42,13 @@ export var vimcompleteOpt = {
         enable: true,
         matcher: 'icase', # 'case', 'ignorecase'. active for sortedDict or onlyWords is true,
         maxCount: 10,
-        sortedDict: false,
+        sortedDict: true,
         onlyWords: false, # [0-9z-zA-Z] if true, else any non-space char is allowed (sorted=false assumed)
         commentStr: '---',
         triggerWordLen: 1,
         timeout: 0, # not implemented yet
         dup: false, # suppress duplicates
+        filetypes: ['*'],
         matchStr: '\k\+$',
         matchAny: false,
         info: false,  # Whether 'info' popup needs to be populated
@@ -74,14 +75,14 @@ export var vimsuggestOpt = {
     search: {
         enable: true,         # Enable/disable the feature globally
         pum: true,            # 'false' for flat, 'true' for vertically stacked popup menu
-        fuzzy: false,         # Enable/disable fuzzy completion
+        fuzzy: true,         # Enable/disable fuzzy completion
         alwayson: true,       # Open popup menu on <tab> if 'false'
         popupattrs: {         # Attributes passed to the popup window
             maxheight: 12,    # Maximum height for the stacked menu (when pum=true)
         },
         range: 100,           # Number of lines to search in each batch
         timeout: 100,         # Timeout for non-async searches (milliseconds)
-        async: true,          # Use async for searching
+        async: false,          # Use async for searching
         async_timeout: 200,  # Async timeout in milliseconds
         async_minlines: 200, # Minimum lines to enable async search
         highlight: true,      # Disable menu highlighting (for performance)
@@ -123,16 +124,16 @@ autocmd VimEnter * g:VimSuggestSetOptions(vimsuggestOpt)
 import autoload 'scope/fuzzy.vim'
 nmap <C-l> <scriptcmd>fuzzy.Quickfix()<CR>
 nmap <C-L> <scriptcmd>fuzzy.Quickfix()<CR>
-nmap g/ <scriptcmd>fuzzy.BufSearch()<CR>
-vmap g/ <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
-nmap g? <scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
-vmap g? <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+nmap ;/ <scriptcmd>fuzzy.BufSearch()<CR>
+vmap ;/ <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+nmap ;? <scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+vmap ;? <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
 nmap ;ff <scriptcmd>fuzzy.File()<CR>
 vmap ;ff <esc><scriptcmd>fuzzy.File()<CR><c-r><c-w>
 nmap ;fF <scriptcmd>fuzzy.File()<CR><c-r><c-w>
-nmap ;g/ <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR>
-vmap ;g/ <esc><scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR><c-r><c-w>
-nmap ;g? <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case', false, '<cword>')<CR>
+nmap ;f/ <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR>
+vmap ;f/ <esc><scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR><c-r><c-w>
+nmap ;f? <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case', false, '<cword>')<CR>
 #nmap ;fG <scriptcmd>fuzzy.GitFile()<CR>
 #emap ;fb <scriptcmd>fuzzy.Buffer(true)<CR>
 nmap ;fb <scriptcmd>fuzzy.Buffer()<CR>
