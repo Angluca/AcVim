@@ -511,13 +511,12 @@ au filetype d call LspAddServer([#{
             \    args: [],
             \  }])
 
-au filetype ocen call LspAddServer([#{
-            \    name: 'ocenlsp',
-            \    filetype: ['ocen'],
-            \    path: 'ocen',
-            \    args: ['lsp-server'],
-            \   rootSearch: '/Users/Angluca/SDK/Ocens/ocen/std'
-            \  }])
+"au filetype ocen call LspAddServer([#{
+            "\    name: 'ocenlsp',
+            "\    filetype: ['ocen'],
+            "\    path: 'ocen',
+            "\    args: ['lsp-server'],
+            "\  }])
 
 au filetype v call LspAddServer([#{
             \    name: 'vls',

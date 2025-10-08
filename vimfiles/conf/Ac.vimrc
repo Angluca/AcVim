@@ -95,6 +95,7 @@ fu! s:fmtTags(rd='',only_add_path=0)
         let l:s = input("path: ")
         if l:s != ''
             exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
+            exe '%s/\v^.*\/tests?\/.*$\n//ge'
         "else
             "exe '%s/\t\(.*\.\w\+\)\t/\t|__PATH__|\/\1\t/ge'
         endif
@@ -117,7 +118,7 @@ fu! s:fmtTags(rd='',only_add_path=0)
     exe '%s/^.*.md\t.*$\n//ge'
     exe '%s/^.*.json\t.*$\n//ge'
     exe '%s/^.*.txt\t.*$\n//ge'
-    exe '%s/^.*\/tests\/.*$\n//ge'
+    exe '%s/\v^.*\/tests?\/.*$\n//ge'
     exe '%s/.*\/^\s*\\\/\\\/.*$\n//ge'
     exe 'silent w'
 endf
@@ -641,24 +642,24 @@ nmap <silent> ;ds :DelTWS(1)<cr>
 "imap <s-space> <cr>
 
 "cut, copy & paste
-"vmap <a-c> <c-insert>
-"imap <a-v> <s-insert>
-"nmap ;yy "+Y
-"xmap ;yy "+y
-"nmap ;yx V"+x
-"xmap ;yx "+x
-"nmap ;pp "*gP
-"xmap ;pp "*gP
+vmap <a-c> <c-insert>
+imap <a-v> <s-insert>
+nmap ;yy "+Y
+xmap ;yy "+y
+nmap ;yx V"+x
+xmap ;yx "+x
+nmap ;pp "*gP
+xmap ;pp "*gP
 nmap <m-c> "+y
 vmap <m-c> "+y
 nmap <m-v> "*gP
 vmap <m-v> "*gP
 imap <m-v> <c-r>+
-"nmap ç "+y
-"vmap ç "+y
-"nmap √ "*gP
-"vmap √ "*gP
-"imap √ <c-r>+
+nmap ç "+y
+vmap ç "+y
+nmap √ "*gP
+vmap √ "*gP
+imap √ <c-r>+
 
 "file format
 nmap \ff :FmtOpt<cr>

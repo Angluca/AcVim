@@ -6,6 +6,7 @@ asm
 assert
 auto
 auto_file
+auto_func
 auto_line
 bool
 break
