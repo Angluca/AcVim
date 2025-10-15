@@ -385,18 +385,22 @@ au filetype rust com! -bang -nargs=* -complete=file Chk AsyncRun<bang> -raw=1 -f
 au filetype rust com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo run <args>
 au filetype adept com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept -e <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file TT AsyncRun<bang> -raw=1 -focus=0 -rows=8 tester <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file CC AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file CT AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c --test <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args>
 au filetype c2 com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> && ./run
 au filetype c2 com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c --test <args>
 au filetype c3 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c3c compile <args> %:p
-au filetype litac com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine <args> %:p -o %:t:r
-au filetype litac com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine -run <args> %:p -o %:t:r
-au filetype litac com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac <args> -testFile %:p
-"au filetype virgil com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-host `cat DEPS` <args> *.v3
-"au filetype virgil com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-host `cat DEPS` *.v3 && ./%:t:r <args>
-"au filetype virgil com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3i `cat DEPS` <args> %:p 
+"au filetype litac com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine <args> %:p -o %:t:r
+"au filetype litac com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine -run <args> %:p -o %:t:r
+"au filetype litac com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac <args> -testFile %:p
+au filetype virgil com! -bang -nargs=* -complete=file TT AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3i <args> %:p
+au filetype virgil com! -bang -nargs=* -complete=file CC AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-x86-64-darwin <args> %:p
+au filetype virgil com! -bang -nargs=* -complete=file CR AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-x86-64-darwin %:p && ./%:t:r <args>
+au filetype virgil com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 virgil `cat DEPS` <args> *.v3
+au filetype virgil com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 virgil `cat DEPS` *.v3 && ./%:t:r <args>
+au filetype virgil com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3i `cat DEPS` <args> %:p 
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
 "com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .
@@ -508,9 +512,16 @@ au filetype d call LspAddServer([#{
             \    name: 'd',
             \    filetype: ['d'],
             \    path: 'serve-d',
-            \    args: [],
             \  }])
 
+au filetype virgil call LspAddServer([#{
+            \    name: 'virgil',
+            \    filetype: ['virgil'],
+            \    path: 'virgil-lsp',
+            \    args: [],
+            \    syncInit: v:true,
+            \  }])
+            \
 "au filetype ocen call LspAddServer([#{
             "\    name: 'ocenlsp',
             "\    filetype: ['ocen'],
@@ -518,11 +529,11 @@ au filetype d call LspAddServer([#{
             "\    args: ['lsp-server'],
             "\  }])
 
-au filetype v call LspAddServer([#{
-            \    name: 'vls',
-            \    filetype: ['vlang', 'v'],
-            \    path: 'vls',
-            \  }])
+"au filetype v call LspAddServer([#{
+            "\    name: 'vls',
+            "\    filetype: ['vlang', 'v'],
+            "\    path: 'vls',
+            "\  }])
 
 au filetype * call LspOptionsSet(#{
         \   outlineOnRight: v:true,
@@ -599,4 +610,3 @@ au filetype * call LspOptionsSet(#{
 ":verbose nmap ;
 ":verbose nmap ,
 "-------------------------
-

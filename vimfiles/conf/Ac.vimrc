@@ -94,8 +94,11 @@ fu! s:fmtTags(rd='',only_add_path=0)
     else
         let l:s = input("path: ")
         if l:s != ''
+            exe '%s/\v^.*\s*\/?tests?\/.*$\n//ge'
+            exe '%s/\v^.*\s*\/?output\/.*$\n//ge'
+            exe '%s/\v^.*\s*\/?tools\/.*$\n//ge'
+
             exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
-            exe '%s/\v^.*\/tests?\/.*$\n//ge'
         "else
             "exe '%s/\t\(.*\.\w\+\)\t/\t|__PATH__|\/\1\t/ge'
         endif
@@ -642,24 +645,26 @@ nmap <silent> ;ds :DelTWS(1)<cr>
 "imap <s-space> <cr>
 
 "cut, copy & paste
-vmap <a-c> <c-insert>
-imap <a-v> <s-insert>
-nmap ;yy "+Y
-xmap ;yy "+y
-nmap ;yx V"+x
-xmap ;yx "+x
-nmap ;pp "*gP
-xmap ;pp "*gP
+"vmap <a-c> <c-insert>
+"imap <a-v> <s-insert>
+"nmap ;yy "+Y
+"xmap ;yy "+y
+"nmap ;yx V"+x
+"xmap ;yx "+x
+"nmap ;pp "*gP
+"xmap ;pp "*gP
 nmap <m-c> "+y
 vmap <m-c> "+y
+xmap <m-c> "+y
 nmap <m-v> "*gP
 vmap <m-v> "*gP
 imap <m-v> <c-r>+
-nmap ç "+y
-vmap ç "+y
-nmap √ "*gP
-vmap √ "*gP
-imap √ <c-r>+
+xmap <m-v> <c-r>+
+"nmap ç "+y
+"vmap ç "+y
+"nmap √ "*gP
+"vmap √ "*gP
+"imap √ <c-r>+
 
 "file format
 nmap \ff :FmtOpt<cr>
@@ -705,6 +710,8 @@ vno * y/<c-r>"<cr>
 "fix terminal vi <c-v> bug
 let &t_BE = ""
 let &t_BD = "\e[?2004l"
+"let &t_TI = ""
+"let &t_TE = ""
 set t_PS=\e[200~
 set t_PE=\e[201~
 if has("gui_running")

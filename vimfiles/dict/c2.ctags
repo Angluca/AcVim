@@ -10,4 +10,6 @@
 --regex-c2=/s*[^\/\#]?(public)?\s*type\s+(\w+\.)*([A-Za-z_]\w*)\s+\w+/\3/t,type/
 #--regex-c2=/s*[^\/*\#A-Za-z0-9_=;\( ](public)?*\s*(const |void |bool |isize|usize|[iu]8|[iu]16|[iuf]32|[iuf]64|reg8|reg16|reg32|reg64|char|[* ]|\w+\.|\[|\]|\[\])+\s+([A-Za-z_]\w*)\s*[@:;=,]/\3/v,var/
 --regex-c2=/^\s*[^\/*\#A-Za-z0-9_=;\( ]*\s*\[\s*([A-Za-z_]+\.)*([A-Za-z_]\w*)\s*\]\s*[;=,]/\2/v,var/
+--regex-c2=/^\s*([A-Za-z_]\w+)\s*=?\s*\w*(,|;)?\s*$/\1/v,var/
+--regex-c2=/\s*([A-Za-z_]\w+)\s*;\s*$/\1/v,var/
 

@@ -36,7 +36,6 @@ SetFt('*.lita,*.ape','litac')
 SetFt('*.adept','adept')
 SetFt('*.um','ocen')
 SetFt('*.wren','ocen')
-SetFt('*.v3','virgil')
 SetFt('*.c3','c2')
 
 " automaticlly remove trailing whitespace
@@ -58,7 +57,7 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType c2 nmap \== :exe ':silent !ctags --options=$VIMDICT/c2.ctags  -R -f c2.tags' <cr>
 au FileType c2 nmap \== :Mctags $VIMDICT/c2.ctags c2.tags<cr>
 au FileType c2 nmap \=- :Mctags $VIMDICT/c2.ctags c2.tags $C2_LIBDIR<cr>
-SetTags('c2','','c2.tags','c2.core.tags')
+SetTags('c2','','c2.tags')
 "SetDict('c2','','c2.base.dict','c2.dict')
 SetDict('c2','','c2.base.dict')
 
@@ -69,11 +68,10 @@ SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
 "SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
 SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.base.dict')
 
-"au FileType virgil nmap \== :Maketags vctags rt/\*\*/\*.v3\ lib/\*\*/\*.v3\ aeneas/src/\*\*/\*.v3<cr>
-au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
-au FileType virgil let $VIRGIL = $HOME.'/SDK/Virgils/virgil'
-"au FileType virgil setl tags +=$VIMDICT/virgil.tags
-"SetTags('virgil','','virgil.tags')
+au FileType virgil nmap \== :Maketags vctags **/**/*.v3 tags<cr>
+"au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
+"au FileType virgil nmap \== :!vctags **/**/*.v3<cr>
+SetTags('virgil','','virgil.tags','virgil.wizard.tags')
 
 au FileType adept nmap \== :Mctags $VIMDICT/adept.ctags adept.tags<cr>
 au FileType adept nmap \=- :Mctags $VIMDICT/adept.ctags adept.tags $ADEPT<cr>
