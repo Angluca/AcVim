@@ -706,7 +706,7 @@ nn <silent> ;qq :q<cr>
 nn <silent> ;qa :qa<cr>
 nn <silent> ;qf :FloatermKill!<cr>:q!<cr>
 nn <silent> ;qa :FloatermKill!<cr>:qa<cr>
-tnoremap <silent> <esc> <c-\><c-n>
+tnoremap <silent> <c-esc> <c-\><c-n>
 "Fast remove highlight search
 nmap <silent> ;<cr> :noh<cr>
 nmap <silent> ;; ;<esc>

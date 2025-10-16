@@ -341,11 +341,11 @@ imap <M-o> <Plug>(PearTreeJNR)
 imap <M-space> <Plug>(PearTreeSpace)
 
 "}}}
-"--Run--------------------------
+"=== building ======================{{{
 nmap <space>r :AcRun 
 "com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
-"===============================
+"--------------------------------------
 au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
