@@ -553,6 +553,7 @@ map ZZ <esc>
 map ZQ <esc>
 map Q <esc>
 map q <esc>
+"tnoremapmap <m-q> :quit<cr>
 
 "time
 "iab xt <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
@@ -676,13 +677,15 @@ set syntax=markdown.nim
 "nmap <space>L  :cw<cr>
 "nmap <space>l  :copen<cr>
 "nmap <s-space>l  :copen<cr>
-nmap Q  :copen<cr>
-nmap Q  :copen<cr>
 "nmap <s-space>J :cn<cr>
 "nmap <s-space>K :cp<cr>
 "nmap <s-space>O :cold<cr>
 "nmap <s-space>I :cnew<cr>
-nmap q :ccl<esc>
+nn Q :copen<cr>
+nn q :ccl<esc>
+nn q :ccl<esc>
+"nn Q :FloatermShow<cr>
+nn q :FloatermHide<cr>:ccl<cr>
 "nmap Q :ccl<esc>
 "virtual edit mode
 AcSetMap(':ToggleVE<cr>', ';ve')
@@ -695,12 +698,15 @@ nmap ;uc :AcClsUndo<cr>
 nmap ;ww :update<cr>
 nmap ;wf :update!<cr>
 "Fast quiting
-nmap <silent> ,q <esc>
-nmap <silent> ;q <esc>
-nmap <silent> ;qw :wq<cr>
-nmap <silent> ;qf :q!<cr>
-nmap <silent> ;qq :q<cr>
-nmap <silent> ;qa :qa<cr>
+nn <silent> ,q <esc>
+nn <silent> ;q <esc>
+nn <silent> ;qw :wq<cr>
+nn <silent> ;qf :q!<cr>
+nn <silent> ;qq :q<cr>
+nn <silent> ;qa :qa<cr>
+nn <silent> ;qf :FloatermKill!<cr>:q!<cr>
+nn <silent> ;qa :FloatermKill!<cr>:qa<cr>
+tnoremap <silent> <esc> <c-\><c-n>
 "Fast remove highlight search
 nmap <silent> ;<cr> :noh<cr>
 nmap <silent> ;; ;<esc>

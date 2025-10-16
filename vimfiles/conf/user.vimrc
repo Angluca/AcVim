@@ -327,7 +327,6 @@ let g:pear_tree_pairs = {
             \ '"': {'closer': '"'},
             \ '`': {'closer': '`'}
             \ }
-
 let g:pear_tree_map_special_keys = 0 " imap <BS>, <CR>, and <Esc>
 let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
 let g:pear_tree_smart_openers = 0
@@ -342,73 +341,70 @@ imap <M-o> <Plug>(PearTreeJNR)
 imap <M-space> <Plug>(PearTreeSpace)
 
 "}}}
-""""""""""""""""""""
-"AsyncRun {{{
-""""""""""""""""""""
-let g:asyncrun_open = 12
-"let g:asyncrun_auto = 'make'
-"let g:asyncrun_last = 3
-"let g:asyncrun_mode = 'term'
-"let asyncrun_term_hidden = 1
-"let g:asyncrun_term_wipe = 1
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.hg', '.vscode', '*.nimble', '*.tasks', 'project.json', 'build.zig', 'Cargo.toml', 'dub.sdl', 'dub.json']
-let g:asyncrun_capture_file = $VIMDATA.'/cache/asyncrun_capture.tmp'
-"--Run-------------------------"
-com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 <args>
-com! -bang -nargs=* -range=% -complete=shellcmd AcRootRun <range>AsyncRun<bang> -focus=0 -rows=8 -raw=1 -cwd=<root> <args>
-"com! -bang -nargs=* -range=% -complete=shellcmd AcUiRun <range>AsyncRun<bang> -mode=term -pos=quickui -raw=1 <args>
-"nmap <space>L :call asyncrun#quickfix_toggle(g:asyncrun_open)<cr>
-"nmap <space>q :AsyncStop<cr>
-"nmap <space>Q :AsyncStop!<cr>
+"--Run--------------------------
 nmap <space>r :AcRun 
-nmap <space>R :AcRun -focus=1 -mode=term -pos=TAB -close=1 zsh<cr>
-"au filetype c,cpp com! -bang -nargs=* -range=% -complete=shellcmd Bake <range>AsyncRun<bang> -focus=0 -rows=10 -raw=1 -cwd=<root> -mode=term -once=1 bake <args> "$(VIM_ROOT)" 
-"com! -bang -nargs=* -complete=file Nake AsyncRun<bang> -raw=1 -focus=0 -rows=8 -program=make -auto=make @ <args>
-au filetype c,cpp com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 make <args>
-au filetype c,cpp com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 make -r <args>
-au filetype c,cpp com! -bang -nargs=* -complete=file CC AsyncRun<bang> -raw=1 -focus=0 -rows=8 gcc <args> %:p -o %:t:r
-au filetype c,cpp com! -bang -nargs=* -complete=file CR AsyncRun<bang> -raw=1 -focus=0 -rows=8 gcc <args> %:p -o %:t:r && ./%:t:r
-au filetype nim com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 nim <args> %
-au filetype nim com! -bang -nargs=* -complete=file Nim AsyncRun<bang> -raw=1 -focus=0 -rows=8 nimble <args> 
-au filetype zig com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args> %
-au filetype zig com! -bang -nargs=* -complete=file Zig AsyncRun<bang> -raw=1 -focus=0 -rows=8 zig <args>
-au filetype d com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 dmd <args> %
-au filetype d com! -bang -nargs=* -complete=file Dub AsyncRun<bang> -raw=1 -focus=0 -rows=8 dub <args>
-au filetype hare com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 hare <args> %
-au filetype ocen com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r
-au filetype ocen com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 ocen <args> %:p -o %:t:r && ./%:t:r
-au filetype ocen com! -bang -nargs=* -complete=file Clean AsyncRun<bang> -raw=1 -focus=0 -rows=8 rm %:t:r %:t:r.c
-au filetype rust com! -bang -nargs=* -complete=file Rc AsyncRun<bang> -raw=1 -focus=0 -rows=8 rustc <args> %
-au filetype rust com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo build <args>
-au filetype rust com! -bang -nargs=* -complete=file Cg AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo <args>
-au filetype rust com! -bang -nargs=* -complete=file Chk AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo check <args>
-au filetype rust com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 cargo run <args>
-au filetype adept com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept <args> %:p
-au filetype adept com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 adept -e <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file TT AsyncRun<bang> -raw=1 -focus=0 -rows=8 tester <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file CC AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file CT AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c --test <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args>
-au filetype c2 com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c <args> && ./run
-au filetype c2 com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 c2c --test <args>
-au filetype c3 com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 c3c compile <args> %:p
-"au filetype litac com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine <args> %:p -o %:t:r
-"au filetype litac com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac -disableLine -run <args> %:p -o %:t:r
-"au filetype litac com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 litac <args> -testFile %:p
-au filetype virgil com! -bang -nargs=* -complete=file TT AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3i <args> %:p
-au filetype virgil com! -bang -nargs=* -complete=file CC AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-x86-64-darwin <args> %:p
-au filetype virgil com! -bang -nargs=* -complete=file CR AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3c-x86-64-darwin %:p && ./%:t:r <args>
-au filetype virgil com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 virgil `cat DEPS` <args> *.v3
-au filetype virgil com! -bang -nargs=* -complete=file Run AsyncRun<bang> -raw=1 -focus=0 -rows=8 virgil `cat DEPS` *.v3 && ./%:t:r <args>
-au filetype virgil com! -bang -nargs=* -complete=file Test AsyncRun<bang> -raw=1 -focus=0 -rows=8 v3i `cat DEPS` <args> %:p 
-"com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
-"com! -bang -nargs=* -complete=file Make AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> %
-"com! -bang -nargs=* -complete=file V AsyncRun<bang> -raw=1 -focus=0 -rows=8 v <args> .
-"nmap <space>u :AcUiRun
-"nmap <space>U :AcUiRun -close=1 zsh<cr>
-""let g:asyncrun_wrapper = ''
-""let g:asyncrun_shell = '/usr/bin/zsh'
-""let g:asyncrun_shellflag = '-c'
+"com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
+com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
+"===============================
+au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
+au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
+au filetype nim com! -bang -nargs=* -complete=file Make AcRun nim <args> %
+au filetype nim com! -bang -nargs=* -complete=file Nim AcRun nimble <args> 
+au filetype zig com! -bang -nargs=* -complete=file Make AcRun zig <args> %
+au filetype zig com! -bang -nargs=* -complete=file Zig AcRun zig <args>
+au filetype d com! -bang -nargs=* -complete=file Make AcRun dmd <args> %
+au filetype d com! -bang -nargs=* -complete=file Dub AcRun dub <args>
+au filetype hare com! -bang -nargs=* -complete=file Make AcRun hare <args> %
+au filetype ocen com! -bang -nargs=* -complete=file Make AcRun ocen <args> %:p -o %:t:r
+au filetype ocen com! -bang -nargs=* -complete=file Run AcRun ocen <args> %:p -o %:t:r && ./%:t:r
+au filetype ocen com! -bang -nargs=* -complete=file Clean AcRun rm %:t:r %:t:r.c
+au filetype rust com! -bang -nargs=* -complete=file CC AcRun rustc <args> %
+au filetype rust com! -bang -nargs=* -complete=file Make AcRun cargo build <args>
+au filetype rust com! -bang -nargs=* -complete=file GG AcRun cargo <args>
+au filetype rust com! -bang -nargs=* -complete=file GE AcRun cargo check <args>
+au filetype rust com! -bang -nargs=* -complete=file Run AcRun cargo run <args>
+au filetype adept com! -bang -nargs=* -complete=file Make AcRun adept <args> %:p
+au filetype adept com! -bang -nargs=* -complete=file Run AcRun adept -e <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file TT AcRun tester <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file CC AcRun c2c <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file CT AcRun c2c --test <args> %:p
+au filetype c2 com! -bang -nargs=* -complete=file Make AcRun c2c <args>
+au filetype c2 com! -bang -nargs=* -complete=file Run AcRun c2c <args> && ./run
+au filetype c2 com! -bang -nargs=* -complete=file Test AcRun c2c --test <args>
+au filetype c3 com! -bang -nargs=* -complete=file Make AcRun c3c compile <args> %:p
+au filetype litac com! -bang -nargs=* -complete=file Make AcRun litac -disableLine <args> %:p -o %:t:r
+au filetype litac com! -bang -nargs=* -complete=file Run AcRun litac -disableLine -run <args> %:p -o %:t:r
+au filetype litac com! -bang -nargs=* -complete=file Test AcRun litac <args> -testFile %:p
+
+au filetype virgil com! -bang -nargs=* -complete=file TT AcRun v3i <args> %:p
+au filetype virgil com! -bang -nargs=* -complete=file CC AcRun v3c <args> %:p
+au filetype virgil com! -bang -nargs=* -complete=file CR AcRun v3c %:p && ./%:t:r <args>
+au filetype virgil com! -bang -nargs=* -complete=file Make AcRun v3c `cat DEPS` <args> *.v3
+au filetype virgil com! -bang -nargs=* -complete=file Run AcRun v3c `cat DEPS` *.v3 && ./%:t:r <args>
+au filetype virgil com! -bang -nargs=* -complete=file Test AcRun v3i `cat DEPS` <args> %:p 
+"}}}
+""""""""""""""""""""
+"floaterm {{{
+""""""""""""""""""""
+let g:floaterm_width = 0.98
+let g:floaterm_height = 0.9
+let g:floaterm_autoclose = 0
+let g:floaterm_position = 'bottom'
+let g:floaterm_keymap_toggle = '<m-space>'
+let g:floaterm_keymap_kill   = '<m-q>'
+"let g:floaterm_keymap_new    = '<m-N>'
+"let g:floaterm_keymap_prev   = '<m-k>'
+"let g:floaterm_keymap_next   = '<m-j>'
+"let g:floaterm_keymap_first  = '<m-h>'
+"let g:floaterm_keymap_last   = '<m-l>'
+nnoremap   <silent>   <m-o>    :FloatermNew --disposable<CR>
+tnoremap   <silent>   <m-o>    <C-\><C-n>:FloatermNew --disposable<CR>
+tnoremap   <silent>   <m-p>    <C-\><C-n>:FloatermPrev<CR>
+tnoremap   <silent>   <m-n>    <C-\><C-n>:FloatermNext<CR>
+"tnoremap   <silent>   <m-h>    <C-\><C-n>:FloatermFirst<CR>
+"tnoremap   <silent>   <m-l>    <C-\><C-n>:FloatermLast<CR>
 "}}}
 """"""""""""""""""""
 "vsnip {{{
@@ -514,14 +510,13 @@ au filetype d call LspAddServer([#{
             \    path: 'serve-d',
             \  }])
 
-au filetype virgil call LspAddServer([#{
-            \    name: 'virgil',
-            \    filetype: ['virgil'],
-            \    path: 'virgil-lsp',
-            \    args: [],
-            \    syncInit: v:true,
-            \  }])
-            \
+"au filetype virgil call LspAddServer([#{
+            "\    name: 'virgil',
+            "\    filetype: ['virgil'],
+            "\    path: 'virgil-lsp',
+            "\    args: [],
+            "\    syncInit: v:true,
+            "\  }])
 "au filetype ocen call LspAddServer([#{
             "\    name: 'ocenlsp',
             "\    filetype: ['ocen'],

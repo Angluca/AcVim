@@ -14,7 +14,6 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
-Plug 'yianwillis/vimcdoc' " doc-zh
 Plug 'angluca/virgil.vim'
 Plug 'angluca/nim.vim'
 Plug 'angluca/ocen.vim'
@@ -27,6 +26,7 @@ Plug 'ziglang/zig.vim'
 "Plug 'angluca/litac.vim'
 "Plug 'elmcast/elm-vim'
 
+Plug 'voldikss/vim-floaterm'
 Plug 'tmsvg/pear-tree' " auto-pair
 "Plug 'angluca/pairbc.vim' " auto-pair
 "Plug 'Daiki48/pairbc.vim' " auto-pair
@@ -69,10 +69,9 @@ Plug 'vim-scripts/VisIncr'
 "Plug 'tpope/vim-fugitive'
 "Plug 'AndrewRadev/linediff.vim'
 
-Plug 'skywind3000/asyncrun.vim'
-"Plug 'skywind3000/vim-quickui'
+Plug 'yianwillis/vimcdoc' " doc-zh
+"Plug 'skywind3000/asyncrun.vim'
 "Plug 'skywind3000/asynctasks.vim'
-"Plug 'hahdookin/miniterm.vim'
 "Plug 'mattn/emmet-vim'
 "Plug 'dkprice/vim-easygrep'
 "Plug 'godlygeek/tabular'
