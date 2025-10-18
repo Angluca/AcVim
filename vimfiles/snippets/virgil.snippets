@@ -1,0 +1,52 @@
+# main()
+snippet main
+	def main() {
+		$0
+	}
+# print
+snippet ss
+	System.puts($0);
+snippet si
+	System.puti($0);
+snippet sc
+	System.putc($0);
+snippet sn
+	System.ln();
+snippet pti
+	def ${0:pt}(n: int) {
+		System.puti(n);
+		System.puts(" ");
+	}
+snippet pts
+	def ${0:pt}(s: string) {
+		System.puts(s);
+		System.puts(" ");
+	}
+# if/else
+snippet if
+	if (${0:/* condition */}) {
+	}
+snippet el
+	else {
+		${0:/* code */}
+	}
+# match
+snippet mat
+	match (${0:/* var */}) {
+	}
+# while Loop
+snippet wh
+	while (${0:/* condition */}) {
+	}
+# For Loop
+snippet for
+	for (i=0; i < ${0:count}; ++i) {
+	}
+snippet fo
+	for (i < ${0:count}) {
+	}
+# Function
+snippet def
+	def ${1:/* name */}(${2:n: int}) ${3:-> ${4:int} }{
+		${0:return 0;}
+	}

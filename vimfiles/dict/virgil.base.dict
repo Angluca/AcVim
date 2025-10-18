@@ -1,8 +1,10 @@
 Array
 BoundsCheckException
+Darwin
 DivideByZeroException
 HeapOverflow
 LengthCheckException
+Linux
 NULL
 NullCheckException
 Pointer

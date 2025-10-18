@@ -27,8 +27,8 @@ Plug 'ziglang/zig.vim'
 "Plug 'elmcast/elm-vim'
 
 Plug 'voldikss/vim-floaterm'
-Plug 'tmsvg/pear-tree' " auto-pair
-"Plug 'angluca/pairbc.vim' " auto-pair
+"Plug 'tmsvg/pear-tree' " auto-pair
+Plug 'angluca/pairbc.vim' " auto-pair
 "Plug 'Daiki48/pairbc.vim' " auto-pair
 "Plug 'LunarWatcher/auto-pairs'
 Plug 'girishji/scope.vim'

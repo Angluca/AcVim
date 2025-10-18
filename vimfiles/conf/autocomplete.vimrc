@@ -71,7 +71,7 @@ SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.base.dict')
 au FileType virgil nmap \== :Maketags vctags **/**/*.v3 tags<cr>
 "au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
 "au FileType virgil nmap \== :!vctags **/**/*.v3<cr>
-SetTags('virgil','','virgil.tags','virgil.wizard.tags')
+SetTags('virgil','','virgil.tags','virgil.rt.tags','virgil.wizard.tags')
 
 au FileType adept nmap \== :Mctags $VIMDICT/adept.ctags adept.tags<cr>
 au FileType adept nmap \=- :Mctags $VIMDICT/adept.ctags adept.tags $ADEPT<cr>

@@ -306,7 +306,6 @@ let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 3
 nmap ;ut :UndotreeToggle<cr>
 "}}}
-"}}}
 """"""""""""""""""""
 "auto-pairs {{{
 """"""""""""""""""""
@@ -319,26 +318,27 @@ nmap ;ut :UndotreeToggle<cr>
     "\ 'zig': { "|":"|",},
     "\ 'ocen': { '`':{'closer':'`'},},
     "\ }
-let g:pear_tree_pairs = {
-            \ '(': {'closer': ')'},
-            \ '[': {'closer': ']'},
-            \ '{': {'closer': '}'},
-            \ "'": {'closer': "'"},
-            \ '"': {'closer': '"'},
-            \ '`': {'closer': '`'}
-            \ }
-let g:pear_tree_map_special_keys = 0 " imap <BS>, <CR>, and <Esc>
-let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
-let g:pear_tree_smart_openers = 0
-let g:pear_tree_smart_closers = 0
-let g:pear_tree_smart_backspace = 0
-imap <BS> <Plug>(PearTreeBackspace)
-imap <CR> <Plug>(PearTreeExpand)
-"imap <Esc> <Plug>(PearTreeFinishExpansion) " don't imap <esc> !!!
-imap <M-n> <Plug>(PearTreeJump)
-imap <M-i> <Plug>(PearTreeExpandOne)
-imap <M-o> <Plug>(PearTreeJNR)
-imap <M-space> <Plug>(PearTreeSpace)
+
+"let g:pear_tree_pairs = {
+            "\ '(': {'closer': ')'},
+            "\ '[': {'closer': ']'},
+            "\ '{': {'closer': '}'},
+            "\ "'": {'closer': "'"},
+            "\ '"': {'closer': '"'},
+            "\ '`': {'closer': '`'}
+            "\ }
+"let g:pear_tree_map_special_keys = 0 " imap <BS>, <CR>, and <Esc>
+"let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
+"let g:pear_tree_smart_openers = 0
+"let g:pear_tree_smart_closers = 0
+"let g:pear_tree_smart_backspace = 0
+"imap <BS> <Plug>(PearTreeBackspace)
+"imap <CR> <Plug>(PearTreeExpand)
+""imap <Esc> <Plug>(PearTreeFinishExpansion) " don't imap <esc> !!!
+"imap <M-n> <Plug>(PearTreeJump)
+"imap <M-i> <Plug>(PearTreeExpandOne)
+"imap <M-o> <Plug>(PearTreeJNR)
+"imap <M-space> <Plug>(PearTreeSpace)
 
 "}}}
 "=== building ======================{{{
@@ -351,7 +351,7 @@ au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
 au filetype nim com! -bang -nargs=* -complete=file Make AcRun nim <args> %
-au filetype nim com! -bang -nargs=* -complete=file Nim AcRun nimble <args> 
+au filetype nim com! -bang -nargs=* -complete=file Nim AcRun nimble <args>
 au filetype zig com! -bang -nargs=* -complete=file Make AcRun zig <args> %
 au filetype zig com! -bang -nargs=* -complete=file Zig AcRun zig <args>
 au filetype d com! -bang -nargs=* -complete=file Make AcRun dmd <args> %
@@ -378,12 +378,15 @@ au filetype litac com! -bang -nargs=* -complete=file Make AcRun litac -disableLi
 au filetype litac com! -bang -nargs=* -complete=file Run AcRun litac -disableLine -run <args> %:p -o %:t:r
 au filetype litac com! -bang -nargs=* -complete=file Test AcRun litac <args> -testFile %:p
 
-au filetype virgil com! -bang -nargs=* -complete=file TT AcRun v3i <args> %:p
-au filetype virgil com! -bang -nargs=* -complete=file CC AcRun v3c <args> %:p
-au filetype virgil com! -bang -nargs=* -complete=file CR AcRun v3c %:p && ./%:t:r <args>
-au filetype virgil com! -bang -nargs=* -complete=file Make AcRun v3c `cat DEPS` <args> *.v3
-au filetype virgil com! -bang -nargs=* -complete=file Run AcRun v3c `cat DEPS` *.v3 && ./%:t:r <args>
-au filetype virgil com! -bang -nargs=* -complete=file Test AcRun v3i `cat DEPS` <args> %:p 
+"au filetype virgil com! -bang -nargs=* -complete=file TT AcRun! v3i $(eval echo $(cat DEPS)) %:p
+"au filetype virgil com! -bang -nargs=* -complete=file TT AcRun ./build.sh v3i %:p
+au filetype virgil com! -bang -nargs=* -complete=file TT AcRun make test SRC=%:p
+au filetype virgil com! -bang -nargs=* -complete=file CC AcRun make build SRC=%:p OUT=%:t:r
+au filetype virgil com! -bang -nargs=* -complete=file CR AcRun make build SRC=%:p OUT=%:t:r && ./%:t:r <args>
+au filetype virgil com! -bang -nargs=* -complete=file Make AcRun make build SRC=*.v3 OUT=%:t:r
+au filetype virgil com! -bang -nargs=* -complete=file Run AcRun make build SRC=*.v3 OUT=%:t:r && ./%:t:r <args>
+au filetype virgil com! -bang -nargs=* -complete=file Test AcRun make test SRC=*.v3 
+
 "}}}
 """"""""""""""""""""
 "floaterm {{{
