@@ -57,7 +57,8 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
 "au FileType c2 nmap \== :exe ':silent !ctags --options=$VIMDICT/c2.ctags  -R -f c2.tags' <cr>
 au FileType c2 nmap \== :Mctags $VIMDICT/c2.ctags c2.tags<cr>
 au FileType c2 nmap \=- :Mctags $VIMDICT/c2.ctags c2.tags $C2_LIBDIR<cr>
-SetTags('c2','','c2.tags')
+au FileType c2 let $C2_LIBS = $HOME.'/SDK/C2langs/c2_libs'
+SetTags('c2','','c2.tags', 'c2.libs.tags')
 "SetDict('c2','','c2.base.dict','c2.dict')
 SetDict('c2','','c2.base.dict')
 
