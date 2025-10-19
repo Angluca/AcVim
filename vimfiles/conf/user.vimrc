@@ -343,6 +343,7 @@ nmap ;ut :UndotreeToggle<cr>
 "}}}
 "=== building ======================{{{
 nmap <space>r :AcRun 
+nmap <space>R :AcRun! 
 "com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 "--------------------------------------
@@ -380,12 +381,13 @@ au filetype litac com! -bang -nargs=* -complete=file Test AcRun litac <args> -te
 
 "au filetype virgil com! -bang -nargs=* -complete=file TT AcRun! v3i $(eval echo $(cat DEPS)) %:p
 "au filetype virgil com! -bang -nargs=* -complete=file TT AcRun ./build.sh v3i %:p
-au filetype virgil com! -bang -nargs=* -complete=file TT AcRun make test SRC=%:p
-au filetype virgil com! -bang -nargs=* -complete=file CC AcRun make build SRC=%:p OUT=%:t:r
-au filetype virgil com! -bang -nargs=* -complete=file CR AcRun make build SRC=%:p OUT=%:t:r && ./%:t:r <args>
-au filetype virgil com! -bang -nargs=* -complete=file Make AcRun make build SRC=*.v3 OUT=%:t:r
-au filetype virgil com! -bang -nargs=* -complete=file Run AcRun make build SRC=*.v3 OUT=%:t:r && ./%:t:r <args>
-au filetype virgil com! -bang -nargs=* -complete=file Test AcRun make test SRC=*.v3 
+au filetype virgil com! -bang -nargs=* -complete=file TT AcRun make test SRC=%:p <args>
+au filetype virgil com! -bang -nargs=* -complete=file CC AcRun make build SRC=%:p <args>
+au filetype virgil com! -bang -nargs=* -complete=file CR AcRun make run SRC=%:p <args>
+au filetype virgil com! -bang -nargs=* -complete=file Test AcRun make test 
+au filetype virgil com! -bang -nargs=* -complete=file Make AcRun make build NAME=<args>
+au filetype virgil com! -bang -nargs=* -complete=file Run AcRun make run NAME=<args>
+au filetype virgil com! -bang -nargs=* -complete=file Clean AcRun make clean NAME=<args>
 
 "}}}
 """"""""""""""""""""

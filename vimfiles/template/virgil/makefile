@@ -1,21 +1,37 @@
 # make NAME=xxx.v3
+#TARGET: x86-64-darwin x86-64-linux jar wasm x86-darwin x86-linux
 TARGET= x86-64-darwin
 #DEPS= $(shell echo ${VIRGIL_LOC}/lib/util/*.v3)
+#APP= $(basename $(SRC))
 #SRC= $(shell echo ./*.v3)
-#OUT= $(basename $(SRC))
-SRC=
+#OUT= /tmp/virgil
 DEPS= $(wildcard $(shell cat DEPS))
+SRC=
 LIBS=
 OPTS=
-OUT=
+NAME=
 SOURCES= $(DEPS) $(SRC)
-all: $(OUT)
+APP= $(basename $(SRC))
+ifneq ($(NAME),)
+APP= ./$(NAME)
+endif
+ifeq ($(APP),)
+APP= ./main
+endif
 
-#v3c -target=$(TARGET) $(OPTS) $(LIBS) $(SOURCES) -output=$(OUT)
+all:
+	make build
+
 build:
-	v3c $(OPTS) $(LIBS) $(SOURCES) -output=$(OUT)
+	v3c-host --target=$(TARGET) -program-name=$(APP) $(OPTS) $(LIBS) $(SOURCES) 
 test:
 	@v3i $(OPTS) $(LIBS) $(SOURCES)
-
-.PHONY: all build test
+run:
+	@v3c-host --target=$(TARGET) -program-name=$(APP) $(OPTS) $(LIBS) $(SOURCES)
+	@$(APP)
+clean:
+	@trash ./$(APP) 
+	@trash ./$(APP).jar
+#@make build 
+.PHONY: all build test run clean
 
