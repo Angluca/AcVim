@@ -1,0 +1,14 @@
+--langdef=virgil
+--langmap=virgil:.v3
+--language-force=virgil
+--exclude=virgil.tags
+--regex-virgil=/^\s*[^\/\#]*\s*def\s+(\w+)\s*(<.*>)?\(/\1/f,func/
+--regex-virgil=/^\s*[^\/\#]*\s*case\s+(\w+)/\1/a,case/
+--regex-virgil=/^type\s+(\w+)/\1/t,type/
+--regex-virgil=/^class\s+(\w+)/\1/s,class/
+--regex-virgil=/^layout\s+(\w+)/\1/l,layout/
+--regex-virgil=/^component\s+(\w+)/\1/c,component/
+--regex-virgil=/^\s*[^\/\#]*\s*enum\s+(\w+)/\1/e,enum/
+--regex-virgil=/^\s*[^\/\#]*\s(\w+)\s*(\(.*\))?\s*,?\s*$/\1/e,enum/
+--regex-virgil=/^\s*[^\/\#]*\s*var\s+(\w\w+)\s*(:\s*\w+(<.*>)?)?\s*[^\(]?[;=]/\1/v,var/
+--regex-virgil=/^\s*[^\/\#]*\s*def\s+(\w\w+)\s*(:\s*\w+(<.*>)?)?\s*[^\(]?[;=]/\1/v,var/

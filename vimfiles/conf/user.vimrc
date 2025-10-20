@@ -93,55 +93,72 @@ let g:tagbar_compact = 1
 "let g:tagbar_foldlevel = 2
 "let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
-let g:tagbar_type_nim = {
-			\ 'ctagstype' : 'python',
-			\ 'kinds'     : [
-			\ 'f:func:0:1',
-			\ 't:type:1:0',
-			\ 'i:iterator:1:0',
-			\ 'o:operator:1:0',
-			\ 'm:macro:1:0'
-			\ ],
-			\ 'sort'    : 0,
-			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/nim.ctags'
-			\ }
 let g:tagbar_type_zig = {
-			\ 'ctagstype' : 'rust',
-            \ 'kinds'     : [
-            \ 'f:func:0:1',
-            \ 't:type:1:0',
-            \ 'i:iterator:1:0',
-            \ 'o:operator:1:0',
-            \ 'm:macro:1:0'
-            \ ],
-			\ }
+    \ 'ctagstype' : 'rust',
+    \ 'kinds'     : [
+    \ 'f:func:0:1',
+    \ 't:type:1:0',
+    \ 'i:iterator:1:0',
+    \ 'o:operator:1:0',
+    \ 'm:macro:1:0'
+    \ ],
+    \ }
 let g:tagbar_type_hare = {
-			\ 'ctagstype' : 'rust',
-            \ 'kinds'     : [
-            \ 'f:func:0:1',
-            \ 't:type:1:0',
-            \ 'm:macro:1:0'
-            \ ],
-			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/hare.ctags'
-			\ }
+    \ 'ctagstype' : 'rust',
+    \ 'kinds'     : [
+    \ 'f:func:0:1',
+    \ 't:type:1:0',
+    \ 'm:macro:1:0'
+    \ ],
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/hare.ctags'
+    \ }
 let g:tagbar_type_ocen = {
-			\ 'ctagstype' : 'rust',
-            \ 'kinds'     : [
-            \ 'f:func:0:1',
-            \ 't:type:1:0',
-            \ ],
-            \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/ocen.ctags'
-			\ }
+    \ 'ctagstype' : 'rust',
+    \ 'kinds'     : [
+    \ 'f:func:0:1',
+    \ 't:type:1:0',
+    \ ],
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/ocen.ctags'
+    \ }
 let g:tagbar_type_c2 = {
-			\ 'ctagstype' : 'c2',
-            \ 'kinds'     : [
-            \ 'f:func:0:1',
-            \ 'v:var:1:0',
-            \ 't:type:0:1',
-            \ 'm:mod:1:0'
-            \ ],
-			\ 'deffile' : expand('<sfile>:p:h:h') . '/dict/c2.ctags'
-			\ }
+    \ 'ctagstype' : 'c2',
+    \ 'kinds'     : [
+    \ 'f:func:0:1',
+    \ 'v:var:1:0',
+    \ 't:type:0:1',
+    \ 'm:mod:1:0'
+    \ ],
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/c2.ctags'
+    \ }
+let g:tagbar_type_virgil = {
+    \ 'ctagstype' : 'virgil',
+    \ 'kinds'     : [
+    \ 'c:component:0:1',
+    \ 'l:layout:0:1',
+    \ 's:class:0:1',
+    \ 't:type:0:1',
+    \ 'e:enum:0:1',
+    \ 'f:func:0:1',
+    \ 'a:case:1:0',
+    \ 'v:var:1:0',
+    \ ],
+    \ 'sro'          : '::',
+    \ 'kind2scope'	: {
+        \ 'c' : 'component',
+        \ 'l' : 'layout',
+        \ 's' : 'class',
+        \ 't' : 'type',
+        \ 'e' : 'enum',
+    \ },
+    \ 'scope2kind'	: {
+        \ 'component'  : 'c',
+        \ 'layout'  : 'l',
+        \ 'class'   : 's',
+        \ 'type'  : 't',
+        \ 'enum'   : 'e',
+    \ },
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/virgil.ctags'
+    \ }
 nmap <silent> ;tl :TagbarToggle<cr>
 "}}}
 """"""""""""""""""""
