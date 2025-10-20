@@ -136,17 +136,20 @@ let g:tagbar_type_virgil = {
     \ 'c:component:0:1',
     \ 'l:layout:0:1',
     \ 's:class:0:1',
+    \ 'm:macro:0:1',
     \ 't:type:0:1',
     \ 'e:enum:0:1',
     \ 'f:func:0:1',
     \ 'a:case:1:0',
     \ 'v:var:1:0',
+    \ 'n:enums:1:0',
     \ ],
     \ 'sro'          : '::',
     \ 'kind2scope'	: {
         \ 'c' : 'component',
         \ 'l' : 'layout',
         \ 's' : 'class',
+        \ 'm' : 'macro',
         \ 't' : 'type',
         \ 'e' : 'enum',
     \ },
@@ -154,8 +157,9 @@ let g:tagbar_type_virgil = {
         \ 'component'  : 'c',
         \ 'layout'  : 'l',
         \ 'class'   : 's',
-        \ 'type'  : 't',
-        \ 'enum'   : 'e',
+        \ 'macro'   : 'm',
+        \ 'type'    : 't',
+        \ 'enum'    : 'e',
     \ },
     \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/virgil.ctags'
     \ }
@@ -398,13 +402,15 @@ au filetype litac com! -bang -nargs=* -complete=file Test AcRun litac <args> -te
 
 "au filetype virgil com! -bang -nargs=* -complete=file TT AcRun! v3i $(eval echo $(cat DEPS)) %:p
 "au filetype virgil com! -bang -nargs=* -complete=file TT AcRun ./build.sh v3i %:p
+au filetype virgil com! -bang -nargs=* -complete=file TE AcRun v3i <args> %:p
 au filetype virgil com! -bang -nargs=* -complete=file TT AcRun make test SRC=%:p <args>
 au filetype virgil com! -bang -nargs=* -complete=file CC AcRun make build SRC=%:p <args>
 au filetype virgil com! -bang -nargs=* -complete=file CR AcRun make run SRC=%:p <args>
 au filetype virgil com! -bang -nargs=* -complete=file Test AcRun make test 
 au filetype virgil com! -bang -nargs=* -complete=file Make AcRun make build NAME=<args>
 au filetype virgil com! -bang -nargs=* -complete=file Run AcRun make run NAME=<args>
-au filetype virgil com! -bang -nargs=* -complete=file Clean AcRun make clean NAME=<args>
+au filetype virgil com! -bang -nargs=* -complete=file Clean AcRun make clean NAME=%:t:r 
+"NAME=<args>
 
 "}}}
 """"""""""""""""""""

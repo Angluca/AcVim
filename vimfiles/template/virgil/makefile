@@ -1,3 +1,4 @@
+# node $VIRGIL_LOC/rt/wasm-wave/wave.node.js test.wasm
 # make NAME=xxx.v3
 #TARGET: x86-64-darwin x86-64-linux jar wasm x86-darwin x86-linux
 TARGET= x86-64-darwin
@@ -30,8 +31,7 @@ run:
 	@v3c-host --target=$(TARGET) -program-name=$(APP) $(OPTS) $(LIBS) $(SOURCES)
 	@$(APP)
 clean:
-	@trash ./$(APP) 
-	@trash ./$(APP).jar
+	@trash ./$(APP) ./$(APP).jar
 #@make build 
 .PHONY: all build test run clean
 
