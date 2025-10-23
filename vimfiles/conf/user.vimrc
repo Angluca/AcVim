@@ -368,12 +368,20 @@ nmap <space>R :AcRun!
 "com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 "--------------------------------------
-au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
-au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
-au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
-au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
+au filetype c,cpp com! -bang -nargs=* -complete=file TT AcRun ../cex test run <args> %:p
+au filetype c,cpp com! -bang -nargs=* -complete=file Tall AcRun ../cex test run all <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun ../cex app build <args> %:t:r
+au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun ../cex  app run <args> %:t:r
+au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun ../cex app build <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun ../cex  app run <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file H AcRun ../cex help <args>
+"au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
+"au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
+"au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
+"au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
+au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %:p
 au filetype nim com! -bang -nargs=* -complete=file Make AcRun nim <args> %
-au filetype nim com! -bang -nargs=* -complete=file Nim AcRun nimble <args>
+au filetype nim com! -bang -nargs=* -complete=file BB AcRun nimble <args>
 au filetype zig com! -bang -nargs=* -complete=file Make AcRun zig <args> %
 au filetype zig com! -bang -nargs=* -complete=file Zig AcRun zig <args>
 au filetype d com! -bang -nargs=* -complete=file Make AcRun dmd <args> %
@@ -400,7 +408,6 @@ au filetype litac com! -bang -nargs=* -complete=file Make AcRun litac -disableLi
 au filetype litac com! -bang -nargs=* -complete=file Run AcRun litac -disableLine -run <args> %:p -o %:t:r
 au filetype litac com! -bang -nargs=* -complete=file Test AcRun litac <args> -testFile %:p
 
-"au filetype virgil com! -bang -nargs=* -complete=file TT AcRun! v3i $(eval echo $(cat DEPS)) %:p
 "au filetype virgil com! -bang -nargs=* -complete=file TT AcRun ./build.sh v3i %:p
 au filetype virgil com! -bang -nargs=* -complete=file TE AcRun v3i <args> %:p
 au filetype virgil com! -bang -nargs=* -complete=file TT AcRun make test SRC=%:p <args>
@@ -427,6 +434,7 @@ let g:floaterm_keymap_kill   = '<m-q>'
 "let g:floaterm_keymap_next   = '<m-j>'
 "let g:floaterm_keymap_first  = '<m-h>'
 "let g:floaterm_keymap_last   = '<m-l>'
+tnoremap   <silent>   <esc>    <C-\><C-n>
 nnoremap   <silent>   <m-o>    :FloatermNew --disposable<CR>
 tnoremap   <silent>   <m-o>    <C-\><C-n>:FloatermNew --disposable<CR>
 tnoremap   <silent>   <m-p>    <C-\><C-n>:FloatermPrev<CR>

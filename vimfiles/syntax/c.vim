@@ -12,11 +12,13 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
-syn match Operator       '[\+\-\%=\^\&\*!?><\$|/]'
+syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!"
+syn match cTypedef      "\v\w+\ze\$"
+syn match Operator      '[\+\-\%=\^\&\*!?><\$|/]'
 syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
 syn match Repeat        "\([^>]->\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
-syn match cFunction   "[0-9a-zA-Z_@]*\w\w*\(\(\[.*\]\)*\_s*(\)\@="
-"syn match cType       '(\=\_s*\(\[.*\]\_s*\)*\(const\_s*\)\=\zs\w\w*\ze\(\[.*\]\)*\_s*\(\[.*\]\)*\_s*{'
+syn match cFunction     "[0-9a-zA-Z_@]*\w\w*\(\(\[.*\]\)*\_s*(\)\@="
+"syn match cType         '(\=\_s*\(\[.*\]\_s*\)*\(const\_s*\)\=\zs\w\w*\ze\(\[.*\]\)*\_s*\(\[.*\]\)*\_s*{'
 
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 
@@ -33,7 +35,7 @@ endif
 
 " A bunch of useful C keywords
 syn keyword	cStatement	goto break return continue asm
-syn keyword	cLabel		case default
+syn keyword	cLabel		case default this self
 syn keyword	cConditional	if else switch
 syn keyword	cRepeat		while for do
 
@@ -261,8 +263,8 @@ if exists("c_gnu")
   syn keyword	cStorageClass	inline __inline__
   syn keyword	cStorageClass	__restrict__ __volatile__ __noreturn__
 endif
-syn keyword	cType		int long short char void
-syn keyword	cType		signed unsigned float double
+syn keyword	cType		int long short char void i8 i16 i32 i64 u8 u16 u32 u64 isize usize
+syn keyword	cType		signed unsigned float double f32 f64
 if !exists("c_no_ansi") || exists("c_ansi_typedefs")
   syn keyword   cType		size_t ssize_t off_t wchar_t ptrdiff_t sig_atomic_t fpos_t
   syn keyword   cType		clock_t time_t va_list jmp_buf FILE DIR div_t ldiv_t
@@ -284,7 +286,8 @@ if !exists("c_no_c99") " ISO C99
   syn keyword	cType		intmax_t uintmax_t
 endif
 
-syn keyword	cTypedef	typedef
+"syn keyword	cTypedef	typedef
+syn keyword	cStructure	typedef
 syn keyword	cStructure	struct union enum
 syn keyword	cStorageClass	static register auto volatile extern const
 if !exists("c_no_c99") && !s:in_cpp_family
@@ -524,12 +527,20 @@ hi def link cCppOut		Comment
 
 hi def link cFunction Function
 "hi def link cTypedef Identifier
-hi def link cTypedef Keyword
-hi def cSymbol ctermfg=DarkGray guifg=DarkGray
-hi def cType ctermfg=DarkCyan guifg=DarkCyan
-syn match cSymbol      '[,;]'
+
+syn match PreProc        '[@]'
+syn match cSymbol        '[,;]'
+syn match Operator       '[\+\-\%=\^\&\*!?><\$|]'
 syn match SpecialComment '[`:\.]'
-syn match cConstant       '[{}\[\]()]'
+syn match cConstant      '[{}\[\]()]'
+hi def cSymbol ctermfg=DarkGray guifg=DarkGray
+
+hi def link cFunc Function
+hi def link cTypedef Changed
+"hi def cType ctermfg=DarkCyan guifg=DarkCyan
+hi def link cType MoreMsg
+"hi def cThis ctermfg=DarkMagenta guifg=DarkMagenta
+hi def link cThis Label
 
 let b:current_syntax = "c"
 

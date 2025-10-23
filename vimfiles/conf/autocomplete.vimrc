@@ -29,7 +29,7 @@ SetFt('*.gd','gdscript')
 SetFt('*.tic','lua')
 SetFt('*.wxml','html') "weixin
 SetFt('*.wxss','css')  "wx
-SetFt('*.nim,*.nims,*.c2nim','nim')
+SetFt('*.nim,*.nims,*.nimble,*.c2nim','nim')
 SetFt('*.zig','zig')
 SetFt('*.oc,*.td','ocen')
 SetFt('*.lita,*.ape','litac') 
@@ -44,15 +44,21 @@ au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
 au BufWrite *.nim**,*.zig,*.d,*.rs,*.ha,*.c2 :DelTWS
 
 "for language
-au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .
+au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .<cr>
 "au FileType c,cpp setl tags +=$VIMDICT/cpp.tags
 "au FileType nim nmap \== :Mctags $VIMDICT/nim.ctags nim.tags<cr>
-"au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
 "au FileType zig let $ZIGLIB = $HOME.'/SDK/Zigs/zig/lib'
 "au FileType hare nmap \== :Mctags $VIMDICT/hare.ctags hare.tags<cr>
 "au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
+
+au FileType nim nmap \== :Maketags ntags -R\ **/**<cr>
+au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
+au FileType nim let $NIMSKLIB = $HOME.'/SDK/Nims/nimskull/lib'
+SetDict('nim','','nim.base.dict')
+"SetTags('nim','','nim.skull.tags')
+SetTags('nim','','nim.tags')
 
 "au FileType c2 nmap \== :exe ':silent !ctags --options=$VIMDICT/c2.ctags  -R -f c2.tags' <cr>
 au FileType c2 nmap \== :Mctags $VIMDICT/c2.ctags c2.tags<cr>
@@ -167,7 +173,6 @@ SetDict('actionscript','as3.dict')
 SetDict('sh','','bash.dict')
 SetDict('squirrel','','squirrel.dict')
 SetDict('lua','','lua.dict')
-SetDict('nim','','nim.dict','nim2.dict','nim.enums.dict')
 SetDict('zig','','zig.dict','zig.base.dict')
 SetDict('hare','','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
 "SetDict('ocen','','ocen.base.dict','ocen.dict','raylib.dict')
@@ -188,18 +193,5 @@ au FileType zig let g:zig_fmt_autosave = 0
 "au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
 "SetDict('zig','','zig.dict','zig.base.dict','sokol.dict')
 "
-"au FileType nim let $SOKOL = $HOME.'/Nims/Sokols/sokol-nim/src/sokol'
-"au FileType nim setl tags+=$VIMDICT/sokoltags
-"SetDict('nim','','nim.dict','nim2.dict','nim.enums.dict','sokol.dict')
-""nico
-"au FileType nim let $NICO = $HOME.'/Nims/nicos/nico/nico'
-"au FileType nim setl tags+=$VIMDICT/nicotags
-"SetDict('nim','','nim.dict','nim2.dict','nim.enums.dict','nico.dict')
-"-------------------
-"--naylib
-"au FileType nim let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
-"let $NAYLIB = $HOME.'/Nims/Raylibs/naylib/src/'
-"au FileType nim setl tags+=$VIMDICT/naytags
-"SetDict('nim','','nimtags','nim.dict','nim.enums.dict',$NAYLIB.'raylib.nim')
 "}}}
 

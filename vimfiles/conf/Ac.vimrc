@@ -661,6 +661,7 @@ nmap <m-v> "*gP
 vmap <m-v> "*gP
 imap <m-v> <c-r>+
 xmap <m-v> <c-r>+
+cmap <m-v> <c-r>+
 "nmap ç "+y
 "vmap ç "+y
 "nmap √ "*gP
