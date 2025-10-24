@@ -648,12 +648,12 @@ nmap <silent> ;ds :DelTWS(1)<cr>
 "cut, copy & paste
 "vmap <a-c> <c-insert>
 "imap <a-v> <s-insert>
-"nmap ;yy "+Y
-"xmap ;yy "+y
-"nmap ;yx V"+x
-"xmap ;yx "+x
-"nmap ;pp "*gP
-"xmap ;pp "*gP
+nmap ;yy "+Y
+xmap ;yy "+y
+nmap ;yx V"+x
+xmap ;yx "+x
+nmap ;pp "*gP
+xmap ;pp "*gP
 nmap <m-c> "+y
 vmap <m-c> "+y
 xmap <m-c> "+y

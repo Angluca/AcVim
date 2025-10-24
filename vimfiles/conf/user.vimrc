@@ -368,18 +368,48 @@ nmap <space>R :AcRun!
 "com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 "--------------------------------------
-au filetype c,cpp com! -bang -nargs=* -complete=file TT AcRun ../cex test run <args> %:p
-au filetype c,cpp com! -bang -nargs=* -complete=file Tall AcRun ../cex test run all <args>
-au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun ../cex app build <args> %:t:r
-au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun ../cex  app run <args> %:t:r
-au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun ../cex app build <args>
-au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun ../cex  app run <args>
-au filetype c,cpp com! -bang -nargs=* -complete=file H AcRun ../cex help <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file E
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex <args>' | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file T 
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test <args>' | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file TT 
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test run '.(empty(<q-args>)?'%':<q-args>) | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file TD 
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test debug '.(empty(<q-args>)?'%':<q-args>) | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file C 
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app <args>' | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file CC 
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app build '.(empty(<q-args>)?'%:t:r':<q-args>) | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file CD
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app debug '.(empty(<q-args>)?'%':<q-args>) | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file RR 
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app run '.(empty(<q-args>)?'%:t:r':<q-args>) | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file XX
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app clean '.(empty(<q-args>)?'%':<q-args>) | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file H
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex help <args>' | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file CEXc
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe '!cc ./cex.c -o cex' | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file CEXh
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe ':!cc -D CEX_NEW -x c ./cex.h -o cex && ./cex' | endif
+"au filetype c,cpp com! -bang -nargs=* -complete=file TT lcd %:p:h:h<bar>AcRun ./cex test run <args> %
 "au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 "au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
-au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %:p
+au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %
 au filetype nim com! -bang -nargs=* -complete=file Make AcRun nim <args> %
 au filetype nim com! -bang -nargs=* -complete=file BB AcRun nimble <args>
 au filetype zig com! -bang -nargs=* -complete=file Make AcRun zig <args> %
@@ -387,8 +417,8 @@ au filetype zig com! -bang -nargs=* -complete=file Zig AcRun zig <args>
 au filetype d com! -bang -nargs=* -complete=file Make AcRun dmd <args> %
 au filetype d com! -bang -nargs=* -complete=file Dub AcRun dub <args>
 au filetype hare com! -bang -nargs=* -complete=file Make AcRun hare <args> %
-au filetype ocen com! -bang -nargs=* -complete=file Make AcRun ocen <args> %:p -o %:t:r
-au filetype ocen com! -bang -nargs=* -complete=file Run AcRun ocen <args> %:p -o %:t:r && ./%:t:r
+au filetype ocen com! -bang -nargs=* -complete=file Make AcRun ocen <args> % -o %:t:r
+au filetype ocen com! -bang -nargs=* -complete=file Run AcRun ocen <args> % -o %:t:r && ./%:t:r
 au filetype ocen com! -bang -nargs=* -complete=file Clean AcRun rm %:t:r %:t:r.c
 au filetype rust com! -bang -nargs=* -complete=file CC AcRun rustc <args> %
 au filetype rust com! -bang -nargs=* -complete=file Make AcRun cargo build <args>
