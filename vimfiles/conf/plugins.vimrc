@@ -14,6 +14,7 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
+Plug 'angluca/nature.vim'
 Plug 'angluca/virgil.vim'
 Plug 'angluca/nim.vim'
 Plug 'angluca/ocen.vim'

@@ -1,5 +1,5 @@
 --langdef=nim
---langmap=nim:.nim
+--langmap=nim:*.nim
 --language-force=nim
 --exclude=nim.tags
 --regex-nim=/^[^\#]*\s+(\w+)\*\s*\{.*\}/\1/t,type/

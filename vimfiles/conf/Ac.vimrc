@@ -95,8 +95,8 @@ fu! s:fmtTags(rd='',only_add_path=0)
         let l:s = input("path: ")
         if l:s != ''
             exe '%s/\v^.*\s*\/?tests?\/.*$\n//ge'
-            exe '%s/\v^.*\s*\/?output\/.*$\n//ge'
-            exe '%s/\v^.*\s*\/?tools\/.*$\n//ge'
+            "exe '%s/\v^.*\s*\/?output\/.*$\n//ge'
+            "exe '%s/\v^.*\s*\/?tools\/.*$\n//ge'
 
             exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
         "else

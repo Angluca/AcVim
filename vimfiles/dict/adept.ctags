@@ -1,5 +1,5 @@
 --langdef=adept
---langmap=adept:.adept
+--langmap=adept:*.adept
 --language-force=adept
 --exclude=adept.tags
 --regex-adept=/func\s+(\w+)/\1/f,func/

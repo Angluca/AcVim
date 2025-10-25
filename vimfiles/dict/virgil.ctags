@@ -1,5 +1,5 @@
 --langdef=virgil
---langmap=virgil:.v3
+--langmap=virgil:*.v3
 --language-force=virgil
 --exclude=virgil.tags
 --regex-virgil=/^\s*(import)?(export)?\s*(".*")?\s*def\s+(\w+)\s*(<.*>)?\(/\4/f,func/

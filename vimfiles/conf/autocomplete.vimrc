@@ -53,6 +53,12 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .<cr>
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
+au FileType nature nmap \== :Mctags $VIMDICT/nature.ctags nature.tags<cr>
+au FileType nature nmap \=- :Mctags $VIMDICT/nature.ctags nature.tags $NATURE_STD<cr>
+au FileType nature let $NATURE_STD = $NATURE_ROOT.'/std'
+SetTags('nature','','nature.tags')
+SetDict('nature','','nature.base.dict')
+
 au FileType nim nmap \== :Maketags ntags -R\ **/**<cr>
 au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
 au FileType nim let $NIMSKLIB = $HOME.'/SDK/Nims/nimskull/lib'

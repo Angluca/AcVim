@@ -1,5 +1,5 @@
 --langdef=c2
---langmap=c2:.c2
+--langmap=c2:*.c2
 --language-force=c2
 --exclude=c2.tags
 --regex-c2=/s*[^\/\#]?(public)?\s*fn\s+[^(]+\s+(\w+\.)*([A-Za-z_]\w*)\s*\(/\3/f,func/

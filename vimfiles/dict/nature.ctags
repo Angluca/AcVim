@@ -1,0 +1,14 @@
+--langdef=nature
+--langmap=nature:*.n
+--language-force=nature
+--exclude=nature.tags
+--regex-nature=/^\s*[^\/\#]?\s*(import)?(export)?\s*(".*")?\s*fn\s+(\w+)\s*(<.*>)?\(/\4/f,func/
+--regex-nature=/^\s*[^\/\#]*\s*case\s+(\w+)/\1/a,case/
+--regex-nature=/^\s*[^\/\#]?\s*(import)?(export)?\s*(".*")?\s*type\s+(\w+)/\4/t,type/
+--regex-nature=/^\s*[^\/\#]?\s*(import)?(export)?\s*(".*")?\s*[^\/\#]*\s*enum\s+(\w+)/\4/e,enum/
+--regex-nature=/^\s*[^\/\#]?\s*(\w+)\s*(\(.*\))?\s*,?\s*$/\1/n,enums/
+--regex-nature=/^\s*[^\/\#]?\s*(import)?(export)?\s*(".*")?\s*var\s+(\w+)\s*(:\s*\w+(<.*>)?)?\s*[^\(]?[;=]/\4/v,var/
+--regex-nature=/^\s*[^\/\#]?\s*(import)?(export)?\s*(".*")?\s*let\s+(\w+)\s*(:\s*\w+(<.*>)?)?\s*[^\(]?[;=]/\4/v,var/
+--regex-nature=/^\s*[^\/*\#A-Za-z0-9_=;\( ]*\s*\[\s*([A-Za-z_]+\.)*([A-Za-z_]\w*)\s*\]\s*[;=,]/\2/v,var/
+--regex-nature=/^\s*[^\/\#]?\s*([A-Za-z_]\w+)\s*=?\s*\w*(,|;)?\s*$/\1/v,var/
+

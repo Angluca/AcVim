@@ -576,6 +576,12 @@ au filetype d call LspAddServer([#{
             \    path: 'serve-d',
             \  }])
 
+au filetype nature call LspAddServer([#{
+            \    name: 'nature',
+            \    filetype: ['nature'],
+            \    path: 'nls',
+            \  }])
+
 "au filetype virgil call LspAddServer([#{
             "\    name: 'virgil',
             "\    filetype: ['virgil'],
