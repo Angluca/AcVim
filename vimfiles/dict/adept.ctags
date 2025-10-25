@@ -1,7 +1,9 @@
 --langdef=adept
---langmap=adept:*.adept
+--langmap=adept:.adept
 --language-force=adept
 --exclude=adept.tags
+--exclude=*.md
+--exclude=*.txt
 --regex-adept=/func\s+(\w+)/\1/f,func/
 --regex-adept=/func\s*\w+.(\w+)/\1/f,func/
 --regex-adept=/foreign\s+(\w+)/\1/f,func/

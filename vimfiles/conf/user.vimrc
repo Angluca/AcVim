@@ -409,6 +409,7 @@ au filetype c,cpp com! -bang -nargs=* -complete=file CEXh
 "au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 "au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
+au filetype nature com! -bang -nargs=* -complete=file TT exe ':AcRun! nature build -o '.(empty(<q-args>)?'%:t:r':<q-args>).' % && ./'.(empty(<q-args>)?'%:t:r':<q-args>).' && exit<cr>'
 au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %
 au filetype nim com! -bang -nargs=* -complete=file Make AcRun nim <args> %
 au filetype nim com! -bang -nargs=* -complete=file BB AcRun nimble <args>

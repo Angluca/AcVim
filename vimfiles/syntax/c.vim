@@ -18,7 +18,7 @@ syn match Operator      '[\+\-\%=\^\&\*!?><\$|/]'
 syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
 syn match Repeat        "\([^>]->\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
 syn match cFunction     "[0-9a-zA-Z_@]*\w\w*\(\(\[.*\]\)*\_s*(\)\@="
-"syn match cType         '(\=\_s*\(\[.*\]\_s*\)*\(const\_s*\)\=\zs\w\w*\ze\(\[.*\]\)*\_s*\(\[.*\]\)*\_s*{'
+syn match cType         '\w\+_t\([^a-zA-Z0-9_]\|$\)\@='
 
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 

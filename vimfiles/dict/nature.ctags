@@ -1,7 +1,9 @@
 --langdef=nature
---langmap=nature:*.n
+--langmap=nature:.n
 --language-force=nature
 --exclude=nature.tags
+--exclude=*.md
+--exclude=*.txt
 --regex-nature=/^\s*[^\/\#]?\s*(import)?(export)?\s*(".*")?\s*fn\s+(\w+)\s*(<.*>)?\(/\4/f,func/
 --regex-nature=/^\s*[^\/\#]*\s*case\s+(\w+)/\1/a,case/
 --regex-nature=/^\s*[^\/\#]?\s*(import)?(export)?\s*(".*")?\s*type\s+(\w+)/\4/t,type/
