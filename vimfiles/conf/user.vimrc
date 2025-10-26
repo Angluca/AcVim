@@ -130,6 +130,16 @@ let g:tagbar_type_c2 = {
     \ ],
     \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/c2.ctags'
     \ }
+let g:tagbar_type_nature = {
+    \ 'ctagstype' : 'nature',
+    \ 'kinds'     : [
+    \ 'f:func:0:1',
+    \ 'v:var:1:0',
+    \ 't:type:0:1',
+    \ 'm:mod:1:0'
+    \ ],
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/nature.ctags'
+    \ }
 let g:tagbar_type_virgil = {
     \ 'ctagstype' : 'virgil',
     \ 'kinds'     : [
@@ -363,9 +373,11 @@ nmap ;ut :UndotreeToggle<cr>
 
 "}}}
 "=== building ======================{{{
+nmap <space>r :AcSend 
 nmap <space>r :AcRun 
 nmap <space>R :AcRun! 
 "com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
+com! -bang -nargs=* -range=% -complete=shellcmd AcSend FloatermSend<bang> <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 "--------------------------------------
 au filetype c,cpp com! -bang -nargs=* -complete=file E
@@ -409,7 +421,8 @@ au filetype c,cpp com! -bang -nargs=* -complete=file CEXh
 "au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 "au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
-au filetype nature com! -bang -nargs=* -complete=file TT exe ':AcRun! nature build -o '.(empty(<q-args>)?'%:t:r':<q-args>).' % && ./'.(empty(<q-args>)?'%:t:r':<q-args>).' && exit<cr>'
+au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build % && ./main' | exe 'AcSend exit'
+"au filetype nature com! -bang -nargs=* -complete=file TT exe ':AcRun! nature build -o '.(empty(<q-args>)?'%:t:r':<q-args>).' % && ./'.(empty(<q-args>)?'%:t:r':<q-args>)' | exe 'AcSend exit<cr>'
 au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %
 au filetype nim com! -bang -nargs=* -complete=file Make AcRun nim <args> %
 au filetype nim com! -bang -nargs=* -complete=file BB AcRun nimble <args>
