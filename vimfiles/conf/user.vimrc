@@ -94,7 +94,7 @@ let g:tagbar_compact = 1
 "let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
 let g:tagbar_type_zig = {
-    \ 'ctagstype' : 'rust',
+    \ 'ctagstype' : 'zig',
     \ 'kinds'     : [
     \ 'f:func:0:1',
     \ 't:type:1:0',
@@ -104,7 +104,7 @@ let g:tagbar_type_zig = {
     \ ],
     \ }
 let g:tagbar_type_hare = {
-    \ 'ctagstype' : 'rust',
+    \ 'ctagstype' : 'hare',
     \ 'kinds'     : [
     \ 'f:func:0:1',
     \ 't:type:1:0',
@@ -113,7 +113,7 @@ let g:tagbar_type_hare = {
     \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/hare.ctags'
     \ }
 let g:tagbar_type_ocen = {
-    \ 'ctagstype' : 'rust',
+    \ 'ctagstype' : 'ocen',
     \ 'kinds'     : [
     \ 'f:func:0:1',
     \ 't:type:1:0',
@@ -205,7 +205,6 @@ else
     AcSetMap('<plug>NERDCommenterToggle',     '<m-/>')
 endif
 AcSetMap('<plug>NERDCommenterComment',    ';xx')
-AcSetMap('<plug>NERDCommenterToggle',     ';x<space>')
 AcSetMap('<plug>NERDCommenterMinimal',    ';xm')
 AcSetMap('<plug>NERDCommenterSexy',       ';xs')
 AcSetMap('<plug>NERDCommenterInvert',     ';xi')
@@ -214,9 +213,9 @@ AcSetMap('<plug>NERDCommenterAlignLeft',  ';xl')
 AcSetMap('<plug>NERDCommenterAlignBoth',  ';xb')
 AcSetMap('<plug>NERDCommenterNest',       ';xn')
 AcSetMap('<plug>NERDCommenterUncomment',  ';xu')
-AcSetMap('<plug>NERDCommenterToEOL',      ';x$')
-AcSetMap('<plug>NERDCommenterAltDelims',  ';xa')
-AcSetMap('<plug>NERDCommenterAppend',     ';xA')
+AcSetMap('<plug>NERDCommenterToEOL',      ';xe')
+AcSetMap('<plug>NERDCommenterAltDelims',  ';xd')
+AcSetMap('<plug>NERDCommenterAppend',     ';xa')
 "}}}
 """"""""""""""""""""
 "easymotion {{{
@@ -397,16 +396,16 @@ au filetype c,cpp com! -bang -nargs=* -complete=file C
       \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app <args>' | endif
 au filetype c,cpp com! -bang -nargs=* -complete=file CC 
       \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app build '.(empty(<q-args>)?'%:t:r':<q-args>) | endif
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app build '.(empty(<q-args>)?'myapp':<q-args>) | endif
 au filetype c,cpp com! -bang -nargs=* -complete=file CD
       \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app debug '.(empty(<q-args>)?'%':<q-args>) | endif
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app debug '.(empty(<q-args>)?'myapp':<q-args>) | endif
 au filetype c,cpp com! -bang -nargs=* -complete=file RR 
       \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app run '.(empty(<q-args>)?'%:t:r':<q-args>) | endif
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app run '.(empty(<q-args>)?'myapp':<q-args>) | endif
 au filetype c,cpp com! -bang -nargs=* -complete=file XX
       \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app clean '.(empty(<q-args>)?'%':<q-args>) | endif
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app clean '.(empty(<q-args>)?'myapp':<q-args>) | endif
 au filetype c,cpp com! -bang -nargs=* -complete=file H
       \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
       \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex help <args>' | endif
@@ -424,21 +423,23 @@ au filetype c,cpp com! -bang -nargs=* -complete=file CEXh
 au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build % && ./main' | exe 'AcSend exit'
 "au filetype nature com! -bang -nargs=* -complete=file TT exe ':AcRun! nature build -o '.(empty(<q-args>)?'%:t:r':<q-args>).' % && ./'.(empty(<q-args>)?'%:t:r':<q-args>)' | exe 'AcSend exit<cr>'
 au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %
-au filetype nim com! -bang -nargs=* -complete=file Make AcRun nim <args> %
-au filetype nim com! -bang -nargs=* -complete=file BB AcRun nimble <args>
-au filetype zig com! -bang -nargs=* -complete=file Make AcRun zig <args> %
-au filetype zig com! -bang -nargs=* -complete=file Zig AcRun zig <args>
-au filetype d com! -bang -nargs=* -complete=file Make AcRun dmd <args> %
-au filetype d com! -bang -nargs=* -complete=file Dub AcRun dub <args>
-au filetype hare com! -bang -nargs=* -complete=file Make AcRun hare <args> %
-au filetype ocen com! -bang -nargs=* -complete=file Make AcRun ocen <args> % -o %:t:r
+au filetype nim com! -bang -nargs=* -complete=file CC AcRun nim <args> %
+au filetype nim com! -bang -nargs=* -complete=file NN AcRun nimble <args>
+au filetype zig com! -bang -nargs=* -complete=file CC AcRun zig <args> %
+au filetype zig com! -bang -nargs=* -complete=file C AcRun zig <args>
+au filetype d com! -bang -nargs=* -complete=file CC AcRun dmd <args> %
+au filetype d com! -bang -nargs=* -complete=file DD AcRun dub <args>
+au filetype hare com! -bang -nargs=* -complete=file CC AcRun hare <args> %
+au filetype ocen com! -bang -nargs=* -complete=file CC AcRun ocen <args> % -o %:t:r
 au filetype ocen com! -bang -nargs=* -complete=file Run AcRun ocen <args> % -o %:t:r && ./%:t:r
-au filetype ocen com! -bang -nargs=* -complete=file Clean AcRun rm %:t:r %:t:r.c
-au filetype rust com! -bang -nargs=* -complete=file CC AcRun rustc <args> %
-au filetype rust com! -bang -nargs=* -complete=file Make AcRun cargo build <args>
-au filetype rust com! -bang -nargs=* -complete=file GG AcRun cargo <args>
-au filetype rust com! -bang -nargs=* -complete=file GE AcRun cargo check <args>
-au filetype rust com! -bang -nargs=* -complete=file Run AcRun cargo run <args>
+au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
+au filetype rust com! -bang -nargs=* -complete=file TT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
+au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r 
+au filetype rust com! -bang -nargs=* -complete=file CC AcRun cargo build <args>
+au filetype rust com! -bang -nargs=* -complete=file C  AcRun cargo <args>
+au filetype rust com! -bang -nargs=* -complete=file EE AcRun cargo check <args>
+au filetype rust com! -bang -nargs=* -complete=file RR AcRun cargo run <args>
+au filetype rust com! -bang -nargs=* -complete=file XX AcRun cargo clean <args>
 au filetype adept com! -bang -nargs=* -complete=file Make AcRun adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AcRun adept -e <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file TT AcRun tester <args> %:p
@@ -562,7 +563,7 @@ au filetype zig call LspAddServer([#{
             \  }])
 
 au filetype rust call LspAddServer([#{
-            \    name: 'rustlang',
+            \    name: 'rust-analyzer',
             \    filetype: ['rust'],
             \    path: exepath('rust-analyzer'),
             \    args: [],

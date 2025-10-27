@@ -13,12 +13,16 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!"
-syn match cTypedef      "\v\w+\ze\$"
 syn match Operator      '[\+\-\%=\^\&\*!?><\$|/]'
 syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
 syn match Repeat        "\([^>]->\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
 syn match cFunction     "[0-9a-zA-Z_@]*\w\w*\(\(\[.*\]\)*\_s*(\)\@="
-syn match cType         '\w\+_t\([^a-zA-Z0-9_]\|$\)\@='
+syn match cType         '\<\w\+_\l\>'
+syn match cType         '\<[A-Z_]\+[a-z_]\+\w*\>'
+syn match Macro         '\<[A-Z_]\+\>'
+syn match cTypedef      "\w\+\ze\$"
+syn match cType         "\v\w+\ze\<.*\>" "foo<T>();
+syn match cType         '\v(\.@1<!|\.\.)\zs<([iu][0-9]{1,3})?>' display
 
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 
@@ -529,9 +533,9 @@ hi def link cFunction Function
 "hi def link cTypedef Identifier
 
 syn match PreProc        '[@]'
-syn match cSymbol        '[,;]'
+syn match cSymbol        '[,;:\.]'
 syn match Operator       '[\+\-\%=\^\&\*!?><\$|]'
-syn match SpecialComment '[`:\.]'
+syn match SpecialComment '[`]'
 syn match cConstant      '[{}\[\]()]'
 hi def cSymbol ctermfg=DarkGray guifg=DarkGray
 
