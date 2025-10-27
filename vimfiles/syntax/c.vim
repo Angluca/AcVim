@@ -23,6 +23,7 @@ syn match Macro         '\<[A-Z_]\+\>'
 syn match cTypedef      "\w\+\ze\$"
 syn match cType         "\v\w+\ze\<.*\>" "foo<T>();
 syn match cType         '\v(\.@1<!|\.\.)\zs<([iu][0-9]{1,3})?>' display
+syn match cType         "\v<(str|sbuf|io|os|argparse|cexy|fuzz)>\ze\."
 
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 
