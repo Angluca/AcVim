@@ -12,18 +12,19 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
-syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!"
-syn match Operator      '[\+\-\%=\^\&\*!?><\$|/]'
-syn match Repeat        "\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
-syn match Repeat        "\([^>]->\)\@<=\w\w*\(\(\[.*\]\)*\_s*(\)\@!"
-syn match cFunction     "[0-9a-zA-Z_@]*\w\w*\(\(\[.*\]\)*\_s*(\)\@="
-syn match cType         '\<\w\+_\l\>'
-syn match cType         '\<[A-Z_]\+[a-z_]\+\w*\>'
-syn match Macro         '\<[A-Z_]\+\>'
-syn match cTypedef      "\w\+\ze\$"
-syn match cType         "\v\w+\ze\<.*\>" "foo<T>();
-syn match cType         '\v(\.@1<!|\.\.)\zs<([iu][0-9]{1,3})?>' display
-syn match cType         "\v<(str|sbuf|io|os|argparse|cexy|fuzz)>\ze\."
+syn match cLabel         '$\@<=\w\+'
+syn match Operator       '[\+\-\%=\^\&\*!?><\$|/~]'
+syn match cType          '\v(\.@1<!|\.\.)\zs<([iu][0-9]{1,3})?>'
+syn match Repeat         '\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!'
+syn match Repeat         '\([^>]->\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!'
+syn match cType          '\<\w\+_\l\>'
+syn match cType          '\<[_]*\u[A-Z_]*[a-z_]\+\w*\>'
+syn match Macro          '\<[_]*\u[A-Z_]*\>'
+syn match cTypedef       '\w\+\ze\$'
+syn match cType          '\v\w+\ze\<.*\>' "foo<T>();
+syn match Function       '\v\w+\ze((\[.*\])|(\<.*\>))*\s*\('
+syn match cType          '\v<(str|sbuf|io|os|argparse|cexy|fuzz)>\ze\.'
+syn match Exception      '\(\W\@<=[&\*]\+\ze\w\)\|\(\w\@<=[&\*]\+\ze\W\)'
 
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 
@@ -533,9 +534,10 @@ hi def link cCppOut		Comment
 hi def link cFunction Function
 "hi def link cTypedef Identifier
 
+syn match PreProc        '\#.*$'
 syn match PreProc        '[@]'
 syn match cSymbol        '[,;:\.]'
-syn match Operator       '[\+\-\%=\^\&\*!?><\$|]'
+"syn match Operator       '[\+\-\%=\^\*!?><\$|]'
 syn match SpecialComment '[`]'
 syn match cConstant      '[{}\[\]()]'
 hi def cSymbol ctermfg=DarkGray guifg=DarkGray

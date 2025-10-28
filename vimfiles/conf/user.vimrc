@@ -403,6 +403,12 @@ au filetype c,cpp com! -bang -nargs=* -complete=file CD
 au filetype c,cpp com! -bang -nargs=* -complete=file RR 
       \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
       \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app run '.(empty(<q-args>)?'myapp':<q-args>) | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file F 
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex fuzz <args>' | endif
+au filetype c,cpp com! -bang -nargs=* -complete=file G 
+      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex libfetch <args>' | endif
 au filetype c,cpp com! -bang -nargs=* -complete=file XX
       \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
       \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app clean '.(empty(<q-args>)?'myapp':<q-args>) | endif
