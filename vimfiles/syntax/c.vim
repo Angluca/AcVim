@@ -18,13 +18,13 @@ syn match cType          '\v(\.@1<!|\.\.)\zs<([iu][0-9]{1,3})?>'
 syn match Repeat         '\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!'
 syn match Repeat         '\([^>]->\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!'
 syn match cType          '\<\w\+_\l\>'
-syn match cType          '\<[_]*\u[A-Z_]*[a-z_]\+\w*\>'
-syn match Macro          '\<[_]*\u[A-Z_]*\>'
+syn match cType          '\<[_]*\u[A-Z0-9_]*[a-z0-9_]\+\w*\>'
+syn match Macro          '\<[_]*\u[A-Z0-9_]*\>'
 syn match cTypedef       '\w\+\ze\$'
 syn match cType          '\v\w+\ze\<.*\>' "foo<T>();
 syn match Function       '\v\w+\ze((\[.*\])|(\<.*\>))*\s*\('
 syn match cType          '\v<(str|sbuf|io|os|argparse|cexy|fuzz)>\ze\.'
-syn match Exception      '\(\W\@<=[&\*]\+\ze\w\)\|\(\w\@<=[&\*]\+\ze\W\)'
+syn match Exception      '\(\W\@<=[&*]\+\ze\w\)\|\(\w\@<=[*]\+\ze\W\)'
 
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 

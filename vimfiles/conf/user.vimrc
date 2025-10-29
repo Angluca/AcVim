@@ -439,8 +439,9 @@ au filetype hare com! -bang -nargs=* -complete=file CC AcRun hare <args> %
 au filetype ocen com! -bang -nargs=* -complete=file CC AcRun ocen <args> % -o %:t:r
 au filetype ocen com! -bang -nargs=* -complete=file Run AcRun ocen <args> % -o %:t:r && ./%:t:r
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
-au filetype rust com! -bang -nargs=* -complete=file TT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
-au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r 
+au filetype rust com! -bang -nargs=* -complete=file BB exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
+au filetype rust com! -bang -nargs=* -complete=file XB AcRun trash %:t:r 
+au filetype rust com! -bang -nargs=* -complete=file TT AcRun cargo test <args>
 au filetype rust com! -bang -nargs=* -complete=file CC AcRun cargo build <args>
 au filetype rust com! -bang -nargs=* -complete=file C  AcRun cargo <args>
 au filetype rust com! -bang -nargs=* -complete=file EE AcRun cargo check <args>
