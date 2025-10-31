@@ -40,7 +40,6 @@ SetFt('*.c3','c2')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
-"SetFtCmd('*.nim,*.nims,*.zig','DelTWS','BufWrite')
 au BufWrite *.nim**,*.zig,*.d,*.rs,*.ha,*.c2 :DelTWS
 
 "for language
@@ -101,63 +100,6 @@ SetDict('rust','','rust.dict','rust.base.dict')
 "%s/.*\/test\/.*$\n//ge
 "nmap \-- $RAYLIB
 
-"}}}
-""""""""""""""
-" easycomplete {{{
-""""""""""""""
-"let g:easycomplete_diagnostics_enable = 0
-"let g:easycomplete_lsp_checking = 0
-""let g:easycomplete_maxlength = 16
-
-"noremap <m-i> :EasyCompleteReference<CR>
-"noremap <m-o> :BackToOriginalBuffer<CR>
-"noremap <c-]> :EasyCompleteGotoDefinition<CR>
-"noremap ,en :EasyCompleteRename<CR>
-"nnoremap <silent> <C-k> :EasyCompleteNextDiagnostic<CR>
-"nnoremap <silent> <C-j> :EasyCompletePreviousDiagnostic<CR>
-"let g:easycomplete_mtab_trigger="<m-tab>"
-"let g:easycomplete_shift_tab_trigger="<m-s-tab>"
-"let g:easycomplete_tabnine_enable = 0
-"let g:easycomplete_tabnine_config = {
-		"\ 'line_limit': 1000,
-		"\ 'max_num_result' : 10,
-		"\ }
-"}}}
-""""""""""""""
-" complete opt {{{
-""""""""""""""
-"-- vim-auto-popmenu ---
-let g:apc_enable_tab = 0
-let g:apc_min_length = 1
-let g:apc_enable_ft = {'*':1}
-"---------------
-let g:acp_behaviorKeywordLength=2
-"let g:acp_behaviorSnipmateLength = 1
-let g:acp_behaviorFileLength = 1
-"let g:acp_behaviorUserDefinedFunction = ''
-"let g:acp_behaviorUserDefinedMeets = ''
-"let g:acp_behaviorKeywordCommand = "\<C-n>"
-"let g:acp_behaviorKeywordIgnores = []
-"let g:acp_behavior = {}
-
-let g:acp_enableAtStartup = 1
-let g:acp_ignorecaseOption = 1
-"let g:acp_mappingDriven = 1
-"let g:acp_completeoptPreview = 1
-"let g:acp_completeOption='.,k,b,w,u,t,i,d'
-"let g:acp_completeOption='.,k,b,w,u,t'
-let g:acp_completeOption='.,k,b,w'
-exe 'set cpt=' . g:acp_completeOption
-"set cpt=.,w,b,u,t,k "单,k'可扫描所有dict的文件,可以k+文件但没有必要
-".. 当前缓冲区
-"w. 其它窗口的缓冲区
-"b. 其它载入的缓冲区
-"u. 卸载的缓冲区
-"t. 标签
-"i. 头文件
-"d. 头文件里定义或宏
-"k. 扫描dict包含的所有文件
-"k. 只扫单,多个文件: k./file,k./*
 "}}}
 """"""""""""""""""""
 " acp dictags {{{

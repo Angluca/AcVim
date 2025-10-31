@@ -34,7 +34,7 @@ Plug 'angluca/pairbc.vim' " auto-pair
 "Plug 'LunarWatcher/auto-pairs'
 Plug 'girishji/scope.vim'
 "Plug 'angluca/vimcomplete'
-Plug 'girishji/vimcomplete'
+"Plug 'girishji/vimcomplete'
 Plug 'girishji/vimsuggest'
 "Plug 'girishji/ngram-complete.vim'
 "Plug 'lifepillar/vim-mucomplete'

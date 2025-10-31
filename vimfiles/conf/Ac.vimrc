@@ -436,10 +436,6 @@ set showmatch
 "set shortmess+=c    " Shut off completion messages
 set shortmess=aoOtTcCS
 set ph=10 " complete popup window hight
-"set cot=menuone,noinsert,noselect,preview
-"set cot=menuone,noinsert,preview
-"set cot=menuone,noselect
-set cot=menuone,noinsert
 "No sound on errors and clear jumplist.
 au vimEnter * set vb t_vb=
 au vimEnter * :clearjumps
@@ -729,8 +725,16 @@ else
     nmap <m-D> :vs<cr>
 endif " has
 
-"smap ;; ;
-"set nomore
+"--- autocomplete ---
+"set cot=menuone,noinsert,noselect,preview
+"set cot=menuone,noinsert,preview
+"set cot=menuone,noselect
+set cot=menuone,noinsert,preview
+set autocomplete
+set cpt=.^22,w^10,b^10,k^22,t^10,F,o
+inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 "}}}
 "---------------------------------
 " %s/u+\(.*\)/\=nr2char("0x"..submatch(1))/ge " u+n2unicode
