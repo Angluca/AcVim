@@ -726,14 +726,16 @@ else
 endif " has
 
 "--- autocomplete ---
-"set cot=menuone,noinsert,noselect,preview
-"set cot=menuone,noinsert,preview
-"set cot=menuone,noselect
-set cot=menuone,noinsert,preview
+"set cot=menuone,noinsert,noselect,popup
+"set cot=menuone,noinsert,popup  " Not need preview, It is open win
+"set cot=menuone,noselect,fuzzy
+"set cot=menuone,noinsert
+set cot=menuone,noinsert,popup,fuzzy
 set autocomplete
-set cpt=.^22,w^10,b^10,k^22,t^10,F,o
-inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"set cpt=F,o,k^20,.^20,w^10,b^10,t^10
+set cpt=F,o,k^20,.^20,b^10,w^10
+"inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "}}}
 "---------------------------------

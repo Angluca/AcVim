@@ -3,23 +3,49 @@ snippet main
 	fn main() {
 		$0
 	}
+# if
+snippet if
+	if $1 {
+		${2}
+	}
+	$0
 # else
 snippet el
 	else {
-		${0}
+		${1}
 	}
+	$0
+# if else
+snippet ifel
+	if $1 {
+		${2}
+	} else {
+		${3}
+	}
+	$0
 # loop
 snippet lo
 	loop {
-		${0}
+		${1}
 	}
+	$0
+# while
+snippet wh
+	while $1 {
+		${2}
+	}
+	$0
 # match
 snippet mat
 	match ${1:/* condition */} {
-		${2:_} => ${0},
+		${2:_} => ${3},
+		_ => {${4}},
 	}
+	$0
 # printf
 snippet pt
-	print!("{$0}");
+	print!("$1");
+	$0
 snippet ptn
-	println!("{$0}");
+	println!("$1");
+	$0

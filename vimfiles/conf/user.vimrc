@@ -626,15 +626,30 @@ au filetype nature call LspAddServer([#{
             "\    path: 'vls',
             "\  }])
 
+"call timer_start(2000, function('g:delay_cmd'))
+"call timer_start(6000, {-> execute('setlocal omnifunc=LspOmniFunc', '')})
+setlocal omnifunc=LspOmniFunc
+"setlocal completefunc=LspOmniFunc
 au filetype * call LspOptionsSet(#{
         \   outlineOnRight: v:true,
         \   outlineWinSize: 30,
-        \   aleSupport: v:false,
-        \   autoComplete: v:true,
-        \   snippetSupport: v:true,
-        \   vsnipSupport: v:true,
         \   autoHighlightDiags: v:false,
+        \   showDiagInBalloon: v:false,
+        \   aleSupport: v:false,
+        \   autoComplete: v:false,
+        \   snippetSupport: v:false,
+        \   vsnipSupport: v:true,
+        \   bufferCompletionTimeout: 100,
+        \   filterCompletionDuplicates: v:true,
         \ })
+        "\   completionMatcher: 'fuzzy',
+        "\   filterCompletionDuplicates: v:true,
+        "\   showSignature: v:true,
+        "\   omniComplete: null,
+        "\   semanticHighlight: v:false,
+        "\   completionMatcher: 'fuzzy',
+        "\   showSignature: v:true,
+        "\   hoverInPreview: v:false,
         "\   keepFocusInDiags: v:false,
         "\   keepFocusInReferences: v:false,
         "\   highlightDiagInline: v:false,
