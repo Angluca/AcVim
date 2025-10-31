@@ -12,19 +12,29 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
-syn match cLabel         '$\@<=\w\+'
-syn match Operator       '[\+\-\%=\^\&\*!?><\$|/~]'
-syn match cType          '\v(\.@1<!|\.\.)\zs<([iu][0-9]{1,3})?>'
-syn match Repeat         '\([^\.]\.\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!'
-syn match Repeat         '\([^>]->\)\@<=\w\w*\(\(\[.*\]\)*\s*(\)\@!'
-syn match cType          '\<\w\+_\l\>'
-syn match cType          '\<[_]*\u[A-Z0-9_]*[a-z0-9_]\+\w*\>'
-syn match Macro          '\<[_]*\u[A-Z0-9_]*\>'
-syn match cTypedef       '\w\+\ze\$'
-syn match cType          '\v\w+\ze\<.*\>' "foo<T>();
-syn match Function       '\v\w+\ze((\[.*\])|(\<.*\>))*\s*\('
-syn match cType          '\v<(str|sbuf|io|os|argparse|cexy|fuzz)>\ze\.'
-syn match Exception      '\(\W\@<=[&*]\+\ze\w\)\|\(\w\@<=[*]\+\ze\W\)'
+syn match Operator      '[\+\-\%=\^\&\*!?><\$|/~]'
+syn match Repeat        '\v([^\>]-\>)@<=\w\w*'
+syn match cType         '\v<\w+_[tscefmui]>'
+syn match Macro         '\v<[_]*\u[A-Z0-9_]*>'
+syn match cType         '\v<[_]*\u[A-Z0-9_]*[a-z]+\w*>'
+syn match cType         '\v\.?\zs<([iu][0-9]{1,3})?>'
+syn match Repeat        '\v([^\.](\.|::))@<=\w\w*'
+syn match cMacro        '\v(::\s*)@<=[_]*\u\w*'
+syn match cType         '\v\w+\ze(::|\<.*\>)' "foo<T>()
+syn match Function      '\v[_]*\l\w*\ze((\[.*\])|((::)?\<.*\>))*\s*\('
+syn match Exception     '\v(\W@<=[~&*]+\ze[\(\[\{\<]*\'?\w)|(\w@<=[*]+\ze\W)'
+syn match Changed       '\v((typedef|struct|enum|union)(\<.*\>)?\s*)@<=[_]*\u\w*\ze(\<.*\>)?\s*(\(|\{)'
+
+syn match cLabel        '$\@<=\w\+'
+syn match cTypedef      '\v\w+\ze\$'
+syn match cType         '\v<(str|sbuf|io|os|argparse|cexy|fuzz)>\ze\.'
+
+syn keyword Keyword struct enum union nextgroup=cTypedef skipwhite skipempty
+hi def link cFunc Function
+hi def link cTypedef Changed
+hi def link cType MoreMsg
+hi def link cThis Label
+hi def link cMacro SpecialComment
 
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 
@@ -537,17 +547,9 @@ hi def link cFunction Function
 syn match PreProc        '\#.*$'
 syn match PreProc        '[@]'
 syn match cSymbol        '[,;:\.]'
-"syn match Operator       '[\+\-\%=\^\*!?><\$|]'
 syn match SpecialComment '[`]'
 syn match cConstant      '[{}\[\]()]'
 hi def cSymbol ctermfg=DarkGray guifg=DarkGray
-
-hi def link cFunc Function
-hi def link cTypedef Changed
-"hi def cType ctermfg=DarkCyan guifg=DarkCyan
-hi def link cType MoreMsg
-"hi def cThis ctermfg=DarkMagenta guifg=DarkMagenta
-hi def link cThis Label
 
 let b:current_syntax = "c"
 

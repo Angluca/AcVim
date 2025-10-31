@@ -439,6 +439,8 @@ au filetype hare com! -bang -nargs=* -complete=file CC AcRun hare <args> %
 au filetype ocen com! -bang -nargs=* -complete=file CC AcRun ocen <args> % -o %:t:r
 au filetype ocen com! -bang -nargs=* -complete=file Run AcRun ocen <args> % -o %:t:r && ./%:t:r
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
+"let $RUST_BACKTRACE='full'
+let $RUST_BACKTRACE=1
 au filetype rust com! -bang -nargs=* -complete=file BB exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
 au filetype rust com! -bang -nargs=* -complete=file XB AcRun trash %:t:r 
 au filetype rust com! -bang -nargs=* -complete=file TT AcRun cargo test <args>
