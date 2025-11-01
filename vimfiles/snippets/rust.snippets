@@ -7,45 +7,45 @@ snippet main
 snippet if
 	if $1 {
 		${2}
-	}
-	$0
+	}$0
 # else
 snippet el
 	else {
-		${1}
-	}
-	$0
+		$1
+	}$0
 # if else
 snippet ifel
 	if $1 {
 		${2}
 	} else {
 		${3}
-	}
-	$0
+	}$0
 # loop
 snippet lo
 	loop {
-		${1}
-	}
-	$0
+		$1
+	}$0
+# for
+snippet for
+	for $1 in $2 {
+		$3
+	}$0
 # while
 snippet wh
 	while $1 {
-		${2}
-	}
-	$0
+		${2:/* code */}
+	}$0
 # match
 snippet mat
 	match ${1:/* condition */} {
-		${2:_} => ${3},
-		_ => {${4}},
-	}
-	$0
+		${2} => ${3},
+		${4:_} => ${5},
+	}$0
 # printf
 snippet pt
-	print!("$1");
-	$0
+	print!("$1"$2);$0
 snippet ptn
-	println!("$1");
-	$0
+	println!("$1"$2);$0
+# format
+snippet fmt
+	format!("$1"$2);$0

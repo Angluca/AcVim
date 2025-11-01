@@ -29,7 +29,7 @@ syn match cLabel        '$\@<=\w\+'
 syn match cTypedef      '\v\w+\ze\$'
 syn match cType         '\v<(str|sbuf|io|os|argparse|cexy|fuzz)>\ze\.'
 
-syn keyword Keyword struct enum union nextgroup=cTypedef skipwhite skipempty
+"syn keyword Keyword struct enum union nextgroup=cTypedef skipwhite skipempty
 hi def link cFunc Function
 hi def link cTypedef Changed
 hi def link cType MoreMsg
@@ -549,7 +549,8 @@ syn match PreProc        '[@]'
 syn match cSymbol        '[,;:\.]'
 syn match SpecialComment '[`]'
 syn match cConstant      '[{}\[\]()]'
-hi def cSymbol ctermfg=DarkGray guifg=DarkGray
+"hi def cSymbol ctermfg=DarkGray guifg=DarkGray
+hi def link cSymbol Changed
 
 let b:current_syntax = "c"
 
