@@ -584,6 +584,7 @@ imap <m-j> <down>
 imap <m-k> <up>
 cmap <m-j> <c-n>
 cmap <m-k> <c-p>
+imap <m-;> ;
 "map! Ó <Home>
 "map! Ò <End>
 "map! ˙ <Left>
@@ -729,7 +730,7 @@ endif " has
 "set cot=menuone,noinsert,noselect,popup
 "set cot=menuone,noinsert,popup  " Not need preview, It is open win
 "set cot=menuone,noinsert,longest,popup,fuzzy
-set cot=menuone,noinsert,longest,popup,fuzzy
+set cot=menuone,noinsert,popup,fuzzy
 set autocomplete
 set cpt=F,o,k^20,.^20,b^10,w^10
 "inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
