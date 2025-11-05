@@ -686,7 +686,7 @@ nn q :ccl<esc>
 nn q :FloatermHide<cr>:ccl<cr>
 "nmap Q :ccl<esc>
 "virtual edit mode
-AcSetMap(':ToggleVE<cr>', ';ve')
+AcSetMap(':ToggleVE<cr>', ';vv')
 "select find
 vnoremap * y/<c-r>"<cr>
 "undo list

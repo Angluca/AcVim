@@ -1,7 +1,9 @@
 snippet der
-    #[derive(${1:Debug}$2)]$0
+	#[derive(${1:Debug}$2)]$0
 snippet cfg
-    #[cfg(${1:test}$2)]$0
+	#[cfg(${1:test}$2)]$0
+snippet fbd
+	#![forbid(${1:unused_imports}$2)]$0
 # main()
 snippet main
 	fn main() {
@@ -53,3 +55,12 @@ snippet ptn
 # format
 snippet fmt
 	format!("$1"$2);$0
+# assert
+snippet ass
+	assert!($1);$0
+snippet aeq
+	assert_eq!($1, $2);$0
+snippet ane
+	assert_ne!($1, $2);$0
+snippet dbg
+	dbg!("$1"$2);$0
