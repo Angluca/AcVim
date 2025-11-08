@@ -725,7 +725,6 @@ else
     nmap <m-d> :sp<cr>
     nmap <m-D> :vs<cr>
 endif " has
-
 "--- autocomplete ---
 "set cot=menuone,noinsert,noselect,popup
 "set cot=menuone,noinsert,popup  " Not need preview, It is open win

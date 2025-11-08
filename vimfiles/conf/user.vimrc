@@ -440,14 +440,17 @@ au filetype ocen com! -bang -nargs=* -complete=file CC AcRun ocen <args> % -o %:
 au filetype ocen com! -bang -nargs=* -complete=file Run AcRun ocen <args> % -o %:t:r && ./%:t:r
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
 "let $RUST_BACKTRACE='full'
-let $RUST_BACKTRACE=1
-au filetype rust com! -bang -nargs=* -complete=file BB exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
-au filetype rust com! -bang -nargs=* -complete=file XB AcRun trash %:t:r 
-au filetype rust com! -bang -nargs=* -complete=file TT AcRun cargo test <args>
-au filetype rust com! -bang -nargs=* -complete=file CC AcRun cargo build <args>
-au filetype rust com! -bang -nargs=* -complete=file C  AcRun cargo <args>
-au filetype rust com! -bang -nargs=* -complete=file EE AcRun cargo check <args>
-au filetype rust com! -bang -nargs=* -complete=file RR AcRun cargo run <args>
+"let $RUST_BACKTRACE=1
+"--nocapture 测试里显示打印
+"--show-output 测试里显示更多内容
+au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
+au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r 
+au filetype rust com! -bang -nargs=* -complete=file TT AcRun cargo test <args> -- --nocapture
+au filetype rust com! -bang -nargs=* -complete=file T AcRun cargo test <args>
+au filetype rust com! -bang -nargs=* -complete=file B AcRun cargo build <args>
+au filetype rust com! -bang -nargs=* -complete=file C AcRun cargo <args>
+au filetype rust com! -bang -nargs=* -complete=file E AcRun cargo check <args>
+au filetype rust com! -bang -nargs=* -complete=file R AcRun cargo run <args>
 au filetype rust com! -bang -nargs=* -complete=file XX AcRun cargo clean <args>
 au filetype adept com! -bang -nargs=* -complete=file Make AcRun adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AcRun adept -e <args> %:p
