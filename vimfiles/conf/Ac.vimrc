@@ -729,9 +729,12 @@ endif " has
 "set cot=menuone,noinsert,noselect,popup
 "set cot=menuone,noinsert,popup  " Not need preview, It is open win
 "set cot=menuone,noinsert,longest,popup,fuzzy
+"set cot=menuone,noinsert,fuzzy
 set cot=menuone,noinsert,popup,fuzzy
 set autocomplete
-set cpt=F,o,k^20,.^20,b^10,w^10
+"set cpt=F,o,k^20,.^20,b^10,w^10
+set cpt=k^20,.^20,b^10,w^10
+
 "inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 

@@ -450,6 +450,7 @@ au filetype rust com! -bang -nargs=* -complete=file T AcRun cargo test <args>
 au filetype rust com! -bang -nargs=* -complete=file B AcRun cargo build <args>
 au filetype rust com! -bang -nargs=* -complete=file C AcRun cargo <args>
 au filetype rust com! -bang -nargs=* -complete=file E AcRun cargo check <args>
+au filetype rust com! -bang -nargs=* -complete=file RE AcRun cargo run <args> --release 
 au filetype rust com! -bang -nargs=* -complete=file R AcRun cargo run <args>
 au filetype rust com! -bang -nargs=* -complete=file XX AcRun cargo clean <args>
 au filetype adept com! -bang -nargs=* -complete=file Make AcRun adept <args> %:p

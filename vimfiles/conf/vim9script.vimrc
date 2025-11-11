@@ -1,75 +1,75 @@
 vim9script
 
 #---lsp/omnifunc/vimcomplete
-#g:vimcomplete_tab_enable = 1
-#g:vimcomplete_cr_enable = 0
+g:vimcomplete_tab_enable = 0
+g:vimcomplete_cr_enable = 0
 
-#export var vimcompleteOpt = {
-    #completor: { 
-        #noNewlineInCompletion: false,
-        #noNewlineInCompletionEver: false,
-        #matchCase: true,
-        #sortByLength: false,
-        #recency: true,
-        #recentItemCount: 5,
-        #shuffleEqualPriority: true,
-        #alwaysOn: true,
-        #setCompleteOpt: false, # true: cot=menuone,noinsert,noselect
-        #infoPopup: true, # true: cot+=popuphidden
-        #showCmpSource: true,
-        #cmpSourceWidth: 4,
-        #showKind: true,
-        #customCompletionKinds: false,
-        #completionKinds: {},
-        #kindDisplayType: '', # 'symbol', 'icon', 'icontext', 'text', 'symboltext', 'symbol', 'text'
-        #postfixClobber: false,  # remove yyy in xxx<cursor>yyy
-        #postfixHighlight: false, # highlight yyy in xxx<cursor>yyy
-        #triggerWordLen: 0, # default 0 can popup path ./../..
-        #throttleTimeout: 1,
-    #},
-    #buffer: { 
-        #priority: 10,
-        #timeout: 90,                # Match this with throttle timeout in completor
-        #maxCount: 10,
-        #otherBuffersCount: 3,       # Max count of other listed buffers to search
-        #completionMatcher: 'icase', # 'case', 'fuzzy', 'icase'
-        #urlComplete: true,
-        #envComplete: true,
-        #maxWordLen: 100,            # Words beyond this length are ignored
-        #dup: true,
-    #},
-    #dictionary: { 
-        #priority: 6, 
-        #enable: true,
-        #matcher: 'icase', # 'case', 'ignorecase'. active for sortedDict or onlyWords is true,
-        #maxCount: 10,
-        #sortedDict: true,
-        #onlyWords: false, # [0-9z-zA-Z] if true, else any non-space char is allowed (sorted=false assumed)
-        #commentStr: '---',
-        #triggerWordLen: 1,
-        #timeout: 0, # not implemented yet
-        #dup: false, # suppress duplicates
-        #filetypes: ['*'],
-        #matchStr: '\k\+$',
-        #matchAny: false,
-        #info: false,  # Whether 'info' popup needs to be populated
-    #},
-    #tmux: {
-        #enable: false,
-        #dup: false,
-        #maxCount: 10,
-        #scrollCount: 200,
-        #completionMatcher: 'icase', # 'case', 'fuzzy', 'icase'
-        #name: 'tmux',    
-    #},
-    #tag: { enable: true, maxCount: 10 },
-    #abbrev: { priority: 10, enable: true, maxCount: 10 },
-    #vimscript: { enable: true, maxCount: 10 },
-    #lsp: { priority: 11, enable: true, maxCount: 16, keywordOnly: false },
-    #vsnip: { priority: 11, enable: true, maxCount: 10, adaptNonKeyword: false },
-    #omnifunc: { priority: 8, enable: false, maxCount: 10, partialWord: ['python3complete#Complete'] },
-#}
-#autocmd VimEnter * g:VimCompleteOptionsSet(vimcompleteOpt)
+export var vimcompleteOpt = {
+    completor: { 
+        noNewlineInCompletion: false,
+        noNewlineInCompletionEver: false,
+        matchCase: true,
+        sortByLength: false,
+        recency: true,
+        recentItemCount: 5,
+        shuffleEqualPriority: true,
+        alwaysOn: true,
+        setCompleteOpt: false, # true: cot=menuone,noinsert,noselect
+        infoPopup: true, # true: cot+=popuphidden
+        showCmpSource: true,
+        cmpSourceWidth: 4,
+        showKind: true,
+        customCompletionKinds: false,
+        completionKinds: {},
+        kindDisplayType: '', # 'symbol', 'icon', 'icontext', 'text', 'symboltext', 'symbol', 'text'
+        postfixClobber: false,  # remove yyy in xxx<cursor>yyy
+        postfixHighlight: false, # highlight yyy in xxx<cursor>yyy
+        triggerWordLen: 0, # default 0 can popup path ./../..
+        throttleTimeout: 1,
+    },
+    buffer: { 
+        priority: 10,
+        timeout: 90,                # Match this with throttle timeout in completor
+        maxCount: 10,
+        otherBuffersCount: 3,       # Max count of other listed buffers to search
+        completionMatcher: 'icase', # 'case', 'fuzzy', 'icase'
+        urlComplete: true,
+        envComplete: true,
+        maxWordLen: 100,            # Words beyond this length are ignored
+        dup: true,
+    },
+    dictionary: { 
+        priority: 6, 
+        enable: true,
+        matcher: 'icase', # 'case', 'ignorecase'. active for sortedDict or onlyWords is true,
+        maxCount: 10,
+        sortedDict: true,
+        onlyWords: false, # [0-9z-zA-Z] if true, else any non-space char is allowed (sorted=false assumed)
+        commentStr: '---',
+        triggerWordLen: 1,
+        timeout: 0, # not implemented yet
+        dup: false, # suppress duplicates
+        filetypes: ['*'],
+        matchStr: '\k\+$',
+        matchAny: false,
+        info: false,  # Whether 'info' popup needs to be populated
+    },
+    tmux: {
+        enable: false,
+        dup: false,
+        maxCount: 10,
+        scrollCount: 200,
+        completionMatcher: 'icase', # 'case', 'fuzzy', 'icase'
+        name: 'tmux',    
+    },
+    tag: { enable: true, maxCount: 10 },
+    abbrev: { priority: 10, enable: true, maxCount: 10 },
+    vimscript: { enable: true, maxCount: 10 },
+    lsp: { priority: 11, enable: true, maxCount: 16, keywordOnly: false },
+    vsnip: { priority: 11, enable: true, maxCount: 10, adaptNonKeyword: false },
+    omnifunc: { priority: 8, enable: false, maxCount: 10, partialWord: ['python3complete#Complete'] },
+}
+autocmd VimEnter * g:VimCompleteOptionsSet(vimcompleteOpt)
 
 #---vimsuggest
 export var vimsuggestOpt = {
