@@ -93,7 +93,9 @@ SetDict('adept','$VIM/bundle/adept.vim/tags/','adept.dict','adept.base.dict')
 
 au FileType rust nmap \== :Maketags ctags --languages=Rust\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
 au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/std'
-"SetTags('rust','','rust.tags')
+au FileType rust let $BEVY = $HOME.'/Rusts/_GameEnginers/bevy/crates'
+SetTags('rust','','rust.tags')
+"SetTags('rust','','rust.tags','rust.bevy.tags')
 SetDict('rust','','rust.base.dict')
 
 "%s/.*\/test\/.*$\n//ge
@@ -124,6 +126,96 @@ SetDict('zig','','zig.dict','zig.base.dict')
 SetDict('hare','','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
 "SetDict('ocen','','ocen.base.dict','ocen.dict','raylib.dict')
 SetDict('virgil','','virgil.dict','virgil.base.dict')
+"}}}
+"""""""""""""""""""""""""""""
+" autocomplete setting {{{
+"""""""""""""""""""""""""""""
+"set cot=menuone,noinsert,noselect,popup
+"set cot=menuone,noinsert,popup  " Not need preview, It is open win
+"set cot=menuone,noinsert,longest,popup,fuzzy
+"set cot=menuone,noinsert,fuzzy
+"set cpt=k^20,.^20,b^10,w^10
+
+set cot=menuone,noinsert,popup,fuzzy
+set autocomplete
+set cpt=F,o,k^20,.^20,b^10,w^10,s^20,i^20,t^20,u^10
+ino <silent><expr> <C-Space> "\<C-x>\<C-o>"
+"setl omnifunc=syntaxcomplete#Complete
+"setl omnifunc=SmartTagCompleteHash
+setl completefunc=SmartTagCompleteHash
+au VimEnter * call timer_start(100, {-> execute('call SmartTagCompleteHash(0,[])')})
+
+function! SmartTagCompleteHash(findstart, base) abort
+  " === 延迟初始化哈希表 ===
+  if !exists('b:tags_index')
+    " 创建空哈希表
+    let b:tags_index = {}
+
+    " 只读一次 tags 文件
+    for tagfile in split(&tags, ',')
+      if empty(tagfile) || !filereadable(tagfile)
+        continue
+      endif
+
+      " 逐行处理
+      for line in readfile(tagfile)
+        let word = matchstr(line, '^\S\+')
+        if len(word) == 0
+          continue
+        endif
+
+        " 哈希 key 可以用首字符
+        let key = strpart(word, 0, 1)
+        if !has_key(b:tags_index, key)
+          let b:tags_index[key] = []
+        endif
+        call add(b:tags_index[key], word)
+      endfor
+    endfor
+  endif
+
+  " === 找补全起点 ===
+  if a:findstart
+    let line = getline('.')
+    let start = col('.') - 1
+    while start > 0 && line[start - 1] =~ '[^ ]?\k*$'
+      let start -= 1
+    endwhile
+    return start
+  else
+    " 光标前没有单词字符，不触发
+    let colpos = col('.') - 1
+    if colpos == 0
+      return []
+    endif
+    let line = getline('.')
+    let prefix = matchstr(line[0:colpos-1], '\k*$')
+    if len(prefix) < 1
+      return []
+    endif
+
+    let completions = []
+
+    " 内置语法补全
+    let completions += syntaxcomplete#Complete(0, a:base)
+
+    " tags 哈希索引补全
+    let key = strpart(prefix, 0, 1)
+    if has_key(b:tags_index, key)
+      for word in b:tags_index[key]
+        if word[:len(prefix)-1] == prefix
+          call add(completions, word)
+        endif
+      endfor
+    endif
+
+    return uniq(sort(completions))
+  endif
+endfunction
+
+"inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 "}}}
 "-------------------
 "--temp {{{

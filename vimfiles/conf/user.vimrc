@@ -522,7 +522,7 @@ smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 """"""""""""""""""""
 "set keywordprg=:LspHover
 nmap <buffer> ;tL <Cmd>LspOutline<cr>
-"nmap <buffer> K <Cmd>LspHover<cr>
+nmap <buffer> K <Cmd>LspHover<cr>
 nmap <silent> <space>k <Cmd>LspHover<cr>
 "nmap <c-]> <Cmd>LspGotoDefinition<CR>
 "nmap <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
@@ -575,13 +575,43 @@ au filetype zig call LspAddServer([#{
             \    path: 'zls',
             \  }])
 
-au filetype rust call LspAddServer([#{
-            \    name: 'rust-analyzer',
-            \    filetype: ['rust'],
-            \    path: exepath('rust-analyzer'),
-            \    args: [],
-            \    syncInit: v:true,
-            \  }])
+"au filetype rust call LspAddServer([#{
+            "\    name: 'rust-analyzer',
+            "\    filetype: ['rust'],
+            "\    path: exepath('rust-analyzer'),
+            "\    args: [],
+            "\    syncInit: v:true,
+            "\  }])
+
+      "\             'features': 'all', 
+au FileType rust call LspAddServer([{
+      \ 'name': 'rust-analyzer',
+      \ 'filetype': ['rust'],
+      \ 'path': exepath('rust-analyzer'),
+      \ 'args': [],
+      \ 'rootSearch': ['Cargo.toml', 'rust-project.json'],
+      \ 'syncInit': v:true,
+      \ 'allowStdio': v:true,
+      \ 'debounceTextChanges': 100,
+      \ 'initializationOptions': {
+      \     'rust-analyzer': {
+      \         'cargo': { 
+      \             'features': [], 
+      \             'allFeatures': v:false,
+      \             'buildScripts.enable': v:false,
+      \             'noDefaultFeatures': v:true,
+      \             'target': '',
+      \         },
+      \         'procMacro': { 'enable': v:false },
+      \         'checkOnSave': { 'enable': v:false },
+      \         'completion': { 'enable': v:true, 'postfix': { 'enable': v:false } },
+      \         'imports': { 'group': { 'enable': v:false } },
+      \         'hover': { 'enable': v:true, 'documentation.enable': v:false },
+      \         'inlayHints': { 'enable': v:false },
+      \         'semanticHighlighting': { 'enable': v:false }
+      \     }
+      \ }
+      \ }])
 
 au filetype adept call LspAddServer([#{
             \    name: 'adeptls',
@@ -630,10 +660,9 @@ au filetype nature call LspAddServer([#{
             "\    path: 'vls',
             "\  }])
 
-"call timer_start(2000, function('g:delay_cmd'))
-"call timer_start(6000, {-> execute('setlocal omnifunc=LspOmniFunc', '')})
 setlocal omnifunc=LspOmniFunc
-setlocal completefunc=LspOmniFunc
+"setlocal completefunc=LspOmniFunc
+"setlocal tagfunc=LspOmniFunc
 au filetype * call LspOptionsSet(#{
         \   outlineOnRight: v:true,
         \   outlineWinSize: 30,
@@ -648,6 +677,7 @@ au filetype * call LspOptionsSet(#{
         \   completionMatcher: 'fuzzy',
         \   showSignature: v:true,
         \ })
+
         "\   showSignature: v:true,
         "\   omniComplete: true,
         "\   completionMatcher: 'fuzzy',

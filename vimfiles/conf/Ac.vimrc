@@ -725,19 +725,6 @@ else
     nmap <m-d> :sp<cr>
     nmap <m-D> :vs<cr>
 endif " has
-"--- autocomplete ---
-"set cot=menuone,noinsert,noselect,popup
-"set cot=menuone,noinsert,popup  " Not need preview, It is open win
-"set cot=menuone,noinsert,longest,popup,fuzzy
-"set cot=menuone,noinsert,fuzzy
-set cot=menuone,noinsert,popup,fuzzy
-set autocomplete
-"set cpt=F,o,k^20,.^20,b^10,w^10
-set cpt=k^20,.^20,b^10,w^10
-
-"inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 "}}}
 "---------------------------------
 " %s/u+\(.*\)/\=nr2char("0x"..submatch(1))/ge " u+n2unicode
