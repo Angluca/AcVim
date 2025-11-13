@@ -139,37 +139,34 @@ SetDict('virgil','','virgil.dict','virgil.base.dict')
 set cot=menuone,noinsert,popup,fuzzy
 set autocomplete
 set cpt=F,o,k^20,.^20,b^10,w^10,s^20,i^20,t^20,u^10
-ino <silent><expr> <C-Space> "\<C-x>\<C-o>"
+"ino <silent><expr> <C-Space> "\<C-x>\<C-o>"
+
 "setl omnifunc=syntaxcomplete#Complete
 "setl omnifunc=SmartTagCompleteHash
-setl completefunc=SmartTagCompleteHash
-au VimEnter * call timer_start(100, {-> execute('call SmartTagCompleteHash(0,[])')})
+"setl completefunc=SmartTagCompleteHash
+"au VimEnter * call timer_start(100, {-> execute('call SmartTagCompleteHash(0,[])')})
+"au Filetype * call timer_start(100, {-> execute('call SmartTagCompleteHash(0,[])')})
 
-function! SmartTagCompleteHash(findstart, base) abort
-  " === 延迟初始化哈希表 ===
-  if !exists('b:tags_index')
-    " 创建空哈希表
-    let b:tags_index = {}
+" 有lsp插件暂不使用
+fu! SmartTagCompleteHash(findstart, base) abort
+  if !exists('b:tag_index')
+    let b:tag_index = {}
 
-    " 只读一次 tags 文件
+    " 构建 tags 哈希表
     for tagfile in split(&tags, ',')
       if empty(tagfile) || !filereadable(tagfile)
         continue
       endif
-
-      " 逐行处理
       for line in readfile(tagfile)
         let word = matchstr(line, '^\S\+')
-        if len(word) == 0
+        if empty(word)
           continue
         endif
-
-        " 哈希 key 可以用首字符
         let key = strpart(word, 0, 1)
-        if !has_key(b:tags_index, key)
-          let b:tags_index[key] = []
+        if !has_key(b:tag_index, key)
+          let b:tag_index[key] = []
         endif
-        call add(b:tags_index[key], word)
+        call add(b:tag_index[key], word)
       endfor
     endfor
   endif
@@ -178,12 +175,12 @@ function! SmartTagCompleteHash(findstart, base) abort
   if a:findstart
     let line = getline('.')
     let start = col('.') - 1
-    while start > 0 && line[start - 1] =~ '[^ ]?\k*$'
+    while start > 0 && line[start - 1] =~ '\k'
       let start -= 1
     endwhile
     return start
   else
-    " 光标前没有单词字符，不触发
+    " === 查找补全内容 ===
     let colpos = col('.') - 1
     if colpos == 0
       return []
@@ -194,15 +191,11 @@ function! SmartTagCompleteHash(findstart, base) abort
       return []
     endif
 
-    let completions = []
-
-    " 内置语法补全
-    let completions += syntaxcomplete#Complete(0, a:base)
-
-    " tags 哈希索引补全
+    " 合并语法补全 + tag 哈希补全
+    let completions = syntaxcomplete#Complete(0, a:base)
     let key = strpart(prefix, 0, 1)
-    if has_key(b:tags_index, key)
-      for word in b:tags_index[key]
+    if has_key(b:tag_index, key)
+      for word in b:tag_index[key]
         if word[:len(prefix)-1] == prefix
           call add(completions, word)
         endif
@@ -211,7 +204,7 @@ function! SmartTagCompleteHash(findstart, base) abort
 
     return uniq(sort(completions))
   endif
-endfunction
+endf
 
 "inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

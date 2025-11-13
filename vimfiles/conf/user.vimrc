@@ -292,20 +292,6 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 \ 'passive_filetypes': [] }
 "}}}
 """"""""""""""""""""
-"vimim {{{
-""""""""""""""""""""
-let g:vimim_cloud = -1
-let g:vimim_map = 'no-gi'
-"let g:vimim_mode = 'dynamic'
-let g:vimim_mycloud = 0
-let g:vimim_punctuation = 0
-let g:vimim_shuangpin = 0
-let g:vimim_toggle = 'wubi'
-"--vime---
-"inoremap <silent><m-l>  <C-R>=VimeSwitch()<CR>
-"nnoremap <silent><m-l>  :call VimeInverseLookup()<CR>
-"}}}
-""""""""""""""""""""
 "vim-markdown {{{
 """"""""""""""""""""
 let g:vim_markdown_fenced_languages = ['bash=sh', 'viml=vim', 'nims=nim', 'ini=dosini']
@@ -591,7 +577,7 @@ au FileType rust call LspAddServer([{
       \ 'args': [],
       \ 'rootSearch': ['Cargo.toml', 'rust-project.json'],
       \ 'syncInit': v:true,
-      \ 'allowStdio': v:true,
+      \ 'allowStdio': v:false,
       \ 'debounceTextChanges': 100,
       \ 'initializationOptions': {
       \     'rust-analyzer': {
@@ -660,7 +646,7 @@ au filetype nature call LspAddServer([#{
             "\    path: 'vls',
             "\  }])
 
-setlocal omnifunc=LspOmniFunc
+setl omnifunc=LspOmniFunc
 "setlocal completefunc=LspOmniFunc
 "setlocal tagfunc=LspOmniFunc
 au filetype * call LspOptionsSet(#{
