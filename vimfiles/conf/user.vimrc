@@ -361,53 +361,43 @@ nmap ;ut :UndotreeToggle<cr>
 nmap <space>r :AcSend 
 nmap <space>r :AcRun 
 nmap <space>R :AcRun! 
+com! -nargs=+ AcFtCmd call s:AcFtCmd(<f-args>)
+fu! AcFtCmd(ft,key,file,cmd) abort
+    exe printf(
+    \ 'au FileType %s com! -bang -nargs=* -complete=file %s ' .
+    \ 'let r=fnamemodify(findfile("%s",".;"),":h") | if !empty(r) | exe "lcd " . r | exe "%s " | endif',
+    \ a:ft, a:key, a:file, a:cmd)
+endf
+com! -nargs=+ AcFtCmdEx call s:AcFtCmdEx(<f-args>)
+fu! AcFtCmdEx(ft,key,file,cmd, ...) abort
+    let l:args = ''
+    for s in a:000
+        let l:args = l:args .' ' . s
+    endfor
+    let l:cmd = a:cmd . ' ' . l:args
+    call AcFtCmd(a:ft, a:key, a:file, l:cmd)
+endf
 "com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcSend FloatermSend<bang> <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 "--------------------------------------
-au filetype c,cpp com! -bang -nargs=* -complete=file E
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex <args>' | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file T 
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test <args>' | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file TT 
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test run '.(empty(<q-args>)?'%':<q-args>) | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file TD 
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test debug '.(empty(<q-args>)?'%':<q-args>) | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file C 
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app <args>' | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file CC 
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app build '.(empty(<q-args>)?'myapp':<q-args>) | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file CD
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app debug '.(empty(<q-args>)?'myapp':<q-args>) | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file RR 
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app run '.(empty(<q-args>)?'myapp':<q-args>) | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file F 
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex fuzz <args>' | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file G 
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex libfetch <args>' | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file XX
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex app clean '.(empty(<q-args>)?'myapp':<q-args>) | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file H
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex help <args>' | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file CEXc
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe '!cc ./cex.c -o cex' | endif
-au filetype c,cpp com! -bang -nargs=* -complete=file CEXh
-      \ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      \ if !empty(root) | exe 'lcd' root | exe ':!cc -D CEX_NEW -x c ./cex.h -o cex && ./cex' | endif
-"au filetype c,cpp com! -bang -nargs=* -complete=file TT lcd %:p:h:h<bar>AcRun ./cex test run <args> %
+"au filetype c,cpp com! -bang -nargs=* -complete=file TT 
+      "\ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
+      "\ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test run '.(empty(<q-args>)?'%':<q-args>) | endif
+call AcFtCmd('c,cpp','H','cex.h','AcRun ./cex help <args>')
+call AcFtCmd('c,cpp','E','cex.h','AcRun ./cex <args>')
+call AcFtCmd('c,cpp','T','cex.h','AcRun ./cex test <args>')
+call AcFtCmd('c,cpp','F','cex.h','AcRun ./cex fuzz <args>')
+call AcFtCmd('c,cpp','G','cex.h','AcRun ./cex libfetch <args>')
+call AcFtCmd('c,cpp','C','cex.h','AcRun ./cex app <args>')
+call AcFtCmd('c,cpp','CEXc','cex.h','!cc ./cex.c -o cex')
+call AcFtCmd('c,cpp','CEXh','cex.h','!cc -D CEX_NEW -x c ./cex.h -o cex && ./cex')
+call AcFtCmdEx('c,cpp','TT','cex.h','AcRun ./cex test run', '%')
+call AcFtCmdEx('c,cpp','TD','cex.h','AcRun ./cex test debug', '%')
+call AcFtCmdEx('c,cpp','CC','cex.h','AcRun ./cex app build <args>', 'myapp')
+call AcFtCmdEx('c,cpp','CD','cex.h','AcRun ./cex app debug <args>', 'myapp')
+call AcFtCmdEx('c,cpp','RR','cex.h','AcRun ./cex app run <args>', 'myapp')
+call AcFtCmdEx('c,cpp','XX','cex.h','AcRun ./cex app clean <args>', 'myapp')
 "au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
@@ -429,16 +419,17 @@ au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
 "let $RUST_BACKTRACE=1
 "--nocapture 测试里显示打印
 "--show-output 测试里显示更多内容
-au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
+call AcFtCmd('rust','RE','Cargo.toml','AcRun cargo run <args> --release')
+call AcFtCmd('rust','R','Cargo.toml','AcRun cargo run <args>')
+call AcFtCmd('rust','T','Cargo.toml','AcRun cargo test <args>')
+call AcFtCmd('rust','B','Cargo.toml','AcRun cargo build <args>')
+call AcFtCmd('rust','E','Cargo.toml','AcRun cargo check <args>')
+call AcFtCmd('rust','C','Cargo.toml','AcRun cargo <args>')
+call AcFtCmd('rust','XX','Cargo.toml','AcRun cargo clean <args>')
+call AcFtCmd('rust','TT','Cargo.toml','AcRun cargo test <args> -- --nocapture')
 au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r 
-au filetype rust com! -bang -nargs=* -complete=file TT AcRun cargo test <args> -- --nocapture
-au filetype rust com! -bang -nargs=* -complete=file T AcRun cargo test <args>
-au filetype rust com! -bang -nargs=* -complete=file B AcRun cargo build <args>
-au filetype rust com! -bang -nargs=* -complete=file C AcRun cargo <args>
-au filetype rust com! -bang -nargs=* -complete=file E AcRun cargo check <args>
-au filetype rust com! -bang -nargs=* -complete=file RE AcRun cargo run <args> --release 
-au filetype rust com! -bang -nargs=* -complete=file R AcRun cargo run <args>
-au filetype rust com! -bang -nargs=* -complete=file XX AcRun cargo clean <args>
+au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
+
 au filetype adept com! -bang -nargs=* -complete=file Make AcRun adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AcRun adept -e <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file TT AcRun tester <args> %:p
