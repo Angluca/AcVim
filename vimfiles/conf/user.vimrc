@@ -363,10 +363,8 @@ nmap <space>r :AcRun
 nmap <space>R :AcRun! 
 com! -nargs=+ AcFtCmd call s:AcFtCmd(<f-args>)
 fu! AcFtCmd(ft,key,file,cmd) abort
-    exe printf(
-    \ 'au FileType %s com! -bang -nargs=* -complete=file %s ' .
-    \ 'let r=fnamemodify(findfile("%s",".;"),":h") | if !empty(r) | exe "lcd " . r | exe "%s " | endif',
-    \ a:ft, a:key, a:file, a:cmd)
+    exe 'au FileType '.a:ft.' com! -bang -nargs=* -complete=file '.a:key.' ' .
+    \ 'let r=fnamemodify(findfile("'.a:file.'",".;"),":h") | if !empty(r) | exe "lcd " . r | exe "'.a:cmd.' " | endif'
 endf
 com! -nargs=+ AcFtCmdEx call s:AcFtCmdEx(<f-args>)
 fu! AcFtCmdEx(ft,key,file,cmd, ...) abort
@@ -579,6 +577,8 @@ au FileType rust call LspAddServer([{
       \             'noDefaultFeatures': v:true,
       \             'target': '',
       \         },
+      \         'cachePriming': { 'enable': v:false },
+      \         'check': { 'allTargets': v:false },
       \         'procMacro': { 'enable': v:false },
       \         'checkOnSave': { 'enable': v:false },
       \         'completion': { 'enable': v:true, 'postfix': { 'enable': v:false } },
