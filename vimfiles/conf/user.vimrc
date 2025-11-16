@@ -414,8 +414,11 @@ au filetype ocen com! -bang -nargs=* -complete=file RR AcRun ocen <args> % -o %:
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
 "let $RUST_BACKTRACE='full'
 "let $RUST_BACKTRACE=1
+let $MAKEPAD='lines'
 "--nocapture 测试里显示打印
 "--show-output 测试里显示更多内容
+call AcFtCmd('rust','RD','Cargo.toml','AcRun cargo +nightly run <args>')
+call AcFtCmd('rust','BD','Cargo.toml','AcRun cargo +nightly build <args>')
 call AcFtCmd('rust','RE','Cargo.toml','AcRun cargo run <args> --release')
 call AcFtCmd('rust','R','Cargo.toml','AcRun cargo run <args>')
 call AcFtCmd('rust','T','Cargo.toml','AcRun cargo test <args>')
@@ -564,7 +567,7 @@ au FileType rust call LspAddServer([{
       \ 'path': exepath('rust-analyzer'),
       \ 'args': [],
       \ 'rootSearch': ['Cargo.toml', 'rust-project.json'],
-      \ 'syncInit': v:false,
+      \ 'syncInit': v:true,
       \ 'allowStdio': v:false,
       \ 'debounceTextChanges': 100,
       \ 'initializationOptions': {

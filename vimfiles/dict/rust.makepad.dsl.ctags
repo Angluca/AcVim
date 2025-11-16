@@ -1,0 +1,8 @@
+--langdef=makepad
+--langmap=makepad:.rs
+--language-force=makepad
+--exclude=rust.makepad.dsl.tags
+--exclude=*.md
+--exclude=*.toml
+--regex-makepad=/^\s*[^\/\#]?\s*pub\s+(\w+)/\1/c,component/
+
