@@ -358,6 +358,8 @@ nmap ;ut :UndotreeToggle<cr>
 
 "}}}
 "=== building ======================{{{
+com! -bang -nargs=* -range=% -complete=shellcmd AcSend FloatermSend<bang> <args>
+com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 nmap <space>r :AcSend 
 nmap <space>r :AcRun 
 nmap <space>R :AcRun! 
@@ -375,9 +377,6 @@ fu! AcFtCmdEx(ft,key,file,cmd, ...) abort
     let l:cmd = a:cmd . ' ' . l:args
     call AcFtCmd(a:ft, a:key, a:file, l:cmd)
 endf
-"com! -bang -nargs=* -range=% -complete=shellcmd AcRun <range>FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
-com! -bang -nargs=* -range=% -complete=shellcmd AcSend FloatermSend<bang> <args>
-com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
 "--------------------------------------
 "au filetype c,cpp com! -bang -nargs=* -complete=file TT 
       "\ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
@@ -411,7 +410,7 @@ au filetype d com! -bang -nargs=* -complete=file CC AcRun dmd <args> %
 au filetype d com! -bang -nargs=* -complete=file DD AcRun dub <args>
 au filetype hare com! -bang -nargs=* -complete=file CC AcRun hare <args> %
 au filetype ocen com! -bang -nargs=* -complete=file CC AcRun ocen <args> % -o %:t:r
-au filetype ocen com! -bang -nargs=* -complete=file Run AcRun ocen <args> % -o %:t:r && ./%:t:r
+au filetype ocen com! -bang -nargs=* -complete=file RR AcRun ocen <args> % -o %:t:r && ./%:t:r
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
 "let $RUST_BACKTRACE='full'
 "let $RUST_BACKTRACE=1

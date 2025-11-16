@@ -6,31 +6,24 @@ edition = "2024"
 [dependencies]
 #macroquad = "*"
 #bevy = { version = "0.17.2", features = ["dynamic_linking"] }
+#makepad-widgets = { git = "https://github.com/makepad/makepad", branch = "dev" }
 
-[workspace]
-resolver = "3" # edition 2024 default 3
+#[workspace]
+#resolver = "3" # edition 2024 default 3
 
-# Enable a small amount of optimization in the dev profile.
 [profile.dev]
-opt-level = 1
-incremental = true
-codegen-units = 64
-#jobs = 2
-#debug = 0
+incremental = true # 以较小的步骤编译您的二进制文件。
+#opt-level = "s" # 优先考虑小的二进制文件大小。如果您更喜欢速度，请使用 `3`。
 
-# Enable a large amount of optimization in the dev profile for dependencies.
 [profile.dev.package."*"]
 opt-level = 3
 
-# Enable more optimization in the release profile at the cost of compile time.
 [profile.release]
-incremental = true
-# Compile the entire crate as one unit.
-# Slows compile times, marginal improvements.
-codegen-units = 1
-# Do a second optimization pass over the entire program, including dependencies.
-# Slows compile times, marginal improvements.
-lto = "thin"
+opt-level = "s" # 优先考虑小的二进制文件大小。如果您更喜欢速度，请使用 `3`。
+codegen-units = 1 # 允许 LLVM 执行更好的优化。
+lto = false # 启用链接时优化 false或"off"/"thin"/true或"fat" 编译速度从左到右巨减
+panic = "abort" # 通过禁用 panic 处理程序来提高性能。
+strip = true # 确保移除调试符号。
 
 # Optimize for size in the wasm-release profile to reduce load times and bandwidth usage on web.
 [profile.wasm-release]

@@ -94,8 +94,8 @@ SetDict('adept','$VIM/bundle/adept.vim/tags/','adept.dict','adept.base.dict')
 au FileType rust nmap \== :Maketags ctags --languages=Rust\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
 au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/std'
 au FileType rust let $BEVY = $HOME.'/Rusts/_GameEnginers/bevy/crates'
-SetTags('rust','','rust.tags')
-"SetTags('rust','','rust.tags','rust.bevy.tags')
+"SetTags('rust','','rust.tags')
+SetTags('rust','','rust.tags','rust.makepad.tags')
 SetDict('rust','','rust.base.dict')
 
 "%s/.*\/test\/.*$\n//ge

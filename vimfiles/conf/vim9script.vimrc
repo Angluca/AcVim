@@ -76,7 +76,7 @@ export var vimsuggestOpt = {
     search: {
         enable: true,         # Enable/disable the feature globally
         pum: true,            # 'false' for flat, 'true' for vertically stacked popup menu
-        fuzzy: true,         # Enable/disable fuzzy completion
+        fuzzy: false,         # Enable/disable fuzzy completion
         alwayson: true,       # Open popup menu on <tab> if 'false'
         popupattrs: {         # Attributes passed to the popup window
             maxheight: 12,    # Maximum height for the stacked menu (when pum=true)
@@ -106,19 +106,19 @@ export var vimsuggestOpt = {
         auto_first: false, # Automatically select first item from menu if none selected
         prefixlen: 1,      # The minimum prefix length before the completion menu is displayed
         complete_sg: true, # Complete :s// :g//
+    },
+    keymap: {
+        page_up: ["\<M-k>"],
+        page_down: ["\<M-j>"],
+        hide: "\<C-l>",     # Hide popup window
+        dismiss: "",  # Dismiss auto-completion
+        send_to_qflist: "",    # Add to quickfix list
+        send_to_arglist: "",   # Add to arglist
+        send_to_clipboard: "", # Add to system clipboard ('+' register)
+        split_open: "",
+        vsplit_open: "",
+        tab_open: "",
     }
-}
-vimsuggestOpt.keymap = {
-    page_up: ["\<M-k>"],
-    page_down: ["\<M-j>"],
-    hide: "\<C-l>",     # Hide popup window
-    dismiss: "",  # Dismiss auto-completion
-    send_to_qflist: "",    # Add to quickfix list
-    send_to_arglist: "",   # Add to arglist
-    send_to_clipboard: "", # Add to system clipboard ('+' register)
-    split_open: "",
-    vsplit_open: "",
-    tab_open: "",
 }
 autocmd VimEnter * g:VimSuggestSetOptions(vimsuggestOpt)
 
