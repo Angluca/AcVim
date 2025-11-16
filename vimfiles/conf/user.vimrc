@@ -564,27 +564,40 @@ au FileType rust call LspAddServer([{
       \ 'path': exepath('rust-analyzer'),
       \ 'args': [],
       \ 'rootSearch': ['Cargo.toml', 'rust-project.json'],
-      \ 'syncInit': v:true,
+      \ 'syncInit': v:false,
       \ 'allowStdio': v:false,
       \ 'debounceTextChanges': 100,
       \ 'initializationOptions': {
       \     'rust-analyzer': {
       \         'cargo': { 
+      "\             'extraArgs': ["--target-dir","/tmp/rust-analyzer-target"], 
       \             'features': [], 
-      \             'allFeatures': v:false,
+      \             'allTargets': v:false,
       \             'buildScripts.enable': v:false,
       \             'noDefaultFeatures': v:true,
+      \             'noDeps': v:true,
       \             'target': '',
       \         },
       \         'cachePriming': { 'enable': v:false },
-      \         'check': { 'allTargets': v:false },
       \         'procMacro': { 'enable': v:false },
       \         'checkOnSave': { 'enable': v:false },
-      \         'completion': { 'enable': v:true, 'postfix': { 'enable': v:false } },
       \         'imports': { 'group': { 'enable': v:false } },
       \         'hover': { 'enable': v:true, 'documentation.enable': v:false },
       \         'inlayHints': { 'enable': v:false },
-      \         'semanticHighlighting': { 'enable': v:false }
+      \         'semanticHighlighting': { 'enable': v:false },
+      \         'check': { 'enable': v:false },
+      \         'assist': { 
+      \             'enable': v:false,
+      \             'termSearch': { 'fuel': 50 },
+      \         },
+      \         'completion': { 
+      \             'enable': v:true,
+      \             'termSearch': { 'fuel': 50 },
+      \             'postfix': { 'enable': v:false },
+      \         },
+      \         'diagnostics': { 'enable': v:false },
+      \         'highlightRelated': { 'enable': v:false },
+      \         'lens': { 'enable': v:false },
       \     }
       \ }
       \ }])
