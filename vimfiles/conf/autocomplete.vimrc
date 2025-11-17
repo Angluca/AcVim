@@ -94,9 +94,10 @@ SetDict('adept','$VIM/bundle/adept.vim/tags/','adept.dict','adept.base.dict')
 au FileType rust nmap \== :Maketags ctags --languages=Rust\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
 au FileType rust nmap \00 :Mctags $VIMDICT/rust.makepad.dsl.ctags rust.makepad.dsl.tags $MWIDGETS<cr>
 au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/std'
-au FileType rust let $MAKEPAD = $HOME.'/Rusts/_GUIs/makepad'
-au FileType rust let $MWIDGETS = $MAKEPAD.'/widgets/src'
-au FileType rust let $MPLATFORM = $MAKEPAD.'/platform/src'
+" 不能用MAKEPAD环境变量,官方为编译提示准备了MAKEPAD=lines
+au FileType rust let $MAKEPAD_PATH = $HOME.'/Rusts/_GUIs/makepad'
+au FileType rust let $MWIDGETS = $MAKEPAD_PATH.'/widgets/src'
+au FileType rust let $MPLATFORM = $MAKEPAD_PATH.'/platform/src'
 "SetTags('rust','','rust.tags')
 SetTags('rust','','rust.tags','rust.makepad.dsl.tags','rust.makepad.widgets.tags','rust.makepad.platform.tags')
 SetDict('rust','','rust.base.dict')
