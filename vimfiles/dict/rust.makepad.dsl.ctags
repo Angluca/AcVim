@@ -1,8 +1,25 @@
 --langdef=makepad
 --langmap=makepad:.rs
 --language-force=makepad
---exclude=rust.makepad.dsl.tags
+--exclude=LICENSE
+--exclude=*.tags
 --exclude=*.md
+--exclude=*.txt
 --exclude=*.toml
---regex-makepad=/^\s*[^\/\#]?\s*pub\s+(\w+)/\1/c,component/
+--exclude=*.lock
+--exclude=*.ron
+--exclude=target/*
+--exclude=examples/*
+--exclude=code_editor/*
+--exclude=studio/*
+--exclude=tools/*
+--regex-makepad=/^\s+pub\s+(\w+)\s+=/\1/c,component/
+--regex-makepad=/^\s+uniform\s+(\w+)\s*:/\1/m,member/
+--regex-makepad=/^\s+texture\s+(\w+)\s*:/\1/m,member/
+--regex-makepad=/^\s+varying\s+(\w+)\s*:/\1/m,member/
+--regex-makepad=/^\s+instance\s+(\w+)\s*:/\1/m,member/
+--regex-makepad=/^\s+field\s+(\w+)\s*:/\1/m,member/
+--regex-makepad=/^\s+fn\s+(\w+)\s*\(.*\)\s*->\s*(bool|float|int|vec[234]|mat4|texture2d|textureOES)/\1/f,fn/
+--regex-makepad=/^\s+fn\s+(\w+)\s*\(.*\)\s*\{/\1/f,fn/
+--regex-makepad=/^\s+fn\s+(\w+)\s*\($/\1/f,fn/
 

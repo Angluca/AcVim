@@ -91,15 +91,13 @@ au FileType adept let $ADEPT = $HOME.'/SDK/Adepts/_bin/import'
 SetTags('adept','$VIM/bundle/adept.vim/tags/','adept.tags')
 SetDict('adept','$VIM/bundle/adept.vim/tags/','adept.dict','adept.base.dict')
 
-au FileType rust nmap \== :Maketags ctags --languages=Rust\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
-au FileType rust nmap \00 :Mctags $VIMDICT/rust.makepad.dsl.ctags rust.makepad.dsl.tags $MWIDGETS<cr>
+au FileType rust nmap \== :Maketags ctags --languages=Rust\ --exclude=LICENSE\ --exclude=\*.tags\ --exclude=\*.md\ --exclude=\*.txt\ --exclude=\*.toml\ --exclude=\*.lock\ --exclude=\*.ron\ --exclude=target/\*\ --exclude=examples/\*\ --exclude=code_editor/\*\ --exclude=studio/\*\ --exclude=tools/\*\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
+au FileType rust nmap \00 :Mctags $VIMDICT/rust.makepad.dsl.ctags rust.makepad.dsl.tags $MAKEPAD_ROOT<cr>
 au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/std'
 " 不能用MAKEPAD环境变量,官方为编译提示准备了MAKEPAD=lines
-au FileType rust let $MAKEPAD_PATH = $HOME.'/Rusts/_GUIs/makepad'
-au FileType rust let $MWIDGETS = $MAKEPAD_PATH.'/widgets/src'
-au FileType rust let $MPLATFORM = $MAKEPAD_PATH.'/platform/src'
+au FileType rust let $MAKEPAD_ROOT = $HOME.'/Rusts/_GUIs/makepad'
 "SetTags('rust','','rust.tags')
-SetTags('rust','','rust.tags','rust.makepad.dsl.tags','rust.makepad.widgets.tags','rust.makepad.platform.tags')
+SetTags('rust','','rust.tags','rust.makepad.tags','rust.makepad.dsl.tags')
 SetDict('rust','','rust.base.dict')
 
 "%s/.*\/test\/.*$\n//ge

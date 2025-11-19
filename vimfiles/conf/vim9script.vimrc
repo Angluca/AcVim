@@ -75,7 +75,7 @@ vim9script
 export var vimsuggestOpt = {
     search: {
         enable: true,         # Enable/disable the feature globally
-        pum: true,            # 'false' for flat, 'true' for vertically stacked popup menu
+        pum: false,            # 'false' for flat, 'true' for vertically stacked popup menu
         fuzzy: false,         # Enable/disable fuzzy completion
         alwayson: true,       # Open popup menu on <tab> if 'false'
         popupattrs: {         # Attributes passed to the popup window
@@ -93,7 +93,7 @@ export var vimsuggestOpt = {
     },
     cmd: {
         enable: true,      # Enable/disable the completion functionality
-        pum: true,         # 'true' for stacked popup menu, 'false' for flat
+        pum: false,         # 'true' for stacked popup menu, 'false' for flat
         exclude: [],       # List of (regex) patterns to exclude from completion
         onspace: ['colo\%[rscheme]', 'b\%[uffer]', 'sy\%[ntax]'],
         # Complete after the space after the command
