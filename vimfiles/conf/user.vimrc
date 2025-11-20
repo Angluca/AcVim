@@ -576,7 +576,7 @@ au FileType rust call LspAddServer([{
       "\             'extraArgs': ["--target-dir","/tmp/rust-analyzer-target"], 
       \             'features': [], 
       \             'allTargets': v:false,
-      \             'buildScripts.enable': v:false,
+      \             'buildScripts': {'enable': v:false},
       \             'noDefaultFeatures': v:true,
       \             'noDeps': v:true,
       \             'target': '',
