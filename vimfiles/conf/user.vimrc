@@ -93,25 +93,6 @@ let g:tagbar_compact = 1
 "let g:tagbar_foldlevel = 2
 "let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
-let g:tagbar_type_zig = {
-    \ 'ctagstype' : 'zig',
-    \ 'kinds'     : [
-    \ 'f:func:0:1',
-    \ 't:type:1:0',
-    \ 'i:iterator:1:0',
-    \ 'o:operator:1:0',
-    \ 'm:macro:1:0'
-    \ ],
-    \ }
-let g:tagbar_type_hare = {
-    \ 'ctagstype' : 'hare',
-    \ 'kinds'     : [
-    \ 'f:func:0:1',
-    \ 't:type:1:0',
-    \ 'm:macro:1:0'
-    \ ],
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/hare.ctags'
-    \ }
 let g:tagbar_type_ocen = {
     \ 'ctagstype' : 'ocen',
     \ 'kinds'     : [

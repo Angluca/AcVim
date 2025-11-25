@@ -1,0 +1,43 @@
+[workspace]
+resolver = "2"
+members = [
+    "my_image_viewer",
+]
+exclude = [
+    #"libs/stitch",
+]
+
+[profile.dev]
+incremental = false # 以较小的步骤编译您的二进制文件。
+opt-level = 2 # 优先考虑小的二进制文件大小。如果您更喜欢速度，请使用 `3`。
+#debug = 0
+
+[profile.release]
+opt-level = 3 # 优先考虑小的二进制文件大小。如果您更喜欢速度，请使用 `3`。
+codegen-units = 1 # 允许 LLVM 执行更好的优化。
+lto = "thin" # 启用链接时优化 false或"off"/"thin"/true或"fat" 编译速度从左到右巨减
+panic = "abort" # 通过禁用 panic 处理程序来提高性能。
+strip = true # 确保移除调试符号。
+
+[profile.dev.package."*"]
+opt-level = 3
+
+# Optimize for size in the wasm-release profile to reduce load times and bandwidth usage on web.
+[profile.wasm-release]
+# Default to release profile values.
+inherits = "release"
+# Optimize with size in mind (also try "z", sometimes it is better).
+# Slightly slows compile times, great improvements to file size and runtime performance.
+opt-level = "s"
+# Strip all debugging information from the binary to slightly reduce file size.
+strip = "debuginfo"
+
+[profile.small]
+inherits = "release"
+#debug = true
+opt-level = 'z'   # Optimize for size
+lto = true        # Enable link-time optimization
+codegen-units = 1 # Reduce number of codegen units to increase optimizations
+panic = 'abort'   # Abort on panic
+strip = true
+

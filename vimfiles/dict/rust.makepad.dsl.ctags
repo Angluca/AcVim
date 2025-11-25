@@ -19,7 +19,7 @@
 --regex-makepad=/^\s+varying\s+(\w+)\s*:/\1/m,member/
 --regex-makepad=/^\s+instance\s+(\w+)\s*:/\1/m,member/
 --regex-makepad=/^\s+field\s+(\w+)\s*:/\1/m,member/
---regex-makepad=/^\s+fn\s+(\w+)\s*\(.*\)\s*->\s*(bool|float|int|vec[234]|mat4|texture2d|textureOES)/\1/f,fn/
+--regex-makepad=/^\s+fn\s+(\w+)\s*\(.*\)\s*->\s*(bool|float|int|vec[234]|mat[234]|sampler2D|texture2d|textureOES)/\1/f,fn/
 --regex-makepad=/^\s+fn\s+(\w+)\s*\(.*\)\s*\{/\1/f,fn/
 --regex-makepad=/^\s+fn\s+(\w+)\s*\($/\1/f,fn/
 
