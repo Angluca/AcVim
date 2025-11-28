@@ -5,34 +5,34 @@ edition = "2024"
 
 [dependencies]
 #macroquad = "*"
-#bevy = { version = "0.17.2", features = ["dynamic_linking"] }
+#bevy = { version = "1.0.0", features = ["dynamic_linking"] }
 #makepad-widgets = { git = "https://github.com/makepad/makepad", branch = "dev" }
-#my_lib = { path = "../my_lib", features = ["live"]}
+#makepad-widgets = { path = "../../__makepad/widgets"}
 
 #[workspace]
 #resolver = "3" # edition 2024 default 3
 
-[profile.dev]
-incremental = false # 多线加速编译费空间 适合好的cpu, 关闭后编译空间会小很多
-#opt-level = 2 # debug=0,release=2, 3是极限
+#[profile.dev]
+#incremental = false # 多线加速编译费空间 适合好的cpu, 关闭后编译空间会小很多
+##opt-level = 2 # debug=0,release=2, 3是极限
 
-[profile.dev.package."*"]
-opt-level = 3
+#[profile.dev.package."*"]
+#opt-level = 3
 
-[profile.release]
-opt-level = 3 # 数字0~3运行速度和编译优化, s,z只是运行文件大小z是极限
-codegen-units = 1 # 允许 LLVM 执行更好的优化。
-lto = false # 启用链接时优化 false或"off"/"thin"/true或"fat" 编译速度从左到右巨减
-panic = "abort" # 通过禁用 panic 处理程序来提高性能。
-strip = true # 确保移除调试符号。
+#[profile.release]
+#opt-level = 3 # 数字0~3运行速度和编译优化, s,z只是运行文件大小z是极限
+#codegen-units = 1 # 允许 LLVM 执行更好的优化。
+#lto = false # 启用链接时优化 false或"off"/"thin"/true或"fat" 编译速度从左到右巨减
+#panic = "abort" # 通过禁用 panic 处理程序来提高性能。
+#strip = true # 确保移除调试符号。
 
-# Optimize for size in the wasm-release profile to reduce load times and bandwidth usage on web.
-[profile.wasm-release]
-# Default to release profile values.
-inherits = "release"
-# Optimize with size in mind (also try "z", sometimes it is better).
-# Slightly slows compile times, great improvements to file size and runtime performance.
-opt-level = "s"
-# Strip all debugging information from the binary to slightly reduce file size.
-strip = "debuginfo"
+## Optimize for size in the wasm-release profile to reduce load times and bandwidth usage on web.
+#[profile.wasm-release]
+## Default to release profile values.
+#inherits = "release"
+## Optimize with size in mind (also try "z", sometimes it is better).
+## Slightly slows compile times, great improvements to file size and runtime performance.
+#opt-level = "s"
+## Strip all debugging information from the binary to slightly reduce file size.
+#strip = "debuginfo"
 

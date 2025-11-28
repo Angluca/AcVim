@@ -654,7 +654,7 @@ xmap ;pp "*gP
 nmap <m-c> "+y
 vmap <m-c> "+y
 xmap <m-c> "+y
-nmap <m-v> "*gP
+nmap <m-v> :setl paste<cr>"*gP
 vmap <m-v> "*gP
 imap <m-v> <c-r>+
 xmap <m-v> <c-r>+
