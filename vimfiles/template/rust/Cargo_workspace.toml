@@ -9,15 +9,15 @@ exclude = [
 
 [profile.dev]
 incremental = false # 以较小的步骤编译您的二进制文件。
-opt-level = 2 # 优先考虑小的二进制文件大小。如果您更喜欢速度，请使用 `3`。
-#debug = 0
+opt-level = "s" # 又小运行也快,均匀优化
+debug = 0 # 不能调试,但可以大幅度缩减文件大小
 
 [profile.release]
-opt-level = 3 # 优先考虑小的二进制文件大小。如果您更喜欢速度，请使用 `3`。
-codegen-units = 1 # 允许 LLVM 执行更好的优化。
+opt-level = 3 # 如果您更喜欢速度选择1~3
+codegen-units = 1 # 允许 LLVM 执行更好的优化
 lto = "thin" # 启用链接时优化 false或"off"/"thin"/true或"fat" 编译速度从左到右巨减
-panic = "abort" # 通过禁用 panic 处理程序来提高性能。
-strip = true # 确保移除调试符号。
+panic = "abort" # 通过禁用 panic 处理程序来提高性能
+strip = true # 确保移除调试符号
 
 [profile.dev.package."*"]
 opt-level = 3

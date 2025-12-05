@@ -542,6 +542,7 @@ au filetype zig call LspAddServer([#{
             "\  }])
 
       "\             'features': 'all', 
+      "\             'extraArgs': ["--target-dir","/tmp/rust-analyzer-target"], 
 au FileType rust call LspAddServer([{
       \ 'name': 'rust-analyzer',
       \ 'filetype': ['rust'],
@@ -554,7 +555,6 @@ au FileType rust call LspAddServer([{
       \ 'initializationOptions': {
       \     'rust-analyzer': {
       \         'cargo': { 
-      "\             'extraArgs': ["--target-dir","/tmp/rust-analyzer-target"], 
       \             'features': [], 
       \             'allTargets': v:false,
       \             'buildScripts': {'enable': v:false},

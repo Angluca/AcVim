@@ -98,7 +98,7 @@ au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darw
 au FileType rust let $MAKEPAD_ROOT = $HOME.'/Rusts/_GUIs/makepad'
 "SetTags('rust','','rust.tags')
 SetTags('rust','','rust.tags','rust.makepad.tags','rust.makepad.dsl.tags')
-SetDict('rust','','rust.base.dict')
+SetDict('rust','','rust.base.dict','rust.makepad.dict','rust.makepad.dsl.dict')
 
 "%s/.*\/test\/.*$\n//ge
 "nmap \-- $RAYLIB
