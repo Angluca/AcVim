@@ -137,6 +137,7 @@ if
 impl
 in
 insert
+instance
 into_iter
 inversesqrt
 inverse。
@@ -196,6 +197,11 @@ reflect
 refract
 return
 safe
+sample
+sample2D
+sample2d
+sample2dOES
+sample2d_rt
 self
 should_panic
 sign
@@ -216,6 +222,9 @@ sync
 take
 take_while
 tan。
+texture
+texture2D
+texture2d
 thread
 time
 to_string
@@ -231,6 +240,7 @@ u16
 u32
 u64
 u8
+uniform
 union
 unsafe
 unsized
@@ -240,9 +250,11 @@ unwrap_or_else
 upgrade
 use
 usize
+varying
 vec2
 vec3
 vec4
+viewport
 virtual
 weak_count
 where
