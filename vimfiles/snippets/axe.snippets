@@ -1,0 +1,88 @@
+snippet cfg
+	#[cfg(${1:test}$2)]$0
+# main()
+snippet main
+	def main() {
+		$0
+	}
+# if
+snippet if
+	if $1 {
+		${2}
+	}$0
+# else
+snippet el
+	else {
+		$1
+	}$0
+# elif
+snippet ef
+	elif {
+		$1
+	}$0
+# if else
+snippet ifel
+	if $1 {
+		${2}
+	} else {
+		${3}
+	}$0
+# loop
+snippet lo
+	loop {
+		$1
+	}$0
+# for
+snippet for
+	for mut ${1:i = 0} to ${2:10} {
+		$3
+	}$0
+# for to
+snippet fto
+	for mut ${1:i = 0}; ${2:i < 10}; ${3:i++} {
+		$4
+	}$0
+# parallel for
+snippet pfo
+	parallel for mut ${1:i = 0}; ${2:i < 10}; ${3:i++} {
+		$4
+	}$0
+# parallel for to
+snippet pft
+	parallel for mut ${1:i = 0}; ${2:i < 10}; ${3:i++} {
+		$4
+	}$0
+# while
+snippet wh
+	while $1 {
+		${2:/* code */}
+	}$0
+# switch
+snippet sw
+	switch ${1:/* condition */} {
+		$2
+	}$0
+# case
+snippet ca
+	case ${1} {
+		$2
+	}$0
+# default
+snippet df
+	default {
+		$1
+	}$0
+# printf
+snippet pt
+	print ${1:\$"$2"$3};$0
+snippet ptn
+	println ${1:\$"$2"$3};$0
+snippet pts
+	println_str ${1:\$"$2"$3};$0
+# assert
+snippet ass
+	assert($1);$0
+snippet aeq
+	assert_eq($1, $2);$0
+snippet ane
+	assert_ne($1, $2);$0

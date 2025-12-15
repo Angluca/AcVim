@@ -411,6 +411,18 @@ call AcFtCmd('rust','TT','Cargo.toml','AcRun cargo test <args> -- --nocapture')
 au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r 
 au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
 
+call AcFtCmd('axe','RE','axe.mod','AcRun saw run <args> --release')
+call AcFtCmd('axe','R','axe.mod','AcRun saw run <args>')
+call AcFtCmd('axe','BE','axe.mod','AcRun saw run <args> --release')
+call AcFtCmd('axe','B','axe.mod','AcRun saw run <args>')
+call AcFtCmd('axe','C','axe.mod','AcRun saw <args>')
+call AcFtCmd('axe','T','axe.mod','AcRun saw test <args>')
+call AcFtCmd('axe','XX','axe.mod','AcRun saw clean <args>')
+call AcFtCmd('axe','AC','axe.mod','AcRun axe % <args> --syntax-check')
+call AcFtCmd('axe','AR','axe.mod','AcRun axe % <args> --release -r -q')
+call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
+call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
+
 au filetype adept com! -bang -nargs=* -complete=file Make AcRun adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AcRun adept -e <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file TT AcRun tester <args> %:p
@@ -611,6 +623,12 @@ au filetype nature call LspAddServer([#{
             \    name: 'nature',
             \    filetype: ['nature'],
             \    path: 'nls',
+            \  }])
+
+au filetype axe call LspAddServer([#{
+            \    name: 'axe',
+            \    filetype: ['axe'],
+            \    path: 'axels',
             \  }])
 
 "au filetype virgil call LspAddServer([#{

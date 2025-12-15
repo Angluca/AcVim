@@ -14,7 +14,7 @@ SetFt('*.txt,*.log','txt')
 SetFt('*.asm,*.inc','masm')
 SetFtCmd('masm','setl mp=fasm\ %:p')
 
-SetFt('*.glsl,*.vsh,*.fsh,*.vert,*.frag,*.shd,*.wgsl,*.flecs','rust')
+SetFt('*.glsl,*.[vf]sh,*.vert,*.frag,*.shd,*.wgsl,*.flecs','rust')
 SetFt('*.md,*.markdown,README*','markdown')
 SetFt('CMakeLists.txt','cmake')
 SetFt('*.as','actionscript')
