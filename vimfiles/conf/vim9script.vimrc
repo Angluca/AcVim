@@ -75,7 +75,7 @@ vim9script
 export var vimsuggestOpt = {
     search: {
         enable: true,         # Enable/disable the feature globally
-        pum: false,            # 'false' for flat, 'true' for vertically stacked popup menu
+        pum: true,            # 'false' for flat, 'true' for vertically stacked popup menu
         fuzzy: false,         # Enable/disable fuzzy completion
         alwayson: true,       # Open popup menu on <tab> if 'false'
         popupattrs: {         # Attributes passed to the popup window
@@ -83,7 +83,7 @@ export var vimsuggestOpt = {
         },
         range: 100,           # Number of lines to search in each batch
         timeout: 100,         # Timeout for non-async searches (milliseconds)
-        async: false,          # Use async for searching
+        async: true,          # Use async for searching
         async_timeout: 200,  # Async timeout in milliseconds
         async_minlines: 200, # Minimum lines to enable async search
         highlight: true,      # Disable menu highlighting (for performance)
@@ -93,7 +93,7 @@ export var vimsuggestOpt = {
     },
     cmd: {
         enable: true,      # Enable/disable the completion functionality
-        pum: false,         # 'true' for stacked popup menu, 'false' for flat
+        pum: true,         # 'true' for stacked popup menu, 'false' for flat
         exclude: [],       # List of (regex) patterns to exclude from completion
         onspace: ['colo\%[rscheme]', 'b\%[uffer]', 'sy\%[ntax]'],
         # Complete after the space after the command
