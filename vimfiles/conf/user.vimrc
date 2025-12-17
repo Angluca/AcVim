@@ -380,8 +380,6 @@ call AcFtCmdEx('c,cpp','XX','cex.h','AcRun ./cex app clean <args>', 'myapp')
 "au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 "au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
-au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build % && ./main' | exe 'AcSend exit'
-"au filetype nature com! -bang -nargs=* -complete=file TT exe ':AcRun! nature build -o '.(empty(<q-args>)?'%:t:r':<q-args>).' % && ./'.(empty(<q-args>)?'%:t:r':<q-args>)' | exe 'AcSend exit<cr>'
 au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %
 au filetype nim com! -bang -nargs=* -complete=file CC AcRun nim <args> %
 au filetype nim com! -bang -nargs=* -complete=file NN AcRun nimble <args>
@@ -393,6 +391,9 @@ au filetype hare com! -bang -nargs=* -complete=file CC AcRun hare <args> %
 au filetype ocen com! -bang -nargs=* -complete=file CC AcRun ocen <args> % -o %:t:r
 au filetype ocen com! -bang -nargs=* -complete=file RR AcRun ocen <args> % -o %:t:r && ./%:t:r
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
+"au filetype nature com! -bang -nargs=* -complete=file TT exe ':AcRun! nature build -o '.(empty(<q-args>)?'%:t:r':<q-args>).' % && ./'.(empty(<q-args>)?'%:t:r':<q-args>)' | exe 'AcSend exit<cr>'
+call AcFtCmd('nature','C','','AcRun nature build <args> -o %:t:r %')
+au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build <args> % && ./main' | exe 'AcSend exit'
 "let $RUST_BACKTRACE='full'
 "let $RUST_BACKTRACE=1
 let $MAKEPAD='lines'
@@ -418,8 +419,8 @@ call AcFtCmd('axe','B','axe.mod','AcRun saw run <args>')
 call AcFtCmd('axe','C','axe.mod','AcRun saw <args>')
 call AcFtCmd('axe','T','axe.mod','AcRun saw test <args>')
 call AcFtCmd('axe','XX','axe.mod','AcRun saw clean <args>')
-call AcFtCmd('axe','AC','axe.mod','AcRun axe % <args> --syntax-check')
-call AcFtCmd('axe','AR','axe.mod','AcRun axe % <args> --release -r -q')
+call AcFtCmd('axe','TC','axe.mod','AcRun axe % <args> --syntax-check')
+call AcFtCmd('axe','TT','axe.mod','AcRun axe % <args> -r -q')
 call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
 call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
 
