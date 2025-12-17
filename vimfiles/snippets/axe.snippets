@@ -74,11 +74,10 @@ snippet df
 	}$0
 # printf
 snippet pt
-	print ${1:\$"$2"$3};$0
+	print \$"$1";$0
+#println ${1:\$"$2"$3};$0
 snippet ptn
-	println ${1:\$"$2"$3};$0
-snippet pts
-	println_str ${1:\$"$2"$3};$0
+	println \$"$1";$0
 # assert
 snippet ass
 	assert($1);$0
