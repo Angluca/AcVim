@@ -19,22 +19,40 @@ syn match Macro         '\v<[_]*\u[A-Z0-9_]*>'
 syn match cType         '\v<[_]*\u[A-Z0-9_]*[a-z]+\w*>'
 syn match cType         '\v\.?\zs<([iu][0-9]{1,3})?>'
 syn match Repeat        '\v([^\.](\.|::))@<=\w\w*'
-syn match cMacro        '\v(::\s*)@<=[_]*\u\w*'
+syn match cSMacro       '\v(::\s*)@<=[_]*\u\w*'
 syn match cType         '\v\w+\ze(::|\<.*\>)' "foo<T>()
+
+syn match cLabel        '\v<(case)>'
 syn match Function      '\v[_]*\l\w*\ze((\[.*\])|((::)?\<.*\>))*\s*\('
 syn match Exception     '\v(\W@<=[~&*]+\ze[\(\[\{\<]*\'?\w)|(\w@<=[*]+\ze\W)'
-syn match Changed       '\v((typedef|struct|enum|union)(\<.*\>)?\s*)@<=[_]*\u\w*\ze(\<.*\>)?\s*(\(|\{)'
+syn match Changed       '\v((type|struct|enum|union)(\<.*\>)?\s*)@<=[_]*\w+\ze(\<.*\>)?\s*(\(|\{)'
 
-syn match cLabel        '$\@<=\w\+'
+"syn match cLabel        '$\@<=\w\+'
+"syn match cSComment     '$\@<=\w\+'
 syn match cTypedef      '\v\w+\ze\$'
 syn match cType         '\v<(str|sbuf|io|os|argparse|cexy|fuzz)>\ze\.'
+"syn match cSComment     '\v<(case)>\ze\s*\('
+
+" -- shader
+"syn keyword cKeyword  uniform instance varying var
+"syn keyword cKeyword  vertex fragment
+"syn keyword cType     texture texture2D
+syn match   cType       '\v<bool[234]?>'
+syn match   cType       '\v<int[234]?>'
+syn match   cType       '\v<uint[234]?>'
+syn match   cType       '\v<half[234]?>'
+syn match   cType       '\v<float([234](x[234])?)?>'
+syn match   cType       '\v<[dbui]?vec[234]>'
+syn match   cType       '\v<vec[234][dbfhui]?>'
+syn match   cType       '\v<mat[234](x[234]f)?>'
 
 "syn keyword Keyword struct enum union nextgroup=cTypedef skipwhite skipempty
 hi def link cFunc Function
 hi def link cTypedef Changed
 hi def link cType MoreMsg
 hi def link cThis Label
-hi def link cMacro SpecialComment
+hi def link cSMacro SpecialComment
+hi def link cMacro Macro
 
 let s:ft = matchstr(&ft, '^\%([^.]\)\+')
 
@@ -51,7 +69,7 @@ endif
 
 " A bunch of useful C keywords
 syn keyword	cStatement	goto break return continue asm
-syn keyword	cLabel		case default this self
+syn keyword	cLabel		default this self 
 syn keyword	cConditional	if else switch
 syn keyword	cRepeat		while for do
 
@@ -302,8 +320,7 @@ if !exists("c_no_c99") " ISO C99
   syn keyword	cType		intmax_t uintmax_t
 endif
 
-"syn keyword	cTypedef	typedef
-syn keyword	cStructure	typedef
+syn keyword	cMacro  	typedef
 syn keyword	cStructure	struct union enum
 syn keyword	cStorageClass	static register auto volatile extern const
 if !exists("c_no_c99") && !s:in_cpp_family
@@ -533,6 +550,7 @@ hi def link cComment2String	cString
 hi def link cCommentSkip	cComment
 hi def link cString		String
 hi def link cComment		Comment
+hi def link cSComment		SpecialComment
 hi def link cSpecial		SpecialChar
 hi def link cTodo		Todo
 hi def link cBadContinuation	Error
@@ -541,6 +559,7 @@ hi def link cCppInElse2		cCppOutIf2
 hi def link cCppOutIf2		cCppOut
 hi def link cCppOut		Comment
 
+hi def link cSymbol Changed
 hi def link cFunction Function
 "hi def link cTypedef Identifier
 
@@ -550,7 +569,6 @@ syn match cSymbol        '[,;:\.]'
 syn match SpecialComment '[`]'
 syn match cConstant      '[{}\[\]()]'
 "hi def cSymbol ctermfg=DarkGray guifg=DarkGray
-hi def link cSymbol Changed
 
 let b:current_syntax = "c"
 
