@@ -365,9 +365,11 @@ if !exists("g:vimrc_loaded")
     "endif
     "Enable syntax hl
     syntax enable
-    "sync default maxcol is 3000
     "syntax sync
-    "set synmaxcol=20000
+    "syntax sync minlines=500
+    "syntax sync maxlines=25000
+    "set synmaxcol=3000
+    "set maxmempattern=2000
     " color scheme
     if has("gui_running")
         "start gvim maximized
@@ -381,7 +383,7 @@ if !exists("g:vimrc_loaded")
         "hi normal guibg=#294d4a
     else
         set t_Co=256
-        "syntax sync fromstart
+        "syntax sync
     endif " has
 endif " exists(...)
 "inoremap <ESC> <ESC>:set iminsert=0<CR>
