@@ -365,6 +365,9 @@ if !exists("g:vimrc_loaded")
     "endif
     "Enable syntax hl
     syntax enable
+    "sync default maxcol is 3000
+    "syntax sync
+    "set synmaxcol=20000
     " color scheme
     if has("gui_running")
         "start gvim maximized
@@ -378,6 +381,7 @@ if !exists("g:vimrc_loaded")
         "hi normal guibg=#294d4a
     else
         set t_Co=256
+        "syntax sync fromstart
     endif " has
 endif " exists(...)
 "inoremap <ESC> <ESC>:set iminsert=0<CR>
@@ -388,7 +392,9 @@ colorscheme maroloccio
 """"""""""""""""""""
 "Some nice mapping to switch syntax (useful if one mixes different languages in one file)
 "nmap ;$ :syntax sync fromstart<cr>
-au FileType * :syntax sync fromstart
+"au FileType * :syntax sync fromstart
+"au FileType * :syntax sync
+"au FileType * :syntax enable
 "Favorite filetypes
 set ffs=unix,dos
 "set ffs=unix

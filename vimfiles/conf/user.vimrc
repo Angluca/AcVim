@@ -392,7 +392,7 @@ au filetype ocen com! -bang -nargs=* -complete=file CC AcRun ocen <args> % -o %:
 au filetype ocen com! -bang -nargs=* -complete=file RR AcRun ocen <args> % -o %:t:r && ./%:t:r
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
 "au filetype nature com! -bang -nargs=* -complete=file TT exe ':AcRun! nature build -o '.(empty(<q-args>)?'%:t:r':<q-args>).' % && ./'.(empty(<q-args>)?'%:t:r':<q-args>)' | exe 'AcSend exit<cr>'
-call AcFtCmd('nature','C','','AcRun nature build <args> -o %:t:r %')
+call AcFtCmd('nature','C','package.toml','AcRun nature build <args> -o %:t:r %')
 au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build <args> % && ./main' | exe 'AcSend exit'
 "let $RUST_BACKTRACE='full'
 "let $RUST_BACKTRACE=1
@@ -639,6 +639,7 @@ au filetype axe call LspAddServer([#{
             "\    args: [],
             "\    syncInit: v:true,
             "\  }])
+
 "au filetype ocen call LspAddServer([#{
             "\    name: 'ocenlsp',
             "\    filetype: ['ocen'],

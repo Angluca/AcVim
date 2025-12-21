@@ -14,7 +14,7 @@ SetFt('*.txt,*.log','txt')
 SetFt('*.asm,*.inc','masm')
 SetFtCmd('masm','setl mp=fasm\ %:p')
 
-SetFt('*.glsl,*.[vf]sh,*.vert,*.frag,*.shd,*.wgsl,*.flecs','rust')
+SetFt('*.glsl,*.[vf]sh,*.vert,*.frag,*.shd,*.wgsl,*.flecs','c')
 SetFt('*.md,*.markdown,README*','markdown')
 SetFt('CMakeLists.txt','cmake')
 SetFt('*.as','actionscript')
@@ -85,6 +85,7 @@ au FileType virgil nmap \== :Maketags vctags **/**/*.v3 tags<cr>
 "au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
 "au FileType virgil nmap \== :!vctags **/**/*.v3<cr>
 SetTags('virgil','','virgil.tags','virgil.rt.tags','virgil.wizeng.tags')
+SetDict('virgil','','virgil.dict','virgil.base.dict')
 
 au FileType adept nmap \== :Mctags $VIMDICT/adept.ctags adept.tags<cr>
 au FileType adept nmap \=- :Mctags $VIMDICT/adept.ctags adept.tags $ADEPT<cr>
@@ -127,8 +128,6 @@ SetDict('squirrel','','squirrel.dict')
 SetDict('lua','','lua.dict')
 SetDict('zig','','zig.dict','zig.base.dict')
 SetDict('hare','','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
-"SetDict('ocen','','ocen.base.dict','ocen.dict','raylib.dict')
-SetDict('virgil','','virgil.dict','virgil.base.dict')
 "}}}
 """""""""""""""""""""""""""""
 " autocomplete setting {{{

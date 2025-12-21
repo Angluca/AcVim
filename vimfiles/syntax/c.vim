@@ -45,6 +45,7 @@ syn match   cType       '\v<float([234](x[234])?)?>'
 syn match   cType       '\v<[dbui]?vec[234]>'
 syn match   cType       '\v<vec[234][dbfhui]?>'
 syn match   cType       '\v<mat[234](x[234]f)?>'
+syn match   Keyword     '\v^<(in|out)>'
 
 "syn keyword Keyword struct enum union nextgroup=cTypedef skipwhite skipempty
 hi def link cFunc Function
@@ -297,7 +298,7 @@ if exists("c_gnu")
   syn keyword	cStorageClass	inline __inline__
   syn keyword	cStorageClass	__restrict__ __volatile__ __noreturn__
 endif
-syn keyword	cType		int long short char void i8 i16 i32 i64 u8 u16 u32 u64 isize usize
+syn keyword	cType		void int long short char void i8 i16 i32 i64 u8 u16 u32 u64 isize usize
 syn keyword	cType		signed unsigned float double f32 f64
 if !exists("c_no_ansi") || exists("c_ansi_typedefs")
   syn keyword   cType		size_t ssize_t off_t wchar_t ptrdiff_t sig_atomic_t fpos_t
@@ -563,8 +564,8 @@ hi def link cSymbol Changed
 hi def link cFunction Function
 "hi def link cTypedef Identifier
 
-syn match PreProc        '\#.*$'
-syn match PreProc        '[@]'
+syn match Macro          '\#.*$'
+syn match Macro          '[@].*$'
 syn match cSymbol        '[,;:\.]'
 syn match SpecialComment '[`]'
 syn match cConstant      '[{}\[\]()]'
