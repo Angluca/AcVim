@@ -559,7 +559,7 @@ au filetype zig call LspAddServer([#{
 au FileType rust call LspAddServer([{
       \ 'name': 'rust-analyzer',
       \ 'filetype': ['rust'],
-      \ 'path': exepath('rust-analyzer'),
+      \ 'path': exepath('_rust-analyzer'),
       \ 'args': [],
       \ 'rootSearch': ['Cargo.toml', 'rust-project.json'],
       \ 'syncInit': v:true,
@@ -620,25 +620,17 @@ au filetype d call LspAddServer([#{
             \    path: 'serve-d',
             \  }])
 
-au filetype nature call LspAddServer([#{
-            \    name: 'nature',
-            \    filetype: ['nature'],
-            \    path: 'nls',
-            \  }])
+"au filetype nature call LspAddServer([#{
+            "\    name: 'nature',
+            "\    filetype: ['nature'],
+            "\    path: 'nls',
+            "\  }])
 
 au filetype axe call LspAddServer([#{
             \    name: 'axe',
             \    filetype: ['axe'],
             \    path: 'axels',
             \  }])
-
-"au filetype virgil call LspAddServer([#{
-            "\    name: 'virgil',
-            "\    filetype: ['virgil'],
-            "\    path: 'virgil-lsp',
-            "\    args: [],
-            "\    syncInit: v:true,
-            "\  }])
 
 "au filetype ocen call LspAddServer([#{
             "\    name: 'ocenlsp',
@@ -652,6 +644,15 @@ au filetype axe call LspAddServer([#{
             "\    filetype: ['vlang', 'v'],
             "\    path: 'vls',
             "\  }])
+            
+"au filetype virgil call LspAddServer([#{
+            "\    name: 'virgil',
+            "\    filetype: ['virgil'],
+            "\    path: 'virgil-lsp',
+            "\    args: [],
+            "\    syncInit: v:true,
+            "\  }])
+
 
 setl omnifunc=LspOmniFunc
 "setlocal completefunc=LspOmniFunc
