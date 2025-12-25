@@ -521,6 +521,13 @@ au filetype c,cpp call LspAddServer([#{
             \    args: ['--background-index']
             \  }])
 
+au filetype quark call LspAddServer([#{
+            \    name: 'quark',
+            \    filetype: ['quark'],
+            \    path: 'clangd',
+            \    args: ['--background-index']
+            \  }])
+
 "au filetype c2 call LspAddServer([#{
             "\    name: 'clangd',
             "\    filetype: ['c', 'cpp', 'c2'],

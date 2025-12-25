@@ -37,7 +37,6 @@ SetFt('*.adept','adept')
 SetFt('*.um','ocen')
 SetFt('*.wren','ocen')
 SetFt('*.c3','c2')
-SetFt('*.qk','c')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
