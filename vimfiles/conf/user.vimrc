@@ -424,6 +424,9 @@ call AcFtCmd('axe','TT','axe.mod','AcRun axe % <args> -r -q')
 call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
 call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
 
+au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r' | exe 'AcSend exit'
+au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r && ./%:t:r' | exe 'AcSend exit'
+call AcFtCmd('quark','C','makefile','AcRun make <args>')
 au filetype adept com! -bang -nargs=* -complete=file Make AcRun adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file Run AcRun adept -e <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file TT AcRun tester <args> %:p
@@ -491,19 +494,33 @@ smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 """"""""""""""""""""
 "lsp {{{
 """"""""""""""""""""
+com! -nargs=+ GotoRead call GotoRead<args> "{{{
+fu! GotoRead(cmd) abort
+	let l:bnr = bufnr('%')
+	exe a:cmd
+	if bufnr('%') != l:bnr
+		setl readonly nomodifiable
+	endif
+endf "}}}
+
 "set keywordprg=:LspHover
 nmap <buffer> ;tL <Cmd>LspOutline<cr>
 nmap <buffer> K <Cmd>LspHover<cr>
 nmap <silent> <space>k <Cmd>LspHover<cr>
 "nmap <c-]> <Cmd>LspGotoDefinition<CR>
 "nmap <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
-nmap ge <Cmd>LspGotoDefinition<CR>
-nmap ga <Cmd>LspGotoDeclaration<CR>
+"nmap ge <Cmd>LspGotoDefinition<CR>
+"nmap ge <Cmd>silent! :let bnr = bufnr('%') \| LspGotoDefinition \| if bufnr('%') != bnr \| setlocal readonly nomodifiable \| endif<CR>
+nmap ge :GotoRead('LspGotoDefinition')<CR>
+"nmap ga <Cmd>LspGotoDeclaration<CR>
+nmap ga :GotoRead('LspGotoDeclaration')<CR>
 "nmap ge <Cmd>LspPeekDeclaration<CR>
 "nmap gE <Cmd>LspPeekDefinition<CR>
 "nmap <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
-nmap gi <Cmd>LspGotoImpl<CR>
-nmap gt <Cmd>LspGotoTypeDef<CR>
+"nmap gi <Cmd>LspGotoImpl<CR>
+nmap gi :GotoRead('LspGotoImpl')<CR>
+"nmap gt <Cmd>LspGotoTypeDef<CR>
+nmap gt :GotoRead('LspGotoTypeDef')<CR>
 "nmap gi <Cmd>LspPeekImpl<CR>
 "nmap gt <Cmd>LspPeekTypeDef<CR>
 nmap g[ <Cmd>LspDiagPrev<CR>
