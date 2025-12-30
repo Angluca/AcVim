@@ -102,7 +102,8 @@ endif #==============================
 #endif #==============================
 
 run: 
-	@make && $(APP)
+	@make 
+	@cd ./$(APP_DIR) && ./$(APP_NAME)
 
 clean:
 	rm -rf $(APP) $(APP_DIR)/build/**

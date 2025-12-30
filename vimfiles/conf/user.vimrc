@@ -376,8 +376,8 @@ call AcFtCmdEx('c,cpp','CC','cex.h','AcRun ./cex app build <args>', 'myapp')
 call AcFtCmdEx('c,cpp','CD','cex.h','AcRun ./cex app debug <args>', 'myapp')
 call AcFtCmdEx('c,cpp','RR','cex.h','AcRun ./cex app run <args>', 'myapp')
 call AcFtCmdEx('c,cpp','XX','cex.h','AcRun ./cex app clean <args>', 'myapp')
-"au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
-"au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
+au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 "au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
 au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %
@@ -401,10 +401,12 @@ let $MAKEPAD='lines'
 "--show-output 测试里显示更多内容
 call AcFtCmd('rust','RD','Cargo.toml','AcRun cargo +nightly run <args>')
 call AcFtCmd('rust','BD','Cargo.toml','AcRun cargo +nightly build <args>')
-call AcFtCmd('rust','RE','Cargo.toml','AcRun cargo run <args> --release')
-call AcFtCmd('rust','R','Cargo.toml','AcRun cargo run <args>')
+call AcFtCmd('rust','RE','Cargo.toml','AcRun cargo run --example=%:t:r <args> --release')
+call AcFtCmd('rust','RD','Cargo.toml','AcRun cargo run <args>')
+call AcFtCmd('rust','R','Cargo.toml','AcRun cargo run <args> --release')
 call AcFtCmd('rust','T','Cargo.toml','AcRun cargo test <args>')
-call AcFtCmd('rust','B','Cargo.toml','AcRun cargo build <args>')
+call AcFtCmd('rust','BD','Cargo.toml','AcRun cargo build <args>')
+call AcFtCmd('rust','B','Cargo.toml','AcRun cargo build <args> --release')
 call AcFtCmd('rust','E','Cargo.toml','AcRun cargo check <args>')
 call AcFtCmd('rust','C','Cargo.toml','AcRun cargo <args>')
 call AcFtCmd('rust','XX','Cargo.toml','AcRun cargo clean <args>')
@@ -595,13 +597,14 @@ au FileType rust call LspAddServer([{
       \             'features': [], 
       \             'allTargets': v:false,
       \             'buildScripts': {'enable': v:false},
+      \             'loadOutDirsFromCheck': v:false,
       \             'noDefaultFeatures': v:true,
       \             'noDeps': v:true,
       \             'target': '',
       \         },
       \         'cachePriming': { 'enable': v:false },
       \         'procMacro': { 'enable': v:false },
-      \         'checkOnSave': { 'enable': v:false },
+      \         'checkOnSave': { 'enable': v:false, 'command': 'clippy' },
       \         'imports': { 'group': { 'enable': v:false } },
       \         'hover': { 'enable': v:true, 'documentation.enable': v:false },
       \         'inlayHints': { 'enable': v:false },
