@@ -682,8 +682,8 @@ au filetype axe call LspAddServer([#{
 
 
 setl omnifunc=LspOmniFunc
-"setlocal completefunc=LspOmniFunc
-"setlocal tagfunc=LspOmniFunc
+"setl completefunc=LspOmniFunc
+"setl tagfunc=LspOmniFunc
 au filetype * call LspOptionsSet(#{
         \   outlineOnRight: v:true,
         \   outlineWinSize: 30,

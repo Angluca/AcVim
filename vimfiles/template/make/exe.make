@@ -1,20 +1,17 @@
-CXX = g++
+CC= gcc
 
-TARGET =  REPLACE
+TARGET:=  myapp
 
-C_FLAGS += -g -Wall 
+CFLAGS:= -g -Wall 
 
-LIB_FLAGS = -pthread 
+LDFLAGS:= -pthread 
 
 all: $(TARGET)
 
-REPLACE:  REPLACE.o
-	$(CXX) -o $@ $^  $(LIB_FLAGS) $(LIB) $(C_FLAGS)
-
-.cpp.o:
-	$(CXX) -c -o $*.o $(INC) $(C_FLAGS) $*.cpp
-.cc.o:
-	$(CXX) -c -o $*.o $(INC) $(C_FLAGS) $*.cc
+$(TARGET):  $(TARGET).o
+	$(CC) -o $@ $^  $(LDFLAGS) $(CFLAGS)
+cc:
+	$(CC) -c -o $*.o $(CFLAGS) $*.c
 
 
 clean:
