@@ -9,8 +9,8 @@ LDFLAGS:=
 #-- allegro5 ----
 CFLAGS+= -I../../allegro5/include
 LDFLAGS+= -L../../allegro5/lib 
-LDFLAGS+= -lallegro_main-static -lallegro_image-static -lallegro_primitives-static -lallegro_color-static -lallegro-static  -lallegro_font-static
-LDFLAGS+= -lpng -lwebp -ljpeg
+LDFLAGS+= -lallegro_main-static -lallegro_image-static -lallegro_primitives-static -lallegro_color-static -lallegro-static  -lallegro_font-static -lallegro_dialog-static -lallegro_audio-static -lallegro_acodec-static
+LDFLAGS+= -lpng -lwebp -ljpeg -lFLAC -lvorbisfile -lvorbis -logg -lopusfile -lopus
 #---------------------------------
 LIB_DIR:= lib
 APP_NAME:= mytest
@@ -37,6 +37,9 @@ FRAMEWORKS= -framework Cocoa \
 			-framework OpenGL \
 			-framework AudioToolbox \
 			-framework IOKit \
+			-framework OpenAL \
+			-framework CoreAudio \
+			-framework UniformTypeIdentifiers \
 			-framework Carbon
 #------------------------------------
 LDFLAGS+= $(FRAMEWORKS)
