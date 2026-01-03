@@ -380,18 +380,18 @@ au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 "au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 "au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
-au filetype nim com! -bang -nargs=* -complete=file TT AcRun nim r <args> %
-au filetype nim com! -bang -nargs=* -complete=file CC AcRun nim <args> %
-au filetype nim com! -bang -nargs=* -complete=file NN AcRun nimble <args>
+au filetype nim com! -bang -nargs=* -complete=file T AcRun nim r <args> %
+au filetype nim com! -bang -nargs=* -complete=file C AcRun nim <args> %
+au filetype nim com! -bang -nargs=* -complete=file N AcRun nimble <args>
 au filetype zig com! -bang -nargs=* -complete=file CC AcRun zig <args> %
 au filetype zig com! -bang -nargs=* -complete=file C AcRun zig <args>
-au filetype d com! -bang -nargs=* -complete=file CC AcRun dmd <args> %
-au filetype d com! -bang -nargs=* -complete=file DD AcRun dub <args>
-au filetype hare com! -bang -nargs=* -complete=file CC AcRun hare <args> %
-au filetype ocen com! -bang -nargs=* -complete=file CC AcRun ocen <args> % -o %:t:r
-au filetype ocen com! -bang -nargs=* -complete=file RR AcRun ocen <args> % -o %:t:r && ./%:t:r
+au filetype d com! -bang -nargs=* -complete=file C AcRun dmd <args> %
+au filetype d com! -bang -nargs=* -complete=file D AcRun dub <args>
+au filetype hare com! -bang -nargs=* -complete=file C AcRun hare <args> %
+au filetype ocen com! -bang -nargs=* -complete=file C AcRun ocen % <args> -o %:t:r
+au filetype ocen com! -bang -nargs=* -complete=file R AcRun ocen % <args> -r -o %:t:r
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
-"au filetype nature com! -bang -nargs=* -complete=file TT exe ':AcRun! nature build -o '.(empty(<q-args>)?'%:t:r':<q-args>).' % && ./'.(empty(<q-args>)?'%:t:r':<q-args>)' | exe 'AcSend exit<cr>'
+
 call AcFtCmd('nature','C','package.toml','AcRun nature build <args> -o %:t:r %')
 au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build <args> % && ./main' | exe 'AcSend exit'
 "let $RUST_BACKTRACE='full'

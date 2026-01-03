@@ -75,8 +75,9 @@ SetDict('c2','','c2.base.dict')
 
 au FileType ocen nmap \== :Mctags $VIMDICT/ocen.ctags ocen.tags<cr>
 au FileType ocen nmap \=- :Mctags $VIMDICT/ocen.ctags ocen.tags $OCEN_ROOT<cr>
-au FileType ocen let $OCEN_RAYLIB = $HOME.'/SDK/Ocens/raylib-ocen/c/include'
-SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
+au FileType ocen let $OCEN_RAYLIB = $HOME.'/SDK/Ocens/rylib-ocen/c/include'
+"SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
+SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags')
 "SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
 SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.base.dict')
 
