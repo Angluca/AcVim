@@ -101,6 +101,15 @@ let g:tagbar_type_ocen = {
     \ ],
     \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/ocen.ctags'
     \ }
+let g:tagbar_type_dither = {
+    \ 'ctagstype' : 'dither',
+    \ 'kinds'     : [
+    \ 'f:func:0:1',
+    \ 'v:var:0:1',
+    \ 't:type:1:0',
+    \ ],
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/dither.ctags'
+    \ }
 let g:tagbar_type_c2 = {
     \ 'ctagstype' : 'c2',
     \ 'kinds'     : [
@@ -362,24 +371,24 @@ endf
 "au filetype c,cpp com! -bang -nargs=* -complete=file TT 
       "\ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
       "\ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test run '.(empty(<q-args>)?'%':<q-args>) | endif
-call AcFtCmd('c,cpp','H','cex.h','AcRun ./cex help <args>')
-call AcFtCmd('c,cpp','E','cex.h','AcRun ./cex <args>')
-call AcFtCmd('c,cpp','T','cex.h','AcRun ./cex test <args>')
-call AcFtCmd('c,cpp','F','cex.h','AcRun ./cex fuzz <args>')
-call AcFtCmd('c,cpp','G','cex.h','AcRun ./cex libfetch <args>')
-call AcFtCmd('c,cpp','C','cex.h','AcRun ./cex app <args>')
-call AcFtCmd('c,cpp','CEXc','cex.h','!cc ./cex.c -o cex')
-call AcFtCmd('c,cpp','CEXh','cex.h','!cc -D CEX_NEW -x c ./cex.h -o cex && ./cex')
-call AcFtCmdEx('c,cpp','TT','cex.h','AcRun ./cex test run', '%')
-call AcFtCmdEx('c,cpp','TD','cex.h','AcRun ./cex test debug', '%')
-call AcFtCmdEx('c,cpp','CC','cex.h','AcRun ./cex app build <args>', 'myapp')
-call AcFtCmdEx('c,cpp','CD','cex.h','AcRun ./cex app debug <args>', 'myapp')
-call AcFtCmdEx('c,cpp','RR','cex.h','AcRun ./cex app run <args>', 'myapp')
-call AcFtCmdEx('c,cpp','XX','cex.h','AcRun ./cex app clean <args>', 'myapp')
+"call AcFtCmd('c,cpp','H','cex.h','AcRun ./cex help <args>')
+"call AcFtCmd('c,cpp','E','cex.h','AcRun ./cex <args>')
+"call AcFtCmd('c,cpp','T','cex.h','AcRun ./cex test <args>')
+"call AcFtCmd('c,cpp','F','cex.h','AcRun ./cex fuzz <args>')
+"call AcFtCmd('c,cpp','G','cex.h','AcRun ./cex libfetch <args>')
+"call AcFtCmd('c,cpp','C','cex.h','AcRun ./cex app <args>')
+"call AcFtCmd('c,cpp','CEXc','cex.h','!cc ./cex.c -o cex')
+"call AcFtCmd('c,cpp','CEXh','cex.h','!cc -D CEX_NEW -x c ./cex.h -o cex && ./cex')
+"call AcFtCmdEx('c,cpp','TT','cex.h','AcRun ./cex test run', '%')
+"call AcFtCmdEx('c,cpp','TD','cex.h','AcRun ./cex test debug', '%')
+"call AcFtCmdEx('c,cpp','CC','cex.h','AcRun ./cex app build <args>', 'myapp')
+"call AcFtCmdEx('c,cpp','CD','cex.h','AcRun ./cex app debug <args>', 'myapp')
+"call AcFtCmdEx('c,cpp','RR','cex.h','AcRun ./cex app run <args>', 'myapp')
+"call AcFtCmdEx('c,cpp','XX','cex.h','AcRun ./cex app clean <args>', 'myapp')
 au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
-"au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
-"au filetype c,cpp com! -bang -nargs=* -complete=file CR AcRun gcc <args> %:p -o %:t:r && ./%:t:r
+au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
+au filetype c,cpp com! -bang -nargs=* -complete=file RR AcRun gcc <args> %:p -r -o %:t:r
 au filetype nim com! -bang -nargs=* -complete=file T AcRun nim r <args> %
 au filetype nim com! -bang -nargs=* -complete=file C AcRun nim <args> %
 au filetype nim com! -bang -nargs=* -complete=file N AcRun nimble <args>
@@ -425,6 +434,8 @@ call AcFtCmd('axe','TC','axe.mod','AcRun axe % <args> --syntax-check')
 call AcFtCmd('axe','TT','axe.mod','AcRun axe % <args> -r -q')
 call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
 call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
+call AcFtCmd('dither','T','makefile','AcRun dither <args> -x %')
+call AcFtCmd('dither','C','makefile','AcRun dither <args> %')
 
 au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r' | exe 'AcSend exit'
 au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r && ./%:t:r' | exe 'AcSend exit'
@@ -547,6 +558,20 @@ au filetype quark call LspAddServer([#{
             \    args: ['--background-index']
             \  }])
 
+au filetype dither call LspAddServer([#{
+            \    name: 'dither',
+            \    filetype: ['dither'],
+            \    path: 'clangd',
+            \    args: ['--background-index']
+            \  }])
+
+au filetype ocen call LspAddServer([#{
+            \    name: 'ocen',
+            \    filetype: ['ocen'],
+            \    path: 'clangd',
+            \    args: ['--background-index']
+            \  }])
+
 "au filetype c2 call LspAddServer([#{
             "\    name: 'clangd',
             "\    filetype: ['c', 'cpp', 'c2'],
@@ -660,10 +685,10 @@ au filetype axe call LspAddServer([#{
             \  }])
 
 "au filetype ocen call LspAddServer([#{
-            "\    name: 'ocenlsp',
+            "\    name: 'ocen',
             "\    filetype: ['ocen'],
             "\    path: 'ocen',
-            "\    args: ['lsp-server'],
+            "\    args: ['lsp-server']
             "\  }])
 
 "au filetype v call LspAddServer([#{

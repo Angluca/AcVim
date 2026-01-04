@@ -22,8 +22,7 @@ SetFt('*.mxml','mxml')
 SetFt('*.make','make')
 SetFt('*.p','pawn')
 SetFt('*.mm','objc')
-SetFt('*.nut','squirrel')
-SetFtCmd('squirrel','setl mp=sq\ %:p')
+SetFt('*.nut','squirrel|setl mp=sq\ %:p')
 SetFtCmd('squirrel','setl efm=%f:%l:%m')
 SetFt('*.gd','gdscript')
 SetFt('*.tic','lua')
@@ -31,11 +30,9 @@ SetFt('*.wxml','html') "weixin
 SetFt('*.wxss','css')  "wx
 SetFt('*.nim,*.nims,*.nimble,*.c2nim','nim')
 SetFt('*.zig','zig')
-SetFt('*.oc,*.td','ocen')
 SetFt('*.lita,*.ape','litac') 
 SetFt('*.adept','adept')
-SetFt('*.um','ocen')
-SetFt('*.wren','ocen')
+SetFt('*.um,*.td,*.wren','ocen')
 SetFt('*.c3','c2')
 
 " automaticlly remove trailing whitespace
@@ -51,6 +48,11 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .<cr>
 "au FileType hare let $HARELIB = $HOME.'/SDK/Hares/_hare/src/hare/stdlib'
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
+
+au FileType dither nmap \== :Mctags $VIMDICT/dither.ctags dither.tags<cr>
+au FileType dither nmap \=- :Mctags $VIMDICT/dither.ctags dither.tags $DITHER_ROOT<cr>
+"SetTags('dither','','dither.tags')
+"SetDict('dither','','dither.dict')
 
 au FileType nature nmap \== :Mctags $VIMDICT/nature.ctags nature.tags<cr>
 au FileType nature nmap \=- :Mctags $VIMDICT/nature.ctags nature.tags $NATURE_STD<cr>
@@ -76,10 +78,10 @@ SetDict('c2','','c2.base.dict')
 au FileType ocen nmap \== :Mctags $VIMDICT/ocen.ctags ocen.tags<cr>
 au FileType ocen nmap \=- :Mctags $VIMDICT/ocen.ctags ocen.tags $OCEN_ROOT<cr>
 au FileType ocen let $OCEN_RAYLIB = $HOME.'/SDK/Ocens/rylib-ocen/c/include'
-"SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags','raylib.tags')
-SetTags('ocen','$VIM/bundle/ocen.vim/tags/','ocen.tags')
-"SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.dict','ocen.base.dict','raylib.dict')
-SetDict('ocen','$VIM/bundle/ocen.vim/tags/','ocen.base.dict')
+"SetTags('ocen','$VIM/bundle/ocen.vim/tags','ocen.tags','raylib.tags')
+SetTags('ocen','$VIM/bundle/ocen.vim/tags','ocen.tags')
+"SetDict('ocen','$VIM/bundle/ocen.vim/tags','ocen.dict','ocen.base.dict','raylib.dict')
+SetDict('ocen','$VIM/bundle/ocen.vim/tags','ocen.base.dict')
 
 au FileType virgil nmap \== :Maketags vctags **/**/*.v3 tags<cr>
 "au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
@@ -90,8 +92,8 @@ SetDict('virgil','','virgil.dict','virgil.base.dict')
 au FileType adept nmap \== :Mctags $VIMDICT/adept.ctags adept.tags<cr>
 au FileType adept nmap \=- :Mctags $VIMDICT/adept.ctags adept.tags $ADEPT<cr>
 au FileType adept let $ADEPT = $HOME.'/SDK/Adepts/_bin/import'
-SetTags('adept','$VIM/bundle/adept.vim/tags/','adept.tags')
-SetDict('adept','$VIM/bundle/adept.vim/tags/','adept.dict','adept.base.dict')
+SetTags('adept','$VIM/bundle/adept.vim/tags','adept.tags')
+SetDict('adept','$VIM/bundle/adept.vim/tags','adept.dict','adept.base.dict')
 
 au FileType rust nmap \== :Maketags ctags --languages=Rust\ --exclude=LICENSE\ --exclude=\*.tags\ --exclude=\*.md\ --exclude=\*.txt\ --exclude=\*.toml\ --exclude=\*.lock\ --exclude=\*.ron\ --exclude=target/\*\ --exclude=examples/\*\ --exclude=code_editor/\*\ --exclude=studio/\*\ --exclude=tools/\*\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
 au FileType rust nmap \00 :Mctags $VIMDICT/rust.makepad.dsl.ctags rust.makepad.dsl.tags $MAKEPAD_<cr>

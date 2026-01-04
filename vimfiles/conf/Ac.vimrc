@@ -108,6 +108,7 @@ fu! s:fmtTags(rd='',only_add_path=0)
         return
     endif
 
+    exe '%s/\v^.*\sdither\s.*$\n//ge'
     exe '%s/^.*LICENSE.*$\n//ge'
     exe '%s/^.\{,1}\s.*$\n//ge'
     exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
