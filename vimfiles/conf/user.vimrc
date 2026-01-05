@@ -434,8 +434,12 @@ call AcFtCmd('axe','TC','axe.mod','AcRun axe % <args> --syntax-check')
 call AcFtCmd('axe','TT','axe.mod','AcRun axe % <args> -r -q')
 call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
 call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
+
 call AcFtCmd('dither','T','makefile','AcRun dither <args> -x %')
 call AcFtCmd('dither','C','makefile','AcRun dither <args> %')
+call AcFtCmd('dither','Chtml','makefile','AcRun dither <args> -t html -o %:p:r.html %')
+call AcFtCmd('dither','Cc','makefile','AcRun dither <args> -t c -o %:p:r.c %')
+call AcFtCmd('dither','Cjs','makefile','AcRun dither <args> -t c -o %:p:r.js %')
 
 au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r' | exe 'AcSend exit'
 au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r && ./%:t:r' | exe 'AcSend exit'
