@@ -572,6 +572,13 @@ au filetype ocen call LspAddServer([#{
             \    args: ['--background-index']
             \  }])
 
+"au filetype ocen call LspAddServer([#{
+            "\    name: 'ocen',
+            "\    filetype: ['ocen'],
+            "\    path: 'ocen',
+            "\    args: ['lsp-server']
+            "\  }])
+
 "au filetype c2 call LspAddServer([#{
             "\    name: 'clangd',
             "\    filetype: ['c', 'cpp', 'c2'],
@@ -683,13 +690,6 @@ au filetype axe call LspAddServer([#{
             \    filetype: ['axe'],
             \    path: 'axels',
             \  }])
-
-"au filetype ocen call LspAddServer([#{
-            "\    name: 'ocen',
-            "\    filetype: ['ocen'],
-            "\    path: 'ocen',
-            "\    args: ['lsp-server']
-            "\  }])
 
 "au filetype v call LspAddServer([#{
             "\    name: 'vls',
