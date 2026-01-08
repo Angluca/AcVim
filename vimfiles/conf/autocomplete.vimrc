@@ -49,6 +49,9 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .<cr>
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
+au FileType valk nmap \== :Mctags $VIMDICT/valk.ctags valk.tags<cr>
+au FileType valk nmap \=- :Mctags $VIMDICT/valk.ctags valk.tags $VALK_ROOT<cr>
+
 au FileType dither nmap \== :Mctags $VIMDICT/dither.ctags dither.tags<cr>
 au FileType dither nmap \=- :Mctags $VIMDICT/dither.ctags dither.tags $DITHER_ROOT<cr>
 "SetTags('dither','','dither.tags')

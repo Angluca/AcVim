@@ -569,19 +569,26 @@ au filetype dither call LspAddServer([#{
             \    args: ['--background-index']
             \  }])
 
-"au filetype ocen call LspAddServer([#{
-            "\    name: 'ocen',
-            "\    filetype: ['ocen'],
-            "\    path: 'clangd',
-            "\    args: ['--background-index']
-            "\  }])
+au filetype valk call LspAddServer([#{
+            \    name: 'valk',
+            \    filetype: ['valk'],
+            \    path: 'valk',
+            \    args: ['lsp','run']
+            \  }])
 
 au filetype ocen call LspAddServer([#{
             \    name: 'ocen',
             \    filetype: ['ocen'],
-            \    path: 'ocen',
-            \    args: ['lsp-server']
+            \    path: 'clangd',
+            \    args: ['--background-index']
             \  }])
+
+"au filetype ocen call LspAddServer([#{
+            "\    name: 'ocen',
+            "\    filetype: ['ocen'],
+            "\    path: 'ocen',
+            "\    args: ['lsp-server']
+            "\  }])
 
 "au filetype c2 call LspAddServer([#{
             "\    name: 'clangd',
