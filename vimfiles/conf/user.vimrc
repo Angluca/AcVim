@@ -110,6 +110,18 @@ let g:tagbar_type_dither = {
     \ ],
     \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/dither.ctags'
     \ }
+let g:tagbar_type_valk = {
+    \ 'ctagstype' : 'valk',
+    \ 'kinds'     : [
+    \ 'm:macro:0:1',
+    \ 't:type:0:1',
+    \ 'e:enum:0:1',
+    \ 'f:func:0:1',
+    \ 'v:var:1:0',
+    \ ],
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/valk.ctags'
+    \ }
+
 let g:tagbar_type_c2 = {
     \ 'ctagstype' : 'c2',
     \ 'kinds'     : [
@@ -437,9 +449,21 @@ call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
 
 call AcFtCmd('dither','T','makefile','AcRun dither <args> -x %')
 call AcFtCmd('dither','C','makefile','AcRun dither <args> %')
-call AcFtCmd('dither','Chtml','makefile','AcRun dither <args> -t html -o %:p:r.html %')
-call AcFtCmd('dither','Cc','makefile','AcRun dither <args> -t c -o %:p:r.c %')
-call AcFtCmd('dither','Cjs','makefile','AcRun dither <args> -t c -o %:p:r.js %')
+call AcFtCmd('dither','Chtml','makefile','AcRun dither <args> -t html -o %:p:r:~.html %')
+call AcFtCmd('dither','Cc','makefile','AcRun dither <args> -t c -o %:p:r:~.c %')
+call AcFtCmd('dither','Cjs','makefile','AcRun dither <args> -t c -o %:p:r:~.js %')
+
+call AcFtCmd('valk','TT','valk.json','AcRun valk build -t -v <args> %')
+call AcFtCmd('valk','T','valk.json','AcRun valk build -t <args> %')
+call AcFtCmd('valk','CR','valk.json','AcRun valk build -r <args> % -o %:p:r:~')
+call AcFtCmd('valk','C','valk.json','AcRun valk build <args> % -o %:p:r:~')
+call AcFtCmd('valk','R','valk.json','AcRun valk build -r <args> %')
+call AcFtCmd('valk','V','valk.json','AcRun valk <args> %')
+call AcFtCmd('valk','XX','valk.json','AcRun valk build -c <args> %')
+call AcFtCmd('valk','D','valk.json','AcRun valk doc %:p:h:~ --no-private <args>')
+call AcFtCmd('valk','DD','valk.json','AcRun valk doc %:p:h:~ --no-private --markdown <args>')
+call AcFtCmd('valk','Do','valk.json','AcRun valk doc %:p:h:~ --no-private -o %:p:r:~.json <args>')
+call AcFtCmd('valk','DDo','valk.json','AcRun valk doc %:p:h:~ --no-private --markdown -o %:p:r:~.md <args>')
 
 au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r' | exe 'AcSend exit'
 au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r && ./%:t:r' | exe 'AcSend exit'

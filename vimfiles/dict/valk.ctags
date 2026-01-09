@@ -16,11 +16,11 @@
 --exclude=headers/macos/*
 --exclude=headers/win/*
 --regex-valk=/^@\w+\s+(\w+)/\1/t,type/
---regex-valk=/\s*alias\s+(\w+)/\1/t,type/
+--regex-valk=/alias\s+(\w+)/\1/t,type/
 --regex-valk=/global\s+(\w+)/\1/t,type/
 --regex-valk=/shared\s+(\w+)/\1/t,type/
 --regex-valk=/fn\s+(\w+)/\1/f,func/
---regex-valk=/value\s+(\w+)/\1/e,enum/
+--regex-valk=/^(\s*[+-]\s*)?value\s+(\w+)/\2/e,enum/
 --regex-valk=/pointer\s+(\w+)/\1/t,type/
 --regex-valk=/^\s*type\s+(\w+)/\1/t,type/
 --regex-valk=/class\s+(\w+)/\1/t,type/
