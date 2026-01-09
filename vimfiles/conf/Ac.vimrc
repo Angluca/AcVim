@@ -733,7 +733,10 @@ if has("gui_running")
 else
     nmap <m-d> :sp<cr>
     nmap <m-D> :vs<cr>
-endif " has
+endif
+"-- template copy :Template sh/build.sh
+com! -nargs=+ Template :!cp $VIM/template/<args> %:p:h
+
 "}}}
 "---------------------------------
 " %s/u+\(.*\)/\=nr2char("0x"..submatch(1))/ge " u+n2unicode
