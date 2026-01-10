@@ -366,20 +366,16 @@ nmap <space>r :AcSend
 nmap <space>r :AcRun 
 nmap <space>R :AcRun! 
 com! -nargs=+ AcFtCmd call s:AcFtCmd(<f-args>)
-fu! AcFtCmd(ft,key,file,cmd) abort
-    exe 'au FileType '.a:ft.' com! -bang -nargs=* -complete=file '.a:key.' ' .
-    \ 'let r=fnamemodify(findfile("'.a:file.'",".;"),":h") | if !empty(r) | exe "lcd " . r | exe "'.a:cmd.' " | endif'
-endf
-com! -nargs=+ AcFtCmdEx call s:AcFtCmdEx(<f-args>)
-fu! AcFtCmdEx(ft,key,file,cmd, ...) abort
-    let l:args = ''
-    for s in a:000
-        let l:args = l:args .' ' . s
+fu! AcFtCmd(ft,key,file,cmd, ...) abort
+    let l:cmds = 'au FileType '.a:ft.' com! -bang -nargs=* -complete=file '.a:key.' ' .
+    \ 'let r=fnamemodify(findfile('. string(a:file) .',".;"),":h") | if !empty(r) | exe "lcd " . r | exe '. string(a:cmd) .' | endif'
+    for c in a:000
+        let l:cmds .= " | ". c
     endfor
-    let l:cmd = a:cmd . ' ' . l:args
-    call AcFtCmd(a:ft, a:key, a:file, l:cmd)
+    exe l:cmds
 endf
 "--------------------------------------
+call AcFtCmd('*','Make','Makefile','AcRun make <args>')
 "au filetype c,cpp com! -bang -nargs=* -complete=file TT 
       "\ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
       "\ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test run '.(empty(<q-args>)?'%':<q-args>) | endif
@@ -397,7 +393,6 @@ endf
 "call AcFtCmdEx('c,cpp','CD','cex.h','AcRun ./cex app debug <args>', 'myapp')
 "call AcFtCmdEx('c,cpp','RR','cex.h','AcRun ./cex app run <args>', 'myapp')
 "call AcFtCmdEx('c,cpp','XX','cex.h','AcRun ./cex app clean <args>', 'myapp')
-au filetype c,cpp com! -bang -nargs=* -complete=file Make AcRun make <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 au filetype c,cpp com! -bang -nargs=* -complete=file RR AcRun gcc <args> %:p -r -o %:t:r
@@ -465,31 +460,31 @@ call AcFtCmd('valk','DD','valk.json','AcRun valk doc %:p:h:~ --no-private --mark
 call AcFtCmd('valk','Do','valk.json','AcRun valk doc %:p:h:~ --no-private -o %:p:r:~.json <args>')
 call AcFtCmd('valk','DDo','valk.json','AcRun valk doc %:p:h:~ --no-private --markdown -o %:p:r:~.md <args>')
 
-au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r' | exe 'AcSend exit'
-au filetype quark com! -bang -nargs=* -complete=file T exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r && ./%:t:r' | exe 'AcSend exit'
-call AcFtCmd('quark','C','makefile','AcRun make <args>')
-au filetype adept com! -bang -nargs=* -complete=file Make AcRun adept <args> %:p
-au filetype adept com! -bang -nargs=* -complete=file Run AcRun adept -e <args> %:p
+call AcFtCmd('quark','C','','AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' <args>', 'AcSend exit')
+call AcFtCmd('quark','TT','','AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' <args> && gcc %:t:r.c -o %:t:r && ./%:t:r', 'AcSend exit')
+call AcFtCmd('quark','T','','AcRun qc % -l '.$QUARK_ROOT.' <args>')
+"au filetype quark com! -bang -nargs=* -complete=file TT exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r && ./%:t:r' | exe 'AcSend exit'
+au filetype adept com! -bang -nargs=* -complete=file CC AcRun adept <args> %:p
+au filetype adept com! -bang -nargs=* -complete=file RR AcRun adept -e <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file TT AcRun tester <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file CC AcRun c2c <args> %:p
 au filetype c2 com! -bang -nargs=* -complete=file CT AcRun c2c --test <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file Make AcRun c2c <args>
-au filetype c2 com! -bang -nargs=* -complete=file Run AcRun c2c <args> && ./run
+au filetype c2 com! -bang -nargs=* -complete=file CR AcRun c2c <args> && ./run
+au filetype c2 com! -bang -nargs=* -complete=file C AcRun c2c <args>
 au filetype c2 com! -bang -nargs=* -complete=file Test AcRun c2c --test <args>
-au filetype c3 com! -bang -nargs=* -complete=file Make AcRun c3c compile <args> %:p
-au filetype litac com! -bang -nargs=* -complete=file Make AcRun litac -disableLine <args> %:p -o %:t:r
-au filetype litac com! -bang -nargs=* -complete=file Run AcRun litac -disableLine -run <args> %:p -o %:t:r
-au filetype litac com! -bang -nargs=* -complete=file Test AcRun litac <args> -testFile %:p
+au filetype c3 com! -bang -nargs=* -complete=file CC AcRun c3c compile <args> %:p
+au filetype litac com! -bang -nargs=* -complete=file CC AcRun litac -disableLine <args> %:p -o %:t:r
+au filetype litac com! -bang -nargs=* -complete=file RR AcRun litac -disableLine -run <args> %:p -o %:t:r
+au filetype litac com! -bang -nargs=* -complete=file TT AcRun litac <args> -testFile %:p
 
-"au filetype virgil com! -bang -nargs=* -complete=file TT AcRun ./build.sh v3i %:p
 au filetype virgil com! -bang -nargs=* -complete=file TE AcRun v3i <args> %:p
 au filetype virgil com! -bang -nargs=* -complete=file TT AcRun make test SRC=%:p <args>
 au filetype virgil com! -bang -nargs=* -complete=file CC AcRun make build SRC=%:p <args>
 au filetype virgil com! -bang -nargs=* -complete=file CR AcRun make run SRC=%:p <args>
-au filetype virgil com! -bang -nargs=* -complete=file Test AcRun make test 
-au filetype virgil com! -bang -nargs=* -complete=file Make AcRun make build NAME=<args>
-au filetype virgil com! -bang -nargs=* -complete=file Run AcRun make run NAME=<args>
-au filetype virgil com! -bang -nargs=* -complete=file Clean AcRun make clean NAME=%:t:r 
+au filetype virgil com! -bang -nargs=* -complete=file T AcRun make test 
+au filetype virgil com! -bang -nargs=* -complete=file B AcRun make build NAME=<args>
+au filetype virgil com! -bang -nargs=* -complete=file RR AcRun make run NAME=<args>
+au filetype virgil com! -bang -nargs=* -complete=file XX AcRun make clean NAME=%:t:r 
 "NAME=<args>
 
 "}}}
