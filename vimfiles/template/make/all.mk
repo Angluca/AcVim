@@ -13,8 +13,8 @@ CFLAGS:= -Wall -Wextra -Wno-unused -Wno-switch -Wno-unused-parameter
 CFLAGS+= -Wno-missing-field-initializers -Wno-format-zero-length
 CFLAGS+= -pipe -funsigned-char -std=c99 -O2 
 
-CFLAGS += -I../../allegro5/include
-LDFLAGS += -L../../allegro5/lib
+CFLAGS+= -I../../allegro5/include
+LDFLAGS:= -L../../allegro5/lib
 
 LDFLAGS += \
 	-lallegro_main-static \

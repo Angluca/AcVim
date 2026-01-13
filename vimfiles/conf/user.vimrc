@@ -434,11 +434,11 @@ call AcFtCmd('axe','RE','axe.mod','AcRun saw run <args> --release')
 call AcFtCmd('axe','R','axe.mod','AcRun saw run <args>')
 call AcFtCmd('axe','BE','axe.mod','AcRun saw run <args> --release')
 call AcFtCmd('axe','B','axe.mod','AcRun saw run <args>')
+call AcFtCmd('axe','CT','axe.mod','AcRun saw test <args>')
 call AcFtCmd('axe','C','axe.mod','AcRun saw <args>')
-call AcFtCmd('axe','T','axe.mod','AcRun saw test <args>')
 call AcFtCmd('axe','XX','axe.mod','AcRun saw clean <args>')
 call AcFtCmd('axe','TC','axe.mod','AcRun axe % <args> --syntax-check')
-call AcFtCmd('axe','TT','axe.mod','AcRun axe % <args> -r -q')
+call AcFtCmd('axe','T','axe.mod','AcRun axe % <args> -r -q')
 call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
 call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
 
@@ -462,7 +462,8 @@ call AcFtCmd('valk','DDo','valk.json','AcRun valk doc %:p:h:~ --no-private --mar
 
 call AcFtCmd('quark','C','','AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' <args>', 'AcSend exit')
 call AcFtCmd('quark','TT','','AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' <args> && gcc %:t:r.c -o %:t:r && ./%:t:r', 'AcSend exit')
-call AcFtCmd('quark','T','','AcRun qc % -l '.$QUARK_ROOT.' <args>')
+call AcFtCmd('quark','T','','AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' <args> && gcc %:t:r.c -o %:t:r', 'AcSend exit')
+call AcFtCmd('quark','XX','','AcRun trash %:p:r %:p:r.c')
 "au filetype quark com! -bang -nargs=* -complete=file TT exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r && ./%:t:r' | exe 'AcSend exit'
 au filetype adept com! -bang -nargs=* -complete=file CC AcRun adept <args> %:p
 au filetype adept com! -bang -nargs=* -complete=file RR AcRun adept -e <args> %:p

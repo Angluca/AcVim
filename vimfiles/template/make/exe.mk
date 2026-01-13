@@ -15,4 +15,4 @@ cc:
 
 
 clean:
-	-rm -f *.o $(TARGET) 
+	rm -f *.o $(TARGET) 

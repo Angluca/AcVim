@@ -54,8 +54,6 @@ au FileType valk nmap \=- :Mctags $VIMDICT/valk.ctags valk.tags $VALK_ROOT\/lib<
 
 au FileType dither nmap \== :Mctags $VIMDICT/dither.ctags dither.tags<cr>
 au FileType dither nmap \=- :Mctags $VIMDICT/dither.ctags dither.tags $DITHER_ROOT<cr>
-"SetTags('dither','','dither.tags')
-"SetDict('dither','','dither.dict')
 
 au FileType nature nmap \== :Mctags $VIMDICT/nature.ctags nature.tags<cr>
 au FileType nature nmap \=- :Mctags $VIMDICT/nature.ctags nature.tags $NATURE_STD<cr>
