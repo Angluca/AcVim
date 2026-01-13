@@ -409,7 +409,9 @@ au filetype ocen com! -bang -nargs=* -complete=file R AcRun ocen % <args> -r -o 
 au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
 
 call AcFtCmd('nature','C','package.toml','AcRun nature build <args> -o %:t:r %')
-au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build <args> % && ./main' | exe 'AcSend exit'
+call AcFtCmd('nature','TT','','AcRun! nature build <args> % && ./main <args>', 'AcSend exit')
+"au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build <args> % && ./main' | exe 'AcSend exit'
+
 "let $RUST_BACKTRACE='full'
 "let $RUST_BACKTRACE=1
 let $MAKEPAD='lines'
@@ -432,8 +434,6 @@ au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> 
 
 call AcFtCmd('axe','RE','axe.mod','AcRun saw run <args> --release')
 call AcFtCmd('axe','R','axe.mod','AcRun saw run <args>')
-call AcFtCmd('axe','BE','axe.mod','AcRun saw run <args> --release')
-call AcFtCmd('axe','B','axe.mod','AcRun saw run <args>')
 call AcFtCmd('axe','CT','axe.mod','AcRun saw test <args>')
 call AcFtCmd('axe','C','axe.mod','AcRun saw <args>')
 call AcFtCmd('axe','XX','axe.mod','AcRun saw clean <args>')
@@ -574,6 +574,14 @@ au filetype c,cpp call LspAddServer([#{
             \    path: 'clangd',
             \    args: ['--background-index']
             \  }])
+
+"SetFt('*.zc','zc')
+"au filetype zenc call LspAddServer([#{
+            "\    name: 'zc',
+            "\    filetype: ['zc'],
+            "\    path: 'zc',
+            "\    args: ['lsp']
+            "\  }])
 
 au filetype quark call LspAddServer([#{
             \    name: 'quark',
