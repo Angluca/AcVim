@@ -404,9 +404,9 @@ au filetype zig com! -bang -nargs=* -complete=file C AcRun zig <args>
 au filetype d com! -bang -nargs=* -complete=file C AcRun dmd <args> %
 au filetype d com! -bang -nargs=* -complete=file D AcRun dub <args>
 au filetype hare com! -bang -nargs=* -complete=file C AcRun hare <args> %
-au filetype ocen com! -bang -nargs=* -complete=file C AcRun ocen % <args> -o %:t:r
-au filetype ocen com! -bang -nargs=* -complete=file R AcRun ocen % <args> -r -o %:t:r
-au filetype ocen com! -bang -nargs=* -complete=file XX AcRun trash %:t:r %:t:r.c
+call AcFtCmd('ocen','C','','AcRun ocen % -o %:t:r <args>')
+call AcFtCmd('ocen','R','','AcRun ocen % -o %:p:r <args> -r')
+call AcFtCmd('ocen','XX','','AcRun trash %:t:r %:t:r.c')
 
 call AcFtCmd('nature','C','package.toml','AcRun nature build <args> -o %:t:r %')
 call AcFtCmd('nature','TT','','AcRun! nature build <args> % && ./main <args>', 'AcSend exit')
@@ -604,12 +604,12 @@ au filetype valk call LspAddServer([#{
             \    args: ['lsp','run']
             \  }])
 
-au filetype ocen call LspAddServer([#{
-            \    name: 'ocen',
-            \    filetype: ['ocen'],
-            \    path: 'clangd',
-            \    args: ['--background-index']
-            \  }])
+"au filetype ocen call LspAddServer([#{
+            "\    name: 'ocen',
+            "\    filetype: ['ocen'],
+            "\    path: 'clangd',
+            "\    args: ['--background-index']
+            "\  }])
 
 "au filetype ocen call LspAddServer([#{
             "\    name: 'ocen',
