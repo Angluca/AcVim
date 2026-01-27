@@ -118,7 +118,8 @@ if has("win32")
 	SetDict('asm','','win32.dict')
     SetDict('c,cpp','','win32.dict','cpp.dict')
 else
-    SetDict('c,cpp','','cpp.dict','flecs.dict')
+    "SetDict('c,cpp','','cpp.dict','flecs.dict')
+    SetDict('c,cpp','','cpp.dict')
 endif
 SetDict('vim','','vim.dict')
 SetDict('java','','java.dict')

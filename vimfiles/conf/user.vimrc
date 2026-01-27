@@ -432,8 +432,10 @@ call AcFtCmd('rust','TT','Cargo.toml','AcRun cargo test <args> -- --nocapture')
 au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r 
 au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
 
-call AcFtCmd('axe','RE','axe.mod','AcRun saw run <args> --release')
-call AcFtCmd('axe','R','axe.mod','AcRun saw run <args>')
+call AcFtCmd('axe','RD','axe.mod','AcRun saw run <args>')
+call AcFtCmd('axe','R','axe.mod','AcRun saw run <args> --release')
+call AcFtCmd('axe','BD','axe.mod','AcRun saw build <args>')
+call AcFtCmd('axe','B','axe.mod','AcRun saw build <args> --release')
 call AcFtCmd('axe','CT','axe.mod','AcRun saw test <args>')
 call AcFtCmd('axe','C','axe.mod','AcRun saw <args>')
 call AcFtCmd('axe','XX','axe.mod','AcRun saw clean <args>')
@@ -574,6 +576,15 @@ au filetype c,cpp call LspAddServer([#{
             \    path: 'clangd',
             \    args: ['--background-index']
             \  }])
+"au filetype c,cpp call LspAddServer([#{
+            "\    name: 'clangd',
+            "\    filetype: ['c', 'cpp'],
+            "\    path: 'clangd',
+            "\    args: [
+            "\      '--background-index',
+            "\      '--compile-commands-dir=build/osx/debug'
+            "\    ]
+            "\  }])
 
 "SetFt('*.zc','zc')
 "au filetype zenc call LspAddServer([#{
