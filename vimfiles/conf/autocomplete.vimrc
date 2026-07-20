@@ -49,6 +49,11 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .<cr>
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
+au FileType spectre let $SXLIBS = $SPECTRE_ROOT.'/spectrelib'
+au FileType spectre nmap \== :Mctags $VIMDICT/spectre.ctags spectre.tags<cr>
+au FileType spectre nmap \=- :Mctags $VIMDICT/spectre.ctags spectre.tags $SXLIBS<cr>
+SetTags('spectre','','spectre.tags')
+
 au FileType valk nmap \== :Mctags $VIMDICT/valk.ctags valk.tags<cr>
 au FileType valk nmap \=- :Mctags $VIMDICT/valk.ctags valk.tags $VALK_ROOT\/lib<cr>
 

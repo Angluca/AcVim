@@ -444,6 +444,15 @@ call AcFtCmd('axe','T','axe.mod','AcRun axe % <args> -r -q')
 call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
 call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
 
+call AcFtCmd('spectre','Init','','AcRun spectre init <args>')
+call AcFtCmd('spectre','B','sx.mod','AcRun spectre build <args>')
+call AcFtCmd('spectre','C','','AcRun spectre % <args> --release')
+call AcFtCmd('spectre','CC','','AcRun spectre % <args> --show-cmd')
+call AcFtCmd('spectre','T','','AcRun spectre % <args> --test')
+call AcFtCmd('spectre','TT','','AcRun spectre % <args> --test --show-cmd')
+call AcFtCmd('spectre','R','','AcRun spectre run % <args> --release')
+call AcFtCmd('spectre','RR','','AcRun spectre run % <args> --show-cmd')
+
 call AcFtCmd('dither','T','makefile','AcRun dither <args> -x %')
 call AcFtCmd('dither','C','makefile','AcRun dither <args> %')
 call AcFtCmd('dither','Chtml','makefile','AcRun dither <args> -t html -o %:p:r:~.html %')
@@ -576,15 +585,6 @@ au filetype c,cpp call LspAddServer([#{
             \    path: 'clangd',
             \    args: ['--background-index']
             \  }])
-"au filetype c,cpp call LspAddServer([#{
-            "\    name: 'clangd',
-            "\    filetype: ['c', 'cpp'],
-            "\    path: 'clangd',
-            "\    args: [
-            "\      '--background-index',
-            "\      '--compile-commands-dir=build/osx/debug'
-            "\    ]
-            "\  }])
 
 "SetFt('*.zc','zc')
 "au filetype zenc call LspAddServer([#{
@@ -593,6 +593,18 @@ au filetype c,cpp call LspAddServer([#{
             "\    path: 'zc',
             "\    args: ['lsp']
             "\  }])
+
+"au filetype spectre call LspAddServer([#{
+            "\    name: 'spectre',
+            "\    filetype: ['spectre'],
+            "\    path: 'spectre-ls',
+            "\  }])
+au filetype spectre call LspAddServer([#{
+            \    name: 'spectre',
+            \    filetype: ['spectre'],
+            \    path: 'clangd',
+            \    args: ['--background-index']
+            \  }])
 
 au filetype quark call LspAddServer([#{
             \    name: 'quark',
@@ -735,11 +747,11 @@ au filetype d call LspAddServer([#{
             "\    path: 'nls',
             "\  }])
 
-au filetype axe call LspAddServer([#{
-            \    name: 'axe',
-            \    filetype: ['axe'],
-            \    path: 'axels',
-            \  }])
+"au filetype axe call LspAddServer([#{
+            "\    name: 'axe',
+            "\    filetype: ['axe'],
+            "\    path: 'axels',
+            "\  }])
 
 "au filetype v call LspAddServer([#{
             "\    name: 'vls',
