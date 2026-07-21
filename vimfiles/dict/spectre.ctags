@@ -11,6 +11,7 @@
 --exclude=*.py
 --exclude=*.js
 --exclude=s-out/*
+--exclude=src-out/*
 --exclude=build/*
 --exclude=config/*
 --exclude=doc/*

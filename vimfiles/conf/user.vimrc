@@ -446,6 +446,7 @@ call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
 
 call AcFtCmd('spectre','Init','','AcRun spectre init <args>')
 call AcFtCmd('spectre','B','sx.mod','AcRun spectre build <args>')
+call AcFtCmd('modsim3','B','sx.mod','AcRun spectre build <args>') "sx.mod ft
 call AcFtCmd('spectre','C','','AcRun spectre % <args> --release')
 call AcFtCmd('spectre','CC','','AcRun spectre % <args> --show-cmd')
 call AcFtCmd('spectre','T','','AcRun spectre % <args> --test')
@@ -594,14 +595,10 @@ au filetype c,cpp call LspAddServer([#{
             "\    args: ['lsp']
             "\  }])
 
-"au filetype spectre call LspAddServer([#{
-            "\    name: 'spectre',
-            "\    filetype: ['spectre'],
-            "\    path: 'spectre-ls',
-            "\  }])
 au filetype spectre call LspAddServer([#{
             \    name: 'spectre',
             \    filetype: ['spectre'],
+            "\    path: 'spectre-ls',
             \    path: 'clangd',
             \    args: ['--background-index']
             \  }])

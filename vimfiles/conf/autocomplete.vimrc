@@ -53,6 +53,7 @@ au FileType spectre let $SXLIBS = $SPECTRE_ROOT.'/spectrelib'
 au FileType spectre nmap \== :Mctags $VIMDICT/spectre.ctags spectre.tags<cr>
 au FileType spectre nmap \=- :Mctags $VIMDICT/spectre.ctags spectre.tags $SXLIBS<cr>
 SetTags('spectre','','spectre.tags')
+SetDict('spectre','','spectre.base.dict')
 
 au FileType valk nmap \== :Mctags $VIMDICT/valk.ctags valk.tags<cr>
 au FileType valk nmap \=- :Mctags $VIMDICT/valk.ctags valk.tags $VALK_ROOT\/lib<cr>
