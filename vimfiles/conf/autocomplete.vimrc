@@ -53,13 +53,16 @@ au FileType spectre let $SXLIBS = $SPECTRE_ROOT.'/spectrelib'
 au FileType spectre nmap \== :Mctags $VIMDICT/spectre.ctags spectre.tags<cr>
 au FileType spectre nmap \=- :Mctags $VIMDICT/spectre.ctags spectre.tags $SXLIBS<cr>
 SetTags('spectre','','spectre.tags')
-SetDict('spectre','','spectre.base.dict')
+SetDict('spectre','','spectre.base.dict', 'spectre.tags')
 
 au FileType valk nmap \== :Mctags $VIMDICT/valk.ctags valk.tags<cr>
 au FileType valk nmap \=- :Mctags $VIMDICT/valk.ctags valk.tags $VALK_ROOT\/lib<cr>
 
+au FileType dither let $DITHER_STD = $DITHER_ROOT.'/std'
 au FileType dither nmap \== :Mctags $VIMDICT/dither.ctags dither.tags<cr>
-au FileType dither nmap \=- :Mctags $VIMDICT/dither.ctags dither.tags $DITHER_ROOT<cr>
+au FileType dither nmap \=- :Mctags $VIMDICT/dither.ctags dither.tags $DITHER_STD<cr>
+SetTags('dither','','dither.tags')
+SetDict('dither','','dither.tags')
 
 au FileType nature nmap \== :Mctags $VIMDICT/nature.ctags nature.tags<cr>
 au FileType nature nmap \=- :Mctags $VIMDICT/nature.ctags nature.tags $NATURE_STD<cr>

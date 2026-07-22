@@ -16,14 +16,12 @@
 --exclude=config/*
 --exclude=doc/*
 --exclude=examples/*
---exclude=src/*
---exclude=third_party/*
---regex-spectre=/^\s*pub\s+val\s+(\w+)\s*[=]/\1/v,var/
+--regex-spectre=/^\s*pub\sval\s+(\w+)\s*[=]/\1/v,var/
 --regex-spectre=/^\s*pub\s+extern\s+type\s+(\w+)\s*[=]/\1/t,type/
---regex-spectre=/^\s*pub\s+extern\s+fn\s+(\w+)\s*\(/\1/f,func/
---regex-spectre=/^\s*pub\s+extern\s*\(.*\)\s+fn\s+(\w+)\s*\(/\1/f,func/
+--regex-spectre=/^\s*pub(\s+extern(\s*\(\w.*\))*)*\s+fn(\s*\(\w.*\))*\s+(\w+)\s*(\[.*\])*\s*\(/\4/f,fn/
+--regex-spectre=/^\s*pub\s+enum\s+(\w+)\s*[=]/\1/e,enum/
+--regex-spectre=/^\s*pub\s+union\s+(\w+)\s*[=]/\1/u,union/
 --regex-spectre=/^\s*(\w+)\s*[:]/\1/v,var/
---regex-spectre=/^\s*pub\s+enum\s+(\w+)\s*[=]/\1/t,type/
 --regex-spectre=/^\s*(\w+)\s*[,]\n/\1/v,var/
---regex-spectre=/^\s*pub\s+fn\s+(\w+)\s*[\(\[]/\1/f,func/
+
 

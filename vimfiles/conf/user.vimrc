@@ -93,6 +93,18 @@ let g:tagbar_compact = 1
 "let g:tagbar_foldlevel = 2
 "let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
+
+let g:tagbar_type_spectre = {
+    \ 'ctagstype' : 'spectre',
+    \ 'kinds'     : [
+    \ 't:type:0:1',
+    \ 'e:enum:0:1',
+    \ 'u:union:0:1',
+    \ 'f:fn:0:1',
+    \ 'v:var:1:0',
+    \ ],
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/spectre.local.ctags'
+    \ }
 let g:tagbar_type_ocen = {
     \ 'ctagstype' : 'ocen',
     \ 'kinds'     : [
@@ -671,8 +683,6 @@ au filetype zig call LspAddServer([#{
             "\    syncInit: v:true,
             "\  }])
 
-      "\             'features': 'all', 
-      "\             'extraArgs': ["--target-dir","/tmp/rust-analyzer-target"], 
 au FileType rust call LspAddServer([{
       \ 'name': 'rust-analyzer',
       \ 'filetype': ['rust'],
@@ -738,11 +748,11 @@ au filetype d call LspAddServer([#{
             \    path: 'serve-d',
             \  }])
 
-"au filetype nature call LspAddServer([#{
-            "\    name: 'nature',
-            "\    filetype: ['nature'],
-            "\    path: 'nls',
-            "\  }])
+au filetype nature call LspAddServer([#{
+            \    name: 'nature',
+            \    filetype: ['nature'],
+            \    path: 'nls',
+            \  }])
 
 "au filetype axe call LspAddServer([#{
             "\    name: 'axe',

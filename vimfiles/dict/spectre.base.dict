@@ -1,5 +1,6 @@
 @addr
 @alloc
+@append
 @args
 @atoi
 @bitcast
@@ -23,7 +24,9 @@
 @print
 @ptradd
 @puts
+@remove
 @reserve
+@sizeof
 @snprintf
 @staticerror
 @stdin
@@ -35,6 +38,7 @@ PATH
 XDG_CONFIG_HOME
 addr
 alloc
+append
 args
 as
 assert
@@ -84,6 +88,7 @@ memset
 mut
 none
 not
+ok
 option
 post
 pre
@@ -92,6 +97,7 @@ ptradd
 pub
 puts
 ref
+remove
 reserve
 result
 return
