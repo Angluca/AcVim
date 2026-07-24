@@ -457,14 +457,21 @@ call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
 call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
 
 call AcFtCmd('spectre','Init','','AcRun spectre init <args>')
-call AcFtCmd('spectre','B','sx.mod','AcRun spectre build <args>')
-call AcFtCmd('modsim3','B','sx.mod','AcRun spectre build <args>') "sx.mod ft
+call AcFtCmd('spectre,modsim3','B','sx.mod','AcRun spectre build release <args>')
+call AcFtCmd('spectre,modsim3','BB','sx.mod','AcRun spectre build <args>')
 call AcFtCmd('spectre','C','','AcRun spectre % <args> --release')
 call AcFtCmd('spectre','CC','','AcRun spectre % <args> --show-cmd')
 call AcFtCmd('spectre','T','','AcRun spectre % <args> --test')
 call AcFtCmd('spectre','TT','','AcRun spectre % <args> --test --show-cmd')
 call AcFtCmd('spectre','R','','AcRun spectre run % <args> --release')
 call AcFtCmd('spectre','RR','','AcRun spectre run % <args> --show-cmd')
+
+call AcFtCmd('zenc','R','','AcRun zc run % <args>')
+call AcFtCmd('zenc','B','','AcRun zc build % <args>')
+call AcFtCmd('zenc','Cc','','AcRun zc transpile % <args>')
+call AcFtCmd('zenc','CC','','AcRun zc -c % <args>')
+call AcFtCmd('zenc','C','','AcRun zc <args> %')
+call AcFtCmd('zenc','T','','AcRun zc check % <args>')
 
 call AcFtCmd('dither','T','makefile','AcRun dither <args> -x %')
 call AcFtCmd('dither','C','makefile','AcRun dither <args> %')
@@ -599,20 +606,22 @@ au filetype c,cpp call LspAddServer([#{
             \    args: ['--background-index']
             \  }])
 
-"SetFt('*.zc','zc')
-"au filetype zenc call LspAddServer([#{
-            "\    name: 'zc',
-            "\    filetype: ['zc'],
+au filetype zenc call LspAddServer([#{
+            \    name: 'zenc',
+            \    filetype: ['zenc'],
+            \    path: 'spectre-ls',
             "\    path: 'zc',
             "\    args: ['lsp']
-            "\  }])
+            "\    path: 'clangd',
+            "\    args: ['--background-index']
+            \  }])
 
 au filetype spectre call LspAddServer([#{
             \    name: 'spectre',
             \    filetype: ['spectre'],
-            "\    path: 'spectre-ls',
-            \    path: 'clangd',
-            \    args: ['--background-index']
+            \    path: 'spectre-ls',
+            "\    path: 'clangd',
+            "\    args: ['--background-index']
             \  }])
 
 au filetype quark call LspAddServer([#{
@@ -641,20 +650,8 @@ au filetype valk call LspAddServer([#{
             "\    filetype: ['ocen'],
             "\    path: 'clangd',
             "\    args: ['--background-index']
-            "\  }])
-
-"au filetype ocen call LspAddServer([#{
-            "\    name: 'ocen',
-            "\    filetype: ['ocen'],
             "\    path: 'ocen',
             "\    args: ['lsp-server']
-            "\  }])
-
-"au filetype c2 call LspAddServer([#{
-            "\    name: 'clangd',
-            "\    filetype: ['c', 'cpp', 'c2'],
-            "\    path: 'clangd',
-            "\    args: ['--background-index']
             "\  }])
 
 "au filetype c2 call LspAddServer([#{
