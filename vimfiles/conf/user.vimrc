@@ -94,6 +94,17 @@ let g:tagbar_compact = 1
 "let g:tagbar_systemenc = 'gbk'
 "let g:tagbar_updateonsave_maxlines = 10000
 
+let g:tagbar_type_mach = {
+    \ 'ctagstype' : 'mach',
+    \ 'kinds'     : [
+    \ 'm:mod:0:1',
+    \ 'r:rec:0:1',
+    \ 'u:uni:0:1',
+    \ 'f:fun:0:1',
+    \ 'v:var:1:0',
+    \ ],
+    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/mach.local.ctags'
+    \ }
 let g:tagbar_type_spectre = {
     \ 'ctagstype' : 'spectre',
     \ 'kinds'     : [

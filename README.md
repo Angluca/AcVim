@@ -36,10 +36,10 @@ Let's open the vim.**
 ;cc ;ce ;ca ;cu ;cg ;ct ;cm ;cM ;cb ;ci ;cr ;cx ;cl ;cs ;cd ;cD  
  --> manage buffer/file/mru/undo/tags/dir/change/mixd/rtscript  
 
->\<space\>r/R:async  
+>\<space\>r/R:run cmd  
 \<alt+shift/shift\>\<up>/\<down>/\<left>/\<right>: move resize win  
 \\== : generate tags  
->\<space\>l/L, q: open/close quickfix  
+>Q: open/close quickfix  
 
 >ysiwb ysawB ysib" : add symbol for words  
 csb" cs\[\( ... : revise symbol  
