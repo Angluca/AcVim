@@ -1,0 +1,70 @@
+snippet #sym
+	#[symbol("${1:fn|var}")]$0
+snippet #lib
+	#[libaray("${1:gl}")]$0
+snippet #ali
+	#[align(${1:16})]$0
+snippet #sec
+	#[section("${1:.sec}")]$0
+snippet main
+	#[symbol("main")]
+	fun entry(argc: i64, argv: **u8) i64 {
+		$0
+		ret 0;
+	}
+snippet fun
+	fun ${1:name}($2) ${3}{
+		$0
+	}
+snippet rec
+	rec $1 {
+		${2}
+	}$0
+snippet uni
+	uni $1 {
+		${2}
+	}$0
+snippet if
+	if ($1) {$2}$0
+snippet or
+	or ($1) {${2}}$0
+snippet ifor
+	if ($1) {${2}} or {${3}}$0
+snippet for
+	for ($1) {
+		$2
+	}$0
+snippet wh
+	while ($1) {
+		${2:# code}
+	}$0
+snippet mat
+	match ${1:/* condition */} {
+		${2} => ${3},
+		${4:_} => ${5},
+	}$0
+snippet test
+	test "${1:intro}" {
+		$0
+	}
+snippet pt
+	${1:print}.print("$2");$0
+snippet ptn
+	${1:print}.println("$2");$0
+snippet ptf
+	${1:print}.printf("${2:{}}", $3);$0
+# $compile_cmd
+snippet $if
+	\$if ($1) {${2}}$0
+snippet $or
+	\$or {$1}$0
+snippet $ifor
+	\$if ($1) {${2}} \$or {${3}}$0
+snippet $ea
+	\$each ${1:f} in ${2} {
+		$3
+	}$0
+snippet $eaf
+	\$each ${1:f} in \$fields(${2}) {
+		$3
+	}$0

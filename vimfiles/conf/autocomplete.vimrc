@@ -49,7 +49,7 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .<cr>
 "au FileType hare let $HARESDL = $HOME.'/Hares/Modules/my_hare-sdl2/sdl'
 "au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
-au FileType mach let $MACH_STD = $mach_ROOT.'/dep/mach_std/src'
+au FileType mach let $MACH_STD = $MACH_ROOT.'/dep/mach_std/src'
 au FileType mach nmap \== :Mctags $VIMDICT/mach.local.ctags mach.tags<cr>
 au FileType mach nmap \=- :Mctags $VIMDICT/mach.local.ctags mach.tags $MACH_STD<cr>
 SetDict('mach','','mach.base.dict', 'mach.dict')
