@@ -421,7 +421,7 @@ au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o 
 au filetype c,cpp com! -bang -nargs=* -complete=file RR AcRun gcc <args> %:p -r -o %:t:r
 au filetype nim com! -bang -nargs=* -complete=file T AcRun nim r <args> %
 au filetype nim com! -bang -nargs=* -complete=file C AcRun nim <args> %
-au filetype nim com! -bang -nargs=* -complete=file N AcRun nimble <args>
+au filetype nim com! -bang -nargs=* -complete=file NN AcRun nimble <args>
 au filetype zig com! -bang -nargs=* -complete=file CC AcRun zig <args> %
 au filetype zig com! -bang -nargs=* -complete=file C AcRun zig <args>
 au filetype d com! -bang -nargs=* -complete=file C AcRun dmd <args> %
@@ -588,6 +588,8 @@ fu! GotoRead(cmd) abort
 		setl readonly nomodifiable
 	endif
 endf "}}}
+" for ctags
+nnoremap <C-]> :<C-u>silent! GotoRead('tag '. expand('<cword>'))<cr>
 
 "set keywordprg=:LspHover
 nmap <buffer> ;tL <Cmd>LspOutline<cr>

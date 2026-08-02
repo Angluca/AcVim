@@ -62,6 +62,9 @@ You can test them if has similar operation.**
 >... and more hotkey.  
 hope you like them :)  
 
+## Find error:E841 in log
+- `vim -V20test.log test.nim`
+
 ## Features
 - Happy coding.
 
