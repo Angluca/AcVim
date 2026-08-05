@@ -18,6 +18,7 @@
 --regex-mach=/\s*uni\s+(\w+)/\1/u,uni/
 --regex-mach=/^\s*(use|fwd)\s+(\w+)\s*[:;]/\2/m,mod/
 --regex-mach=/^\s*(use|fwd)\s+[^:]*\.(\w+)\s*;/\2/m,mod/
+--regex-mach=/^\s*test+\s+(\".+\")/\1/t,test/
 --regex-mach=/^\s*(\w+)\s*[:]/\1/v,var/
 --regex-mach=/^\s*(\w+)\s*[,]\n/\1/v,var/
 

@@ -101,6 +101,7 @@ let g:tagbar_type_mach = {
     \ 'r:rec:0:1',
     \ 'u:uni:0:1',
     \ 'f:fun:0:1',
+    \ 't:test:1:0',
     \ 'v:var:1:0',
     \ ],
     \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/mach.local.ctags'
@@ -484,12 +485,12 @@ call AcFtCmd('zenc','CC','','AcRun zc -c % <args>')
 call AcFtCmd('zenc','C','','AcRun zc <args> %')
 call AcFtCmd('zenc','T','','AcRun zc check % <args>')
 
-call AcFtCmd('mach','R','mach.toml','AcRun mach run . <args>')
-call AcFtCmd('mach','RR','mach.toml','AcRun mach run . <args> --profile release')
-call AcFtCmd('mach','B','mach.toml','AcRun mach build . <args>')
-call AcFtCmd('mach','BB','mach.toml','AcRun mach build . <args> --profile release')
-call AcFtCmd('mach','T','mach.toml','AcRun mach test . <args>')
-call AcFtCmd('mach','TT','mach.toml','AcRun mach test . <args> --profile release')
+call AcFtCmd('mach','R','mach.toml','AcRun mach run . -v <args>')
+call AcFtCmd('mach','RR','mach.toml','AcRun mach run . <args> -v --profile release')
+call AcFtCmd('mach','B','mach.toml','AcRun mach build . -v <args>')
+call AcFtCmd('mach','BB','mach.toml','AcRun mach build . -v <args> --profile release')
+call AcFtCmd('mach','T','mach.toml','AcRun mach test . -vv <args>')
+call AcFtCmd('mach','TT','mach.toml','AcRun mach test . -vv <args> --profile release')
 
 call AcFtCmd('dither','T','makefile','AcRun dither <args> -x %')
 call AcFtCmd('dither','C','makefile','AcRun dither <args> %')
