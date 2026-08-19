@@ -654,12 +654,12 @@ nmap <silent> ;ds :DelTWS(1)<cr>
 "cut, copy & paste
 "vmap <a-c> <c-insert>
 "imap <a-v> <s-insert>
-nmap ;yy "+Y
-xmap ;yy "+y
-nmap ;yx V"+x
-xmap ;yx "+x
-nmap ;pp "*gP
-xmap ;pp "*gP
+"nmap ;yy "+Y
+"xmap ;yy "+y
+"nmap ;yx V"+x
+"xmap ;yx "+x
+"nmap ;pp "*gP
+"xmap ;pp "*gP
 nmap <m-c> "+y
 vmap <m-c> "+y
 xmap <m-c> "+y
@@ -688,9 +688,9 @@ set syntax=markdown.nim
 "nmap <s-space>K :cp<cr>
 "nmap <s-space>O :cold<cr>
 "nmap <s-space>I :cnew<cr>
-nn Q :copen<cr>
-nn q :ccl<esc>
-nn q :ccl<esc>
+nnoremap q :ccl<esc>
+nnoremap Q q
+"nn Q :copen<cr>
 "nn Q :FloatermShow<cr>
 nn q :FloatermHide<cr>:ccl<cr>
 "nmap Q :ccl<esc>
@@ -727,13 +727,13 @@ let &t_BD = "\e[?2004l"
 "let &t_TE = ""
 set t_PS=\e[200~
 set t_PE=\e[201~
-if has("gui_running")
-    nmap <d-d> :sp<cr>
-    nmap <d-D> :vs<cr>
-else
-    nmap <m-d> :sp<cr>
-    nmap <m-D> :vs<cr>
-endif
+"if has("gui_running")
+    "nmap <d-d> :sp<cr>
+    "nmap <d-D> :vs<cr>
+"else
+    "nmap <m-d> :sp<cr>
+    "nmap <m-D> :vs<cr>
+"endif
 "-- template copy :Template sh/build.sh
 com! -nargs=+ Template :!cp $VIM/template/<args> %:p:h
 
