@@ -56,7 +56,9 @@ fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
     let l:ret = a:yn
     let l:rmsg = a:nmsg
     if a:yn == -1
-        let l:ret = getchar() == 89 ? 1:0 "Y89y121
+        let l:c = getchar()
+        "let l:ret = (l:c == 89)||(l:c == 121) ? 1:0 "Y89y121
+        let l:ret = (l:c == 89) ? 1:0 "Y89y121
     endif
     if l:ret > 0
         let l:rmsg = a:ymsg

@@ -14,13 +14,14 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
+Plug 'angluca/mach.vim'
 Plug 'angluca/spectre.vim'
-Plug 'angluca/dither.vim'
-Plug 'angluca/ocen.vim'
 Plug 'angluca/nim.vim'
 Plug 'ziglang/zig.vim'
 Plug 'angluca/rust.vim'
-Plug 'angluca/zc.vim'
+"Plug 'angluca/dither.vim'
+"Plug 'angluca/ocen.vim'
+"Plug 'angluca/zc.vim'
 "Plug 'sgraham/qbessa.vim'
 "Plug 'zenc-lang/zenc.vim'
 "Plug 'angluca/valk.vim'
@@ -74,7 +75,6 @@ Plug 'jeetsukumaran/vim-buffersaurus'
 "Plug 'jlanzarotta/bufexplorer'
 
 Plug 'vim-scripts/VisIncr'
-"Plug 'scrooloose/syntastic'
 "Plug 'tpope/vim-fugitive'
 "Plug 'AndrewRadev/linediff.vim'
 
