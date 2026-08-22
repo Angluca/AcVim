@@ -623,10 +623,11 @@ au filetype c,cpp call LspAddServer([#{
             \    args: ['--background-index']
             \  }])
 
+" lsp如果打开失败, path输入lsp的绝对地址试试
 au filetype mach call LspAddServer([#{
             \    name: 'mach',
             \    filetype: ['mach'],
-            \    path: 'mls',
+            \    path: $MACHS.'/_bin/mls',
             \  }])
 
 au filetype zenc call LspAddServer([#{
