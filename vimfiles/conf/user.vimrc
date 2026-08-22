@@ -301,7 +301,9 @@ AcSetMap('<plug>NERDCommenterAppend',     ';xa')
 """"""""""""""""""""
 "EasyAlign {{{
 """"""""""""""""""""
-vnoremap <silent> <Enter> :EasyAlign<cr>
+"vnoremap <silent> <Enter> :EasyAlign<cr>
+"nmap <space><enter> <Plug>(EasyAlign)
+xmap <Enter> <Plug>(EasyAlign)
 "}}}
 """"""""""""""""""""
 "vim-markdown {{{
