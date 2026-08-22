@@ -570,16 +570,21 @@ smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 """"""""""""""""""""
 "lsp {{{
 """"""""""""""""""""
+"" for ctags
 com! -nargs=+ GotoRead call GotoRead<args> "{{{
 fu! GotoRead(cmd) abort
 	let l:bnr = bufnr('%')
 	exe a:cmd
 	if bufnr('%') != l:bnr
-		setl readonly nomodifiable
+		"if &buftype != 'help'
+			setl readonly nomodifiable
+		"endif
 	endif
 endf "}}}
-" for ctags
-nnoremap <C-]> :<C-u>silent! GotoRead('tag '. expand('<cword>'))<cr>
+nnoremap <C-]> :<C-u>call GotoRead((&ft == 'help' ? 'help ' : 'tag ') . expand('<cword>'))<cr>
+"nnoremap <C-]> :<C-u>silent! GotoRead('tag '. expand('<cword>'))<cr>
+"nnoremap <C-]> :<C-u>silent! execute "help " . expand('<cword>')<cr>
+
 
 "set keywordprg=:LspHover
 nmap <buffer> ;tL <Cmd>LspOutline<cr>
