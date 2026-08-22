@@ -54,7 +54,7 @@ au FileType mach let $MACH_STD = $MACH_ROOT.'/dep/mach_std/src'
 au FileType mach nmap \== :Mctags $VIMDICT/mach.local.ctags mach.local.tags $MACH_STD<cr>
 au FileType mach nmap \=- :Mctags $VIMDICT/mach.ctags mach.tags $MACH_STD<cr>
 "SetDict('mach','','mach.base.dict', 'mach.dict', 'mach.raylib.dict')
-SetDict('mach','','mach.base.dict', 'mach.dict', 'mach.boom.dict')
+SetDict('mach','','mach.base.dict','mach.dict','mach.boom.dict','mach.shader.dict')
 
 au FileType spectre let $SXLIBS = $SPECTRE_ROOT.'/spectrelib'
 au FileType spectre nmap \== :Mctags $VIMDICT/spectre.ctags spectre.tags<cr>
