@@ -558,16 +558,16 @@ tnoremap   <silent>   <m-n>    <C-\><C-n>:FloatermNext<CR>
 let g:vsnip_snippet_dir = $VIM.'snippets/'
 "imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
 "smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : ''
 smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+imap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : ''
+smap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+imap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : ''
+smap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
 smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-imap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-smap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-imap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-smap <expr> <c-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 "}}}
 """"""""""""""""""""
 "lsp {{{

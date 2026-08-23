@@ -1,70 +1,97 @@
 snippet #sym
-	#[symbol("${1:fn|var}")]$0
+	#[symbol("${1:fn|var}")]
 snippet #lib
-	#[libaray("${1:gl}")]$0
+	#[libaray("${1:gl}")]
 snippet #ali
-	#[align(${1:16})]$0
+	#[align(${1:16})]
 snippet #sec
-	#[section("${1:.sec}")]$0
+	#[section("${1:.sec}")]
 snippet main
 	#[symbol("main")]
-	fun entry(argc: i64, argv: **u8) i64 {
+	fun main(argc: i64, argv: **u8) i64 {
 		$0
 		ret 0;
 	}
-snippet fun
-	fun ${1:name}($2) ${3}{
-		$0
-	}
 snippet rec
-	rec $1 {
-		${2}
-	}$0
+	rec $1 {$0}
 snippet uni
-	uni $1 {
-		${2}
-	}$0
+	uni $1 {$0}
 snippet if
-	if ($1) {$2}$0
+	if ($1) {$0}
 snippet or
-	or ($1) {${2}}$0
-snippet ifor
-	if ($1) {${2}} or {${3}}$0
+	or ($1) {$0}
 snippet for
-	for ($1) {
-		$2
-	}$0
-snippet wh
-	while ($1) {
-		${2:# code}
-	}$0
+	for ($1) {$0}
 snippet mat
 	match ${1:/* condition */} {
 		${2} => ${3},
 		${4:_} => ${5},
 	}$0
 snippet test
-	test "${1:intro}" {
-		$0
+	test "${0:intro}" {
 	}
 snippet pt
-	${1:print}.print("$2");$0
+	print("$0");
 snippet ptn
-	${1:print}.println("$2");$0
+	println("$0");
 snippet ptf
-	${1:print}.printf("${2:{}}", $3);$0
+	printf("${1:{}}", $0);
+snippet ptnf
+	printlnf("${1:{}}", $0);
+snippet ept
+	eprint("$0");
+snippet eptn
+	eprintln("$0");
+snippet eptf
+	eprintf("${1:{}}", $0);
+snippet eptnf
+	eprintlnf("${1:{}}", $0);
+
+snippet fun
+	fun ${1:${2:name}[${3:T}]}($4) ${0:Param}{
+	}
+snippet val
+	val ${1:name}: ${2:T} = ${3:${2:T} {$4\}}
+snippet var
+	var ${1:name}: ${2:T} = ${3:${2:T} {$4\}}
+# Option
+snippet Opt
+	Option[${1:T}]
+snippet some
+	some[${1:T}](${2:Option[T]})
+snippet none
+	none[${1:T}]()
+snippet iss
+	is_some[${1:T}](${2:Option[T]})
+snippet isn
+	is_none[${1:T}](${2:Option[T]})
+snippet unw
+	unwrap[${1:T}](${2:Option[T]})
+snippet unr
+	unwrap_or[${1:T}](${2:Option[T]}, ${3:T})
+# Result
+snippet Res
+	Result[${1:T}, ${2:Error}]
+snippet ok
+	ok[${1:T}, ${2:Error}](${3:Result[T,U]})
+snippet err
+	err[${1:T}, ${2:Error}](${3:Result[T,U]})
+snippet ise
+	is_err[${1:T}, ${2:Error}](${3:Result[T,U]})
+snippet iso
+	is_ok[${1:T}, ${2:Error}](${3:Result[T,U]})
+snippet uno
+	unwrap_ok[${1:T}, ${2:Error}](${3:Result[T,U]})
+snippet une
+	unwrap_err[${1:T}, ${2:Error}](${3:Result[T,U]})
 # $compile_cmd
 snippet $if
-	\$if ($1) {${2}}$0
+	\$if ($1) {$0}
 snippet $or
-	\$or {$1}$0
-snippet $ifor
-	\$if ($1) {${2}} \$or {${3}}$0
+	\$or ($1) {$0}
 snippet $ea
-	\$each ${1:f} in ${2} {
-		$3
-	}$0
+	\$each ${1:f} in ${2:\$fields(${0})} {
+	}
 snippet $eaf
-	\$each ${1:f} in \$fields(${2}) {
-		$3
-	}$0
+	\$each ${1:f} in \$fields(${0}) {
+	}
