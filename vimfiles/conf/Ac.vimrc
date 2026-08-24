@@ -267,6 +267,63 @@ fu! DelTrailingWS(bb=0)
     nohl
     exe "normal `z"
 endf "}}}
+
+" for ctags
+com! -nargs=+ GotoRead call GotoRead(<args>) "{{{
+fu! GotoRead(cmd) abort
+	let l:bnr = bufnr('%')
+	silent! exe a:cmd
+	if bufnr('%') != l:bnr
+		setl readonly nomodifiable
+	endif
+endf "}}}
+nnoremap <silent> <C-]> :<C-u>call GotoRead((&ft == 'help' ? 'help ' : 'tag ') . expand('<cword>'))<cr>
+
+" brackets jump
+let g:smart_open_brackets  = '([{<'
+let g:smart_close_brackets = ')]}>'
+let g:smart_brackets_pattern = '[()\[\]{}<>]'
+fun! SmartBracketJump(forward) "{{{
+  let line = getline('.')
+  
+  if a:forward > 0 " Forward
+    let text = strpart(line, col('.') - 1)
+    let idx = match(text, g:smart_brackets_pattern)
+    
+    if idx != -1
+      let char = text[idx]
+      let steps = idx + 1
+      if stridx(g:smart_close_brackets, char) != -1 && idx + 1 < len(text)
+         let next_char = text[idx + 1]
+         if stridx(g:smart_open_brackets, next_char) != -1
+             let steps = steps + 1
+         endif
+      endif
+      return repeat("\<Right>", steps)
+    endif
+  else " Reverse
+    let text = strpart(line, 0, col('.') - 1)
+    let matched_char = matchstr(text, '.*\zs' . g:smart_brackets_pattern)
+    if !empty(matched_char)
+      let idx = strridx(text, matched_char)
+      let current_idx = col('.') - 1
+      let steps = current_idx - idx
+      
+      if stridx(g:smart_open_brackets, matched_char) != -1 && idx > 0
+          let prev_char = text[idx - 1]
+          if stridx(g:smart_close_brackets, prev_char) != -1
+              let steps = steps + 1
+          endif
+      endif
+
+      return repeat("\<Left>", steps)
+    endif
+  endif
+  return ""
+endf "}}}
+ino <expr> <M-n> SmartBracketJump(1)
+ino <expr> <M-p> SmartBracketJump(0)
+
 "-------------------
 "}}}
 """"""""""""""""""""
@@ -587,6 +644,10 @@ cmap <c-e> <end>
 map! <c-f> <right>
 map! <c-b> <left>
 
+nmap <d-c> <c-c>
+map! <d-c> <c-c>
+map! <c-c> <RIGHT><ESC>
+map! <m-c> <c-c>
 map! <m-H> <Home>
 map! <m-L> <End>
 map! <m-h> <Left>
@@ -729,13 +790,13 @@ let &t_BD = "\e[?2004l"
 "let &t_TE = ""
 set t_PS=\e[200~
 set t_PE=\e[201~
-"if has("gui_running")
-    "nmap <d-d> :sp<cr>
-    "nmap <d-D> :vs<cr>
-"else
-    "nmap <m-d> :sp<cr>
-    "nmap <m-D> :vs<cr>
-"endif
+if has("gui_running")
+    nmap <d-d> :sp<cr>
+    nmap <d-D> :vs<cr>
+else
+    nmap <m-d> :sp<cr>
+    nmap <m-D> :vs<cr>
+endif
 "-- template copy :Template sh/build.sh
 com! -nargs=+ Template :!cp $VIM/template/<args> %:p:h
 

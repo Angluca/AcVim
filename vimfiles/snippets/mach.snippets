@@ -47,8 +47,10 @@ snippet eptf
 snippet eptnf
 	eprintlnf("${1:{}}", $0);
 
+snippet T
+	${1:name}[${2:T}]
 snippet fun
-	fun ${1:${2:name}[${3:T}]}($4) ${0:Param}{
+	fun ${1:${2:name}[${3:T}]}($4) $0{
 	}
 snippet val
 	val ${1:name}: ${2:T} = ${3:${2:T} {$4\}}

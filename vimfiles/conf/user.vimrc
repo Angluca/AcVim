@@ -558,11 +558,11 @@ tnoremap   <silent>   <m-n>    <C-\><C-n>:FloatermNext<CR>
 let g:vsnip_snippet_dir = $VIM.'snippets/'
 "imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
 "smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : ''
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<M-n>'
 smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-imap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : ''
+imap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<M-n>'
 smap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-j>'
-imap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : ''
+imap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<M-p>'
 smap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
 smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
@@ -572,22 +572,6 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 """"""""""""""""""""
 "lsp {{{
 """"""""""""""""""""
-"" for ctags
-com! -nargs=+ GotoRead call GotoRead<args> "{{{
-fu! GotoRead(cmd) abort
-	let l:bnr = bufnr('%')
-	exe a:cmd
-	if bufnr('%') != l:bnr
-		"if &buftype != 'help'
-			setl readonly nomodifiable
-		"endif
-	endif
-endf "}}}
-nnoremap <C-]> :<C-u>call GotoRead((&ft == 'help' ? 'help ' : 'tag ') . expand('<cword>'))<cr>
-"nnoremap <C-]> :<C-u>silent! GotoRead('tag '. expand('<cword>'))<cr>
-"nnoremap <C-]> :<C-u>silent! execute "help " . expand('<cword>')<cr>
-
-
 "set keywordprg=:LspHover
 nmap <buffer> ;tL <Cmd>LspOutline<cr>
 nmap <buffer> K <Cmd>LspHover<cr>
