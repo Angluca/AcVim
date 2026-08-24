@@ -22,12 +22,7 @@ snippet or
 	or ($1) {$0}
 snippet for
 	for ($1) {$0}
-snippet mat
-	match ${1:/* condition */} {
-		${2} => ${3},
-		${4:_} => ${5},
-	}$0
-snippet test
+snippet Test
 	test "${0:intro}" {
 	}
 snippet pt
@@ -47,8 +42,8 @@ snippet eptf
 snippet eptnf
 	eprintlnf("${1:{}}", $0);
 
-snippet T
-	${1:name}[${2:T}]
+snippet I
+	${1:${2:name}[${3:T}]} = ${1:name}${4: + ${5:1};}
 snippet fun
 	fun ${1:${2:name}[${3:T}]}($4) $0{
 	}

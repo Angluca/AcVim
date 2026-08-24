@@ -280,9 +280,9 @@ endf "}}}
 nnoremap <silent> <C-]> :<C-u>call GotoRead((&ft == 'help' ? 'help ' : 'tag ') . expand('<cword>'))<cr>
 
 " brackets jump
-let g:smart_open_brackets  = '([{<'
-let g:smart_close_brackets = ')]}>'
-let g:smart_brackets_pattern = '[()\[\]{}<>]'
+let g:smart_open_brackets  = '([{,":=<'
+let g:smart_close_brackets = ')]},":=>'
+let g:smart_brackets_pattern = '[()\[\]{}<>,=":]'
 fun! SmartBracketJump(forward) "{{{
   let line = getline('.')
   
@@ -300,6 +300,8 @@ fun! SmartBracketJump(forward) "{{{
          endif
       endif
       return repeat("\<Right>", steps)
+    else
+      return "\<C-o>$"
     endif
   else " Reverse
     let text = strpart(line, 0, col('.') - 1)
@@ -308,15 +310,15 @@ fun! SmartBracketJump(forward) "{{{
       let idx = strridx(text, matched_char)
       let current_idx = col('.') - 1
       let steps = current_idx - idx
-      
       if stridx(g:smart_open_brackets, matched_char) != -1 && idx > 0
           let prev_char = text[idx - 1]
           if stridx(g:smart_close_brackets, prev_char) != -1
               let steps = steps + 1
           endif
       endif
-
       return repeat("\<Left>", steps)
+    else
+      return "\<C-o>^"
     endif
   endif
   return ""
