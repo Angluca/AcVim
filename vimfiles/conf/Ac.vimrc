@@ -407,9 +407,11 @@ if has("mac")
     if has("gui_running")
         set macmeta
     endif
-    set guifont=Menlo:h14
+    set guifont=Menlo:h15
 endif
 
+"move auto scroll
+set scrolloff=7
 "Set mapleader
 let g:mapleader = ","
 "Fast editing of _vimrc
@@ -701,6 +703,7 @@ xno > >gv
 "sel history
 cmap <c-k> <up>
 cmap <c-j> <down>
+nmap ge G
 
 "nmap <silent> <m-t> :tabnew<cr>
 "nmap 0 g0
@@ -733,11 +736,6 @@ vmap <m-v> "*gP
 imap <m-v> <c-r>+
 xmap <m-v> <c-r>+
 cmap <m-v> <c-r>+
-"nmap ç "+y
-"vmap ç "+y
-"nmap √ "*gP
-"vmap √ "*gP
-"imap √ <c-r>+
 
 "file format
 nmap \ff :FmtOpt<cr>

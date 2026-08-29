@@ -16,9 +16,9 @@ call plug#begin(s:bundle_dir)
 "-----------------------
 Plug 'angluca/mach.vim'
 Plug 'angluca/spectre.vim'
-Plug 'angluca/nim.vim'
-Plug 'ziglang/zig.vim'
-Plug 'angluca/rust.vim'
+"Plug 'angluca/nim.vim'
+"Plug 'ziglang/zig.vim'
+"Plug 'angluca/rust.vim'
 "Plug 'angluca/dither.vim'
 "Plug 'angluca/ocen.vim'
 "Plug 'angluca/zc.vim'

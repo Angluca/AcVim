@@ -31,55 +31,6 @@ nmap ,fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 xmap ,fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "}}}
 """"""""""""""""""""
-"Ctrlp {{{
-""""""""""""""""""""
-"let g:ctrlp_by_filename = 0
-"let g:ctrlp_lazy_update = 0
-"let g:ctrlp_regexp = 0
-"let g:ctrlp_follow_symlinks = 0
-"let g:ctrlp_types = ['fil', 'buf', 'mru'].
-"let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript', 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
-"let g:ctrlp_extensions = ['tag', 'buffertag', 'dir']
-let g:ctrlp_arg_map = 1
-let g:ctrlp_tilde_homedir = 1
-"let g:ctrlp_mruf_include = '\.c$\|\.h$'
-"let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
-let g:ctrlp_use_caching = 10
-let g:ctrlp_cache_dir = $VIMDATA.'ctrlp'
-let g:ctrlp_max_files = 666
-let g:ctrlp_mruf_max = 66
-let g:ctrlp_max_depth = 44
-"let g:ctrlp_mruf_save_on_update = 1
-let g:ctrlp_open_multiple_files = 't'
-let g:ctrlp_switch_buffer = 'Etvh'
-let g:ctrlp_open_new_file = 't' "thvr
-let g:ctrlp_show_hidden = 0
-let g:ctrlp_clear_cache_on_exit = 1
-"let g:ctrlp_mruf_relative = 0
-"let g:ctrlp_custom_ignore = {
-"\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"\ 'file': '\v\.(swp|exe|so|dll|zip|rar|tags|tar|7z)$',
-"\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-"\ }
-
-"let g:ctrlp_map = ';cc'
-"nmap <silent> ;cg :CtrlPChangeAll<cr>
-"nmap <silent> ;cb :CtrlPBuffer<cr>
-"nmap <silent> ;cm :CtrlPMRUFiles<cr>
-"nmap <silent> ;cT :CtrlPTag<cr>
-"nmap <silent> ;ct :CtrlPBufTagAll<cr>
-"nmap <silent> ;ci :CtrlPDir<cr>
-""nmap <silent> ;cm :CtrlPBookmarkDir<cr>
-""nmap <silent> ;cM :CtrlPBookmarkDirAdd<cr>
-"nmap <silent> ;cr :CtrlPRTS<cr>
-"nmap <silent> ;cu :CtrlPUndo<cr>
-"nmap <silent> ;cl :CtrlPQuickfix<cr>
-"nmap <silent> ;ca :CtrlPMixed<cr>
-""nmap <silent> ;cf :CtrlPLine<cr>
-"nmap <silent> ;cd :CtrlPClearCache<cr>
-"nmap <silent> ;cD :CtrlPClearAllCaches<cr>
-"}}}
-""""""""""""""""""""
 "Tagbar (similar taglist) {{{
 """"""""""""""""""""
 "let g:tagbar_ctags_bin = 'ctags'
@@ -133,28 +84,6 @@ let g:tagbar_type_dither = {
     \ 't:type:1:0',
     \ ],
     \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/dither.ctags'
-    \ }
-let g:tagbar_type_valk = {
-    \ 'ctagstype' : 'valk',
-    \ 'kinds'     : [
-    \ 'm:macro:0:1',
-    \ 't:type:0:1',
-    \ 'e:enum:0:1',
-    \ 'f:func:0:1',
-    \ 'v:var:1:0',
-    \ ],
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/valk.ctags'
-    \ }
-
-let g:tagbar_type_c2 = {
-    \ 'ctagstype' : 'c2',
-    \ 'kinds'     : [
-    \ 'f:func:0:1',
-    \ 'v:var:1:0',
-    \ 't:type:0:1',
-    \ 'm:mod:1:0'
-    \ ],
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/c2.ctags'
     \ }
 let g:tagbar_type_nature = {
     \ 'ctagstype' : 'nature',
@@ -391,6 +320,7 @@ call AcFtCmd('*','Make','Makefile','AcRun make <args>')
 "au filetype c,cpp com! -bang -nargs=* -complete=file TT 
       "\ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
       "\ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test run '.(empty(<q-args>)?'%':<q-args>) | endif
+
 "call AcFtCmd('c,cpp','H','cex.h','AcRun ./cex help <args>')
 "call AcFtCmd('c,cpp','E','cex.h','AcRun ./cex <args>')
 "call AcFtCmd('c,cpp','T','cex.h','AcRun ./cex test <args>')
@@ -420,10 +350,6 @@ call AcFtCmd('ocen','C','','AcRun ocen % -o %:t:r <args>')
 call AcFtCmd('ocen','R','','AcRun ocen % -o %:p:r <args> -r')
 call AcFtCmd('ocen','XX','','AcRun trash %:t:r %:t:r.c')
 
-call AcFtCmd('nature','C','package.toml','AcRun nature build <args> -o %:t:r %')
-call AcFtCmd('nature','TT','','AcRun! nature build <args> % && ./main <args>', 'AcSend exit')
-"au filetype nature com! -bang -nargs=* -complete=file TT exe 'AcRun! nature build <args> % && ./main' | exe 'AcSend exit'
-
 "let $RUST_BACKTRACE='full'
 "let $RUST_BACKTRACE=1
 let $MAKEPAD='lines'
@@ -444,18 +370,6 @@ call AcFtCmd('rust','TT','Cargo.toml','AcRun cargo test <args> -- --nocapture')
 au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r 
 au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
 
-call AcFtCmd('axe','RD','axe.mod','AcRun saw run <args>')
-call AcFtCmd('axe','R','axe.mod','AcRun saw run <args> --release')
-call AcFtCmd('axe','BD','axe.mod','AcRun saw build <args>')
-call AcFtCmd('axe','B','axe.mod','AcRun saw build <args> --release')
-call AcFtCmd('axe','CT','axe.mod','AcRun saw test <args>')
-call AcFtCmd('axe','C','axe.mod','AcRun saw <args>')
-call AcFtCmd('axe','XX','axe.mod','AcRun saw clean <args>')
-call AcFtCmd('axe','TC','axe.mod','AcRun axe % <args> --syntax-check')
-call AcFtCmd('axe','T','axe.mod','AcRun axe % <args> -r -q')
-call AcFtCmd('axe','AD','axe.mod','AcRun axe % <args>')
-call AcFtCmd('axe','A','axe.mod','AcRun axe % <args> --release')
-
 call AcFtCmd('spectre','Init','','AcRun spectre init <args>')
 call AcFtCmd('spectre,modsim3','B','sx.mod','AcRun spectre build release <args>')
 call AcFtCmd('spectre,modsim3','BB','sx.mod','AcRun spectre build <args>')
@@ -465,13 +379,6 @@ call AcFtCmd('spectre','T','','AcRun spectre % <args> --test')
 call AcFtCmd('spectre','TT','','AcRun spectre % <args> --test --show-cmd')
 call AcFtCmd('spectre','R','','AcRun spectre run % <args> --release')
 call AcFtCmd('spectre','RR','','AcRun spectre run % <args> --show-cmd')
-
-call AcFtCmd('zenc','R','','AcRun zc run % <args>')
-call AcFtCmd('zenc','B','','AcRun zc build % <args>')
-call AcFtCmd('zenc','Cc','','AcRun zc transpile % <args>')
-call AcFtCmd('zenc','CC','','AcRun zc -c % <args>')
-call AcFtCmd('zenc','C','','AcRun zc <args> %')
-call AcFtCmd('zenc','T','','AcRun zc check % <args>')
 
 call AcFtCmd('mach','M','mach.toml','AcRun make %:t:r <args>')
 call AcFtCmd('mach','MM','mach.toml','AcRun make run %:t:r <args>')
@@ -483,50 +390,6 @@ call AcFtCmd('mach','T','mach.toml','AcRun mach test . -vv <args>')
 call AcFtCmd('mach','TT','mach.toml','AcRun mach test . -vv <args> --profile release')
 call AcFtCmd('mach','XX','mach.toml','AcRun mach clean .')
 
-call AcFtCmd('dither','T','makefile','AcRun dither <args> -x %')
-call AcFtCmd('dither','C','makefile','AcRun dither <args> %')
-call AcFtCmd('dither','Chtml','makefile','AcRun dither <args> -t html -o %:p:r:~.html %')
-call AcFtCmd('dither','Cc','makefile','AcRun dither <args> -t c -o %:p:r:~.c %')
-call AcFtCmd('dither','Cjs','makefile','AcRun dither <args> -t c -o %:p:r:~.js %')
-
-call AcFtCmd('valk','TT','valk.json','AcRun valk build -t -v <args> %')
-call AcFtCmd('valk','T','valk.json','AcRun valk build -t <args> %')
-call AcFtCmd('valk','CR','valk.json','AcRun valk build -r <args> % -o %:p:r:~')
-call AcFtCmd('valk','C','valk.json','AcRun valk build <args> % -o %:p:r:~')
-call AcFtCmd('valk','R','valk.json','AcRun valk build -r <args> %')
-call AcFtCmd('valk','V','valk.json','AcRun valk <args> %')
-call AcFtCmd('valk','XX','valk.json','AcRun valk build -c <args> %')
-call AcFtCmd('valk','D','valk.json','AcRun valk doc %:p:h:~ --no-private <args>')
-call AcFtCmd('valk','DD','valk.json','AcRun valk doc %:p:h:~ --no-private --markdown <args>')
-call AcFtCmd('valk','Do','valk.json','AcRun valk doc %:p:h:~ --no-private -o %:p:r:~.json <args>')
-call AcFtCmd('valk','DDo','valk.json','AcRun valk doc %:p:h:~ --no-private --markdown -o %:p:r:~.md <args>')
-
-call AcFtCmd('quark','C','','AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' <args>', 'AcSend exit')
-call AcFtCmd('quark','TT','','AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' <args> && gcc %:t:r.c -o %:t:r && ./%:t:r', 'AcSend exit')
-call AcFtCmd('quark','T','','AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' <args> && gcc %:t:r.c -o %:t:r', 'AcSend exit')
-call AcFtCmd('quark','XX','','AcRun trash %:p:r %:p:r.c')
-"au filetype quark com! -bang -nargs=* -complete=file TT exe 'AcRun! qc % -o %:t:r.c -l '.$QUARK_ROOT.' && gcc %:t:r.c -o %:t:r && ./%:t:r' | exe 'AcSend exit'
-au filetype adept com! -bang -nargs=* -complete=file CC AcRun adept <args> %:p
-au filetype adept com! -bang -nargs=* -complete=file RR AcRun adept -e <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file TT AcRun tester <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file CC AcRun c2c <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file CT AcRun c2c --test <args> %:p
-au filetype c2 com! -bang -nargs=* -complete=file CR AcRun c2c <args> && ./run
-au filetype c2 com! -bang -nargs=* -complete=file C AcRun c2c <args>
-au filetype c2 com! -bang -nargs=* -complete=file Test AcRun c2c --test <args>
-au filetype c3 com! -bang -nargs=* -complete=file CC AcRun c3c compile <args> %:p
-au filetype litac com! -bang -nargs=* -complete=file CC AcRun litac -disableLine <args> %:p -o %:t:r
-au filetype litac com! -bang -nargs=* -complete=file RR AcRun litac -disableLine -run <args> %:p -o %:t:r
-au filetype litac com! -bang -nargs=* -complete=file TT AcRun litac <args> -testFile %:p
-
-au filetype virgil com! -bang -nargs=* -complete=file TE AcRun v3i <args> %:p
-au filetype virgil com! -bang -nargs=* -complete=file TT AcRun make test SRC=%:p <args>
-au filetype virgil com! -bang -nargs=* -complete=file CC AcRun make build SRC=%:p <args>
-au filetype virgil com! -bang -nargs=* -complete=file CR AcRun make run SRC=%:p <args>
-au filetype virgil com! -bang -nargs=* -complete=file T AcRun make test 
-au filetype virgil com! -bang -nargs=* -complete=file B AcRun make build NAME=<args>
-au filetype virgil com! -bang -nargs=* -complete=file RR AcRun make run NAME=<args>
-au filetype virgil com! -bang -nargs=* -complete=file XX AcRun make clean NAME=%:t:r 
 "NAME=<args>
 
 "}}}
@@ -582,14 +445,14 @@ nmap <silent> <space>k <Cmd>LspHover<cr>
 "nmap ge <Cmd>silent! :let bnr = bufnr('%') \| LspGotoDefinition \| if bufnr('%') != bnr \| setlocal readonly nomodifiable \| endif<CR>
 nmap ge :GotoRead('LspGotoDefinition')<CR>
 "nmap ga <Cmd>LspGotoDeclaration<CR>
-nmap ga :GotoRead('LspGotoDeclaration')<CR>
+nmap gE :GotoRead('LspGotoDeclaration')<CR>
 "nmap ge <Cmd>LspPeekDeclaration<CR>
 "nmap gE <Cmd>LspPeekDefinition<CR>
 "nmap <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
 "nmap gi <Cmd>LspGotoImpl<CR>
 nmap gi :GotoRead('LspGotoImpl')<CR>
 "nmap gt <Cmd>LspGotoTypeDef<CR>
-nmap gt :GotoRead('LspGotoTypeDef')<CR>
+nmap gy :GotoRead('LspGotoTypeDef')<CR>
 "nmap gi <Cmd>LspPeekImpl<CR>
 "nmap gt <Cmd>LspPeekTypeDef<CR>
 nmap g[ <Cmd>LspDiagPrev<CR>
@@ -597,7 +460,7 @@ nmap g] <Cmd>LspDiagNext<CR>
 "nmap gs <Cmd>LspSymbolSearch<CR>
 "nmap gS <Cmd>LspDocumentSymbol<CR>
 "nmap gr <Cmd>LspPeekReferences<CR>
-nmap gR <Cmd>LspShowReferences<CR>
+nmap gr <Cmd>LspShowReferences<CR>
 nmap g\ <Cmd>LspServer restart<CR>
 
 au filetype c,cpp call LspAddServer([#{
@@ -614,16 +477,6 @@ au filetype mach call LspAddServer([#{
             \    path: $MACHS.'/_bin/mls',
             \  }])
 
-au filetype zenc call LspAddServer([#{
-            \    name: 'zenc',
-            \    filetype: ['zenc'],
-            \    path: 'spectre-ls',
-            "\    path: 'zc',
-            "\    args: ['lsp']
-            "\    path: 'clangd',
-            "\    args: ['--background-index']
-            \  }])
-
 au filetype spectre call LspAddServer([#{
             \    name: 'spectre',
             \    filetype: ['spectre'],
@@ -632,41 +485,12 @@ au filetype spectre call LspAddServer([#{
             "\    args: ['--background-index']
             \  }])
 
-au filetype quark call LspAddServer([#{
-            \    name: 'quark',
-            \    filetype: ['quark'],
-            \    path: 'clangd',
-            \    args: ['--background-index']
+au filetype ocen call LspAddServer([#{
+            \    name: 'ocen',
+            \    filetype: ['ocen'],
+            \    path: 'ocen',
+            \    args: ['lsp-server']
             \  }])
-
-au filetype dither call LspAddServer([#{
-            \    name: 'dither',
-            \    filetype: ['dither'],
-            \    path: 'clangd',
-            \    args: ['--background-index']
-            \  }])
-
-au filetype valk call LspAddServer([#{
-            \    name: 'valk',
-            \    filetype: ['valk'],
-            \    path: 'valk',
-            \    args: ['lsp','run']
-            \  }])
-
-"au filetype ocen call LspAddServer([#{
-            "\    name: 'ocen',
-            "\    filetype: ['ocen'],
-            "\    path: 'clangd',
-            "\    args: ['--background-index']
-            "\    path: 'ocen',
-            "\    args: ['lsp-server']
-            "\  }])
-
-"au filetype c2 call LspAddServer([#{
-            "\    name: 'c2lsp',
-            "\    filetype: ['c2'],
-            "\    path: 'c2lsp',
-            "\  }])
 
 au filetype nim call LspAddServer([#{
             \    name: 'nimlsp',
@@ -688,96 +512,55 @@ au filetype zig call LspAddServer([#{
             "\    syncInit: v:true,
             "\  }])
 
-au FileType rust call LspAddServer([{
-      \ 'name': 'rust-analyzer',
-      \ 'filetype': ['rust'],
-      \ 'path': exepath('_rust-analyzer'),
-      \ 'args': [],
-      \ 'rootSearch': ['Cargo.toml', 'rust-project.json'],
-      \ 'syncInit': v:true,
-      \ 'allowStdio': v:false,
-      \ 'debounceTextChanges': 100,
-      \ 'initializationOptions': {
-      \     'rust-analyzer': {
-      \         'cargo': { 
-      \             'features': [], 
-      \             'allTargets': v:false,
-      \             'buildScripts': {'enable': v:false},
-      \             'loadOutDirsFromCheck': v:false,
-      \             'noDefaultFeatures': v:true,
-      \             'noDeps': v:true,
-      \             'target': '',
-      \         },
-      \         'cachePriming': { 'enable': v:false },
-      \         'procMacro': { 'enable': v:false },
-      \         'checkOnSave': { 'enable': v:false, 'command': 'clippy' },
-      \         'imports': { 'group': { 'enable': v:false } },
-      \         'hover': { 'enable': v:true, 'documentation.enable': v:false },
-      \         'inlayHints': { 'enable': v:false },
-      \         'semanticHighlighting': { 'enable': v:false },
-      \         'check': { 'enable': v:false },
-      \         'assist': { 
-      \             'enable': v:false,
-      \             'termSearch': { 'fuel': 50 },
-      \         },
-      \         'completion': { 
-      \             'enable': v:true,
-      \             'termSearch': { 'fuel': 50 },
-      \             'postfix': { 'enable': v:false },
-      \         },
-      \         'diagnostics': { 'enable': v:false },
-      \         'highlightRelated': { 'enable': v:false },
-      \         'lens': { 'enable': v:false },
-      \     }
-      \ }
-      \ }])
-
-au filetype adept call LspAddServer([#{
-            \    name: 'adeptls',
-            \    filetype: ['adept'],
-            \    path: 'adeptls',
-            \    args: ['--infrastructure', $HOME..'/SDK/Adepts/_bin/']
-            \  }])
-
-"au filetype litac call LspAddServer([#{
-            "\    name: 'litac',
-            "\    filetype: ['litac'],
-            "\    path: 'litac',
-            "\    args: ['-languageServer']
-            "\  }])
-            ""\    args: ['-languageServer', $HOME..'/SDK/LitaCs/litac-lang']
+"au FileType rust call LspAddServer([{
+      "\ 'name': 'rust-analyzer',
+      "\ 'filetype': ['rust'],
+      "\ 'path': exepath('_rust-analyzer'),
+      "\ 'args': [],
+      "\ 'rootSearch': ['Cargo.toml', 'rust-project.json'],
+      "\ 'syncInit': v:true,
+      "\ 'allowStdio': v:false,
+      "\ 'debounceTextChanges': 100,
+      "\ 'initializationOptions': {
+      "\     'rust-analyzer': {
+      "\         'cargo': { 
+      "\             'features': [], 
+      "\             'allTargets': v:false,
+      "\             'buildScripts': {'enable': v:false},
+      "\             'loadOutDirsFromCheck': v:false,
+      "\             'noDefaultFeatures': v:true,
+      "\             'noDeps': v:true,
+      "\             'target': '',
+      "\         },
+      "\         'cachePriming': { 'enable': v:false },
+      "\         'procMacro': { 'enable': v:false },
+      "\         'checkOnSave': { 'enable': v:false, 'command': 'clippy' },
+      "\         'imports': { 'group': { 'enable': v:false } },
+      "\         'hover': { 'enable': v:true, 'documentation.enable': v:false },
+      "\         'inlayHints': { 'enable': v:false },
+      "\         'semanticHighlighting': { 'enable': v:false },
+      "\         'check': { 'enable': v:false },
+      "\         'assist': { 
+      "\             'enable': v:false,
+      "\             'termSearch': { 'fuel': 50 },
+      "\         },
+      "\         'completion': { 
+      "\             'enable': v:true,
+      "\             'termSearch': { 'fuel': 50 },
+      "\             'postfix': { 'enable': v:false },
+      "\         },
+      "\         'diagnostics': { 'enable': v:false },
+      "\         'highlightRelated': { 'enable': v:false },
+      "\         'lens': { 'enable': v:false },
+      "\     }
+      "\ }
+      "\ }])
 
 au filetype d call LspAddServer([#{
             \    name: 'd',
             \    filetype: ['d'],
             \    path: 'serve-d',
             \  }])
-
-au filetype nature call LspAddServer([#{
-            \    name: 'nature',
-            \    filetype: ['nature'],
-            \    path: 'nls',
-            \  }])
-
-"au filetype axe call LspAddServer([#{
-            "\    name: 'axe',
-            "\    filetype: ['axe'],
-            "\    path: 'axels',
-            "\  }])
-
-"au filetype v call LspAddServer([#{
-            "\    name: 'vls',
-            "\    filetype: ['vlang', 'v'],
-            "\    path: 'vls',
-            "\  }])
-            
-"au filetype virgil call LspAddServer([#{
-            "\    name: 'virgil',
-            "\    filetype: ['virgil'],
-            "\    path: 'virgil-lsp',
-            "\    args: [],
-            "\    syncInit: v:true,
-            "\  }])
 
 
 setl omnifunc=LspOmniFunc
