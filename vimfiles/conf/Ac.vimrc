@@ -2,355 +2,46 @@
 " Option: \ee \aa \uu \vv \bb
 "=================================
 "---------------------------------
-"load plugins conf {{{
+"load plugins conf
+let g:mapleader = ","
+so $VIMCONF/functions.vimrc
 so $VIMCONF/plugins.vimrc
 "call pathogen#helptags()
 execute pathogen#infect()
-execute pathogen#infect('bundle_custom/{}')
+execute pathogen#infect('bundle_local/{}')
 "call pathogen#runtime_append_all_bundles()
-"}}}
+"
 "--------------------------------------------
-" Ignore these filenames during enhanced command line completion. {{{
+" Ignore these filenames during enhanced command line completion.
 set wildignore+=*.luac " Lua byte code
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.a,*.dylib " compiled object files
 set wildignore+=*.pyc " Python byte code
 set wildignore+=*.spl " compiled spelling word lists
 set wildignore+=*.sw? " Vim swap files
-"}}}
+"
 """"""""""""""""""""
-"Functions {{{
+"Create directory
 """"""""""""""""""""
-com! -nargs=+ AcSetMap call AcSetMap<args> "{{{
-fu! AcSetMap(target, combo)
-    if !hasmapto(a:target, 'n')
-        exec 'nmap ' . a:combo . ' ' . a:target
-    endif
-    if !hasmapto(a:target, 'v')
-        exec 'xmap ' . a:combo . ' ' . a:target
-    endif
-endf "}}}
-
-com! -nargs=+ AcMakeDir call AcMakeDir<args> "{{{
-fu! AcMakeDir(ds)
-    if finddir(a:ds) == '' | silent call mkdir(a:ds) | endif
-endf "}}}
-
-com! AcClsUndo call AcClsUndo() "{{{
-fu! AcClsUndo()
-    if AcIsOK(-1, "Do you want clear all undo? [Y]: ", 0, "Cancel") != 0
-        let ul_bak = &undolevels
-        let md_bak = &modified
-        let &undolevels=-1
-        exe "normal I \<BS>\<Esc>"
-        let &undolevels = ul_bak
-        let &modified = md_bak
-        "exe ":cle"
-        call AcIsOK(1, 0, "Clear finish", 0 )
-    endif
-endf "}}}
-
-com! -nargs=+ AcIsOK call AcIsOK<args> "{{{
-fu! AcIsOK(yn, emsg, ymsg, nmsg) "sny:-1/0/1
-    echoh WarningMsg
-    if len(a:emsg) > 1 | echo a:emsg | endif
-    let l:ret = a:yn
-    let l:rmsg = a:nmsg
-    if a:yn == -1
-        let l:c = getchar()
-        "let l:ret = (l:c == 89)||(l:c == 121) ? 1:0 "Y89y121
-        let l:ret = (l:c == 89) ? 1:0 "Y89y121
-    endif
-    if l:ret > 0
-        let l:rmsg = a:ymsg
-        echoh Question
-    endif
-    if len(l:rmsg) > 1
-        redraw
-        echo l:rmsg
-    endif
-    echoh None
-    return l:ret
-endf "}}}
-
-com! Fdict call s:fmtDict() "{{{
-fu! s:fmtDict()
-    " tag2dict
-    "exe 'g/^\(\k\+\)\s.*$\n\1$/d'
-    "exe '%s/^\(\k\+\)\s.*/\1/ge'
-    "exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
-    exe '%s/^.*LICENSE.*$\n//ge'
-    exe '%s/^.\{,1}\s.*$\n//ge'
-    exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
-    exe '%s/.*\/^\s*\\\/\\\/.*$\n//ge'
-    exe 'g/^\([0-9A-Za-z_.:]\+\)\s.*$\n\1$/d'
-    exe '%s/^\([0-9A-Za-z_.:]\+\)\s.*/\1/ge'
-    exe 'g/^\W\+.*$/d'
-    exe '%sort u'
-    exe 'g/^.\{,1}\s*$/d'
-    exe 'silent w'
-endf "}}}
-com! -nargs=? Ftags call s:fmtTags<args> "{{{
-fu! s:fmtTags(rd='',only_add_path=0)
-    if a:rd !=''
-        exe '%s/\t\(.*\.\w\+\)\t/\t'.a:rd.'\/\1\t/ge'
-    else
-        let l:s = input("path: ")
-        if l:s != ''
-            exe '%s/\v^.*\s*\/?tests?\/.*$\n//ge'
-            "exe '%s/\v^.*\s*\/?output\/.*$\n//ge'
-            "exe '%s/\v^.*\s*\/?tools\/.*$\n//ge'
-
-            exe '%s/\t\(.*\.\w\+\)\t/\t'.l:s.'\/\1\t/ge'
-        "else
-            "exe '%s/\t\(.*\.\w\+\)\t/\t|__PATH__|\/\1\t/ge'
-        endif
-    endif
-    if a:only_add_path != 0
-        exe 'silent w'
-        return
-    endif
-
-    exe '%s/\v^.*\sdither\s.*$\n//ge'
-    exe '%s/^.*LICENSE.*$\n//ge'
-    exe '%s/^.\{,1}\s.*$\n//ge'
-    exe '%s/^[0-9.^]\+\k*\s..*$\n//ge'
-    exe 'g/^\(\k\+\t.*\.\k\+\t\).*$\n\1.*/d'
-    "exe 'g/^\W\+.*$/d'
-    exe 'g/^\~.*$/d'
-    exe 'g/^!_.*$/d'
-    exe 'g/^.\?\s*$/d'
-    exe '%s/^\w\{,1}\s\+.*$\n//ge'
-    "exe 'g/^\(\k\+\)\t.*$\n\1\t.*/d'
-    exe '%s/^.*.md\t.*$\n//ge'
-    exe '%s/^.*.json\t.*$\n//ge'
-    exe '%s/^.*.txt\t.*$\n//ge'
-    exe '%s/\v^.*\/tests?\/.*$\n//ge'
-    exe '%s/.*\/^\s*\\\/\\\/.*$\n//ge'
-    exe 'silent w'
-endf
-nmap \-- :Ftags('',0)<cr>
-nmap \-0 :Fdict<cr>
-"}}}
-
-com! -nargs=+ Maketags call s:genTags(<f-args>) "{{{
-fu! s:genTags(app='ctags', opt='', f='', path='')
-    exe $':silent !'.a:app.' '.a:opt
-    if a:f == ''
-        return
-    endif
-    exec "e ./".a:f
-    call s:fmtTags(a:path,1)
-endf "}}}
-com! -nargs=+ Mctags call s:genCtags(<f-args>) "{{{
-fu! s:genCtags(opt='', f='', path='')
-    call s:genTags('ctags', '--options='.a:opt.' -R -f '.a:f, a:f, a:path)
-endf "}}}
-
-com -nargs=+ SetFt call s:setFiletype<args> "{{{
-fu! s:setFiletype(fn, ft, bc='BufEnter')
-    exe $"au {a:bc} {a:fn} setl ft={a:ft}"
-endf "}}}
-
-com -nargs=+ SetFtCmd call s:setFtCmd<args> "{{{
-fu! s:setFtCmd(ft, cmd, bc='FileType')
-    exe $"au {a:bc} {a:ft} {a:cmd}"
-endf "}}}
-
-com! -nargs=+ SetDict call s:setDict<args> "{{{
-fu! s:setDict(ft,dir,...)
-    let l:opt = ''
-    let l:dir = a:dir!='' ? a:dir.'/' : $VIMDICT
-    for l:file in a:000
-        let l:opt = l:opt.l:dir.l:file.','
-    endfor
-    exe 'au FileType '.a:ft.' setl dict='.l:opt
-endf
-
-com! -nargs=+ SetTags call s:setTags<args> "{{{
-fu! s:setTags(ft,dir,...)
-    let l:opt = ''
-    let l:dir = a:dir!='' ? a:dir.'/' : $VIMDICT
-    for l:file in a:000
-        let l:opt = l:opt.l:dir.l:file.','
-    endfor
-    exe 'au FileType '.a:ft.' setl tags='.l:opt
-endf "}}}
-
-com! ToggleVE call ToggleVirtualEditMode() "{{{
-fu! ToggleVirtualEditMode()
-    if !exists('s:vem')
-        let		s:vem = 1
-        set		ve=all
-        echo	'virtual edit on'
-    else
-        unlet	s:vem
-        set		ve=
-        echo	'virtual edit off'
-    endif
-endf "}}}
-
-fu! QfMakeConv() "{{{
-    let l:qflist = getqflist()
-    for i in l:qflist
-        let l:i.text = iconv(l:i.text, "cp936", "utf-8")
-    endfor
-    call setqflist(l:qflist)
-endf "}}}
-
-com! -nargs=1 SwitchToBuf call SwitchToBuf(<args>) "{{{
-fu! SwitchToBuf(filename)
-    " find in current tab
-    let l:bufwinnr = bufwinnr(a:filename)
-    if l:bufwinnr != -1
-        exec l:bufwinnr . "wincmd w"
-        return
-    else
-        " find in each tab
-        tabfirst
-        let l:tab = 1
-        while l:tab <= tabpagenr("$")
-            let l:bufwinnr = bufwinnr(a:filename)
-            if l:bufwinnr != -1
-                exec "normal " . l:tab . "gt"
-                exec l:bufwinnr . "wincmd w"
-                return
-            endif
-            tabnext
-            let l:tab = tab + 1
-        endwhile
-        " not exist, new tab
-        exec "e " . a:filename
-    endif
-endf "}}}
-
-com! FmtOpt call FileFmtOpt() "{{{
-fu! FileFmtOpt()
-    let l:text = "Select format for writing the file"
-    let l:choices = "&Unix\n&Dos\n&Mac\n&Cancel"
-    if &ff == "dos" | let l:def = 2
-    elseif &ff == "mac" | let l:def = 3
-    else | let l:def = 1
-    endif
-    let l:n = confirm(l:text, l:choices, l:def, "Question")
-    if l:n == 1 | set ff=unix
-    elseif l:n == 2 | set ff=dos
-    elseif l:n == 3 | set ff=mac
-    endif
-endfun "}}}
-
-com! Bclose call <SID>BufClose() "{{{
-fu! <SID>BufClose()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endf "}}}
-
-com! -nargs=? DelTWS call DelTrailingWS(<args>) "{{{
-fu! DelTrailingWS(bb=0)
-    if a:bb != 0
-        if AcIsOK(-1, "Clear all trailing space? [Y]: ", "Clear finish", "Cancel") == 0
-            return
-        endif
-    endif
-    exe "normal mz"
-    %s/\s\+\r\?$//ge
-    nohl
-    exe "normal `z"
-endf "}}}
-
-" for ctags
-com! -nargs=+ GotoRead call GotoRead(<args>) "{{{
-fu! GotoRead(cmd) abort
-	let l:bnr = bufnr('%')
-	silent! exe a:cmd
-	if bufnr('%') != l:bnr
-		setl readonly nomodifiable
-	endif
-endf "}}}
-nnoremap <silent> <C-]> :<C-u>call GotoRead((&ft == 'help' ? 'help ' : 'tag ') . expand('<cword>'))<cr>
-
-" brackets jump
-let g:smart_open_brackets  = '([{,":=<'
-let g:smart_close_brackets = ')]},":=>'
-let g:smart_brackets_pattern = '[()\[\]{}<>,=":]'
-fun! SmartBracketJump(forward) "{{{
-  let line = getline('.')
-  
-  if a:forward > 0 " Forward
-    let text = strpart(line, col('.') - 1)
-    let idx = match(text, g:smart_brackets_pattern)
-    
-    if idx != -1
-      let char = text[idx]
-      let steps = idx + 1
-      if stridx(g:smart_close_brackets, char) != -1 && idx + 1 < len(text)
-         let next_char = text[idx + 1]
-         if stridx(g:smart_open_brackets, next_char) != -1
-             let steps = steps + 1
-         endif
-      endif
-      return repeat("\<Right>", steps)
-    else
-      return "\<C-o>$"
-    endif
-  else " Reverse
-    let text = strpart(line, 0, col('.') - 1)
-    let matched_char = matchstr(text, '.*\zs' . g:smart_brackets_pattern)
-    if !empty(matched_char)
-      let idx = strridx(text, matched_char)
-      let current_idx = col('.') - 1
-      let steps = current_idx - idx
-      if stridx(g:smart_open_brackets, matched_char) != -1 && idx > 0
-          let prev_char = text[idx - 1]
-          if stridx(g:smart_close_brackets, prev_char) != -1
-              let steps = steps + 1
-          endif
-      endif
-      return repeat("\<Left>", steps)
-    else
-      return "\<C-o>^"
-    endif
-  endif
-  return ""
-endf "}}}
-ino <expr> <M-n> SmartBracketJump(1)
-ino <expr> <M-p> SmartBracketJump(0)
-
-"-------------------
-"}}}
-""""""""""""""""""""
-"Create directory {{{
-""""""""""""""""""""
-AcMakeDir($VIMDATA)
-AcMakeDir($VIMDATA.'backup')
-AcMakeDir($VIMDATA.'swap')
-AcMakeDir($VIMDATA.'cache')
+call AcMakeDir($VIMDATA)
+call AcMakeDir($VIMDATA.'backup')
+call AcMakeDir($VIMDATA.'swap')
+call AcMakeDir($VIMDATA.'cache')
 set backupdir=$VIMDATA/backup " where to put backup file
 set directory=$VIMDATA/swap " where to put swap file
 "---------------------------------
-"load conf {{{
+"load conf
 so $VIMCONF/user.vimrc
 so $VIMCONF/autocomplete.vimrc
 so $VIMCONF/vim9script.vimrc
 
-nmap <silent> \ee :SwitchToBuf("$VIMCONF/Ac.vimrc")<cr>
-nmap <silent> \bb :SwitchToBuf("$VIMCONF/plugins.vimrc")<cr>
-nmap <silent> \aa :SwitchToBuf("$VIMCONF/autocomplete.vimrc")<cr>
-nmap <silent> \uu :SwitchToBuf("$VIMCONF/user.vimrc")<cr>
-nmap <silent> \vv :SwitchToBuf("$VIMCONF/vim9script.vimrc")<cr>
-"}}}
+nmap <silent> \ee :call g:SwitchToBuf($VIMCONF."/Ac.vimrc")<CR>
+nmap <silent> \bb :call g:SwitchToBuf($VIMCONF."/plugins.vimrc")<CR>
+nmap <silent> \aa :call g:SwitchToBuf($VIMCONF."/autocomplete.vimrc")<CR>
+nmap <silent> \uu :call g:SwitchToBuf($VIMCONF."/user.vimrc")<CR>
+nmap <silent> \vv :call g:SwitchToBuf($VIMCONF."/vim9script.vimrc")<CR>
+nmap <silent> \ff :call g:SwitchToBuf($VIMCONF."/functions.vimrc")<CR>
 """"""""""""""""""""
-"Base settings {{{
+"Base settings
 """"""""""""""""""""
 "Get out of VI's compatible mode..
 set nocompatible
@@ -358,13 +49,8 @@ set nocompatible
 set history=20
 "utf-8 , ANSI, UNICODE
 set encoding=utf-8
-if has("win32")
-    set termencoding=utf-8
-    set fileencoding=utf-8
-else
-    set termencoding=utf-8
-    set fileencoding=utf-8
-endif
+set termencoding=utf-8
+set fileencoding=utf-8
 
 set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
 
@@ -391,8 +77,8 @@ set autoread
 "Have the mouse enabled all the time:
 set mouse=a
 
-if	has("win32")
-    au QuickfixCmdPost make call QfMakeConv()
+if has("win32")
+    au QuickfixCmdPost make call g:QfMakeConv()
 endif
 
 "set path in current dir
@@ -412,14 +98,11 @@ endif
 
 "move auto scroll
 set scrolloff=7
-"Set mapleader
-let g:mapleader = ","
 "Fast editing of _vimrc
 "When _vimrc is edited, reload it
 "au! bufwritepost Ac.vimrc so $VIMCONF/Ac.vimrc
-"}}}
 """"""""""""""""""""
-"Colors and Fonts {{{
+"Colors and Fonts
 """"""""""""""""""""
 " Avoid clearing hilight definition in plugins
 if !exists("g:vimrc_loaded")
@@ -452,9 +135,8 @@ if !exists("g:vimrc_loaded")
 endif " exists(...)
 "inoremap <ESC> <ESC>:set iminsert=0<CR>
 colorscheme maroloccio
-"}}}
 """"""""""""""""""""
-"VIM userinterface {{{
+"VIM interface
 """"""""""""""""""""
 "Some nice mapping to switch syntax (useful if one mixes different languages in one file)
 "nmap ;$ :syntax sync fromstart<cr>
@@ -511,13 +193,8 @@ set ph=10 " complete popup window hight
 "No sound on errors and clear jumplist.
 au vimEnter * set vb t_vb=
 au vimEnter * :clearjumps
-"}}}
-""""""""""""""""""""
-"Statusline {{{
-""""""""""""""""""""
 "Always hide the statusline
 "set laststatus=2
-
 "Format the statusline
 "set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 "Actually, the tab does not switch buffers, but my arrows
@@ -526,10 +203,7 @@ try
     set stal=1
 catch
 endtry
-"}}}
-""""""""""""""""""""
-"Buffer realted {{{
-""""""""""""""""""""
+"Buffer realted
 "set viminfo='10,\"30,!,:10,n~/vimdata/cache/_viminfo
 set viminfo='10,<10,s100,@0,f0,!,h,/10,:10,n$VIMDATA/cache/_viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
@@ -538,24 +212,14 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 nmap ;bd :Bclose<cr>
 nmap ;bw :silent bw<cr>
 nmap ;bW :silent bw!<cr>
-"}}}
-""""""""""""""""""""
-"Session options {{{
-""""""""""""""""""""
+"Session options
 set sessionoptions-=curdir
 set sessionoptions+=sesdir
-"}}}
-""""""""""""""""""""
-"Files and backups {{{
-""""""""""""""""""""
+"Files and backups
 "Turn backup off
 set nobackup
 set nowb
 "set noswapfile
-"}}}
-""""""""""""""""""""
-"Folding {{{
-""""""""""""""""""""
 "Enable folding, I find it very useful
 if exists("&foldenable")
     set fen
@@ -563,19 +227,12 @@ endif
 if exists("&foldlevel")
     set fdl=0
 endif
-"}}}
-""""""""""""""""""""
-"Text options {{{
-""""""""""""""""""""
+"Text options
 set cindent shiftwidth=4 " Set cindent on to autoinent when editing C/C++ file, with 4 shift width
 set softtabstop=4
 set tabstop=4 " Set tabstop to 4 characters
 "au FileType c,cpp,h,hpp,cc,cxx set expandtab
 set expandtab " Set expandtab on, the tab will be change to space automaticaly
-"}}}
-""""""""""""""""""""
-"Indent {{{
-""""""""""""""""""""
 "Auto indent
 set ai
 "Smart indet
@@ -584,18 +241,11 @@ set si
 set cindent
 "Wrap lines
 set wrap
-"}}}
-""""""""""""""""""""
-"cscope setting {{{
-""""""""""""""""""""
+"cscope setting
 if has("cscope")
     set csto=1
     set cscopequickfix=s-,c-,d-,i-,t-,e-
 endif
-"}}}
-""""""""""""""""""""
-"HTML related {{{
-""""""""""""""""""""
 " HTML entities - used by xml edit plugin
 let xml_use_xhtml = 1
 "let xml_no_auto_nesting = 1
@@ -605,16 +255,12 @@ let html_number_lines = 0
 let use_xhtml = 1
 au FileType html set ft=xml
 au FileType html set syntax=html
-"}}}
-""""""""""""""""""""
-"Netrw {{{
-""""""""""""""""""""
+"Netrw
 let g:netrw_winsize = 30
 let g:netrw_home = $VIMDATA.'cache'
 let g:netrw_nogx = 1
-"}}}
 """"""""""""""""""""
-"User options {{{
+"User options
 """"""""""""""""""""
 "not use
 map ZZ <esc>
@@ -627,7 +273,6 @@ map q <esc>
 "iab xt <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 "edit vimrc enable fold
 set fdm=marker
-"au BufRead,BufNewFile Ac.vimrc setl fdm=marker fen
 
 "window move
 let g:wm_move_up = '<m-s-Up>'
@@ -637,10 +282,10 @@ let g:wm_move_right = '<m-s-Right>'
 let g:wm_move_x = 20
 let g:wm_move_y = 15
 
-nmap <s-up> <C-W>+
-nmap <s-down> <C-W>-
-nmap <s-left> <C-W><
-nmap <s-right> <C-W>>
+nmap <c-s-up> <C-W>+
+nmap <c-s-down> <C-W>-
+nmap <c-s-left> <C-W><
+nmap <c-s-right> <C-W>>
 
 "Bash like
 map! <c-a> <home>
@@ -703,31 +348,13 @@ xno > >gv
 "sel history
 cmap <c-k> <up>
 cmap <c-j> <down>
-nmap ge G
 
-"nmap <silent> <m-t> :tabnew<cr>
-"nmap 0 g0
-
-"vn <C-S-X> "+x
-"vn <C-S-C> "+y
-"map <C-S-V>	"+gP
-"vn <C-S-V> "+gP
-"cmap <C-S-V> <C-R>+
-"imap <C-S-V> <C-R>+
 "au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
-nmap <silent> ;ds :DelTWS(1)<cr>
+nmap <silent> ;ds :call g:DelTWS(1)<cr>
 "complete
 "imap <s-space> <cr>
 
 "cut, copy & paste
-"vmap <a-c> <c-insert>
-"imap <a-v> <s-insert>
-"nmap ;yy "+Y
-"xmap ;yy "+y
-"nmap ;yx V"+x
-"xmap ;yx "+x
-"nmap ;pp "*gP
-"xmap ;pp "*gP
 nmap <m-c> "+y
 vmap <m-c> "+y
 xmap <m-c> "+y
@@ -738,9 +365,9 @@ xmap <m-v> <c-r>+
 cmap <m-v> <c-r>+
 
 "file format
-nmap \ff :FmtOpt<cr>
-nmap \fu :se fenc=utf-8<cr>
-nmap \fg :se fenc=GBK<cr>
+nmap <Leader>ff :FmtOpt<cr>
+nmap <Leader>fu :se fenc=utf-8<cr>
+nmap <Leader>fg :se fenc=GBK<cr>
 "quickfix
 au Filetype qf set syntax=sh
 set syntax=markdown.nim
@@ -753,16 +380,14 @@ set syntax=markdown.nim
 "nmap <s-space>I :cnew<cr>
 nnoremap q :ccl<esc>
 nnoremap Q q
-"nn Q :copen<cr>
-"nn Q :FloatermShow<cr>
 nn q :FloatermHide<cr>:ccl<cr>
 "nmap Q :ccl<esc>
 "virtual edit mode
-AcSetMap(':ToggleVE<cr>', ';vv')
+call g:AcSetMap(':ToggleVE<cr>', ';vv')
 "select find
 vnoremap * y/<c-r>"<cr>
 "undo list
-nmap ;uc :AcClsUndo<cr>
+nmap ;uc :call g:AcClsUndo()<cr>
 
 "Fast saving
 nmap ;ww :update<cr>
@@ -797,9 +422,9 @@ else
     nmap <m-d> :sp<cr>
     nmap <m-D> :vs<cr>
 endif
+map ge G
 "-- template copy :Template sh/build.sh
 com! -nargs=+ Template :!cp $VIM/template/<args> %:p:h
 
-"}}}
 "---------------------------------
 " %s/u+\(.*\)/\=nr2char("0x"..submatch(1))/ge " u+n2unicode

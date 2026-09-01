@@ -7,4 +7,4 @@ let $VIMDATA=$HOME.'/.vimdata/'
 
 let $VIMDICT=$VIM.'dict/'
 let $VIMCONF=$VIM.'conf/'
-source $VIMCONF/Ac.vimrc
+source $VIMCONF/ac.vimrc

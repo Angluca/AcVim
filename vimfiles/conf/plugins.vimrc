@@ -2,9 +2,7 @@
 if !filereadable(expand("$VIM/autoload/plug.vim")) "{{{
 	!curl -fLo $VIM/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
-
-let s:bundle_dir = expand("$VIM/bundle/")
-call plug#begin(s:bundle_dir)
+call plug#begin(expand("$VIM/bundle/"))
 "}}}
 "-------------------------------------------------------
 " Plugin
@@ -14,8 +12,9 @@ call plug#begin(s:bundle_dir)
 "==================
 "bundle
 "-----------------------
-Plug 'angluca/mach.vim'
-Plug 'angluca/spectre.vim'
+"Plug 'angluca/mach.vim'
+Plug 'angluca/mach.vim', { 'for': 'mach' }
+Plug 'angluca/spectre.vim', { 'for': 'spectre' }
 "Plug 'angluca/nim.vim'
 "Plug 'ziglang/zig.vim'
 "Plug 'angluca/rust.vim'
@@ -63,10 +62,9 @@ Plug 'tpope/vim-surround'
 Plug 'drmikehenry/vim-fixkey'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
-Plug 'mbbill/undotree'
-Plug 'preservim/tagbar'
+Plug 'mbbill/undotree',  { 'on': ['UndotreeToggle'] }
+Plug 'preservim/tagbar', { 'on': ['TagbarToggle'] }
 Plug 'junegunn/vim-easy-align'
-"Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'easymotion/vim-easymotion'
 
 Plug 'jeetsukumaran/vim-buffersaurus'
@@ -88,4 +86,3 @@ Plug 'yianwillis/vimcdoc' " doc-zh
 "-----------------
 call plug#end()
 "==============
-

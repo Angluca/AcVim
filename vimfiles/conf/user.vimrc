@@ -13,22 +13,9 @@ let g:showmarks_ignore_type = "hmpq"    "help,non-modify,preview,quick-fix buffe
 "<leader>mm ShowmarksPlaceMark
 "}}}
 """"""""""""""""""""
-"errormarker {{{
-""""""""""""""""""""
-let errormarker_disablemappings = 1
-nmap <silent> ,ee :ErrorAtCursor<CR>
-nmap <silent> ,er :ErrorMarkersRemove<CR>
-"}}}
-""""""""""""""""""""
 "qbuf {{{
 """"""""""""""""""""
 let g:qb_hotkey = ';bb'
-"}}}
-""""""""""""""""""""
-"fliplr {{{
-""""""""""""""""""""
-nmap ,fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
-xmap ,fl :FlipLR <C-R>=g:FlipLR_detectPivot()<CR>
 "}}}
 """"""""""""""""""""
 "Tagbar (similar taglist) {{{
@@ -155,29 +142,29 @@ nmap <silent> ;tt :NERDTreeToggle <cr>
 "\ }
 let g:NERDCreateDefaultMappings=0
 if has("gui_running")
-    AcSetMap('<plug>NERDCommenterToggle',     '<d-/>')
+    call g:AcSetMap('<plug>NERDCommenterToggle',     '<d-/>')
 else
-    AcSetMap('<plug>NERDCommenterToggle',     '<m-/>')
+    call g:AcSetMap('<plug>NERDCommenterToggle',     '<m-/>')
 endif
-AcSetMap('<plug>NERDCommenterComment',    ';xx')
-AcSetMap('<plug>NERDCommenterMinimal',    ';xm')
-AcSetMap('<plug>NERDCommenterSexy',       ';xs')
-AcSetMap('<plug>NERDCommenterInvert',     ';xi')
-AcSetMap('<plug>NERDCommenterYank',       ';xy')
-AcSetMap('<plug>NERDCommenterAlignLeft',  ';xl')
-AcSetMap('<plug>NERDCommenterAlignBoth',  ';xb')
-AcSetMap('<plug>NERDCommenterNest',       ';xn')
-AcSetMap('<plug>NERDCommenterUncomment',  ';xu')
-AcSetMap('<plug>NERDCommenterToEOL',      ';xe')
-AcSetMap('<plug>NERDCommenterAltDelims',  ';xd')
-AcSetMap('<plug>NERDCommenterAppend',     ';xa')
+call g:AcSetMap('<plug>NERDCommenterComment',    ';xx')
+call g:AcSetMap('<plug>NERDCommenterMinimal',    ';xm')
+call g:AcSetMap('<plug>NERDCommenterSexy',       ';xs')
+call g:AcSetMap('<plug>NERDCommenterInvert',     ';xi')
+call g:AcSetMap('<plug>NERDCommenterYank',       ';xy')
+call g:AcSetMap('<plug>NERDCommenterAlignLeft',  ';xl')
+call g:AcSetMap('<plug>NERDCommenterAlignBoth',  ';xb')
+call g:AcSetMap('<plug>NERDCommenterNest',       ';xn')
+call g:AcSetMap('<plug>NERDCommenterUncomment',  ';xu')
+call g:AcSetMap('<plug>NERDCommenterToEOL',      ';xe')
+call g:AcSetMap('<plug>NERDCommenterAltDelims',  ';xd')
+call g:AcSetMap('<plug>NERDCommenterAppend',     ';xa')
 "}}}
 """"""""""""""""""""
 "easymotion {{{
 """"""""""""""""""""
 ""let EasyMotion_do_mapping = 0
-""let g:EasyMotion_keys= 'asdghklqwertyuiopzxcvbnmfj;'
-"let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
+""let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
+"let g:EasyMotion_keys = 'fjdksla;rueiwoqpvncmxhzygbt'
 "let g:EasyMotion_leader_key = '<space>'
 "let g:EasyMotion_startofline = 0
 "let g:EasyMotion_do_shade = 0
@@ -198,34 +185,6 @@ AcSetMap('<plug>NERDCommenterAppend',     ';xa')
 "nmap  t <Plug>(easymotion-overwin-w)
 "map T <Plug>(easymotion-bd-jk)
 "nmap T <Plug>(easymotion-overwin-line)
-"}}}
-""""""""""""""""""""
-"incsearch {{{
-""""""""""""""""""""
-""let g:incsearch#auto_nohlsearch = 1
-"set hlsearch
-"nmap n  <Plug>(incsearch-nohl-n)
-"nmap N  <Plug>(incsearch-nohl-N)
-"nmap *  <Plug>(incsearch-nohl-*)
-"nmap #  <Plug>(incsearch-nohl-#)
-"nmap g* <Plug>(incsearch-nohl-g*)
-"nmap g# <Plug>(incsearch-nohl-g#)
-
-"nmap /  <Plug>(incsearch-forward)
-"nmap ?  <Plug>(incsearch-backward)
-""map ? <Plug>(incsearch-stay)
-
-"nmap g/ <Plug>(incsearch-fuzzy-/)
-"nmap g? <Plug>(incsearch-fuzzy-/)
-""nmap g? <Plug>(incsearch-fuzzy-stay)
-
-""nmap <space>/ <Plug>(incsearch-fuzzyword-/)
-""nmap <space>? <Plug>(incsearch-fuzzyword-?)
-""nmap <space>g/ <Plug>(incsearch-fuzzyword-stay)
-
-"--select *find--
-"vno * y/<c-r>"<cr>
-
 "}}}
 """"""""""""""""""""
 "EasyAlign {{{
@@ -302,8 +261,8 @@ nmap ;ut :UndotreeToggle<cr>
 "}}}
 "=== building ======================{{{
 com! -bang -nargs=* -range=% -complete=shellcmd AcSend FloatermSend<bang> <args>
-com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=0 --height=0.5 --width=0.98 <args>
-nmap <space>r :AcSend 
+com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=never --height=0.5 --width=0.98 <args>
+"nmap <space>r :AcSend 
 nmap <space>r :AcRun 
 nmap <space>R :AcRun! 
 com! -nargs=+ AcFtCmd call s:AcFtCmd(<f-args>)
@@ -355,8 +314,8 @@ call AcFtCmd('ocen','XX','','AcRun trash %:t:r %:t:r.c')
 let $MAKEPAD='lines'
 "--nocapture 测试里显示打印
 "--show-output 测试里显示更多内容
-call AcFtCmd('rust','RD','Cargo.toml','AcRun cargo +nightly run <args>')
-call AcFtCmd('rust','BD','Cargo.toml','AcRun cargo +nightly build <args>')
+"call AcFtCmd('rust','RD','Cargo.toml','AcRun cargo +nightly run <args>')
+"call AcFtCmd('rust','BD','Cargo.toml','AcRun cargo +nightly build <args>')
 call AcFtCmd('rust','RE','Cargo.toml','AcRun cargo run --example=%:t:r <args> --release')
 call AcFtCmd('rust','RD','Cargo.toml','AcRun cargo run <args>')
 call AcFtCmd('rust','R','Cargo.toml','AcRun cargo run <args> --release')
@@ -443,16 +402,16 @@ nmap <silent> <space>k <Cmd>LspHover<cr>
 "nmap <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
 "nmap ge <Cmd>LspGotoDefinition<CR>
 "nmap ge <Cmd>silent! :let bnr = bufnr('%') \| LspGotoDefinition \| if bufnr('%') != bnr \| setlocal readonly nomodifiable \| endif<CR>
-nmap ge :GotoRead('LspGotoDefinition')<CR>
+nmap gs :call g:GotoRead('LspGotoDefinition')<CR>
 "nmap ga <Cmd>LspGotoDeclaration<CR>
-nmap gE :GotoRead('LspGotoDeclaration')<CR>
+nmap gS :call g:GotoRead('LspGotoDeclaration')<CR>
 "nmap ge <Cmd>LspPeekDeclaration<CR>
 "nmap gE <Cmd>LspPeekDefinition<CR>
 "nmap <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
 "nmap gi <Cmd>LspGotoImpl<CR>
-nmap gi :GotoRead('LspGotoImpl')<CR>
+nmap gi :call g:GotoRead('LspGotoImpl')<CR>
 "nmap gt <Cmd>LspGotoTypeDef<CR>
-nmap gy :GotoRead('LspGotoTypeDef')<CR>
+nmap gy :call g:GotoRead('LspGotoTypeDef')<CR>
 "nmap gi <Cmd>LspPeekImpl<CR>
 "nmap gt <Cmd>LspPeekTypeDef<CR>
 nmap g[ <Cmd>LspDiagPrev<CR>
@@ -564,8 +523,8 @@ au filetype d call LspAddServer([#{
 
 
 setl omnifunc=LspOmniFunc
-"setl completefunc=LspOmniFunc
-"setl tagfunc=LspOmniFunc
+"set completefunc=LspOmniFunc
+"set tagfunc=LspOmniFunc
 au filetype * call LspOptionsSet(#{
         \   outlineOnRight: v:true,
         \   outlineWinSize: 30,
@@ -575,7 +534,7 @@ au filetype * call LspOptionsSet(#{
         \   autoComplete: v:false,
         \   snippetSupport: v:false,
         \   vsnipSupport: v:true,
-        \   bufferCompletionTimeout: 100,
+        \   bufferCompletionTimeout: 66,
         \   filterCompletionDuplicates: v:true,
         \   completionMatcher: 'fuzzy',
         \   showSignature: v:true,

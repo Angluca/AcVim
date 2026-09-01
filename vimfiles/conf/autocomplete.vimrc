@@ -4,40 +4,40 @@
 " nim.vim must comment nim#init()
 "vimcomplete/plugin/addons.vim must Register('dictionary',['*'],8)
 """"""""""""""
-" filetypes {{{
+" filetypes
 """"""""""""""
-SetFt('*.ctags','zsh')
-SetFt('*.zshrc,*.zprofile','zsh')
-SetFt('*.vim*','vim')
-SetFt('COPYING','txt')
-SetFt('*.txt,*.log','txt')
-SetFt('*.asm,*.inc','masm')
-SetFtCmd('masm','setl mp=fasm\ %:p')
+call g:SetFt('*.ctags','zsh')
+call g:SetFt('*.zshrc,*.zprofile','zsh')
+call g:SetFt('*.vim*','vim')
+call g:SetFt('COPYING','txt')
+call g:SetFt('*.txt,*.log','txt')
+call g:SetFt('*.asm,*.inc','masm')
+call g:SetFtCmd('masm','setl mp=fasm\ %:p')
 
-SetFt('*.glsl,*.[vf]sh,*.vert,*.frag,*.shd,*.wgsl,*.flecs','c')
-SetFt('*.md,*.markdown,README*','markdown')
-SetFt('CMakeLists.txt','cmake')
-SetFt('*.as','actionscript')
-SetFt('*.mxml','mxml')
-SetFt('*.make','make')
-SetFt('*.p','pawn')
-SetFt('*.mm','objc')
-SetFt('*.nut','squirrel|setl mp=sq\ %:p')
-SetFtCmd('squirrel','setl efm=%f:%l:%m')
-SetFt('*.gd','gdscript')
-SetFt('*.tic','lua')
-SetFt('*.wxml','html') "weixin
-SetFt('*.wxss','css')  "wx
-SetFt('*.nim,*.nims,*.nimble,*.c2nim','nim')
-SetFt('*.zig','zig')
-SetFt('*.lita,*.ape','litac') 
-SetFt('*.adept','adept')
-SetFt('*.um,*.td,*.wren','ocen')
-SetFt('*.c3','c2')
+call g:SetFt('*.glsl,*.[vf]sh,*.vert,*.frag,*.shd,*.wgsl,*.flecs','c')
+call g:SetFt('*.md,*.markdown,README*','markdown')
+call g:SetFt('CMakeLists.txt','cmake')
+call g:SetFt('*.as','actionscript')
+call g:SetFt('*.mxml','mxml')
+call g:SetFt('*.make','make')
+call g:SetFt('*.p','pawn')
+call g:SetFt('*.mm','objc')
+call g:SetFt('*.nut','squirrel|setl mp=sq\ %:p')
+call g:SetFtCmd('squirrel','setl efm=%f:%l:%m')
+call g:SetFt('*.gd','gdscript')
+call g:SetFt('*.tic','lua')
+call g:SetFt('*.wxml','html') "weixin
+call g:SetFt('*.wxss','css')  "wx
+call g:SetFt('*.nim,*.nims,*.nimble,*.c2nim','nim')
+call g:SetFt('*.zig','zig')
+call g:SetFt('*.lita,*.ape','litac') 
+call g:SetFt('*.adept','adept')
+call g:SetFt('*.um,*.td,*.wren','ocen')
+call g:SetFt('*.c3','c2')
 
 " automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
-au BufWrite *.nim**,*.zig,*.d,*.rs,*.ha,*.c2 :DelTWS
+au BufWrite *.nim**,*.zig,*.d,*.rs :DelTWS
 
 "for language
 au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .<cr>
@@ -53,106 +53,70 @@ au FileType mach let $MACH_STD = $MACH_ROOT.'/../mach_std/src'
 "au FileType mach nmap \== :Mctags $VIMDICT/mach.local.ctags mach.local.tags<cr>
 au FileType mach nmap \== :Mctags $VIMDICT/mach.local.ctags mach.local.tags $MACH_STD<cr>
 au FileType mach nmap \=- :Mctags $VIMDICT/mach.ctags mach.tags $MACH_STD<cr>
-"SetDict('mach','','mach.base.dict', 'mach.dict', 'mach.raylib.dict')
-"SetDict('mach','','mach.base.dict','mach.dict','mach.boom.dict','mach.shader.dict')
-SetDict('mach','','mach.base.dict','mach.dict','mach.boom.dict','mach.shader.dict','mach.raylib.dict')
+"call g:SetDict('mach','','mach.base.dict', 'mach.dict', 'mach.raylib.dict')
+"call g:SetDict('mach','','mach.base.dict','mach.dict','mach.boom.dict','mach.shader.dict')
+call g:SetDict('mach','','mach.base.dict')
 
 au FileType spectre let $SXLIBS = $SPECTRE_ROOT.'/spectrelib'
 au FileType spectre nmap \== :Mctags $VIMDICT/spectre.ctags spectre.tags<cr>
 au FileType spectre nmap \=- :Mctags $VIMDICT/spectre.ctags spectre.tags $SXLIBS<cr>
-SetTags('spectre','','spectre.tags')
-SetDict('spectre','','spectre.base.dict', 'spectre.tags')
-
-au FileType valk nmap \== :Mctags $VIMDICT/valk.ctags valk.tags<cr>
-au FileType valk nmap \=- :Mctags $VIMDICT/valk.ctags valk.tags $VALK_ROOT\/lib<cr>
-
-au FileType dither let $DITHER_STD = $DITHER_ROOT.'/std'
-au FileType dither nmap \== :Mctags $VIMDICT/dither.ctags dither.tags<cr>
-au FileType dither nmap \=- :Mctags $VIMDICT/dither.ctags dither.tags $DITHER_STD<cr>
-SetTags('dither','','dither.tags')
-SetDict('dither','','dither.tags')
-
-au FileType nature nmap \== :Mctags $VIMDICT/nature.ctags nature.tags<cr>
-au FileType nature nmap \=- :Mctags $VIMDICT/nature.ctags nature.tags $NATURE_STD<cr>
-au FileType nature let $NATURE_STD = $NATURE_ROOT.'/std'
-SetTags('nature','','nature.tags')
-SetDict('nature','','nature.base.dict')
+call g:SetTags('spectre','','spectre.tags')
+call g:SetDict('spectre','','spectre.base.dict', 'spectre.tags')
 
 au FileType nim nmap \== :Maketags ntags -R\ **/**<cr>
 au FileType nim let $NIMLIB = $HOME.'/SDK/Nims/nim/lib'
 au FileType nim let $NIMSKLIB = $HOME.'/SDK/Nims/nimskull/lib'
-SetDict('nim','','nim.base.dict')
-"SetTags('nim','','nim.skull.tags')
-SetTags('nim','','nim.tags')
-
-"au FileType c2 nmap \== :exe ':silent !ctags --options=$VIMDICT/c2.ctags  -R -f c2.tags' <cr>
-au FileType c2 nmap \== :Mctags $VIMDICT/c2.ctags c2.tags<cr>
-au FileType c2 nmap \=- :Mctags $VIMDICT/c2.ctags c2.tags $C2_LIBDIR<cr>
-au FileType c2 let $C2_LIBS = $HOME.'/SDK/C2langs/c2_libs'
-SetTags('c2','','c2.tags', 'c2.libs.tags')
-"SetDict('c2','','c2.base.dict','c2.dict')
-SetDict('c2','','c2.base.dict')
+call g:SetDict('nim','','nim.base.dict')
+"call g:SetTags('nim','','nim.skull.tags')
+call g:SetTags('nim','','nim.tags')
 
 au FileType ocen nmap \== :Mctags $VIMDICT/ocen.ctags ocen.tags<cr>
 au FileType ocen nmap \=- :Mctags $VIMDICT/ocen.ctags ocen.tags $OCEN_ROOT<cr>
 au FileType ocen let $OCEN_RAYLIB = $HOME.'/SDK/Ocens/rylib-ocen/c/include'
-"SetTags('ocen','$VIM/bundle/ocen.vim/tags','ocen.tags','raylib.tags')
-SetTags('ocen','$VIM/bundle/ocen.vim/tags','ocen.tags')
-"SetDict('ocen','$VIM/bundle/ocen.vim/tags','ocen.dict','ocen.base.dict','raylib.dict')
-SetDict('ocen','$VIM/bundle/ocen.vim/tags','ocen.base.dict')
-
-au FileType virgil nmap \== :Maketags vctags **/**/*.v3 tags<cr>
-"au FileType virgil nmap \== :!vctags rt/**/*.v3 lib/**/*.v3 aeneas/src/**/*.v3
-"au FileType virgil nmap \== :!vctags **/**/*.v3<cr>
-SetTags('virgil','','virgil.tags','virgil.rt.tags','virgil.wizeng.tags')
-SetDict('virgil','','virgil.dict','virgil.base.dict')
-
-au FileType adept nmap \== :Mctags $VIMDICT/adept.ctags adept.tags<cr>
-au FileType adept nmap \=- :Mctags $VIMDICT/adept.ctags adept.tags $ADEPT<cr>
-au FileType adept let $ADEPT = $HOME.'/SDK/Adepts/_bin/import'
-SetTags('adept','$VIM/bundle/adept.vim/tags','adept.tags')
-SetDict('adept','$VIM/bundle/adept.vim/tags','adept.dict','adept.base.dict')
+"call g:SetTags('ocen','$VIM/bundle/ocen.vim/tags','ocen.tags','raylib.tags')
+call g:SetTags('ocen','$VIM/bundle/ocen.vim/tags','ocen.tags')
+"call g:SetDict('ocen','$VIM/bundle/ocen.vim/tags','ocen.dict','ocen.base.dict','raylib.dict')
+call g:SetDict('ocen','$VIM/bundle/ocen.vim/tags','ocen.base.dict')
 
 au FileType rust nmap \== :Maketags ctags --languages=Rust\ --exclude=LICENSE\ --exclude=\*.tags\ --exclude=\*.md\ --exclude=\*.txt\ --exclude=\*.toml\ --exclude=\*.lock\ --exclude=\*.ron\ --exclude=target/\*\ --exclude=examples/\*\ --exclude=code_editor/\*\ --exclude=studio/\*\ --exclude=tools/\*\ --fields=+S\ -R\ -f\ rust.tags rust.tags<cr>
 au FileType rust nmap \00 :Mctags $VIMDICT/rust.makepad.dsl.ctags rust.makepad.dsl.tags $MAKEPAD_<cr>
 au FileType rust let $RUST = $HOME.'/.Rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/library/std'
 " 不能用MAKEPAD环境变量,官方为编译提示准备了MAKEPAD=lines
 au FileType rust let $MAKEPAD_ = $HOME.'/Rusts/_GUIs/makepad'
-"SetTags('rust','','rust.tags')
-"SetDict('rust','','rust.base.dict')
-SetTags('rust','','rust.tags','rust.makepad.tags','rust.makepad.dsl.tags')
-SetDict('rust','','rust.base.dict','rust.makepad.dict','rust.makepad.dsl.dict')
+"call g:SetTags('rust','','rust.tags')
+"call g:SetDict('rust','','rust.base.dict')
+call g:SetTags('rust','','rust.tags','rust.makepad.tags','rust.makepad.dsl.tags')
+call g:SetDict('rust','','rust.base.dict','rust.makepad.dict','rust.makepad.dsl.dict')
 
 "%s/.*\/test\/.*$\n//ge
 "nmap \-- $RAYLIB
 
-"}}}
+"
 """"""""""""""""""""
-" acp dictags {{{
+" acp dictags
 """"""""""""""""""""
 " Use nimlsp don't set dict,Will slow !!!
 if has("win32")
-	SetDict('asm','','win32.dict')
-    SetDict('c,cpp','','win32.dict','cpp.dict')
+	call g:SetDict('asm','','win32.dict')
+    call g:SetDict('c,cpp','','win32.dict','cpp.dict')
 else
-    "SetDict('c,cpp','','cpp.dict','flecs.dict')
-    SetDict('c,cpp','','cpp.dict')
+    call g:SetDict('c,cpp','','cpp.dict')
 endif
-SetDict('vim','','vim.dict')
-SetDict('java','','java.dict')
-SetDict('js','','javascript.dict')
-SetDict('perl','','perl.dict')
-SetDict('php','','php.dict','html.dict')
-SetDict('html','','javascript.dict','html.dict','html5.dict')
-SetDict('actionscript','as3.dict')
-SetDict('sh','','bash.dict')
-SetDict('squirrel','','squirrel.dict')
-SetDict('lua','','lua.dict')
-SetDict('zig','','zig.dict','zig.base.dict')
-SetDict('hare','','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
-"}}}
+call g:SetDict('vim','','vim.dict')
+call g:SetDict('java','','java.dict')
+call g:SetDict('js','','javascript.dict')
+call g:SetDict('perl','','perl.dict')
+call g:SetDict('php','','php.dict','html.dict')
+call g:SetDict('html','','javascript.dict','html.dict','html5.dict')
+call g:SetDict('actionscript','as3.dict')
+call g:SetDict('sh','','bash.dict')
+call g:SetDict('squirrel','','squirrel.dict')
+call g:SetDict('lua','','lua.dict')
+call g:SetDict('zig','','zig.dict','zig.base.dict')
+call g:SetDict('hare','','hare.base.dict', 'hare.dict', 'hare.sdl.dict')
+"
 """""""""""""""""""""""""""""
-" autocomplete setting {{{
+" autocomplete setting
 """""""""""""""""""""""""""""
 "set cot=menuone,noinsert,noselect,popup
 "set cot=menuone,noinsert,popup  " Not need preview, It is open win
@@ -165,89 +129,7 @@ set autocomplete
 set cpt=F,o,k^20,.^20,b^10,w^10,s^20,i^20,t^20,u^10
 "ino <silent><expr> <C-Space> "\<C-x>\<C-o>"
 
-"setl omnifunc=syntaxcomplete#Complete
-"setl omnifunc=SmartTagCompleteHash
-"setl completefunc=SmartTagCompleteHash
-"au VimEnter * call timer_start(100, {-> execute('call SmartTagCompleteHash(0,[])')})
-"au Filetype * call timer_start(100, {-> execute('call SmartTagCompleteHash(0,[])')})
-
-" 有lsp插件暂不使用
-fu! SmartTagCompleteHash(findstart, base) abort
-  if !exists('b:tag_index')
-    let b:tag_index = {}
-
-    " 构建 tags 哈希表
-    for tagfile in split(&tags, ',')
-      if empty(tagfile) || !filereadable(tagfile)
-        continue
-      endif
-      for line in readfile(tagfile)
-        let word = matchstr(line, '^\S\+')
-        if empty(word)
-          continue
-        endif
-        let key = strpart(word, 0, 1)
-        if !has_key(b:tag_index, key)
-          let b:tag_index[key] = []
-        endif
-        call add(b:tag_index[key], word)
-      endfor
-    endfor
-  endif
-
-  " === 找补全起点 ===
-  if a:findstart
-    let line = getline('.')
-    let start = col('.') - 1
-    while start > 0 && line[start - 1] =~ '\k'
-      let start -= 1
-    endwhile
-    return start
-  else
-    " === 查找补全内容 ===
-    let colpos = col('.') - 1
-    if colpos == 0
-      return []
-    endif
-    let line = getline('.')
-    let prefix = matchstr(line[0:colpos-1], '\k*$')
-    if len(prefix) < 1
-      return []
-    endif
-
-    " 合并语法补全 + tag 哈希补全
-    let completions = syntaxcomplete#Complete(0, a:base)
-    let key = strpart(prefix, 0, 1)
-    if has_key(b:tag_index, key)
-      for word in b:tag_index[key]
-        if word[:len(prefix)-1] == prefix
-          call add(completions, word)
-        endif
-      endfor
-    endif
-
-    return uniq(sort(completions))
-  endif
-endf
-
-"inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-"}}}
 "-------------------
-"--temp {{{
-au FileType zig let g:zig_fmt_autosave = 0
-"raylib
-"au FileType zig let $RAYLIB = $HOME.'/SDK/Raylibs/raylib/zig-out/include'
-""au FileType zig let $RAYGUI = $HOME.'/SDK/Raylibs/raygui/src'
-"au FileType zig setl tags +=$VIMDICT/raylib.tags
-"SetDict('zig','','zig.dict','zig.base.dict','raylib.dict')
-"sokol
-"au FileType zig let $SOKOLC = $HOME.'/Zigs/Sokols/sokol'
-"au FileType zig setl tags+=$VIMDICT/sokolc.tags
-"au FileType zig let $SOKOL = $HOME.'/Zigs/Sokols/sokol-zig/src/sokol'
-"au FileType zig setl tags+=$VIMDICT/sokol-zig.tags
-"SetDict('zig','','zig.dict','zig.base.dict','sokol.dict')
-"
-"}}}
+"--temp
+au FileType zig let call g:zig_fmt_autosave = 0
 
