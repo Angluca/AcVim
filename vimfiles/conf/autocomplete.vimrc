@@ -1,8 +1,11 @@
 vim9script
 # -- autocomplete setting --
+#inoremap <expr> <BS> pumvisible() ? "\<C-e>\<BS>" : "\<BS>"
 set cot=menuone,noinsert,popup,fuzzy
 set autocomplete
-set cpt=F,o,k^20,.^20,b^10,w^10,s^20,i^20,t^20,u^10
+#set autocompletedelay=60
+#set cpt=F,o,k^20,.^20,b^10,w^10,s^20,i^20,t^20,u^10
+set cpt=k^10,.^10,b^10,w^10 # lsp下用o或F都会卡
 # nim.vim must comment nim#init()
 # -- filetypes ------
 g:SetFt('*.ctags', 'zsh')

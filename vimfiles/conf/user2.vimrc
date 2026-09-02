@@ -53,8 +53,7 @@ au VimEnter * g:VimSuggestSetOptions(g:vimsuggestOpt)
 
 #-- scope ------
 import autoload 'scope/fuzzy.vim'
-nmap <C-l> <scriptcmd>fuzzy.Quickfix()<CR>
-nmap <C-L> <scriptcmd>fuzzy.Quickfix()<CR>
+nmap <C-q> <scriptcmd>fuzzy.Quickfix()<CR>
 nmap ;/ <scriptcmd>fuzzy.BufSearch()<CR>
 vmap ;/ <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
 nmap ;? <scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>

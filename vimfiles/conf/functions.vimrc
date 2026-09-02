@@ -3,7 +3,7 @@ vim9script noclear
 def g:AcSetMap(target: string, combo: string)
   for mode in ['n', 'x']
     if !hasmapto(target, mode)
-      execute $"{mode}map {combo} {target}"
+      exe $"{mode}map {combo} {target}"
     endif
   endfor
 enddef
@@ -41,7 +41,7 @@ def g:AcClsUndo()
     var ul_bak = &undolevels
     var md_bak = &modified
     &undolevels = -1
-    execute "normal I \<BS>\<Esc>"
+    exe "normal I \<BS>\<Esc>"
     &undolevels = ul_bak
     &modified = md_bak
     g:AcIsOK(1, '', 'Clear finish', '')
@@ -63,23 +63,23 @@ def g:Fdict()
     :silent w
   END
   for cmd in cmds
-    execute cmd
+    exe cmd
   endfor
 enddef
 
 def g:Ftags(rd: string = '', only_add_path: number = 0)
   # 正则里全是反斜杠，用单引号拼接，不要用 $'' 插值
   if rd != ''
-    execute ':%s/\t\(.*\.\w\+\)\t/\t' .. rd .. '\/\1\t/ge'
+    exe ':%s/\t\(.*\.\w\+\)\t/\t' .. rd .. '\/\1\t/ge'
   else
     var p = input('path: ')
     if p != ''
-      execute ':%s/\v^.*\s*\/?tests?\/.*$\n//ge'
-      execute ':%s/\t\(.*\.\w\+\)\t/\t' .. p .. '\/\1\t/ge'
+      exe ':%s/\v^.*\s*\/?tests?\/.*$\n//ge'
+      exe ':%s/\t\(.*\.\w\+\)\t/\t' .. p .. '\/\1\t/ge'
     endif
   endif
   if only_add_path != 0
-    execute 'silent w'
+    exe 'silent w'
     return
   endif
   var cmds =<< trim END
@@ -100,7 +100,7 @@ def g:Ftags(rd: string = '', only_add_path: number = 0)
     :silent w
   END
   for cmd in cmds
-    execute cmd
+    exe cmd
   endfor
 enddef
 
@@ -108,11 +108,11 @@ nmap \-- :call g:Ftags('', 0)<cr>
 nmap \-0 :call g:Fdict()<cr>
 
 def g:GenTags(app: string = 'ctags', opt: string = '', f: string = '', path: string = '')
-  execute $'silent !{app} {opt}'
+  exe $'silent !{app} {opt}'
   if f == ''
     return
   endif
-  execute $'e ./{f}'
+  exe $'e ./{f}'
   g:Ftags(path, 1)
 enddef
 
@@ -122,11 +122,11 @@ enddef
 
 # ---- filetype / dict / tags 绑定 ----
 def g:SetFt(fn: string, ft: string, bc: string = 'BufEnter')
-  execute $"au {bc} {fn} setl ft={ft}"
+  exe $"au {bc} {fn} setl ft={ft}"
 enddef
 
 def g:SetFtCmd(ft: string, cmd: string, bc: string = 'FileType')
-  execute $"au {bc} {ft} {cmd}"
+  exe $"au {bc} {ft} {cmd}"
 enddef
 
 def g:SetDict(ft: string, dir: string, ...files: list<string>)
@@ -135,7 +135,7 @@ def g:SetDict(ft: string, dir: string, ...files: list<string>)
   for file in files
     opt ..= d .. file .. ','
   endfor
-  execute $"au FileType {ft} setl dict={opt}"
+  exe $"au FileType {ft} setl dict={opt}"
 enddef
 
 def g:SetTags(ft: string, dir: string, ...files: list<string>)
@@ -144,7 +144,7 @@ def g:SetTags(ft: string, dir: string, ...files: list<string>)
   for file in files
     opt ..= d .. file .. ','
   endfor
-  execute $"au FileType {ft} setl tags={opt}"
+  exe $"au FileType {ft} setl tags={opt}"
 enddef
 
 # ---- 杂项工具 ----
@@ -158,20 +158,21 @@ enddef
 def g:SwitchToBuf(filename: string)
   var wnr = bufwinnr(filename)
   if wnr != -1
-    execute $"{wnr}wincmd w"
+    var winid = win_getid(wnr)
+    win_gotoid(winid)
     return
   endif
   tabfirst
   for tabnr in range(1, tabpagenr('$'))
     wnr = bufwinnr(filename)
     if wnr != -1
-      execute $"normal {tabnr}gt"
-      execute $"{wnr}wincmd w"
+      var winid = win_getid(wnr, tabnr)
+      win_gotoid(winid)
       return
     endif
     tabnext
   endfor
-  execute $"e {filename}"
+  exe $"e {filename}"
 enddef
 
 def g:FmtOpt()
@@ -183,7 +184,7 @@ def g:FmtOpt()
   var n = confirm('Select format for writing the file',
         "&Unix\n&Dos\n&Mac\n&Cancel", dflt, 'Question')
   if n >= 1 && n <= 3
-    execute $'set ff={formats[n - 1]}'
+    exe $'set ff={formats[n - 1]}'
   endif
 enddef
 
@@ -198,7 +199,7 @@ def g:Bclose()
     new
   endif
   if buflisted(cur)
-    execute $'bdelete! {cur}'
+    exe $'bdelete! {cur}'
   endif
 enddef
 
@@ -206,17 +207,17 @@ def g:DelTWS(bb: number = 0)
   if bb != 0 && g:AcIsOK(-1, 'Clear all trailing space? [Y]: ', 'Clear finish', 'Cancel') == 0
     return
   endif
-  execute 'normal mz'
-  execute ':%s/\s\+\r\?$//ge'
+  exe 'normal mz'
+  exe ':%s/\s\+\r\?$//ge'
   nohlsearch
-  execute 'normal `z'
+  exe 'normal `z'
 enddef
 
 def g:AcFtRun(file: string, cmd: string)
     var dir = fnamemodify(findfile(file, '.;'), ':h')
     if !empty(dir)
-        execute 'lcd ' .. dir
-        execute cmd
+        exe 'lcd ' .. dir
+        exe cmd
     endif
 enddef
 
@@ -225,13 +226,13 @@ def g:AcFtCmd(ft: string, key: string, file: string, cmd: string, ...rest: list<
     for c in rest
         repl ..= ' | ' .. c
     endfor
-    execute $'au FileType {ft} com! -bang -nargs=* -complete=file {key} {repl}'
+    exe $'au FileType {ft} com! -bang -nargs=* -complete=file {key} {repl}'
 enddef
 
 # ---- 跳转 ----
 def g:GotoRead(cmd: string)
   var bnr = bufnr()
-  silent! execute cmd
+  silent! exe cmd
   if bufnr() != bnr
     setlocal readonly nomodifiable
   endif

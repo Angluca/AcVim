@@ -80,6 +80,7 @@ hi DiffAdd        guifg=#78ba42 guibg=#107040  gui=none                         
 hi Exception      guifg=#8f3231 guibg=bg       gui=none                         " red on background
 hi Title          guifg=#8f3231 guibg=bg       gui=none                         " red on background
 hi Error          guifg=fg      guibg=#8f3231  gui=none                         " foreground on red
+hi ErrorMsg       guifg=grey    guibg=#8b4a4a  gui=none                         " foreground on red
 hi DiffDelete     guifg=fg      guibg=#8f3231  gui=none                         " foreground on red
 hi Todo           guifg=#8f3231 guibg=#0e1219  gui=bold,undercurl guisp=#cbc32a " red on dark grey
 hi LineNr         guifg=#2c3138 guibg=#0e1219  gui=none                         " grey on dark grey

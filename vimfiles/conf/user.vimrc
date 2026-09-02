@@ -308,21 +308,24 @@ nmap g] <Cmd>g:LspDiagNext<CR>
 nmap gr <Cmd>g:LspShowReferences<CR>
 nmap g\ <Cmd>g:LspServer restart<CR>
 
-#au filetype rust vim9cmd g:LspAddServer([{ name: 'rust-analyzer', filetype: ['rust'], path: exepath('rust-analyzer'), syncInit: true }])
-setl omnifunc=g:LspOmniFunc
 g:lsp_options = {
     outlineOnRight: true,
     outlineWinSize: 30,
-    autoHighlightDiags: false,
+    autoHighlightDiags: true,   # 行数提示错误
     showDiagInBalloon: false,
     aleSupport: false,
-    autoComplete: false,
+    autoComplete: true,
+    incrementalSync: true,
     snippetSupport: false,
     vsnipSupport: true,
     bufferCompletionTimeout: 66,
     filterCompletionDuplicates: true,
     completionMatcher: 'fuzzy',
-    showSignature: true,
+    showSignature: true,        # 函数参数弹窗
+    highlightDiagInline: false,
+    showDiagInPopup: false,
+    showDiagOnStatusLine: false,
+    maxDiagnostics: 1,
 }
 au User g:LspSetup <cmd>call g:LspOptionsSet(g:lsp_options)
 g:lsp_servers = [

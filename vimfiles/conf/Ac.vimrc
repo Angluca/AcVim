@@ -34,6 +34,8 @@ nmap \zz <Cmd>call g:SwitchToBuf($VIMCONF.."/user.vimrc")<CR>
 nmap \vv <Cmd>call g:SwitchToBuf($VIMCONF.."/user2.vimrc")<CR>
 nmap \ff <Cmd>call g:SwitchToBuf($VIMCONF.."/functions.vimrc")<CR>
 # -- Base settings ------
+# 错误提示只显示在行号上
+set signcolumn=number
 #Get out of VI's compatible mode..
 set nocompatible
 #Sets how many lines of history VIM has to remember
