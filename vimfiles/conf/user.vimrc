@@ -1,299 +1,204 @@
-"=================================
-" Plugin configuration
-"=================================
-""""""""""""""""""""
-"ShowMarks {{{
-""""""""""""""""""""
-let showmarks_include = "abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ"
-let g:showmarks_ignore_type = "hmpq"    "help,non-modify,preview,quick-fix buffer do not display
-"<leader>mt ShowMarksToggle
-"<leader>mo ShowmarksShowMarksOn
-"<leader>mc ShowmarksClearMark
-"<leader>ma ShowmarksClearAll
-"<leader>mm ShowmarksPlaceMark
-"}}}
-""""""""""""""""""""
-"qbuf {{{
-""""""""""""""""""""
-let g:qb_hotkey = ';bb'
-"}}}
-""""""""""""""""""""
-"Tagbar (similar taglist) {{{
-""""""""""""""""""""
-"let g:tagbar_ctags_bin = 'ctags'
-let g:tagbar_autoclose = 1
-let g:tagbar_width = 28
-let g:tagbar_autofocus = 1
-let g:tagbar_compact = 1
-"let g:tagbar_sort = 0
-"let g:tagbar_expand = 0
-"let g:tagbar_singleclick = 1
-"let g:tagbar_foldlevel = 2
-"let g:tagbar_systemenc = 'gbk'
-"let g:tagbar_updateonsave_maxlines = 10000
+vim9script
+#=================================
+# Plugin configuration
+#=================================
+# -- ShowMarks ------
+g:showmarks_include = 'abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ'
+g:showmarks_ignore_type = 'hmpq'
+# -- qbuf ------
+g:qb_hotkey = ';bb'
+# -- Tagbar (similar taglist) ------
+#g:tagbar_ctags_bin = 'ctags'
+g:tagbar_autoclose = 1
+g:tagbar_width = 28
+g:tagbar_autofocus = 1
+g:tagbar_compact = 1
+#g:tagbar_sort = 0
+#g:tagbar_expand = 0
+#g:tagbar_singleclick = 1
+#g:tagbar_foldlevel = 2
+#g:tagbar_systemenc = 'gbk'
+#g:tagbar_updateonsave_maxlines = 10000
 
-let g:tagbar_type_mach = {
-    \ 'ctagstype' : 'mach',
-    \ 'kinds'     : [
-    \ 'm:mod:0:1',
-    \ 'r:rec:0:1',
-    \ 'u:uni:0:1',
-    \ 'f:fun:0:1',
-    \ 't:test:1:0',
-    \ 'v:var:1:0',
-    \ ],
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/mach.local.ctags'
-    \ }
-let g:tagbar_type_spectre = {
-    \ 'ctagstype' : 'spectre',
-    \ 'kinds'     : [
-    \ 't:type:0:1',
-    \ 'e:enum:0:1',
-    \ 'u:union:0:1',
-    \ 'f:fn:0:1',
-    \ 'v:var:1:0',
-    \ ],
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/spectre.local.ctags'
-    \ }
-let g:tagbar_type_ocen = {
-    \ 'ctagstype' : 'ocen',
-    \ 'kinds'     : [
-    \ 'f:func:0:1',
-    \ 't:type:1:0',
-    \ ],
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/ocen.ctags'
-    \ }
-let g:tagbar_type_dither = {
-    \ 'ctagstype' : 'dither',
-    \ 'kinds'     : [
-    \ 'f:func:0:1',
-    \ 'v:var:0:1',
-    \ 't:type:1:0',
-    \ ],
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/dither.ctags'
-    \ }
-let g:tagbar_type_nature = {
-    \ 'ctagstype' : 'nature',
-    \ 'kinds'     : [
-    \ 'f:func:0:1',
-    \ 'v:var:1:0',
-    \ 't:type:0:1',
-    \ 'm:mod:1:0'
-    \ ],
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/nature.ctags'
-    \ }
-let g:tagbar_type_virgil = {
-    \ 'ctagstype' : 'virgil',
-    \ 'kinds'     : [
-    \ 'c:component:0:1',
-    \ 'l:layout:0:1',
-    \ 's:class:0:1',
-    \ 'm:macro:0:1',
-    \ 't:type:0:1',
-    \ 'e:enum:0:1',
-    \ 'f:func:0:1',
-    \ 'a:case:1:0',
-    \ 'v:var:1:0',
-    \ 'n:enums:1:0',
-    \ ],
-    \ 'sro'          : '::',
-    \ 'kind2scope'	: {
-        \ 'c' : 'component',
-        \ 'l' : 'layout',
-        \ 's' : 'class',
-        \ 'm' : 'macro',
-        \ 't' : 'type',
-        \ 'e' : 'enum',
-    \ },
-    \ 'scope2kind'	: {
-        \ 'component'  : 'c',
-        \ 'layout'  : 'l',
-        \ 'class'   : 's',
-        \ 'macro'   : 'm',
-        \ 'type'    : 't',
-        \ 'enum'    : 'e',
-    \ },
-    \ 'deffile' : expand('<sfile>:p:h:h') . '/dict/virgil.ctags'
-    \ }
+g:tagbar_type_mach = {
+    ctagstype: 'mach',
+    kinds: ['m:mod:0:1', 'r:rec:0:1', 'u:uni:0:1', 'f:fun:0:1', 't:test:1:0', 'v:var:1:0'],
+    deffile: expand('<sfile>:p:h:h') .. '/dict/mach.local.ctags',
+}
+
+g:tagbar_type_spectre = {
+    ctagstype: 'spectre',
+    kinds: ['t:type:0:1', 'e:enum:0:1', 'u:union:0:1', 'f:fn:0:1', 'v:var:1:0'],
+    deffile: expand('<sfile>:p:h:h') .. '/dict/spectre.local.ctags',
+}
+
+g:tagbar_type_ocen = {
+    ctagstype: 'ocen',
+    kinds: ['f:func:0:1', 't:type:1:0'],
+    deffile: expand('<sfile>:p:h:h') .. '/dict/ocen.ctags',
+}
+
+g:tagbar_type_dither = {
+    ctagstype: 'dither',
+    kinds: ['f:func:0:1', 'v:var:0:1', 't:type:1:0'],
+    deffile: expand('<sfile>:p:h:h') .. '/dict/dither.ctags',
+}
+
+g:tagbar_type_nature = {
+    ctagstype: 'nature',
+    kinds: ['f:func:0:1', 'v:var:1:0', 't:type:0:1', 'm:mod:1:0'],
+    deffile: expand('<sfile>:p:h:h') .. '/dict/nature.ctags',
+}
+
+g:tagbar_type_virgil = {
+    ctagstype: 'virgil',
+    kinds: [
+        'c:component:0:1',
+        'l:layout:0:1',
+        's:class:0:1',
+        'm:macro:0:1',
+        't:type:0:1',
+        'e:enum:0:1',
+        'f:func:0:1',
+        'a:case:1:0',
+        'v:var:1:0',
+        'n:enums:1:0',
+    ],
+    sro: '::',
+    kind2scope: { c: 'component', l: 'layout', s: 'class', m: 'macro', t: 'type', e: 'enum' },
+    scope2kind: { component: 'c', layout: 'l', class: 's', macro: 'm', type: 't', enum: 'e' },
+    deffile: expand('<sfile>:p:h:h') .. '/dict/virgil.ctags',
+}
+
 nmap <silent> ;tl :TagbarToggle<cr>
-"}}}
-""""""""""""""""""""
-"NERDTree  {{{
-""""""""""""""""""""
-"let NERDTreeMinimalUI=1
-"let NERDTreeMinimalMenu=1
-let NERDTreeQuitOnOpen=1
-let NERDChristmasTree=0
-let NERDTreeAutoCenter=1
-let NERDTreeMouseMode=1
-let NERDTreeShowFiles=1
-let NERDTreeShowHidden=0
-let NERDTreeShowLineNumbers=0
-"let NERDTreeWinPos='left'
-let NERDTreeWinSize=30
-let NERDTreeIgnore=['\.o$', '\~$','\.a$','\.bak$','\.d$','\.ncb$','\.bmp$','\.exe$','\.tar\.gz$','\.7z$','\.zip$','\.rar$','\.swp$','\.dll$','\.obj$']
+# -- NERDTree ------
+#g:NERDTreeMinimalUI = 1
+#g:NERDTreeMinimalMenu = 1
+g:NERDTreeQuitOnOpen = 1
+g:NERDChristmasTree = 0
+g:NERDTreeAutoCenter = 1
+g:NERDTreeMouseMode = 1
+g:NERDTreeShowFiles = 1
+g:NERDTreeShowHidden = 0
+g:NERDTreeShowLineNumbers = 0
+#g:NERDTreeWinPos = 'left'
+g:NERDTreeWinSize = 30
+g:NERDTreeIgnore = ['\.o$', '\~$', '\.a$', '\.bak$', '\.d$', '\.ncb$', '\.bmp$',
+    '\.exe$', '\.tar\.gz$', '\.7z$', '\.zip$', '\.rar$', '\.swp$', '\.dll$', '\.obj$']
 nmap <silent> ;tt :NERDTreeToggle <cr>
-"}}}
-""""""""""""""""""""
-"NERD_commenter {{{
-""""""""""""""""""""
-"let g:NERDCustomDelimiters = {
-"\ 'vim': { 'left': '#' }
-"\ }
-let g:NERDCreateDefaultMappings=0
-if has("gui_running")
-    call g:AcSetMap('<plug>NERDCommenterToggle',     '<d-/>')
+# -- NERD_commenter ------
+#g:NERDCustomDelimiters = { vim: { left: '#' } }
+g:NERDCreateDefaultMappings = 0
+if has('gui_running')
+    g:AcSetMap('<plug>NERDCommenterToggle', '<d-/>')
 else
-    call g:AcSetMap('<plug>NERDCommenterToggle',     '<m-/>')
+    g:AcSetMap('<plug>NERDCommenterToggle', '<m-/>')
 endif
-call g:AcSetMap('<plug>NERDCommenterComment',    ';xx')
-call g:AcSetMap('<plug>NERDCommenterMinimal',    ';xm')
-call g:AcSetMap('<plug>NERDCommenterSexy',       ';xs')
-call g:AcSetMap('<plug>NERDCommenterInvert',     ';xi')
-call g:AcSetMap('<plug>NERDCommenterYank',       ';xy')
-call g:AcSetMap('<plug>NERDCommenterAlignLeft',  ';xl')
-call g:AcSetMap('<plug>NERDCommenterAlignBoth',  ';xb')
-call g:AcSetMap('<plug>NERDCommenterNest',       ';xn')
-call g:AcSetMap('<plug>NERDCommenterUncomment',  ';xu')
-call g:AcSetMap('<plug>NERDCommenterToEOL',      ';xe')
-call g:AcSetMap('<plug>NERDCommenterAltDelims',  ';xd')
-call g:AcSetMap('<plug>NERDCommenterAppend',     ';xa')
-"}}}
-""""""""""""""""""""
-"easymotion {{{
-""""""""""""""""""""
-""let EasyMotion_do_mapping = 0
-""let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
-"let g:EasyMotion_keys = 'fjdksla;rueiwoqpvncmxhzygbt'
-"let g:EasyMotion_leader_key = '<space>'
-"let g:EasyMotion_startofline = 0
-"let g:EasyMotion_do_shade = 0
-"let g:EasyMotion_smartcase = 1
-""let g:EasyMotion_grouping = 1
-""let g:EasyMotion_use_upper = 1
-"let g:EasyMotion_enter_jump_first = 1
-""let g:EasyMotion_use_regexp = 1
-""let g:EasyMotion_space_jump_first = 0
-""let g:EasyMotion_disable_two_key_combo = 0
-""let g:EasyMotion_off_screen_search = 0
-""map  f <Plug>(easymotion-jumptoanywhere)
-"map  f <Plug>(easymotion-bd-f)
-"nmap f <Plug>(easymotion-overwin-f)
-"nmap F <Plug>(easymotion-overwin-f2)
-"map  F <Plug>(easymotion-bd-fn)
-"map  t <Plug>(easymotion-bd-w)
-"nmap  t <Plug>(easymotion-overwin-w)
-"map T <Plug>(easymotion-bd-jk)
-"nmap T <Plug>(easymotion-overwin-line)
-"}}}
-""""""""""""""""""""
-"EasyAlign {{{
-""""""""""""""""""""
-"vnoremap <silent> <Enter> :EasyAlign<cr>
-"nmap <space><enter> <Plug>(EasyAlign)
+g:AcSetMap('<plug>NERDCommenterComment', ';xx')
+g:AcSetMap('<plug>NERDCommenterMinimal', ';xm')
+g:AcSetMap('<plug>NERDCommenterSexy', ';xs')
+g:AcSetMap('<plug>NERDCommenterInvert', ';xi')
+g:AcSetMap('<plug>NERDCommenterYank', ';xy')
+g:AcSetMap('<plug>NERDCommenterAlignLeft', ';xl')
+g:AcSetMap('<plug>NERDCommenterAlignBoth', ';xb')
+g:AcSetMap('<plug>NERDCommenterNest', ';xn')
+g:AcSetMap('<plug>NERDCommenterUncomment', ';xu')
+g:AcSetMap('<plug>NERDCommenterToEOL', ';xe')
+g:AcSetMap('<plug>NERDCommenterAltDelims', ';xd')
+g:AcSetMap('<plug>NERDCommenterAppend', ';xa')
+# -- easymotion ------
+##let EasyMotion_do_mapping = 0
+##let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
+#let g:EasyMotion_keys = 'fjdksla;rueiwoqpvncmxhzygbt'
+#let g:EasyMotion_leader_key = 'gw'
+#let g:EasyMotion_startofline = 0
+#let g:EasyMotion_do_shade = 0
+#let g:EasyMotion_smartcase = 1
+##let g:EasyMotion_grouping = 1
+##let g:EasyMotion_use_upper = 1
+#let g:EasyMotion_enter_jump_first = 1
+##let g:EasyMotion_use_regexp = 1
+##let g:EasyMotion_space_jump_first = 0
+##let g:EasyMotion_disable_two_key_combo = 0
+##let g:EasyMotion_off_screen_search = 0
+#map f <Plug>(easymotion-jumptoanywhere)
+#nmap f <Plug>(easymotion-overwin-f)
+#nmap F <Plug>(easymotion-overwin-f2)
+#map T <Plug>(easymotion-bd-jk)
+#nmap T <Plug>(easymotion-overwin-line)
+# -- EasyAlign ------
+#vnoremap <silent> <Enter> :EasyAlign<cr>
+#nmap <space><enter> <Plug>(EasyAlign)
 xmap <Enter> <Plug>(EasyAlign)
-"}}}
-""""""""""""""""""""
-"vim-markdown {{{
-""""""""""""""""""""
-let g:vim_markdown_fenced_languages = ['bash=sh', 'viml=vim', 'nims=nim', 'ini=dosini']
-let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_no_default_key_mappings = 1
-let g:vim_markdown_conceal_code_blocks = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_override_foldtext = 0
-let g:tex_conceal = ""
-let g:vim_markdown_auto_insert_bullets = 0
-"let g:vim_markdown_auto_extension_ext = 'txt'
-"let g:vim_markdown_math = 1
-"let g:vim_markdown_toc_autofit = 0
-"let g:vim_markdown_folding_style_pythonic = 1
-"let g:vim_markdown_initial_foldlevel=3
-"}}}
-""""""""""""""""""""
-"lightline {{{
-""""""""""""""""""""
+# -- vim-markdown ------
+g:vim_markdown_fenced_languages = ['bash=sh', 'viml=vim', 'nims=nim', 'ini=dosini']
+g:vim_markdown_folding_disabled = 1
+g:vim_markdown_no_default_key_mappings = 1
+g:vim_markdown_conceal_code_blocks = 0
+g:vim_markdown_conceal = 0
+g:vim_markdown_override_foldtext = 0
+g:tex_conceal = ''
+g:vim_markdown_auto_insert_bullets = 0
+#g:vim_markdown_auto_extension_ext = 'txt'
+#g:vim_markdown_math = 1
+#g:vim_markdown_toc_autofit = 0
+#g:vim_markdown_folding_style_pythonic = 1
+#g:vim_markdown_initial_foldlevel = 3
+# -- lightline ------
 set laststatus=2
-let g:lightline = {'colorscheme': 'jellybeans',}
-"}}}
-""""""""""""""""""""
-"undotree {{{
-""""""""""""""""""""
-"let g:undotree_RelativeTimestamp = 0
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_WindowLayout = 3
+g:lightline = { colorscheme: 'jellybeans' }
+# -- undotree ------
+#g:undotree_RelativeTimestamp = 0
+g:undotree_SetFocusWhenToggle = 1
+g:undotree_WindowLayout = 3
 nmap ;ut :UndotreeToggle<cr>
-"}}}
-""""""""""""""""""""
-"auto-pairs {{{
-""""""""""""""""""""
-"let g:AutoPairsCompatibleMaps = 1
-"let g:AutoPairsLanguagePairs = {
-    "\ 'vim': {'\v^\s*\zs"': ''},
-    "\ 'rust': {'\w\zs<': '>', '&\zs''': ''},
-    "\ 'php': {'<?': '?>//k]', '<?php': '?>//k]'},
-    "\ 'nim': { "{\.":"\.}",'`':'`'},
-    "\ 'zig': { "|":"|",},
-    "\ 'ocen': { '`':{'closer':'`'},},
-    "\ }
-
-"let g:pear_tree_pairs = {
-            "\ '(': {'closer': ')'},
-            "\ '[': {'closer': ']'},
-            "\ '{': {'closer': '}'},
-            "\ "'": {'closer': "'"},
-            "\ '"': {'closer': '"'},
-            "\ '`': {'closer': '`'}
-            "\ }
-"let g:pear_tree_map_special_keys = 0 " imap <BS>, <CR>, and <Esc>
-"let g:pear_tree_repeatable_expand = 0 " {|} <cr> not need esc
-"let g:pear_tree_smart_openers = 0
-"let g:pear_tree_smart_closers = 0
-"let g:pear_tree_smart_backspace = 0
-"imap <BS> <Plug>(PearTreeBackspace)
-"imap <CR> <Plug>(PearTreeExpand)
-""imap <Esc> <Plug>(PearTreeFinishExpansion) " don't imap <esc> !!!
-"imap <M-n> <Plug>(PearTreeJump)
-"imap <M-i> <Plug>(PearTreeExpandOne)
-"imap <M-o> <Plug>(PearTreeJNR)
-"imap <M-space> <Plug>(PearTreeSpace)
-
-"}}}
-"=== building ======================{{{
+# -- auto-pairs ------
+#g:AutoPairsCompatibleMaps = 1
+#let g:AutoPairsLanguagePairs = {
+#    vim: {'\v^\s*\zs"': ''},
+#    rust: {'\w\zs<': '>', '&\zs''': ''},
+#    php: {'<?': '?>//k]', '<?php': '?>//k]'},
+#    nim: {'{\.': '\.}', '`': '`'},
+#    zig: {'|': '|'},
+#    ocen: {'`': {closer: '`'}},
+#}
+#g:pear_tree_pairs = {
+#    '(': {closer: ')'},
+#    '[': {closer: ']'},
+#    '{': {closer: '}'},
+#    "'": {closer: "'"},
+#    '"': {closer: '"'},
+#    '`': {closer: '`'},
+#}
+#g:pear_tree_map_special_keys = 0
+#g:pear_tree_repeatable_expand = 0
+#g:pear_tree_smart_openers = 0
+#g:pear_tree_smart_closers = 0
+#g:pear_tree_smart_backspace = 0
+#imap <BS> <Plug>(PearTreeBackspace)
+#imap <CR> <Plug>(PearTreeExpand)
+#imap <Esc> <Plug>(PearTreeFinishExpansion)
+#imap <M-n> <Plug>(PearTreeJump)
+#imap <M-i> <Plug>(PearTreeExpandOne)
+#imap <M-o> <Plug>(PearTreeJNR)
+#imap <M-space> <Plug>(PearTreeSpace)
+# -- building ------
 com! -bang -nargs=* -range=% -complete=shellcmd AcSend FloatermSend<bang> <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=never --height=0.5 --width=0.98 <args>
-"nmap <space>r :AcSend 
-nmap <space>r :AcRun 
-nmap <space>R :AcRun! 
-com! -nargs=+ AcFtCmd call s:AcFtCmd(<f-args>)
-fu! AcFtCmd(ft,key,file,cmd, ...) abort
-    let l:cmds = 'au FileType '.a:ft.' com! -bang -nargs=* -complete=file '.a:key.' ' .
-    \ 'let r=fnamemodify(findfile('. string(a:file) .',".;"),":h") | if !empty(r) | exe "lcd " . r | exe '. string(a:cmd) .' | endif'
-    for c in a:000
-        let l:cmds .= " | ". c
-    endfor
-    exe l:cmds
-endf
-"--------------------------------------
-call AcFtCmd('*','Make','Makefile','AcRun make <args>')
-"au filetype c,cpp com! -bang -nargs=* -complete=file TT 
-      "\ let root = fnamemodify(findfile('cex.h', '.;'), ':h') |
-      "\ if !empty(root) | exe 'lcd' root | exe 'AcRun ./cex test run '.(empty(<q-args>)?'%':<q-args>) | endif
-
-"call AcFtCmd('c,cpp','H','cex.h','AcRun ./cex help <args>')
-"call AcFtCmd('c,cpp','E','cex.h','AcRun ./cex <args>')
-"call AcFtCmd('c,cpp','T','cex.h','AcRun ./cex test <args>')
-"call AcFtCmd('c,cpp','F','cex.h','AcRun ./cex fuzz <args>')
-"call AcFtCmd('c,cpp','G','cex.h','AcRun ./cex libfetch <args>')
-"call AcFtCmd('c,cpp','C','cex.h','AcRun ./cex app <args>')
-"call AcFtCmd('c,cpp','CEXc','cex.h','!cc ./cex.c -o cex')
-"call AcFtCmd('c,cpp','CEXh','cex.h','!cc -D CEX_NEW -x c ./cex.h -o cex && ./cex')
-"call AcFtCmdEx('c,cpp','TT','cex.h','AcRun ./cex test run', '%')
-"call AcFtCmdEx('c,cpp','TD','cex.h','AcRun ./cex test debug', '%')
-"call AcFtCmdEx('c,cpp','CC','cex.h','AcRun ./cex app build <args>', 'myapp')
-"call AcFtCmdEx('c,cpp','CD','cex.h','AcRun ./cex app debug <args>', 'myapp')
-"call AcFtCmdEx('c,cpp','RR','cex.h','AcRun ./cex app run <args>', 'myapp')
-"call AcFtCmdEx('c,cpp','XX','cex.h','AcRun ./cex app clean <args>', 'myapp')
+#nmap <space>r :AcSend
+nmap <space>r :AcRun
+nmap <space>R :AcRun!
+#------------------------------------------
+g:AcFtCmd('*', 'Make', 'Makefile', 'AcRun make <args>')
+#------------------------------------------
+#g:AcFtCmd('c,cpp', 'H', 'cex.h', 'AcRun ./cex help <args>')
+#g:AcFtCmd('c,cpp', 'E', 'cex.h', 'AcRun ./cex <args>')
+#g:AcFtCmd('c,cpp', 'T', 'cex.h', 'AcRun ./cex test <args>')
+#g:AcFtCmd('c,cpp', 'F', 'cex.h', 'AcRun ./cex fuzz <args>')
+#g:AcFtCmd('c,cpp', 'G', 'cex.h', 'AcRun ./cex libfetch <args>')
+#g:AcFtCmd('c,cpp', 'C', 'cex.h', 'AcRun ./cex app <args>')
+#g:AcFtCmd('c,cpp', 'CEXc', 'cex.h', '!cc ./cex.c -o cex')
+#g:AcFtCmd('c,cpp', 'CEXh', 'cex.h', '!cc -D CEX_NEW -x c ./cex.h -o cex && ./cex')
 au filetype c,cpp com! -bang -nargs=* -complete=file Run AcRun make -r <args>
 au filetype c,cpp com! -bang -nargs=* -complete=file CC AcRun gcc <args> %:p -o %:t:r
 au filetype c,cpp com! -bang -nargs=* -complete=file RR AcRun gcc <args> %:p -r -o %:t:r
@@ -305,270 +210,132 @@ au filetype zig com! -bang -nargs=* -complete=file C AcRun zig <args>
 au filetype d com! -bang -nargs=* -complete=file C AcRun dmd <args> %
 au filetype d com! -bang -nargs=* -complete=file D AcRun dub <args>
 au filetype hare com! -bang -nargs=* -complete=file C AcRun hare <args> %
-call AcFtCmd('ocen','C','','AcRun ocen % -o %:t:r <args>')
-call AcFtCmd('ocen','R','','AcRun ocen % -o %:p:r <args> -r')
-call AcFtCmd('ocen','XX','','AcRun trash %:t:r %:t:r.c')
-
-"let $RUST_BACKTRACE='full'
-"let $RUST_BACKTRACE=1
-let $MAKEPAD='lines'
-"--nocapture 测试里显示打印
-"--show-output 测试里显示更多内容
-"call AcFtCmd('rust','RD','Cargo.toml','AcRun cargo +nightly run <args>')
-"call AcFtCmd('rust','BD','Cargo.toml','AcRun cargo +nightly build <args>')
-call AcFtCmd('rust','RE','Cargo.toml','AcRun cargo run --example=%:t:r <args> --release')
-call AcFtCmd('rust','RD','Cargo.toml','AcRun cargo run <args>')
-call AcFtCmd('rust','R','Cargo.toml','AcRun cargo run <args> --release')
-call AcFtCmd('rust','T','Cargo.toml','AcRun cargo test <args>')
-call AcFtCmd('rust','BD','Cargo.toml','AcRun cargo build <args>')
-call AcFtCmd('rust','B','Cargo.toml','AcRun cargo build <args> --release')
-call AcFtCmd('rust','E','Cargo.toml','AcRun cargo check <args>')
-call AcFtCmd('rust','C','Cargo.toml','AcRun cargo <args>')
-call AcFtCmd('rust','XX','Cargo.toml','AcRun cargo clean <args>')
-call AcFtCmd('rust','TT','Cargo.toml','AcRun cargo test <args> -- --nocapture')
-au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r 
+g:AcFtCmd('ocen', 'C', '', 'AcRun ocen % -o %:t:r <args>')
+g:AcFtCmd('ocen', 'R', '', 'AcRun ocen % -o %:p:r <args> -r')
+g:AcFtCmd('ocen', 'XX', '', 'AcRun trash %:t:r %:t:r.c')
+#let $RUST_BACKTRACE = 'full'
+$MAKEPAD = 'lines'
+#--nocapture 测试里显示打印
+#--show-output 测试里显示更多内容
+g:AcFtCmd('rust', 'RE', 'Cargo.toml', 'AcRun cargo run --example=%:t:r <args> --release')
+g:AcFtCmd('rust', 'RD', 'Cargo.toml', 'AcRun cargo run <args>')
+g:AcFtCmd('rust', 'R', 'Cargo.toml', 'AcRun cargo run <args> --release')
+g:AcFtCmd('rust', 'T', 'Cargo.toml', 'AcRun cargo test <args>')
+g:AcFtCmd('rust', 'BD', 'Cargo.toml', 'AcRun cargo build <args>')
+g:AcFtCmd('rust', 'B', 'Cargo.toml', 'AcRun cargo build <args> --release')
+g:AcFtCmd('rust', 'E', 'Cargo.toml', 'AcRun cargo check <args>')
+g:AcFtCmd('rust', 'C', 'Cargo.toml', 'AcRun cargo <args>')
+g:AcFtCmd('rust', 'XX', 'Cargo.toml', 'AcRun cargo clean <args>')
+g:AcFtCmd('rust', 'TT', 'Cargo.toml', 'AcRun cargo test <args> -- --nocapture')
+au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r
 au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
-
-call AcFtCmd('spectre','Init','','AcRun spectre init <args>')
-call AcFtCmd('spectre,modsim3','B','sx.mod','AcRun spectre build release <args>')
-call AcFtCmd('spectre,modsim3','BB','sx.mod','AcRun spectre build <args>')
-call AcFtCmd('spectre','C','','AcRun spectre % <args> --release')
-call AcFtCmd('spectre','CC','','AcRun spectre % <args> --show-cmd')
-call AcFtCmd('spectre','T','','AcRun spectre % <args> --test')
-call AcFtCmd('spectre','TT','','AcRun spectre % <args> --test --show-cmd')
-call AcFtCmd('spectre','R','','AcRun spectre run % <args> --release')
-call AcFtCmd('spectre','RR','','AcRun spectre run % <args> --show-cmd')
-
-call AcFtCmd('mach','M','mach.toml','AcRun make %:t:r <args>')
-call AcFtCmd('mach','MM','mach.toml','AcRun make run %:t:r <args>')
-call AcFtCmd('mach','R','mach.toml','AcRun mach run . -v <args>')
-call AcFtCmd('mach','RR','mach.toml','AcRun mach run . <args> -v --profile release')
-call AcFtCmd('mach','B','mach.toml','AcRun mach build . -v <args>')
-call AcFtCmd('mach','BB','mach.toml','AcRun mach build . -v <args> --profile release')
-call AcFtCmd('mach','T','mach.toml','AcRun mach test . -vv <args>')
-call AcFtCmd('mach','TT','mach.toml','AcRun mach test . -vv <args> --profile release')
-call AcFtCmd('mach','XX','mach.toml','AcRun mach clean .')
-
-"NAME=<args>
-
-"}}}
-""""""""""""""""""""
-"floaterm {{{
-""""""""""""""""""""
-let g:floaterm_width = 0.98
-let g:floaterm_height = 0.9
-let g:floaterm_autoclose = 0
-let g:floaterm_position = 'bottom'
-let g:floaterm_keymap_toggle = '<m-space>'
-let g:floaterm_keymap_kill   = '<m-q>'
-"let g:floaterm_keymap_new    = '<m-N>'
-"let g:floaterm_keymap_prev   = '<m-k>'
-"let g:floaterm_keymap_next   = '<m-j>'
-"let g:floaterm_keymap_first  = '<m-h>'
-"let g:floaterm_keymap_last   = '<m-l>'
-tnoremap   <silent>   <esc>    <C-\><C-n>
-nnoremap   <silent>   <m-o>    :FloatermNew --disposable<CR>
-tnoremap   <silent>   <m-o>    <C-\><C-n>:FloatermNew --disposable<CR>
-tnoremap   <silent>   <m-p>    <C-\><C-n>:FloatermPrev<CR>
-tnoremap   <silent>   <m-n>    <C-\><C-n>:FloatermNext<CR>
-"tnoremap   <silent>   <m-h>    <C-\><C-n>:FloatermFirst<CR>
-"tnoremap   <silent>   <m-l>    <C-\><C-n>:FloatermLast<CR>
-"}}}
-""""""""""""""""""""
-"vsnip {{{
-""""""""""""""""""""
-let g:vsnip_snippet_dir = $VIM.'snippets/'
-"imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
-"smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<M-n>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-imap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<M-n>'
-smap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<C-j>'
-imap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<M-p>'
-smap <expr> <C-k>   vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-"}}}
-""""""""""""""""""""
-"lsp {{{
-""""""""""""""""""""
-"set keywordprg=:LspHover
+g:AcFtCmd('spectre', 'Init', '', 'AcRun spectre init <args>')
+g:AcFtCmd('spectre,modsim3', 'B', 'sx.mod', 'AcRun spectre build release <args>')
+g:AcFtCmd('spectre,modsim3', 'BB', 'sx.mod', 'AcRun spectre build <args>')
+g:AcFtCmd('spectre', 'C', '', 'AcRun spectre % <args> --release')
+g:AcFtCmd('spectre', 'CC', '', 'AcRun spectre % <args> --show-cmd')
+g:AcFtCmd('spectre', 'T', '', 'AcRun spectre % <args> --test')
+g:AcFtCmd('spectre', 'TT', '', 'AcRun spectre % <args> --test --show-cmd')
+g:AcFtCmd('spectre', 'R', '', 'AcRun spectre run % <args> --release')
+g:AcFtCmd('spectre', 'RR', '', 'AcRun spectre run % <args> --show-cmd')
+g:AcFtCmd('mach', 'M', 'mach.toml', 'AcRun make %:t:r <args>')
+g:AcFtCmd('mach', 'MM', 'mach.toml', 'AcRun make run %:t:r <args>')
+g:AcFtCmd('mach', 'R', 'mach.toml', 'AcRun mach run . -v <args>')
+g:AcFtCmd('mach', 'RR', 'mach.toml', 'AcRun mach run . <args> -v --profile release')
+g:AcFtCmd('mach', 'B', 'mach.toml', 'AcRun mach build . -v <args>')
+g:AcFtCmd('mach', 'BB', 'mach.toml', 'AcRun mach build . -v <args> --profile release')
+g:AcFtCmd('mach', 'T', 'mach.toml', 'AcRun mach test . -vv <args>')
+g:AcFtCmd('mach', 'TT', 'mach.toml', 'AcRun mach test . -vv <args> --profile release')
+g:AcFtCmd('mach', 'XX', 'mach.toml', 'AcRun mach clean .')
+# -- floaterm ------
+g:floaterm_width = 0.98
+g:floaterm_height = 0.9
+g:floaterm_autoclose = 0
+g:floaterm_position = 'bottom'
+g:floaterm_keymap_toggle = '<m-s-space>'
+g:floaterm_keymap_kill = '<m-Q>'
+#g:floaterm_keymap_new = '<m-N>'
+#g:floaterm_keymap_prev = '<m-k>'
+#g:floaterm_keymap_next = '<m-j>'
+#g:floaterm_keymap_first = '<m-h>'
+#g:floaterm_keymap_last = '<m-l>'
+tnoremap <silent> <esc> <C-\><C-n>
+nnoremap <silent> <m-O> :FloatermNew --disposable<CR>
+tnoremap <silent> <m-O> <C-\><C-n>:FloatermNew --disposable<CR>
+tnoremap <silent> <m-P> <C-\><C-n>:FloatermPrev<CR>
+tnoremap <silent> <m-N> <C-\><C-n>:FloatermNext<CR>
+#tnoremap <silent> <m-h> <C-\><C-n>:FloatermFirst<CR>
+#tnoremap <silent> <m-l> <C-\><C-n>:FloatermLast<CR>
+# -- vsnip ------
+g:vsnip_snippet_dir = $VIM .. 'snippets/'
+#imap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
+#smap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
+imap <expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<M-n>'
+smap <expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+imap <expr> <C-j> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<M-n>'
+smap <expr> <C-j> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+imap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<M-p>'
+smap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
+imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+# -- lsp ------
+#set keywordprg=:LspHover
 nmap <buffer> ;tL <Cmd>LspOutline<cr>
-nmap <buffer> K <Cmd>LspHover<cr>
+#nmap <buffer> K <Cmd>LspHover<cr>
 nmap <silent> <space>k <Cmd>LspHover<cr>
-"nmap <c-]> <Cmd>LspGotoDefinition<CR>
-"nmap <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
-"nmap ge <Cmd>LspGotoDefinition<CR>
-"nmap ge <Cmd>silent! :let bnr = bufnr('%') \| LspGotoDefinition \| if bufnr('%') != bnr \| setlocal readonly nomodifiable \| endif<CR>
-nmap gs :call g:GotoRead('LspGotoDefinition')<CR>
-"nmap ga <Cmd>LspGotoDeclaration<CR>
-nmap gS :call g:GotoRead('LspGotoDeclaration')<CR>
-"nmap ge <Cmd>LspPeekDeclaration<CR>
-"nmap gE <Cmd>LspPeekDefinition<CR>
-"nmap <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
-"nmap gi <Cmd>LspGotoImpl<CR>
-nmap gi :call g:GotoRead('LspGotoImpl')<CR>
-"nmap gt <Cmd>LspGotoTypeDef<CR>
-nmap gy :call g:GotoRead('LspGotoTypeDef')<CR>
-"nmap gi <Cmd>LspPeekImpl<CR>
-"nmap gt <Cmd>LspPeekTypeDef<CR>
-nmap g[ <Cmd>LspDiagPrev<CR>
-nmap g] <Cmd>LspDiagNext<CR>
-"nmap gs <Cmd>LspSymbolSearch<CR>
-"nmap gS <Cmd>LspDocumentSymbol<CR>
-"nmap gr <Cmd>LspPeekReferences<CR>
-nmap gr <Cmd>LspShowReferences<CR>
-nmap g\ <Cmd>LspServer restart<CR>
+#nmap <c-]> <Cmd>LspGotoDefinition<CR>
+#nmap <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
+#nmap ge <Cmd>LspGotoDefinition<CR>
+nmap gs <cmd>call g:GotoRead('LspGotoDefinition')<CR>
+#nmap ga <Cmd>LspGotoDeclaration<CR>
+nmap gS <cmd>call g:GotoRead('LspGotoDeclaration')<CR>
+#nmap ge <Cmd>LspPeekDeclaration<CR>
+#nmap gE <Cmd>LspPeekDefinition<CR>
+#nmap <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
+#nmap gi <Cmd>LspGotoImpl<CR>
+nmap gi <cmd>call g:GotoRead('LspGotoImpl')<CR>
+#nmap gt <Cmd>LspGotoTypeDef<CR>
+nmap gy <cmd>call g:GotoRead('LspGotoTypeDef')<CR>
+#nmap gi <Cmd>LspPeekImpl<CR>
+#nmap gt <Cmd>LspPeekTypeDef<CR>
+nmap g[ <Cmd>g:LspDiagPrev<CR>
+nmap g] <Cmd>g:LspDiagNext<CR>
+#nmap gs <Cmd>LspSymbolSearch<CR>
+#nmap gS <Cmd>LspDocumentSymbol<CR>
+#nmap gr <Cmd>LspPeekReferences<CR>
+nmap gr <Cmd>g:LspShowReferences<CR>
+nmap g\ <Cmd>g:LspServer restart<CR>
 
-au filetype c,cpp call LspAddServer([#{
-            \    name: 'clangd',
-            \    filetype: ['c', 'cpp'],
-            \    path: 'clangd',
-            \    args: ['--background-index']
-            \  }])
+#au filetype rust vim9cmd g:LspAddServer([{ name: 'rust-analyzer', filetype: ['rust'], path: exepath('rust-analyzer'), syncInit: true }])
+setl omnifunc=g:LspOmniFunc
+g:lsp_options = {
+    outlineOnRight: true,
+    outlineWinSize: 30,
+    autoHighlightDiags: false,
+    showDiagInBalloon: false,
+    aleSupport: false,
+    autoComplete: false,
+    snippetSupport: false,
+    vsnipSupport: true,
+    bufferCompletionTimeout: 66,
+    filterCompletionDuplicates: true,
+    completionMatcher: 'fuzzy',
+    showSignature: true,
+}
+au User g:LspSetup <cmd>call g:LspOptionsSet(g:lsp_options)
+g:lsp_servers = [
+    { name: 'clangd',  filetype: ['c', 'cpp'], path: exepath('clangd'),  args: ['--background-index'] },
+    { name: 'mach',    filetype: ['mach'],     path: exepath('mls') },
+    { name: 'spectre', filetype: ['spectre'],  path: exepath('spectre-ls') },
+    { name: 'ocen',    filetype: ['ocen'],     path: exepath('ocen'),    args: ['lsp-server'] },
+    { name: 'nimlsp',  filetype: ['nim'],      path: exepath('nimlsp') },
+    { name: 'zls',     filetype: ['zig'],      path: exepath('zls') },
+    { name: 'serve-d', filetype: ['d'],        path: exepath('serve-d') },
+    # { name: 'rust-analyzer', filetype: ['rust'], path: exepath('rust-analyzer'), syncInit: true },
+]
+au User g:LspSetup <cmd>call g:LspAddServer(g:lsp_servers)
+# -- another ------
 
-" lsp如果打开失败, path输入lsp的绝对地址试试
-au filetype mach call LspAddServer([#{
-            \    name: 'mach',
-            \    filetype: ['mach'],
-            \    path: $MACHS.'/_bin/mls',
-            \  }])
-
-au filetype spectre call LspAddServer([#{
-            \    name: 'spectre',
-            \    filetype: ['spectre'],
-            \    path: 'spectre-ls',
-            "\    path: 'clangd',
-            "\    args: ['--background-index']
-            \  }])
-
-au filetype ocen call LspAddServer([#{
-            \    name: 'ocen',
-            \    filetype: ['ocen'],
-            \    path: 'ocen',
-            \    args: ['lsp-server']
-            \  }])
-
-au filetype nim call LspAddServer([#{
-            \    name: 'nimlsp',
-            \    filetype: ['nim'],
-            \    path: 'nimlsp',
-            \  }])
-
-au filetype zig call LspAddServer([#{
-            \    name: 'zls',
-            \    filetype: ['zig'],
-            \    path: 'zls',
-            \  }])
-
-"au filetype rust call LspAddServer([#{
-            "\    name: 'rust-analyzer',
-            "\    filetype: ['rust'],
-            "\    path: exepath('rust-analyzer'),
-            "\    args: [],
-            "\    syncInit: v:true,
-            "\  }])
-
-"au FileType rust call LspAddServer([{
-      "\ 'name': 'rust-analyzer',
-      "\ 'filetype': ['rust'],
-      "\ 'path': exepath('_rust-analyzer'),
-      "\ 'args': [],
-      "\ 'rootSearch': ['Cargo.toml', 'rust-project.json'],
-      "\ 'syncInit': v:true,
-      "\ 'allowStdio': v:false,
-      "\ 'debounceTextChanges': 100,
-      "\ 'initializationOptions': {
-      "\     'rust-analyzer': {
-      "\         'cargo': { 
-      "\             'features': [], 
-      "\             'allTargets': v:false,
-      "\             'buildScripts': {'enable': v:false},
-      "\             'loadOutDirsFromCheck': v:false,
-      "\             'noDefaultFeatures': v:true,
-      "\             'noDeps': v:true,
-      "\             'target': '',
-      "\         },
-      "\         'cachePriming': { 'enable': v:false },
-      "\         'procMacro': { 'enable': v:false },
-      "\         'checkOnSave': { 'enable': v:false, 'command': 'clippy' },
-      "\         'imports': { 'group': { 'enable': v:false } },
-      "\         'hover': { 'enable': v:true, 'documentation.enable': v:false },
-      "\         'inlayHints': { 'enable': v:false },
-      "\         'semanticHighlighting': { 'enable': v:false },
-      "\         'check': { 'enable': v:false },
-      "\         'assist': { 
-      "\             'enable': v:false,
-      "\             'termSearch': { 'fuel': 50 },
-      "\         },
-      "\         'completion': { 
-      "\             'enable': v:true,
-      "\             'termSearch': { 'fuel': 50 },
-      "\             'postfix': { 'enable': v:false },
-      "\         },
-      "\         'diagnostics': { 'enable': v:false },
-      "\         'highlightRelated': { 'enable': v:false },
-      "\         'lens': { 'enable': v:false },
-      "\     }
-      "\ }
-      "\ }])
-
-au filetype d call LspAddServer([#{
-            \    name: 'd',
-            \    filetype: ['d'],
-            \    path: 'serve-d',
-            \  }])
-
-
-setl omnifunc=LspOmniFunc
-"set completefunc=LspOmniFunc
-"set tagfunc=LspOmniFunc
-au filetype * call LspOptionsSet(#{
-        \   outlineOnRight: v:true,
-        \   outlineWinSize: 30,
-        \   autoHighlightDiags: v:false,
-        \   showDiagInBalloon: v:false,
-        \   aleSupport: v:false,
-        \   autoComplete: v:false,
-        \   snippetSupport: v:false,
-        \   vsnipSupport: v:true,
-        \   bufferCompletionTimeout: 66,
-        \   filterCompletionDuplicates: v:true,
-        \   completionMatcher: 'fuzzy',
-        \   showSignature: v:true,
-        \ })
-
-        "\   showSignature: v:true,
-        "\   omniComplete: true,
-        "\   completionMatcher: 'fuzzy',
-        "\   filterCompletionDuplicates: v:true,
-        "\   showSignature: v:true,
-        "\   semanticHighlight: v:false,
-        "\   completionMatcher: 'fuzzy',
-        "\   showSignature: v:true,
-        "\   hoverInPreview: v:false,
-        "\   keepFocusInDiags: v:false,
-        "\   keepFocusInReferences: v:false,
-        "\   highlightDiagInline: v:false,
-        "\   completionTextEdit: v:false,
-        "\   semanticHighlight: v:false,
-        "\   autoHighlightDiags: v:true,
-        "\   showDiagWithSign: v:true,
-        "\   showDiagInBalloon: v:false,
-        "\   showDiagInPopup: v:false,
-        "\   showSignature: v:false,
-        "\   condensedCompletionMenu: v:false,
-        "\   usePopupInCodeAction: v:false,
-
-"}}}
-""""""""""""""""""""
-"another {{{
-""""""""""""""""""""
-"}}}
-"-------------------------
-"Custom settings
-"You can see maps
-":verbose nmap ;
-"-------------------------
+defcompile

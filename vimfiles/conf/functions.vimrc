@@ -1,4 +1,4 @@
-vim9script
+vim9script noclear
 # ---- 通用小工具 ----
 def g:AcSetMap(target: string, combo: string)
   for mode in ['n', 'x']
@@ -212,21 +212,20 @@ def g:DelTWS(bb: number = 0)
   execute 'normal `z'
 enddef
 
-# ---- 按 filetype 注册构建命令 ----
-def g:AcFtCmdRun(file: string, cmd: string)
-  var root = fnamemodify(findfile(file, '.;'), ':h')
-  if root != ''
-    execute 'lcd ' .. root
-    execute cmd
-  endif
+def g:AcFtRun(file: string, cmd: string)
+    var dir = fnamemodify(findfile(file, '.;'), ':h')
+    if !empty(dir)
+        execute 'lcd ' .. dir
+        execute cmd
+    endif
 enddef
 
-def g:AcFtCmd(ft: string, key: string, file: string, cmd: string, ...extra: list<string>)
-  var body = $"call g:AcFtCmdRun({string(file)}, {string(cmd)})"
-  for c in extra
-    body ..= ' | ' .. c
-  endfor
-  execute $"au FileType {ft} com! -bang -nargs=* -complete=file {key} {body}"
+def g:AcFtCmd(ft: string, key: string, file: string, cmd: string, ...rest: list<string>)
+    var repl = $'call g:AcFtRun({string(file)}, {string(cmd)})'
+    for c in rest
+        repl ..= ' | ' .. c
+    endfor
+    execute $'au FileType {ft} com! -bang -nargs=* -complete=file {key} {repl}'
 enddef
 
 # ---- 跳转 ----
@@ -237,7 +236,7 @@ def g:GotoRead(cmd: string)
     setlocal readonly nomodifiable
   endif
 enddef
-nnoremap <silent> <C-]> :<C-u>call g:GotoRead(((&ft == 'help') ? 'help ' : 'tag ') . expand('<cword>'))<cr>
+nnoremap <C-]> <cmd>call g:GotoRead(((&ft == 'help') ? 'help ' : 'tag ') .. expand('<cword>'))<cr>
 
 g:smart_open_brackets  = '([{,":=<'
 g:smart_close_brackets = ')]},":=>'
@@ -299,3 +298,4 @@ com! -nargs=? DelTWS call g:DelTWS(<f-args>)
 com! -nargs=+ GotoRead call g:GotoRead(<f-args>)
 com! -nargs=+ AcFtCmd call g:AcFtCmd(<f-args>)
 
+defcompile
