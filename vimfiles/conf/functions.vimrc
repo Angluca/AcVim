@@ -1,13 +1,5 @@
 vim9script noclear
 # ---- 通用小工具 ----
-def g:AcSetMap(target: string, combo: string)
-  for mode in ['n', 'x']
-    if !hasmapto(target, mode)
-      exe $"{mode}map {combo} {target}"
-    endif
-  endfor
-enddef
-
 def g:AcMakeDir(ds: string)
   if finddir(ds) == ''
     mkdir(ds, 'p')
@@ -104,8 +96,8 @@ def g:Ftags(rd: string = '', only_add_path: number = 0)
   endfor
 enddef
 
-nmap \-- :call g:Ftags('', 0)<cr>
-nmap \-0 :call g:Fdict()<cr>
+nn \-- <cmd>call g:Ftags('', 0)<cr>
+nn \-0 <cmd>call g:Fdict()<cr>
 
 def g:GenTags(app: string = 'ctags', opt: string = '', f: string = '', path: string = '')
   exe $'silent !{app} {opt}'
@@ -279,7 +271,6 @@ ino <expr> <M-n> g:SmartBracketJump(1)
 ino <expr> <M-p> g:SmartBracketJump(0)
 
 # ---- 仅保留交互使用的命令（<f-args> 自动加引号和空格）----
-com! -nargs=+ AcSetMap call g:AcSetMap(<f-args>)
 com! -nargs=1 AcMakeDir call g:AcMakeDir(<f-args>)
 com! -nargs=+ AcIsOK call g:AcIsOK(<f-args>)
 com! AcClsUndo call g:AcClsUndo()
@@ -299,4 +290,3 @@ com! -nargs=? DelTWS call g:DelTWS(<f-args>)
 com! -nargs=+ GotoRead call g:GotoRead(<f-args>)
 com! -nargs=+ AcFtCmd call g:AcFtCmd(<f-args>)
 
-defcompile

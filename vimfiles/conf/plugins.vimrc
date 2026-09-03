@@ -1,5 +1,4 @@
 vim9script
-
 #-- plug.vim ---------------------- {{{
 if !filereadable($VIM .. '/autoload/plug.vim')
     !curl -fLo $VIM/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -9,9 +8,8 @@ plug#begin($VIM .. '/bundle/')
 #----------------------------------
 # Plugin
 #----------------------------------
-#Plug 'angluca/mach.vim'
-Plug 'angluca/mach.vim'
-Plug 'angluca/spectre.vim'
+Plug 'angluca/mach.vim', { 'for': 'mach' }
+Plug 'angluca/spectre.vim', { 'for': 'spectre' }
 #Plug 'angluca/nim.vim'
 #Plug 'ziglang/zig.vim'
 #Plug 'angluca/rust.vim'
@@ -44,30 +42,32 @@ Plug 'girishji/vimsuggest'
 #Plug 'girishji/ngram-complete.vim'
 #Plug 'lifepillar/vim-mucomplete'
 
-#Plug 'pusewicz/lsp'
-Plug 'yegappan/lsp'
+Plug 'yegappan/lsp', {'for': ['c','cpp','spectre','mach']}
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
 #Plug 'angluca/friendly-snippets'
 #Plug 'rafamadriz/friendly-snippets'
-Plug 'haya14busa/is.vim'
 
+Plug 'haya14busa/is.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'drmikehenry/vim-fixkey'
-Plug 'preservim/nerdtree'
-Plug 'preservim/nerdcommenter'
-Plug 'mbbill/undotree'
-Plug 'preservim/tagbar'
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+#Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdcommenter', { 'on': ['<plug>NERDCommenterToggle', 
+    \'<plug>NERDCommenterComment', '<plug>NERDCommenterUncomment'] }
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
 Plug 'junegunn/vim-easy-align'
 #Plug 'easymotion/vim-easymotion'
 
-Plug 'jeetsukumaran/vim-buffersaurus'
+#Plug 'jeetsukumaran/vim-buffersaurus'
+#Plug 'jlanzarotta/bufexplorer'
 #Plug 'preservim/vim-markdown'
 #Plug 'tpope/vim-markdown'
-#Plug 'jlanzarotta/bufexplorer'
 
 Plug 'vim-scripts/VisIncr'
 #Plug 'tpope/vim-fugitive'

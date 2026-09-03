@@ -49,7 +49,7 @@ g:vimsuggestOpt = {
         tab_open: "",
     }
 }
-au VimEnter * g:VimSuggestSetOptions(g:vimsuggestOpt)
+au VimEnter * call g:VimSuggestSetOptions(g:vimsuggestOpt)
 
 #-- scope ------
 import autoload 'scope/fuzzy.vim'
@@ -82,4 +82,3 @@ nmap ;fA <scriptcmd>fuzzy.Autocmd()<CR>
 nmap ;fy <scriptcmd>fuzzy.Filetype()<CR>
 nmap ;fL <scriptcmd>fuzzy.Colorscheme()<CR>
 
-defcompile

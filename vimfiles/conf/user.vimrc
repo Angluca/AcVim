@@ -70,7 +70,7 @@ g:tagbar_type_virgil = {
     deffile: expand('<sfile>:p:h:h') .. '/dict/virgil.ctags',
 }
 
-nmap <silent> ;tl :TagbarToggle<cr>
+nn <silent> ;tl :TagbarToggle<cr>
 # -- NERDTree ------
 #g:NERDTreeMinimalUI = 1
 #g:NERDTreeMinimalMenu = 1
@@ -85,27 +85,14 @@ g:NERDTreeShowLineNumbers = 0
 g:NERDTreeWinSize = 30
 g:NERDTreeIgnore = ['\.o$', '\~$', '\.a$', '\.bak$', '\.d$', '\.ncb$', '\.bmp$',
     '\.exe$', '\.tar\.gz$', '\.7z$', '\.zip$', '\.rar$', '\.swp$', '\.dll$', '\.obj$']
-nmap <silent> ;tt :NERDTreeToggle <cr>
+nn ;tt <cmd>NERDTreeToggle <cr>
 # -- NERD_commenter ------
-#g:NERDCustomDelimiters = { vim: { left: '#' } }
+#g:NERDCustomDelimiters = { vim: { left: '# ' } }
 g:NERDCreateDefaultMappings = 0
-if has('gui_running')
-    g:AcSetMap('<plug>NERDCommenterToggle', '<d-/>')
-else
-    g:AcSetMap('<plug>NERDCommenterToggle', '<m-/>')
-endif
-g:AcSetMap('<plug>NERDCommenterComment', ';xx')
-g:AcSetMap('<plug>NERDCommenterMinimal', ';xm')
-g:AcSetMap('<plug>NERDCommenterSexy', ';xs')
-g:AcSetMap('<plug>NERDCommenterInvert', ';xi')
-g:AcSetMap('<plug>NERDCommenterYank', ';xy')
-g:AcSetMap('<plug>NERDCommenterAlignLeft', ';xl')
-g:AcSetMap('<plug>NERDCommenterAlignBoth', ';xb')
-g:AcSetMap('<plug>NERDCommenterNest', ';xn')
-g:AcSetMap('<plug>NERDCommenterUncomment', ';xu')
-g:AcSetMap('<plug>NERDCommenterToEOL', ';xe')
-g:AcSetMap('<plug>NERDCommenterAltDelims', ';xd')
-g:AcSetMap('<plug>NERDCommenterAppend', ';xa')
+nn <d-/> <plug>NERDCommenterToggle
+nn <m-/> <plug>NERDCommenterToggle
+nn ;xx <plug>NERDCommenterComment
+nn ;xu <plug>NERDCommenterUncomment
 # -- easymotion ------
 ##let EasyMotion_do_mapping = 0
 ##let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
@@ -151,7 +138,7 @@ g:lightline = { colorscheme: 'jellybeans' }
 #g:undotree_RelativeTimestamp = 0
 g:undotree_SetFocusWhenToggle = 1
 g:undotree_WindowLayout = 3
-nmap ;ut :UndotreeToggle<cr>
+nn ;ut <cmd>UndotreeToggle<cr>
 # -- auto-pairs ------
 #g:AutoPairsCompatibleMaps = 1
 #let g:AutoPairsLanguagePairs = {
@@ -185,9 +172,9 @@ nmap ;ut :UndotreeToggle<cr>
 # -- building ------
 com! -bang -nargs=* -range=% -complete=shellcmd AcSend FloatermSend<bang> <args>
 com! -bang -nargs=* -range=% -complete=shellcmd AcRun FloatermNew<bang> --disposable --autoclose=never --height=0.5 --width=0.98 <args>
-#nmap <space>r :AcSend
-nmap <space>r :AcRun
-nmap <space>R :AcRun!
+#nn <space>r :AcSend
+nn <space>r :AcRun
+nn <space>R :AcRun!
 #------------------------------------------
 g:AcFtCmd('*', 'Make', 'Makefile', 'AcRun make <args>')
 #------------------------------------------
@@ -259,13 +246,11 @@ g:floaterm_keymap_kill = '<m-Q>'
 #g:floaterm_keymap_next = '<m-j>'
 #g:floaterm_keymap_first = '<m-h>'
 #g:floaterm_keymap_last = '<m-l>'
-tnoremap <silent> <esc> <C-\><C-n>
-nnoremap <silent> <m-O> :FloatermNew --disposable<CR>
-tnoremap <silent> <m-O> <C-\><C-n>:FloatermNew --disposable<CR>
-tnoremap <silent> <m-P> <C-\><C-n>:FloatermPrev<CR>
-tnoremap <silent> <m-N> <C-\><C-n>:FloatermNext<CR>
-#tnoremap <silent> <m-h> <C-\><C-n>:FloatermFirst<CR>
-#tnoremap <silent> <m-l> <C-\><C-n>:FloatermLast<CR>
+tnoremap <esc> <C-\><C-n>
+nnoremap <m-O> <cmd>FloatermNew --disposable<CR>
+tnoremap <m-O> <C-\><C-n><cmd>FloatermNew --disposable<CR>
+tnoremap <m-P> <C-\><C-n><cmd>FloatermPrev<CR>
+tnoremap <m-N> <C-\><C-n><cmd>FloatermNext<CR>
 # -- vsnip ------
 g:vsnip_snippet_dir = $VIM .. 'snippets/'
 #imap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
@@ -282,37 +267,37 @@ imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 # -- lsp ------
 #set keywordprg=:LspHover
-nmap <buffer> ;tL <Cmd>LspOutline<cr>
-#nmap <buffer> K <Cmd>LspHover<cr>
-nmap <silent> <space>k <Cmd>LspHover<cr>
-#nmap <c-]> <Cmd>LspGotoDefinition<CR>
-#nmap <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
-#nmap ge <Cmd>LspGotoDefinition<CR>
-nmap gs <cmd>call g:GotoRead('LspGotoDefinition')<CR>
-#nmap ga <Cmd>LspGotoDeclaration<CR>
-nmap gS <cmd>call g:GotoRead('LspGotoDeclaration')<CR>
-#nmap ge <Cmd>LspPeekDeclaration<CR>
-#nmap gE <Cmd>LspPeekDefinition<CR>
-#nmap <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
-#nmap gi <Cmd>LspGotoImpl<CR>
-nmap gi <cmd>call g:GotoRead('LspGotoImpl')<CR>
-#nmap gt <Cmd>LspGotoTypeDef<CR>
-nmap gy <cmd>call g:GotoRead('LspGotoTypeDef')<CR>
-#nmap gi <Cmd>LspPeekImpl<CR>
-#nmap gt <Cmd>LspPeekTypeDef<CR>
-nmap g[ <Cmd>g:LspDiagPrev<CR>
-nmap g] <Cmd>g:LspDiagNext<CR>
-#nmap gs <Cmd>LspSymbolSearch<CR>
-#nmap gS <Cmd>LspDocumentSymbol<CR>
-#nmap gr <Cmd>LspPeekReferences<CR>
-nmap gr <Cmd>g:LspShowReferences<CR>
-nmap g\ <Cmd>g:LspServer restart<CR>
+nn <buffer> ;tL <Cmd>LspOutline<cr>
+#nn <buffer> K <Cmd>LspHover<cr>
+nn <silent> <space>k <Cmd>LspHover<cr>
+#nn <c-]> <Cmd>LspGotoDefinition<CR>
+#nn <c-s-]> <Cmd>topleft LspGotoDefinition<CR>
+#nn ge <Cmd>LspGotoDefinition<CR>
+nn gs <cmd>call g:GotoRead('LspGotoDefinition')<CR>
+#nn ga <Cmd>LspGotoDeclaration<CR>
+nn gS <cmd>call g:GotoRead('LspGotoDeclaration')<CR>
+#nn ge <Cmd>LspPeekDeclaration<CR>
+#nn gE <Cmd>LspPeekDefinition<CR>
+#nn <C-W>gd <Cmd>topleft LspGotoDefinition<CR>
+#nn gi <Cmd>LspGotoImpl<CR>
+nn gi <cmd>call g:GotoRead('LspGotoImpl')<CR>
+#nn gt <Cmd>LspGotoTypeDef<CR>
+nn gy <cmd>call g:GotoRead('LspGotoTypeDef')<CR>
+#nn gi <Cmd>LspPeekImpl<CR>
+#nn gt <Cmd>LspPeekTypeDef<CR>
+nn g[ <Cmd>LspDiagPrev<CR>
+nn g] <Cmd>LspDiagNext<CR>
+#nn gs <Cmd>LspSymbolSearch<CR>
+#nn gS <Cmd>LspDocumentSymbol<CR>
+#nn gr <Cmd>LspPeekReferences<CR>
+nn gr <Cmd>LspShowReferences<CR>
+nn g\ <Cmd>LspServer restart<CR>
 
 g:lsp_options = {
+    ignoreMissingServer: true,  # 不出现没有lsp的错误提示
     outlineOnRight: true,
     outlineWinSize: 30,
     autoHighlightDiags: true,   # 行数提示错误
-    showDiagInBalloon: false,
     aleSupport: false,
     autoComplete: true,
     incrementalSync: true,
@@ -323,22 +308,22 @@ g:lsp_options = {
     completionMatcher: 'fuzzy',
     showSignature: true,        # 函数参数弹窗
     highlightDiagInline: false,
-    showDiagInPopup: false,
-    showDiagOnStatusLine: false,
+    showDiagInBalloon: false,
+    showDiagInPopup: false,     # 错误下刬线
+    showDiagOnStatusLine: false, # 状态栏提示错误,无用
     maxDiagnostics: 1,
 }
-au User g:LspSetup <cmd>call g:LspOptionsSet(g:lsp_options)
-g:lsp_servers = [
-    { name: 'clangd',  filetype: ['c', 'cpp'], path: exepath('clangd'),  args: ['--background-index'] },
-    { name: 'mach',    filetype: ['mach'],     path: exepath('mls') },
-    { name: 'spectre', filetype: ['spectre'],  path: exepath('spectre-ls') },
-    { name: 'ocen',    filetype: ['ocen'],     path: exepath('ocen'),    args: ['lsp-server'] },
-    { name: 'nimlsp',  filetype: ['nim'],      path: exepath('nimlsp') },
-    { name: 'zls',     filetype: ['zig'],      path: exepath('zls') },
-    { name: 'serve-d', filetype: ['d'],        path: exepath('serve-d') },
-    # { name: 'rust-analyzer', filetype: ['rust'], path: exepath('rust-analyzer'), syncInit: true },
-]
-au User g:LspSetup <cmd>call g:LspAddServer(g:lsp_servers)
+def g:AcLspSetup()
+  g:LspOptionsSet(g:lsp_options)
+  g:LspAddServer([
+    { name: 'clangd', filetype: ['c', 'cpp'], path: exepath('clangd'), args: ['--background-index'] },
+    { name: 'mach', filetype: ['mach'], path: exepath('mls') },
+    { name: 'spectre', filetype: ['spectre'], path: exepath('spectre-ls') },
+    # { name: 'ocen', filetype: ['ocen'], path: exepath('ocen'), args: ['lsp-server'] },
+    # { name: 'nimlsp', filetype: ['nim'], path: exepath('nimlsp') },
+    # { name: 'zls', filetype: ['zig'], path: exepath('zls') },
+  ])
+enddef
+au User LspSetup call g:AcLspSetup()
 # -- another ------
 
-defcompile

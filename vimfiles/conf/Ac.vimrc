@@ -2,11 +2,24 @@ vim9script
 #=================================
 # Option: \ee \aa \zz \vv \bb \ff
 #=================================
+g:loaded_getscriptPlugin = 1
+g:loaded_gzip = 1
+g:loaded_logiPat = 1
+g:loaded_tarPlugin = 1
+g:loaded_zipPlugin = 1
+g:loaded_vimballPlugin = 1
+g:loaded_2html_plugin = 1
+g:loaded_tutor_mode_plugin = 1
+g:loaded_rrhelper = 1
+g:loaded_spellfile_plugin = 1
+g:loaded_manpager_plugin = 1
+g:loaded_netrw = 1             # 有NERDTree, netrw可禁
+g:loaded_netrwPlugin = 1
 g:mapleader = ","
 so $VIMCONF/functions.vimrc
 so $VIMCONF/plugins.vimrc
-exe pathogen#infect()
-exe pathogen#infect('bundle_local/{}')
+#exe pathogen#infect()
+#exe pathogen#infect('bundle_local/{}')
 #-------------------------------------
 # Ignore these filenames during enhanced command line completion.
 set wildignore+=*.luac  # Lua byte code
@@ -27,12 +40,12 @@ so $VIMCONF/user.vimrc
 so $VIMCONF/user2.vimrc
 so $VIMCONF/autocomplete.vimrc
 
-nmap \ee <Cmd>call g:SwitchToBuf($VIMCONF.."/ac.vimrc")<CR>
-nmap \bb <Cmd>call g:SwitchToBuf($VIMCONF.."/plugins.vimrc")<CR>
-nmap \aa <Cmd>call g:SwitchToBuf($VIMCONF.."/autocomplete.vimrc")<CR>
-nmap \zz <Cmd>call g:SwitchToBuf($VIMCONF.."/user.vimrc")<CR>
-nmap \vv <Cmd>call g:SwitchToBuf($VIMCONF.."/user2.vimrc")<CR>
-nmap \ff <Cmd>call g:SwitchToBuf($VIMCONF.."/functions.vimrc")<CR>
+nn \ee <Cmd>call g:SwitchToBuf($VIMCONF.."/ac.vimrc")<CR>
+nn \bb <Cmd>call g:SwitchToBuf($VIMCONF.."/plugins.vimrc")<CR>
+nn \aa <Cmd>call g:SwitchToBuf($VIMCONF.."/autocomplete.vimrc")<CR>
+nn \zz <Cmd>call g:SwitchToBuf($VIMCONF.."/user.vimrc")<CR>
+nn \vv <Cmd>call g:SwitchToBuf($VIMCONF.."/user2.vimrc")<CR>
+nn \ff <Cmd>call g:SwitchToBuf($VIMCONF.."/functions.vimrc")<CR>
 # -- Base settings ------
 # 错误提示只显示在行号上
 set signcolumn=number
@@ -59,12 +72,13 @@ if v:lang == "zh_CN"
 endif
 
 #Remove menu garbled
-so $VIMRUNTIME/delmenu.vim
-so $VIMRUNTIME/menu.vim
-
+if has("gui_running")
+  so $VIMRUNTIME/delmenu.vim
+  so $VIMRUNTIME/menu.vim
+endif
 #Enable filetype plugin
 #dont move it to top if you set unicode menu :)
-filetype plugin indent on
+#filetype plugin indent on
 #Set to auto read when a file is changed from the outside
 set autoread
 #Have the mouse enabled all the time:
@@ -77,7 +91,6 @@ endif
 #set path in current dir
 if has("unix")
     if has("gui_running")
-        #au BufEnter * cd %:h
         au BufEnter * set autochdir
     endif
 endif
@@ -88,7 +101,6 @@ if has("mac")
     endif
     set guifont=Menlo:h15
 endif
-
 set scrolloff=7 # move auto scroll
 # -- Colors and Fonts ------
 # Avoid clearing hilight definition in plugins
@@ -97,18 +109,8 @@ if !exists("g:vimrc_loaded")
     #if has("unix")
     #set gfn=Monospace\ 11
     #endif
-    syntax enable
-    #syntax sync
-    #syntax sync minlines=500
-    #syntax sync maxlines=25000
-    #set synmaxcol=3000
-    #set maxmempattern=2000
     ## color scheme
     if has("gui_running")
-        ##start gvim maximized
-        #if has("au")
-            #au GUIEnter * simalt ~x
-        #endif
         set guioptions-=T
         set guioptions-=m
         set guioptions-=L
@@ -119,7 +121,6 @@ if !exists("g:vimrc_loaded")
         #syntax sync
     endif  # has
 endif
-colorscheme maroloccio
 # -- VIM interface ------
 set ffs=unix,dos
 au BufNewFile,BufRead *tags setl ft=tags
@@ -227,9 +228,9 @@ g:netrw_nogx = 1
 # -- User options ------
 #Don't close window, when deleting a buffer
 #Bclose function can be found in "Buffer related" section
-nmap ;bd :Bclose<cr>
-nmap ;bw :silent bw<cr>
-nmap ;bW :silent bw!<cr>
+nn ;bd <cmd>Bclose<cr>
+nn ;bw <cmd>silent bw<cr>
+nn ;bW <cmd>silent bw!<cr>
 #not use
 map ZZ <esc>
 map ZQ <esc>
@@ -250,10 +251,10 @@ g:wm_move_right = '<m-s-Right>'
 g:wm_move_x = 20
 g:wm_move_y = 15
 
-nmap <c-s-up> <C-W>+
-nmap <c-s-down> <C-W>-
-nmap <c-s-left> <C-W><
-nmap <c-s-right> <C-W>>
+nn <c-s-up> <C-W>+
+nn <c-s-down> <C-W>-
+nn <c-s-left> <C-W><
+nn <c-s-right> <C-W>>
 
 #Bash like
 map! <c-a> <home>
@@ -306,10 +307,10 @@ map <m-s-tab> <c-w>gT
 tmap <m-tab> <c-w>gt
 tmap <m-s-tab> <c-w>gT
 
-nmap j gj
-nmap k gk
-nmap ^ g^
-nmap $ g$
+nn j gj
+nn k gk
+nn ^ g^
+nn $ g$
 xno < <gv
 xno > >gv
 
@@ -318,7 +319,7 @@ cmap <c-k> <up>
 cmap <c-j> <down>
 
 #au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
-nmap <silent> ;ds :call g:DelTWS(1)<cr>
+nn <silent> ;ds <cmd>call g:DelTWS(1)<cr>
 #complete
 #imap <s-space> <cr>
 
@@ -333,12 +334,11 @@ xmap <m-v> <c-r>+
 cmap <m-v> <c-r>+
 
 #file format
-nmap <Leader>ff :FmtOpt<cr>
-nmap <Leader>fu :se fenc=utf-8<cr>
-nmap <Leader>fg :se fenc=GBK<cr>
+nn <Leader>ff <cmd>FmtOpt<cr>
+nn <Leader>fu <cmd>se fenc=utf-8<cr>
+nn <Leader>fg <cmd>se fenc=GBK<cr>
 #quickfix
 au Filetype qf set syntax=sh
-set syntax=markdown.nim
 #nmap <space>L  :cw<cr>
 #nmap <space>l  :copen<cr>
 #nmap <s-space>l  :copen<cr>
@@ -346,36 +346,32 @@ set syntax=markdown.nim
 #nmap <s-space>K :cp<cr>
 #nmap <s-space>O :cold<cr>
 #nmap <s-space>I :cnew<cr>
-nnoremap q :ccl<esc>
+#nnoremap q :ccl<esc>
 nnoremap Q q
-nn q :FloatermHide<cr>:ccl<cr>
+nn q <cmd>silent FloatermHide<cr><cmd>ccl<cr>
+nn <space>q <cmd>silent copen<cr>
 #nmap Q :ccl<esc>
 #virtual edit mode
-g:AcSetMap(':ToggleVE<cr>', ';vv')
+nn ;vv <cmd>ToggleVE<cr>
 #select find
-vnoremap * y/<c-r>"<cr>
 #undo list
-nmap ;uc :call g:AcClsUndo()<cr>
-
+nmap ;uc <cmd>AcClsUndo<cr>
 #Fast saving
-nmap ;ww :update<cr>
-nmap ;wf :update!<cr>
+nn ;ww <cmd>update<cr>
+nn ;wf <cmd>update!<cr>
 #Fast quiting
-nn <silent> ,q <esc>
-nn <silent> ;q <esc>
-nn <silent> ;qw :wq<cr>
-nn <silent> ;qf :q!<cr>
-nn <silent> ;qq :q<cr>
-nn <silent> ;qa :qa<cr>
-nn <silent> ;qf :FloatermKill!<cr>:q!<cr>
-nn <silent> ;qa :FloatermKill!<cr>:qa<cr>
+nn ,q <esc>
+nn ;q <esc>
+nn ;qw <cmd>wq<cr>
+nn ;qq <cmd>q<cr>
+nn ;qf <cmd>silent FloatermKill!<cr><cmd>q!<cr>
+nn ;qa <cmd>silent FloatermKill!<cr><cmd>qa<cr>
 tnoremap <silent> <c-esc> <c-\><c-n>
 #Fast remove highlight search
-nmap <silent> ;<cr> :noh<cr>
-nmap <silent> ;; ;<esc>
-nmap <silent> ,, ,<esc>
-nmap <space><space> \<space>
-vno * y/<c-r>"<cr>
+nn ;<cr> <Cmd>noh<CR>
+nn ;; ;<esc>
+nn ,, ,<esc>
+nn <space><space> \<space>
 #fix terminal vi <c-v> bug
 &t_BE = ""
 &t_BD = "\e[?2004l"
@@ -384,14 +380,15 @@ vno * y/<c-r>"<cr>
 set t_PS=\e[200~
 set t_PE=\e[201~
 if has("gui_running")
-    nmap <d-d> :sp<cr>
-    nmap <d-D> :vs<cr>
+    nn <d-d> :sp<cr>
+    nn <d-D> :vs<cr>
 else
-    nmap <m-d> :sp<cr>
-    nmap <m-D> :vs<cr>
+    nn <m-d> :sp<cr>
+    nn <m-D> :vs<cr>
 endif
 map ge G
 #-- cmd example: Template sh/build.sh
 com! -nargs=+ Template :!cp $VIM/template/<args> %:p:h
 
-defcompile
+colorscheme maroloccio
+#filetype plugin indent on

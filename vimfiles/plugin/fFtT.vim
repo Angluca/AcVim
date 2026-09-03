@@ -1,7 +1,3 @@
-if !has('vim9script') ||  v:version < 900
-    echoe "Needs Vim version 9.0 and above"
-    finish
-endif
 vim9script
 
 var id: number
@@ -88,3 +84,4 @@ if get(g:, 'vimbits_fFtT', true)
     xnoremap T <Plug>(fFtT-T)T
     onoremap T <Plug>(fFtT-T)T
 endif
+

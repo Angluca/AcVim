@@ -117,4 +117,3 @@ g:SetDict('hare', '', 'hare.base.dict', 'hare.dict', 'hare.sdl.dict')
 # temp
 au FileType zig g:zig_fmt_autosave = 0
 
-defcompile
