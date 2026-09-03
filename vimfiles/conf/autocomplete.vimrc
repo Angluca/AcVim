@@ -1,6 +1,7 @@
 vim9script
 # -- autocomplete setting --
 #inoremap <expr> <BS> pumvisible() ? "\<C-e>\<BS>" : "\<BS>"
+set ph=6  # complete popup window hight
 set cot=menuone,noinsert,popup,fuzzy
 set autocomplete
 #set autocompletedelay=60

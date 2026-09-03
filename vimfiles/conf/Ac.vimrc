@@ -160,7 +160,6 @@ set showmatch
 #set mat=1
 #set shortmess+=c    " Shut off completion messages
 set shortmess=aoOtTcCS
-set ph=10  # complete popup window hight
 #No sound on errors and clear jumplist.
 au vimEnter * set vb t_vb=
 au vimEnter * :clearjumps
