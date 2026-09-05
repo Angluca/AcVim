@@ -10,11 +10,11 @@ g:vimsuggestOpt = {
         popupattrs: {
             maxheight: 12,
         },
-        range: 100,
-        timeout: 100,
+        range: 50,
+        timeout: 10,
         async: true,
         async_timeout: 200,
-        async_minlines: 200,
+        async_minlines: 20,
         highlight: true,
         trigger: 't',
         reverse: false,
@@ -53,32 +53,32 @@ au VimEnter * call g:VimSuggestSetOptions(g:vimsuggestOpt)
 
 #-- scope ------
 import autoload 'scope/fuzzy.vim'
-nmap <C-q> <scriptcmd>fuzzy.Quickfix()<CR>
-nmap ;/ <scriptcmd>fuzzy.BufSearch()<CR>
-vmap ;/ <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
-nmap ;? <scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
-vmap ;? <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
-nmap ;ff <scriptcmd>fuzzy.File()<CR>
-vmap ;ff <esc><scriptcmd>fuzzy.File()<CR><c-r><c-w>
-nmap ;fF <scriptcmd>fuzzy.File()<CR><c-r><c-w>
-nmap ;f/ <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR>
-vmap ;f/ <esc><scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR><c-r><c-w>
-nmap ;f? <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case', false, '<cword>')<CR>
+nn <C-q> <scriptcmd>fuzzy.Quickfix()<CR>
+nn ;/ <scriptcmd>fuzzy.BufSearch()<CR>
+xn ;/ <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+nn ;? <scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+xn ;? <esc><scriptcmd>fuzzy.BufSearch()<CR><c-r><c-w>
+nn ;ff <scriptcmd>fuzzy.File()<CR>
+xn ;ff <esc><scriptcmd>fuzzy.File()<CR><c-r><c-w>
+nn ;fF <scriptcmd>fuzzy.File()<CR><c-r><c-w>
+nn ;f/ <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR>
+xn ;f/ <esc><scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR><c-r><c-w>
+nn ;f? <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case', false, '<cword>')<CR>
 #nmap ;fG <scriptcmd>fuzzy.GitFile()<CR>
 #emap ;fb <scriptcmd>fuzzy.Buffer(true)<CR>
-nmap ;fb <scriptcmd>fuzzy.Buffer()<CR>
-nmap ;fk <scriptcmd>fuzzy.Keymap()<CR>
-nmap ;fh <scriptcmd>fuzzy.Help()<CR>
-nmap ;fl <scriptcmd>fuzzy.Highlight()<CR>
-nmap ;fc <scriptcmd>fuzzy.Command()<CR>
-nmap ;fC <scriptcmd>fuzzy.CmdHistory()<CR>
-nmap ;fu <scriptcmd>fuzzy.MRU()<CR>
-nmap ;fm <scriptcmd>fuzzy.Mark()<CR>
-nmap ;fo <scriptcmd>fuzzy.Option()<CR>
-nmap ;fr <scriptcmd>fuzzy.Register()<CR>
-nmap ;ft <scriptcmd>fuzzy.Tag()<CR>
-nmap ;fw <scriptcmd>fuzzy.Window()<CR>
-nmap ;fA <scriptcmd>fuzzy.Autocmd()<CR>
-nmap ;fy <scriptcmd>fuzzy.Filetype()<CR>
-nmap ;fL <scriptcmd>fuzzy.Colorscheme()<CR>
+nn ;fb <scriptcmd>fuzzy.Buffer()<CR>
+nn ;fk <scriptcmd>fuzzy.Keymap()<CR>
+nn ;fh <scriptcmd>fuzzy.Help()<CR>
+nn ;fl <scriptcmd>fuzzy.Highlight()<CR>
+nn ;fc <scriptcmd>fuzzy.Command()<CR>
+nn ;fi <scriptcmd>fuzzy.CmdHistory()<CR>
+nn ;fu <scriptcmd>fuzzy.MRU()<CR>
+nn ;fm <scriptcmd>fuzzy.Mark()<CR>
+nn ;fo <scriptcmd>fuzzy.Option()<CR>
+nn ;fr <scriptcmd>fuzzy.Register()<CR>
+nn ;ft <scriptcmd>fuzzy.Tag()<CR>
+nn ;fw <scriptcmd>fuzzy.Window()<CR>
+nn ;fA <scriptcmd>fuzzy.Autocmd()<CR>
+nn ;fy <scriptcmd>fuzzy.Filetype()<CR>
+nn ;fL <scriptcmd>fuzzy.Colorscheme()<CR>
 

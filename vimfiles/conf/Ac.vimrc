@@ -2,6 +2,7 @@ vim9script
 #=================================
 # Option: \ee \aa \zz \vv \bb \ff
 #=================================
+# 禁止加载
 g:loaded_getscriptPlugin = 1
 g:loaded_gzip = 1
 g:loaded_logiPat = 1
@@ -13,115 +14,10 @@ g:loaded_tutor_mode_plugin = 1
 g:loaded_rrhelper = 1
 g:loaded_spellfile_plugin = 1
 g:loaded_manpager_plugin = 1
-g:loaded_netrw = 1             # 有NERDTree, netrw可禁
+g:loaded_netrw = 1 
 g:loaded_netrwPlugin = 1
-g:mapleader = ","
-so $VIMCONF/functions.vimrc
-so $VIMCONF/plugins.vimrc
-#exe pathogen#infect()
-#exe pathogen#infect('bundle_local/{}')
-#-------------------------------------
-# Ignore these filenames during enhanced command line completion.
-set wildignore+=*.luac  # Lua byte code
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.a,*.dylib  # compiled object files
-set wildignore+=*.pyc  # Python byte code
-set wildignore+=*.spl  # compiled spelling word lists
-set wildignore+=*.sw?  # Vim swap files
-# -- Create directory ------
-g:AcMakeDir($VIMDATA)
-g:AcMakeDir($VIMDATA .. 'backup')
-g:AcMakeDir($VIMDATA .. 'swap')
-g:AcMakeDir($VIMDATA .. 'cache')
-set backupdir=$VIMDATA/backup  # where to put backup file
-set directory=$VIMDATA/swap    # where to put swap file
-#---------------------------
-#load conf
-so $VIMCONF/user.vimrc
-so $VIMCONF/user2.vimrc
-so $VIMCONF/autocomplete.vimrc
-
-nn \ee <Cmd>call g:SwitchToBuf($VIMCONF.."/ac.vimrc")<CR>
-nn \bb <Cmd>call g:SwitchToBuf($VIMCONF.."/plugins.vimrc")<CR>
-nn \aa <Cmd>call g:SwitchToBuf($VIMCONF.."/autocomplete.vimrc")<CR>
-nn \zz <Cmd>call g:SwitchToBuf($VIMCONF.."/user.vimrc")<CR>
-nn \vv <Cmd>call g:SwitchToBuf($VIMCONF.."/user2.vimrc")<CR>
-nn \ff <Cmd>call g:SwitchToBuf($VIMCONF.."/functions.vimrc")<CR>
-# -- Base settings ------
-# 错误提示只显示在行号上
-set signcolumn=number
-#Get out of VI's compatible mode..
-set nocompatible
-#Sets how many lines of history VIM has to remember
-set history=20
-#utf-8 , ANSI, UNICODE
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-
-set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
-
-#chinese=zh_CN.UTF-8, english=en_US.UTF-8
-if v:lang == "zh_CN"
-    set langmenu=zh_CN.UTF-8
-    set helplang=cn
-    if has("gui_running")
-        language messages zh_CN.utf-8
-    else
-        language messages en_US.UTF-8
-    endif
-endif
-
-#Remove menu garbled
-if has("gui_running")
-  so $VIMRUNTIME/delmenu.vim
-  so $VIMRUNTIME/menu.vim
-endif
-#Enable filetype plugin
-#dont move it to top if you set unicode menu :)
-#filetype plugin indent on
-#Set to auto read when a file is changed from the outside
-set autoread
-#Have the mouse enabled all the time:
-set mouse=a
-
-if has("win32")
-    au QuickfixCmdPost make call g:QfMakeConv()
-endif
-
-#set path in current dir
-if has("unix")
-    if has("gui_running")
-        au BufEnter * set autochdir
-    endif
-endif
-
-if has("mac")
-    if has("gui_running")
-        set macmeta
-    endif
-    set guifont=Menlo:h15
-endif
-set scrolloff=7 # move auto scroll
-# -- Colors and Fonts ------
-# Avoid clearing hilight definition in plugins
-if !exists("g:vimrc_loaded")
-    ##Set font
-    #if has("unix")
-    #set gfn=Monospace\ 11
-    #endif
-    ## color scheme
-    if has("gui_running")
-        set guioptions-=T
-        set guioptions-=m
-        set guioptions-=L
-        #set guioptions-=r
-        #hi normal guibg=#294d4a
-    else
-        set t_Co=256
-        #syntax sync
-    endif  # has
-endif
 # -- VIM interface ------
+g:mapleader = ","
 set ffs=unix,dos
 au BufNewFile,BufRead *tags setl ft=tags
 #Turn on WiLd menu
@@ -135,7 +31,7 @@ set nu
 #Do not redraw, when running macros.. lazyredraw
 set lz
 #Change buffer - without saving
-set hid
+set hidden # 打开新buf不会卸载隐藏的buf,防止lsp失连
 #Set backspace
 set backspace=eol,start,indent
 #Bbackspace and cursor keys wrap to
@@ -225,6 +121,110 @@ au FileType html set syntax=html
 g:netrw_winsize = 30
 g:netrw_home = $VIMDATA .. 'cache'
 g:netrw_nogx = 1
+#-------------------------------------
+# load functions
+so $VIMCONF/functions.vimrc
+# Ignore these filenames during enhanced command line completion.
+set wildignore+=*.luac  # Lua byte code
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.a,*.dylib  # compiled object files
+set wildignore+=*.pyc  # Python byte code
+set wildignore+=*.spl  # compiled spelling word lists
+set wildignore+=*.sw?  # Vim swap files
+# -- Create directory ------
+g:AcMakeDir($VIMDATA)
+g:AcMakeDir($VIMDATA .. 'backup')
+g:AcMakeDir($VIMDATA .. 'swap')
+g:AcMakeDir($VIMDATA .. 'cache')
+set backupdir=$VIMDATA/backup  # where to put backup file
+set directory=$VIMDATA/swap    # where to put swap file
+#---------------------------
+#load conf
+#exe pathogen#infect()
+#exe pathogen#infect('bundle_local/{}')
+so $VIMCONF/plugins.vimrc
+so $VIMCONF/user.vimrc
+so $VIMCONF/user2.vimrc
+so $VIMCONF/autocomplete.vimrc
+
+nn \ee <Cmd>call g:SwitchToBuf($VIMCONF.."/ac.vimrc")<CR>
+nn \bb <Cmd>call g:SwitchToBuf($VIMCONF.."/plugins.vimrc")<CR>
+nn \aa <Cmd>call g:SwitchToBuf($VIMCONF.."/autocomplete.vimrc")<CR>
+nn \zz <Cmd>call g:SwitchToBuf($VIMCONF.."/user.vimrc")<CR>
+nn \vv <Cmd>call g:SwitchToBuf($VIMCONF.."/user2.vimrc")<CR>
+nn \ff <Cmd>call g:SwitchToBuf($VIMCONF.."/functions.vimrc")<CR>
+# -- Base settings ------
+# 错误提示只显示在行号上
+set signcolumn=number
+#Get out of VI's compatible mode..
+set nocompatible
+#Sets how many lines of history VIM has to remember
+set history=20
+#utf-8 , ANSI, UNICODE
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,gb18030,cp936,big5,euc-jp,euc-kr,latin1
+#chinese=zh_CN.UTF-8, english=en_US.UTF-8
+if v:lang == "zh_CN"
+    set langmenu=zh_CN.UTF-8
+    set helplang=cn
+    if has("gui_running")
+        language messages zh_CN.utf-8
+    else
+        language messages en_US.UTF-8
+    endif
+endif
+
+#Remove menu garbled
+if has("gui_running")
+  so $VIMRUNTIME/delmenu.vim
+  so $VIMRUNTIME/menu.vim
+endif
+#Enable filetype plugin
+#dont move it to top if you set unicode menu :)
+#filetype plugin indent on
+#Set to auto read when a file is changed from the outside
+set autoread
+#Have the mouse enabled all the time:
+set mouse=a
+
+if has("win32")
+    au QuickfixCmdPost make call g:QfMakeConv()
+endif
+
+#set path in current dir
+if has("unix")
+    if has("gui_running")
+        au BufEnter * set autochdir
+    endif
+endif
+
+if has("mac")
+    if has("gui_running")
+        set macmeta
+    endif
+    set guifont=Menlo:h15
+endif
+set scrolloff=7 # move auto scroll
+# -- Colors and Fonts ------
+# Avoid clearing hilight definition in plugins
+if !exists("g:vimrc_loaded")
+    ##Set font
+    #if has("unix")
+    #set gfn=Monospace\ 11
+    #endif
+    ## color scheme
+    if has("gui_running")
+        set guioptions-=T
+        set guioptions-=m
+        set guioptions-=L
+        #set guioptions-=r
+        #hi normal guibg=#294d4a
+    else
+        set t_Co=256
+        #syntax sync
+    endif  # has
+endif
 # -- User options ------
 #Don't close window, when deleting a buffer
 #Bclose function can be found in "Buffer related" section
@@ -232,10 +232,10 @@ nn ;bd <cmd>Bclose<cr>
 nn ;bw <cmd>silent bw<cr>
 nn ;bW <cmd>silent bw!<cr>
 #not use
-map ZZ <esc>
-map ZQ <esc>
-map Q <esc>
-map q <esc>
+no ZZ <esc>
+no ZQ <esc>
+no Q <esc>
+no q <esc>
 #tnoremapmap <m-q> :quit<cr>
 
 #time
@@ -257,42 +257,42 @@ nn <c-s-left> <C-W><
 nn <c-s-right> <C-W>>
 
 #Bash like
-map! <c-a> <home>
-cmap <c-e> <end>
-map! <c-f> <right>
-map! <c-b> <left>
+no! <c-a> <home>
+cno <c-e> <end>
+no! <c-f> <right>
+no! <c-b> <left>
 
-nmap <d-c> <c-c>
-map! <d-c> <c-c>
-map! <c-c> <RIGHT><ESC>
-map! <m-c> <c-c>
-map! <m-H> <Home>
-map! <m-L> <End>
-map! <m-h> <Left>
-map! <m-l> <Right>
-imap <m-j> <down>
-imap <m-k> <up>
-cmap <m-j> <c-n>
-cmap <m-k> <c-p>
-imap <m-;> ;
-#map! Ó <Home>
-#map! Ò <End>
-#map! ˙ <Left>
-#map! ¬ <Right>
-#imap ∆ <down>
-#imap ˚ <up>
-#cmap ∆ <c-n>
-#cmap ˚ <c-p>
+nn <d-c> <c-c>
+no! <d-c> <c-c>
+no! <c-c> <RIGHT><ESC>
+no! <m-c> <c-c>
+no! <m-H> <Home>
+no! <m-L> <End>
+no! <m-h> <Left>
+no! <m-l> <Right>
+ino <m-j> <down>
+ino <m-k> <up>
+cno <m-j> <c-n>
+cno <m-k> <c-p>
+ino <m-;> ;
+#no! Ó <Home>
+#no! Ò <End>
+#no! ˙ <Left>
+#no! ¬ <Right>
+#ino ∆ <down>
+#ino ˚ <up>
+#cno ∆ <c-n>
+#cno ˚ <c-p>
 
 #Smart way to move btw. windows
-map <m-j> <C-W>j
-map <m-k> <C-W>k
-map <m-h> <C-W>h
-map <m-l> <C-W>l
-tmap <m-j> <C-W>j
-tmap <m-k> <C-W>k
-tmap <m-h> <C-W>h
-tmap <m-l> <C-W>l
+no <m-j> <C-W>j
+no <m-k> <C-W>k
+no <m-h> <C-W>h
+no <m-l> <C-W>l
+tno <m-j> <C-W>j
+tno <m-k> <C-W>k
+tno <m-h> <C-W>h
+tno <m-l> <C-W>l
 #map ∆ <C-W>j
 #map ˚ <C-W>k
 #map ˙ <C-W>h
@@ -315,8 +315,8 @@ xno < <gv
 xno > >gv
 
 #sel history
-cmap <c-k> <up>
-cmap <c-j> <down>
+cno <c-k> <up>
+cno <c-j> <down>
 
 #au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
 nn <silent> ;ds <cmd>call g:DelTWS(1)<cr>
@@ -324,14 +324,13 @@ nn <silent> ;ds <cmd>call g:DelTWS(1)<cr>
 #imap <s-space> <cr>
 
 #cut, copy & paste
-nmap <m-c> "+y
-vmap <m-c> "+y
-xmap <m-c> "+y
-nmap <m-v> :setl paste<cr>"*gP
-vmap <m-v> "*gP
-imap <m-v> <c-r>+
-xmap <m-v> <c-r>+
-cmap <m-v> <c-r>+
+nn <m-c> "+y
+vn <m-c> "+y
+nn <m-v> :setl paste<cr>"*gP
+vn <m-v> "*gP
+ino <m-v> <c-r>+
+xno <m-v> <c-r>+
+cno <m-v> <c-r>+
 
 #file format
 nn <Leader>ff <cmd>FmtOpt<cr>
@@ -347,6 +346,9 @@ au Filetype qf set syntax=sh
 #nmap <s-space>O :cold<cr>
 #nmap <s-space>I :cnew<cr>
 #nnoremap q :ccl<esc>
+# f查找后重复
+nnoremap <m-.> ;
+nnoremap <m-,> ,
 nnoremap Q q
 nn q <cmd>silent FloatermHide<cr><cmd>ccl<cr>
 nn <space>q <cmd>silent copen<cr>
@@ -355,7 +357,7 @@ nn <space>q <cmd>silent copen<cr>
 nn ;vv <cmd>ToggleVE<cr>
 #select find
 #undo list
-nmap ;uc <cmd>AcClsUndo<cr>
+nn ;uc <cmd>AcClsUndo<cr>
 #Fast saving
 nn ;ww <cmd>update<cr>
 nn ;wf <cmd>update!<cr>
@@ -366,7 +368,7 @@ nn ;qw <cmd>wq<cr>
 nn ;qq <cmd>q<cr>
 nn ;qf <cmd>silent FloatermKill!<cr><cmd>q!<cr>
 nn ;qa <cmd>silent FloatermKill!<cr><cmd>qa<cr>
-tnoremap <silent> <c-esc> <c-\><c-n>
+tno <silent> <c-esc> <c-\><c-n>
 #Fast remove highlight search
 nn ;<cr> <Cmd>noh<CR>
 nn ;; ;<esc>
@@ -386,7 +388,7 @@ else
     nn <m-d> :sp<cr>
     nn <m-D> :vs<cr>
 endif
-map ge G
+no ge G
 #-- cmd example: Template sh/build.sh
 com! -nargs=+ Template :!cp $VIM/template/<args> %:p:h
 

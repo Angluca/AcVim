@@ -38,36 +38,10 @@ g:tagbar_type_ocen = {
     deffile: expand('<sfile>:p:h:h') .. '/dict/ocen.ctags',
 }
 
-g:tagbar_type_dither = {
-    ctagstype: 'dither',
-    kinds: ['f:func:0:1', 'v:var:0:1', 't:type:1:0'],
-    deffile: expand('<sfile>:p:h:h') .. '/dict/dither.ctags',
-}
-
 g:tagbar_type_nature = {
     ctagstype: 'nature',
     kinds: ['f:func:0:1', 'v:var:1:0', 't:type:0:1', 'm:mod:1:0'],
     deffile: expand('<sfile>:p:h:h') .. '/dict/nature.ctags',
-}
-
-g:tagbar_type_virgil = {
-    ctagstype: 'virgil',
-    kinds: [
-        'c:component:0:1',
-        'l:layout:0:1',
-        's:class:0:1',
-        'm:macro:0:1',
-        't:type:0:1',
-        'e:enum:0:1',
-        'f:func:0:1',
-        'a:case:1:0',
-        'v:var:1:0',
-        'n:enums:1:0',
-    ],
-    sro: '::',
-    kind2scope: { c: 'component', l: 'layout', s: 'class', m: 'macro', t: 'type', e: 'enum' },
-    scope2kind: { component: 'c', layout: 'l', class: 's', macro: 'm', type: 't', enum: 'e' },
-    deffile: expand('<sfile>:p:h:h') .. '/dict/virgil.ctags',
 }
 
 nn <silent> ;tl :TagbarToggle<cr>
@@ -91,8 +65,8 @@ nn ;tt <cmd>NERDTreeToggle <cr>
 g:NERDCreateDefaultMappings = 0
 nn <d-/> <plug>NERDCommenterToggle
 nn <m-/> <plug>NERDCommenterToggle
-nn ;xx <plug>NERDCommenterComment
-nn ;xu <plug>NERDCommenterUncomment
+no ;xx <plug>NERDCommenterComment
+no ;xu <plug>NERDCommenterUncomment
 # -- easymotion ------
 ##let EasyMotion_do_mapping = 0
 ##let g:EasyMotion_keys = 'vcxzbtrewqyuiopnmhgasdfjkl;'
@@ -294,24 +268,30 @@ nn gr <Cmd>LspShowReferences<CR>
 nn g\ <Cmd>LspServer restart<CR>
 
 g:lsp_options = {
-    ignoreMissingServer: true,  # 不出现没有lsp的错误提示
+    noNewlineInCompletion: true,    # 让你的括号插件<cr>不失效
+    ignoreMissingServer: true,      # 不出现没有lsp的错误提示
     outlineOnRight: true,
     outlineWinSize: 30,
-    autoHighlightDiags: true,   # 行数提示错误
     aleSupport: false,
     autoComplete: true,
     incrementalSync: true,
     snippetSupport: false,
     vsnipSupport: true,
-    bufferCompletionTimeout: 66,
+    bufferCompletionTimeout: 50,
     filterCompletionDuplicates: true,
     completionMatcher: 'fuzzy',
-    showSignature: true,        # 函数参数弹窗
-    highlightDiagInline: false,
-    showDiagInBalloon: false,
-    showDiagInPopup: false,     # 错误下刬线
-    showDiagOnStatusLine: false, # 状态栏提示错误,无用
+    showSignature: false,           # 函数参数弹窗
     maxDiagnostics: 1,
+    autoHighlightDiags: true,       # 自动提示诊断
+    showDiagInBalloon: false,       # 鼠标悬停提示诊断
+    showDiagInPopup: false,         # 诊断弹出窗口显示消息
+    showDiagOnStatusLine: false,    # 状态栏提示诊断
+    showDiagWithSign: true,         # 诊断E符号显示
+    showDiagWithVirtualText: false,  # 诊断文字画线
+    keepFocusInDiags: false,        # 保持焦点在诊断窗口
+    highlightDiagInline: true,     # 诊断显示下划线
+    diagVirtualTextAlign: 'below',  # 诊断字体位置above,below,after
+    diagVirtualTextWrap: 'default', # 诊断消息的换行方式default,wrap,truncate'
 }
 def g:AcLspSetup()
   g:LspOptionsSet(g:lsp_options)
@@ -319,7 +299,7 @@ def g:AcLspSetup()
     { name: 'clangd', filetype: ['c', 'cpp'], path: exepath('clangd'), args: ['--background-index'] },
     { name: 'mach', filetype: ['mach'], path: exepath('mls') },
     { name: 'spectre', filetype: ['spectre'], path: exepath('spectre-ls') },
-    # { name: 'ocen', filetype: ['ocen'], path: exepath('ocen'), args: ['lsp-server'] },
+    { name: 'ocen', filetype: ['ocen'], path: exepath('ocen'), args: ['lsp-server'] },
     # { name: 'nimlsp', filetype: ['nim'], path: exepath('nimlsp') },
     # { name: 'zls', filetype: ['zig'], path: exepath('zls') },
   ])

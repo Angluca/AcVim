@@ -8,6 +8,10 @@ plug#begin($VIM .. '/bundle/')
 #----------------------------------
 # Plugin
 #----------------------------------
+# local
+# var bundle_local = $VIM ..'/bundle_local'
+# Plug expand(bundle_local .. '/my.vim')
+#----------------------------------
 Plug 'angluca/mach.vim', { 'for': 'mach' }
 Plug 'angluca/spectre.vim', { 'for': 'spectre' }
 #Plug 'angluca/nim.vim'
@@ -42,7 +46,7 @@ Plug 'girishji/vimsuggest'
 #Plug 'girishji/ngram-complete.vim'
 #Plug 'lifepillar/vim-mucomplete'
 
-Plug 'yegappan/lsp', {'for': ['c','cpp','spectre','mach']}
+Plug 'yegappan/lsp', { 'for': ['c', 'cpp', 'spectre', 'mach'] }
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
