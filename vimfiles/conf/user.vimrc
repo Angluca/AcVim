@@ -299,7 +299,7 @@ def g:AcLspSetup()
     { name: 'clangd', filetype: ['c', 'cpp'], path: exepath('clangd'), args: ['--background-index'] },
     { name: 'mach', filetype: ['mach'], path: exepath('mls') },
     { name: 'spectre', filetype: ['spectre'], path: exepath('spectre-ls') },
-    { name: 'ocen', filetype: ['ocen'], path: exepath('ocen'), args: ['lsp-server'] },
+    # { name: 'ocen', filetype: ['ocen'], path: exepath('ocen'), args: ['lsp-server'] },
     # { name: 'nimlsp', filetype: ['nim'], path: exepath('nimlsp') },
     # { name: 'zls', filetype: ['zig'], path: exepath('zls') },
   ])

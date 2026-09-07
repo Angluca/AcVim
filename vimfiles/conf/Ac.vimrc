@@ -1,5 +1,6 @@
 vim9script
 #=================================
+# so %  # update
 # Option: \ee \aa \zz \vv \bb \ff
 #=================================
 # 禁止加载
@@ -177,8 +178,13 @@ endif
 
 #Remove menu garbled
 if has("gui_running")
-  so $VIMRUNTIME/delmenu.vim
-  so $VIMRUNTIME/menu.vim
+    so $VIMRUNTIME/delmenu.vim
+    so $VIMRUNTIME/menu.vim
+else
+    # 修复<esc>a快速输入变成<alt>a的问题
+    set notimeout
+    set ttimeout
+    set ttimeoutlen=0
 endif
 #Enable filetype plugin
 #dont move it to top if you set unicode menu :)
@@ -192,12 +198,13 @@ if has("win32")
     au QuickfixCmdPost make call g:QfMakeConv()
 endif
 
-#set path in current dir
-if has("unix")
-    if has("gui_running")
-        au BufEnter * set autochdir
-    endif
-endif
+#if has("unix") # unix is linux and macos
+    #if has("gui_running")
+        ## autochdir 让lsp跳转至定义文件脱离项目
+        ## 导致不能再查找定义文件了,所以用lsp时别用
+        ##au BufEnter * set autochdir
+    #endif
+#endif
 
 if has("mac")
     if has("gui_running")
@@ -213,7 +220,6 @@ if !exists("g:vimrc_loaded")
     #if has("unix")
     #set gfn=Monospace\ 11
     #endif
-    ## color scheme
     if has("gui_running")
         set guioptions-=T
         set guioptions-=m
@@ -232,10 +238,10 @@ nn ;bd <cmd>Bclose<cr>
 nn ;bw <cmd>silent bw<cr>
 nn ;bW <cmd>silent bw!<cr>
 #not use
-no ZZ <esc>
-no ZQ <esc>
-no Q <esc>
-no q <esc>
+nn ZZ <esc>
+nn ZQ <esc>
+#nn Q <esc>
+#nn q <esc>
 #tnoremapmap <m-q> :quit<cr>
 
 #time
@@ -318,19 +324,21 @@ xno > >gv
 cno <c-k> <up>
 cno <c-j> <down>
 
-#au FileType vim nmap <buffer> ;we :w!<cr>:source %<cr>
 nn <silent> ;ds <cmd>call g:DelTWS(1)<cr>
-#complete
-#imap <s-space> <cr>
 
 #cut, copy & paste
 nn <m-c> "+y
 vn <m-c> "+y
-nn <m-v> <cmd>setl paste<cr>"*gP
-vn <m-v> "*gP
 ino <m-v> <c-r>+
-xno <m-v> <c-r>+
 cno <m-v> <c-r>+
+xno <m-v> <c-r>+
+if has("gui_running")
+no <m-v> <c-r>+
+else
+nn <m-v> "+p
+vn <m-v> "+p
+ino <m-v> <c-o>"+p
+endif
 
 #file format
 nn <Leader>ff <cmd>FmtOpt<cr>

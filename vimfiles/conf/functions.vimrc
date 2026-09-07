@@ -224,7 +224,8 @@ enddef
 # ---- 跳转 ----
 def g:GotoRead(cmd: string)
   var bnr = bufnr()
-  silent! exe cmd
+  #silent! exe cmd
+  exe cmd
   if bufnr() != bnr
     setlocal readonly nomodifiable
   endif
