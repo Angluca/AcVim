@@ -227,7 +227,8 @@ def g:GotoRead(cmd: string)
   #silent! exe cmd
   exe cmd
   if bufnr() != bnr
-    setlocal readonly nomodifiable
+    #setlocal readonly nomodifiable
+    setlocal nomodifiable
   endif
 enddef
 nnoremap <C-]> <cmd>call g:GotoRead(((&ft == 'help') ? 'help ' : 'tag ') .. expand('<cword>'))<cr>

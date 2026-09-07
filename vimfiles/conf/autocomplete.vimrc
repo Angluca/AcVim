@@ -9,6 +9,7 @@ set autocomplete
 set cpt=k^10,.^10,b^10,w^10 # lsp下用o或F都会卡
 # nim.vim must comment nim#init()
 # -- filetypes ------
+au BufNewFile,BufRead *tags setl ft=tags
 g:SetFt('*.ctags', 'zsh')
 g:SetFt('*.zshrc,*.zprofile', 'zsh')
 g:SetFt('*.vim*', 'vim')

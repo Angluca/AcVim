@@ -19,8 +19,9 @@ g:loaded_netrw = 1
 g:loaded_netrwPlugin = 1
 # -- VIM interface ------
 g:mapleader = ","
+set title
+set titlestring=%{expand('%:~:.')}%(\ [%L%M%R]%)
 set ffs=unix,dos
-au BufNewFile,BufRead *tags setl ft=tags
 #Turn on WiLd menu
 set wildmenu
 #Always show current position
@@ -147,12 +148,12 @@ so $VIMCONF/user.vimrc
 so $VIMCONF/user2.vimrc
 so $VIMCONF/autocomplete.vimrc
 
-nn \ee <Cmd>call g:SwitchToBuf($VIMCONF.."/ac.vimrc")<CR>
-nn \bb <Cmd>call g:SwitchToBuf($VIMCONF.."/plugins.vimrc")<CR>
-nn \aa <Cmd>call g:SwitchToBuf($VIMCONF.."/autocomplete.vimrc")<CR>
-nn \zz <Cmd>call g:SwitchToBuf($VIMCONF.."/user.vimrc")<CR>
-nn \vv <Cmd>call g:SwitchToBuf($VIMCONF.."/user2.vimrc")<CR>
-nn \ff <Cmd>call g:SwitchToBuf($VIMCONF.."/functions.vimrc")<CR>
+nn \ee <Cmd>call g:SwitchToBuf($VIMCONF.."ac.vimrc")<CR>
+nn \bb <Cmd>call g:SwitchToBuf($VIMCONF.."plugins.vimrc")<CR>
+nn \aa <Cmd>call g:SwitchToBuf($VIMCONF.."autocomplete.vimrc")<CR>
+nn \zz <Cmd>call g:SwitchToBuf($VIMCONF.."user.vimrc")<CR>
+nn \vv <Cmd>call g:SwitchToBuf($VIMCONF.."user2.vimrc")<CR>
+nn \ff <Cmd>call g:SwitchToBuf($VIMCONF.."functions.vimrc")<CR>
 # -- Base settings ------
 # 错误提示只显示在行号上
 set signcolumn=number
@@ -185,6 +186,16 @@ else
     set notimeout
     set ttimeout
     set ttimeoutlen=0
+
+    if has('termguicolors')
+      if $TERM !=# 'linux' && ($TERM =~? '256color' || $TERM =~? 'direct' || $TERM ==# 'xterm-kitty' || $TERM ==# 'alacritty')
+        set termguicolors
+      else
+        set t_Co=256
+      endif
+    else
+      set t_Co=256
+    endif
 endif
 #Enable filetype plugin
 #dont move it to top if you set unicode menu :)
@@ -227,7 +238,7 @@ if !exists("g:vimrc_loaded")
         #set guioptions-=r
         #hi normal guibg=#294d4a
     else
-        set t_Co=256
+        #set t_Co=256
         #syntax sync
     endif  # has
 endif

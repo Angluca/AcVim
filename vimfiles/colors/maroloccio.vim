@@ -354,7 +354,7 @@ if has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^scre
   CSAHi lCursor ctermbg=145 ctermfg=59
   CSAHi Delimiter ctermbg=59 ctermfg=61
   CSAHi Directory term=bold ctermfg=39
-  CSAHi ErrorMsg ctermbg=160 ctermfg=231
+  CSAHi ErrorMsg ctermbg=131 ctermfg=231
   CSAHi Identifier term=underline ctermfg=87
   CSAHi Ignore ctermfg=59
   CSAHi ModeMsg term=bold cterm=bold
@@ -367,7 +367,7 @@ if has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^scre
   CSAHi Special term=bold ctermbg=59 ctermfg=61
   CSAHi SpecialChar ctermbg=59 ctermfg=61
   CSAHi SpecialComment ctermbg=59 ctermfg=73
-  CSAHi SpellBad term=reverse cterm=undercurl ctermfg=196
+  CSAHi SpellBad term=reverse cterm=underline ctermbg=237
   CSAHi SpellCap term=reverse cterm=undercurl ctermfg=21
   CSAHi SpellLocal term=underline cterm=undercurl ctermfg=51
   CSAHi SpellRare term=reverse cterm=undercurl ctermfg=201
@@ -442,7 +442,7 @@ elseif has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^
   CSAHi Ignore ctermfg=59
   CSAHi NonText term=bold ctermbg=59 ctermfg=60
   CSAHi Directory term=bold ctermfg=45
-  CSAHi ErrorMsg ctermbg=196 ctermfg=255
+  CSAHi ErrorMsg ctermbg=131 ctermfg=255
   CSAHi MoreMsg term=bold cterm=bold ctermfg=72
   CSAHi ModeMsg term=bold cterm=bold
   CSAHi htmlBoldUnderline term=bold,underline cterm=bold,underline
@@ -465,7 +465,7 @@ elseif has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^
   CSAHi Delimiter ctermbg=59 ctermfg=68
   CSAHi SpecialComment ctermbg=59 ctermfg=74
   CSAHi SignColumn ctermbg=250 ctermfg=45
-  CSAHi SpellBad term=reverse cterm=undercurl ctermfg=196
+  CSAHi SpellBad term=reverse cterm=underline ctermbg=237
   CSAHi SpellCap term=reverse cterm=undercurl ctermfg=21
   CSAHi SpellRare term=reverse cterm=undercurl ctermfg=201
   CSAHi SpellLocal term=underline cterm=undercurl ctermfg=51
@@ -526,7 +526,7 @@ elseif has("gui_running") || &t_Co == 256
   CSAHi lCursor ctermbg=103 ctermfg=16
   CSAHi Delimiter ctermbg=16 ctermfg=61
   CSAHi Directory term=bold ctermfg=38
-  CSAHi ErrorMsg ctermbg=160 ctermfg=231
+  CSAHi ErrorMsg ctermbg=131 ctermfg=231
   CSAHi Identifier term=underline ctermfg=87
   CSAHi Ignore ctermfg=16
   CSAHi ModeMsg term=bold cterm=bold
@@ -539,7 +539,7 @@ elseif has("gui_running") || &t_Co == 256
   CSAHi Special term=bold ctermbg=16 ctermfg=61
   CSAHi SpecialChar ctermbg=16 ctermfg=61
   CSAHi SpecialComment ctermbg=16 ctermfg=31
-  CSAHi SpellBad term=reverse cterm=undercurl ctermfg=196
+  CSAHi SpellBad term=reverse cterm=underline ctermbg=237
   CSAHi SpellCap term=reverse cterm=undercurl ctermfg=21
   CSAHi SpellLocal term=underline cterm=undercurl ctermfg=51
   CSAHi SpellRare term=reverse cterm=undercurl ctermfg=201
