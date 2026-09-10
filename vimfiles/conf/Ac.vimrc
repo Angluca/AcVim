@@ -279,7 +279,6 @@ cno <c-e> <end>
 no! <c-f> <right>
 no! <c-b> <left>
 
-nn <d-c> <c-c>
 no! <d-c> <c-c>
 no! <c-c> <RIGHT><ESC>
 no! <m-c> <c-c>
@@ -338,18 +337,18 @@ cno <c-j> <down>
 nn <silent> ;ds <cmd>call g:DelTWS(1)<cr>
 
 #cut, copy & paste
+nn <d-c> "+y
+vn <d-c> "+y
+nn <d-v> "+p
+vn <d-v> "+p
+no! <d-v> <c-r>+
+
 nn <m-c> "+y
 vn <m-c> "+y
-ino <m-v> <c-r>+
-cno <m-v> <c-r>+
-xno <m-v> <c-r>+
-if has("gui_running")
-no <m-v> <c-r>+
-else
 nn <m-v> "+p
 vn <m-v> "+p
+cno <m-v> <c-r>+
 ino <m-v> <c-o>"+p
-endif
 
 #file format
 nn <Leader>ff <cmd>FmtOpt<cr>

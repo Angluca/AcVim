@@ -245,7 +245,10 @@ def g:SmartBracketJump(forward: number): string
     text = strpart(line, col('.') - 1)
     var idx = match(text, g:smart_brackets_pattern)
     if idx == -1
-      return "\<C-o>$"
+      if mode() =~# '^[iR]'
+        return "\<C-o>$"
+      endif
+      return "$"
     endif
     steps = idx + 1
     if stridx(g:smart_close_brackets, text[idx]) != -1 && idx + 1 < len(text)
@@ -258,7 +261,10 @@ def g:SmartBracketJump(forward: number): string
   text = strpart(line, 0, col('.') - 1)
   var matched = matchstr(text, '.*\zs' .. g:smart_brackets_pattern)
   if matched == ''
-    return "\<C-o>^"
+    if mode() =~# '^[iR]'
+      return "\<C-o>^"
+    endif
+    return "^"
   endif
   var idx2 = strridx(text, matched)
   steps = col('.') - 1 - idx2
@@ -269,6 +275,8 @@ def g:SmartBracketJump(forward: number): string
   endif
   return repeat("\<Left>", steps)
 enddef
+no <expr> <M-n> g:SmartBracketJump(1)
+no <expr> <M-p> g:SmartBracketJump(0)
 ino <expr> <M-n> g:SmartBracketJump(1)
 ino <expr> <M-p> g:SmartBracketJump(0)
 
