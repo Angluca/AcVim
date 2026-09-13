@@ -20,6 +20,7 @@ g:loaded_netrwPlugin = 1
 # -- VIM interface ------
 g:mapleader = ","
 set title
+#set titlestring=%{expand('%:~:.')}%(\ [%c:\ %l/%L%M%R]%)
 set titlestring=%{expand('%:~:.')}%(\ [%L%M%R]%)
 set ffs=unix,dos
 #Turn on WiLd menu
@@ -339,9 +340,7 @@ nn <silent> ;ds <cmd>call g:DelTWS(1)<cr>
 #cut, copy & paste
 nn <d-c> "+y
 vn <d-c> "+y
-nn <d-v> "+p
-vn <d-v> "+p
-no! <d-v> <c-r>+
+ino <d-v> <c-o>"+p
 
 nn <m-c> "+y
 vn <m-c> "+y

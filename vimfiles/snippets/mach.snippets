@@ -21,9 +21,14 @@ snippet if
 snippet or
 	or ($1) {$0}
 snippet for
-	for ($1) {$0}
+	var ${1:i}: i32;
+	for ($1) {
+		$0
+		$1 = $1 + 1;
+	}
 snippet Test
-	test "${0:intro}" {
+	test "${1:intro}" {
+		$0
 	}
 snippet pt
 	print("$0");
@@ -45,7 +50,7 @@ snippet eptnf
 snippet I
 	${1:${2:name}[${3:T}]} = ${1:name}${4: + ${5:1};}
 snippet fun
-	fun ${1:${2:name}[${3:T}]}($4) $0{
+	fun ${1:${2:name}[${3:T}]}($4) $5{$0
 	}
 snippet val
 	val ${1:name}: ${2:T} = ${3:${2:T} {$4\}}
