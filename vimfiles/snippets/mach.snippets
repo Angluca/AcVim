@@ -16,14 +16,21 @@ snippet rec
 	rec $1 {$0}
 snippet uni
 	uni $1 {$0}
+snippet tag
+	tag $1: ${2:u8} {$0}
 snippet if
 	if ($1) {$0}
 snippet or
 	or ($1) {$0}
 snippet for
-	for ($1) {$0}
+	var ${1:i}: i32;
+	for ($1) {
+		$0
+		$1 = $1 + 1;
+	}
 snippet Test
-	test "${0:intro}" {
+	test "${1:intro}" {
+		$0
 	}
 snippet pt
 	print("$0");
@@ -45,42 +52,26 @@ snippet eptnf
 snippet I
 	${1:${2:name}[${3:T}]} = ${1:name}${4: + ${5:1};}
 snippet fun
-	fun ${1:${2:name}[${3:T}]}($4) $0{
+	fun ${1:${2:name}[${3:T}]}($4) $5{$0
 	}
 snippet val
 	val ${1:name}: ${2:T} = ${3:${2:T} {$4\}}
 snippet var
 	var ${1:name}: ${2:T} = ${3:${2:T} {$4\}}
 # Option
-snippet Opt
-	Option[${1:T}]
+snippet opt
+	opt[${1:T}]
 snippet some
-	some[${1:T}](${2:Option[T]})
+	opt[${1:T}].some{$2}${0:;}
 snippet none
-	none[${1:T}]()
-snippet iss
-	is_some[${1:T}](${2:Option[T]})
-snippet isn
-	is_none[${1:T}](${2:Option[T]})
-snippet unw
-	unwrap[${1:T}](${2:Option[T]})
-snippet unr
-	unwrap_or[${1:T}](${2:Option[T]}, ${3:T})
+	opt[${1:T}].none{};
 # Result
-snippet Res
-	Result[${1:T}, ${2:Error}]
+snippet res
+	res[${1:T}, ${2:Error}]
 snippet ok
-	ok[${1:T}, ${2:Error}](${3:Result[T,U]})
+	res[${1:T}, ${2:Error}].ok{$3}${0:;}
 snippet err
-	err[${1:T}, ${2:Error}](${3:Result[T,U]})
-snippet ise
-	is_err[${1:T}, ${2:Error}](${3:Result[T,U]})
-snippet iso
-	is_ok[${1:T}, ${2:Error}](${3:Result[T,U]})
-snippet uno
-	unwrap_ok[${1:T}, ${2:Error}](${3:Result[T,U]})
-snippet une
-	unwrap_err[${1:T}, ${2:Error}](${3:Result[T,U]})
+	res[${1:T}, ${2:Error}].err{$3}${0:;}
 # $compile_cmd
 snippet $if
 	\$if ($1) {$0}

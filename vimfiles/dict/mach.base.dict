@@ -2,6 +2,8 @@ $align_of
 $assert
 $bin
 $builtin
+$cases
+$discriminant_of
 $each
 $embed
 $error
@@ -13,6 +15,7 @@ $input
 $is_pointer
 $is_record
 $is_secret
+$is_tag
 $is_union
 $mach
 $offset_of
@@ -40,9 +43,11 @@ bmos
 brk
 build
 cnt
+code
 coff
 compiler
 darwin
+deprecated
 description
 elf
 ext
@@ -51,6 +56,7 @@ freestanding
 fun
 fwd
 git
+has_payload
 id
 inline
 library
@@ -76,6 +82,7 @@ ret
 riscv64
 scalar
 section
+sel
 source
 spirv
 spv

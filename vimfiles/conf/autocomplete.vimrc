@@ -6,7 +6,7 @@ set cot=menuone,noinsert,popup,fuzzy
 set autocomplete
 #set autocompletedelay=60
 #set cpt=F,o,k^20,.^20,b^10,w^10,s^20,i^20,t^20,u^10
-set cpt=k^10,.^10,b^10,w^10 # lsp下用o或F都会卡
+set cpt=k^10,.^10,b^10,w^10 # 打开lsp的autoComplete要禁用F,o
 # nim.vim must comment nim#init()
 # -- filetypes ------
 au BufNewFile,BufRead *tags setl ft=tags

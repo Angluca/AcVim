@@ -199,10 +199,11 @@ g:AcFtCmd('spectre', 'T', '', 'AcRun spectre % <args> --test')
 g:AcFtCmd('spectre', 'TT', '', 'AcRun spectre % <args> --test --show-cmd')
 g:AcFtCmd('spectre', 'R', '', 'AcRun spectre run % <args> --release')
 g:AcFtCmd('spectre', 'RR', '', 'AcRun spectre run % <args> --show-cmd')
+#g:AcFtCmd('mach', 'M', 'mach.toml', 'AcRun make' .. matchstr('%:t:r', '^\d\+') .. ' <args>')
 g:AcFtCmd('mach', 'M', 'mach.toml', 'AcRun make %:t:r <args>')
 g:AcFtCmd('mach', 'MM', 'mach.toml', 'AcRun make run %:t:r <args>')
-g:AcFtCmd('mach', 'R', 'mach.toml', 'AcRun mach run . -v <args>')
-g:AcFtCmd('mach', 'RR', 'mach.toml', 'AcRun mach run . <args> -v --profile release')
+g:AcFtCmd('mach', 'R', 'mach.toml', 'AcRun mach run . <args>')
+g:AcFtCmd('mach', 'RR', 'mach.toml', 'AcRun mach run . <args> --profile release')
 g:AcFtCmd('mach', 'B', 'mach.toml', 'AcRun mach build . -v <args>')
 g:AcFtCmd('mach', 'BB', 'mach.toml', 'AcRun mach build . -v <args> --profile release')
 g:AcFtCmd('mach', 'T', 'mach.toml', 'AcRun mach test . -vv <args>')
@@ -267,6 +268,8 @@ nn g] <Cmd>LspDiagNext<CR>
 nn gr <Cmd>LspShowReferences<CR>
 nn g\ <Cmd>LspServer restart<CR>
 
+#setl omnifunc=g:LspOmniFunc # 打开lsp.autoComplete后禁用这些
+#setl completefunc=g:LspOmniFunc
 g:lsp_options = {
     noNewlineInCompletion: true,    # 让你的括号插件<cr>不失效
     ignoreMissingServer: true,      # 不出现没有lsp的错误提示
