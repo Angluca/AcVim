@@ -210,6 +210,14 @@ g:AcFtCmd('mach', 'BB', 'mach.toml', 'AcRun mach build . -v <args> --profile rel
 g:AcFtCmd('mach', 'T', 'mach.toml', 'AcRun mach test . -vv <args>')
 g:AcFtCmd('mach', 'TT', 'mach.toml', 'AcRun mach test . -vv <args> --profile release')
 g:AcFtCmd('mach', 'XX', 'mach.toml', 'AcRun mach clean .')
+
+g:AcFtCmd('flow', 'B', 'flow.toml', 'AcRun flow build <args>')
+g:AcFtCmd('flow', 'C', 'flow.toml', 'AcRun flow compile % <args>')
+g:AcFtCmd('flow', 'R', 'flow.toml', 'AcRun flow run % <args>')
+g:AcFtCmd('flow', 'G', 'flow.toml', 'AcRun flow gfx % <args>')
+g:AcFtCmd('flow', 'W', 'flow.toml', 'AcRun flow window % <args>')
+g:AcFtCmd('flow', 'T', 'flow.toml', 'AcRun flow test <args>')
+g:AcFtCmd('flow', 'XX', 'flow.toml', 'AcRun flow clean')
 # -- floaterm ------
 g:floaterm_width = 0.98
 g:floaterm_height = 0.9
@@ -303,6 +311,7 @@ def g:AcLspSetup()
     { name: 'clangd', filetype: ['c', 'cpp'], path: exepath('clangd'), args: ['--background-index'] },
     { name: 'mach', filetype: ['mach'], path: exepath('mls') },
     { name: 'spectre', filetype: ['spectre'], path: exepath('spectre-ls') },
+    { name: 'flow', filetype: ['flow'], path: exepath('flow'), args: ['lsp'] },
     # { name: 'ocen', filetype: ['ocen'], path: exepath('ocen'), args: ['lsp-server'] },
     # { name: 'nimlsp', filetype: ['nim'], path: exepath('nimlsp') },
     # { name: 'zls', filetype: ['zig'], path: exepath('zls') },

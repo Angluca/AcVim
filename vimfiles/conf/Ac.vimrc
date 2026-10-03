@@ -142,7 +142,7 @@ set backupdir=$VIMDATA/backup  # where to put backup file
 set directory=$VIMDATA/swap    # where to put swap file
 #---------------------------
 #load conf
-#exe pathogen#infect()
+exe pathogen#infect()
 #exe pathogen#infect('bundle_local/{}')
 so $VIMCONF/plugins.vimrc
 so $VIMCONF/user.vimrc

@@ -7,4 +7,6 @@ endif
 $VIMDATA = $HOME .. '/.vimdata/'
 $VIMDICT = $VIM .. 'dict/'
 $VIMCONF = $VIM .. 'conf/'
+$VIMPLUGS = $VIM .. 'bundle/'
+$VIMPLUGSLOCAL = $VIM .. 'bundle_local/'
 so $VIMCONF/ac.vimrc

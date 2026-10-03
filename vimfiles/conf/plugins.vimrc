@@ -9,9 +9,9 @@ plug#begin($VIM .. '/bundle/')
 # Plugin
 #----------------------------------
 # local
-# var bundle_local = $VIM ..'/bundle_local'
-# Plug expand(bundle_local .. '/my.vim')
+#Plug $VIMPLUGSLOCAL ..'vim-flow', { 'for': 'flow' }
 #----------------------------------
+Plug 'angluca/flow.vim', { 'for': 'flow' }
 Plug 'angluca/mach.vim', { 'for': 'mach' }
 Plug 'angluca/spectre.vim', { 'for': 'spectre' }
 #Plug 'angluca/nim.vim'
