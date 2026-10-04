@@ -11,9 +11,10 @@ plug#begin($VIM .. '/bundle/')
 # local
 #Plug $VIMPLUGSLOCAL ..'vim-flow', { 'for': 'flow' }
 #----------------------------------
-Plug 'angluca/flow.vim', { 'for': 'flow' }
+Plug 'angluca/flow.vim', { 'for': 'aether' }
 Plug 'angluca/mach.vim', { 'for': 'mach' }
-Plug 'angluca/spectre.vim', { 'for': 'spectre' }
+#Plug 'angluca/flow.vim', { 'for': 'flow' }
+#Plug 'angluca/spectre.vim', { 'for': 'spectre' }
 #Plug 'angluca/nim.vim'
 #Plug 'ziglang/zig.vim'
 #Plug 'angluca/rust.vim'

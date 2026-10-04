@@ -211,11 +211,20 @@ g:AcFtCmd('mach', 'T', 'mach.toml', 'AcRun mach test . -vv <args>')
 g:AcFtCmd('mach', 'TT', 'mach.toml', 'AcRun mach test . -vv <args> --profile release')
 g:AcFtCmd('mach', 'XX', 'mach.toml', 'AcRun mach clean .')
 
+g:AcFtCmd('aether', 'B', 'aether.toml', 'AcRun ae build <args>')
+g:AcFtCmd('aether', 'BB', '', 'AcRun ae build % <args>')
+g:AcFtCmd('aether', 'R', 'aether.toml', 'AcRun ae run <args>')
+g:AcFtCmd('aether', 'RR', '', 'AcRun ae run % <args>')
+g:AcFtCmd('aether', 'E', '', 'AcRun ae check % <args>')
+g:AcFtCmd('aether', 'T', 'aether.toml', 'AcRun ae test <args>')
+g:AcFtCmd('aether', 'TT', '', 'AcRun ae test % <args>')
+g:AcFtCmd('aether', 'XX', '', 'AcRun ae cache clear')
+
 g:AcFtCmd('flow', 'B', 'flow.toml', 'AcRun flow build <args>')
-g:AcFtCmd('flow', 'C', 'flow.toml', 'AcRun flow compile % <args>')
-g:AcFtCmd('flow', 'R', 'flow.toml', 'AcRun flow run % <args>')
-g:AcFtCmd('flow', 'G', 'flow.toml', 'AcRun flow gfx % <args>')
-g:AcFtCmd('flow', 'W', 'flow.toml', 'AcRun flow window % <args>')
+g:AcFtCmd('flow', 'C', '', 'AcRun flow compile % <args>')
+g:AcFtCmd('flow', 'R', '', 'AcRun flow run % <args>')
+g:AcFtCmd('flow', 'G', '', 'AcRun flow gfx % <args>')
+g:AcFtCmd('flow', 'W', '', 'AcRun flow window % <args>')
 g:AcFtCmd('flow', 'T', 'flow.toml', 'AcRun flow test <args>')
 g:AcFtCmd('flow', 'XX', 'flow.toml', 'AcRun flow clean')
 # -- floaterm ------
@@ -310,8 +319,9 @@ def g:AcLspSetup()
   g:LspAddServer([
     { name: 'clangd', filetype: ['c', 'cpp'], path: exepath('clangd'), args: ['--background-index'] },
     { name: 'mach', filetype: ['mach'], path: exepath('mls') },
-    { name: 'spectre', filetype: ['spectre'], path: exepath('spectre-ls') },
-    { name: 'flow', filetype: ['flow'], path: exepath('flow'), args: ['lsp'] },
+    { name: 'aether', filetype: ['aether'], path: exepath('aether-lsp') },
+    # { name: 'flow', filetype: ['flow'], path: exepath('flow'), args: ['lsp'] },
+    # { name: 'spectre', filetype: ['spectre'], path: exepath('spectre-ls') },
     # { name: 'ocen', filetype: ['ocen'], path: exepath('ocen'), args: ['lsp-server'] },
     # { name: 'nimlsp', filetype: ['nim'], path: exepath('nimlsp') },
     # { name: 'zls', filetype: ['zig'], path: exepath('zls') },

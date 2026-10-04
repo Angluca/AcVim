@@ -206,6 +206,10 @@ def g:DelTWS(bb: number = 0)
 enddef
 
 def g:AcFtRun(file: string, cmd: string)
+    if empty(file)
+        exe cmd
+        return
+    endif
     var dir = fnamemodify(findfile(file, '.;'), ':h')
     if !empty(dir)
         exe 'lcd ' .. dir
