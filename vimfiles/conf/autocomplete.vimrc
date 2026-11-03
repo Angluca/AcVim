@@ -10,6 +10,7 @@ set cpt=k^10,.^10,b^10,w^10 # 打开lsp的autoComplete要禁用F,o
 # nim.vim must comment nim#init()
 # -- filetypes ------
 au BufNewFile,BufRead *tags setl ft=tags
+g:SetFtCmd('vim', 'setl sw=2 sts=2 ts=2 et')
 g:SetFt('*.ctags', 'zsh')
 g:SetFt('*.zshrc,*.zprofile', 'zsh')
 g:SetFt('*.vim*', 'vim')
@@ -38,6 +39,7 @@ g:SetFt('*.lita,*.ape', 'litac')
 g:SetFt('*.adept', 'adept')
 g:SetFt('*.um,*.td,*.wren', 'ocen')
 g:SetFt('*.c3', 'c2')
+g:SetFt('*.msl', 'cpp')
 
 # automaticlly remove trailing whitespace
 au BufWrite *.cc,*.cpp,*.cxx,*.hpp,*.[ch] :DelTWS
@@ -65,7 +67,7 @@ au FileType spectre $SXLIBS = $SPECTRE_ROOT .. '/spectrelib'
 au FileType spectre nmap \== :Mctags $VIMDICT/spectre.ctags spectre.tags<cr>
 au FileType spectre nmap \=- :Mctags $VIMDICT/spectre.ctags spectre.tags $SXLIBS<cr>
 g:SetTags('spectre', '', 'spectre.tags')
-g:SetDict('spectre', '', 'spectre.base.dict', 'spectre.tags')
+g:SetDict('spectre', '', 'spectre.base.dict')
 
 au FileType nim nmap \== :Maketags ntags -R\ **/**<cr>
 au FileType nim $NIMLIB = $HOME .. '/SDK/Nims/nim/lib'

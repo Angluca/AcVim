@@ -13,11 +13,12 @@ plug#begin($VIM .. '/bundle/')
 #----------------------------------
 Plug 'angluca/flow.vim', { 'for': 'aether' }
 Plug 'angluca/mach.vim', { 'for': 'mach' }
+Plug 'angluca/spectre.vim', { 'for': 'spectre' }
 #Plug 'angluca/flow.vim', { 'for': 'flow' }
-#Plug 'angluca/spectre.vim', { 'for': 'spectre' }
-#Plug 'angluca/nim.vim'
-#Plug 'ziglang/zig.vim'
-#Plug 'angluca/rust.vim'
+#Plug 'angluca/nature.vim', { 'for': 'nature' }
+#Plug 'angluca/nim.vim', { 'for': 'nim' }
+#Plug 'ziglang/zig.vim', { 'for': 'zig' }
+#Plug 'angluca/rust.vim', { 'for': 'rust' }
 #Plug 'angluca/dither.vim'
 #Plug 'angluca/ocen.vim'
 #Plug 'angluca/zc.vim'
@@ -25,7 +26,6 @@ Plug 'angluca/mach.vim', { 'for': 'mach' }
 #Plug 'zenc-lang/zenc.vim'
 #Plug 'angluca/valk.vim'
 #Plug 'angluca/axe.vim'
-#Plug 'angluca/nature.vim'
 #Plug 'angluca/quark.vim'
 #Plug 'angluca/virgil.vim'
 #Plug 'angluca/c2.vim'

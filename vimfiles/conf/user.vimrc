@@ -190,15 +190,19 @@ g:AcFtCmd('rust', 'XX', 'Cargo.toml', 'AcRun cargo clean <args>')
 g:AcFtCmd('rust', 'TT', 'Cargo.toml', 'AcRun cargo test <args> -- --nocapture')
 au filetype rust com! -bang -nargs=* -complete=file XT AcRun trash %:t:r
 au filetype rust com! -bang -nargs=* -complete=file RT exe 'AcRun! rustc <args> % && ./%:t:r' | exe 'AcSend exit'
+
 g:AcFtCmd('spectre', 'Init', '', 'AcRun spectre init <args>')
-g:AcFtCmd('spectre,modsim3', 'B', 'sx.mod', 'AcRun spectre build release <args>')
-g:AcFtCmd('spectre,modsim3', 'BB', 'sx.mod', 'AcRun spectre build <args>')
-g:AcFtCmd('spectre', 'C', '', 'AcRun spectre % <args> --release')
-g:AcFtCmd('spectre', 'CC', '', 'AcRun spectre % <args> --show-cmd')
+g:AcFtCmd('spectre,modsim3', 'B', 'sx.mod', 'AcRun spectre build <args>')
+g:AcFtCmd('spectre,modsim3', 'BB', 'sx.mod', 'AcRun spectre build release <args>')
+g:AcFtCmd('spectre,modsim3', 'XX', 'sx.mod', 'AcRun spectre clean')
+g:AcFtCmd('spectre', 'E', '', 'AcRun spectre critic % <args>')
+g:AcFtCmd('spectre', 'C', '', 'AcRun spectre % <args>')
+g:AcFtCmd('spectre', 'CC', '', 'AcRun spectre % <args> --release --show-cmd')
 g:AcFtCmd('spectre', 'T', '', 'AcRun spectre % <args> --test')
 g:AcFtCmd('spectre', 'TT', '', 'AcRun spectre % <args> --test --show-cmd')
-g:AcFtCmd('spectre', 'R', '', 'AcRun spectre run % <args> --release')
-g:AcFtCmd('spectre', 'RR', '', 'AcRun spectre run % <args> --show-cmd')
+g:AcFtCmd('spectre', 'R', '', 'AcRun spectre run % <args>')
+g:AcFtCmd('spectre', 'RR', '', 'AcRun spectre run % <args> --release --show-cmd')
+
 #g:AcFtCmd('mach', 'M', 'mach.toml', 'AcRun make' .. matchstr('%:t:r', '^\d\+') .. ' <args>')
 g:AcFtCmd('mach', 'M', 'mach.toml', 'AcRun make %:t:r <args>')
 g:AcFtCmd('mach', 'MM', 'mach.toml', 'AcRun make run %:t:r <args>')
@@ -226,6 +230,7 @@ g:AcFtCmd('flow', 'R', '', 'AcRun flow run % <args>')
 g:AcFtCmd('flow', 'G', '', 'AcRun flow gfx % <args>')
 g:AcFtCmd('flow', 'W', '', 'AcRun flow window % <args>')
 g:AcFtCmd('flow', 'T', 'flow.toml', 'AcRun flow test <args>')
+g:AcFtCmd('flow', 'TT', 'flow.toml', 'AcRun flow test % <args>')
 g:AcFtCmd('flow', 'XX', 'flow.toml', 'AcRun flow clean')
 # -- floaterm ------
 g:floaterm_width = 0.98
@@ -320,8 +325,9 @@ def g:AcLspSetup()
     { name: 'clangd', filetype: ['c', 'cpp'], path: exepath('clangd'), args: ['--background-index'] },
     { name: 'mach', filetype: ['mach'], path: exepath('mls') },
     { name: 'aether', filetype: ['aether'], path: exepath('aether-lsp') },
+    { name: 'spectre', filetype: ['spectre'], path: exepath('spectre-ls') },
     # { name: 'flow', filetype: ['flow'], path: exepath('flow'), args: ['lsp'] },
-    # { name: 'spectre', filetype: ['spectre'], path: exepath('spectre-ls') },
+    # { name: 'nature', filetype: ['nature'], path: exepath('nls') },
     # { name: 'ocen', filetype: ['ocen'], path: exepath('ocen'), args: ['lsp-server'] },
     # { name: 'nimlsp', filetype: ['nim'], path: exepath('nimlsp') },
     # { name: 'zls', filetype: ['zig'], path: exepath('zls') },

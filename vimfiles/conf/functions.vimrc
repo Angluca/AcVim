@@ -92,7 +92,10 @@ def g:Ftags(rd: string = '', only_add_path: number = 0)
     :silent w
   END
   for cmd in cmds
-    exe cmd
+    try
+      exe cmd
+    catch /E486/
+    endtry
   endfor
 enddef
 
