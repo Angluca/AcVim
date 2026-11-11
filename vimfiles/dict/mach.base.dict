@@ -9,9 +9,12 @@ $embed
 $error
 $fields
 $handle
+$holds_secret
 $ident
 $if
 $input
+$is_float
+$is_integer
 $is_pointer
 $is_record
 $is_secret
