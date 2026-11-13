@@ -212,9 +212,11 @@ g:AcFtCmd('mach', 'RR', 'mach.toml', 'AcRun mach run . <args> --profile release'
 g:AcFtCmd('mach', 'E', 'mach.toml', 'AcRun mach check . -v <args>')
 g:AcFtCmd('mach', 'B', 'mach.toml', 'AcRun mach build . -v <args>')
 g:AcFtCmd('mach', 'BB', 'mach.toml', 'AcRun mach build . -v <args> --profile release')
-g:AcFtCmd('mach', 'T', 'mach.toml', 'AcRun mach test . -vv <args>')
-g:AcFtCmd('mach', 'TT', 'mach.toml', 'AcRun mach test . -vv <args> --profile release')
+g:AcFtCmd('mach', 'T', 'mach.toml', 'AcRun mach test . <args>')
+g:AcFtCmd('mach', 'TT', 'mach.toml', 'AcRun mach test . -vv <args>')
+#g:AcFtCmd('mach', 'TT', 'mach.toml', 'AcRun mach test . <args> --profile release')
 g:AcFtCmd('mach', 'XX', 'mach.toml', 'AcRun mach clean .')
+g:AcFtCmd('mach', 'Dict', '', ':%s/^\v(use|fwd)\s+\w+\.(\w+);/\2/ge')
 
 g:AcFtCmd('aether', 'B', 'aether.toml', 'AcRun ae build <args>')
 g:AcFtCmd('aether', 'BB', '', 'AcRun ae build % <args>')

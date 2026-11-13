@@ -42,20 +42,21 @@ enddef
 
 # ---- dict / tags 文件处理 ----
 def g:Fdict()
+  # sort u 删除重复行
   var cmds =<< trim END
-    :%s/^.*LICENSE.*$\n//ge
-    :%s/^.\{,1}\s.*$\n//ge
-    :%s/^[0-9.^]\+\k*\s..*$\n//ge
-    :%s/.*\/^\s*\\\/\\\/.*$\n//ge
-    :g/^\([0-9A-Za-z_.:]\+\)\s.*$\n\1$/d
-    :%s/^\([0-9A-Za-z_.:]\+\)\s.*/\1/ge
-    :g/^\W\+.*$/d
+    :g/LICENSE/d
+    :g/^[0-9.^]\+\k*\s/d
+    :g#\\/^\s*\\//\\/#d
+    :%s/^\([0-9A-Za-z_.:]\+\)\s.*/\1/e
     :%sort u
-    :g/^.\{,1}\s*$/d
+    :g/^\s*$/d
     :silent w
   END
   for cmd in cmds
-    exe cmd
+    try
+      exe cmd
+    catch /E486/
+    endtry
   endfor
 enddef
 

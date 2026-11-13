@@ -55,12 +55,12 @@ au FileType c,cpp nmap \== :!ctags --c-kinds=+p --fields=+S -R .<cr>
 #au FileType hare $HARESDL = $HOME .. '/Hares/Modules/my_hare-sdl2/sdl'
 #au FileType hare setl tags +=$VIMDICT/hare.tags,$VIMDICT/hare.sdl.tags
 
-au FileType mach $MACH_STD = $MACH_ROOT .. '/../mach_std/src'
+au FileType mach $MACH_STD = $MACH_ROOT .. '/../mach-std/src'
 #au FileType mach nmap \== :Mctags $VIMDICT/mach.local.ctags mach.local.tags<cr>
 au FileType mach nmap \== :Mctags $VIMDICT/mach.local.ctags mach.local.tags $MACH_STD<cr>
 au FileType mach nmap \=- :Mctags $VIMDICT/mach.ctags mach.tags $MACH_STD<cr>
-#call g:SetDict('mach','','mach.base.dict', 'mach.dict', 'mach.raylib.dict')
-#call g:SetDict('mach','','mach.base.dict','mach.dict','mach.boom.dict','mach.shader.dict')
+#g:SetDict('mach','','mach.base.dict', 'mach.dict', 'mach.raylib.dict')
+#g:SetDict('mach','','mach.base.dict','mach.dict','mach.boom.dict','mach.shader.dict')
 g:SetDict('mach', '', 'mach.base.dict')
 
 au FileType spectre $SXLIBS = $SPECTRE_ROOT .. '/spectrelib'
