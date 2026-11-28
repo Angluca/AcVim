@@ -59,7 +59,6 @@ au FileType mach $MACH_STD = $MACH_ROOT .. '/../mach-std/src'
 #au FileType mach nmap \== :Mctags $VIMDICT/mach.local.ctags mach.local.tags<cr>
 au FileType mach nmap \== :Mctags $VIMDICT/mach.local.ctags mach.local.tags $MACH_STD<cr>
 au FileType mach nmap \=- :Mctags $VIMDICT/mach.ctags mach.tags $MACH_STD<cr>
-#g:SetDict('mach','','mach.base.dict', 'mach.dict', 'mach.raylib.dict')
 #g:SetDict('mach','','mach.base.dict','mach.dict','mach.boom.dict','mach.shader.dict')
 g:SetDict('mach', '', 'mach.base.dict')
 
